@@ -1,12 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Unique Games</title>
+    <style>
+    * {
+        padding: 0px;
+        margin: 0px;
+    }
+    #header-top-menu {
+        background-color: #393939;
+        height: 50px;
+    }
+    #nav1 {
+        margin: 10px 0;
+        padding-right: 10%;
+        float: right;
+    }
+    #nav1 > ul {
+        list-style-type: none;
+        width: 100%;
+        margin: auto;
+        overflow: hidden;
+
+    }
+    #nav1 > ul > li {
+        display: block;
+        float: left;
+        margin:0 2px;
+    }
+    #nav1 > ul > li > a {
+        display: block;
+        width: 40px;
+        padding:4px 6px 4px 6px;
+        text-decoration: none;
+        color: #fff;
+        font-size: 16px;
+        font-family: "YouandiModern", sans-serif;
+        text-align: center;
+    }
+    #nav1 > ul > li > a > img {
+        margin: auto;
+    }
+    #nav1 > ul > li:first-child {
+        padding-right: 5px;
+        border-right: 1px solid #999999;
+    } 
+    #nav1 > ul > li:nth-child(2) {
+        margin-left: 0px;
+    } 
+    header div img {
+        display: block;
+        clear:both;
+    }
+    #hearder-logo {
+        width: 100%;
+        border: 1px solid blue;
+        height: 116px;
+        position:relative;
+        overflow: hidden;
+        clear: both;
+        text-align: center;
+    }
+    #hearder-logo > a {
+        border: 1px solid blue;
+        position:absolute;
+        top:38px;
+    }
+    </style>
 </head>
 <body>
     <header>
-        <h1>hearder</h1>
+        <div id="header-top-menu">
+            <nav id="nav1">
+                <ul>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Join</a></li>
+                    <li><a href="#"><img src="/Users/dev/vs_git/UniqueGames/WebContent/images/img_icon_mypage.png"></a></li>
+                    <li><a href="#"><img src="/Users/dev/vs_git/UniqueGames/WebContent/images/img_icon_cart.png"></a></li>
+                    <li><a href="#"><img src="/Users/dev/vs_git/UniqueGames/WebContent/images/img_icon_search.png"></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div id="hearder-logo">
+            <a href="/Users/dev/vs_git/UniqueGames/WebContent/html/main/index.html">
+                <img src="/Users/dev/vs_git/UniqueGames/WebContent/images/img_title_logo.png">
+            </a>
+        </div>
+        <div id="header-bottom-menu">
+            <nav id="nav2">
+                <ul>
+                    <li><a href="#">Top Game</a></li>
+                    <li><a href="#">All List</a></li>
+                    <li><a href="#">Recommendations</a></li>
+                    <li><a href="#">Solution</a></li>
+                    <li><a href="#">Event</a></li>
+                    <li><a href="#">Notice</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 </body>
 </html>
