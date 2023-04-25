@@ -1,0 +1,58 @@
+html,body,header,footer,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,a,img,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label{margin:0;padding:0;border:0; line-height:175%; letter-spacing:normal} /* delete vertical-align,font:inherit; */
+body,html{width:100%; font-size:17px; color:#777; font-weight:300; font-family: 'Noto Sans KR', 'Lexend', Malgun Gothic,'Malgun Gothic', sans-serif;  height:100%; word-break: keep-all;}
+
+*{font-family: 'Noto Sans KR', 'Lexend', Malgun Gothic,'Malgun Gothic', sans-serif; word-break: keep-all;}
+ol,ul,li{list-style:none;}
+blockquote,q{quotes:none;}
+
+.form_foot {position:relative;}
+/* Footer */
+#footer {background:#1c2025; padding:100px 100px 0;}
+#footer .foot_top {position:relative; display:flex; flex-wrap:wrap; padding:0 0 60px; border-bottom:1px solid Rgba(255,255,255,0.2);}
+#footer .foot_top .f_info {width:540px;}
+#footer .foot_top .f_info img {display:block; margin:0 0 30px;}
+#footer .foot_top .f_info dl {font-size:0; margin:22px 0 0;}
+#footer .foot_top .f_info dl dd {display:inline-block; font-size:15px; font-weighT:400; color:rgba(255,255,255,0.6); letter-spacing:-0.3pt; line-height:1; margin-right:24px; margin-bottom:12px;}
+#footer .foot_top .f_info dl dd.address {display:block;}
+#footer .foot_top .f_info dl dd i {color:inherit; font-size:15px; margin-right:5px; position:relative; top:2px;}
+#footer .foot_top .f_info dl dd .eng {line-height:inherit; font-weighT:inherit; font-size:inherit;}
+
+#footer .foot_top .f_sitemap {width:calc(100% - 540px); display:flex; flex-wrap:wrap;}
+#footer .foot_top .f_sitemap dl {margin-right:102px;}
+#footer .foot_top .f_sitemap dl:last-child {margin-right:0;}
+#footer .foot_top .f_sitemap dl dt {color:#fff; font-weight:400; line-height:1; margin:0 0 20px;}
+#footer .foot_top .f_sitemap dl dd {}
+#footer .foot_top .f_sitemap dl dd a {display:block; font-size:14px; color:rgba(255,255,255,0.5); font-weight:400; line-height:1; margin:0 0 15px; transition:all 0.2s linear;}
+#footer .foot_top .f_sitemap dl dd a:hover {color:#fff; transition:all 0.2s linear;}
+
+#footer .foot_top a.privacy {position:relative; color:#fff; font-size:14px; letter-spacing:-0.4pt; line-height:1; font-weighT:400; transition:all 0.2s linear; width:auto; height:auto; background:transparent !important; border:0 !important; padding-left:0; margin-left:20px;}
+#footer .foot_top a.privacy::after {content:''; width:100%; height:1px; background:#fff; position:absolute; bottom:-6px; left:0; transition:all 0.2s linear;}
+#footer .foot_top a.privacy:hover {color:#005ead; transition:all 0.2s linear;}
+#footer .foot_top a.privacy:hover::after {background:#005ead; transition:all 0.2s linear;}
+
+#footer .foot_bot {position:relative; padding:30px 0;}
+#footer .foot_bot p {text-transform:uppercase; font-size:14px; font-weight:400; color:rgba(255,255,255,0.3);}
+#footer .foot_bot p a {color:rgba(255,255,255,0.2); display:inline-block; margin-lefT:5px;}
+
+#footer .foot_bot ul {font-size:0; position:absolute; right:0; top:50%; transform:translateY(-50%);}
+#footer .foot_bot ul li {display:inline-block; margin-right:3px;}
+#footer .foot_bot ul li:last-child {margin-right:0;}
+#footer .foot_bot ul li a {display:block; width:30px; height:30px; background-color:rgba(255,255,255,0.1); border-radius:100%; background-repeat:no-repeat; background-position:center;}
+#footer .foot_bot ul li.sns01 a {background-image:url("/img/sns01.png");}
+#footer .foot_bot ul li.sns01 a:hover {background-color:#1EC800;}
+#footer .foot_bot ul li.sns02 a {background-image:url("/img/sns02.png");}
+#footer .foot_bot ul li.sns02 a:hover {background-color:#ff0000;}
+#footer .foot_bot ul li.sns03 a {background-image:url("/img/sns03.png");}
+#footer .foot_bot ul li.sns03 a:hover {background-color:#3b5998;}
+#footer .foot_bot ul li.sns04 a {background-image:url("/img/sns04.png");}
+#footer .foot_bot ul li.sns04 a:hover {background-color:#833ab4;}
+
+
+/* #footer .sub_menu {font-size:0; position:absolute; right:0; bottom:70px; }
+#footer .sub_menu li {display:inline-block; margin-left:2px;}
+#footer .sub_menu li a {display:block; width:135px; height:40px; border:1px solid transparent; background:rgba(255,255,255,0.15); box-sizing:border-box; border-radius:5px; padding-left:15px; font-size:15px; font-weight:400; color:#fff; letter-spacing:-0.5pt; line-height:38px;}
+#footer .sub_menu li a span {margin-right:8px; font-size:18px; position:relative; top:3px; color:#fff;}
+#footer .sub_menu li:first-child span {margin-right:12px;}
+
+#footer .sub_menu li a:hover {background:#005ead; border:1px solid #005ead; color:#fff; }
+#footer .sub_menu li a:hover span {color:#fff;} */
