@@ -3,7 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <title>회사 소개</title>
-  <link rel="stylesheet" type="text/css" href="comm.css" />
+  <!--  <link rel="stylesheet" type="text/css" href="detail.css" />-->
+  <style>
+    footer,dl,dd,ol,li{margin:0;padding:0;border:0; line-height:175%; letter-spacing:normal}
+    ol,ul,li{list-style:none;}
+
+    /* Footer */
+    #footer {background:#1c2025; padding:100px 100px 0;}
+    #footer .foot_top {position:relative; display:flex; flex-wrap:wrap; padding:0 0 60px; border-bottom:1px solid Rgba(255,255,255,0.2);}
+    #footer .foot_top .f_info {width:540px;}
+    #footer .foot_top .f_info img {display:block; margin:0 0 30px;}
+    #footer .foot_top .f_info dl {font-size:0; margin:22px 0 0;}
+    #footer .foot_top .f_info dl dd {display:inline-block; font-size:15px; font-weighT:400; color:rgba(255,255,255,0.6); letter-spacing:-0.3pt; line-height:1; margin-right:24px; margin-bottom:12px;}
+    #footer .foot_top .f_info dl dd.address {display:block;}
+    #footer .foot_top .f_info dl dd i {color:inherit; font-size:15px; margin-right:5px; position:relative; top:2px;}
+
+    #footer .foot_top .f_sitemap {width:calc(100% - 540px); display:flex; flex-wrap:wrap;}
+    #footer .foot_top .f_sitemap dl {margin-right:102px;}
+    #footer .foot_top .f_sitemap dl:last-child {margin-right:0;}
+    #footer .foot_top .f_sitemap dl dt {color:#fff; font-weight:400; line-height:1; margin:0 0 20px;}
+    #footer .foot_top .f_sitemap dl dd {}
+    #footer .foot_top .f_sitemap dl dd a {display:block; font-size:14px; color:rgba(255,255,255,0.5); font-weight:400; line-height:1; margin:0 0 15px; transition:all 0.2s linear;}
+    #footer .foot_top .f_sitemap dl dd a:hover {color:#fff; transition:all 0.2s linear;}
+
+  </style>
 </head>
 <body>
 <header>
@@ -34,19 +57,20 @@
   <div class="w1350" >
     <div class="foot_top">
       <div class="f_info">
-        <img src="/img/foot_logo.png" alt="슈어소프트테크(주)" />
+        <img src="images/img_title_logo.png" alt="유니크게임즈(주)" />
         <dl>
-          <dd>슈어소프트테크(주)</dd>
-          <dd>대표자 : 배현섭</dd>
-          <dd class="address">사업자등록번호 : <span class="eng">211-87-10133</span></dd>
-          <dd class="address">경기 성남시 수정구 금토로80번길 37 (금토동) 인피니티타워 E동</dd>
-          <dd><i class="material-symbols-outlined">call</i><span class="eng">031-606-2000</dd>
-          <dd><i class="material-symbols-outlined">print</i><span class="eng">031-606-2627</dd>					</dl>
+          <dd>유니크게임즈(주)</dd>
+          <dd>대표자 : 홍길동</dd>
+          <dd class="address">사업자등록번호 : 123-45-6789</dd>
+          <dd class="address">서울시 강남구 강남역</dd>
+          <dd><i class="material-symbols-outlined">call </i>000-000-000</dd>
+          <dd><i class="material-symbols-outlined">email </i>abcd@naver.com</dd>
+        </dl>
 
         <dl>
-          <dd class="address">대전광역시 유성구 가정로 218 융합기술연구생산센터</dd>
-          <dd><i class="material-symbols-outlined">call</i><span class="eng">042-867-7800</span></dd>
-          <dd><i class="material-symbols-outlined">print</i><span class="eng">042-867-7802</span></dd>
+          <dd class="address">서울시 강남구 가나다라마바사</dd>
+          <dd><i class="material-symbols-outlined">call </i>02-987-5432</dd>
+          <dd><i class="material-symbols-outlined">print </i>02-123-4567</dd>
         </dl>
       </div>
 
@@ -54,72 +78,54 @@
         <dl>
           <dt>회사소개</dt>
           <dd>
-            <a href="/company/company.php">회사개요</a>
-            <a href="/company/ci.php">CI/BI</a>
-            <a href="/company/notice.php">홍보</a>
-            <a href="/company/customer.php">고객문의</a>
+            <a href="#">회사개요</a>
+            <a href="#">홍보</a>
+            <a href="#">고객문의</a>
           </dd>
         </dl>
         <dl>
           <dt>사업영역</dt>
           <dd>
-            <a href="/solution/code.php">Solution</a>
-            <a href="/industry/car.php">Industry</a>
+            <a href="#">게임사후원</a>
+            <a href="#">Industry</a>
           </dd>
         </dl>
-        <!-- <dl>
-          <dt>시험성적서</dt>
-          <dd>
-            <a href="/report/report.php">소프트웨어 시험성적서</a>
-          </dd>
-        </dl> -->
         <dl>
           <dt>채용</dt>
           <dd>
-            <a href="/recruit/welfare.php">인사/복리후생</a>
-            <a href="/recruit/talent.php">인재상/채용절차</a>
-            <a href="/recruit/recruit.php">채용공고</a>
+            <a href="#">인사/복리후생</a>
+            <a href="#">인재상/채용절차</a>
+            <a href="#">채용공고</a>
           </dd>
         </dl>
         <dl>
           <dt>교육</dt>
           <dd>
-            <a href="/education/education.php">교육과정소개</a>
-            <a href="/education/apply.php">교육신청</a>
-            <a href="/education/Issued_login.php">수료증발급</a>
-            <a href="/education/faq.php">FAQ</a>
+            <a href="#">교육과정소개</a>
+            <a href="#">교육신청</a>
+            <a href="#">FAQ</a>
           </dd>
         </dl>
         <dl>
           <dt>IR</dt>
           <dd>
-            <a href="/ir/former.php">공고</a>
-            <a href="/ir/disclosure.php">공시 정보</a>
-            <!-- <a href="/ir/finance.php">재무정보</a> -->
-            <a href="/ir/ir.php">IR자료</a>
-            <!-- <a href="/ir/governance.php">지배구조</a> -->
+            <a href="#">공고</a>
+            <a href="#">공시 정보</a>
+            <a href="#">자료</a>
+          </dd>
+        </dl>
+        <dl>
+          <dt>리스트</dt>
+          <dd>
+            <a href="#">흠</a>
+            <a href="#">아무거나</a>
+            <a href="#">ㄱㄱ</a>
           </dd>
         </dl>
       </div>
-      <!--
-                <ul class="sub_menu">
-                  <li><a href="/report/report.php"><span class="material-symbols-outlined">inventory</span>시험성적서</a></li>
-                  <li><a href="https://support.suresofttech.com/" target='_blank'><span class="material-symbols-outlined">support_agent</span>기술고객지원</a></li>
-                  <li><a href="/other/privacy.php" class="privacy">개인정보처리방침</a></li>
-                </ul> -->
-
-      <!-- </div>
-      <div class="foot_bot">
-        <p class="eng">ⓒ 2023. Suresoft Technologies Inc. All rights reserved.<a href="https://web2002.co.kr/" target='_blank' class="eng">Designed by Threeway</a></p>
-        <ul>
-          <li class="sns01"><a href="https://blog.naver.com/suresofttech" target='_blank'>blog</a></li>
-          <li class="sns02"><a href="https://www.youtube.com/channel/UCOkYgOE5kczSacRU98u-New" target='_blank'>youtube</a></li>
-          <li class="sns03"><a href="https://www.facebook.com/suresofttech" target='_blank'>facebook</a></li>
-          <li class="sns04"><a href="https://www.instagram.com/suresofttech/" target='_blank'>instagram</a></li>
-        </ul>
-      </div>
     </div>
-   -->
+  </div>
+</div>
 </body>
 </html>
 
