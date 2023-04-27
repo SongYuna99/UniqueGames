@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Unique Games</title>
+	<link rel="stylesheet" href="order.css">
+</head>
+<body>
+	<!-- header -->
+	<iframe src="http://localhost:9000/test/html/main/header.html" 
+	scrolling="no" width="100%" height="230px" frameborder=0></iframe>
+
+	<!-- content -->
+	<section id="section_top">
+		<div>
+			<div>
+				<h1>Cart</h1>
+				<h2>#장바구니</h2>
+			</div>
+		</div>
+	</section>
+	<h1 id="title">Order / Payment</h1>
+	<section id="section_cart">
+		<div>
+			<table>
+				<tr>
+					<th>선택</th>
+					<th>상품이미지</th>
+					<th>상품명</th>
+					<th>배송지</th>
+					<th>수량</th>
+					<th>가격</th>
+					<th>삭제</th>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" name="choice">
+					</td>
+					<td><a><img class="img_product" src="http://localhost:9000/test/images/img_team_profile_little.png"></a></td>
+					<td>
+						<p><a href="#">이것이 상품명입니다.</a></p>
+						<p>이건 상품 간단 설명? 옵션?</p>
+					</td>
+					<td>서울특별시 성동구 독서당로 156 한남자이 110-48F</td>
+					<td>
+						<div id="div_qty">
+							<button class="btn_minus" value="-" type="button"></button>
+							<input type="text" name="input_qty" id="input_qty" value="1" readonly="readonly">
+							<button class="btn_plus" value="+" type="button"></button>
+						</div>
+					</td>
+					<td>999,999,999</td>
+					<td>
+						<button class="btn_delete" type="button">삭제</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</section>
+	<section id="section_member">
+		<div class="member_rdo">
+			<h2 id="subtitle">주문자 정보</h2>
+			<input type="checkbox" name="chk_info"><span>회원정보와 동일</span>
+		</div>
+		<table>
+			<tr>
+				<th>이름</th>
+				<td><input  type="text" name="name" placeholder="이름을 입력해주세요."></td>
+			</tr>
+			<tr>
+				<th>이메일</th>
+				<td><input type="text" name="email1" placeholder="이메일 아이디"> @ 
+					<input type="text" name="email2" placeholder="이메일 주소"> 
+					<select>
+						<option value="default">선택해주세요.</option>
+						<option value="naver.com">naver.com</option>
+						<option value="google.com">google.com</option>
+						<option value="daum.net">daum.net</option>
+						<option value="korea.com">korea.com</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>휴대폰</th>
+				<td> 
+					<input type="text" name="phone1" placeholder="000"> -
+					<input type="text" name="phone2" placeholder="0000"> - 
+					<input type="text" name="phone3" placeholder="0000">
+				</td>
+			</tr>
+		</table>
+		<div class="member_rdo">
+			<h2 id="subtitle">배송 정보</h2>
+			<input type="checkbox" name="chk_addr"><span>회원정보와 동일</span>
+		</div>
+		<table>
+			<tr>
+				<th>배송지 입력하기</th>
+				<td><input  type="text" name="addr" placeholder="배송지 입력하기"></td>
+			</tr>
+		</table>
+	</section>
+	<section id="section_payment">
+		<div class="div_payment">
+			<h2 id="subtitle">결제 정보</h2>
+			<table class="payment_method">
+				<tr>
+					<th>결제 안내</th>
+					<td>
+						<button class="btn_payment" type="button">카드</button>
+						<button class="btn_payment" type="button">Apple Pay</button>
+						<button class="btn_payment" type="button">삼성페이</button></li>
+					</td>
+				</tr>
+				<tr>
+					<th>품절 시 환불 안내</th>
+					<td><label>환불은 무슨일이 있어도 눈에 흙이 들어가도 안됩니다.</label></td>
+				</tr>
+				<tr>
+					<th>주문자 동의</th>
+					<td> 
+						<input type="checkbox" name="agreementAll"><span class="span_agreementAll">전체 동의하기</span>
+						<ul>
+							<li><input type="checkbox" name="agreement"><span>[필수] 만 14세 이상입니다. </span></li>
+							<li><input type="checkbox" name="agreement"><span>[필수] 이용 약관 </span><a href="#">자세히</a></li>
+							<li><input type="checkbox" name="agreement"><span>[필수] 개인정보 수집 및 이용 동의 </span><a href="#">자세히</a></li>
+							<li><input type="checkbox" name="agreement"><span>[필수] 개인정보 제 3자 제공 동의 </span><a href="#">자세히</a></li>
+							<li><input type="checkbox" name="agreement"><span>[필수] 전자결제대행 이용 동의 </span><a href="#">자세히</a></li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+			<div class="payment_info">
+				<div>
+					<p class="p1">금액</p>
+					<p class="p2">999,999,999</p>
+				</div>
+				<div>
+					<p class="p1">할인</p>
+					<p class="p2">-</p>
+				</div>
+				<div>
+					<p class="p1">총 금액</p>
+					<p class="p2">999,999,999</p>
+				</div>
+			</div>
+		</div>
+		<div class="div_btn_payment">
+			<button class="btn_payment" type="button">결제하기</button>
+		</div>
+	</section>
+
+	<!-- footer -->
+	<iframe src="http://localhost:9000/test/html/main/footer.html" 
+	scrolling="no" width="100%" height="400px" frameborder=0></iframe>
+</body>
+</html>
