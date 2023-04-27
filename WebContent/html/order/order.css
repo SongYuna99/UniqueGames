@@ -238,10 +238,6 @@ input[name="input_qty"] {
 	letter-spacing: 0px;
 	color: #000000;
 }
-input[name="input_qty"]:hover {
-	border: none;
-	background: none;
-}
 
 .btn_plus {
 	width: 30px;		height: 28px;
@@ -277,7 +273,7 @@ input[name="input_qty"]:hover {
 **************************************/
 
 #section_member table th {
-	width: 15%;		height: 56px;
+	width: 10%;		height: 56px;
 }
 
 #section_member table td {
@@ -319,7 +315,7 @@ input[name="input_qty"]:hover {
 
 
 #section_member table input, #section_member table select {
-	height: 25px;
+	height: 30px;
 	border: 1px solid #EAEAEA;
 	padding: 8px 15px;
 	
@@ -329,7 +325,7 @@ input[name="input_qty"]:hover {
 	color: #A9A9A9;
 	opacity: 1;
 }
-#section_member table select { height: 42px; }
+#section_member table select { height: 48px; }
 
 #section_member table input:focus {
 	outline: none;
@@ -395,9 +391,13 @@ input[name="input_qty"]:hover {
 	float: left;
 	width: 70%;			height: 400px;
 }
-#section_payment table.payment_method tr:first-child,
+#section_payment table.payment_method tr:nth-child(1),
 #section_payment table.payment_method tr:nth-child(2) {
-	height: 15%;
+	height: 60px;
+}
+#section_payment table.payment_method tr:nth-child(3) th {
+	vertical-align: top;
+	padding-top: 15px;
 }
 #section_payment div.payment_info {
 	float: right;
@@ -415,18 +415,18 @@ input[name="input_qty"]:hover {
 #section_payment div.payment_info div:nth-child(1),
 #section_payment div.payment_info div:nth-child(3) {
 	display: inline-block;
-	width: 99%;			height: 50px;
-	padding-top: 10px;
+	width: 99%;			height: 30px;
+	padding-top: 25px;
 }
 
 #section_payment div.payment_info div:nth-child(2) {
 	display: inline-block;
 	width: 99%;			height: 250px;
-	padding-top: 10px;
+	padding-top: 20px;
 }
 
 #section_payment p.p1 {
-	width: 20%;			height: 100%;
+	width: 20%;
 	padding-left: 30px;
 	float: left;
 	
@@ -437,7 +437,7 @@ input[name="input_qty"]:hover {
 	opacity: 1;
 }
 #section_payment p.p2 {
-	width: 67%;			height: 100%;
+	width: 67%;
 	padding-right: 10px;
 	float: right;
 	
