@@ -14,7 +14,7 @@ ul {
 }
 
 #image-top {
-	background-image: url("http://localhost:9000/cmjgames/images/img_bg.png");
+	background-image: url("../../images/img_bg.png");
 	background-size: cover;
 	height: 229px;
 	position: relative;
