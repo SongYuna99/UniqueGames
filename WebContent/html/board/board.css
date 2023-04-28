@@ -2,15 +2,38 @@
 		* {
 		    padding: 0;
 		    margin: 0;
-		    font-family: "YuandiModern", "Apex New", "Noto Sans KR", sans-serif;
+		    font-family: "YouandiModern", "Apex New", "Noto Sans KR", sans-serif;
 		}
 
 		#content,
 		#board-list,
-		#header-menu,
         table {
 		    width: 1100px;
 		    margin: auto;
+		}
+
+		#top-bg {
+			width: 100%;
+			margin: auto;
+			background-image: url(../../images/img_bg.png);
+			height: 229px;
+			background-repeat: no-repeat;
+		}
+
+		#top-bg-text {
+			color: white;
+			position: absolute;
+			top: 307px;
+			left: 410px;
+			font-style: italic;
+		}
+
+		#top-bg-text>h2 {
+			font-size: 20px;
+			font-style: normal;
+			padding-top: 15px;
+			opacity: 0.6;
+			font-weight: 500;
 		}
 
 		a {
@@ -62,13 +85,13 @@
 		    font-size: 14px;
 		}
 
-		#bsearch-box {
-			float: right;
-		}
-
 		#board-top-menu>div>label {
 		    position: relative;
 		    margin-left: 410px;
+		}
+
+		#bsearch-box {
+			float: right;
 		}
 
 		#btn-style {
