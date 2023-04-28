@@ -10,13 +10,16 @@
         }
         #content {
             display: block;
+            width: 100%;
+            margin: auto;
         }
         #slides-1-bg {
-            padding: 160px 410px 0 410px;
+            padding: 160px 400px 0 400px;
             height: 500px;
             background-image: url(" ../../images/img_main_01.png ");
             background-size: cover;
             overflow: hidden;
+            position: relative;
         }
         #slide-1 {
             width: 1100px;
@@ -37,7 +40,7 @@
         #slide-1 h1 {
             font-family: "Apex New", sans-serif;
             font-size: 100px;
-            font-weight: 900;
+            font-weight: bold;
             font-style: italic;
             color: #fff;
             padding-bottom: 10px;
@@ -50,16 +53,735 @@
             background-color: rgba( 255, 255, 255, 0 );
             padding:20px 50px;
         }
+        #btn-style-main-left {
+            position:absolute;
+            top: 300px;
+            left:300px;
+            background-color: rgba( 255, 255, 255, 0 );
+            border: none;
+        }
+        #btn-style-main-right {
+            position:absolute;
+            top: 300px;
+            right:300px;
+            background-color: rgba( 255, 255, 255, 0 );
+            border: none;
+        }
+        #menu-topGame {
+            padding: 60px 0;
+            margin-left: 410px;
+            display: block;
+            text-align: center;
+        }
+        #topGame-title,
+        #recommendations-title,
+        #solution-title,
+        #allList-title {
+            padding-top: 60px;
+            display: block;
+            text-align: center;
+            margin: auto;
+        }
+        #subTitle {
+            padding-top: 20px;
+            padding-bottom: 60px;
+            display: block;
+            text-align: center;
+            margin: auto;
+        }
+        #topGameList {
+            white-space:nowrap;
+            overflow-x:scroll;
+        }
+        #tList1, #tList2, #tList3 {
+            display: inline-block;
+            width: 500px;
+            height: 320px;
+            position: relative;
+            margin-right: 40px;
+            margin-bottom: 20px;
+        }
+        #tList1 div p:nth-child(1),
+        #tList2 div p:nth-child(1),
+        #tList3 div p:nth-child(1) {
+            position:absolute;
+            float: left;
+            top: 260px;
+            left:20px;
+            font-family: "Apex New", sans-serif;
+            font-weight: bold;
+            font-size: 56px;
+            font-style: italic;
+        }
+        #tList1 div p:nth-child(2),
+        #tList2 div p:nth-child(2),
+        #tList3 div p:nth-child(2) {
+            text-align: left;
+            margin-top: 20px;
+            margin-left: 70px;
+            font-family: "Apex New", sans-serif;
+            font-weight: bold;
+            font-size: 26px;
+            font-style: italic;
+        }
+        #tList1 div p:nth-child(3),
+        #tList2 div p:nth-child(3),
+        #tList3 div p:nth-child(3) {
+            text-align: left;
+            margin-top: 4px;
+            margin-left: 70px;
+            font-family: "YouandiModern", sans-serif;
+            font-size: 16px;
+        }
+        #readmore-plus {
+            position:absolute;
+            float: right;
+            top: 270px;
+            right:20px;
+            border: 1px solid #fff;
+            background-color: rgba( 255, 255, 255, 0 );
+        }
+        #menu-main1,
+        #menu-main3 {
+            background-color: #F2F2F2;
+            background-size: cover;
+        }
+        #menu-recommendations > img:first-child {
+            text-align: center;
+            padding-bottom: 60px;
+        }
+        #gameList1 {
+            padding-top: 60px;
+            overflow: visible;
+            padding-bottom: 50px;
+        }
+        #recommendList,
+        #gameList1,
+        #gameList2,
+        #gameList3,
+        #gameList4,
+        #gameList5,
+        #gameList6 {
+            overflow: visible;
+            padding-bottom: 50px;
+        }
+        #menu-recommendations,
+        #menu-allList,
+        #menu-solution {
+            display: block;
+            width: 1100px;
+            margin: auto;
+            padding-bottom: 100px;
+        }
+        #rList1,
+        #rList2,
+        #rList3,
+        #rList4 {
+            display: inline-block;
+            width: 260px;
+            height: 363px;
+            box-shadow: 0px 5px 10px #0000001A;
+            position: relative;
+            margin: 0 5px;
+            background-color: #fff;
+        }
+        #rList1 ul,
+        #rList2 ul,
+        #rList3 ul,
+        #rList4 ul,
+        #gList1 ul,
+        #gList2 ul,
+        #gList3 ul,
+        #gList4 ul,
+        #gList5 ul,
+        #gList6 ul {
+            list-style-type: none;
+            padding: 14px;
+        }
+        #rList1 ul li:nth-child(1),
+        #rList2 ul li:nth-child(1),
+        #rList3 ul li:nth-child(1),
+        #rList4 ul li:nth-child(1) {
+            border-radius: 10px;
+            background: linear-gradient(to right, #682CAD, #2FC0CC);
+            width: 45px;
+            height: 16px;
+            text-align: center;
+            color: #fff;
+            font-family: "Apex New", sans-serif;
+            font-size: 13px;
+            font-style: italic;
+            font-weight: bold;
+            padding-top: 4px;
+        }
+        #rList1 ul li:nth-child(2),
+        #rList2 ul li:nth-child(2),
+        #rList3 ul li:nth-child(2),
+        #rList4 ul li:nth-child(2) {
+            color: #000;
+            font-family: "Apex New", sans-serif;
+            font-size: 18px;
+            font-style: italic;
+            font-weight: bold;
+            padding-top: 14px;
+        }
+        #rList1 ul li:nth-child(3),
+        #rList2 ul li:nth-child(3),
+        #rList3 ul li:nth-child(3),
+        #rList4 ul li:nth-child(3) {
+            color: #000;
+            font-family: "YouandiModern", sans-serif;
+            font-size: 13px;
+            padding-top: 10px;
+        }
+        #rList1 ul li:nth-child(4),
+        #rList2 ul li:nth-child(4),
+        #rList3 ul li:nth-child(4),
+        #rList4 ul li:nth-child(4) {
+            float: right;
+            padding-top: 14px;
+        }
+        #gList1 ul li:nth-child(1),
+        #gList2 ul li:nth-child(1),
+        #gList3 ul li:nth-child(1),
+        #gList4 ul li:nth-child(1) {
+            color: #000;
+            font-family: "Apex New", sans-serif;
+            font-size: 18px;
+            font-style: italic;
+            font-weight: bold;
+            padding-bottom: 10px;
+        }
+        #gList1 ul li:nth-child(2),
+        #gList2 ul li:nth-child(2),
+        #gList3 ul li:nth-child(2),
+        #gList4 ul li:nth-child(2) {
+            color: #000;
+            font-family: "YouandiModern", sans-serif;
+            font-size: 13px;
+            padding-bottom: 10px;
+        }
+        #btn-like-style {
+            border: none;
+            background: url(" ../../images/btn_heart_normal.png ") no-repeat;
+            width: 18px;
+            height: 14px;
+            cursor:pointer;
+            float: left;
+            margin-top: 2px;
+        }
+        #gList1 ul li:nth-child(4),
+        #gList2 ul li:nth-child(4),
+        #gList3 ul li:nth-child(4),
+        #gList4 ul li:nth-child(4) {
+            color: #C5C9D3;
+            font-family: "Noto Sans KR", sans-serif;
+            font-size: 12px;
+        }
+        #gList1 ul li:nth-child(5),
+        #gList2 ul li:nth-child(5),
+        #gList3 ul li:nth-child(5),
+        #gList4 ul li:nth-child(5) {
+            position: absolute; 
+            right: 14px;
+            bottom: 10px;
+        }
+        #rList1 div,
+        #rList2 div,
+        #rList3 div,
+        #rList4 div {
+            position: absolute; 
+            bottom:0px;
+            float: left;
+            display: block;
+        }
+        #btn-recommend-style {
+            width: 260px;
+            height: 50px;
+            background: linear-gradient(to right, #682CAD, #2FC0CC);
+            border: 0px solid #fff;
+            color: #fff;
+            font-family: "YouandiModern", sans-serif;
+            font-size: 16px;
+        }
+        #gList1,
+        #gList2,
+        #gList3,
+        #gList4 {
+            display: inline-block;
+            width: 260px;
+            height: 280px;
+            box-shadow: 0px 5px 10px #0000001A;
+            position: relative;
+            margin: 0 5px;
+            background-color: #fff;
+        }
+        #menu-solution > table {
+            background-color: #fff;
+            width: 100%;
+		    border-collapse: collapse;
+		    border: 1px solid #DDDDDD;
+		    border-top: 2px solid #393939;
+		    border-bottom: 2px solid #393939;
+		}
+        #menu-solution>table th {
+            font-family: "YouandiModern", sans-serif;
+            font-size: 16px;
+		    border-bottom: 1px solid #DDDDDD;
+            background-color: #F2F2F2;
+		}
+        #menu-solution>table td {
+            font-family: "YouandiModern", sans-serif;
+            font-size: 15px;
+        }
+		#menu-solution>table th,
+		#menu-solution>table td {
+		    padding: 18px;
+		    text-align: center;
+		}
+
+		#menu-solution>table tr>th:first-child,
+		#menu-solution>table tr>td:first-child,
+		#menu-solution>table tr>th:nth-child(2),
+		#menu-solution>table tr>td:nth-child(2) {
+		    padding: 8px;
+		}
+
+		#menu-solution>table tr>td:nth-child(3) {
+		    text-align: left;
+		}
+        #menu-solution a {
+            text-decoration: none;
+            color: #000;
+        }
+        #btn-solution {
+            width: 260px;		height: 50px;
+            margin-right: 10px;
+            background: linear-gradient(45deg, #682CAD, #2FC0CC);
+            
+            border: none;
+            font-family: "YouandiModern", sans-serif;
+            font-size: 16px;
+            letter-spacing: 0px;
+            color: #FFFFFF;
+            opacity: 1;
+            cursor: pointer;
+        }
+        #solution-btn-area {
+            text-align: center;
+            margin-top: 40px;
+        }
     </style>
 </head>
 <body>
-    <iframe src="./header.html" scrolling="no" width="100%" height="277px" frameborder=0></iframe>
-<div id="content">
-
-        <a href="#slides-1-bg">1</a>
-        <a href="#slides-2-bg">2</a>
-
-</div>
-    <iframe src="./footer.html" scrolling="no" width="100%" height="500px" frameborder=0></iframe>
+    <iframe src="./header.html" scrolling="no" width="100%" height="228px" frameborder=0></iframe>
+    <section id="content">  
+        <div id="menu-slider">
+            <div id="slides-1-bg">
+                <div id="slide-1">
+                    <h2>내 손안에서 깨어난 새로운 리듬</h2>
+                    <h1>New Game of Music</h1>
+                    <p>새로운 감각의 New RPG 뉴게임오브뮤직</p>
+                    <a href="#"><button id="btn-main-style" type="button">자세히보기</button></a>
+                </div>
+                <div>
+                    <a href="#"><button id="btn-style-main-left" type="button"><img src="../../images/btn_main-arrow_left.png"></button></a>
+                    <a href="#"><button id="btn-style-main-right" type="button"><img src="../../images/btn_main-arrow_right.png"></button></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <img id="topGame-title" src="../../images/imt_title_top.png" width="135px" height="32px">
+    <div id="menu-topGame">
+        <div id="topGameList">
+            <div id="tList1">
+                <img alt="#" src="../../images/img_game_thumbnail_1_500240.png" width="500px" height="240px">
+                <div>
+                    <p>1</p>
+                    <p>New Game of Music</p>
+                    <p>새로운 감각의 New RPG 뉴게임오브뮤직</p>
+                    <button id="readmore-plus" type="button"><img src="../../images/btn_plus_normal.png" width="30px" height="30px"></button>
+                </div>
+            </div>
+            <div id="tList2">
+                <img alt="#" src="../../images/img_game_thumbnail_2_500240.png" width="500px" height="240px">
+                <div>
+                    <p>2</p>
+                    <p>New Game of Music</p>
+                    <p>새로운 감각의 New RPG 뉴게임오브뮤직</p>
+                    <button id="readmore-plus" type="button"><img src="../../images/btn_plus_normal.png" width="30px" height="30px"></button>
+                </div>
+            </div>
+            <div id="tList2">
+                <img alt="#" src="../../images/img_game_thumbnail_3_500240.png" width="500px" height="240px">
+                <div>
+                    <p>3</p>
+                    <p>New Game of Music</p>
+                    <p>새로운 감각의 New RPG 뉴게임오브뮤직</p>
+                    <button id="readmore-plus" type="button"><img src="../../images/btn_plus_normal.png" width="30px" height="30px"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="menu-main1">
+        <img id="recommendations-title" src="../../images/img_title_recommendations.png" width="262px" height="26px">
+        <p id="subTitle">#최근 반응이 좋은</p>
+        <div id="menu-recommendations">
+            <div id="recommendList">
+                <div id="rList1">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>Hot</li>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                    <div>
+                        <button id="btn-recommend-style" type="button">자세히보기</button>
+                    </div>
+                </div>
+                <div id="rList2">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>Hot</li>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                    <div>
+                        <button id="btn-recommend-style" type="button">자세히보기</button>
+                    </div>
+                </div>
+                <div id="rList3">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>Hot</li>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                    <div>
+                        <button id="btn-recommend-style" type="button">자세히보기</button>
+                    </div>
+                </div>
+                <div id="rList4">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>Hot</li>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                    <div>
+                        <button id="btn-recommend-style" type="button">자세히보기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+    <section id="menu-main2">
+        <img id="allList-title" src="../../images/img_title_AllList.png" width="100px" height="24px">
+        <div id="menu-allList">
+            <div id="gameList1">
+                <div id="gList1">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList2">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList3">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList4">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="gameList2">
+                <div id="gList1">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList2">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList3">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList4">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="gameList3">
+                <div id="gList1">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList2">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList3">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList4">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="gameList4">
+                <div id="gList1">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList2">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList3">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList4">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="gameList5">
+                <div id="gList1">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList2">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList3">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList4">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="gameList6">
+                <div id="gList1">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList2">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList3">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList4">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="menu-main3">
+        <img id="solution-title" src="../../images/img_title_solution.png" width="120px" height="25px">
+        <p id="subTitle">#도대체 어케 깸?</p>
+        <div id="menu-solution">
+            <table>
+                <tr>
+                    <th>선택</th>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+					<td>1</td>
+					<td><a href="./board_content.html">아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</a></td>
+					<td>관리자</td>
+					<td>2023.04.25</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+					<td>1</td>
+					<td><a href="./board_content.html">아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</a></td>
+					<td>관리자</td>
+					<td>2023.04.25</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+					<td>1</td>
+					<td><a href="./board_content.html">아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</a></td>
+					<td>관리자</td>
+					<td>2023.04.25</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+					<td>1</td>
+					<td><a href="./board_content.html">아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</a></td>
+					<td>관리자</td>
+					<td>2023.04.25</td>
+                </tr>
+            </table>
+            <div id="solution-btn-area">
+                <a href="#"><button id="btn-solution" type="button">자세히보기</button></a>
+            </div>
+        </div>
+    </section>
+    <iframe src="./footer.html" scrolling="no" width="100%" height="646px" frameborder=0></iframe>
 </body>
 </html>
