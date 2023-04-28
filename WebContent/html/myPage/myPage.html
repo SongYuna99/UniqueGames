@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>myPage</title>
+	<link rel="stylesheet" href="../join/join_css.css">
+</head>
+<body>
+	<header>
+		<iframe src="../main/header.html"
+			scrolling="no" width="100%" height="227px" frameborder="0"></iframe>
+	</header>
+		<section id="image-top">
+			<div>
+				<ul>
+					<li>MY PAGE</li>
+					<li>#마이페이지</li>
+				</ul>
+			</div>
+		</section>
+		<section id="SignUp-bottom">
+			<p>마이페이지</p>
+			<form action="#" name="joinForm" method="get">
+				<div>
+					<ul>
+						<li>
+							<label>아이디</label>
+						</li>
+						<li>
+							<input type="text" name="id" value="UniqueGames" disabled>
+						</li>
+						<li>
+							<label>비밀번호</label>
+						</li>
+						<li>
+							<input type="password" name="pwd">
+							<button type="button">
+								<img src="../../images/btn_eye_normal.png">
+							</button>
+
+						</li>
+						<li>
+							<input type="password" name="pwd_check">
+							<button type="button">
+								<img src="../../images/btn_eye_normal.png">
+							</button>
+						</li>
+						<li>
+							<label>이름</label>
+						</li>
+						<li>
+							<input type="text" name="name" value="홍길동" disabled>
+						</li>
+						<li>
+							<label>이메일</label>
+						</li>
+						<li>
+							<input type="text" name="email1" value="UniqueGames">
+							@
+							<select name="email2">
+								<option value="default">naver.com</option>
+								<option value="gmail.com">gmail.com</option>
+								<option value="daum.net">daum.net</option>
+								<option value="direct">직접입력</option>
+							</select>
+						</li>
+						<li>
+							<label>우편번호</label>
+						</li>
+						<li>
+							<input type="text" name="zip-code" value="06242" disabled>
+							<button type="button">검색</button>
+						</li>
+						<li>
+							<label>주소</label>
+						</li>
+						<li>
+							<input type="text" name="address1" value="서울 강남구 강남대로78길 8">
+						</li>
+						<li>
+							<label>상세 주소</label>
+						</li>
+						<li>
+							<input type="text" name="address2" value="한국빌딩 4F, 8F">
+						</li>
+						<li>
+							<label>휴대전화</label>
+						</li>
+						<li>
+							<select name="mobile">
+								<option value="default">SKT</option>
+								<option value="KT">KT</option>
+								<option value="LGU+">LGU+</option>
+								<option value="알뜰폰">알뜰폰</option>
+							</select>
+							<select name="phone1">
+								<option value="default">010</option>
+								<option value="011">011</option>
+								<option value="012">012</option>
+							</select>
+							-
+							<input type="text" name="phone2" value="1234">
+							-
+							<input type="text" name="phone3" value="5678">
+						</li>
+						<li>
+							<button type="button" id="myPage-button">수정하기</button>
+						</li>
+						<li>
+							<a href="#">
+								<span name="withdraw">회원탈퇴 ></span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</section>
+	<footer>
+		<iframe src="../main/footer.html"
+			scrolling="no" width="100%" height="400px" frameborder="0"></iframe>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>findPwd</title>
+<link rel="stylesheet" href="../login/login_css.css">
+<script>
+	function findId(){
+		location.href="findId.html";
+	}
+	
+</script>
+</head>
+<body>
+	<header>
+			<iframe src="../main/header.html"
+				scrolling="no" width="100%" height="227px" frameborder="0"></iframe>
+	</header>
+	<section id="image-top">
+		<div>
+			<ul>
+				<li>LOGIN</li>
+				<li>#로그인</li>
+			</ul>
+		</div>
+	</section>
+	<section id="find-pwd">
+		<p>비밀번호 찾기</p>
+		<form action="#" name="findPwdForm" method="get">
+			<div>
+				<ul>
+					<li><button type="button" onclick="findId()">아이디 찾기</button></li>
+					<li><button type="button">비밀번호 찾기</button></li>
+				</ul>
+				<p>비밀번호를 찾으려는 아이디</p>
+				<ul>
+					<li>
+						<input type="text" name="id" placeholder="아이디">
+					</li>
+					<li>
+						<input type="text" name="phone" placeholder="휴대전화">	
+					</li>
+					<li>
+						<button type="button" id="button">비밀번호 찾기</button>
+					</li>
+				</ul>
+			</div>
+		</form>
+	</section>
+	<footer>
+		<iframe src="../main/footer.html"
+			scrolling="no" width="100%" height="400px" frameborder="0"></iframe>
+	</footer>
+</body>
+</html>

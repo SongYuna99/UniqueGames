@@ -1,0 +1,225 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+#image-top {
+	background-image: url("http://localhost:9000/cmjgames/images/img_bg.png");
+	background-size: cover;
+	height: 229px;
+	position: relative;
+}
+
+#image-top ul li:first-child {
+	color: white;
+	font-family: Apex New;
+	font-size: 20px;
+	font-weight: bold;
+	position: absolute;
+	left: 200px;
+	top: 80px;
+}
+
+#image-top ul li:last-child {
+	color: white;
+	font-size: 12px;
+	position: absolute;
+	left: 201px;
+	top: 106px;
+}
+
+#SignUp-bottom {
+	width: 1100px;
+	margin: auto;
+	text-align: center;
+}
+
+#SignUp-bottom form[name='joinForm'] li:nth-child(4) button,
+#SignUp-bottom form[name='joinForm'] li:nth-child(5) button {
+	position: relative;
+	top: -23px;
+	left: 345px;
+	width: 21px;
+	background: white;
+	border: none;
+	cursor: pointer;
+	
+}
+#SignUp-bottom form[name='joinForm'] li:nth-child(4) input,
+#SignUp-bottom form[name='joinForm'] li:nth-child(5) input{
+	margin-bottom: -15px;
+}
+
+#SignUp-bottom form[name='joinForm'] li:nth-child(4) img,
+#SignUp-bottom form[name='joinForm'] li:nth-child(5) img {
+	width: 21px;
+	height: 14px;
+}
+
+/********************************************************************************/
+
+#SignUp-bottom form[name='joinForm'] {
+	width: 45%;
+	margin:auto;
+}
+
+#SignUp-bottom form[name='joinForm'] li {
+	text-align: left;
+	padding: 0 50px;
+	font-family: "YouandiModern", sans-serif;
+}
+
+#SignUp-bottom form[name='joinForm'] input {
+	width: 392px;
+	padding: 20px 0;
+	margin: 10px 0;
+	text-indent: 10px;
+	border-radius: 3px;
+	border: 1px solid lightgray;
+	outline: none;
+}
+
+#SignUp-bottom form[name='joinForm'] input:focus {
+	border: 1px solid gray;
+}
+
+#SignUp-bottom form[name='joinForm'] input[name='email1'] {
+	width: 180px;
+}
+
+#SignUp-bottom form[name='joinForm'] select[name='email2'] {
+	width: 186px;
+	height: 60px;
+	border: 1px solid lightgray;
+	border-radius: 3px;
+	font-size: 10pt;
+	padding-left: 10px;
+}
+
+#SignUp-bottom form[name='joinForm'] input[name='zip-code'] {
+	width: 120px;
+	height: 5px;
+}
+
+#SignUp-bottom form[name='joinForm'] li:nth-child(11) button {
+	width: 90px;
+	height: 35px;
+	margin-left: 10px;
+	border: 1px solid white;
+	border-radius: 4px;
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 16px;
+	cursor: pointer;
+}
+
+#SignUp-bottom form[name='joinForm'] input[name='phone2'],
+#SignUp-bottom form[name='joinForm'] input[name='phone3'] {
+	width: 100px;
+	height: 3px;
+}
+
+#SignUp-bottom form[name='joinForm'] select[name='mobile'] {
+	width: 70px;
+	height: 43px;
+	border: 1px solid lightgray;
+	border-radius: 3px;
+}
+
+#SignUp-bottom form[name='joinForm'] select[name='phone1'] {
+	width: 60px;
+	height: 43px;
+	margin-left: 19px;
+	border: 1px solid lightgray;
+	border-radius: 3px;
+}
+
+#SignUp-bottom form[name='joinForm'] input[name='Allcheck'] {
+	width: 23px;
+	height: 12px;
+}
+
+#SignUp-bottom form[name='joinForm'] input[name='agreement'] {
+	width: 15px;
+	height: 12px;
+	display: inline-block;
+	margin-left: 4px;
+}
+
+#SignUp-bottom form[name='joinForm'] li:nth-child(18) label {
+	display: block;
+}
+
+#SignUp-bottom form[name='joinForm'] li:nth-child(18) label span,
+#SignUp-bottom form[name='joinForm'] li:nth-child(18) label a {
+	vertical-align: top;
+	display: inline-block;
+	margin-top: 6px;
+	font-size: 10pt;
+}
+
+#SignUp-bottom form[name='joinForm'] li:nth-child(18) label a {
+	font-family: "YouandiModern", sans-serif;
+	text-decoration: none;
+}
+
+#SignUp-bottom form[name='joinForm'] li:nth-child(18) label a:hover {
+	text-decoration: underline;
+}
+
+#SignUp-bottom form[name='joinForm'] span[name='span-color'] {
+	color: tomato;
+}
+
+/*	border: 1px solid red; */
+
+
+#SignUp-bottom form[name='joinForm'] li:last-child a {
+	text-decoration: none;
+	color: #333;
+	font-weight: bold;
+}
+
+#SignUp-bottom form[name='joinForm'] li:last-child span {
+	display: block;
+	text-align: right;
+	font-size: 10pt;
+	font-family: "YouandiModern", sans-serif;
+	margin-bottom: 8px;
+}
+
+#SignUp-bottom p {
+	font-family: "YouandiModern", sans-serif;
+	padding: 10px;
+}
+
+#join-button {
+	border: none;
+	width: 402px;
+	height: 60px;
+	cursor: pointer;
+	color: white;
+	background: linear-gradient(to right,#682CAD,#2FC0CC);
+	border-radius: 3px;
+	font-family: Apex New, Medium;
+	margin: 20px 0;
+}
+
+#myPage-button {
+	border: none;
+	width: 393px;
+	height: 55px;
+	cursor: pointer;
+	color: white;
+	background: linear-gradient(to right,#682CAD,#2FC0CC);
+	border-radius: 3px;
+	font-family: Apex New, Medium;
+	margin: 8px 0;
+}
+

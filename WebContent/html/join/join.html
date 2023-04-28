@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Join</title>
+	<link rel="stylesheet" href="join_css.css">
+</head>
+<body>
+	<header>
+		<iframe src="../main/header.html"
+			scrolling="no" width="100%" height="227px" frameborder="0"></iframe>
+	</header>
+		<section id="image-top">
+			<div>
+				<ul>
+					<li>SIGN UP</li>
+					<li>#회원가입</li>
+				</ul>
+			</div>
+		</section>
+		<section id="SignUp-bottom">
+			<p>회원가입</p>
+			<form action="#" name="joinForm" method="get">
+				<div>
+					<ul>
+						<li>
+							<label>아이디</label>
+						</li>
+						<li>
+							<input type="text" name="id" placeholder="영문,숫자 5~10자리" maxlength="10">
+						</li>
+						<li>
+							<label>비밀번호</label>
+						</li>
+						<li>
+							<input type="password" name="pwd" placeholder="숫자,영문,특수문자 조합 최소 8자">
+							<button type="button">
+								<img src="../../images/btn_eye_normal.png">
+							</button>
+
+						</li>
+						<li>
+							<input type="password" name="pwd_check" placeholder="비밀번호 재입력">
+							<button type="button">
+								<img src="../../images/btn_eye_normal.png">
+							</button>
+						</li>
+						<li>
+							<label>이름</label>
+						</li>
+						<li>
+							<input type="text" name="name">
+						</li>
+						<li>
+							<label>이메일</label>
+						</li>
+						<li>
+							<input type="text" name="email1">
+							@
+							<select name="email2">
+								<option value="default">선택</option>
+								<option value="naver.com">naver.com</option>
+								<option value="gmail.com">gmail.com</option>
+								<option value="daum.net">daum.net</option>
+								<option value="direct">직접입력</option>
+							</select>
+						</li>
+						<li>
+							<label>우편번호</label>
+						</li>
+						<li>
+							<input type="text" name="zip-code" disabled>
+							<button type="button">검색</button>
+						</li>
+						<li>
+							<label>주소</label>
+						</li>
+						<li>
+							<input type="text" name="address1">
+						</li>
+						<li>
+							<label>상세 주소</label>
+						</li>
+						<li>
+							<input type="text" name="address2">
+						</li>
+						<li>
+							<label>휴대전화</label>
+						</li>
+						<li>
+							<select name="mobile">
+								<option value="default">선택</option>
+								<option value="SKT">SKT</option>
+								<option value="KT">KT</option>
+								<option value="LGU+">LGU+</option>
+								<option value="알뜰폰">알뜰폰</option>
+							</select>
+							<select name="phone1">
+								<option value="default">선택</option>
+								<option value="010">010</option>
+								<option value="011">011</option>
+								<option value="012">012</option>
+							</select>
+							-
+							<input type="text" name="phone2">
+							-
+							<input type="text" name="phone3">
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" name="Allcheck"><span> 약관 전체 동의하기</span>
+							</label>
+							<label>
+								<input type="checkbox" name="agreement">
+									<span name="span-color">[필수]</span><span> 만 14세 이상입니다.</span>
+							</label>
+							<label>
+								<input type="checkbox" name="agreement">
+									<span name="span-color">[필수]</span><span>이용 약관</span> <a href="#">자세히</a>
+							</label>
+							<label>
+								<input type="checkbox" name="agreement">
+									<span name="span-color">[필수]</span><span>개인정보 수집 및 이용 동의</span> <a href="#">자세히</a>
+							</label>
+						</li>
+						<li>
+							<button type="button" id="join-button">가입하기</button>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</section>
+	<footer>
+		<iframe src="../main/footer.html"
+			scrolling="no" width="100%" height="400px" frameborder="0"></iframe>
+	</footer>
+</body>
+</html>

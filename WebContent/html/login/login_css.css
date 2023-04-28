@@ -1,0 +1,306 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+body> header iframe {
+	display: block;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+#image-top {
+	background-image: url("http://localhost:9000/cmjgames/images/img_bg.png");
+	background-size: cover;
+	height: 229px;
+	position: relative;
+}
+
+#image-top ul li:first-child {
+	color: white;
+	font-family: Apex New;
+	font-size: 20px;
+	font-weight: bold;
+	position: absolute;
+	left: 200px;
+	top: 80px;
+}
+
+#image-top ul li:last-child {
+	color: white;
+	font-size: 12px;
+	position: absolute;
+	left: 201px;
+	top: 106px;
+}
+
+#login-bottom {
+	width: 1100px;
+	margin: auto;
+	text-align: center;
+}
+
+#login-bottom p {
+	padding: 10px;
+}
+
+
+/****************************************************************************************/
+
+#login-main> ul {
+	display: inline-block;
+	width: 100px;
+	margin: auto;
+}
+
+#login-main> ul> li {
+	width: 60px;
+	height: 26px;
+	text-align: center;
+	font-family:"YouandiModern", serif;
+}
+
+
+#loginForm-insert input {
+	width: 400px;
+	padding: 20px 0;
+	margin: 5px 0;
+	text-indent: 10px;
+	border-radius: 3px;
+	border: 1px solid lightgray;
+	outline: none;
+}
+
+#loginForm-insert input:focus {
+	border: 1px solid gray;
+}
+
+/* #password-visual {
+	border: none;
+	background: white;
+	cursor: pointer;
+	padding: 1px 0px;
+} */
+
+#button {
+	border: none;
+	width: 402px;
+	height: 60px;
+	cursor: pointer;
+	color: white;
+	background: linear-gradient(to right,#682CAD,#2FC0CC);
+	border-radius: 3px;
+	font-family: Apex New, Medium;
+	margin: 20px 0;
+}
+
+#login-button {
+	border: none;
+	width: 402px;
+	height: 60px;
+	cursor: pointer;
+	color: white;
+	background: linear-gradient(to right,#682CAD,#2FC0CC);
+	border-radius: 3px;
+	font-family: Apex New, Medium;
+	margin-top: 20px;
+}
+
+/**************************************************************************/
+
+#find {
+	margin: 30px 0px 20px 0px;
+}
+
+#find a {
+	background: white;
+	color: #2B2B2B;
+	font-size: 14px;
+	border-right: 1px solid gray;
+	padding-right: 8px;
+	text-decoration: none;
+}
+
+#find a:first-child {
+	margin-left: 10px;
+}
+
+#find a:last-child {
+	border: none;
+}
+
+#find a:last-child span {
+	font-family: Apex New, Book;
+	color: #2E7AF6;
+	text-decoration: none;
+	font-size: 11pt;
+}
+
+/******************************************************************************/
+#account {
+	margin-right: 30px;
+}
+
+#account> a {
+
+	
+	
+}
+
+#account> a:first-child {
+	margin-right: 15px;
+}
+
+#account> a:last-child{
+	border: 1px solid rgb(100,157,248);
+	margin-left: 5px;
+	padding: 3px 4px;
+}
+
+/******************************************************************************/
+
+/*******************************************
+			find-id stylesheet
+*********************************************/
+
+#find-id {
+	width: 1100px;
+	margin: auto;
+	text-align: center;
+}
+
+#find-id p {
+	padding: 10px 0;
+}
+
+
+#find-id form[name='findIdForm'] ul:first-child li {
+	display: inline-block;
+	border: 2px solid #E5E5E5;
+	width: 201px;
+	height: 60px;
+	border-radius: 4px;
+	background: #F1F1F1;
+}
+
+
+#find-id form[name='findIdForm'] ul:first-child li button {
+	text-decoration : none;
+	display: inline-block;
+	margin: 0px 0px;
+	font-size: 10pt;
+	color: gray;
+	padding: 20px 55px;
+	vertical-align: top;
+	cursor: pointer;
+	border: none;
+}
+
+
+#find-id form[name='findIdForm'] ul:first-child li:first-child {
+	margin-right: -15px;
+	border-right: none;
+}
+
+#find-id form[name='findIdForm'] ul:last-child li:first-child select,
+#login-bottom form[name='findIdForm'] ul li:first-child select {
+	width: 401px;
+	height: 60px;
+	margin: 20px 0 14px 0;
+	border: 1px solid lightgray;
+	border-radius: 4px;
+}
+
+#find-id form[name='findIdForm'] ul:last-child li:first-child select:focus {
+	border: 1px solid gray;
+}
+
+#find-id form[name='findIdForm'] ul:last-child li:nth-child(2) input {
+	width: 400px;
+	padding: 20px 0;
+	margin: 5px 0;
+	text-indent: 10px;
+	border-radius: 3px;
+	border: 1px solid lightgray;
+	outline: none;
+}
+
+#find-id form[name='findIdForm'] ul:last-child li:nth-child(2) input:focus {
+	border: 1px solid gray;
+}
+
+/**********************************************************
+					find pwd stylesheet
+**********************************************************/
+
+#find-pwd {
+	width: 1100px;
+	margin: auto;
+	text-align: center;
+}
+
+#find-pwd> p {
+	padding: 10px;
+}
+
+section#find-pwd form[name='findPwdForm'] ul:first-child li {
+	display: inline-block;
+	border: 2px solid #E5E5E5;
+	width: 201px;
+	height: 60px;
+	border-radius: 4px;
+	background: #F1F1F1;
+}
+
+section#find-pwd form[name='findPwdForm'] ul:first-child li button {
+	text-decoration : none;
+	display: inline-block;
+	margin: 0px 0px;
+	font-size: 10pt;
+	color: gray;
+	padding: 20px 55px;
+	vertical-align: top;
+	cursor: pointer;
+	border: none;
+}
+
+
+section#find-pwd form[name='findPwdForm'] ul:first-child li:first-child {
+	margin-right: -15px;
+	border-right: none;
+}
+
+#find-pwd form[name='findPwdForm'] p {
+	width: 36%;
+	margin: auto;
+	text-align: left;
+	font-size: 9pt;
+	padding: 15px 0;
+}
+
+#find-pwd form[name='findPwdForm'] input {
+	width: 400px;
+	padding: 20px 0;
+	margin: 5px 0;
+	text-indent: 10px;
+	border-radius: 3px;
+	border: 1px solid lightgray;
+	outline: none;
+}
+
+#find-pwd form[name='findPwdForm'] input:focus {
+	border: 1px solid gray;
+}
+
+
+
+
+
+
+
+
+
