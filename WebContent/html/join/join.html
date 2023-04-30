@@ -3,22 +3,22 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Join</title>
-	<link rel="stylesheet" href="join_css.css">
+	<link rel="stylesheet" href="../join/join_css.css">
 </head>
 <body>
 	<header>
 		<iframe src="../main/header.html"
 			scrolling="no" width="100%" height="227px" frameborder="0"></iframe>
 	</header>
-		<section id="image-top">
+	<section id="image-top-bg">
+		<div id="image-top">
 			<div>
-				<ul>
-					<li>SIGN UP</li>
-					<li>#회원가입</li>
-				</ul>
+				<p>Sign up</p>
+				<p>#회원가입</p>
 			</div>
-		</section>
-		<section id="SignUp-bottom">
+		</div>
+	</section>
+		<section id="content">
 			<p>회원가입</p>
 			<form action="#" name="joinForm" method="get">
 				<div>
@@ -56,7 +56,7 @@
 						</li>
 						<li>
 							<input type="text" name="email1">
-							@
+							<span>@</span>
 							<select name="email2">
 								<option value="default">선택</option>
 								<option value="naver.com">naver.com</option>
@@ -124,7 +124,7 @@
 							</label>
 						</li>
 						<li>
-							<button type="button" id="join-button">가입하기</button>
+							<button type="button" id="button">가입하기</button>
 						</li>
 					</ul>
 				</div>
@@ -132,7 +132,7 @@
 		</section>
 	<footer>
 		<iframe src="../main/footer.html"
-			scrolling="no" width="100%" height="400px" frameborder="0"></iframe>
+			scrolling="no" width="100%" height="646px" frameborder="0"></iframe>
 	</footer>
 </body>
 </html>

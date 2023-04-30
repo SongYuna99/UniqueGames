@@ -9,73 +9,96 @@ ul {
 	margin: 0px;
 }
 
-#image-top {
-	background-image: url("../../images/img_bg.png");
+p {
+	margin: 0px;
+	padding: 0px;
+}
+
+#image-top-bg {
+	margin: auto;
+	background: url("../../images/img_bg.png");
 	background-size: cover;
+	width: 100%;
 	height: 229px;
+}
+
+#image-top {
+	width: 1100px;
+	margin: auto;
 	position: relative;
 }
 
-#image-top ul li:first-child {
+#image-top div {
+	position: absolute;
+	float: left;
+	display: block;
+	top: 90px;
+}
+
+#image-top div p:first-child {
 	color: white;
-	font-family: Apex New;
+	font-family: "Apex New";
 	font-size: 20px;
 	font-weight: bold;
-	position: absolute;
-	left: 200px;
-	top: 80px;
 }
 
-#image-top ul li:last-child {
+#image-top div p:last-child {
 	color: white;
 	font-size: 12px;
-	position: absolute;
-	left: 201px;
-	top: 106px;
 }
 
-#SignUp-bottom {
+#content {
 	width: 1100px;
-	margin: auto;
-	text-align: center;
+	margin: auto; 
 }
 
-#SignUp-bottom form[name='joinForm'] li:nth-child(4) button,
-#SignUp-bottom form[name='joinForm'] li:nth-child(5) button {
+#content> p {
+	text-align: center;
+	margin: 15px 0;
+	font-family: "YouandiModern", sans-serif;
+}
+
+#content form[name='joinForm'] label {
+	font-family: "YouandiModern", sans-serif;
+}
+
+#content form[name='joinForm'] {
+	width: 45%;
+	margin: auto;
+}
+
+#content form[name='joinForm'] li:nth-child(4) button,
+#content form[name='joinForm'] li:nth-child(5) button {
 	position: relative;
 	top: -23px;
 	left: 345px;
 	width: 21px;
 	background: white;
-	border: none;
 	cursor: pointer;
-	
+	border: none;
 }
-#SignUp-bottom form[name='joinForm'] li:nth-child(4) input,
-#SignUp-bottom form[name='joinForm'] li:nth-child(5) input{
+
+
+#content form[name='joinForm'] li:nth-child(4) input,
+#content form[name='joinForm'] li:nth-child(5) input{
 	margin-bottom: -15px;
 }
 
-#SignUp-bottom form[name='joinForm'] li:nth-child(4) img,
-#SignUp-bottom form[name='joinForm'] li:nth-child(5) img {
+
+#content form[name='joinForm'] li:nth-child(4) img,
+#content form[name='joinForm'] li:nth-child(5) img {
 	width: 21px;
 	height: 14px;
 }
 
-/********************************************************************************/
 
-#SignUp-bottom form[name='joinForm'] {
-	width: 45%;
-	margin:auto;
-}
-
-#SignUp-bottom form[name='joinForm'] li {
+#content form[name='joinForm'] li {
 	text-align: left;
 	padding: 0 50px;
 	font-family: "YouandiModern", sans-serif;
 }
 
-#SignUp-bottom form[name='joinForm'] input {
+#content form[name='joinForm'] input {
 	width: 392px;
 	padding: 20px 0;
 	margin: 10px 0;
@@ -85,29 +108,37 @@ ul {
 	outline: none;
 }
 
-#SignUp-bottom form[name='joinForm'] input:focus {
+#content form[name='joinForm'] input:focus {
 	border: 1px solid gray;
 }
 
-#SignUp-bottom form[name='joinForm'] input[name='email1'] {
-	width: 180px;
+#content form[name='joinForm'] li:nth-child(9) {
+	position: relative;
 }
 
-#SignUp-bottom form[name='joinForm'] select[name='email2'] {
-	width: 186px;
-	height: 60px;
+#content form[name='joinForm'] input[name='email1'] {
+	width: 180px;
+	margin-right: 2px;
+}
+
+#content form[name='joinForm'] select[name='email2'] {
+	width: 181px;
+	height: 58px;
 	border: 1px solid lightgray;
 	border-radius: 3px;
 	font-size: 10pt;
 	padding-left: 10px;
+	position: absolute;
+	top: 10px;
+	margin-left: 8px;
 }
 
-#SignUp-bottom form[name='joinForm'] input[name='zip-code'] {
+#content form[name='joinForm'] input[name='zip-code'] {
 	width: 120px;
 	height: 5px;
 }
 
-#SignUp-bottom form[name='joinForm'] li:nth-child(11) button {
+#content form[name='joinForm'] li:nth-child(11) button {
 	width: 90px;
 	height: 35px;
 	margin-left: 10px;
@@ -119,20 +150,20 @@ ul {
 	cursor: pointer;
 }
 
-#SignUp-bottom form[name='joinForm'] input[name='phone2'],
-#SignUp-bottom form[name='joinForm'] input[name='phone3'] {
+#content form[name='joinForm'] input[name='phone2'],
+#content form[name='joinForm'] input[name='phone3'] {
 	width: 100px;
 	height: 3px;
 }
 
-#SignUp-bottom form[name='joinForm'] select[name='mobile'] {
+#content form[name='joinForm'] select[name='mobile'] {
 	width: 70px;
 	height: 43px;
 	border: 1px solid lightgray;
 	border-radius: 3px;
 }
 
-#SignUp-bottom form[name='joinForm'] select[name='phone1'] {
+#content form[name='joinForm'] select[name='phone1'] {
 	width: 60px;
 	height: 43px;
 	margin-left: 19px;
@@ -140,53 +171,53 @@ ul {
 	border-radius: 3px;
 }
 
-#SignUp-bottom form[name='joinForm'] input[name='Allcheck'] {
+#content form[name='joinForm'] input[name='Allcheck'] {
 	width: 23px;
 	height: 12px;
 }
 
-#SignUp-bottom form[name='joinForm'] input[name='agreement'] {
+#content form[name='joinForm'] input[name='agreement'] {
 	width: 15px;
 	height: 12px;
 	display: inline-block;
 	margin-left: 4px;
 }
 
-#SignUp-bottom form[name='joinForm'] li:nth-child(18) label {
+#content form[name='joinForm'] li:nth-child(18) label {
 	display: block;
 }
 
-#SignUp-bottom form[name='joinForm'] li:nth-child(18) label span,
-#SignUp-bottom form[name='joinForm'] li:nth-child(18) label a {
+#content form[name='joinForm'] li:nth-child(18) label span,
+#content form[name='joinForm'] li:nth-child(18) label a {
 	vertical-align: top;
 	display: inline-block;
 	margin-top: 6px;
 	font-size: 10pt;
 }
 
-#SignUp-bottom form[name='joinForm'] li:nth-child(18) label a {
+#content form[name='joinForm'] li:nth-child(18) label a {
 	font-family: "YouandiModern", sans-serif;
 	text-decoration: none;
 }
 
-#SignUp-bottom form[name='joinForm'] li:nth-child(18) label a:hover {
+#content form[name='joinForm'] li:nth-child(18) label a:hover {
 	text-decoration: underline;
 }
 
-#SignUp-bottom form[name='joinForm'] span[name='span-color'] {
+#content form[name='joinForm'] span[name='span-color'] {
 	color: tomato;
 }
 
 /*	border: 1px solid red; */
 
 
-#SignUp-bottom form[name='joinForm'] li:last-child a {
+#content form[name='joinForm'] li:last-child a {
 	text-decoration: none;
 	color: #333;
 	font-weight: bold;
 }
 
-#SignUp-bottom form[name='joinForm'] li:last-child span {
+#content form[name='joinForm'] li:last-child span {
 	display: block;
 	text-align: right;
 	font-size: 10pt;
@@ -194,32 +225,33 @@ ul {
 	margin-bottom: 8px;
 }
 
-#SignUp-bottom p {
+#content p {
 	font-family: "YouandiModern", sans-serif;
 	padding: 10px;
 }
 
-#join-button {
+#button {
 	border: none;
-	width: 402px;
+	width: 394px;
 	height: 60px;
 	cursor: pointer;
 	color: white;
 	background: linear-gradient(to right,#682CAD,#2FC0CC);
 	border-radius: 3px;
-	font-family: Apex New, Medium;
-	margin: 20px 0;
+	font-family: "Apex New";
+	margin: 10px 0;
 }
 
+/* #join-button,
 #myPage-button {
 	border: none;
-	width: 393px;
-	height: 55px;
+	width: 394px;
+	height: 60px;
 	cursor: pointer;
 	color: white;
 	background: linear-gradient(to right,#682CAD,#2FC0CC);
 	border-radius: 3px;
-	font-family: Apex New, Medium;
-	margin: 8px 0;
-}
+	font-family: "Apex New";
+	margin: 10px 0;
+} */
 

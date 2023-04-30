@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>회원탈퇴</title>
+	<link rel="stylesheet" href="../login/login_css.css">
+	<script>
+		function deleteComplete(){
+			location.href="deleteComplete.html";
+		}
+	</script>
+</head>
+<body>
+	<header>
+		<iframe src="../main/header.html"
+			scrolling="no" width="100%" height="227px" frameborder="0"></iframe>
+	</header>
+	<section id="image-top-bg">
+		<div id="image-top">
+			<div>
+				<p>My Page</p>
+				<p>#마이페이지</p>
+			</div>
+		</div>
+	</section>
+	<section id="login-content">
+		<p>회원탈퇴</p>
+		<p>UniqueGames 님!
+		회원 탈퇴하려고 하신다니 저희 사이트의 서비스가 많이 부족하고 미흡했나 봅니다.<br>
+		불만사항이나 사유를 알려주신다면 적극 반영해서 고객님의 불편함을 해결해드리도록 노력하겠습니다.<br>
+		</p>
+		<p>회원 탈퇴시의 아래 사항을 숙지하시기 바랍니다.</p>
+		<p>
+		1. 회원 탈퇴 시 고객님의 정보는 모두 삭제됩니다.<br>
+		2. 후원하셨던 게임의 후원금을 반환받지 못합니다.<br>
+		3. 회원 탈퇴 후 2주간 재가입이 불가능합니다.<br>
+		</p>
+		<form action="#" name="loginForm" method="get"><!-- findIdForm -->
+			<div>
+				<p>탈퇴 사유</p>
+				<ul>
+					<li>
+						<select>
+							<option value="default">사유를 선택해주세요</option>
+							<option value="1">너무 많은 시간을 소비해서</option>
+							<option value="2">서비스가 좋지 않아서</option>
+							<option value="3">타 사이트가 더 좋아서</option>
+							<option value="4">삭제하고싶은 내용이 있어서</option>
+							<option value="5">사용빈도가 너무 적어서</option>
+							<option value="6">콘텐츠 불만</option>
+						</select>
+					</li>
+					<li>
+						<input type="text" name="id" value="UniqueGames" disabled>
+					</li>
+					<li>
+						<input type="text" name="pwd" placeholder="비밀번호">
+					</li>
+					<li>
+						<button type="button" id="delete-button" onclick="deleteComplete()">회원 탈퇴</button>
+					</li>
+				</ul>
+			</div>
+		</form>		
+	</section>
+	<footer>
+		<iframe src="../main/footer.html"
+			scrolling="no" width="100%" height="646px" frameborder="0"></iframe>
+	</footer>
+</body>
+</html>
