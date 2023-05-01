@@ -13,8 +13,8 @@
 	width: 1100px;
 	border-bottom: 3px solid #393939;
 	
-    font:"YouandiModern";
-    font-size: 23px/24px;
+    font-family:"YouandiModern";
+    font-size: 23px;
     letter-spacing: 0px;
 	color: #2B2B2B;
 }
@@ -23,8 +23,9 @@
 	padding: 0 0 5px 0;
 	margin: auto;
 	width: 1100px;
-	
-    font: 16px/23px "YouandiModern";
+
+	font-family:"YouandiModern";
+	font-size: 16px;
 	letter-spacing: 0px;
 	color: #000000;
 	opacity: 1;
@@ -36,8 +37,8 @@
 	background: linear-gradient(45deg, #682CAD, #2FC0CC);
 	
 	border: none;
-	font: "YouandiModern", sans-serif;
-	font-size: 14px/23px;
+	font-family:"YouandiModern", sans-serif;
+	font-size: 14px;
 	letter-spacing: 0px;
 	color: #FFFFFF;
 	opacity: 1;
@@ -69,8 +70,9 @@
 #section_cart table th, #section_member table th, #section_payment table th {
 	border-bottom: 2px solid #DDDDDD;
 	padding: 8px 0;
-	
-	font: normal normal normal 16px/23px "YouandiModern";
+
+	font-family:"YouandiModern";
+	font-size:  16px;
 	letter-spacing: 0px;
 	color: #000000;
 	opacity: 1;
@@ -79,8 +81,9 @@
 
 #section_cart table td, #section_member table td, #section_payment table td {
 	border-bottom: 2px solid #DDDDDD;
-	
-	font: normal normal normal 14px/23px "YouandiModern";
+
+	font-family:"YouandiModern";
+	font-size:14px;
 	letter-spacing: 0px;
 	color: #A9A9A9;
 	opacity: 1;
@@ -119,7 +122,8 @@
 	margin-top: -30px;
 	
 	text-align: left;
-	font: normal normal normal 20px/80px "YouandiModern";
+	font-family:"YouandiModern";
+	font-size: 20px;
 	letter-spacing: 0px;
 	color: #FFFFFF;
 	opacity: 0.6;
@@ -139,7 +143,9 @@
 #section_cart table td:nth-child(3){
 	padding-left: 8px;
 	text-align: left;
-	font: normal normal normal 15px/23px "YouandiModern";
+
+	font-family:"YouandiModern";
+	font-size: 15px;
 	letter-spacing: 0px;
 	color: #000000;
 	opacity: 1;
@@ -177,7 +183,7 @@
     cursor: pointer;
 }
 #section_cart div table tr:nth-child(2) td > input[type='checkbox']:checked {
-	appearance: checkbox;
+	/*appearance: ;*/
 }
 
 .img_product {
@@ -192,7 +198,8 @@
 	padding: 0 20px;
 	
 	text-align: center;
-	font: normal normal normal 15px/23px "YouandiModern";
+	font-family:"YouandiModern";
+	font-size: 15px;
 	letter-spacing: 0px;
 	color: #000000;
 	opacity: 1;
@@ -201,7 +208,8 @@
 }
 #section_cart a {
 	text-align: left;
-	font: normal normal normal 15px/23px "YouandiModern";
+	font-family:"YouandiModern";
+	font-size: 15px;
 	letter-spacing: 0px;
 	color: #000000;
 	opacity: 1;
@@ -215,7 +223,8 @@
 	height: 50px;
 		
 	text-align: left;
-	font: normal normal normal 13px/23px "YouandiModern";
+	font-family:"YouandiModern";
+	font-size: 13px;
 	letter-spacing: 0px;
 	color: #A8A8A8;
 	opacity: 1;
@@ -234,7 +243,8 @@ input[name="input_qty"] {
 	outline: none;
 	
 	text-align: center;
-	font: normal normal normal 15px/23px "YouandiModern";
+	font-family:"YouandiModern";
+	font-size: 15px;
 	letter-spacing: 0px;
 	color: #000000;
 }
@@ -260,7 +270,8 @@ input[name="input_qty"] {
 	border-radius: 5px;
 	
 	text-align: center;
-	font: normal normal normal 13px/23px "YouandiModern";
+	font-family:"YouandiModern";
+	font-size: 13px;
 	letter-spacing: 0px;
 	color: #FFFFFF;
 	opacity: 1;
@@ -320,7 +331,8 @@ input[name="input_qty"] {
 	padding: 8px 15px;
 	
 	text-align: left;
-	font: normal normal normal 14px/23px "YouandiModern";
+	font-family:"YouandiModern";
+	font-size: 14px;
 	letter-spacing: 0px;
 	color: #A9A9A9;
 	opacity: 1;
@@ -372,7 +384,8 @@ input[name="input_qty"] {
 	width: 400px;		height: 60px;
 	
 	border: none;
-	font: normal normal normal 20px/23px "YouandiModern";
+	font-family:"YouandiModern";
+	font-size: 20px;
 	letter-spacing: 0px;
 	color: #FFFFFF;
 	opacity: 1;
@@ -380,7 +393,8 @@ input[name="input_qty"] {
 }
 
 #section_payment div.payment_info {
-	font: normal normal normal 16px/23px "YouandiModern";
+	font-family:"YouandiModern";
+	font-size: 16px;
 	letter-spacing: 0px;
 	color: #000000;
 	opacity: 1;
@@ -431,7 +445,8 @@ input[name="input_qty"] {
 	float: left;
 	
 	text-align: left;
-	font: normal normal normal 16px/23px "YouandiModern";
+	font-family:"YouandiModern";
+	font-size: 16px;
 	letter-spacing: 0px;
 	color: #000000;
 	opacity: 1;
@@ -442,13 +457,14 @@ input[name="input_qty"] {
 	float: right;
 	
 	text-align: right;
-	font: normal normal normal 20px/23px "YouandiModern";
+	font-family:"YouandiModern";
+	font-size: 20px;
 	letter-spacing: 0px;
 	color: #000000;
 	opacity: 1;
 }
 #section_payment div.payment_info div:nth-child(3) p.p2 {
-	font-size: 24px/23px;
+	font-size: 24px;
 }
 
 #section_payment ul {
@@ -471,7 +487,8 @@ input[name="input_qty"] {
 	padding-left: 10px;
 	
 	text-align: left;
-	font: normal normal normal 16px/23px "YouandiModern";
+	font-family:"YouandiModern";
+	font-size: 16px;
 	letter-spacing: 0px;
 	color: #000000;
 	opacity: 1;
@@ -496,7 +513,8 @@ input[name="input_qty"] {
 	padding-left: 7px;
 	
 	text-align: left;
-	font: normal normal normal 14px/23px "YouandiModern";
+	font-family:"YouandiModern";
+	font-size: 14px;
 	letter-spacing: 0px;
 	color: #6E6E6E;
 	opacity: 1;
@@ -507,7 +525,8 @@ input[name="input_qty"] {
 	
 	text-align: left;
 	text-decoration: underline;
-	font: normal normal normal 14px/23px "YouandiModern";
+	font-family:"YouandiModern";
+	font-size: 14px;
 	letter-spacing: 0px;
 	color: #6E6E6E;
 }
