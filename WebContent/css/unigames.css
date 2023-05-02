@@ -27,7 +27,7 @@ table {
 #top-bg {
 	width: 100%;
 	margin: auto;
-	background-image: url(../images/img_bg.png);
+	background-image: url(../../images/img_bg.png);
 	background-size:cover;
 	height: 229px;
 	background-repeat: no-repeat;
