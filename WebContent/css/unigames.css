@@ -27,20 +27,30 @@ table {
 #top-bg {
 	width: 100%;
 	margin: auto;
-	background-image: url(../../images/img_bg.png);
+	background-image: url(../images/img_bg.png);
+	background-size:cover;
 	height: 229px;
 	background-repeat: no-repeat;
 }
 
+#base-layer {
+	width: 1100px;
+	margin: auto;
+}
+
 #top-bg-textarea {
 	color: white;
-	position: absolute;
-	top: 307px;
-	left: 410px;
 	font-style: italic;
 }
 
-#top-bg-textarea>h2 {
+#top-title {
+	color: white;
+	font-size: 32px;
+	font-weight: bold;
+	padding-top: 70px;
+}
+
+#top-subtitle {
 	font-size: 20px;
 	font-style: normal;
 	padding-top: 15px;
