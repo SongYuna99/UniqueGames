@@ -23,7 +23,7 @@ table {
 	margin: auto;
 }
 
-/* 헤더 아래 */
+/* Menu title(under the header) */
 #top-bg {
 	width: 100%;
 	margin: auto;
@@ -48,7 +48,7 @@ table {
 	font-weight: 500;
 }
 
-/* 링크 */
+/* link */
 a {
 	color: black;
 	text-decoration: none;
@@ -62,7 +62,7 @@ a:visited {
 	color: #DDDDDD;
 }
 
-/* 공통 버튼 스타일 */
+/* public button style */
 #btn-style {
 	background: #393939;
 	border-radius: 5px;
@@ -85,7 +85,7 @@ a:visited {
 	margin: 10px 0;
 }
 
-/* 공통 input 스타일 */
+/* public input style */
 #login-content form[name='loginForm'] input {
 	width: 394px;
 	padding: 20px 0;
@@ -100,7 +100,7 @@ a:visited {
 	border: 1px solid gray;
 }
 
-/* 동그라미 체크박스 */
+/* checkbox style */
 #section_payment input[name='agreementAll'] {
 	width: 1rem;	height: 1rem;
 	border: 2px solid #2C2C2C;
