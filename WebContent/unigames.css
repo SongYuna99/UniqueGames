@@ -1,0 +1,111 @@
+/* common */
+* {
+	padding: 0;
+	margin: 0;
+	font-family: "YouandiModern", "Apex New", "Noto Sans KR", sans-serif;
+}
+
+body> header iframe {
+	display: block;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+/* base */
+#content,
+#board-list,
+table {
+	width: 1100px;
+	margin: auto;
+}
+
+/* 헤더 아래 */
+#top-bg {
+	width: 100%;
+	margin: auto;
+	background-image: url(../../images/img_bg.png);
+	height: 229px;
+	background-repeat: no-repeat;
+}
+
+#top-bg-textarea {
+	color: white;
+	position: absolute;
+	top: 307px;
+	left: 410px;
+	font-style: italic;
+}
+
+#top-bg-textarea>h2 {
+	font-size: 20px;
+	font-style: normal;
+	padding-top: 15px;
+	opacity: 0.6;
+	font-weight: 500;
+}
+
+/* 링크 */
+a {
+	color: black;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:visited {
+	color: #DDDDDD;
+}
+
+/* 공통 버튼 스타일 */
+#btn-style {
+	background: #393939;
+	border-radius: 5px;
+	width: 80px;
+	height: 30px;
+	color: #FFFFFF;
+	font-size: 14px;
+	vertical-align: top;
+}
+
+#button-gradient {
+	border: none;
+	width: 394px;
+	height: 60px;
+	cursor: pointer;
+	color: white;
+	background: linear-gradient(to right,#682CAD,#2FC0CC);
+	border-radius: 3px;
+	font-family: "Apex New";
+	margin: 10px 0;
+}
+
+/* 공통 input 스타일 */
+#login-content form[name='loginForm'] input {
+	width: 394px;
+	padding: 20px 0;
+	margin: 5px 0;
+	text-indent: 10px;
+	border-radius: 3px;
+	border: 1px solid lightgray;
+	outline: none;
+}
+
+#login-content form[name='loginForm'] input:focus {
+	border: 1px solid gray;
+}
+
+/* 동그라미 체크박스 */
+#section_payment input[name='agreementAll'] {
+	width: 1rem;	height: 1rem;
+	border: 2px solid #2C2C2C;
+	border-radius: 50%;
+	
+	appearance: none;
+    cursor: pointer;
+}

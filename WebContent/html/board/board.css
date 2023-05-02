@@ -21,7 +21,7 @@ table {
 	background-repeat: no-repeat;
 }
 
-#top-bg-text {
+#top-bg-textarea {
 	color: white;
 	position: absolute;
 	top: 307px;
@@ -29,7 +29,7 @@ table {
 	font-style: italic;
 }
 
-#top-bg-text>h2 {
+#top-bg-textarea>h2 {
 	font-size: 20px;
 	font-style: normal;
 	padding-top: 15px;
