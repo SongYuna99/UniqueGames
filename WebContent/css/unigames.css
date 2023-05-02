@@ -19,9 +19,8 @@ ol,ul,li {
 
 /* base */
 
-#content,
-#board-list,
-table {
+#content, #board-list, table ,
+#section_cart, #section_member, #section_payment {
 	width: 1100px;
 	margin: auto;
 }
@@ -87,6 +86,7 @@ a:visited {
 	color: #FFFFFF;
 	font-size: 14px;
 	vertical-align: top;
+	cursor: pointer;
 }
 
 #button-gradient {
@@ -103,7 +103,8 @@ a:visited {
 
 /* public input style */
 
-#login-content form[name='loginForm'] input {
+#login-content form[name='loginForm'] input,
+#section_member input, #section_member select {
 	width: 394px;
 	padding: 20px 0;
 	margin: 5px 0;
@@ -113,13 +114,14 @@ a:visited {
 	outline: none;
 }
 
-#login-content form[name='loginForm'] input:focus {
+#login-content form[name='loginForm'] input:focus,
+#section_member input:focus, #section_member select:focus {
 	border: 1px solid gray;
 }
 
 /* checkbox style */
 
-#section_payment input[name='agreementAll'] {
+#chk-circle {
 	width: 1rem;	height: 1rem;
 	border: 2px solid #2C2C2C;
 	border-radius: 50%;
@@ -531,3 +533,310 @@ header div img { display: block; clear:both; }
 #nav2 > ul > li { padding: 22px 50px; display: inline-block; margin:0 50px; }
 #nav2 > ul > li > a { font-family: "Apex New", sans-serif; font-style: italic; font-weight: 100; font-size: 18px; font-weight: bold; color:#2B2B2B; text-decoration-line:none; }
 #nav2 > ul > li > a:hover { color:#497EBF; font-weight: bold; }
+
+/****** Order.html ******/
+
+/* Order/Payment */
+#order-title {
+	padding: 80px 0 10px 0;
+	width: 1100px;
+	margin: auto;
+	margin-bottom: 10px;
+	border-bottom: 3px solid #393939;
+
+	font-family:"YouandiModern", sans-serif;
+	font-size: 23px;
+	letter-spacing: 0px;
+	color: #2B2B2B;
+}
+
+/* subtitle, th */
+#order-subtitle {
+	padding: 0 0 5px 0;
+
+	font-family:"YouandiModern";
+	font-size: 16px;
+	letter-spacing: 0px;
+	color: #000000;
+	opacity: 1;
+}
+
+/* order.html commons */
+#order-table, #payment2-d1, #payment2-d2, #payment2-d3 {
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	border: 1px solid #DDDDDD;
+	opacity: 1;
+	border-collapse: collapse;
+	margin: auto;
+	margin-bottom: 50px;
+	width: 100%;
+
+	text-align: center;
+}
+
+#order-table th {
+	border-bottom: 1px solid #DDDDDD;
+	padding: 8px 0;
+
+	font-size:  16px;
+	color: #000000;
+	text-align: center;
+}
+
+#order-table td {
+	border-bottom: 1px solid #DDDDDD;
+
+	font-size:14px;
+	color: #A9A9A9;
+	text-align: left;
+}
+
+/* chk-circle */
+#section_member #chk-circle {
+	width: 1rem;	height: 1rem;
+	border-radius: 50%;
+	border: 2px solid #2C2C2C;
+	appearance: none;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+#section_member #chk-circle:checked {
+	background: #2C2C2C;
+}
+
+/* subtitle & checkbox */
+#member-chk {
+	overflow: hidden;
+}
+#member-chk h2, #chk-circle, #chk-circle-span {
+	display: inline-block;
+	vertical-align: middle;
+}
+#chk-circle-span {
+	margin-left: 5px;
+}
+#member-chk h2 {
+	width: 200px;
+	padding-top: 10px;
+	float: left;
+}
+#member-chk div {
+	float: right;
+	font-size: 13pt;
+	text-align: center;
+}
+
+/** #section_cart **/
+#section_cart td {
+	width: 15%;		height: 100px;
+	text-align: center;
+}
+#cart-info {
+	width: 40%;
+	text-align: left;
+}
+
+/* #section_cart product img */
+#img_product {
+	width: 80px;		height: 80px;
+	outline: none;
+	background: #E6E6E6 0% 0% no-repeat padding-box;
+}
+
+/* checkbox-box */
+#chk-box {
+	width: 20px;	height: 20px;
+	appearance: none;
+	border: 2px solid #959595;
+	border-radius: 0px;
+	cursor: pointer;
+}
+#chk-box:checked {
+	appearance: auto;
+}
+
+/* pdName, price font */
+td#cart-info {
+	text-align: left;
+}
+#cart-pdName, td#cart-price{
+	font-size: 15px;
+	letter-spacing: 0px;
+	color: #000000;
+	text-decoration: none;
+}
+
+/* delete button size */
+#section_cart button#btn-style {
+	width: 60px;
+}
+
+/** #section_member **/
+/* table */
+#section_member th {
+	width: 10%;
+	vertical-align: center;
+}
+#section_member td {
+	width: 80%;
+	text-align: left;
+}
+#section_member input, #section_member select#email-select {
+	margin: 7px 0;
+	padding: 11px 10px;
+}
+
+/* input size */
+#section_member #name {
+	width: 300px;
+}
+#section_member #email-id, #section_member #email-addr {
+	width: 150px;
+}
+#section_member #email-select {
+	width: 150px;
+	margin-left: 5px;
+	font-size:14px;
+	color: #A9A9A9;
+}
+#section_member #phone1, #section_member #phone2, #section_member #phone3 {
+	width: 70px;
+}
+
+/* search button size */
+#section_member #btn-style {
+	margin: 10px 0;
+	width: 80px;	height: 36px;
+}
+
+/** #section_payment **/
+#section_payment #order-table{
+	height: 300px;
+}
+#section_payment #order-table th {
+	width: 25%;
+	text-align: left;
+	padding-left: 30px;
+}
+#section_payment #order-table td {
+	padding: 5px 8px;
+	text-align: left;
+}
+#section_payment #d1 {
+	width: 1100px;		height: 400px;
+}
+#section_payment #d2 {
+	width: 1100px;		height: 200px;
+	text-align: center;
+}
+#section_payment #payment1 {
+	float: left;
+	width: 70%;			height: 300px;
+}
+#section_payment #payment2 {
+	float: right;
+	width: 28%;			height: 300px;
+}
+
+/* method button */
+#section_payment #order-table #button-gradient {
+	width: 100px;	height: 40px;
+	margin-right: 10px;
+}
+
+/* #payment1 */
+#payment-method, #payment-info {
+	margin: 10px 0;
+}
+
+/* font */
+#section_payment a {
+	padding-left: 5px;
+
+	text-align: left;
+	text-decoration: underline;
+	font-family:"YouandiModern";
+	font-size: 14px;
+	letter-spacing: 0px;
+	color: #6E6E6E;
+}
+#section_payment span {
+	padding-left: 7px;
+
+	text-align: left;
+	font-family:"YouandiModern";
+	font-size: 14px;
+	letter-spacing: 0px;
+	color: #6E6E6E;
+	opacity: 1;
+}
+
+/* chkbox - agreement */
+#section_payment #span_agreementAll {
+	width: 150px;
+	padding-left: 10px;
+
+	text-align: left;
+	font-family:"YouandiModern";
+	font-size: 16px;
+	letter-spacing: 0px;
+	color: #000000;
+	opacity: 1;
+}
+#section_payment input#agreement {
+	width: 18px;		height: 12px;
+	background-image: url("../images/btn_check_normal.png");
+	background-repeat: no-repeat;
+
+	appearance: none;
+	cursor: pointer;
+}
+#section_payment input#agreement:checked {
+	background-image: url("../images/btn_check_select.png");
+	background-repeat: no-repeat;
+}
+
+/* #payment2 */
+#payment2 #order-table th{
+	width: 35%;
+	border: none;
+}
+#payment2 #order-table td{
+	text-align: right;
+	border: none;
+	padding-right: 10px;
+}
+#payment-price, #payment-totalPrice {
+	height: 20%;
+	padding-top: 25px;
+}
+#payment-sale {
+	vertical-align: top;
+	margin-top: 10px;
+}
+td#payment-price, td#payment-sale, td#payment-totalPrice {
+	font-family:"YouandiModern";
+	font-size: 20px;
+	letter-spacing: 0px;
+	color: #000000;
+	opacity: 1;
+}
+td#payment-totalPrice {
+	font-size: 24px;
+}
+
+#section_payment div.payment_info div:nth-child(3) p.p2 {
+	font-size: 24px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
