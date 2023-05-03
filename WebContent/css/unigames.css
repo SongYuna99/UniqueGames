@@ -113,6 +113,7 @@ a:visited {
 	border-radius: 3px;
 	border: 1px solid lightgray;
 	outline: none;
+	font-size: 16px;
 }
 
 #input-common:focus,
@@ -1069,7 +1070,7 @@ td {
 
 /*****************************cmj**************************************/
 
-/* °èÁ¤ »èÁ¦ ±×¶óµ¥ÀÌ¼Ç ¹öÆ° */
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½×¶ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½Æ° */
 #button-gradient-delete {
 	border: none;
 	width: 394px;
@@ -1106,14 +1107,14 @@ td {
 #intro {
 	padding: 20px 0;
 	font-family: "YouandiModern",sans-serif;
-	font-size: 24pt;
+	font-size: 24px;
 }
 /* detail explanation */
 #intro-1 {
 	width: 394px;
 	margin: auto;
 	text-align: left;
-	font-size: 10pt;
+	font-size: 10px;
 }
 /* public section */
 #content-1 {
@@ -1129,7 +1130,7 @@ td {
 	padding-left: 45px;
 }
 
-/*************************¾ÆÀÌµð,ºñ¹Ð¹øÈ£,È¸¿ø°¡ÀÔ ¸µÅ©**********************/
+/*************************ï¿½ï¿½ï¿½Ìµï¿½,ï¿½ï¿½Ð¹ï¿½È£,È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©**********************/
 /* login; link to find-id, find-pwd */
 #link-find {
 	background: white;
@@ -1146,7 +1147,7 @@ td {
 	font-weight: 500;
 	color: #2E7AF6;
 	text-decoration: none;
-	font-size: 11pt;
+	font-size: 11px;
 	padding: 0 8px;
 }
 /* login; link to find-id, find-pwd, sign up hover */
@@ -1209,7 +1210,7 @@ td {
 #agreement-box {
 	margin: 30px 0 10px 0;
 	width: 394px;
-	font-size: 10pt;
+	font-size: 10px;
 }
 
 /* join agreement font-color */
@@ -1237,7 +1238,7 @@ td {
 /* myPage delete link*/
 #span-deleteAccount {
 	display: block;
-	font-size: 10pt;
+	font-size: 10px;
 	margin-bottom: 8px;
 	padding-left: 330px;
 }
