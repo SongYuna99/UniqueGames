@@ -47,6 +47,7 @@ ol,ul,li {
 }
 
 #top-title {
+	font-family: "Apex New";
 	color: white;
 	font-size: 32px;
 	font-weight: bold;
@@ -304,7 +305,7 @@ a:visited {
 #rList4 {
 	display: inline-block;
 	width: 260px;
-	height: 363px;
+	height: 392px;
 	box-shadow: 0px 5px 10px #0000001A;
 	position: relative;
 	margin: 0 5px;
@@ -337,7 +338,7 @@ a:visited {
 	font-size: 13px;
 	font-style: italic;
 	font-weight: bold;
-	padding-top: 4px;
+	padding-bottom: 2px;
 }
 #rList1 ul li:nth-child(2),
 #rList2 ul li:nth-child(2),
@@ -388,7 +389,7 @@ a:visited {
 }
 #btn-like-style {
 	border: none;
-	background: url(" ../../images/btn_heart_normal.png ") no-repeat;
+	background: url(" ../images/btn_heart_normal.png ") no-repeat;
 	width: 18px;
 	height: 14px;
 	cursor:pointer;
@@ -435,7 +436,7 @@ a:visited {
 #gList4 {
 	display: inline-block;
 	width: 260px;
-	height: 280px;
+	height: 310px;
 	box-shadow: 0px 5px 10px #0000001A;
 	position: relative;
 	margin: 0 5px;
