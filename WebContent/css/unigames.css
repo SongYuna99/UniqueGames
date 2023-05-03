@@ -104,7 +104,7 @@ a:visited {
 
 /* public input style */
 
-#login-content form[name='loginForm'] input,
+#input-common,
 #section_member input, #section_member select {
 	width: 394px;
 	padding: 20px 0;
@@ -115,7 +115,7 @@ a:visited {
 	outline: none;
 }
 
-#login-content form[name='loginForm'] input:focus,
+#input-common:focus,
 #section_member input:focus, #section_member select:focus {
 	border: 1px solid gray;
 }
@@ -1065,3 +1065,227 @@ td {
 #clearFix {
 	clear: both;
 }
+
+/*****************************cmj**************************************/
+
+/* 계정 삭제 그라데이션 버튼 */
+#button-gradient-delete {
+	border: none;
+	width: 394px;
+	height: 60px;
+	cursor: pointer;
+	color: white;
+	background: linear-gradient(to right,#FF0033,#FFCC66);
+	border-radius: 3px;
+	font-family: "Apex New";
+	margin: 10px 0;
+}
+
+/* public input style */
+
+/* join; email, zip-code input */
+#input-email {
+	width: 187px;
+	padding: 20px 0;
+	text-indent: 10px;
+	border-radius: 3px;
+	border: 1px solid lightgray;
+	outline: none;
+}
+
+#input-phone {
+	width: 109px;
+	height: 43px;
+	border-radius: 3px;
+	border: 1px solid lightgray;
+}
+
+
+/* page introduce */
+#intro {
+	padding: 20px 0;
+	font-family: "YouandiModern",sans-serif;
+	font-size: 24pt;
+}
+/* detail explanation */
+#intro-1 {
+	width: 394px;
+	margin: auto;
+	text-align: left;
+	font-size: 10pt;
+}
+/* public section */
+#content-1 {
+	width: 1100px;
+	margin: auto;
+	text-align: center;
+}
+/*join form-id*/
+#content-2 {
+	width: 40%;
+	margin: auto;
+	text-align: left;
+	padding-left: 45px;
+}
+
+/*************************아이디,비밀번호,회원가입 링크**********************/
+/* login; link to find-id, find-pwd */
+#link-find {
+	background: white;
+	color: #2B2B2B;
+	font-size: 14px;
+	border-right: 1px solid gray;
+	padding: 0 8px;
+	text-decoration: none;
+	font-family: "YouandiModern", sans-serif;
+}
+/* login; link to sign up */
+#link-signUp {
+	font-family: "Apex New";
+	font-weight: 500;
+	color: #2E7AF6;
+	text-decoration: none;
+	font-size: 11pt;
+	padding: 0 8px;
+}
+/* login; link to find-id, find-pwd, sign up hover */
+#link-find:hover,
+#link-signUp:hover {
+	text-decoration: underline;
+}
+
+/* find-id; selectbox */
+#selectbox-find {
+	width: 394px;
+	height: 60px;
+	margin: 10px 0;
+	border: 1px solid lightgray;
+	border-radius: 4px;
+}
+/* find-id; selectbox:hover */
+#selectbox-find:focus {
+	border: 1px solid gray;
+}
+/* join; email selectbox */
+#selectbox-email {
+	width: 187px;
+	padding: 20px 0;
+	border: 1px solid lightgray;
+	text-indent: 10px;
+}
+
+/* join,myPage password */
+#pwd-check {
+	position: relative;
+	background: white;
+	cursor: pointer;
+	right: 40px;
+	top: 2px;
+	border: none;
+}
+/* join,myPage password eye img */
+#pwd-check-img {
+	width: 21px;
+	height: 14px;
+}
+/* join, myPage telecom selectbox */
+#selectbox-mobile {
+	width: 70px;
+	height: 43px;
+	border: 1px solid lightgray;
+	border-radius: 3px;
+}
+/* join, myPage 010 selectbox */
+#selectbox-phone {
+	width: 60px;
+	height: 43px;
+	margin-left: 20px;
+	border: 1px solid lightgray;
+	border-radius: 3px;
+}
+
+/* join margin between cellphone - agreement  */
+#agreement-box {
+	margin: 30px 0 10px 0;
+	width: 394px;
+	font-size: 10pt;
+}
+
+/* join agreement font-color */
+#agreement-color {
+	color: tomato;
+	margin: 0 3px;
+}
+/* join agreement more link */
+#agreement-link {
+	text-decoration: none;
+	color: blue;
+	margin-left: 10px;
+}
+/* join agreement more link:hover */
+#agreement-link:hover {
+	text-decoration: underline;
+}
+/* myPage; delete link */
+#link-deleteAccount {
+	width: 40%;
+	text-decoration: none;
+	color: #333;
+	font-weight: bold;
+}
+/* myPage delete link*/
+#span-deleteAccount {
+	display: block;
+	font-size: 10pt;
+	margin-bottom: 8px;
+	padding-left: 330px;
+}
+
+/* join,myPage zip-code find button*/
+#address-btn-style {
+	background: #393939;
+	border-radius: 5px;
+	width: 50px;
+	height: 30px;
+	color: #FFFFFF;
+	font-size: 14px;
+	cursor: pointer;
+	margin-left: 15px;
+}
+
+/* join checkbox agreement*/
+
+#chk-circle {
+	width: 1rem;	height: 1rem;
+	border: 2px solid #2C2C2C;
+	border-radius: 50%;
+	
+	appearance: none;
+    cursor: pointer;
+}
+
+#span_agreementAll {
+	width: 150px;
+	padding-left: 10px;
+
+	text-align: left;
+	font-family:"YouandiModern";
+	font-size: 16px;
+	letter-spacing: 0px;
+	color: #000000;
+	opacity: 1;
+}
+#agreement {
+	width: 18px;		height: 12px;
+	background-image: url("../images/btn_check_normal.png");
+	background-repeat: no-repeat;
+
+	appearance: none;
+	cursor: pointer;
+}
+#agreement:checked {
+	background-image: url("../images/btn_check_select.png");
+	background-repeat: no-repeat;
+}
+
+/*****************************cmj**************************************/
