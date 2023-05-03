@@ -1111,7 +1111,7 @@ td {
 /* join; email selectbox */
 #selectbox-email {
 	width: 110px;
-	padding: 19px 0;
+	padding: 22px 0 20px 0;
 	border: 1px solid lightgray;
 	text-indent: 10px;
 	border-radius: 3px;
