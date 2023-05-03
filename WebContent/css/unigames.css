@@ -20,7 +20,7 @@ ol,ul,li {
 /* base */
 
 #content, #board-list, table ,
-#section_cart, #section_member, #section_payment {
+#section_cart, #section_member, #section_payment, #section_price {
 	width: 1100px;
 	margin: auto;
 }
@@ -78,7 +78,7 @@ a:visited {
 
 /* public button style */
 
-#btn-style, #order-btn-search, #order-btn-delete {
+#btn-style, #order-btn-search, #order-btn-delete, #btn-deleteAll, #btn-deleteSelected {
 	background: #393939;
 	border-radius: 5px;
 	width: 80px;
@@ -562,7 +562,7 @@ header div img { display: block; clear:both; }
 }
 
 /* order.html commons */
-#order-table, #payment2-d1, #payment2-d2, #payment2-d3 {
+#order-table, #price-table{
 	background: #FFFFFF 0% 0% no-repeat padding-box;
 	border: 1px solid #DDDDDD;
 	opacity: 1;
@@ -820,6 +820,51 @@ td#payment-totalPrice {
 	font-size: 24px;
 }
 
+/** cart.html **/
+#price-table {
+	text-align: center;
+	overflow: hidden;
+}
+#price-table th {
+	height: 40px;
+	border-bottom: 1px solid #DDDDDD;
+	font-family: "YouandiModern";
+	font-size: 14px;
+	letter-spacing: 0px;
+	color: #000000;
+	opacity: 1;
+}
+#price-table td {
+	height: 50px;
+	font-family: "YouandiModern";
+	font-size: 17px;
+	letter-spacing: 0px;
+	color: #000000;
+	opacity: 1;
+}
+#price-table td#totalPrice {
+	font-size: 24px;
+	font-weight: bold
+}
+#price-table td#price {
+	text-decoration: line-through;
+}
+#price-table th:nth-child(2), #price-table td:nth-child(2),
+#price-table th:nth-child(4), #price-table td:nth-child(4) {
+	width: 10%;
+}
+#price-table th:nth-child(1), #price-table th:nth-child(3),
+#price-table td:nth-child(1), #price-table td:nth-child(3) {
+	width: 24%;
+}
+#price-table #price, #price-table #sale {
+	color: #6E6E6E;
+}
+#section_price div:nth-child(2) {
+	margin-top: 100px;
+	width: 1100px;	height: 200px;
+	text-align: center;
+}
 /** board style **/
 #content {
 	margin: 100px auto;
