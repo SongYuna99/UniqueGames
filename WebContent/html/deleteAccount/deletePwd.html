@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>회원탈퇴</title>
-	<link rel="stylesheet" href="../login/login_css.css">
+	<!-- <link rel="stylesheet" href="../login/login_css.css"> -->
+	<link rel="stylesheet" href="../../css/unigames.css">
 	<script>
 		function deleteComplete(){
 			location.href="deleteComplete.html";
@@ -15,15 +16,15 @@
 		<iframe src="../main/header.html"
 			scrolling="no" width="100%" height="227px" frameborder="0"></iframe>
 	</header>
-	<section id="image-top-bg">
-		<div id="image-top">
-			<div>
-				<p>My Page</p>
-				<p>#마이페이지</p>
+	<section id="top-bg">
+		<div id="base-layer">
+			<div id="top-bg-textarea">
+				<p id="top-title">My Page</p>
+				<p id="top-subtitle">#마이페이지</p>
 			</div>
 		</div>
 	</section>
-	<section id="login-content">
+	<section id="content-1">
 		<p>회원탈퇴</p>
 		<p>UniqueGames 님!
 		회원 탈퇴하려고 하신다니 저희 사이트의 서비스가 많이 부족하고 미흡했나 봅니다.<br>
@@ -37,10 +38,10 @@
 		</p>
 		<form action="#" name="loginForm" method="get"><!-- findIdForm -->
 			<div>
-				<p>탈퇴 사유</p>
+				<p id="intro-1">탈퇴 사유</p>
 				<ul>
 					<li>
-						<select>
+						<select id="selectbox-find">
 							<option value="default">사유를 선택해주세요</option>
 							<option value="1">너무 많은 시간을 소비해서</option>
 							<option value="2">서비스가 좋지 않아서</option>
@@ -51,13 +52,13 @@
 						</select>
 					</li>
 					<li>
-						<input type="text" name="id" value="UniqueGames" disabled>
+						<input type="text" id="input-common" name="id" value="UniqueGames" disabled>
 					</li>
 					<li>
-						<input type="text" name="pwd" placeholder="비밀번호">
+						<input type="text" id="input-common" name="pwd" placeholder="비밀번호">
 					</li>
 					<li>
-						<button type="button" id="delete-button" onclick="deleteComplete()">회원 탈퇴</button>
+						<button type="button" id="button-gradient-delete" onclick="deleteComplete()">회원 탈퇴</button>
 					</li>
 				</ul>
 			</div>

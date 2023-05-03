@@ -3,61 +3,62 @@
 <head>
 	<meta charset="UTF-8">
 	<title>myPage</title>
-	<link rel="stylesheet" href="../join/join_css.css">
+	<!-- <link rel="stylesheet" href="../join/join_css.css"> -->
+	<link rel="stylesheet" href="../../css/unigames.css">
 </head>
 <body>
 	<header>
 		<iframe src="../main/header.html"
 			scrolling="no" width="100%" height="227px" frameborder="0"></iframe>
 	</header>
-	<section id="image-top-bg">
-		<div id="image-top">
-			<div>
-				<p>My Page</p>
-				<p>#마이페이지</p>
+	<section id="top-bg">
+		<div id="base-layer">
+			<div id="top-bg-textarea">
+				<p id="top-title">My Page</p>
+				<p id="top-subtitle">#마이페이지</p>
 			</div>
 		</div>
 	</section>
-	<section id="content">
-		<p>마이페이지</p>
-		<form action="#" name="joinForm" method="get">
+	<section id="content-1">
+		<p id="intro">마이페이지</p>
+		<form action="#" name="joinForm" method="get" id="content-2">
 			<div>
 				<ul>
 					<li>
 						<label>아이디</label>
 					</li>
 					<li>
-						<input type="text" name="id" value="UniqueGames" disabled>
+						<input type="text" id="input-common" name="id" value="UniqueGames" disabled>
 					</li>
 					<li>
 						<label>비밀번호</label>
 					</li>
 					<li>
-						<input type="password" name="pwd">
-						<button type="button">
-							<img src="../../images/btn_eye_normal.png">
+						<input type="password" id="input-common" name="pwd">
+						<button type="button" id="pwd-check">
+							<img src="../../images/btn_eye_normal.png" id="pwd-check-img">
 						</button>
 
 					</li>
 					<li>
-						<input type="password" name="pwd_check">
-						<button type="button">
-							<img src="../../images/btn_eye_normal.png">
+						<input type="password" id="input-common" name="pwd_check">
+						<button type="button" id="pwd-check">
+							<img src="../../images/btn_eye_normal.png" id="pwd-check-img">
 						</button>
 					</li>
 					<li>
 						<label>이름</label>
 					</li>
 					<li>
-						<input type="text" name="name" value="홍길동" disabled>
+						<input type="text" id="input-common" name="name" value="홍길동" disabled>
 					</li>
 					<li>
 						<label>이메일</label>
 					</li>
 					<li>
-						<input type="text" name="email1" value="UniqueGames">
+						<input type="text" id="input-email" name="email1" value="UniqueGames">
 						@
-						<select name="email2">
+						<select name="email2" id="selectbox-email">
 							<option value="default">naver.com</option>
 							<option value="gmail.com">gmail.com</option>
 							<option value="daum.net">daum.net</option>
@@ -68,47 +69,47 @@
 						<label>우편번호</label>
 					</li>
 					<li>
-						<input type="text" name="zip-code" value="06242" disabled>
-						<button type="button">검색</button>
+						<input type="text" id="input-email" name="zip-code" value="06242" disabled>
+						<button type="button" id="address-btn-style">검색</button>
 					</li>
 					<li>
 						<label>주소</label>
 					</li>
 					<li>
-						<input type="text" name="address1" value="서울 강남구 강남대로78길 8">
+						<input type="text" id="input-common" name="address1" value="서울 강남구 강남대로78길 8">
 					</li>
 					<li>
 						<label>상세 주소</label>
 					</li>
 					<li>
-						<input type="text" name="address2" value="한국빌딩 4F, 8F">
+						<input type="text" id="input-common" name="address2" value="한국빌딩 4F, 8F">
 					</li>
 					<li>
 						<label>휴대전화</label>
 					</li>
 					<li>
-						<select name="mobile">
+						<select name="mobile" id="selectbox-mobile">
 							<option value="default">SKT</option>
 							<option value="KT">KT</option>
 							<option value="LGU+">LGU+</option>
 							<option value="알뜰폰">알뜰폰</option>
 						</select>
-						<select name="phone1">
+						<select name="phone1" id="selectbox-phone">
 							<option value="default">010</option>
 							<option value="011">011</option>
 							<option value="012">012</option>
 						</select>
 						-
-						<input type="text" name="phone2" value="1234">
+						<input type="text" id="input-phone" name="phone2" value="1234">
 						-
-						<input type="text" name="phone3" value="5678">
+						<input type="text" id="input-phone" name="phone3" value="5678">
 					</li>
 					<li>
-						<button type="button" id="button">수정하기</button>
+						<button type="button" id="button-gradient">수정하기</button>
 					</li>
 					<li>
-						<a href="../deleteAccount/deletePwd.html">
-							<span name="withdraw">회원탈퇴 ></span>
+						<a href="../deleteAccount/deletePwd.html" id="link-deleteAccount">
+							<span name="withdraw" id="span-deleteAccount">회원탈퇴 ></span>
 						</a>
 					</li>
 				</ul>
