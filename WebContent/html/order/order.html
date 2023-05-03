@@ -25,11 +25,11 @@
 	<div>
 		<table id="order-table">
 			<tr>
-				<th id="cart-choice">선택</th>
-				<th id="cart-img">상품이미지</th>
-				<th id="cart-info">상품명</th>
-				<th id="cart-price">가격</th>
-				<th id="cart-delete">삭제</th>
+				<th>선택</th>
+				<th>상품이미지</th>
+				<th id="th-cart-info">상품명</th>
+				<th>가격</th>
+				<th>삭제</th>
 			</tr>
 			<tr>
 				<td  id="cart-choice">
@@ -42,7 +42,7 @@
 				</td>
 				<td id="cart-price">999,999,999</td>
 				<td id="cart-delete">
-					<button type="button" id="btn-style">삭제</button>
+					<button type="button" id="order-btn-delete">삭제</button>
 				</td>
 			</tr>
 		</table>
@@ -94,7 +94,7 @@
 			<th id="#order-subtitle">보낼 아이디</th>
 			<td id="member-addr">
 				<input  type="text" name="addr" id="" placeholder="선물 받을 아이디 입력하기">
-				<button type="button" id="btn-style">검색</button>
+				<button type="button" id="order-btn-search">검색</button>
 			</td>
 		</tr>
 	</table>
@@ -107,9 +107,9 @@
 				<tr>
 					<th id="payment-method">결제 안내</th>
 					<td id="payment-method">
-						<button id="button-gradient" type="button" value="카드">카드</button>
-						<button id="button-gradient" type="button" value="애플페이">Apple Pay</button>
-						<button id="button-gradient" type="button" value="삼성페이">삼성페이</button></li>
+						<button id="button-gradient" type="button" value="card">카드</button>
+						<button id="button-gradient" type="button" value="applePay">Apple Pay</button>
+						<button id="button-gradient" type="button" value="samsungPay">삼성페이</button></li>
 					</td>
 				</tr>
 				<tr>
@@ -135,15 +135,15 @@
 		<div id="payment2">
 			<table id="order-table">
 				<tr>
-					<th id="payment-price">금액</th>
+					<th id="th-payment-price">금액</th>
 					<td id="payment-price">999,999,999</td>
 				</tr>
 				<tr>
-					<th id="payment-sale">할인</th>
+					<th id="th-payment-sale">할인</th>
 					<td id="payment-sale">-</td>
 				</tr>
 				<tr>
-					<th id="payment-totalPrice">총 금액</th>
+					<th id="th-payment-totalPrice">총 금액</th>
 					<td id="payment-totalPrice">999,999,999</td>
 				</tr>
 			</table>
