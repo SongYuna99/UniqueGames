@@ -1321,4 +1321,62 @@ td {
 	background-repeat: no-repeat;
 }
 
+#tab01,
+#tab02 {
+	display: none;
+}
+
+#tab01 + label,
+#tab02 + label {
+	display: inline-block;
+	padding: 20px 59px;
+	background: rgb(243,243,243);
+	color: rgb(180,179,178);
+	font-size: 14px;
+	cursor: pointer;
+	border-bottom: 1px solid rgb(243,243,243);
+}
+
+#tab01:checked + label,
+#tab02:checked + label {
+	background: white; 
+	color: #000;
+	font-weight: bold;
+	border-bottom: white;
+}
+
+#find-id,
+#find-pwd {
+	background: #white;
+	margin: 0 auto;
+	display: none;
+	margin-top: 20px;
+
+}
+
+#tab01:checked ~ #find-id,
+#tab02:checked ~ #find-pwd {
+	display: block;
+}
+
+#intro-2 {
+	width: 394px;
+	margin: auto;
+	text-align: left;
+	font-size: 16px;
+	padding-bottom: 14px;
+}
+
+#button-gradient1 {
+	border: none;
+	width: 394px;
+	height: 60px;
+	cursor: pointer;
+	color: white;
+	background: linear-gradient(to right,#682CAD,#2FC0CC);
+	border-radius: 3px;
+	font-family: "Apex New";
+	margin-top: 20px;
+}
+
 /*****************************cmj**************************************/
