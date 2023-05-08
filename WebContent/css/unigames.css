@@ -1140,13 +1140,38 @@ td {
 
 /* public input style */
 
+/* public input  */
+#input-common {
+	width: 394px;
+	padding: 20px 0;
+	margin: 5px 0;
+	text-indent: 10px;
+	border-radius: 3px;
+	border: 1px solid lightgray;
+	outline: none;
+}
+/* public input:focus */
+#input-common:focus {
+	border: 1px solid gray;
+}
 /* join; email, zip-code input */
 #input-email {
-	width: 187px;
+	width: 130px;
 	padding: 20px 0;
 	text-indent: 10px;
 	border-radius: 3px;
 	border: 1px solid lightgray;
+	outline: none;
+	font-size: 16px;
+}
+
+/* join; email selectbox */
+#selectbox-email {
+	width: 110px;
+	padding: 22px 0 20px 0;
+	border: 1px solid lightgray;
+	text-indent: 10px;
+	border-radius: 3px;
 	outline: none;
 }
 
@@ -1155,28 +1180,43 @@ td {
 	height: 43px;
 	border-radius: 3px;
 	border: 1px solid lightgray;
+	font-size: 16px;
+}
+
+#input-address {
+	width: 325px;
+	padding: 20px 0;
+	margin: 5px 0;
+	text-indent: 10px;
+	border-radius: 3px;
+	border: 1px solid lightgray;
+	outline: none;
+	font-size: 16px;
 }
 
 
 /* page introduce */
 #intro {
-	padding: 20px 0;
 	font-family: "YouandiModern",sans-serif;
 	font-size: 24px;
+	padding-bottom: 60px;
 }
 /* detail explanation */
 #intro-1 {
 	width: 394px;
 	margin: auto;
 	text-align: left;
-	font-size: 10px;
+	font-size: 16px;
+	padding: 20px 0 14px 0;
 }
 /* public section */
 #content-1 {
 	width: 1100px;
 	margin: auto;
 	text-align: center;
+	padding: 60px 0 100px 0;
 }
+
 /*join form-id*/
 #content-2 {
 	width: 40%;
@@ -1185,7 +1225,6 @@ td {
 	padding-left: 45px;
 }
 
-/*************************���̵�,��й�ȣ,ȸ������ ��ũ**********************/
 /* login; link to find-id, find-pwd */
 #link-find {
 	background: white;
@@ -1202,7 +1241,7 @@ td {
 	font-weight: 500;
 	color: #2E7AF6;
 	text-decoration: none;
-	font-size: 11px;
+	font-size: 11pt;
 	padding: 0 8px;
 }
 /* login; link to find-id, find-pwd, sign up hover */
@@ -1223,13 +1262,7 @@ td {
 #selectbox-find:focus {
 	border: 1px solid gray;
 }
-/* join; email selectbox */
-#selectbox-email {
-	width: 187px;
-	padding: 20px 0;
-	border: 1px solid lightgray;
-	text-indent: 10px;
-}
+
 
 /* join,myPage password */
 #pwd-check {
@@ -1265,7 +1298,7 @@ td {
 #agreement-box {
 	margin: 30px 0 10px 0;
 	width: 394px;
-	font-size: 10px;
+	font-size: 10pt;
 }
 
 /* join agreement font-color */
@@ -1293,7 +1326,7 @@ td {
 /* myPage delete link*/
 #span-deleteAccount {
 	display: block;
-	font-size: 10px;
+	font-size: 10pt;
 	margin-bottom: 8px;
 	padding-left: 330px;
 }
@@ -1307,7 +1340,7 @@ td {
 	color: #FFFFFF;
 	font-size: 14px;
 	cursor: pointer;
-	margin-left: 15px;
+	margin: 0 8px;
 }
 
 /* join checkbox agreement*/
@@ -1371,7 +1404,7 @@ td {
 
 #find-id,
 #find-pwd {
-	background: white;
+	background: #white;
 	margin: 0 auto;
 	display: none;
 	margin-top: 20px;
