@@ -3,20 +3,22 @@
 <head>
   <title>개발사 후원페이지</title>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" href="../../css/unigames.css">
+  <link href="#" rel="canonical" />
+  <link rel="stylesheet" href="../login/login_css.css">
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script> <!-- 마이크로소프트 jQuery-->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="HandheldFriendly" content="true"/>
   <meta name="apple-mobile-web-app-capable" content="YES"/>
 
   <style>
 
     #product-price {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
       font-size: 18px !important;
       padding-bottom: 20px;
       text-align: left;
-      border-top: 1px solid rgba(255,255,255,0.0);
+      border-top: 1px solid rgba(255,255,255,0.1);
       border-bottom: 0;
       float: none;
       padding-top: 20px;
@@ -60,13 +62,7 @@
     .detail-gallery .item:first-child{
       margin-left:0;
     }
-    .input-inline {
-      display: flex;
-      justify-content: center;
-    }
-    .input-inline button:not(:last-child) {
-      margin-right: 10px;
-    }
+
     .detail-gallery .item img{
       width:144px;
       height:81px;
@@ -80,17 +76,7 @@
       padding:0;
       text-align:center;
     }
-    .donation-amount {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 13px;
-      font-weight:bold;
-    }
 
-    .donation-amount .don-amount{
-      color: #623BB0;
-    }
     .detail-gallery .active img{
       margin:0;
       padding:0;
@@ -189,24 +175,18 @@
     }
 
     .vm-product-details-container .product-info{
-      border-top: 1px solid rgba(255,0,0,0.1);
+      border-top: 1px solid rgba(255,255,255,0.1);
       border-bottom: 0;
       float: none;
       padding-top: 20px;
       padding-bottom: 0;
     }
     .vm-product-details-container .vmproduct-link{
-      border-top: 1px solid rgba(255,0,0,0.1);
-      border-bottom:1px solid rgba(255,0,0,0.1);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      border-bottom:1px solid rgba(255,255,255,0.1);
       float: none;
       padding-top: 20px;
       padding-bottom: 20px;
-    }
-
-    .vm-product-details-container .vmproduct-link button{
-      border-width: 2px;
-      border-style: solid;
-      border-image: linear-gradient(to right,#682CAD,#2FC0CC) 1;
     }
 
     .vm-product-container .right .product-share-container{
@@ -229,7 +209,6 @@
       font-size:14px;
       vertical-align:top;
       font-weight:bold;
-      color: #2B2B2B;
     }
 
     .vm-display .vm-value{
@@ -240,19 +219,9 @@
       max-width:180px;
       width:180px;
       overflow:hidden;
-      color:#838383;
     }
 
-    .vm-price-desc{
-      margin: 2px 0 0 0;
-      padding:0;
-      width:60px;
-      display:inline-block;
-      font-size:14px;
-      vertical-align:top;
-      font-weight:bold;
-      color: #2B2B2B;
-    }
+
     .product-description h5{
       font-size:16px;
       font-weight:bold;
@@ -279,9 +248,7 @@
 
     img {
       border: 0;
-      vertical-align: middle;
-      overflow-clip-margin: content-box;
-      overflow: clip;
+      vertical-align: middle
     }
 
     button {
@@ -313,46 +280,19 @@
       box-sizing: border-box
     }
 
-    .docs-section .page-header {
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      margin: -20px -20px 20px -20px;
-      padding-bottom: 0
+
+    html {
+      font-size: 10px;
     }
 
-    .page-header h1{
-      color: inherit;
-      font-size: 13px;
-      letter-spacing: 0.5px;
+    body {
       margin: 0;
-      padding: 20px 32px 20px 0;
-      text-transform: uppercase;
-      position: relative;
-      display: inline-block;
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-size: 14px;
+      line-height: 1.42857143;
+      color: #ffffff;
+      background-color: #1f252d;
     }
-
-    .page-header h2 {
-      color: inherit;
-      font-size: 13px;
-      letter-spacing: 0.5px;
-      margin:  0;
-      padding:40px 20px 0;
-      text-transform: uppercase;
-      position: relative;
-      display: inline-block;
-    }
-    .docs-section .page-header h1 {
-      margin: 0;
-      line-height: normal;
-      padding-right: 0;
-      margin-left: 20px
-    }
-    .page-header {
-      padding-bottom: 9px;
-      margin: 40px 0 20px;
-      border-bottom: 1px solid #eeeeee
-    }
-
-
 
     input,button,select,textarea {
       font-family: inherit;
@@ -422,6 +362,7 @@
       margin-right: -16px
     }
 
+
     .btn {
       display: inline-block;
       margin-bottom: 0;
@@ -456,7 +397,7 @@
       background-color: #f0ad4e;
       border-color: #eea236;
       color: #ffffff;
-      background: linear-gradient(to right,#682CAD,#2FC0CC);
+      background: linear-gradient(#f0ad4e,#eea236);
       border: 1px solid #eea236;
       box-shadow: 0 0 1px rgba(255,255,255,0.2) inset
     }
@@ -489,17 +430,17 @@
 
     .nav-tabs > li {
       float: left;
-      margin-bottom: -1px;
+      margin-bottom: -1px
     }
 
     .nav-tabs > li > a:hover {
-      border-color: rgba(0, 71, 241, 0.65) rgba(0, 71, 241, 0.65) rgba(0, 71, 241, 0.65)
+      border-color: #eeeeee #eeeeee #dddddd
     }
 
     .nav-tabs > li.active > a,.nav-tabs > li.active > a:hover,.nav-tabs > li.active > a:focus {
-      color: rgba(255, 255, 255, 1);
-      background: linear-gradient(to right,#682CAD,#2FC0CC);
-      border: 1px solid rgba(255, 255, 255, 0);
+      color: #555555;
+      background-color: #1b2838;
+      border: 1px solid #dddddd;
       border-bottom-color: transparent;
       cursor: default
     }
@@ -577,7 +518,9 @@
                     <div class="item screenshot_thumbnail" style='cursor:pointer'>
                       <img src="../../images/img_game_thumbnail_2_500240.png" data-type="image/jpeg" data-url="<img src='../../images/img_game_thumbnail_2_500240.png'>" itemprop="thumbnailUrl">
                     </div>
-
+                    <div class="item screenshot_thumbnail" style='cursor:pointer'>
+                      <img src="../../images/img_game_thumbnail_3_260180.png" data-type="image/png" data-url="<img src='../../images/img_game_thumbnail_3_260180.png'>" itemprop="thumbnailUrl">
+                    </div>
                   </div>
                 </div>
               </div>
@@ -631,25 +574,19 @@
 
                             </div>
 
-                            <div id="product-price2" style="padding-top:10px">
+                            <div id="product-price" style="padding-top:10px">
                               <div class="PricebasePrice vm-display vm-price-value">
-                                <span class="vm-price-desc" >제작 </span>
-                                <span class="PricebasePrice" ><a href="company.html" style="font: italic normal 900 18px Apex New; letter-spacing: 0px;color: #1c2025">CGD(Crazy Game Dog) Team</a>
-                                  </span>
+                                <span class="vm-price-desc">정상가 </span>
+                                <span class="PricebasePrice" style="font-weight:normal;font-size:13px">127,900 원</span>
                               </div>
                               <span class="price-crossed" ></span>
-<!--                              <div class="PricesalesPrice vm-display vm-price-value" style="text-align: center">-->
-<!--                                <a class="PricebasePrice" href="#" style="color: deepskyblue">-->
-<!--                                  <IMG src="../../images/btn_boardSearch_normal.png">제작팀 소개 바로가기-->
-<!--                                </a>-->
-<!--                              </div>-->
+                              <div class="PricesalesPrice vm-display vm-price-value" >
+                                <span class="vm-price-desc">판매가 </span>
+                                <span class="PricesalesPrice" style="color:#f0ad4e">27,900</span> <span>원</span>
+                              </div>
                             </div>
 
                             <div class="product-info">
-                              <div class="vm-display">
-                                <span class="vm-desc">제작기간 </span>
-                                <span class="vm-value">18개월 15일</span>
-                              </div>
                               <div class="vm-display">
                                 <span class="vm-desc">지원모드 </span>
                                 <span class="vm-value">싱글 플레이</span>
@@ -665,7 +602,11 @@
                               </div>
                               <div class="vm-display">
                                 <span class="vm-desc">퍼블리셔 </span>
-                                <span class="vm-value" >HandyGames</span>
+                                <span class="vm-value" ><a href="game_thumb.html?search_publisher=88">HandyGames</a></span>
+                              </div>
+                              <div class="vm-display">
+                                <span class="vm-desc">개발사 </span>
+                                <span class="vm-value">유니크인디게임즈</span>
                               </div>
                               <div class="vm-display">
                                 <span class="vm-desc">플랫폼 </span>
@@ -679,28 +620,15 @@
                                 <span class="vm-desc">게임패드 </span>
                                 <span class="vm-value">지원함</span>
                               </div>
-
-
-<!--                              <div id="etc" style="width:100%;max-width:300px;">-->
-<!--                                <img src="../../images/btn_boardSearch_normal.png">-->
-<!--                                <img src='../../images/btn_check_normal.png'/><img src='../../images/btn_eye_select.png'/>																	</div>-->
+                              <div id="etc" style="width:100%;max-width:300px;">
+                                <img src="../../images/btn_boardSearch_normal.png">
+                                <img src='../../images/btn_check_normal.png'/><img src='../../images/btn_eye_select.png'/>																	</div>
 
                             </div>
 
                             <div class="vmproduct-link" style="text-align:center">
-                              <div class="donation-amount">
-                                <span class="label">목표금액</span>
-                                <span class="amount">100,000,000원</span>
-                              </div>
-                              <div class="donation-amount" style="margin-bottom: 30px">
-                                <span class="label">후원금액</span>
-                                <span class="don-amount">1,000,000원</span>
-                              </div>
-                              <button type="button" class="btn btn-default btn-lg" id="btn_wishlist" data="50004122" style="width: 90px;">
-                                <img src="../../images/btn_like_select.png">
-                                Like</button>
-                              <button type="button" class="btn btn-warning btn-lg" id="btn_donate" data="50004122" data-assetid="3402" data-prodtp="1" style="width: 150px">후원하기</button>
-
+                              <button type="button" class="btn btn-warning btn-lg" id="btn_donate" data="50004122" data-assetid="3402" data-prodtp="1">후원하기</button>
+                              <button type="button" class="btn btn-default btn-lg" id="btn_wishlist" data="50004122">찜리스트</button>
                             </div>
                           </div>
                         </div>
@@ -716,10 +644,10 @@
               <div class="product-share-container">
                 <div class="docs-section">
                   <div class="page-header">
-                    <h2 style="font-size:16px;text-indent:130px">공유하기</h2>
+                    <h2 style="font-size:16px;text-indent:20px">공유하기</h2>
                   </div>
                   <div class="row">
-                    <div class="input-inline" style="align-content: center ">
+                    <div class="input-inline">
                       <button type="button" class="btn" id="btn_facebook" style="background:#4e69a2;color:#ffffff;font-size:13px"><i class="fa fa-facebook" style="background:#4e69a2;color:#ffffff"></i> 페이스북</button>
                       <button type="button" class="btn" id="btn_twitter" style="background:#319de1;color:#ffffff;font-size:13px"><i class="fa fa-twitter" style="background:#319de1;color:#ffffff"></i> 트위터</button>
                       <button type="button" class="btn" id="btn_google" style="background:#df513f;color:#ffffff;font-size:13px"><i class="fa fa-google-plus" style="background:#df513f;color:#ffffff"></i> 구글+</button>
