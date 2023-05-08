@@ -20,7 +20,7 @@ ol,ul,li {
 /* base */
 
 #content, #board-list, table ,
-#section_cart, #section_member, #section_payment, #section_price {
+#section_cart, #section_member, #section_payment, #section_price, order-complete-d1 {
 	width: 1100px;
 	margin: auto;
 }
@@ -866,6 +866,17 @@ td#payment-totalPrice {
 	margin-top: 100px;
 	width: 1100px;	height: 200px;
 	text-align: center;
+}
+
+#order-complete-d1 {
+	height: 600px;
+	text-align: center;
+}
+
+#order-complete-d1 p {
+	padding: 200px 0 100px 0;
+	font-size: 30px;
+	font-weight: bold;
 }
 
 /** board style **/
