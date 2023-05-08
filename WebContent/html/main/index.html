@@ -4,30 +4,116 @@
     <meta charset="UTF-8">
     <title>Unique Games</title>
     <link rel="stylesheet" href="../../css/unigames.css">
+
+    <style>
+        .slide__conatiner {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .slide__list {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        float: left;
+        height: 660px;
+        border: 1px solid black;
+        box-sizing: border-box;
+      }
+      #slide1 {
+        background-image: url( ../../images/img_main_01.png);
+        background-size: cover;
+      }
+      #slide2 {
+        background-image: url( ../../images/img_main_02.png);
+        background-size: cover;
+      }
+      #slide3 {
+        background-image: url( ../../images/img_main_03.png);
+        background-size: cover;
+      }
+      #slide4 {
+        background-image: url( ../../images/img_main_04.png);
+        background-size: cover;
+      }
+      /* btn control */
+      .slide__controler {
+        position: absolute;
+        top: 300px;
+        left: 300px;
+        z-index: 1;
+      }
+      .slide__controler2 {
+        position: absolute;
+        top: 300px;
+        right: 300px;
+        z-index: 1;
+      }
+      .btn__next {
+        background-color: rgba( 255, 255, 255, 0 );
+        border: none;
+      }
+      .slide__controler button {
+        position:absolute;
+        background-color: rgba( 255, 255, 255, 0 );
+        border: none;
+      }
+      </style>
 </head>
 <body>
     <iframe src="./header.html" scrolling="no" width="100%" height="228px" frameborder=0></iframe>
-    <section id="content-main">  
-        <div id="menu-slider">
-            <div id="slides-1-bg">
-                <div id="slide-1">
-                    <h2>내 손안에서 깨어난 새로운 리듬</h2>
-                    <h1>New Game of Music</h1>
-                    <p>새로운 감각의 New RPG 뉴게임오브뮤직</p>
-                    <a href="#"><button id="btn-main-style" type="button">자세히보기</button></a>
-                </div>
-                <div>
-                    <a href="#"><button id="btn-style-main-left" type="button"><img src="../../images/btn_main-arrow_left.png"></button></a>
-                    <a href="#"><button id="btn-style-main-right" type="button"><img src="../../images/btn_main-arrow_right.png"></button></a>
-                </div>
-                
+    <div class="slide__conatiner">
+        <div class="slide__list">
+          <div class="slide" id="slide1">
+            <div id="slide-text">
+                <h2>내 손안에서 깨어난 새로운 리듬</h2>
+                <h1>New Game of Music</h1>
+                <p>새로운 감각의 New RPG 뉴게임오브뮤직</p>
+                <a href="#"><button id="btn-main-style" type="button">자세히보기</button></a>
             </div>
+          </div>
+          <div class="slide" id="slide2">
+            <div id="slide-text">
+                <h2>지금까지 존재하지 않은 RPG</h2>
+                <h1>Dead Lift 550</h1>
+                <p>참고로 전 605</p>
+                <a href="#"><button id="btn-main-style" type="button">자세히보기</button></a>
+            </div>
+          </div>
+          <div class="slide" id="slide3">
+            <div id="slide-text">
+                <h2>모니터를 통해 보여주는 이세계의 모험</h2>
+                <h1>Morning Star Desert</h1>
+                <p>조선을 배경으로하는 사극 판타지 RPG</p>
+                <a href="#"><button id="btn-main-style" type="button">자세히보기</button></a>
+            </div>
+          </div>
+          <div class="slide" id="slide4">
+            <div id="slide-text">
+                <h2>이 세상 게임이 아니다</h2>
+                <h1>Life Standing</h1>
+                <p>살기 위해 오늘도 길을 나선다 탐험 액션</p>
+                <a href="#"><button id="btn-main-style" type="button">자세히보기</button></a>
+            </div>
+          </div>
         </div>
-    </section>
+    
+        <div class="slide__controler">
+            <button class="btn__prev"><img src="../../images/btn_main-arrow_left.png"></button>
+        </div>
+        <div class="slide__controler2">
+            <button class="btn__next"><img src="../../images/btn_main-arrow_right.png"></button>
+        </div>
+    </div>
     <img id="topGame-title" src="../../images/imt_title_top.png" width="135px" height="32px">
     <div id="menu-topGame">
         <div id="topGameList">
-            <div id="tList1">
+            <div id="tList">
                 <img alt="#" src="../../images/img_game_thumbnail_1_500240.png" width="500px" height="240px">
                 <div>
                     <p>1</p>
@@ -36,7 +122,7 @@
                     <button id="readmore-plus" type="button"><img src="../../images/btn_plus_normal.png" width="30px" height="30px"></button>
                 </div>
             </div>
-            <div id="tList2">
+            <div id="tList">
                 <img alt="#" src="../../images/img_game_thumbnail_2_500240.png" width="500px" height="240px">
                 <div>
                     <p>2</p>
@@ -45,7 +131,7 @@
                     <button id="readmore-plus" type="button"><img src="../../images/btn_plus_normal.png" width="30px" height="30px"></button>
                 </div>
             </div>
-            <div id="tList2">
+            <div id="tList">
                 <img alt="#" src="../../images/img_game_thumbnail_3_500240.png" width="500px" height="240px">
                 <div>
                     <p>3</p>
@@ -61,7 +147,7 @@
         <p id="subTitle">#최근 반응이 좋은</p>
         <div id="menu-recommendations">
             <div id="recommendList">
-                <div id="rList1">
+                <div id="rList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>Hot</li>
@@ -73,7 +159,7 @@
                         <button id="btn-recommend-style" type="button">자세히보기</button>
                     </div>
                 </div>
-                <div id="rList2">
+                <div id="rList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>Hot</li>
@@ -85,7 +171,7 @@
                         <button id="btn-recommend-style" type="button">자세히보기</button>
                     </div>
                 </div>
-                <div id="rList3">
+                <div id="rList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>Hot</li>
@@ -97,7 +183,7 @@
                         <button id="btn-recommend-style" type="button">자세히보기</button>
                     </div>
                 </div>
-                <div id="rList4">
+                <div id="rList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>Hot</li>
@@ -115,8 +201,8 @@
     <section id="menu-main2">
         <img id="allList-title" src="../../images/img_title_AllList.png" width="100px" height="24px">
         <div id="menu-allList">
-            <div id="gameList1">
-                <div id="gList1">
+            <div id="gameList">
+                <div id="gList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
@@ -126,7 +212,7 @@
                         <li><img src="../../images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
-                <div id="gList2">
+                <div id="gList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
@@ -136,7 +222,7 @@
                         <li><img src="../../images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
-                <div id="gList3">
+                <div id="gList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
@@ -146,49 +232,7 @@
                         <li><img src="../../images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
-                <div id="gList4">
-                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
-                    <ul>
-                        <li>New Game of Music</li>
-                        <li>Action RPG</li>
-                        <li><button id="btn-like-style" type="button"></button></li>
-                        <li>number</li>
-                        <li><img src="../../images/img_icon_rPc.png"></li>
-                    </ul>
-                </div>
-            </div>
-            <div id="gameList2">
-                <div id="gList1">
-                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
-                    <ul>
-                        <li>New Game of Music</li>
-                        <li>Action RPG</li>
-                        <li><button id="btn-like-style" type="button"></button></li>
-                        <li>number</li>
-                        <li><img src="../../images/img_icon_rPc.png"></li>
-                    </ul>
-                </div>
-                <div id="gList2">
-                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
-                    <ul>
-                        <li>New Game of Music</li>
-                        <li>Action RPG</li>
-                        <li><button id="btn-like-style" type="button"></button></li>
-                        <li>number</li>
-                        <li><img src="../../images/img_icon_rPc.png"></li>
-                    </ul>
-                </div>
-                <div id="gList3">
-                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
-                    <ul>
-                        <li>New Game of Music</li>
-                        <li>Action RPG</li>
-                        <li><button id="btn-like-style" type="button"></button></li>
-                        <li>number</li>
-                        <li><img src="../../images/img_icon_rPc.png"></li>
-                    </ul>
-                </div>
-                <div id="gList4">
+                <div id="gList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
@@ -199,8 +243,8 @@
                     </ul>
                 </div>
             </div>
-            <div id="gameList3">
-                <div id="gList1">
+            <div id="gameList">
+                <div id="gList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
@@ -210,7 +254,7 @@
                         <li><img src="../../images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
-                <div id="gList2">
+                <div id="gList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
@@ -220,7 +264,7 @@
                         <li><img src="../../images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
-                <div id="gList3">
+                <div id="gList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
@@ -230,49 +274,7 @@
                         <li><img src="../../images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
-                <div id="gList4">
-                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
-                    <ul>
-                        <li>New Game of Music</li>
-                        <li>Action RPG</li>
-                        <li><button id="btn-like-style" type="button"></button></li>
-                        <li>number</li>
-                        <li><img src="../../images/img_icon_rPc.png"></li>
-                    </ul>
-                </div>
-            </div>
-            <div id="gameList4">
-                <div id="gList1">
-                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
-                    <ul>
-                        <li>New Game of Music</li>
-                        <li>Action RPG</li>
-                        <li><button id="btn-like-style" type="button"></button></li>
-                        <li>number</li>
-                        <li><img src="../../images/img_icon_rPc.png"></li>
-                    </ul>
-                </div>
-                <div id="gList2">
-                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
-                    <ul>
-                        <li>New Game of Music</li>
-                        <li>Action RPG</li>
-                        <li><button id="btn-like-style" type="button"></button></li>
-                        <li>number</li>
-                        <li><img src="../../images/img_icon_rPc.png"></li>
-                    </ul>
-                </div>
-                <div id="gList3">
-                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
-                    <ul>
-                        <li>New Game of Music</li>
-                        <li>Action RPG</li>
-                        <li><button id="btn-like-style" type="button"></button></li>
-                        <li>number</li>
-                        <li><img src="../../images/img_icon_rPc.png"></li>
-                    </ul>
-                </div>
-                <div id="gList4">
+                <div id="gList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
@@ -283,8 +285,8 @@
                     </ul>
                 </div>
             </div>
-            <div id="gameList5">
-                <div id="gList1">
+            <div id="gameList">
+                <div id="gList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
@@ -294,7 +296,7 @@
                         <li><img src="../../images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
-                <div id="gList2">
+                <div id="gList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
@@ -304,7 +306,7 @@
                         <li><img src="../../images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
-                <div id="gList3">
+                <div id="gList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
@@ -314,7 +316,7 @@
                         <li><img src="../../images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
-                <div id="gList4">
+                <div id="gList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
@@ -325,8 +327,8 @@
                     </ul>
                 </div>
             </div>
-            <div id="gameList6">
-                <div id="gList1">
+            <div id="gameList">
+                <div id="gList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
@@ -336,7 +338,7 @@
                         <li><img src="../../images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
-                <div id="gList2">
+                <div id="gList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
@@ -346,7 +348,7 @@
                         <li><img src="../../images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
-                <div id="gList3">
+                <div id="gList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
@@ -356,7 +358,49 @@
                         <li><img src="../../images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
-                <div id="gList4">
+                <div id="gList">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="gameList">
+                <div id="gList">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList">
+                    <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <ul>
+                        <li>New Game of Music</li>
+                        <li>Action RPG</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li>number</li>
+                        <li><img src="../../images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+                <div id="gList">
                     <img src="../../images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
@@ -416,5 +460,103 @@
         </div>
     </section>
     <iframe src="./footer.html" scrolling="no" width="100%" height="646px" frameborder=0></iframe>
+    <script>
+        // DOM 변수
+        const contanier = document.querySelector('.slide__contanier');
+        const list = document.querySelector('.slide__list');
+        const slide = document.querySelectorAll('.slide');
+        const nextBtn = document.querySelector('.btn__next');
+        const prevBtn = document.querySelector('.btn__prev');
+
+        // slide 구현 변수
+        const transitionTime = 200;
+        let currentIndex = 0;
+        let newIndex = slide.length + 2;
+        let newWidth = 100 / newIndex;
+
+        // 실행, 함수호출
+        setLayout();
+
+        // 복제부를 배치하고 초기값을 설정한다.
+        function setLayout() {
+        // 복제부 영역을 더한 총 길이를 설정
+        list.style.width = `${100 * newIndex}%`;
+        // 복제부 추가
+        //  Node.cloneNode() 메서드는 이 메서드를 호출한 Node의 복제된 Node를 반환한다
+        //  text node까지 복제
+        let fristclone = slide[0].cloneNode(true);
+        let lastclone = slide[slide.length - 1].cloneNode(true);
+
+        // list 마지막에 복제한 1을 붙이고
+        // list 처음에 복제한 4을 붙인다.
+        list.appendChild(fristclone);
+        list.prepend(lastclone);
+
+        // 복제부를 포함한 모든 슬라이드를 배열에 담고 너비값을 준다.
+        const newSlide = document.querySelectorAll('.slide');
+
+        //100%를 슬라이드 수 만큼 나눈 값
+        for (value of newSlide) {
+            value.style.width = `${newWidth}%`;
+        }
+
+        //복제되어 index 0 이 "4"가 된 상태라 1을 보여주기 위해
+        // 슬라이드 하나만큼 이동함
+        currentIndex = 1;
+        list.style.transform = `translateX(-${newWidth * currentIndex}%)`;
+        }
+
+        // 이벤트 리스너 등록
+        // next btn
+        nextBtn.addEventListener('click', () => {
+        // 트렌지션 등록
+        list.style.transition = `${transitionTime}ms`;
+
+        //클릭할때마다 인덱스가 증가
+        currentIndex++;
+        //   console.log(currentIndex);
+
+        // slide 갯수보다 많이 클릭했을 때 체크
+        if (currentIndex == slide.length + 1) {
+            // 복제본으로 간다.
+            list.style.transform = `translateX(-${newWidth * currentIndex}%)`;
+
+            //복제본1로 간다(애니메이션 노출) -> index 1로 리셋 -> 200ms경과
+            // 트랜지션 숨김 -> 1로 이동 (reset() 실행문)
+
+            currentIndex = 1;
+            // 복제본으로 가고 다시 처음으로 가는 초기화 함수.
+            reset();
+        } else {
+            list.style.transform = `translateX(-${newWidth * currentIndex}%)`;
+        }
+        });
+
+        // prev btn
+        prevBtn.addEventListener('click', () => {
+        // 트랜지션 등록
+        list.style.transition = `${transitionTime}ms`;
+        // 인덱스 감소
+        currentIndex--;
+        // 인덱스가 0이하일 떄 (복제한 4에 있을 때)
+        if (currentIndex <= 0) {
+            list.style.transform = `translateX(-${newWidth * currentIndex}%)`;
+
+            //복제본4로 간다(애니메이션 노출) -> index4 로 리셋 -> 200ms경과
+            // 트랜지션 숨김 -> 4로 이동 (reset() 실행문)
+
+            currentIndex = 4;
+            reset();
+        } else {
+            list.style.transform = `translateX(-${newWidth * currentIndex}%)`;
+        }
+        });
+        function reset() {
+        setTimeout(() => {
+            list.style.transition = `none`;
+            list.style.transform = `translateX(-${newWidth * currentIndex}%)`;
+        }, transitionTime);
+        }
+      </script>
 </body>
 </html>
