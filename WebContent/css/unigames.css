@@ -699,6 +699,15 @@ td#cart-info {
 	width: 70px;
 }
 
+#div-present {
+	margin-bottom: 30px;
+	display: none;
+}
+
+#section_payment a {
+	cursor: pointer;
+}
+
 /* search button size */
 #order-btn-search {
 	margin: 10px 0;
