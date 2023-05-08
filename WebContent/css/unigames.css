@@ -1068,6 +1068,63 @@ td {
 	clear: both;
 }
 
+/* comment */
+#comment-box {
+	margin: 10px 0;
+	padding: 10px;
+	/* border-top: 2px solid #393939; */
+	border-bottom: 2px solid #393939;
+}
+
+#form-control {
+	display: block;
+	font-size: 14px;
+	border: 1px solid #DDDDDD;
+	padding: 12px 16px;
+	margin: auto;
+	width: 1000px;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: 4px;
+	resize: vertical;
+  }
+
+#comment1 {
+	border-top: 1px solid #C5C9D3;
+	padding: 10px 5px;
+}
+
+#comment-write {
+	margin: 5px;
+}
+
+#comment-write>button {
+	margin-top: 5px;
+	position: relative;
+	left: 972px;
+}
+
+#user-name {
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+#msg-date {
+	font-size: 14px;
+	padding-right: 5px;
+	border-right: 1px solid #DDDDDD;
+}
+
+#report {
+	font-size: 14px;
+	padding-left: 5px;
+	cursor: pointer;
+}
+
 /* deleteAccount */
 #button-gradient-delete {
 	border: none;
@@ -1347,7 +1404,7 @@ td {
 
 #find-id,
 #find-pwd {
-	background: #white;
+	background: white;
 	margin: 0 auto;
 	display: none;
 	margin-top: 20px;
