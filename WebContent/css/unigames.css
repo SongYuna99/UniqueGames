@@ -1400,3 +1400,33 @@ td {
 }
 
 /*****************************cmj**************************************/
+
+/* Agreement */
+#div-agreementTitle {
+	margin: 0px 0px 30px 0px;
+	
+	text-align: center;
+	font-family: "Apex New";
+	font-size: 20px;
+}
+
+#div-agreement {
+	text-align: center;
+	vertical-align: center;
+}
+
+#div-agreementContent {
+	border: 2px solid lightgray;
+	width: 400px;	
+	margin: auto;
+	padding: 15px;
+	font-family: "YouandiModern", sans-serif;
+	font-size: 15px;
+	
+}
+
+#div-agreementButton button#button-gradient {
+	margin-top: 20px;
+	width: 250px;
+	font-size: 20px;
+}

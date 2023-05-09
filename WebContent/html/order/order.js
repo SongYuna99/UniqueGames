@@ -52,7 +52,7 @@ $(document).ready(function (){
     $("a").click(function (){
         let id = $(this).attr("id");
 
-        window.open(id+".html", "_blank");
+        window.open("../agreement/"+id+".html", "_blank", "width=500, height=700, scrollbars=yes, resizable=no, fullscreen=no");
     });
 
 });

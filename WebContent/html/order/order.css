@@ -1,0 +1,545 @@
+/**************************************
+			commons
+**************************************/
+*{
+	margin
+}
+
+#order-title {
+	padding: 80px 0 10px 0;
+	margin-bottom: 10px;
+	width: 1100px;
+	border-bottom: 3px solid #393939;
+	
+    font-family:"YouandiModern", sans-serif;
+    font-size: 23px;
+    letter-spacing: 0px;
+	color: #2B2B2B;
+}
+
+#order-subtitle {
+	padding: 0 0 5px 0;
+	width: 1100px;
+
+	font-family:"YouandiModern";
+	font-size: 16px;
+	letter-spacing: 0px;
+	color: #000000;
+	opacity: 1;
+}
+
+.btn_payment {
+	width: 100px;		height: 40px;
+	margin-right: 10px;
+	background: linear-gradient(45deg, #682CAD, #2FC0CC);
+	
+	border: none;
+	font-family:"YouandiModern", sans-serif;
+	font-size: 14px;
+	letter-spacing: 0px;
+	color: #FFFFFF;
+	opacity: 1;
+	cursor: pointer;
+}
+
+/**************************************
+			section commons
+**************************************/
+
+#section_cart, #section_member, #section_payment {
+	margin: auto;
+	width: 1100px;
+}
+
+#section_cart table, #section_member table, #section_payment table,
+#section_payment div.payment_info {
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	border: 2px solid #DDDDDD;
+	opacity: 1;
+	border-collapse: collapse;
+	margin: auto;
+	margin-bottom: 50px;
+	width: 100%;
+	
+	text-align: center;
+}
+
+#section_cart table th, #section_member table th, #section_payment table th {
+	border-bottom: 2px solid #DDDDDD;
+	padding: 8px 0;
+
+	font-family:"YouandiModern";
+	font-size:  16px;
+	letter-spacing: 0px;
+	color: #000000;
+	opacity: 1;
+	text-align: center;
+}
+
+#section_cart table td, #section_member table td, #section_payment table td {
+	border-bottom: 2px solid #DDDDDD;
+
+	font-family:"YouandiModern";
+	font-size:14px;
+	letter-spacing: 0px;
+	color: #A9A9A9;
+	opacity: 1;
+	text-align: left;
+}
+
+/**************************************
+			section_top
+**************************************/
+
+#section_top > div {
+	margin-top: -5px;
+	width: 100%;		height:229px;
+	background-image: url("http://localhost:9000/test/images/img_bg.png");
+	
+	text-align: center;
+}
+
+#section_top > div > div {
+	width: 1100px;		height: 100%;
+	margin: auto;
+	padding: 50px 0;
+	
+	text-align: left;
+}
+
+#section_top > div > div h1 {
+	text-align: left;
+	font: italic normal 900 32px/58px "Apex New";
+	letter-spacing: 0px;
+	color: #FFFFFF;
+	opacity: 1;
+}
+
+#section_top > div > div h2 {
+	margin-top: -30px;
+	
+	text-align: left;
+	font-family:"YouandiModern";
+	font-size: 20px;
+	letter-spacing: 0px;
+	color: #FFFFFF;
+	opacity: 0.6;
+}
+
+
+
+
+/**************************************
+			section_cart
+**************************************/
+
+#section_cart table td {
+	height: 110px;
+}
+
+#section_cart table td:nth-child(3){
+	padding-left: 8px;
+	text-align: left;
+
+	font-family:"YouandiModern";
+	font-size: 15px;
+	letter-spacing: 0px;
+	color: #000000;
+	opacity: 1;
+}
+
+#section_cart table th:nth-child(1),
+#section_cart table td:nth-child(1) {
+	width: 55px;
+	text-align: center;
+}
+#section_cart table th:nth-child(2), #section_cart table td:nth-child(2),
+#section_cart table th:nth-child(5), #section_cart table td:nth-child(5),
+#section_cart table th:nth-child(7), #section_cart table td:nth-child(7) {
+	width: 110px;
+	text-align: center;
+}
+#section_cart table th:nth-child(3), #section_cart table td:nth-child(3){
+	width: 300px;
+}
+#section_cart table th:nth-child(4), #section_cart table td:nth-child(4){
+	width: 210px;
+	text-align: center;
+}
+#section_cart table th:nth-child(6), #section_cart table td:nth-child(6){
+	width: 125px;
+	text-align: center;
+}
+
+#section_cart div table tr:nth-child(2) td > input[type='checkbox'] {
+	width: 20px;	height: 20px;
+	appearance: none;
+	border: 2px solid #959595;
+	border-radius: 0px;
+	
+    cursor: pointer;
+}
+#section_cart div table tr:nth-child(2) td > input[type='checkbox']:checked {
+	/*appearance: ;*/
+}
+
+.img_product {
+	width: 80px;		height: 80px;
+	outline: none;
+	background: #E6E6E6 0% 0% no-repeat padding-box;
+	border: none;
+	opacity: 1;
+}
+
+#section_cart table td:nth-child(4), #section_cart table td:nth-child(6){
+	padding: 0 20px;
+	
+	text-align: center;
+	font-family:"YouandiModern";
+	font-size: 15px;
+	letter-spacing: 0px;
+	color: #000000;
+	opacity: 1;
+	text-decoration: none;
+	word-break: keep-all;
+}
+#section_cart a {
+	text-align: left;
+	font-family:"YouandiModern";
+	font-size: 15px;
+	letter-spacing: 0px;
+	color: #000000;
+	opacity: 1;
+	text-decoration: none;
+}
+#section_cart a:hover {
+	text-decoration: underline;
+}
+
+#section_cart p:nth-child(2) {
+	height: 50px;
+		
+	text-align: left;
+	font-family:"YouandiModern";
+	font-size: 13px;
+	letter-spacing: 0px;
+	color: #A8A8A8;
+	opacity: 1;
+}
+
+#div_qty {
+	width: 100px;		height: 28px;
+	border: 2px solid #393939;
+}
+
+input[name="input_qty"] {
+	vertical-align: top;
+	width: 30px;
+	border: none;
+	background: none;
+	outline: none;
+	
+	text-align: center;
+	font-family:"YouandiModern";
+	font-size: 15px;
+	letter-spacing: 0px;
+	color: #000000;
+}
+
+.btn_plus {
+	width: 30px;		height: 28px;
+	border: none;
+	background-image: url("http://localhost:9000/test/images/btn_numberPlus_normal.png");
+	background-size: cover;
+	cursor: pointer;
+}
+
+.btn_minus {
+	width: 30px;		height: 28px;
+	border: none;
+	background-image: url("http://localhost:9000/test/images/btn_numberminus_normal.png");
+	cursor: pointer;
+}
+
+.btn_delete {
+	width: 50px;		height: 26px;
+	background: #393939 0% 0% no-repeat padding-box;
+	border-radius: 5px;
+	
+	text-align: center;
+	font-family:"YouandiModern";
+	font-size: 13px;
+	letter-spacing: 0px;
+	color: #FFFFFF;
+	opacity: 1;
+	
+	cursor: pointer;
+}
+
+/**************************************
+			section_member
+**************************************/
+
+#section_member table th {
+	width: 10%;		height: 56px;
+}
+
+#section_member table td {
+	width: 80%;
+
+	text-align: left;
+}
+
+#section_member div.member_rdo {
+	position: relative;
+	width: 100%;		height: 40px;
+}
+#section_member div.member_rdo h2 {
+	position: absolute;
+	width: 200px;
+	top: 0px;		left: 0px;
+}
+#section_member div.member_rdo input[type='checkbox'] {
+	position: absolute;
+	width: 1rem;	height: 1rem;
+	top: 15px;		right: 155px;
+	border: 2px solid #2C2C2C;
+	border-radius: 50%;
+	
+	appearance: none;
+    cursor: pointer;
+}
+#section_member div.member_rdo input[type='checkbox']:checked,
+#section_payment input[name='agreementAll']:checked {
+	background: #2C2C2C;
+}
+#section_member div.member_rdo span {
+	position: absolute;
+	width: 150px;
+	top: 10px;		right: 0px;
+	
+	font-size: 13pt;
+}
+
+
+#section_member table input, #section_member table select {
+	height: 30px;
+	border: 1px solid #EAEAEA;
+	padding: 8px 15px;
+	
+	text-align: left;
+	font-family:"YouandiModern";
+	font-size: 14px;
+	letter-spacing: 0px;
+	color: #A9A9A9;
+	opacity: 1;
+}
+#section_member table select { height: 48px; }
+
+#section_member table input:focus {
+	outline: none;
+	border: 1px solid #A9A9A9;
+	background: #F5F5F5;
+	border-radius: 0px;
+	color: black;
+}
+
+#section_member table input[name='name'] {
+	width: 30%;
+}
+
+#section_member table input[name='email1'],
+#section_member table input[name='email2'],
+#section_member table select {
+	width: 17%;
+}
+
+#section_member table input[name='phone1'],
+#section_member table input[name='phone2'],
+#section_member table input[name='phone3'] {
+	width: 8%;
+}
+
+#section_member table input[name='addr'] {
+	width: 60%;
+}
+
+/**************************************
+			section_payment
+**************************************/
+
+#section_payment div.div_payment {
+	width: 1100px;		height: 500px;
+}
+
+#section_payment div.div_btn_payment {
+	width: 1100px;	height: 160px;
+	text-align: center;	
+}
+
+#section_payment div.div_btn_payment .btn_payment{
+	width: 400px;		height: 60px;
+	
+	border: none;
+	font-family:"YouandiModern";
+	font-size: 20px;
+	letter-spacing: 0px;
+	color: #FFFFFF;
+	opacity: 1;
+	cursor: pointer;
+}
+
+#section_payment div.payment_info {
+	font-family:"YouandiModern";
+	font-size: 16px;
+	letter-spacing: 0px;
+	color: #000000;
+	opacity: 1;
+	text-align: center;
+}
+
+#section_payment table.payment_method {
+	float: left;
+	width: 70%;			height: 400px;
+}
+#section_payment table.payment_method tr:nth-child(1),
+#section_payment table.payment_method tr:nth-child(2) {
+	height: 60px;
+}
+#section_payment table.payment_method tr:nth-child(3) th {
+	vertical-align: top;
+	padding-top: 15px;
+}
+#section_payment div.payment_info {
+	float: right;
+	width: 29%;			height: 400px;
+}
+
+#section_payment table.payment_method th {
+	width: 25%;
+}
+#section_payment table.payment_method td {
+	padding: 5px 8px;
+	text-align: left;
+}
+
+#section_payment div.payment_info div:nth-child(1),
+#section_payment div.payment_info div:nth-child(3) {
+	display: inline-block;
+	width: 99%;			height: 30px;
+	padding-top: 25px;
+}
+
+#section_payment div.payment_info div:nth-child(2) {
+	display: inline-block;
+	width: 99%;			height: 250px;
+	padding-top: 20px;
+}
+
+#section_payment p.p1 {
+	width: 20%;
+	padding-left: 30px;
+	float: left;
+	
+	text-align: left;
+	font-family:"YouandiModern";
+	font-size: 16px;
+	letter-spacing: 0px;
+	color: #000000;
+	opacity: 1;
+}
+#section_payment p.p2 {
+	width: 67%;
+	padding-right: 10px;
+	float: right;
+	
+	text-align: right;
+	font-family:"YouandiModern";
+	font-size: 20px;
+	letter-spacing: 0px;
+	color: #000000;
+	opacity: 1;
+}
+#section_payment div.payment_info div:nth-child(3) p.p2 {
+	font-size: 24px;
+}
+
+#section_payment ul {
+	list-style-type: none;
+	margin-top: 10px;
+	padding-left: 10px;
+}
+
+#section_payment input[name='agreementAll'] {
+	width: 1rem;	height: 1rem;
+	border: 2px solid #2C2C2C;
+	border-radius: 50%;
+	
+	appearance: none;
+    cursor: pointer;
+}
+
+#section_payment span.span_agreementAll {
+	width: 150px;
+	padding-left: 10px;
+	
+	text-align: left;
+	font-family:"YouandiModern";
+	font-size: 16px;
+	letter-spacing: 0px;
+	color: #000000;
+	opacity: 1;
+}
+
+#section_payment input[name='agreement'] {
+	width: 18px;		height: 12px;
+	background-image: url("http://localhost:9000/test/images/btn_check_normal.png");
+	background-repeat: no-repeat;
+	
+	appearance: none;
+    cursor: pointer;
+}
+
+#section_payment input[name='agreement']:checked {
+	background-image: url("http://localhost:9000/test/images/btn_check_select.png");
+	background-repeat: no-repeat;
+}
+
+
+#section_payment span {
+	padding-left: 7px;
+	
+	text-align: left;
+	font-family:"YouandiModern";
+	font-size: 14px;
+	letter-spacing: 0px;
+	color: #6E6E6E;
+	opacity: 1;
+}
+
+#section_payment a {
+	padding-left: 5px;
+	
+	text-align: left;
+	text-decoration: underline;
+	font-family:"YouandiModern";
+	font-size: 14px;
+	letter-spacing: 0px;
+	color: #6E6E6E;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
