@@ -195,10 +195,13 @@ a:visited {
 #recommendations-title,
 #solution-title,
 #allList-title {
-	padding-top: 60px;
 	display: block;
 	text-align: center;
 	margin: auto;
+}
+#allList-title,
+#topGame-title {
+	margin-top: 60px;
 }
 #subTitle {
 	padding-top: 20px;
@@ -310,6 +313,7 @@ a:visited {
 	background-color: #F2F2F2;
 	background-size: cover;
 	width: auto;
+	padding-top: 60px;
 }
 #menu-recommendations > img:first-child {
 	text-align: center;
