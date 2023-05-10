@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<title>Unique Games</title>
 	<link rel="stylesheet" href="../../css/unigames.css">
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script> <!-- 마이크로소프트 jQuery-->
+	<script src="order.js"></script>
 </head>
 <body>
 <!-- header -->
@@ -25,15 +27,15 @@
 	<div>
 		<table id="order-table">
 			<tr>
-				<th>선택</th>
-				<th>상품이미지</th>
+				<th>번호</th>
+				<th></th>
 				<th id="th-cart-info">상품명</th>
 				<th>가격</th>
 				<th>삭제</th>
 			</tr>
 			<tr>
-				<td  id="cart-choice">
-					<input type="checkbox" name="choice" id="chk-box">
+				<td  id="cart-number">
+					1
 				</td>
 				<td id="cart-img"><a><img id="img_product" src="#"></a></td>
 				<td id="cart-info">
@@ -58,46 +60,49 @@
 	<table id="order-table">
 		<tr>
 			<th id="#order-subtitle">이름</th>
-			<td id="member-name"><input type="text" name="name" id="name" placeholder="이름을 입력해주세요."></td>
+			<td id="member-name"><input type="text" name="name" id="name" placeholder="이름을 입력해주세요." autocomplete="off"></td>
 		</tr>
 		<tr>
 			<th id="#order-subtitle">이메일</th>
 			<td id="member-email">
-				<input type="text" name="email1" id="email-id" placeholder="이메일 아이디">&nbsp&nbsp&nbsp@&nbsp&nbsp&nbsp
-				<input type="text" name="email2" id="email-addr" placeholder="이메일 주소">
+				<input type="text" name="email1" id="email-id" placeholder="이메일 아이디" autocomplete="off">&nbsp&nbsp&nbsp@&nbsp&nbsp&nbsp
+				<input type="text" name="email2" id="email-addr" placeholder="이메일 주소" autocomplete="off">
 				<select id="email-select">
 					<option value="default">선택해주세요.</option>
 					<option value="naver.com">naver.com</option>
 					<option value="google.com">google.com</option>
 					<option value="daum.net">daum.net</option>
 					<option value="korea.com">korea.com</option>
+					<option value="self">직접입력</option>
 				</select>
 			</td>
 		</tr>
 		<tr>
 			<th id="#order-subtitle">휴대폰</th>
 			<td id="member-phone">
-				<input type="text" name="phone1" id="phone1" placeholder="000"> -
-				<input type="text" name="phone2" id="phone2" placeholder="0000"> -
-				<input type="text" name="phone3" id="phone3" placeholder="0000">
+				<input type="text" name="phone1" id="phone1" placeholder="000" autocomplete="off"> -
+				<input type="text" name="phone2" id="phone2" placeholder="0000" autocomplete="off"> -
+				<input type="text" name="phone3" id="phone3" placeholder="0000" autocomplete="off">
 			</td>
 		</tr>
 	</table>
 	<div id="member-chk">
 		<h2 id="order-subtitle">선물하기</h2>
 		<div>
-			<input type="checkbox" name="chk_present" id="chk-circle"><span id="chk-circle-span">친구에게 선물</span>
+			<input type="checkbox" name="chk_present" id="chk-circle" autocomplete="off"><span id="chk-circle-span">친구에게 선물</span>
 		</div>
 	</div>
-	<table id="order-table">
-		<tr>
-			<th id="#order-subtitle">보낼 아이디</th>
-			<td id="member-addr">
-				<input  type="text" name="addr" id="" placeholder="선물 받을 아이디 입력하기">
-				<button type="button" id="order-btn-search">검색</button>
-			</td>
-		</tr>
-	</table>
+	<div id="div-present">
+		<table id="order-table">
+			<tr>
+				<th id="#order-subtitle">보낼 아이디</th>
+				<td id="member-addr">
+					<input  type="text" name="freind-id" id="friend-id" placeholder="선물 받을 아이디 입력하기">
+					<button type="button" id="order-btn-search">검색</button>
+				</td>
+			</tr>
+		</table>
+	</div>
 </section>
 <section id="section_payment">
 	<div id="d1">
@@ -122,11 +127,11 @@
 						<input type="checkbox" name="agreementAll" id="chk-circle">
 						<span id="span_agreementAll">전체 동의하기</span>
 						<ul>
-							<li><input type="checkbox" id="agreement"><span>[필수] 만 14세 이상입니다. </span></li>
-							<li><input type="checkbox" id="agreement"><span>[필수] 이용 약관 </span><a href="#">자세히</a></li>
-							<li><input type="checkbox" id="agreement"><span>[필수] 개인정보 수집 및 이용 동의 </span><a href="#">자세히</a></li>
-							<li><input type="checkbox" id="agreement"><span>[필수] 개인정보 제 3자 제공 동의 </span><a href="#">자세히</a></li>
-							<li><input type="checkbox" id="agreement"><span>[필수] 전자결제대행 이용 동의 </span><a href="#">자세히</a></li>
+							<li><input type="checkbox" name="agreement"><span>[필수] 만 14세 이상입니다. </span></li>
+							<li><input type="checkbox" name="agreement"><span>[필수] 이용 약관 </span><a id="detail1">자세히</a></li>
+							<li><input type="checkbox" name="agreement"><span>[필수] 개인정보 수집 및 이용 동의 </span><a id="detail2">자세히</a></li>
+							<li><input type="checkbox" name="agreement"><span>[필수] 개인정보 제 3자 제공 동의 </span><a id="detail3">자세히</a></li>
+							<li><input type="checkbox" name="agreement"><span>[필수] 전자결제대행 이용 동의 </span><a id="detail4">자세히</a></li>
 						</ul>
 					</td>
 				</tr>
@@ -150,7 +155,7 @@
 		</div>
 	</div>
 	<div id="d2">
-		<button id="button-gradient" type="button" value="order">결제하기</button>
+		<button id="button-gradient" name="button-payment" type="button" value="payment">결제하기</button>
 	</div>
 </section>
 

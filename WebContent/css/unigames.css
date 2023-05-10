@@ -20,7 +20,7 @@ ol,ul,li {
 /* base */
 
 #content, #board-list, table ,
-#section_cart, #section_member, #section_payment, #section_price {
+#section_cart, #section_member, #section_payment, #section_price, order-complete-d1 {
 	width: 1100px;
 	margin: auto;
 }
@@ -692,6 +692,15 @@ td#cart-info {
 	width: 70px;
 }
 
+#div-present {
+	margin-bottom: 30px;
+	display: none;
+}
+
+#section_payment a {
+	cursor: pointer;
+}
+
 /* search button size */
 #order-btn-search {
 	margin: 10px 0;
@@ -859,6 +868,17 @@ td#payment-totalPrice {
 	margin-top: 100px;
 	width: 1100px;	height: 200px;
 	text-align: center;
+}
+
+#order-complete-d1 {
+	height: 600px;
+	text-align: center;
+}
+
+#order-complete-d1 p {
+	padding: 200px 0 100px 0;
+	font-size: 30px;
+	font-weight: bold;
 }
 
 /** board style **/
@@ -1291,4 +1311,95 @@ td {
 	background-repeat: no-repeat;
 }
 
+#tab01,
+#tab02 {
+	display: none;
+}
+
+#tab01 + label,
+#tab02 + label {
+	display: inline-block;
+	padding: 20px 59px;
+	background: rgb(243,243,243);
+	color: rgb(180,179,178);
+	font-size: 14px;
+	cursor: pointer;
+	border-bottom: 1px solid rgb(243,243,243);
+}
+
+#tab01:checked + label,
+#tab02:checked + label {
+	background: white; 
+	color: #000;
+	font-weight: bold;
+	border-bottom: white;
+}
+
+#find-id,
+#find-pwd {
+	background: #white;
+	margin: 0 auto;
+	display: none;
+	margin-top: 20px;
+
+}
+
+#tab01:checked ~ #find-id,
+#tab02:checked ~ #find-pwd {
+	display: block;
+}
+
+#intro-2 {
+	width: 394px;
+	margin: auto;
+	text-align: left;
+	font-size: 16px;
+	padding-bottom: 14px;
+}
+
+#button-gradient1 {
+	border: none;
+	width: 394px;
+	height: 60px;
+	cursor: pointer;
+	color: white;
+	background: linear-gradient(to right,#682CAD,#2FC0CC);
+	border-radius: 3px;
+	font-family: "Apex New";
+	margin-top: 20px;
+}
+
 /*****************************cmj**************************************/
+
+/* Agreement */
+#div-agreementTitle {
+	margin: 0px 0px 30px 0px;
+	
+	text-align: center;
+	font-family: "Apex New";
+	font-size: 20px;
+}
+
+#div-agreement {
+	text-align: center;
+	vertical-align: center;
+}
+
+#div-agreementContent {
+	border: 2px solid lightgray;
+	width: 400px;	
+	margin: auto;
+	padding: 15px;
+	font-family: "YouandiModern", sans-serif;
+	font-size: 15px;
+	
+}
+
+#div-agreementButton button#button-gradient {
+	margin-top: 20px;
+	width: 250px;
+	font-size: 20px;
+}
+=======
+/*****************************cmj**************************************/
+
