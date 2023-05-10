@@ -139,31 +139,23 @@ a:visited {
 	width: 100%;
 	margin: auto;
 }
-#slides-1-bg {
-	padding: 160px 400px 0 400px;
-	height: 500px;
-	background-image: url("../images/img_main_01.png ");
-	background-size: cover;
-	overflow: hidden;
-	position: relative;
-}
-#slide-1 {
+#slide-text {
 	width: 1100px;
 	margin: auto;
 }
-#slide-1 h2 {
+#slide-text h2 {
 	font-family: "YouandiModern", sans-serif;
 	font-size: 32px;
 	color: #fff;
 	padding-bottom: 32px;
 }
-#slide-1 p {
+#slide-text p {
 	font-family: "Noto Sans KR", sans-serif;
 	font-size: 28px;
 	color: #fff;
 	padding-bottom: 45px;
 }
-#slide-1 h1 {
+#slide-text h1 {
 	font-family: "Apex New", sans-serif;
 	font-size: 100px;
 	font-weight: bold;
@@ -203,10 +195,13 @@ a:visited {
 #recommendations-title,
 #solution-title,
 #allList-title {
-	padding-top: 60px;
 	display: block;
 	text-align: center;
 	margin: auto;
+}
+#allList-title,
+#topGame-title {
+	margin-top: 60px;
 }
 #subTitle {
 	padding-top: 20px;
@@ -219,7 +214,59 @@ a:visited {
 	white-space:nowrap;
 	overflow-x:scroll;
 }
-#tList1, #tList2, #tList3 {
+#tList-detail {
+	display: inline-block;
+	width: 100%;
+	height: 240px;
+	position: relative;
+	margin-bottom: 40px;
+}
+#tList-detail img {
+	float: right;
+}
+#tList-detail div p:nth-child(1) {
+	position:absolute;
+	float: left;
+	top: 59px;
+	font-family: "Apex New", sans-serif;
+	font-weight: bold;
+	font-size: 70px;
+	font-style: italic;
+	color: #682CAD;
+}
+#tList-detail div p:nth-child(2) {
+	position:relative;
+	float: left;
+	top: 67px;
+	left:64px;
+	font-family: "Apex New", sans-serif;
+	font-weight: bold;
+	font-size: 26px;
+	font-style: italic;
+}
+#tList-detail div p:nth-child(3) {
+	position:absolute;
+	float: left;
+	top: 104px;
+	left:64px;
+	font-family: "YouandiModern", sans-serif;
+	font-size: 16px;
+}
+#btn-readmore-topGame {
+	top: 160px;
+	left:64px;
+	position: absolute;
+	float: left;
+	display: block;
+	width:180px;
+	height:60px;
+	border: 2px solid #000;
+	color:#000;
+	background-color: rgba(0, 0, 0, 0.0);
+	font-size: 18px;
+	font-family: "YouandiModern", sans-serif;
+}
+#tList{
 	display: inline-block;
 	width: 500px;
 	height: 320px;
@@ -227,9 +274,7 @@ a:visited {
 	margin-right: 40px;
 	margin-bottom: 20px;
 }
-#tList1 div p:nth-child(1),
-#tList2 div p:nth-child(1),
-#tList3 div p:nth-child(1) {
+#tList div p:nth-child(1) {
 	position:absolute;
 	float: left;
 	top: 260px;
@@ -239,9 +284,7 @@ a:visited {
 	font-size: 56px;
 	font-style: italic;
 }
-#tList1 div p:nth-child(2),
-#tList2 div p:nth-child(2),
-#tList3 div p:nth-child(2) {
+#tList div p:nth-child(2) {
 	text-align: left;
 	margin-top: 20px;
 	margin-left: 70px;
@@ -250,9 +293,7 @@ a:visited {
 	font-size: 26px;
 	font-style: italic;
 }
-#tList1 div p:nth-child(3),
-#tList2 div p:nth-child(3),
-#tList3 div p:nth-child(3) {
+#tList div p:nth-child(3) {
 	text-align: left;
 	margin-top: 4px;
 	margin-left: 70px;
@@ -272,25 +313,18 @@ a:visited {
 	background-color: #F2F2F2;
 	background-size: cover;
 	width: auto;
+	padding-top: 60px;
 }
 #menu-recommendations > img:first-child {
 	text-align: center;
 	padding-bottom: 60px;
 }
-#gameList1 {
+#gameList {
 	padding-top: 60px;
 	overflow: visible;
-	padding-bottom: 50px;
 }
-#recommendList,
-#gameList1,
-#gameList2,
-#gameList3,
-#gameList4,
-#gameList5,
-#gameList6 {
+#recommendList {
 	overflow: visible;
-	padding-bottom: 50px;
 }
 #menu-recommendations,
 #menu-allList,
@@ -300,10 +334,7 @@ a:visited {
 	margin: auto;
 	padding-bottom: 100px;
 }
-#rList1,
-#rList2,
-#rList3,
-#rList4 {
+#rList {
 	display: inline-block;
 	width: 260px;
 	height: 392px;
@@ -312,23 +343,12 @@ a:visited {
 	margin: 0 5px;
 	background-color: #fff;
 }
-#rList1 ul,
-#rList2 ul,
-#rList3 ul,
-#rList4 ul,
-#gList1 ul,
-#gList2 ul,
-#gList3 ul,
-#gList4 ul,
-#gList5 ul,
-#gList6 ul {
+#rList ul,
+#gList ul{
 	list-style-type: none;
 	padding: 14px;
 }
-#rList1 ul li:nth-child(1),
-#rList2 ul li:nth-child(1),
-#rList3 ul li:nth-child(1),
-#rList4 ul li:nth-child(1) {
+#rList ul li:nth-child(1) {
 	border-radius: 10px;
 	background: linear-gradient(to right, #682CAD, #2FC0CC);
 	width: 45px;
@@ -341,10 +361,7 @@ a:visited {
 	font-weight: bold;
 	padding-bottom: 2px;
 }
-#rList1 ul li:nth-child(2),
-#rList2 ul li:nth-child(2),
-#rList3 ul li:nth-child(2),
-#rList4 ul li:nth-child(2) {
+#rList ul li:nth-child(2) {
 	color: #000;
 	font-family: "Apex New", sans-serif;
 	font-size: 18px;
@@ -352,26 +369,17 @@ a:visited {
 	font-weight: bold;
 	padding-top: 14px;
 }
-#rList1 ul li:nth-child(3),
-#rList2 ul li:nth-child(3),
-#rList3 ul li:nth-child(3),
-#rList4 ul li:nth-child(3) {
+#rList ul li:nth-child(3) {
 	color: #000;
 	font-family: "YouandiModern", sans-serif;
 	font-size: 13px;
 	padding-top: 10px;
 }
-#rList1 ul li:nth-child(4),
-#rList2 ul li:nth-child(4),
-#rList3 ul li:nth-child(4),
-#rList4 ul li:nth-child(4) {
+#rList ul li:nth-child(4) {
 	float: right;
 	padding-top: 14px;
 }
-#gList1 ul li:nth-child(1),
-#gList2 ul li:nth-child(1),
-#gList3 ul li:nth-child(1),
-#gList4 ul li:nth-child(1) {
+#gList ul li:nth-child(1) {
 	color: #000;
 	font-family: "Apex New", sans-serif;
 	font-size: 18px;
@@ -379,10 +387,7 @@ a:visited {
 	font-weight: bold;
 	padding-bottom: 10px;
 }
-#gList1 ul li:nth-child(2),
-#gList2 ul li:nth-child(2),
-#gList3 ul li:nth-child(2),
-#gList4 ul li:nth-child(2) {
+#gList ul li:nth-child(2) {
 	color: #000;
 	font-family: "YouandiModern", sans-serif;
 	font-size: 13px;
@@ -397,26 +402,17 @@ a:visited {
 	float: left;
 	margin-top: 2px;
 }
-#gList1 ul li:nth-child(4),
-#gList2 ul li:nth-child(4),
-#gList3 ul li:nth-child(4),
-#gList4 ul li:nth-child(4) {
+#gList ul li:nth-child(4) {
 	color: #C5C9D3;
 	font-family: "Noto Sans KR", sans-serif;
 	font-size: 12px;
 }
-#gList1 ul li:nth-child(5),
-#gList2 ul li:nth-child(5),
-#gList3 ul li:nth-child(5),
-#gList4 ul li:nth-child(5) {
+#gList ul li:nth-child(5) {
 	position: absolute; 
 	right: 14px;
 	bottom: 10px;
 }
-#rList1 div,
-#rList2 div,
-#rList3 div,
-#rList4 div {
+#rList div {
 	position: absolute; 
 	bottom:0px;
 	float: left;
@@ -431,10 +427,7 @@ a:visited {
 	font-family: "YouandiModern", sans-serif;
 	font-size: 16px;
 }
-#gList1,
-#gList2,
-#gList3,
-#gList4 {
+#gList {
 	display: inline-block;
 	width: 260px;
 	height: 310px;
@@ -1088,7 +1081,9 @@ td {
 	clear: both;
 }
 
-/* deleteAccount */
+/*****************************cmj**************************************/
+
+/* ���� ���� �׶��̼� ��ư */
 #button-gradient-delete {
 	border: none;
 	width: 394px;
@@ -1103,38 +1098,13 @@ td {
 
 /* public input style */
 
-/* public input  */
-#input-common {
-	width: 394px;
-	padding: 20px 0;
-	margin: 5px 0;
-	text-indent: 10px;
-	border-radius: 3px;
-	border: 1px solid lightgray;
-	outline: none;
-}
-/* public input:focus */
-#input-common:focus {
-	border: 1px solid gray;
-}
 /* join; email, zip-code input */
 #input-email {
-	width: 130px;
+	width: 187px;
 	padding: 20px 0;
 	text-indent: 10px;
 	border-radius: 3px;
 	border: 1px solid lightgray;
-	outline: none;
-	font-size: 16px;
-}
-
-/* join; email selectbox */
-#selectbox-email {
-	width: 110px;
-	padding: 22px 0 20px 0;
-	border: 1px solid lightgray;
-	text-indent: 10px;
-	border-radius: 3px;
 	outline: none;
 }
 
@@ -1143,43 +1113,36 @@ td {
 	height: 43px;
 	border-radius: 3px;
 	border: 1px solid lightgray;
-	font-size: 16px;
-}
-
-#input-address {
-	width: 325px;
-	padding: 20px 0;
-	margin: 5px 0;
-	text-indent: 10px;
-	border-radius: 3px;
-	border: 1px solid lightgray;
-	outline: none;
-	font-size: 16px;
 }
 
 
 /* page introduce */
 #intro {
+	padding: 20px 0;
 	font-family: "YouandiModern",sans-serif;
 	font-size: 24px;
-	padding-bottom: 60px;
+	margin-bottom: 30px;
 }
 /* detail explanation */
 #intro-1 {
 	width: 394px;
 	margin: auto;
 	text-align: left;
-	font-size: 16px;
-	padding: 20px 0 14px 0;
+	font-size: 10px;
+}
+#intro-allList {
+	font-family: "YouandiModern",sans-serif;
+	font-size: 24px;
+	margin-bottom: 60px;
+	text-align: center;
 }
 /* public section */
 #content-1 {
 	width: 1100px;
 	margin: auto;
 	text-align: center;
-	padding: 60px 0 100px 0;
+	padding:60px 0 100px 0;
 }
-
 /*join form-id*/
 #content-2 {
 	width: 40%;
@@ -1188,6 +1151,7 @@ td {
 	padding-left: 45px;
 }
 
+/*************************���̵�,��й�ȣ,ȸ������ ��ũ**********************/
 /* login; link to find-id, find-pwd */
 #link-find {
 	background: white;
@@ -1204,7 +1168,7 @@ td {
 	font-weight: 500;
 	color: #2E7AF6;
 	text-decoration: none;
-	font-size: 11pt;
+	font-size: 14px;
 	padding: 0 8px;
 }
 /* login; link to find-id, find-pwd, sign up hover */
@@ -1225,7 +1189,13 @@ td {
 #selectbox-find:focus {
 	border: 1px solid gray;
 }
-
+/* join; email selectbox */
+#selectbox-email {
+	width: 187px;
+	padding: 20px 0;
+	border: 1px solid lightgray;
+	text-indent: 10px;
+}
 
 /* join,myPage password */
 #pwd-check {
@@ -1261,7 +1231,7 @@ td {
 #agreement-box {
 	margin: 30px 0 10px 0;
 	width: 394px;
-	font-size: 10pt;
+	font-size: 10px;
 }
 
 /* join agreement font-color */
@@ -1289,7 +1259,7 @@ td {
 /* myPage delete link*/
 #span-deleteAccount {
 	display: block;
-	font-size: 10pt;
+	font-size: 10px;
 	margin-bottom: 8px;
 	padding-left: 330px;
 }
@@ -1303,7 +1273,7 @@ td {
 	color: #FFFFFF;
 	font-size: 14px;
 	cursor: pointer;
-	margin: 0 8px;
+	margin-left: 15px;
 }
 
 /* join checkbox agreement*/
@@ -1430,3 +1400,6 @@ td {
 	width: 250px;
 	font-size: 20px;
 }
+=======
+/*****************************cmj**************************************/
+
