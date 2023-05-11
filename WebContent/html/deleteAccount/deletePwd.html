@@ -3,12 +3,37 @@
 <head>
 	<meta charset="UTF-8">
 	<title>회원탈퇴</title>
-	<!-- <link rel="stylesheet" href="../login/login_css.css"> -->
-	<link rel="stylesheet" href="../../css/unigames.css">
+	<link rel="stylesheet" href="../../css/login.css">
+	<script src="../join/jquery-3.6.4.min.js"></script>
 	<script>
-		function deleteComplete(){
-			location.href="deleteComplete.html";
-		}
+	
+		$(document).ready(function(){
+			
+			$("#button-gradient-delete").click(function(){
+				if($("input[name='pwd']").val()==""){
+					alert("비밀번호를 입력해주세요");
+					$("input[name='pwd']").focus();
+					return false;
+				}else if($("#selectbox-find").val()=="default"){
+					alert("탈퇴 사유를 선택해주세요");
+					$("#selectbox-find").focus();
+					return false;
+				}else {
+					window.open("deleteComplete.html","회원탈퇴","width=1200,height=550,scrollbars=yes,top=100,left=100");
+				}	
+			});
+			
+		$("input[name='pwd']").blur(function(){
+				
+				if($("input[name='pwd']").val()==""){
+					$("#msgPwd").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+				}else {
+					$("#msgPwd").css("display","none");
+				}
+			});
+		});
+	
+	
 	</script>
 </head>
 <body>
@@ -25,17 +50,7 @@
 		</div>
 	</section>
 	<section id="content-1">
-		<p>회원탈퇴</p>
-		<p>UniqueGames 님!
-		회원 탈퇴하려고 하신다니 저희 사이트의 서비스가 많이 부족하고 미흡했나 봅니다.<br>
-		불만사항이나 사유를 알려주신다면 적극 반영해서 고객님의 불편함을 해결해드리도록 노력하겠습니다.<br>
-		</p>
-		<p>회원 탈퇴시의 아래 사항을 숙지하시기 바랍니다.</p>
-		<p>
-		1. 회원 탈퇴 시 고객님의 정보는 모두 삭제됩니다.<br>
-		2. 후원하셨던 게임의 후원금을 반환받지 못합니다.<br>
-		3. 회원 탈퇴 후 2주간 재가입이 불가능합니다.<br>
-		</p>
+		<p id="intro">회원탈퇴</p>
 		<form action="#" name="loginForm" method="get"><!-- findIdForm -->
 			<div>
 				<p id="intro-1">탈퇴 사유</p>
@@ -49,6 +64,7 @@
 							<option value="4">삭제하고싶은 내용이 있어서</option>
 							<option value="5">사용빈도가 너무 적어서</option>
 							<option value="6">콘텐츠 불만</option>
+							<option value="7">기타</option>
 						</select>
 					</li>
 					<li>
@@ -56,12 +72,27 @@
 					</li>
 					<li>
 						<input type="text" id="input-common" name="pwd" placeholder="비밀번호">
+						<span id="msgPwd"></span>
+					</li>
+					<li id="goodbye">
+						<p id="delete-id">UniqueGames 님!</p>
+						<p id="delete-content">회원 탈퇴하려고 하신다니 저희 사이트의 서비스가 많이 부족하고 미흡했나 봅니다.<br>
+						불만사항이나 사유를 알려주신다면 적극 반영해서 고객님의 불편함을 해결해드리도록 노력하겠습니다.
+						회원 탈퇴시의 아래 사항을 숙지하시기 바랍니다.</p>
+						<p id="delete-caution">
+						1. 회원 탈퇴 시 고객님의 정보는 모두 삭제됩니다.<br>
+						2. 후원하셨던 게임의 후원금을 반환받지 못합니다.<br>
+						3. 회원 탈퇴 후 2주간 재가입이 불가능합니다.<br>
+						</p>
 					</li>
 					<li>
-						<button type="button" id="button-gradient-delete" onclick="deleteComplete()">회원 탈퇴</button>
+						<button type="button" id="button-gradient-delete">회원 탈퇴</button>
 					</li>
+					
 				</ul>
 			</div>
+			
+		
 		</form>		
 	</section>
 	<footer>

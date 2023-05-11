@@ -3,8 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>myPage</title>
-	<!-- <link rel="stylesheet" href="../join/join_css.css"> -->
-	<link rel="stylesheet" href="../../css/unigames.css">
+	<link rel="stylesheet" href="../../css/login.css">
+	<script src="../join/jquery-3.6.4.min.js"></script>
+	<script src="../join/join_jquery.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
 	<header>
@@ -25,34 +27,35 @@
 			<div>
 				<ul>
 					<li>
+						<p id="label-dot">*</p>
 						<label>아이디</label>
 					</li>
 					<li>
 						<input type="text" id="input-common" name="id" value="UniqueGames" disabled>
 					</li>
 					<li>
+						<p id="label-dot">*</p>
 						<label>비밀번호</label>
 					</li>
 					<li>
 						<input type="password" id="input-common" name="pwd">
-						<button type="button" id="pwd-check">
-							<img src="../../images/btn_eye_normal.png" id="pwd-check-img">
-						</button>
-
+						<input type="checkbox" id="pwd-check-img">
+						<span id="pwdMsg"></span>
 					</li>
 					<li>
-						<input type="password" id="input-common" name="pwd_check">
-						<button type="button" id="pwd-check">
-							<img src="../../images/btn_eye_normal.png" id="pwd-check-img">
-						</button>
+						<input type="password" id="input-common" name="pwd-check">
+						<input type="checkbox" id="pwd-check-img-1">
+						<span id="pwdMsg-check"></span>
 					</li>
 					<li>
+						<p id="label-dot">*</p>
 						<label>이름</label>
 					</li>
 					<li>
 						<input type="text" id="input-common" name="name" value="홍길동" disabled>
 					</li>
 					<li>
+						<p id="label-dot">*</p>
 						<label>이메일</label>
 					</li>
 					<li>
@@ -65,6 +68,7 @@
 							<option value="daum.net">daum.net</option>
 							<option value="direct">직접입력</option>
 						</select>
+						<span id="emailMsg"></span>
 					</li>
 					<li>
 						<label>주소</label>
@@ -80,6 +84,7 @@
 						<input type="text" id="input-common" name="address2" value="한국빌딩 4F, 8F">
 					</li>
 					<li>
+						<p id="label-dot">*</p>
 						<label>휴대전화</label>
 					</li>
 					<li>
@@ -87,7 +92,7 @@
 							<option value="default">SKT</option>
 							<option value="KT">KT</option>
 							<option value="LGU+">LGU+</option>
-							<option value="알뜰폰">알뜰폰</option>
+							<option value="MVNO">알뜰폰</option>
 						</select>
 						<select name="phone1" id="selectbox-phone">
 							<option value="default">010</option>
@@ -98,6 +103,7 @@
 						<input type="text" id="input-phone" name="phone2" value="1234">
 						-
 						<input type="text" id="input-phone" name="phone3" value="5678">
+						<span id="phoneMsg"></span>
 					</li>
 					<li>
 						<button type="button" id="button-gradient">수정하기</button>
