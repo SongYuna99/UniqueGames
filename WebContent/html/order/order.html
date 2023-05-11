@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Unique Games</title>
-	<link rel="stylesheet" href="../../css/unigames.css">
+	<link rel="stylesheet" href="order.css">
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script> <!-- 마이크로소프트 jQuery-->
 	<script src="order.js"></script>
 </head>
@@ -127,11 +127,11 @@
 						<input type="checkbox" name="agreementAll" id="chk-circle">
 						<span id="span_agreementAll">전체 동의하기</span>
 						<ul>
-							<li><input type="checkbox" name="agreement"><span>[필수] 만 14세 이상입니다. </span></li>
-							<li><input type="checkbox" name="agreement"><span>[필수] 이용 약관 </span><a id="detail1">자세히</a></li>
-							<li><input type="checkbox" name="agreement"><span>[필수] 개인정보 수집 및 이용 동의 </span><a id="detail2">자세히</a></li>
-							<li><input type="checkbox" name="agreement"><span>[필수] 개인정보 제 3자 제공 동의 </span><a id="detail3">자세히</a></li>
-							<li><input type="checkbox" name="agreement"><span>[필수] 전자결제대행 이용 동의 </span><a id="detail4">자세히</a></li>
+							<li><input type="checkbox" name="agreement" value="agreement1"><span>[필수] 만 14세 이상입니다. </span></li>
+							<li><input type="checkbox" name="agreement" value="agreement2"><span>[필수] 이용 약관 </span><a id="detail1">자세히</a></li>
+							<li><input type="checkbox" name="agreement" value="agreement3"><span>[필수] 개인정보 수집 및 이용 동의 </span><a id="detail2">자세히</a></li>
+							<li><input type="checkbox" name="agreement" value="agreement4"><span>[필수] 개인정보 제 3자 제공 동의 </span><a id="detail3">자세히</a></li>
+							<li><input type="checkbox" name="agreement" value="agreement5"><span>[필수] 전자결제대행 이용 동의 </span><a id="detail4">자세히</a></li>
 						</ul>
 					</td>
 				</tr>
@@ -158,6 +158,18 @@
 		<button id="button-gradient" name="button-payment" type="button" value="payment">결제하기</button>
 	</div>
 </section>
+
+<div id="modal">
+	<div class="agreement" id="agreement">
+		<h1 id="agreement-title">이용 약관</h1>
+		<div id="agreement-content">
+			이용약관입니다.<br>
+			길어지면 스크롤도 나옵니다.<br>
+		</div>
+		<button id="button-gradient" name="btn-agreement">확인</button>
+	</div>
+</div>
+
 
 <!-- footer -->
 <iframe src="../main/footer.html"

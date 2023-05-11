@@ -62,14 +62,12 @@ $(document).ready(function (){
 
     // 자세히
     $("a").click(function (){
-        let id = $(this).attr("id");
-
-        window.open("../agreement/"+id+".html", "_blank", "width=500, height=700, scrollbars=yes, resizable=no, fullscreen=no");
+        $("#modal").show();
     });
     
     // 약관 팝업 확인 버튼 클릭 시 팝업 닫기
     $("button[name='btn-agreement']").click(function() {
-		window.close();
+    	$("#modal").hide();
 	});
     
     // 이메일 주소 선택
