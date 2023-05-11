@@ -60,16 +60,28 @@ $(document).ready(function (){
         }
     });
 
-    // 자세히
+    /** Agreement **/
+    // Agreement
     $("a").click(function (){
-        let id = $(this).attr("id");
-
-        window.open("../agreement/"+id+".html", "_blank", "width=500, height=700, scrollbars=yes, resizable=no, fullscreen=no");
+        $("#modal").show();
+        
+        if($(this).attr("id") == "detail1"){
+        	$("#agreement-content").html($("div.detail1").html());
+        }
+        else if($(this).attr("id") == "detail2"){
+        	$("#agreement-content").html($("div.detail2").html());
+        }
+        else if($(this).attr("id") == "detail3"){
+        	$("#agreement-content").html($("div.detail3").html());
+        }
+        else if($(this).attr("id") == "detail4"){
+        	$("#agreement-content").html($("div.detail4").html());
+        }
     });
     
-    // 약관 팝업 확인 버튼 클릭 시 팝업 닫기
+    // Agreement-btn
     $("button[name='btn-agreement']").click(function() {
-		window.close();
+    	$("#modal").hide();
 	});
     
     // 이메일 주소 선택
