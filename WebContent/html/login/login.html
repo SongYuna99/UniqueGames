@@ -3,8 +3,47 @@
 <head>
 	<meta charset="UTF-8">
 	<title>로그인</title>
-	<!-- <link rel="stylesheet" href="../login/login_css.css"> -->
-	<link rel="stylesheet" href="../../css/unigames.css">
+	<link rel="stylesheet" href="../../css/login.css">
+	<script src="../join/jquery-3.6.4.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			
+			$("#button-gradient").click(function(){
+				
+				if($("input[name='id']").val()=="") {
+					alert("아이디를 입력해주세요");
+					$("input[name='id']").focus();
+					return false;
+				}else if($("input[name='pwd']").val()=="") {
+					alert("비밀번호를 입력해주세요");
+					$("input[name='pwd']").focus();
+					return false;
+				}else{
+					loginForm.submit();
+				}
+			});
+			
+			$("input[name='id']").blur(function(){
+				
+				if($("input[name='id']").val()=="") {
+					$("#msgId").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+				}else {
+					$("#msgId").css("display","none");
+				}
+				
+			});
+			
+			$("input[name='pwd']").blur(function(){
+				
+				if($("input[name='pwd']").val()==""){
+					$("#msgPwd").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+				}else {
+					$("#msgPwd").css("display","none");
+				}
+			});
+			
+		});
+	</script>
 </head>
 <body>
 	<header>
@@ -26,16 +65,20 @@
 				<ul>
 					<li>
 						<input type="text" id="input-common" name="id" placeholder="아이디">
+						<span id="msgId"></span>
 					</li>
 					<li>
 						<input type="password" id="input-common" name="pwd" placeholder="비밀번호" size="15">
+						<span id="msgPwd"></span>
 					</li>
 					<li>
 						<button type="button" id="button-gradient">LOGIN</button>
 					</li>
+				</ul>
+				<ul id="link-tab">
 					<li>
-						<a href="../findAccount/findId.html" target="_parent" id="link-find">아이디 찾기</a>
-						<a href="../findAccount/findPwd.html" target="_parent" id="link-find">비밀번호 찾기</a>
+						<a href="../findAccount/FindId.html" id="link-find">아이디 찾기</a>
+						<a href="../findAccount/FindPwd.html" id="link-find-pwd">비밀번호 찾기</a>
 						<a href="../join/join.html" target="_parent" id="link-signUp">
 							<span>Sign Up</span></a>
 					</li>
