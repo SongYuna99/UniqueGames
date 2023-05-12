@@ -4,10 +4,12 @@ ui 수정
 cart -> order -> 결제페이지 -> order_complete
 1. cart : select, delete
 해당 회원의 장바구니 항목 넘기기 -> 회원 아이디 이용
-전체삭제, 선택삭제 
+전체삭제, 선택삭제, 전체선택 추가
+선택 여부도 DB로 넣어야하나?
 
 2. cart -> order
 선택된 것만 ArrayList로 넘기기 or 게임고유 아이디만 배열로 넘기기
+JSON을 활용해 게임코드와 가격 넘기기
 
 3. order : select
 선택 목록에 따른 실시간 가격 적용
@@ -17,6 +19,8 @@ order삭제 != cart삭제
 그냥 ArrayList만을 사용해서 주문관리...?
 삭제 후 바로 리스트 다시 만들기
 -> ArrayList<String> 게임아이디 로 관리
+결제방식 선택 수정
+환불안내는 고객센터로 빼고 링크만 달아주자
 
 
 4. order -> 결제 페이지
@@ -29,11 +33,13 @@ order삭제 != cart삭제
 order table에 insert
 
 cart 
-회원아이디  게임아이디  
+회원아이디  게임아이디 금액 
 
 order
-주문번호(PK)  회원아이디  게임아이디 결제날짜 선물한친구
+주문번호(PK)  회원아이디  게임아이디 금액 결제날짜
 
 -> vo에는 rno만 추가
+
+db적용을 위한 form 추가
 
 

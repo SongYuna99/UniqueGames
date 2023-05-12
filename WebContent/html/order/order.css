@@ -1,36 +1,112 @@
-/* common */
-
+/******* Commons *******/
 * {
-	padding: 0;
-	margin: 0;
+	margin: 0px;		padding: 0px;
 	font-family: "YouandiModern", "Apex New", "Noto Sans KR", sans-serif;
 }
 
-body> header iframe {
-	display: block;
-}
-
-
-ol,ul,li {
-	list-style: none;
-	padding: 0px;
-	margin: 0px;
-}
-
-/* base */
-
-#content, #board-list, table ,
-#section_cart, #section_member, #section_payment, #section_price, order-complete-d1 {
-	width: 1100px;
+/******* Base *******/
+h1, #div-gameList, #order-complete, #div-info , #div-Price , #div-button {
 	margin: auto;
+	width: 1100px;
 }
 
-/* Menu title(under the header) */
+h1 {
+	padding: 30px 0 10px 0;
+	border-bottom: 2px solid #393939;
 
+	font-family:"YouandiModern", sans-serif;
+	font-size: 23px;
+	color: #2B2B2B;
+}
+
+/******* Table *******/
+<!-- table -->
+#table-gameList {
+	margin: auto;
+	border: 1px solid #DDDDDD;
+	border-collapse: collapse;
+	width: 100%;
+
+	font-family:"YouandiModern";
+	text-align: center;
+}
+
+<!-- th -->
+th {
+	padding: 0 0 5px 0;
+
+	font-size: 16px;
+	color: #000000;
+}
+
+<!-- td -->
+td {
+	border-bottom: 1px solid #DDDDDD;
+
+	font-size:14px;
+	color: #A9A9A9;
+	text-align: left;
+}
+
+/******* Button *******/
+#btn-deleteAll, #btn-deleteSelected, #btn-deleteOne {
+	padding: 3px 14px;
+	background: #393939;
+	border-radius: 5px;
+	
+	color: #FFFFFF;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+#btn-cart, #btn-order, #btn-main, #btn-list {
+	padding: 12px 80px;
+	border: none;
+	border-radius: 3px;
+	background: linear-gradient(to right,#682CAD,#2FC0CC);
+	
+	color: white;
+	font-family: "Apex New";
+	font-size: 20px;
+	cursor: pointer;
+}
+
+/******* CheckBox *******/
+#checkAll {
+	margin-right: 6px;
+	width: 1rem;	height: 1rem;
+	border: 2px solid #2C2C2C;
+	border-radius: 50%;
+	
+	appearance: none;
+    cursor: pointer;
+}
+
+#checkAll:checked {
+	background: #2C2C2C;
+}
+
+/******* a *******/
+a {
+	color: black;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:visited {
+	color: #DDDDDD;
+}
+
+#detail1, #detail2, #detail3, #detail4 {
+	padding: 0 10px;
+} 
+
+/******* Banner *******/
 #top-bg {
 	width: 100%;
 	margin: auto;
-	background-image: url("../images/img_bg.png");
+	background-image: url("../../images/img_bg.png");
 	background-size:cover;
 	height: 229px;
 	background-repeat: no-repeat;
@@ -62,146 +138,8 @@ ol,ul,li {
 	font-weight: 500;
 }
 
-/* link */
-
-a {
-	color: black;
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-a:visited {
-	color: #DDDDDD;
-}
-
-/* public button style */
-
-#btn-style, #order-btn-search, #order-btn-delete, #btn-deleteAll, #btn-deleteSelected {
-	background: #393939;
-	border-radius: 5px;
-	width: 80px;
-	height: 30px;
-	color: #FFFFFF;
-	font-size: 14px;
-	vertical-align: top;
-	cursor: pointer;
-}
-
-#button-gradient {
-	border: none;
-	width: 394px;
-	height: 60px;
-	cursor: pointer;
-	color: white;
-	background: linear-gradient(to right,#682CAD,#2FC0CC);
-	border-radius: 3px;
-	font-family: "Apex New";
-	margin: 10px 0;
-}
-
-/* public input style */
-
-#input-common,
-#section_member input, #section_member select {
-	width: 394px;
-	padding: 20px 0;
-	margin: 5px 0;
-	text-indent: 10px;
-	border-radius: 3px;
-	border: 1px solid lightgray;
-	outline: none;
-	font-size: 16px;
-}
-
-#input-common:focus,
-#section_member input:focus, #section_member select:focus {
-	border: 1px solid gray;
-}
-
-/* checkbox style */
-
-#chk-circle {
-	width: 1rem;	height: 1rem;
-	border: 2px solid #2C2C2C;
-	border-radius: 50%;
-	
-	appearance: none;
-    cursor: pointer;
-}
 
 /****** Order.html ******/
-
-/* Order/Payment */
-#order-title {
-	padding: 80px 0 10px 0;
-	width: 1100px;
-	margin: auto;
-	margin-bottom: 10px;
-	border-bottom: 2px solid #393939;
-
-	font-family:"YouandiModern", sans-serif;
-	font-size: 23px;
-	letter-spacing: 0px;
-	color: #2B2B2B;
-}
-
-/* subtitle, th */
-#order-subtitle, order-table th, chk-circle-span {
-	padding: 0 0 5px 0;
-
-	font-family:"YouandiModern";
-	font-size: 16px;
-	letter-spacing: 0px;
-	color: #000000;
-	opacity: 1;
-}
-
-/* order.html commons */
-#order-table, #price-table{
-	background: #FFFFFF 0% 0% no-repeat padding-box;
-	border: 1px solid #DDDDDD;
-	opacity: 1;
-	border-collapse: collapse;
-	margin: auto;
-	margin-bottom: 50px;
-	width: 100%;
-
-	text-align: center;
-}
-
-#order-table th {
-	border-bottom: 1px solid #DDDDDD;
-	padding: 8px 0;
-
-	font-size:  16px;
-	color: #000000;
-	text-align: center;
-}
-
-#order-table td, #order-table select {
-	border-bottom: 1px solid #DDDDDD;
-
-	font-size:14px;
-	color: #A9A9A9;
-	text-align: left;
-}
-
-/* chk-circle */
-#section_member #chk-circle, #section_payment #chk-circle {
-	width: 1rem;	height: 1rem;
-	border-radius: 50%;
-	border: 2px solid #2C2C2C;
-	appearance: none;
-	cursor: pointer;
-	transition: background 0.2s;
-	
-}
-#section_member #chk-circle:checked, #section_payment #chk-circle:checked {
-	background: #2C2C2C;
-}
 
 /* subtitle & checkbox */
 #member-chk {
