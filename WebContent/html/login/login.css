@@ -1459,15 +1459,15 @@ td#payment-totalPrice {
 	margin: 0 3px;
 }
 /* join agreement more link */
-#agreement-link, #agreement-link-1 {
-	text-decoration: none;
+#detail1, #detail2 {
+	text-decoration: underline;
 	color: blue;
 	margin-left: 10px;
+	cursor: pointer;
+	color: #6E6E6E;
 }
 /* join agreement more link:hover */
-#agreement-link:hover, #agreement-link-1:hover {
-	text-decoration: underline;
-}
+
 /* myPage; delete link */
 #link-deleteAccount {
 	width: 40%;
@@ -1516,7 +1516,7 @@ td#payment-totalPrice {
 	opacity: 1;
 }
 
-#agreement {
+#checkbox-agreement {
 	width: 18px;
 	height: 12px;
 	background-image: url("../../images/btn_check_normal.png");
@@ -1525,7 +1525,7 @@ td#payment-totalPrice {
 	cursor: pointer;
 }
 
-#agreement:checked {
+#checkbox-agreement:checked {
 	background-image: url("../../images/btn_check_select.png");
 	background-repeat: no-repeat;
 }
@@ -1686,3 +1686,58 @@ td#payment-totalPrice {
 }
 
 /*****************************cmj**************************************/
+/*******************************모달창************************************/
+div#modal {
+	position: fixed;
+	top:50%; 			
+	left:50%;
+  	transform: translate(-50%,-50%);
+	width: 100%;		
+	height: 100%;
+	background: rgba(128, 128, 128, .3);
+	display: none;
+}
+
+div.agreement {
+	position: fixed;
+	top:50%; 			
+	left:50%;
+  	transform: translate(-50%,-50%);
+	width: 450px;		
+	height: 550px;
+	margin: auto;
+	background: white;
+	text-align: center;
+	border-radius: 10px;
+	box-shadow: inset 0px 3px 6px #0000001A, 0px 10px 20px #00000029;
+}
+#agreement-title {
+	margin: 0px 0px 20px 0px;
+	padding-top: 30px;
+	text-align: center;
+	font-family: "YouandiModern", sans-serif;
+	color: #2B2B2B;
+	font-size: 24px;
+}
+
+#agreement-content {
+	text-align: center;
+	width: 370px;			height: 340px;
+	padding: 15px;
+	font-family: "YouandiModern", sans-serif;
+	color: #6E6E6E;
+	font-size: 16px;
+	text-align: justify;
+	margin: auto;
+	overflow: auto;
+}
+div.agreement button#button-gradient {
+	margin: 20px 0 10px 0;
+	width: 250px;
+	font-size: 20px;
+}
+
+div.detail1, div.detail2, div.detail3, div.detail4 {
+	display: none;
+}
+/*******************************모달창************************************/

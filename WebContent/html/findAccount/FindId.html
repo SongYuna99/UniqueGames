@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>findAccount</title>
-<link rel="stylesheet" href="../../css/login.css">
+<link rel="stylesheet" href="../login/login.css">
 <script src="../join/jquery-3.6.4.min.js"></script>
+
 <script>
 	$(document).ready(function(){
 		
@@ -41,10 +42,16 @@
 			
 			if($("input[name='phone']").val()==""){
 				$("#msgPhone").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+			}else if(){
+				
 			}else {
 				$("#msgPhone").css("display","none");
 			}
 		});
+		
+		function phoneCheck(asValue){
+			
+		}
 		
 	})
 
