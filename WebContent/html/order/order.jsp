@@ -1,11 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>Unique Games</title>
-	<link rel="stylesheet" href="order.css">
+	<link rel="stylesheet" href="style.css">
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script> <!-- 마이크로소프트 jQuery-->
-	<script src="order.js"></script>
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+	<script src="script.js"></script>
 </head>
 <body>
 <!-- header -->
@@ -21,7 +25,7 @@
 </section>
 
 <!-- orderForm -->
-<form name="orderForm" action="#" method="post">
+<form name="orderForm" action="orderProc.jsp" method="post">
 	<h1>Order / Payment</h1>
 	<section id="order">
 		<div id="div-gameList">
@@ -36,7 +40,7 @@
 					</tr>
 					<tr>
 						<td>1</td>
-						<td><a><img></a></td>
+						<td><a><img src="#"></a></td>
 						<td>
 							<p><a>이것이 상품명입니다.</a></p>
 							<p>이건 상품 간단 설명? 옵션?</p>
@@ -51,48 +55,53 @@
 		</div>
 		<div id="div-info">
 			<h2>결제 정보</h2>
-			<div id="div-infoLeft">
-				<table id="order-payment">
-					<tr id="payment-method">
-						<th>결제 안내</th>
-						<td>
-							<button id="button-gradient" type="button" value="card">카드</button>
-							<button id="button-gradient" type="button" value="applePay">Apple Pay</button>
-							<button id="button-gradient" type="button" value="samsungPay">삼성페이</button></li>
-						</td>
-					</tr>
-					<tr>
-						<th id="payment-info">품절 시 환불 안내</th>
-						<td id="payment-info"><label>환불은 무슨일이 있어도 눈에 흙이 들어가도 안됩니다.</label></td>
-					</tr>
-					<tr>
-						<th id="payment-agreement">주문자 동의</th>
-						<td id="payment-agreement">
-							<input type="checkbox" id="checkAll">전체 동의하기
-							<ul>
-								<li><input type="checkbox" name="agreement">[필수] 만 14세 이상입니다.</li>
-								<li><input type="checkbox" name="agreement">[필수] 이용 약관<a id="detail1">자세히</a></li>
-								<li><input type="checkbox" name="agreement">[필수] 개인정보 수집 및 이용 동의<a id="detail2">자세히</a></li>
-								<li><input type="checkbox" name="agreement">[필수] 개인정보 제 3자 제공 동의<a id="detail3">자세히</a></li>
-								<li><input type="checkbox" name="agreement">[필수] 전자결제대행 이용 동의<a id="detail4">자세히</a></li>
-							</ul>
-						</td>
-					</tr>
-				</table>
+			<div id="div-paymentMethod">
+				<h3>결제 수단</h3>
+				<div id="div-method">
+					<button id="btn-method" type="button" value="card">카드 결제</button>
+					<button id="btn-method" type="button" value="vbank">가상 계좌</button>
+					<button id="btn-method" type="button" value="trans">계좌이체</button>
+					<button id="btn-method" type="button" value="phone">휴대폰소액결제</button>
+					<button id="btn-method" type="button" value="kakao">카카오 페이</button>
+				</div>	
 			</div>
-			<div id="div-infoRight">
-				<table id="order-table">
+			<hr>
+			<div>
+				<h3>환불 안내</h3>
+				<div id="div-infomation">
+					환불 절차와 조건은 다음과 같습니다.
+					
+					<br><p id="p-infomationTitle">1. 환불 절차</p>
+					<br><p id="p-infomationContent">환불 조건에 적합한 건에 대하여 선택하신 결제 수단으로 2주내 환불이 이루어집니다.</p>
+					
+					<br><p id="p-infomationTitle">2. 환불 조건</p>
+					<br><p id="p-infomationContent">결제 후 2주가 지나지 않은 건에 대해서는 100% 환불이 가능하며 이외의 환불에 대해서는 아래의 링크를 참고하여주시길 바랍니다.</p>
+					<br><p id="p-infomationContent"><a href="#">기간에 따른 환불 안내</a></p>
+					
+				</div>	
+			</div>
+			<hr>
+			<h3>결제 동의</h3>
+			<div id="div-agreement">
+				<input type="checkbox" id="checkAll"><span>전체 동의하기</span>
+					<ul>
+						<li><input type="checkbox" name="agreement">[필수] 만 14세 이상입니다.</li>
+						<li><input type="checkbox" name="agreement">[필수] 이용 약관<a id="detail1">자세히</a></li>
+						<li><input type="checkbox" name="agreement">[필수] 개인정보 수집 및 이용 동의<a id="detail2">자세히</a></li>
+						<li><input type="checkbox" name="agreement">[필수] 개인정보 제 3자 제공 동의<a id="detail3">자세히</a></li>
+						<li><input type="checkbox" name="agreement">[필수] 전자결제대행 이용 동의<a id="detail4">자세히</a></li>
+					</ul>
+			</div>
+			<div id="div-price">
+				<table id="cart-price">
 					<tr>
-						<th id="th-payment-price">금액</th>
-						<td id="payment-price">999,999,999</td>
+						<th>개수</th>
+						<th>총 금액</th>
+						
 					</tr>
 					<tr>
-						<th id="th-payment-sale">할인</th>
-						<td id="payment-sale">-</td>
-					</tr>
-					<tr>
-						<th id="th-payment-totalPrice">총 금액</th>
-						<td id="payment-totalPrice">999,999,999</td>
+						<td>총 n개</td>
+						<td>999,999,999</td>
 					</tr>
 				</table>
 			</div>
@@ -105,11 +114,11 @@
 
 <!-- modal -->
 <div id="modal">
-	<div class="agreement" id="agreement">
-		<h1 id="agreement-title">이용 약관</h1>
-		<div id="agreement-content">
+	<div class="modal-agreement" id="modal-agreement">
+		<p id="modal-title">이용 약관</p>
+		<div id="modal-content">
 		</div>
-		<button id="button-gradient" name="btn-agreement">확인</button>
+		<button id="btn-modal">확인</button>
 	</div>
 </div>
 
