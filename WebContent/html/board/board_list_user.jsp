@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -10,7 +12,7 @@
 
 <body>
 	<header>
-		<iframe src="../main/header.html" scrolling="no" width="100%" height="228px" frameborder=0 style="display: block;"></iframe>
+		<iframe src="../main/header.html" scrolling="no" width="100%" height="228px" frameborder=0></iframe>
 	</header>
 	<section id="top-bg">
 		<div id="base-layer">
@@ -24,92 +26,79 @@
 		<div id="board-list">
 			<div id="board-top-menu">
 				<p>Board</p>
-				<div>
+				<div id="bsearch-box">
 					<label for="">
 						<input type="text" name="search" placeholder="검색어를 입력해주세요.">
 						<button type="button" id="btn-search"><img src="../../images/btn_boardSearch_press.png" alt=""></button>
 					</label>
 					<ul>
-						<li><a href="./board_write.html"><button type="button" id="btn-style">작성</button></a></li>
-						<li><button type="button" id="btn-style">수정</button></li>
-						<li><button type="button" id="btn-style">삭제</button></li>
-						<li><button type="button" id="btn-style">전체삭제</button></li>
+						<li><button type="button" id="btn-style" onclick="location.href='./board_write.jsp'">작성</button></a></li>
 					</ul>
 				</div>
+				<div id="clearFix"></div>
 			</div>
-			<table id="admin-btable">
+			<table id="user-btable">
 				<tr>
-					<th>선택</th>
 					<th>번호</th>
 					<th>제목</th>
 					<th>작성자</th>
 					<th>작성일</th>
 				</tr>
 				<tr>
-					<td><input type="checkbox"></td>
 					<td>1</td>
 					<td><a href="./board_content.html">아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</a></td>
 					<td>관리자</td>
 					<td>2023.04.25</td>
 				</tr>
 				<tr>
-					<td><input type="checkbox"></td>
 					<td>2</td>
 					<td>아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
 					<td>관리자</td>
 					<td>2023.04.25</td>
 				</tr>
 				<tr>
-					<td><input type="checkbox"></td>
 					<td>3</td>
 					<td>아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
 					<td>관리자</td>
 					<td>2023.04.25</td>
 				</tr>
 				<tr>
-					<td><input type="checkbox"></td>
 					<td>4</td>
 					<td>아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
 					<td>관리자</td>
 					<td>2023.04.25</td>
 				</tr>
 				<tr>
-					<td><input type="checkbox"></td>
 					<td>5</td>
 					<td>아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
 					<td>관리자</td>
 					<td>2023.04.25</td>
 				</tr>
 				<tr>
-					<td><input type="checkbox"></td>
 					<td>6</td>
 					<td>아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
 					<td>관리자</td>
 					<td>2023.04.25</td>
 				</tr>
 				<tr>
-					<td><input type="checkbox"></td>
 					<td>7</td>
 					<td>아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
 					<td>관리자</td>
 					<td>2023.04.25</td>
 				</tr>
 				<tr>
-					<td><input type="checkbox"></td>
 					<td>8</td>
 					<td>아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
 					<td>관리자</td>
 					<td>2023.04.25</td>
 				</tr>
 				<tr>
-					<td><input type="checkbox"></td>
 					<td>9</td>
 					<td>아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
 					<td>관리자</td>
 					<td>2023.04.25</td>
 				</tr>
 				<tr>
-					<td><input type="checkbox"></td>
 					<td>10</td>
 					<td>아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
 					<td>관리자</td>
