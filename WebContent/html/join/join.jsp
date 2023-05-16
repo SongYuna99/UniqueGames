@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +13,7 @@
 </head>
 <body>
 	<header>
-		<iframe src="../main/header.html"
-			scrolling="no" width="100%" height="227px" frameborder="0"></iframe>
+		<jsp:include page="../main/header.jsp"></jsp:include>
 	</header>
 	<section id="top-bg">
 		<div id="base-layer">
@@ -31,7 +33,8 @@
 							<label>아이디</label>
 						</li>
 						<li>
-							<input type="text" id="input-common" name="id" placeholder="영문,숫자 5~10자리" tabindex="1">
+							<input type="text" id="input-id" name="id" placeholder="영문,숫자 5~10자리" tabindex="1">
+							<button type="button" id="check-btn-style">중복체크</button>
 							<span id="idMsg"></span>
 						</li>
 						<li>
@@ -192,8 +195,7 @@
 		</div>
 		
 	<footer>
-		<iframe src="../main/footer.html"
-			scrolling="no" width="100%" height="646px" frameborder="0"></iframe>
+		<jsp:include page="../main/footer.jsp"></jsp:include>
 	</footer>
 </body>
 </html>

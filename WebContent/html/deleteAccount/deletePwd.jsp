@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +22,9 @@
 					$("#selectbox-find").focus();
 					return false;
 				}else {
-					window.open("deleteComplete.html","회원탈퇴","width=1200,height=550,scrollbars=yes,top=100,left=100");
+					$("#modal2").show();
+					
+					$("#agreement-content1").html($(".deleteComplete").html());
 				}	
 			});
 			
@@ -31,15 +36,22 @@
 					$("#msgPwd").css("display","none");
 				}
 			});
+		
+		$(document).on("click", "#button-gradient", function(event){
+			$("#modal2").hide();
+			location.href="../main/index.html";
+			
+			});
+		
+		
+		
 		});
-	
 	
 	</script>
 </head>
 <body>
 	<header>
-		<iframe src="../main/header.html"
-			scrolling="no" width="100%" height="227px" frameborder="0"></iframe>
+		<jsp:include page="../main/header.jsp"></jsp:include>	
 	</header>
 	<section id="top-bg">
 		<div id="base-layer">
@@ -95,9 +107,29 @@
 		
 		</form>		
 	</section>
+	
+	<div id="modal2">
+		<div class="agreement2" id="agreement">
+			<div id="agreement-content1">
+			</div>
+		</div>
+	</div>
+	
+	<div class="deleteComplete">
+		<p id="agreement-title">회원탈퇴</p>
+		<span id="delete-span">
+		UniqueGames님!<br>
+		회원 탈퇴가 정상적으로 완료되었습니다.
+		</span>
+		<ul>
+			<li>
+				<button type="button" id="button-gradient" name="btn-agreement">홈으로</button>
+			</li>
+		</ul>
+	</div>
+	
 	<footer>
-		<iframe src="../main/footer.html"
-			scrolling="no" width="100%" height="646px" frameborder="0"></iframe>
+		<jsp:include page="../main/footer.jsp"></jsp:include>
 	</footer>
 </body>
 </html>
