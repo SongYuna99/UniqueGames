@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko" dir="ltr" class='com_virtuemart view-productdetails itemid-167 mm-hover'>
 <head>
@@ -630,7 +631,7 @@
                             <div id="product-price2" style="padding-top:10px">
                               <div class="PricebasePrice vm-display vm-price-value">
                                 <span class="vm-price-desc" >제작 </span>
-                                <span class="PricebasePrice" ><a href="company.html" style="font: italic normal 900 18px Apex New; letter-spacing: 0px;color: #1c2025">CGD(Crazy Game Dog) Team</a>
+                                <span class="PricebasePrice" ><a href="company.jsp" style="font: italic normal 900 18px Apex New; letter-spacing: 0px;color: #1c2025">CGD(Crazy Game Dog) Team</a>
                                   </span>
                               </div>
                               <span class="price-crossed" ></span>

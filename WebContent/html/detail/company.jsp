@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -143,7 +144,7 @@
           </div>
           <div class="card-footer" style="background: linear-gradient(to right,#682CAD,#2FC0CC);text-align: center;">
             <small class="text-muted" >
-              <a href="detail.html" ><a href="detail.html" >자세히 보기</a></a>
+              <a href="detail.jsp" ><a href="detail.jsp" >자세히 보기</a></a>
             </small>
           </div>
         </div>
@@ -157,7 +158,7 @@
             <p class="card-text">Action RPG</p>
           </div>
           <div class="card-footer" style="background: linear-gradient(to right,#682CAD,#2FC0CC);text-align: center;">
-            <small class="text-muted" ><a href="detail.html" >자세히 보기</a></small>
+            <small class="text-muted" ><a href="detail.jsp" >자세히 보기</a></small>
           </div>
         </div>
       </div>
@@ -170,7 +171,7 @@
             <p class="card-text">Action RPG</p>
           </div>
           <div class="card-footer" style="background: linear-gradient(to right,#682CAD,#2FC0CC);text-align: center;">
-            <small class="text-muted" ><a href="detail.html" >자세히 보기</a></small>
+            <small class="text-muted" ><a href="detail.jsp" >자세히 보기</a></small>
           </div>
         </div>
       </div>
@@ -183,7 +184,7 @@
             <p class="card-text">Action RPG</p>
           </div>
           <div class="card-footer" style="background: linear-gradient(to right,#682CAD,#2FC0CC);text-align: center;">
-            <small class="text-muted" ><a href="detail.html" >자세히 보기</a></small>
+            <small class="text-muted" ><a href="detail.jsp" >자세히 보기</a></small>
           </div>
         </div>
       </div>
@@ -196,7 +197,7 @@
             <p class="card-text">Action RPG</p>
           </div>
           <div class="card-footer" style="background: linear-gradient(to right,#682CAD,#2FC0CC);text-align: center;">
-            <small class="text-muted" ><a href="detail.html" >자세히 보기</a></small>
+            <small class="text-muted" ><a href="detail.jsp" >자세히 보기</a></small>
           </div>
         </div>
       </div>
@@ -209,7 +210,7 @@
             <p class="card-text">Action RPG</p>
           </div>
           <div class="card-footer" style="background: linear-gradient(to right,#682CAD,#2FC0CC);text-align: center;">
-            <small class="text-muted" ><a href="detail.html" >자세히 보기</a></small>
+            <small class="text-muted" ><a href="detail.jsp" >자세히 보기</a></small>
           </div>
         </div>
       </div>
@@ -346,7 +347,7 @@
           </div>
           <div class="card-footer" style="background: linear-gradient(to right,#682CAD,#2FC0CC);text-align: center;">
             <small class="text-muted" >
-              <a href="detail.html" ><a href="detail.html" >자세히 보기</a></a>
+              <a href="detail.jsp" ><a href="detail.jsp" >자세히 보기</a></a>
             </small>
           </div>
         </div>
@@ -360,7 +361,7 @@
             <p class="card-text">Action RPG</p>
           </div>
           <div class="card-footer" style="background: linear-gradient(to right,#682CAD,#2FC0CC);text-align: center;">
-            <small class="text-muted" ><a href="detail.html" >자세히 보기</a></small>
+            <small class="text-muted" ><a href="detail.jsp" >자세히 보기</a></small>
           </div>
         </div>
       </div>
@@ -373,7 +374,7 @@
             <p class="card-text">Action RPG</p>
           </div>
           <div class="card-footer" style="background: linear-gradient(to right,#682CAD,#2FC0CC);text-align: center;">
-            <small class="text-muted" ><a href="detail.html" >자세히 보기</a></small>
+            <small class="text-muted" ><a href="detail.jsp" >자세히 보기</a></small>
           </div>
         </div>
       </div>
@@ -386,7 +387,7 @@
             <p class="card-text">Action RPG</p>
           </div>
           <div class="card-footer" style="background: linear-gradient(to right,#682CAD,#2FC0CC);text-align: center;">
-            <small class="text-muted" ><a href="detail.html" >자세히 보기</a></small>
+            <small class="text-muted" ><a href="detail.jsp" >자세히 보기</a></small>
           </div>
         </div>
       </div>
@@ -399,7 +400,7 @@
             <p class="card-text">Action RPG</p>
           </div>
           <div class="card-footer" style="background: linear-gradient(to right,#682CAD,#2FC0CC);text-align: center;">
-            <small class="text-muted" ><a href="detail.html" >자세히 보기</a></small>
+            <small class="text-muted" ><a href="detail.jsp" >자세히 보기</a></small>
           </div>
         </div>
       </div>
@@ -412,7 +413,7 @@
             <p class="card-text">Action RPG</p>
           </div>
           <div class="card-footer" style="background: linear-gradient(to right,#682CAD,#2FC0CC);text-align: center;">
-            <small class="text-muted" ><a href="detail.html" >자세히 보기</a></small>
+            <small class="text-muted" ><a href="detail.jsp" >자세히 보기</a></small>
           </div>
         </div>
       </div>
