@@ -8,9 +8,10 @@
 	<title>로그인</title>
 	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">
 	<script src="../join/jquery-3.6.4.min.js"></script>
+	<script src="http://localhost:9000/uniquegames/js/login_jquery.js"></script>
 	<script src="https://t1.kakaocdn.net/kakao_js_sdk/v1/kakao.min.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-	<script>
+	<!-- <script>
 		$(document).ready(function(){
 			
 			$("#button-gradient").click(function(){
@@ -90,7 +91,7 @@
 	      Kakao.Auth.setAccessToken(undefined)
 	    }
 	  }
-	</script>
+	</script> -->
 </head>
 <body>
 	<header>
@@ -106,7 +107,7 @@
 	</section>
 	<section id="content-1"><!-- login-content -->
 		<p id="intro">로그인</p>
-		<form action="#" name="loginForm" method="get">
+		<form action="login_proc.do" name="loginForm" method="get">
 			<div>
 				<ul>
 					<li>
