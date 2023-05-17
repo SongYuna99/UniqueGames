@@ -6,7 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>회원탈퇴</title>
-	<link rel="stylesheet" href="../login/login.css">
+	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">ss">
 	<script src="../join/jquery-3.6.4.min.js"></script>
 	<script>
 	

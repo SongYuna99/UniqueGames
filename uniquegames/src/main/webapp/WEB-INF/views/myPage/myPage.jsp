@@ -6,7 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>myPage</title>
-	<link rel="stylesheet" href="../login/login.css">
+	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">
 	<script src="../join/jquery-3.6.4.min.js"></script>
 	<script src="../join/join_jquery.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

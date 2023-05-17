@@ -6,7 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>로그인</title>
-	<link rel="stylesheet" href="../login/login.css">
+	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">
 	<script src="../join/jquery-3.6.4.min.js"></script>
 	<script src="https://t1.kakaocdn.net/kakao_js_sdk/v1/kakao.min.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
