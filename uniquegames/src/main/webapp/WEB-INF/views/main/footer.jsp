@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>footer</title>
-    <link rel="stylesheet" type="text/css" href="../../css/unigames.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost:9000/uniquegames//css/unigames.css">
 </head>
 <body>
 <div id="event-banner">
@@ -15,7 +15,7 @@
     <div class="w1350" >
         <div class="foot_top">
             <div class="f_info">
-                <img src="../../images/img_footer_logo.png" alt="유니크게임즈(주)" />
+                <img src="http://localhost:9000/uniquegames/images/img_footer_logo.png" alt="유니크게임즈(주)" />
                 <dl>
                     <dd>유니크게임즈(주)</dd>
                     <dd>대표자 : 홍길동</dd>

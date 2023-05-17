@@ -30,7 +30,7 @@ ol,ul,li {
 #top-bg {
 	width: 100%;
 	margin: auto;
-	background-image: url(../images/img_bg.png);
+	background-image: url( ../images/img_bg.png );
 	background-size:cover;
 	height: 229px;
 	background-repeat: no-repeat;
@@ -510,7 +510,7 @@ footer,dl,dd,ol,li{border:0; line-height:175%; letter-spacing:normal}
 #event-banner { background-image: url("../images/img_event-banner.png"); background-size: cover; width: 100%; height: 240px;}
 
 /* Hearder  style */
-header { width: 100%; margin: auto; height: 228px; }
+header { width: 100%; margin: auto; height: 235px; }
 header div img { display: block; clear:both; }
 #hearder-logo { height: 116px; position:relative; overflow: hidden; clear: both; }
 #hearder-logo > a { position:absolute; display: block; top:38px; margin:0 44%; }
@@ -538,7 +538,6 @@ header div img { display: block; clear:both; }
 	margin: auto;
 	margin-bottom: 10px;
 	border-bottom: 2px solid #393939;
-
 	font-family:"YouandiModern", sans-serif;
 	font-size: 23px;
 	letter-spacing: 0px;
@@ -1290,5 +1289,70 @@ td {
 	background-image: url("../images/btn_check_select.png");
 	background-repeat: no-repeat;
 }
+.swiper {
+    width: 100%;
+    height: 660px;
+    position: relative;
+}
 
-/*****************************cmj**************************************/
+.swiper .swiper-slide {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after{
+    content: "";
+    display: none;
+}
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 300px;
+    z-index: 1;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .swiper-button-prev {
+    left: 10px;
+  }
+  .swiper-button-next {
+    right: 10px;
+  }
+  .silde1, .silde2, .silde3, .silde4 {
+    background-image: url(../images/img_main_01.png);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .silde2 {
+    background-image: url(../images/img_main_02.png);
+  }
+  .silde3 {
+    background-image: url(/img_main_03.png);
+  }
+  .silde4 {
+    background-image: url(../images/img_main_04.png);
+  }
+  .swiper-button-next button, .swiper-button-prev button {
+    background-color: rgba( 255, 255, 255, 0 );
+    border: none;
+  }
+  .swiper-button-next {
+    margin-right: 300px;
+  }
+  .swiper-button-prev {
+    margin-left: 300px;
+  }
+  #slide-text {
+    margin-top: 150px;
+  }
+  .swiper-pagination-bullet {
+    background-color: #ffffff;
+  }

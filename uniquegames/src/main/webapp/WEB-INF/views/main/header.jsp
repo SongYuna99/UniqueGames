@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Unique Games</title>
-    <link rel="stylesheet" type="text/css" href="../../css/unigames.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost:9000/uniquegames/css/unigames.css">
 </head>
 <body>
     <header>
@@ -14,15 +14,15 @@
                 <ul>
                     <li><a href="../login/login.html">Login</a></li>
                     <li><a href="../join/join.html">Join</a></li>
-                    <li><a href="../myPage/myPage.html"><img src="../../images/img_icon_mypage.png"></a></li>
-                    <li><a href="../order/cart.html"><img src="../../images/img_icon_cart.png"></a></li>
-                    <li><a href="#"><img src="../../images/img_icon_search.png"></a></li>
+                    <li><a href="../myPage/myPage.html"><img src="http://localhost:9000/uniquegames/images/img_icon_mypage.png"></a></li>
+                    <li><a href="../order/cart.html"><img src="http://localhost:9000/uniquegames/images/img_icon_cart.png"></a></li>
+                    <li><a href="#"><img src="http://localhost:9000/uniquegames/images/img_icon_search.png"></a></li>
                 </ul>
             </nav>
         </div>
         <div id="hearder-logo">
             <a href="./index.html" target="_parent">
-                <img src="../../images/img_title_logo.png">
+                <img src="http://localhost:9000/uniquegames/images/img_title_logo.png">
             </a>
         </div>
         <div id="header-bottom-menu">
