@@ -6,8 +6,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class MainController {
-	@RequestMapping(value="index.do", method=RequestMethod.GET)
+	@RequestMapping(value="/index.do", method=RequestMethod.GET)
 	public String index() {
 		return "/main/index";
+	}
+	@RequestMapping(value="/alllist.do", method=RequestMethod.GET)
+	public String alllist() {
+		return "/main/allList";
+	}
+	@RequestMapping(value="/topgame.do", method=RequestMethod.GET)
+	public String topgame() {
+		return "/main/topGame";
 	}
 }

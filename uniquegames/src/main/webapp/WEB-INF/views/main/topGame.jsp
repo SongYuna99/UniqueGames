@@ -5,10 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Unique Games</title>
-    <link rel="stylesheet" href="../../css/unigames.css">
+    <link rel="stylesheet" href="http://localhost:9000/uniquegames/css/mainunigames.css">
 </head>
 <body>
-    <iframe src="./header.html" scrolling="no" width="100%" height="228px" frameborder=0></iframe>
+    <jsp:include page="header.jsp"></jsp:include>
     <section id="top-bg">
 		<div id="base-layer">
 			<div id="top-bg-textarea">
@@ -24,7 +24,7 @@
                 <div>
                     <div>
                         <div id="tList-detail">
-                            <img alt="#" src="../../images/img_game_thumbnail_1_500240.png" width="500px" height="240px">
+                            <img alt="#" src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_500240.png" width="500px" height="240px">
                             <div>
                                 <p>1</p>
                                 <p>New Game of Music</p>
@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         <div id="tList-detail">
-                            <img alt="#" src="../../images/img_game_thumbnail_2_500240.png" width="500px" height="240px">
+                            <img alt="#" src="http://localhost:9000/uniquegames/images/img_game_thumbnail_2_500240.png" width="500px" height="240px">
                             <div>
                                 <p>2</p>
                                 <p>New Game of Music</p>
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         <div id="tList-detail">
-                            <img alt="#" src="../../images/img_game_thumbnail_3_500240.png" width="500px" height="240px">
+                            <img alt="#" src="http://localhost:9000/uniquegames/images/img_game_thumbnail_3_500240.png" width="500px" height="240px">
                             <div>
                                 <p>3</p>
                                 <p>New Game of Music</p>
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div id="tList-detail">
-                            <img alt="#" src="../../images/img_game_thumbnail_3_500240.png" width="500px" height="240px">
+                            <img alt="#" src="http://localhost:9000/uniquegames/images/img_game_thumbnail_3_500240.png" width="500px" height="240px">
                             <div>
                                 <p>4</p>
                                 <p>New Game of Music</p>
@@ -60,7 +60,7 @@
                             </div>
                         </div>
                         <div id="tList-detail">
-                            <img alt="#" src="../../images/img_game_thumbnail_3_500240.png" width="500px" height="240px">
+                            <img alt="#" src="http://localhost:9000/uniquegames/images/img_game_thumbnail_3_500240.png" width="500px" height="240px">
                             <div>
                                 <p>5</p>
                                 <p>New Game of Music</p>
@@ -73,6 +73,6 @@
             </div>
         </div>
     </section>
-    <iframe src="./footer.html" scrolling="no" width="100%" height="646px" frameborder=0></iframe>
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
