@@ -6,37 +6,41 @@
     <meta charset="UTF-8">
     <title>Unique Games</title>
     <link rel="stylesheet" type="text/css" href="http://localhost:9000/uniquegames/css/unigames.css">
-</head>
-<style>
-#btn-hearder-search {
-	border:solid red 1px;
-	background-color: rgba( 255, 255, 255, 0 );
-	display:block;
-	width: 40px;
-    padding: 4px 6px 4px 6px;
-}
-#input-search {
-   	background-img : url('이미지 위치');
-    background-repeat : no-repeat;
-    backgroupd-size : 13px;
- }
- #search-menu {
- 	display:none;
- }
-</style>
-<script>
-$("document").ready(function() {
-	$('#btn-hearder-search').click(function() {
-		$('#search-menu').fadeToggle(1000);
-	})
+	<style>
+		#btn-hearder-search {
+			border:none;
+			background-color: rgba( 255, 255, 255, 0 );
+			width: 40px;
+		    padding: 4px 6px 4px 6px;
+		    
+		}
+		#input-search {
+	        background-image: url('http://localhost:9000/uniquegames/images/icon_search_header.png');
+	        background-repeat: no-repeat;
+	        background-position: 15px center; 
+	        background-size: 16px; 
+	        width: 360px;
+	        height: 46px;
+	        padding: 2px 2px 2px 40px;
+	        position: relative;
+	        z-index: 2;
+	        border-radius: 40px;
+	        border: 1px solid #707070;
+	    }
 	
-}
-</script>
+	    .search-menu {
+	        position: absolute;
+	        float: right;
+	        top: 60px;
+	        right: 170px;
+   		}
+
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
 <body>
     <header>
-    	<div id="search-menu">
-    		<input id="input-search" type="text" placeholder="검색하실 게임 이름을 입력해주세요.">
-    	</div>
         <div id="header-top-menu">
             <nav id="nav1">
                 <ul>
@@ -44,9 +48,12 @@ $("document").ready(function() {
                     <li><a href="../join/join.do">Join</a></li>
                     <li><a href="../myPage/myPage.do"><img src="http://localhost:9000/uniquegames/images/img_icon_mypage.png"></a></li>
                     <li><a href="../order/cart.do"><img src="http://localhost:9000/uniquegames/images/img_icon_cart.png"></a></li>
-                    <li><button id="btn-hearder-search"><img src="http://localhost:9000/uniquegames/images/img_icon_search.png"></button></li>
+                    <li><button type="button" id="btn-hearder-search" onclick="toggleSearch()"><img src="http://localhost:9000/uniquegames/images/img_icon_search.png"></button></li>
                 </ul>
             </nav>
+            <div class="search-menu" id="search-container">
+    			<input type="text" id="input-search" placeholder="검색하실 게임 이름을 입력해주세요.">
+    		</div>
         </div>
         <div id="hearder-logo">
             <a href="http://localhost:9000/uniquegames/index.do" target="_parent">
@@ -58,7 +65,7 @@ $("document").ready(function() {
                 <ul>
                     <li><a href="http://localhost:9000/uniquegames/topgame.do">Top Game</a></li>
                     <li><a href="http://localhost:9000/uniquegames/alllist.do">All List</a></li>
-                    <li><a href="#">Recommendations</a></li>
+                    <li><a href="http://localhost:9000/uniquegames/index.do#menu-main1">Recommendations</a></li>
                     <li><a href="http://localhost:9000/uniquegames/solution_list.do">Solution</a></li>
                     <li><a href="http://localhost:9000/uniquegames/event_list.do">Event</a></li>
                     <li><a href="http://localhost:9000/uniquegames/notice_list.do">Notice</a></li>
@@ -66,5 +73,27 @@ $("document").ready(function() {
             </nav>
         </div>
     </header>
+    <script>
+        // 검색창 토글 함수
+        function toggleSearch() {
+            var searchContainer = $('#search-container');
+            searchContainer.toggle();
+        }
+
+        // 엔터 키 이벤트 핸들러
+        $(document).on('keydown', '#input-search', function(event) {
+            if (event.which === 13) {
+                var inputText = $(this).val();
+                console.log('입력한 텍스트:', inputText);
+                // 입력한 텍스트를 원하는 방식으로 처리할 수 있습니다.
+                // 예: 서버로 전송, 검색 실행 등
+            }
+        });
+
+        // 페이지 로드 시 검색창 초기화
+        $(document).ready(function() {
+            $('#search-container').hide();
+        });
+    </script>
 </body>
 </html>
