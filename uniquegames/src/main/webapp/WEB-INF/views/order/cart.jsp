@@ -56,34 +56,6 @@
 							<button type="button" id="btn-deleteOne">삭제</button>
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<input type="checkbox" id="checkOne">
-						</td>
-						<td><a><img src="#"></a></td>
-						<td>
-							<p><a>이것이 상품명입니다.</a></p>
-							<p>이건 상품 간단 설명? 옵션?</p>
-						</td>
-						<td>999,999,999</td>
-						<td>
-							<button type="button" id="btn-deleteOne">삭제</button>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="checkbox" id="checkOne">
-						</td>
-						<td><a><img src="#"></a></td>
-						<td>
-							<p><a>이것이 상품명입니다.</a></p>
-							<p>이건 상품 간단 설명? 옵션?</p>
-						</td>
-						<td>999,999,999</td>
-						<td>
-							<button type="button" id="btn-deleteOne">삭제</button>
-						</td>
-					</tr>
 				</table>
 			</div>
 		</div>

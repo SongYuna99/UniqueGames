@@ -27,7 +27,7 @@
 </section>
 
 <!-- orderForm -->
-<form name="orderForm" action="orderProc.jsp" method="post">
+<form name="orderForm" action="order_proc.do" method="post">
 	<h1>Order / Payment</h1>
 	<section id="order">
 		<div id="div-gameList">
