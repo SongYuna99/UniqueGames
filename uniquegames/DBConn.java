@@ -13,18 +13,19 @@ public class DBConn {
 	Statement stmt;
 	ResultSet rs;
 	
-	String driver = "com.mysql.jdbc.Driver";
-	String url = "jdbc:mysql://localhost:3306/uniquegames";
-	String user = "root";
-	String password = "1234";
+	String driver = "com.mysql.cj.jdbc.Driver";
+	String url = "jdbc:mysql://localhost:3306/uniquegames?serverTimezone=UTC";
+	String user = "cmj";
+	String pass = "1234";
 	
 	public DBConn() {
 		try {
 			
 			Class.forName(driver);
-			conn = DriverManager.getConnection(url, user, password);
+			conn = DriverManager.getConnection(url, user, pass);
 			
 		} catch (Exception e) {
+			System.out.println("데이터베이스 연결 실패");
 			e.printStackTrace();
 		}
 	}

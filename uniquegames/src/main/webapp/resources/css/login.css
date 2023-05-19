@@ -112,7 +112,8 @@ a:visited {
 }
 
 /* public input style */
-#input-common, #section_member input, #section_member select {
+#input-common, #section_member input, #section_member select,
+#input-id {
 	width: 394px;
 	padding: 20px 0;
 	margin: 5px 0;
@@ -121,6 +122,10 @@ a:visited {
 	border: 1px solid lightgray;
 	outline: none;
 	font-size: 16px;
+}
+
+#input-id {
+	width: 305px;
 }
 
 #input-common:focus, #section_member input:focus, #section_member select:focus
@@ -1484,7 +1489,8 @@ td#payment-totalPrice {
 }
 
 /* join,myPage zip-code find button*/
-#address-btn-style {
+#address-btn-style,
+#check-btn-style {
 	background: #393939;
 	border-radius: 5px;
 	width: 50px;
@@ -1493,6 +1499,10 @@ td#payment-totalPrice {
 	font-size: 14px;
 	cursor: pointer;
 	margin: 0 8px;
+}
+
+#check-btn-style {
+	width: 80px;
 }
 
 /* join checkbox agreement*/

@@ -7,13 +7,13 @@
 <meta charset="UTF-8">
 <title>findAccount</title>
 <link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">
-<script src="../join/jquery-3.6.4.min.js"></script>
+<script src="http://localhost:9000/uniquegames/js/jquery-3.6.4.min.js"></script>
 
 <script>
 	$(document).ready(function(){
 		
 		$("#tab-menu li").find("a").click(function(){
-			location.href="FindPwd.jsp";
+			location.href="findPwd.do";
 		});
 		
 		$("#button-gradient").click(function(){

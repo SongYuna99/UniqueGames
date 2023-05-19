@@ -7,11 +7,10 @@
 	<meta charset="UTF-8">
 	<title>로그인</title>
 	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">
-	<script src="../join/jquery-3.6.4.min.js"></script>
-	<script src="http://localhost:9000/uniquegames/js/login_jquery.js"></script>
+	<script src="http://localhost:9000/uniquegames/js/jquery-3.6.4.min.js"></script>
 	<script src="https://t1.kakaocdn.net/kakao_js_sdk/v1/kakao.min.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-	<!-- <script>
+	<script>
 		$(document).ready(function(){
 			
 			$("#button-gradient").click(function(){
@@ -20,7 +19,7 @@
 					alert("아이디를 입력해주세요");
 					$("input[name='id']").focus();
 					return false;
-				}else if($("input[name='pwd']").val()=="") {
+				}else if($("input[name='password']").val()=="") {
 					alert("비밀번호를 입력해주세요");
 					$("input[name='pwd']").focus();
 					return false;
@@ -39,9 +38,9 @@
 				
 			});
 			
-			$("input[name='pwd']").blur(function(){
+			$("input[name='password']").blur(function(){
 				
-				if($("input[name='pwd']").val()==""){
+				if($("input[name='password']").val()==""){
 					$("#msgPwd").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
 				}else {
 					$("#msgPwd").css("display","none");
@@ -54,8 +53,21 @@
 			});
 			
 		});
+		
+		let join = "${message }";
+		
+		if(join=="success"){
+			alert("회원가입 성공");
+		}
+		
+		let login = "${login_result }";
+		
+		if(login=="fail"){
+			alert("로그인 실패");
+		}
+		
 	</script>
-	<script>
+	<!-- <script>
 	
 	window.Kakao.init("6b4a0907149b118d58fe6dae1dc2ebfe");
 	
@@ -107,7 +119,7 @@
 	</section>
 	<section id="content-1"><!-- login-content -->
 		<p id="intro">로그인</p>
-		<form action="login_proc.do" name="loginForm" method="get">
+		<form action="login_proc.do" name="loginForm" method="post">
 			<div>
 				<ul>
 					<li>
@@ -115,7 +127,7 @@
 						<span id="msgId"></span>
 					</li>
 					<li>
-						<input type="password" id="input-common" name="pwd" placeholder="비밀번호" size="15">
+						<input type="password" id="input-common" name="password" placeholder="비밀번호" size="15">
 						<span id="msgPwd"></span>
 					</li>
 					<li>
@@ -124,9 +136,9 @@
 				</ul>
 				<ul id="link-tab">
 					<li>
-						<a href="../findAccount/FindId.jsp" id="link-find">아이디 찾기</a>
-						<a href="../findAccount/FindPwd.jsp" id="link-find-pwd">비밀번호 찾기</a>
-						<a href="../join/join.jsp" target="_parent" id="link-signUp">
+						<a href="/uniquegames/findId.do" id="link-find">아이디 찾기</a>
+						<a href="/uniquegames/findPwd.jsp" id="link-find-pwd">비밀번호 찾기</a>
+						<a href="/uniquegames/join.do" id="link-signUp">
 							<span>Sign Up</span></a>
 					</li>
 				</ul>
@@ -136,7 +148,7 @@
 			<a href="javascript:kakaoLogin();">
 			<img src="https://www.gb.go.kr/Main/Images/ko/member/certi_kakao_login.png" style="height: 40px; width: auto; display: block; margin: auto; padding: 10px 0;">
 			</a>
-			<a href="javascript:kakaoLogout();">로그아웃</a>
+			<!-- <a href="javascript:kakaoLogout();">로그아웃</a> -->
 		</div>
 	</section>
 	<footer>

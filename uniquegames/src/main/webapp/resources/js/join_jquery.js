@@ -15,21 +15,21 @@ $(document).ready(function(){
 			alert("아이디는 5~10글자로 작성해주세요");
 			$("input[name='id'").focus();
 			return false;
-		}else if($("input[name='pwd'").val()==""){
+		}else if($("input[name='password'").val()==""){
 			alert("비밀번호는 필수 입력 항목입니다");
-			$("input[name='pwd'").focus();
+			$("input[name='password'").focus();
 			return false;
-		}else if(!pwdCheck($("input[name='pwd']").val())) {
+		}else if(!pwdCheck($("input[name='password']").val())) {
 			alert("비밀번호는 영문,숫자,특수문자 1글자 이상 조합하여 작성해주세요");
-			$("input[name='pwd'").focus();
+			$("input[name='password'").focus();
 			return false;
-		}else if($("input[name='pwd-check']").val()=="") {
+		}else if($("input[name='password-check']").val()=="") {
 			alert("비밀번호 확인칸을 입력해주세요");
-			$("input[name='pwd-check']").focus();
+			$("input[name='password-check']").focus();
 			return false;
-		}else if($("input[name='pwd']").val() != $("input[name='pwd-check']").val()){
+		}else if($("input[name='password']").val() != $("input[name='password-check']").val()){
 			alert("비밀번호가 서로 동일하지 않습니다");
-			$("input[name='pwd-check']").focus();
+			$("input[name='password-check']").focus();
 			return false;
 		}else if($("input[name='name']").val()==""){
 			alert("이름은 필수 입력 항목입니다");
@@ -47,7 +47,7 @@ $(document).ready(function(){
 			alert("이메일은 영문+숫자로 입력해주세요");
 			$("input[name='email1']").focus();
 			return false;
-		}else if($("input[name='email2']").val()=="" || $("#selectbox-email").val()=="default"){
+		}else if($("input[name='email2']").val()=="" && $("#selectbox-email").val()=="default"){
 			alert("이메일 주소를 전부 작성해주세요");
 			$("input[name='email2']").focus();
 			return false;
@@ -81,7 +81,6 @@ $(document).ready(function(){
 			return false;
 		}else {
 			joinForm.submit();
-			location.href="../main/index.html";
 		}
 	});
 /*************************************************************************
@@ -152,11 +151,11 @@ $(document).ready(function(){
 	
 	
 	
-	$("input[name='pwd']").blur(function(){
-		if($("input[name='pwd']").val()=="") {
+	$("input[name='password']").blur(function(){
+		if($("input[name='password']").val()=="") {
 			$("#pwdMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
 		}else {
-			if(!pwdCheck($("input[name='pwd']").val())) {
+			if(!pwdCheck($("input[name='password']").val())) {
 				$("#pwdMsg").text("올바른 비밀번호 형식이 아닙니다").css("color","red").css("font-size","11px").css("display","block");
 			}else {
 				$("#pwdMsg").css("display","none");
@@ -165,15 +164,15 @@ $(document).ready(function(){
 	});
 	
 	
-	$("input[name='pwd-check']").blur(function(){
+	$("input[name='password-check']").blur(function(){
 		
-		if($("input[name='pwd-check']").val()=="") {
+		if($("input[name='password-check']").val()=="") {
 			
 			$("#pwdMsg-check").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
 			
-		}else if($("input[name='pwd']").val()!="" && $("input[name='pwd-check']").val()!="") {
+		}else if($("input[name='password']").val()!="" && $("input[name='password-check']").val()!="") {
 			
-			if($("input[name='pwd']").val() == $("input[name='pwd-check']").val()){
+			if($("input[name='password']").val() == $("input[name='password-check']").val()){
 				$("#pwdMsg-check").text("비밀번호가 서로 동일합니다").css("color","blue").css("font-size","11px").css("display","block");
 			}else {
 				$("#pwdMsg-check").text("비밀번호가 서로 동일하지 않습니다").css("color","red").css("font-size","11px").css("display","block");
@@ -271,9 +270,9 @@ $(document).ready(function(){
 	$("#pwd-check-img").change(function(){
 
 		if($("#pwd-check-img").is(":checked") == false) {
-			$("input[name='pwd']").attr("type","password");
+			$("input[name='password']").attr("type","password");
 		}else if($("#pwd-check-img").is(":checked") == true) {
-			$("input[name='pwd']").attr("type","text");
+			$("input[name='password']").attr("type","text");
 		}
 		
 	});
@@ -281,9 +280,9 @@ $(document).ready(function(){
 	$("#pwd-check-img-1").change(function(){
 
 		if($("#pwd-check-img-1").is(":checked") == false) {
-			$("input[name='pwd-check']").attr("type","password");
+			$("input[name='password-check']").attr("type","password");
 		}else if($("#pwd-check-img-1").is(":checked") == true) {
-			$("input[name='pwd-check']").attr("type","text");
+			$("input[name='password-check']").attr("type","text");
 		}
 		
 	});
@@ -320,6 +319,34 @@ $("a").click(function(){
 $("button[name='btn-agreement']").click(function() {
 	$("#modal").hide();
 });
+
+$("#check-btn-style").click(function(){
+		
+		if($("#input-id").val()=="") {
+			$("#idMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		}else {
+			$.ajax({
+				url : "id_check.do?id="+$("#input-id").val(),
+				success : function(result) {
+					if(result == 1){
+							$("#idMsg").text("이미 사용중인 아이디 입니다. 다시 입력해주세요")
+							.css("color","red").css("font-size","11px").css("display","block");
+							
+							$("#id").val("").focus();
+						}else if(result == 0){
+							$("#idMsg").text("사용 가능한 아이디 입니다")
+							.css("color","blue").css("font-size","11px").css("display","block");
+							$("input[name='password']").focus();
+						}
+					}
+			});
+		}
+
+
+	});
+
+
+
 /*************************************************************************
 							로그인
 *************************************************************************/
