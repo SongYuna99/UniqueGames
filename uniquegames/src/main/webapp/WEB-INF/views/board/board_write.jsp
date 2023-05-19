@@ -5,16 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Unique Games</title>
-<!-- 04/25 임시 주소 -->
-<link rel="stylesheet" href="../../css/unigames.css">
+<link rel="stylesheet" href="http://localhost:9000/myuniquegames/css/unigames.css">
+<link rel="stylesheet" href="http://localhost:9000/myuniquegames/css/board.css">
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
-	<script type="text/javascript" src="board.js"></script>
-
+<script src="http://localhost:9000/myuniquegames/js/board.js"></script>
 </head>
 
 <body>
 	<header>
-		<iframe src="../main/header.html" scrolling="no" width="100%" height="228px" frameborder=0></iframe>
+		<jsp:include page="../main/header.jsp"></jsp:include>
 	</header>
 	<section id="top-bg">
 		<div id="base-layer">
@@ -36,7 +35,7 @@
 				</div>
 				<div id="clearFix"></div>
 			</div>
-			<form name="writeForm" action="boardWriteForm.jsp" method="post">
+			<form name="writeForm" action="#" method="post">
 				<table>
 					<tr>
 						<th>제목</th>
@@ -52,8 +51,7 @@
 		</div>
 	</div>
 	<footer>
-		<iframe src="../main/footer.html" scrolling="no" width="100%"
-			height="646px" frameborder=0></iframe>
+		<jsp:include page="../main/header.jsp"></jsp:include>
 	</footer>
 </body>
 

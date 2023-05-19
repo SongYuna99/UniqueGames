@@ -6,17 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Unique Games</title>
-<!-- 04/25 임시 주소 -->
-<link rel="stylesheet" href="../../css/unigames.css">
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
-<!-- 마이크로소프트 jQuery-->
-<script src="./board.js"></script>
+<link rel="stylesheet" href="http://localhost:9000/myuniquegames/css/unigames.css">
+<link rel="stylesheet" href="http://localhost:9000/myuniquegames/css/board.css">
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script><!-- 마이크로소프트 jQuery-->
+<script src="http://localhost:9000/myuniquegames/js/board.js"></script>
 </head>
 
 <body>
 	<header>
-		<iframe src="../main/header.html" scrolling="no" width="100%"
-			height="228px" frameborder=0 style="display: block;"></iframe>
+		<jsp:include page="../main/header.jsp"></jsp:include>
 	</header>
 	<section id="top-bg">
 		<div id="base-layer">
@@ -45,7 +43,7 @@
 					</ul>
 				</div>
 			</div>
-			<form name="boardManage" action="boardManage.jsp" method="post">
+			<form name="boardManage" action="#" method="post">
 				<table id="admin-btable">
 					<tr>
 						<th>선택</th>
@@ -61,7 +59,7 @@
 					<tr>
 						<td><input type="checkbox" name="list[]" value=<%= bid + i %>></td>
 						<td><%= i %></td>
-						<td><a href="./board_content.jsp?no=<%= bid + i %>">아 제목인데 너무 길게 쓰지않고 적당한
+						<td><a href="board-content.do?no=<%= bid + i %>">아 제목인데 너무 길게 쓰지않고 적당한
 								길이로 대충 때울려고합니다~예~ 그럼요</a></td>
 						<td>관리자</td>
 						<td>2023.04.25</td>
@@ -94,8 +92,7 @@
 		</div>
 	</div>
 	<footer>
-		<iframe src="../main/footer.html" scrolling="no" width="100%"
-			height="646px" frameborder=0></iframe>
+		<jsp:include page="../main/footer.jsp"></jsp:include>
 	</footer>
 </body>
 
