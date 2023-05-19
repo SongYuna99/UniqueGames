@@ -1,28 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%
-	/*
-	cart 
-		회원아이디 / 게임아이디 / 금액 
-
-	order
-		주문번호(PK) / 회원아이디 / 게임아이디 / 금액 / 결제날짜
-	*/
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>Unique Games</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/order_style.css">
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script> <!-- 마이크로소프트 jQuery-->
-	<script src="script.js"></script>
+	<script src="js/order_script.js"></script>
 </head>
 <body>
 <!-- header -->
-<%-- <jsp:include page="../main/header.jsp"></jsp:include> --%>
+<jsp:include page="../main/header.jsp"></jsp:include>
 
 <!-- content -->
 <section id="top-bg">
@@ -34,7 +25,7 @@
 	</div>
 </section>
 
-<form name="cartForm" action="cartProc.jsp" method="post">
+<form name="cartForm" action="cart_proc.do" method="post">
 	<h1>Cart</h1>
 	<section id="cart">
 		<div id="div-gameList">
@@ -50,34 +41,6 @@
 						<th>상품명</th>
 						<th>가격</th>
 						<th>삭제</th>
-					</tr>
-					<tr>
-						<td>
-							<input type="checkbox" id="checkOne">
-						</td>
-						<td><a><img src="#"></a></td>
-						<td>
-							<p><a>이것이 상품명입니다.</a></p>
-							<p>이건 상품 간단 설명? 옵션?</p>
-						</td>
-						<td>999,999,999</td>
-						<td>
-							<button type="button" id="btn-deleteOne">삭제</button>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="checkbox" id="checkOne">
-						</td>
-						<td><a><img src="#"></a></td>
-						<td>
-							<p><a>이것이 상품명입니다.</a></p>
-							<p>이건 상품 간단 설명? 옵션?</p>
-						</td>
-						<td>999,999,999</td>
-						<td>
-							<button type="button" id="btn-deleteOne">삭제</button>
-						</td>
 					</tr>
 					<tr>
 						<td>
@@ -116,5 +79,6 @@
 </form>
 
 <!-- footer -->
+<jsp:include page="../main/footer.jsp"></jsp:include>
 </body>
 </html>

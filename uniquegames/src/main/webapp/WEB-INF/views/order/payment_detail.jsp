@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>Unique Games</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/order_style.css">
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script> <!-- 마이크로소프트 jQuery-->
-	<script src="script.js"></script>
+	<script src="js/order_script.js"></script>
 </head>
 <body>
 <!-- header -->
-<%-- <jsp:include page="../main/header.jsp"></jsp:include> --%>
+<jsp:include page="../main/header.jsp"></jsp:include>
 
 <!-- content -->
 <section id="top-bg">
@@ -64,5 +65,6 @@
 </section>
 
 <!-- footer -->
+<jsp:include page="../main/footer.jsp"></jsp:include>
 </body>
 </html>
