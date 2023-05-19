@@ -1,4 +1,4 @@
-package com.uiuniquegames.dao;
+package com.uniquegames.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,11 +19,11 @@ public class DBConn {
 	// Constructor
 	public DBConn(){
 		try {
-			// 0. µå¶óÀÌ¹ö ÁØºñ: ÇÁ·ÎÁ§Æ®¿¡ jdbc µå¶óÀÌ¹ö ÀÓÆ÷Æ®
-			// 1. µå¶óÀÌ¹ö ·Îµù
+			// 0. ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½Øºï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ jdbc ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
+			// 1. ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½Îµï¿½
 			Class.forName(driver);
 
-			// 2. connection °´Ã¼ »ý¼º
+			// 2. connection ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 			conn = DriverManager.getConnection(url, user, pass);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -34,7 +34,7 @@ public class DBConn {
 	// PreparedStatement
 	public void getPreparedStatement(String sql) {
 		try {
-			// 3. PreparedStatement °´Ã¼ »ý¼º
+			// 3. PreparedStatement ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 			pstmt = conn.prepareStatement(sql);
 		} catch (Exception e) {
 			e.printStackTrace();
