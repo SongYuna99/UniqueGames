@@ -7,17 +7,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Unique Games</title>
-	<!-- 04/25 임시 주소 -->
-	<link rel="stylesheet" href="../../css/unigames.css">
-	<link rel="stylesheet" href="board.css">
-	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script> <!-- 마이크로소프트 jQuery-->
-	<script type="text/javascript" src="board.js"></script>
+	<link rel="stylesheet" href="http://localhost:9000/myuniquegames/css/unigames.css">
+	<link rel="stylesheet" href="http://localhost:9000/myuniquegames/css/board.css">
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script><!-- 마이크로소프트 jQuery-->
+	<script src="http://localhost:9000/myuniquegames/js/board.js"></script>
 </head>
 
 <body>
 	<header>
 		<!-- <iframe src="../main/header.html" scrolling="no" width="100%" height="228px" frameborder=0></iframe> -->
-		<jsp:include page="../main/header.html"></jsp:include>
+		<jsp:include page="../main/header.jsp"></jsp:include>
 	</header>
 	<section id="top-bg">
 		<div id="base-layer">
@@ -118,7 +117,8 @@
 		</div>
 	</div>
 	<footer>
-		<iframe src="../main/footer.html" scrolling="no" width="100%" height="646px" frameborder=0></iframe>
+		<!-- <iframe src="../main/footer.jsp" scrolling="no" width="100%" height="646px" frameborder=0></iframe> -->
+		<jsp:include page="../main/footer.jsp"></jsp:include>
 	</footer>
 <script>
 	const reportBtn = document.querySelectorAll(".report");
