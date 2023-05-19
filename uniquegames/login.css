@@ -26,7 +26,7 @@ ol, ul, li {
 #top-bg {
 	width: 100%;
 	margin: auto;
-	background-image: url(../../images/img_bg.png);
+	background-image: url(../images/img_bg.png);
 	background-size: cover;
 	height: 229px;
 	background-repeat: no-repeat;
@@ -112,7 +112,8 @@ a:visited {
 }
 
 /* public input style */
-#input-common, #section_member input, #section_member select {
+#input-common, #section_member input, #section_member select,
+#input-id {
 	width: 394px;
 	padding: 20px 0;
 	margin: 5px 0;
@@ -121,6 +122,10 @@ a:visited {
 	border: 1px solid lightgray;
 	outline: none;
 	font-size: 16px;
+}
+
+#input-id {
+	width: 305px;
 }
 
 #input-common:focus, #section_member input:focus, #section_member select:focus
@@ -148,7 +153,7 @@ a:visited {
 #slides-1-bg {
 	padding: 160px 400px 0 400px;
 	height: 500px;
-	background-image: url("../../../images/img_main_01.png ");
+	background-image: url("../../images/img_main_01.png ");
 	background-size: cover;
 	overflow: hidden;
 	position: relative;
@@ -390,7 +395,7 @@ a:visited {
 
 #btn-like-style {
 	border: none;
-	background: url("../../images/btn_heart_normal.png ") no-repeat;
+	background: url("../images/btn_heart_normal.png ") no-repeat;
 	width: 18px;
 	height: 14px;
 	cursor: pointer;
@@ -593,7 +598,7 @@ footer, dl, dd, ol, li {
 }
 
 #event-banner {
-	background-image: url("../../images/img_event-banner.png");
+	background-image: url("../images/img_event-banner.png");
 	background-size: cover;
 	width: 100%;
 	height: 240px;
@@ -981,14 +986,14 @@ td#cart-info {
 #section_payment input#agreement {
 	width: 18px;
 	height: 12px;
-	background-image: url("../../images/btn_check_normal.png");
+	background-image: url("../images/btn_check_normal.png");
 	background-repeat: no-repeat;
 	appearance: none;
 	cursor: pointer;
 }
 
 #section_payment input#agreement:checked {
-	background-image: url("../../images/btn_check_select.png");
+	background-image: url("../images/btn_check_select.png");
 	background-repeat: no-repeat;
 }
 
@@ -1484,7 +1489,8 @@ td#payment-totalPrice {
 }
 
 /* join,myPage zip-code find button*/
-#address-btn-style {
+#address-btn-style,
+#check-btn-style {
 	background: #393939;
 	border-radius: 5px;
 	width: 50px;
@@ -1493,6 +1499,10 @@ td#payment-totalPrice {
 	font-size: 14px;
 	cursor: pointer;
 	margin: 0 8px;
+}
+
+#check-btn-style {
+	width: 80px;
 }
 
 /* join checkbox agreement*/
@@ -1519,14 +1529,14 @@ td#payment-totalPrice {
 #checkbox-agreement {
 	width: 18px;
 	height: 12px;
-	background-image: url("../../images/btn_check_normal.png");
+	background-image: url("../images/btn_check_normal.png");
 	background-repeat: no-repeat;
 	appearance: none;
 	cursor: pointer;
 }
 
 #checkbox-agreement:checked {
-	background-image: url("../../images/btn_check_select.png");
+	background-image: url("../images/btn_check_select.png");
 	background-repeat: no-repeat;
 }
 /*****************************tab**************************************/
@@ -1648,21 +1658,21 @@ td#payment-totalPrice {
 #agreement-choice {
 	width: 18px;
 	height: 12px;
-	background-image: url("../../images/btn_check_normal.png");
+	background-image: url("../images/btn_check_normal.png");
 	background-repeat: no-repeat;
 	appearance: none;
 	cursor: pointer;
 }
 
 #agreement-choice:checked {
-	background-image: url("../../images/btn_check_select.png");
+	background-image: url("../images/btn_check_select.png");
 	background-repeat: no-repeat;
 }
 
 #pwd-check-img, #pwd-check-img-1 {
 	width: 24px;
 	height: 16px;
-	background-image: url("../../images/btn_eye_normal.png");
+	background-image: url("../images/btn_eye_normal.png");
 	background-repeat: no-repeat;
 	appearance: none;
 	cursor: pointer;
@@ -1672,7 +1682,7 @@ td#payment-totalPrice {
 }
 
 #pwd-check-img:checked, #pwd-check-img-1:checked {
-	background-image: url("../../images/btn_eye_select.png");
+	background-image: url("../images/btn_eye_select.png");
 	background-repeat: no-repeat;
 }
 

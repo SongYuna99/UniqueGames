@@ -6,37 +6,37 @@
 <head>
 <meta charset="UTF-8">
 <title>findAccount</title>
-<link rel="stylesheet" href="../login/login.css">
-<script src="../join/jquery-3.6.4.min.js"></script>
-<!-- <script src="login.js"></script> -->
+<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">
+<script src="http://localhost:9000/uniquegames/js/jquery-3.6.4.min.js"></script>
+
 <script>
 	$(document).ready(function(){
 		
 		$("#tab-menu li").find("a").click(function(){
-			location.href="FindId.jsp";
+			location.href="findPwd.do";
 		});
 		
-		$("#button-gradient1").click(function(){
+		$("#button-gradient").click(function(){
 			
-			if($("input[name='id']").val()==""){
-				alert("아이디를 입력해주세요");
-				$("input[name='id']").focus();
+			if($("input[name='name']").val()==""){
+				alert("이름을 입력해주세요");
+				$("input[name='name']").focus();
 				return false;
 			}else if($("input[name='phone']").val()==""){
 				alert("휴대전화를 입력해주세요");
 				$("input[name='phone']").focus();
 				return false;
 			}else {
-				findPwdForm.submit();
+				findIdForm.submit();
 			}
 		});
 		
-		$("input[name='id']").blur(function(){
+		$("input[name='name']").blur(function(){
 			
-			if($("input[name='id']").val()=="") {
-				$("#msgId").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+			if($("input[name='name']").val()=="") {
+				$("#msgName").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
 			}else {
-				$("#msgId").css("display","none");
+				$("#msgName").css("display","none");
 			}
 			
 		});
@@ -49,6 +49,10 @@
 				$("#msgPhone").css("display","none");
 			}
 		});
+		
+		function phoneCheck(asValue){
+			
+		}
 		
 	})
 
@@ -70,28 +74,25 @@
 		<p id="intro">아이디/비밀번호 찾기</p>
 			<div id="tab-content">
 				<ul id="tab-menu">
-					<li><a href="#">아이디 찾기</a></li>
-					<li><a href="#" class="active">비밀번호 찾기</a></li>
+					<li><a href="#" class="active">아이디 찾기</a></li>
+					<li><a href="#">비밀번호 찾기</a></li>
 				</ul>
-				<div id="tab-context">
-					<div id="find-pwd">
-						<form action="#" name="findPwdForm" method="get">
-							<p id="intro-2">비밀번호를 찾으려는 아이디</p>
-							<ul>
-								<li>
-									<input type="text" id="input-common" name="id" placeholder="아이디">
-									<span id="msgId"></span>
-								</li>
-								<li>
-									<input type="text" id="input-common" name="phone" placeholder="휴대전화">
-									<span id="msgPhone"></span>
-								</li>
-								<li>
-									<button type="button" id="button-gradient1">비밀번호 찾기</button>
-								</li>
-							</ul>
-						</form>
-					</div>
+				<div id="find-id">
+					<form action="#" name="findIdForm" method="get">
+						<ul>
+							<li>
+								<input type="text" id="input-common" name="name" placeholder="이름">
+								<span id="msgName"></span>
+							</li>
+							<li>
+								<input type="text" id="input-common" name="phone" placeholder="휴대전화">
+								<span id="msgPhone"></span>
+							</li>
+							<li>
+								<button type="button" id="button-gradient">아이디 찾기</button>
+							</li>
+						</ul>
+					</form>
 				</div>
 			</div>
 	</section>

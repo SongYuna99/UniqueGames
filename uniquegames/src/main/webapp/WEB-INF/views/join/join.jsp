@@ -6,10 +6,18 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Join</title>
-	<link rel="stylesheet" href="../login/login.css">
-	<script src="jquery-3.6.4.min.js"></script>
-	<script src="join_jquery.js"></script>
+	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">
+	<script src="http://localhost:9000/uniquegames/js/jquery-3.6.4.min.js"></script>
+	<script src="http://localhost:9000/uniquegames/js/join_jquery.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
+	let c = "${message }";
+	
+	if(c == "fail")
+		alert("회원가입 실패");
+	
+	
+	</script>
 </head>
 <body>
 	<header>
@@ -25,7 +33,7 @@
 	</section>
 		<section id="content-1">
 			<p id="intro">회원가입</p>
-			<form action="#" name="joinForm" method="get" id="content-2">
+			<form action="join_proc.do" name="joinForm" method="post" id="content-2">
 				<div>
 					<ul>
 						<li>
@@ -42,12 +50,12 @@
 							<label>비밀번호</label>
 						</li>
 						<li>
-							<input type="password" id="input-common" name="pwd" placeholder="숫자,영문,특수문자 조합 최소 8자" tabindex="2">
+							<input type="password" id="input-common" name="password" placeholder="숫자,영문,특수문자 조합 최소 8자" tabindex="2">
 							<input type="checkbox" id="pwd-check-img">
 							<span id="pwdMsg"></span>
 						</li>
 						<li>
-							<input type="password" id="input-common" name="pwd-check" placeholder="비밀번호 재입력" tabindex="3">
+							<input type="password" id="input-common" name="password-check" placeholder="비밀번호 재입력" tabindex="3">
 							<input type="checkbox" id="pwd-check-img-1">
 							<span id="pwdMsg-check"></span>
 						</li>
@@ -80,21 +88,21 @@
 							<label>주소</label>
 						</li>
 						<li>
-							<input type="text" id="input-address" name="address1" tabindex="8">
+							<input type="text" id="input-address" name="addr1" tabindex="8">
 							<button type="button" id="address-btn-style" tabindex="9">검색</button>
 						</li>
 						<li>
 							<label>상세 주소</label>
 						</li>
 						<li>
-							<input type="text" id="input-common" name="address2" tabindex="10">
+							<input type="text" id="input-common" name="addr2" tabindex="10">
 						</li>
 						<li>
 							<p id="label-dot">*</p>
 							<label>휴대전화</label>
 						</li>
 						<li>
-							<select id="selectbox-mobile" name="mobile" tabindex="11">
+							<select id="selectbox-mobile" name="tel" tabindex="11">
 								<option value="default">선택</option>
 								<option value="SKT">SKT</option>
 								<option value="KT">KT</option>
@@ -137,7 +145,7 @@
 						</li>
 						
 						<li>
-							<button type="button" id="button-gradient" tabindex="16">가입하기</button>
+							<button type="submit" id="button-gradient" tabindex="16">가입하기</button>
 						</li>
 					</ul>
 				</div>

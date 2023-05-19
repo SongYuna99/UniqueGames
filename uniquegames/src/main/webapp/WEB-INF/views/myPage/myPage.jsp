@@ -1,14 +1,15 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>myPage</title>
-	<link rel="stylesheet" href="../login/login.css">
-	<script src="../join/jquery-3.6.4.min.js"></script>
-	<script src="../join/join_jquery.js"></script>
+	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">
+	<script src="http://localhost:9000/uniquegames/js/jquery-3.6.4.min.js"></script>
+	<script src="http://localhost:9000/uniquegames/js/join_jquery.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
@@ -33,19 +34,19 @@
 						<label>아이디</label>
 					</li>
 					<li>
-						<input type="text" id="input-common" name="id" value="UniqueGames" disabled>
+						<input type="text" id="input-common" name="id" value="${userVo.id }" disabled>
 					</li>
 					<li>
 						<p id="label-dot">*</p>
 						<label>비밀번호</label>
 					</li>
 					<li>
-						<input type="password" id="input-common" name="pwd">
+						<input type="password" id="input-common" name="password">
 						<input type="checkbox" id="pwd-check-img">
 						<span id="pwdMsg"></span>
 					</li>
 					<li>
-						<input type="password" id="input-common" name="pwd-check">
+						<input type="password" id="input-common" name="password-check">
 						<input type="checkbox" id="pwd-check-img-1">
 						<span id="pwdMsg-check"></span>
 					</li>
@@ -54,21 +55,24 @@
 						<label>이름</label>
 					</li>
 					<li>
-						<input type="text" id="input-common" name="name" value="홍길동" disabled>
+						<input type="text" id="input-common" name="name" value="${userVo.name }" disabled>
 					</li>
 					<li>
 						<p id="label-dot">*</p>
 						<label>이메일</label>
 					</li>
 					<li>
-						<input type="text" id="input-email" name="email1" value="UniqueGames">
+						<input type="text" id="input-email" name="email1" value="${userVo.email1 }">
 						@
-						<input type="text" id="input-email" name="email2" value="naver.com">
+						<input type="text" id="input-email" name="email2" value="${userVo.email2 }">
 						<select name="email3" id="selectbox-email">
-							<option value="default">naver.com</option>
-							<option value="gmail.com">gmail.com</option>
-							<option value="daum.net">daum.net</option>
-							<option value="direct">직접입력</option>
+							<option value="">선택</option>
+							<c:forEach var="userVo" items="${userVo.email3 }">
+								<option value="default">naver.com</option>
+								<option value="gmail.com">gmail.com</option>
+								<option value="daum.net">daum.net</option>
+								<option value="direct">직접입력</option>
+							</c:forEach>
 						</select>
 						<span id="emailMsg"></span>
 					</li>
@@ -76,21 +80,21 @@
 						<label>주소</label>
 					</li>
 					<li>
-						<input type="text" id="input-address" name="address1" value="서울 강남구 강남대로78길 8">
+						<input type="text" id="input-address" name="addr1" value="${userVo.addr1 }">
 						<button type="button" id="address-btn-style">검색</button>
 					</li>
 					<li>
 						<label>상세 주소</label>
 					</li>
 					<li>
-						<input type="text" id="input-common" name="address2" value="한국빌딩 4F, 8F">
+						<input type="text" id="input-common" name="addr2" value="${userVo.addr2 }">
 					</li>
 					<li>
 						<p id="label-dot">*</p>
 						<label>휴대전화</label>
 					</li>
 					<li>
-						<select name="mobile" id="selectbox-mobile">
+						<select name="tel" id="selectbox-mobile">
 							<option value="default">SKT</option>
 							<option value="KT">KT</option>
 							<option value="LGU+">LGU+</option>
@@ -102,9 +106,9 @@
 							<option value="012">012</option>
 						</select>
 						-
-						<input type="text" id="input-phone" name="phone2" value="1234">
+						<input type="text" id="input-phone" name="phone2" value="${userVo.phone2 }">
 						-
-						<input type="text" id="input-phone" name="phone3" value="5678">
+						<input type="text" id="input-phone" name="phone3" value="${userVo.phone3 }">
 						<span id="phoneMsg"></span>
 					</li>
 					<li>
