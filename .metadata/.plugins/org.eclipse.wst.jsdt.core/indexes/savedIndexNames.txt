@@ -1,7 +1,0 @@
-INDEX VERSION 1.4+C:\dev_song\git_song\UniqueGames\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-1303183400.index
-616180613.index
-2249342567.index
-3211262960.index
-4018378153.index
-2007811199.index

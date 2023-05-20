@@ -1,3 +1,0 @@
-INDEX VERSION 1.131+C:\dev_song\git_song\UniqueGames\.metadata\.plugins\org.eclipse.jdt.core
-1303183400.index
-2565356412.index
