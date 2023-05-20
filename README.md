@@ -24,4 +24,5 @@
 **혹시 적용이 제대로 안 된다면 WEB Modules탭을 나갔다가 다시 들어와서 진행해주세요.**
 
 ### 7. 실행 및 확인
+![image](https://github.com/SongYuna99/UniqueGames/assets/57223597/901ffc97-0ae6-4596-be96-ded804c44a29)<br/>
 ![image](https://github.com/SongYuna99/UniqueGames/assets/57223597/5ac5a80e-7beb-4f10-b6ac-eed20a1cce34)<br/> 
