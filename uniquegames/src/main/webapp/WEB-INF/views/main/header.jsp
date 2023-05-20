@@ -56,7 +56,7 @@
     		</div>
         </div>
         <div id="hearder-logo">
-            <a href="http://localhost:9000/uniquegames/index.do" target="_parent">
+            <a href="http://localhost:9000/uniquegames/" target="_parent">
                 <img src="http://localhost:9000/uniquegames/images/img_title_logo.png">
             </a>
         </div>
