@@ -15,7 +15,7 @@
 			
 			$("#button-gradient").click(function(){
 				
-				if($("input[name='id']").val()=="") {
+				if($("input[name='member_id']").val()=="") {
 					alert("아이디를 입력해주세요");
 					$("input[name='id']").focus();
 					return false;
@@ -30,7 +30,7 @@
 			
 			$("input[name='id']").blur(function(){
 				
-				if($("input[name='id']").val()=="") {
+				if($("input[name='member_id']").val()=="") {
 					$("#msgId").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
 				}else {
 					$("#msgId").css("display","none");
@@ -46,12 +46,7 @@
 					$("#msgPwd").css("display","none");
 				}
 			});
-			
-			$("#kakaoLogin").click(function(){
 				
-				location.href="http://localhost:9000/cmjgames/html/login/login2.jsp";
-			});
-			
 		});
 		
 		let join = "${message }";
@@ -67,43 +62,6 @@
 		}
 		
 	</script>
-	<!-- <script>
-	
-	window.Kakao.init("6b4a0907149b118d58fe6dae1dc2ebfe");
-	
-	function kakaoLogin() {
-		window.Kakao.Auth.login({
-			
-			scope:'profile_nickname, account_email, gender',
-			success: function(authObj) {
-				console.log(authObj);
-				window.Kakao.API.request({
-					url: '/v2/user/me', 
-					success: res => {
-						const kakao_account = res.kakao_account;
-						console.log(kakao_account);
-					}
-				});
-			}
-			
-		});
-	}
-	
-	function kakaoLogout() {
-	    if (Kakao.Auth.getAccessToken()) {
-	      Kakao.API.request({
-	        url: '/v1/user/unlink',
-	        success: function (response) {
-	        	console.log(response)
-	        },
-	        fail: function (error) {
-	          console.log(error)
-	        },
-	      })
-	      Kakao.Auth.setAccessToken(undefined)
-	    }
-	  }
-	</script> -->
 </head>
 <body>
 	<header>
@@ -123,7 +81,7 @@
 			<div>
 				<ul>
 					<li>
-						<input type="text" id="input-common" name="id" placeholder="아이디">
+						<input type="text" id="input-common" name="member_id" placeholder="아이디">
 						<span id="msgId"></span>
 					</li>
 					<li>
@@ -137,19 +95,13 @@
 				<ul id="link-tab">
 					<li>
 						<a href="/uniquegames/findId.do" id="link-find">아이디 찾기</a>
-						<a href="/uniquegames/findPwd.jsp" id="link-find-pwd">비밀번호 찾기</a>
-						<a href="/uniquegames/join.do" id="link-signUp">
+						<a href="/uniquegames/findPwd.do" id="link-find-pwd">비밀번호 찾기</a>
+						<a href="/uniquegames/joinChoice.do" id="link-signUp">
 							<span>Sign Up</span></a>
 					</li>
 				</ul>
 			</div>
 		</form>
-		<div>
-			<a href="javascript:kakaoLogin();">
-			<img src="https://www.gb.go.kr/Main/Images/ko/member/certi_kakao_login.png" style="height: 40px; width: auto; display: block; margin: auto; padding: 10px 0;">
-			</a>
-			<!-- <a href="javascript:kakaoLogout();">로그아웃</a> -->
-		</div>
 	</section>
 	<footer>
 		<jsp:include page="../main/footer.jsp"></jsp:include>

@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.uniquegames.dao.UserDao;
-import com.uniquegames.vo.UserVo;
+import com.uniquegames.dao.MemberDao;
+import com.uniquegames.vo.MemberVo;
 
 @Controller
 public class LoginController {
@@ -17,11 +17,11 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/login_proc.do", method=RequestMethod.POST)
-	public ModelAndView login_proc(UserVo userVo) {
+	public ModelAndView login_proc(MemberVo memberVo) {
 		
 		ModelAndView mav = new ModelAndView();
-		UserDao userDao = new UserDao();
-		int result = userDao.loginCheck(userVo);
+		MemberDao memberDao = new MemberDao();
+		int result = memberDao.loginCheck(memberVo);
 		
 		if(result==1) {
 			mav.addObject("login_result", "success");

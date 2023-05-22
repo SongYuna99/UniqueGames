@@ -41,7 +41,7 @@
 							<label>아이디</label>
 						</li>
 						<li>
-							<input type="text" id="input-id" name="id" placeholder="영문,숫자 5~10자리" tabindex="1">
+							<input type="text" id="input-id" name="member_id" placeholder="영문,숫자 5~10자리" tabindex="1">
 							<button type="button" id="check-btn-style">중복체크</button>
 							<span id="idMsg"></span>
 						</li>

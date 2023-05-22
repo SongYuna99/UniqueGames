@@ -1,6 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,14 +79,14 @@
 					<li><a href="#">비밀번호 찾기</a></li>
 				</ul>
 				<div id="find-id">
-					<form action="#" name="findIdForm" method="get">
+					<form action="findId_proc.do" name="findIdForm" method="post">
 						<ul>
 							<li>
 								<input type="text" id="input-common" name="name" placeholder="이름">
 								<span id="msgName"></span>
 							</li>
 							<li>
-								<input type="text" id="input-common" name="phone" placeholder="휴대전화">
+								<input type="text" id="input-common" name="phone_num" placeholder="휴대전화">
 								<span id="msgPhone"></span>
 							</li>
 							<li>
@@ -96,6 +97,30 @@
 				</div>
 			</div>
 	</section>
+	
+	<div id="modal2">
+		<div class="agreement2" id="agreement">
+			<div id="agreement-content1">
+			</div>
+		</div>
+	</div>
+	
+	<div class="deleteComplete">
+		<p id="agreement-title">아이디</p>
+		<span id="delete-span">
+		<c:choose>
+			<c:when test="">
+				
+			</c:when>
+		</c:choose>
+		</span>
+		<ul>
+			<li>
+				<button type="button" id="button-gradient" name="btn-agreement">홈으로</button>
+			</li>
+		</ul>
+	</div>
+	
 	<footer>
 		<jsp:include page="../main/footer.jsp"></jsp:include>
 	</footer>

@@ -239,8 +239,8 @@ $(document).ready(function(){
 	$("#address-btn-style").click(function(){
 		 new daum.Postcode({
 		        oncomplete: function(data) {
-		        	$("input[name='address1']").val("("+data.zonecode+") "+data.address);
-		        	$("input[name='address2']").focus();
+		        	$("input[name='addr1']").val("("+data.zonecode+") "+data.address);
+		        	$("input[name='addr2']").focus();
 		        }
 		    }).open();
 	});
