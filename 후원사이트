@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-05-22T04:22:52.820Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="Ht6iirN8yYiAIRCembwa" version="21.3.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-05-22T05:47:48.148Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="l09PWUiZcpFbUsO1pAGV" version="21.3.2" type="github">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
-    <mxGraphModel dx="1434" dy="1896" grid="1" gridSize="10" guides="1" tooltips="1" connect="0" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
+    <mxGraphModel dx="2206" dy="2275" grid="1" gridSize="10" guides="1" tooltips="1" connect="0" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -698,7 +698,7 @@
             <mxPoint x="570" y="305" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="U8a6rwI6tthGuR88ZYB3-83" value="게임 테이블 삭제로 인한 cart테이블 삭제&lt;br&gt;-&amp;gt; 만약 합친다면 결제완료 여부를 체크하는 컬럼 필요&lt;br&gt;&lt;br&gt;장바구니와 결제내역의 구분&lt;br&gt;장바구니에서 게임정보(이름, 이미지)를 가져올 방법 (메인화면에서도 필요)&lt;br&gt;개발사가 등록한 게임이 바뀐다면 결제내역 정보도 바뀜&lt;br&gt;&lt;br&gt;좋아요 수 저장할 컬럼&lt;br&gt;후원 가능 여부 체크할 컬럼&lt;br&gt;후원 정보 저장할 컬럼 ( 개발사 id, 게임 id, 은행, 계좌, 계좌명, 금액, 지급여부 )&lt;br&gt;개발사 - 후원계좌 등록 페이지, 후원금 정산 페이지, 후원한 유저 정보 페이지(후원금액 순위)" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+        <mxCell id="U8a6rwI6tthGuR88ZYB3-83" value="게임 테이블 추가&lt;br&gt;order 결제 여부 컬럼 추가&lt;br&gt;event, solution 테이블 삭제&lt;br&gt;company 후원 정보 컬럼 추가&lt;br&gt;" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
           <mxGeometry x="1120" y="400" width="460" height="300" as="geometry" />
         </mxCell>
         <mxCell id="U8a6rwI6tthGuR88ZYB3-84" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;" parent="1" edge="1">
