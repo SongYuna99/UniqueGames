@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Unique Games</title>
-    <link rel="stylesheet" type="text/css" href="http://localhost:9000/uniquegames/css/unigames.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost:9000/uniquegames/css/mainunigames.css">
+<%--    <link rel="stylesheet" type="text/css" href="http://localhost:9000/uniquegames/css/header.css">--%>
 	<style>
 		#btn-hearder-search {
 			border:none;
@@ -66,8 +67,8 @@
                     <li><a href="http://localhost:9000/uniquegames/topgame.do">Top Game</a></li>
                     <li><a href="http://localhost:9000/uniquegames/alllist.do">All List</a></li>
                     <li><a href="http://localhost:9000/uniquegames/index.do#menu-main1">Recommendations</a></li>
-                    <li><a href="http://localhost:9000/uniquegames/solution_list.do">Solution</a></li>
-                    <li><a href="http://localhost:9000/uniquegames/event_list.do">Event</a></li>
+<%--                    <li><a href="http://localhost:9000/uniquegames/solution_list.do">Solution</a></li>--%>
+<%--                    <li><a href="http://localhost:9000/uniquegames/event_list.do">Event</a></li>--%>
                     <li><a href="http://localhost:9000/uniquegames/notice_list.do">Notice</a></li>
                 </ul>
             </nav>

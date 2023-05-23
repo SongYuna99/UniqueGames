@@ -7,10 +7,11 @@ import java.sql.ResultSet;
 
 public class DBConn {
 	// Field
-	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@localhost:1521";
-	String user = "scott";
-	String pass = "tiger";
+	String driver = "com.mysql.cj.jdbc.Driver";
+	String url = "jdbc:mysql://localhost:3306/uniquegames";
+	/*String url = "jdbc:mysql://localhost:3306/uniquegames";*/
+	String user = "unique_games";
+	String pass = "1234";
 
 	Connection conn;
 	PreparedStatement pstmt;
