@@ -1,18 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<% String bid = request.getParameter("no"); %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-
 <head>
-	<meta charset="UTF-8">
-	<title>Unique Games</title>
-	<link rel="stylesheet" href="http://localhost:9000/myuniquegames/css/unigames.css">
-	<link rel="stylesheet" href="http://localhost:9000/myuniquegames/css/board.css">
-	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script><!-- 마이크로소프트 jQuery-->
-	<script src="http://localhost:9000/myuniquegames/js/board.js"></script>
+<meta charset="UTF-8">
+<title>Unique Games</title>
+<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/mainunigames.css">
+<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/board.css">
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script><!-- 마이크로소프트 jQuery-->
+<script src="http://localhost:9000/uniquegames/js/board.js"></script>
+<c:choose>
+	<c:when test="${result eq 'success'}">
+		<script>alert("수정되었습니다.")</script>
+	</c:when>
+	<c:when test="${result eq 'fail'}">
+		<script>alert("작업에 실패했습니다.\n잠시후에 다시 시도해주세요.")</script>
+	</c:when>
+</c:choose>
 </head>
-
 <body>
 	<header>
 		<!-- <iframe src="../main/header.html" scrolling="no" width="100%" height="228px" frameborder=0></iframe> -->
@@ -21,15 +27,15 @@
 	<section id="top-bg">
 		<div id="base-layer">
 			<div id="top-bg-textarea">
-			<p id="top-title">Board</p>
-			<p id="top-subtitle">#게시판</p>
+				<p id="top-title">Notice</p>
+				<p id="top-subtitle">#공지사항</p>
 			</div>
 		</div>
 	</section>
 	<div id="content">
 		<div id="board-content">
 			<div id="board-top-menu">
-				<p>Board</p>
+				<p>Notice</p>
 				<div>
 					<ul>
 						<li><button type="button" id="btn-style" name="update">수정</button></li>
@@ -42,22 +48,20 @@
 			<table>
 				<tr>
 					<th>제목</th>
-					<td colspan="5" id="btitle">아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
+					<td colspan="5" id="btitle">${noticeVo.title}</td>
 				</tr>
 				<tr>
 					<th>등록자</th>
-					<td>김철수</td>
+					<td>${noticeVo.company_id}</td>
 					<th>조회수</th>
-					<td style="text-align: center;">123</td>
+					<td style="text-align: center;">${noticeVo.notice_hits}</td>
 					<th>등록일</th>
-					<td>2023-04-27 17:49:59</td>
+					<td>${noticeVo.notice_date}</td>
 				</tr>
 				<tr>
 					<td colspan="6" style="border:none;">
 						<div id="details">
-						테스트 테스트 으아아아아아아ㅏ아아아아아아아앙아아아아ㅏㅇ아asdasdasdasdsadasdasdsadasㅁㄴㅇㄴㅁㅇㄴㅁㅇ
-						<br>
-						띄어쓰기
+						${noticeVo.content}
 						</div>
 					</td>
 				</tr>
@@ -120,44 +124,6 @@
 		<!-- <iframe src="../main/footer.jsp" scrolling="no" width="100%" height="646px" frameborder=0></iframe> -->
 		<jsp:include page="../main/footer.jsp"></jsp:include>
 	</footer>
-<script>
-	const reportBtn = document.querySelectorAll(".report");
-	const modal = document.getElementById("modal-background");
-	const modalCloseBtn = document.getElementById("modal-close");
-	const modalReportBtn = document.getElementById("modal-report");
-
-	function modalOff() {
-		modal.style.display = "none";
-	}
-	reportBtn.forEach(e => {
-		e.addEventListener("click", e => {
-			modal.style.display = "flex";
-		});
-	});
-
-	modalCloseBtn.addEventListener("click", e => {
-		modalOff();
-	});
-	modalReportBtn.addEventListener("click", e => {
-		modalOff();
-	});
-
-	modal.addEventListener("click", e => {
-		const eventTarget = e.target;
-		if (eventTarget.classList.contains("test")) {
-			modalOff()
-		};
-	});
-
-	window.addEventListener("keyup", e => {
-		if (modal.style.display === "flex" && e.key === "Escape") {
-			modalOff()
-		};
-	});
-
-	$('button[name="update"]').on("click", function () {
-			location.href = "board_update.jsp?f=up&id=<%= bid %>";
-		})
-</script>
+	<form name="noticeDelete" action="notice_delete.do" method="post"><input type="hidden" name="no" value="${noticeVo.post_id}"></form>
 </body>
 </html>
