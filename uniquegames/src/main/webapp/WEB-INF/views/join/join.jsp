@@ -18,6 +18,19 @@
 	
 	
 	</script>
+	<script>
+        // JavaScript 코드
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL에서 selectedTab 파라미터 값을 가져옴
+            var urlParams = new URLSearchParams(window.location.search);
+            var selectedTab = urlParams.get('selectedTab');
+            
+            // 선택한 탭을 표시
+            if (selectedTab) {
+                document.getElementById(selectedTab).checked = true;
+            }
+        });
+    </script>
 </head>
 <body>
 	<header>
@@ -33,19 +46,24 @@
 	</section>
 		<section id="content-1">
 			<p id="intro">회원가입</p>
+			<input id="individual" type="radio" name="joinSelect" checked>
+			<label for="individual" id="individual-tab">개인 회원</label>
+			<input id="company" type="radio" name="joinSelect">
+			<label for="company" id="company-tab">법인 회원</label>
+			
 			<form action="join_proc.do" name="joinForm" method="post" id="content-2">
 				<div>
 					<ul>
-						<li>
+						<li id="must-insert">
 							<p id="label-dot">*</p>
 							<label>아이디</label>
 						</li>
 						<li>
-							<input type="text" id="input-id" name="member_id" placeholder="영문,숫자 5~10자리" tabindex="1">
+							<input type="text" id="input-id" name="member_id" value="개인" placeholder="영문,숫자 5~10자리" tabindex="1">
 							<button type="button" id="check-btn-style">중복체크</button>
 							<span id="idMsg"></span>
 						</li>
-						<li>
+						<li id="must-insert">
 							<p id="label-dot">*</p>
 							<label>비밀번호</label>
 						</li>
@@ -59,7 +77,7 @@
 							<input type="checkbox" id="pwd-check-img-1">
 							<span id="pwdMsg-check"></span>
 						</li>
-						<li>
+						<li id="must-insert">
 							<p id="label-dot">*</p>
 							<label>이름</label>
 						</li>
@@ -67,7 +85,7 @@
 							<input type="text" id="input-common" name="name" tabindex="4">
 							<span id="nameMsg"></span>
 						</li>
-						<li>
+						<li id="must-insert">
 							<p id="label-dot">*</p>
 							<label>이메일</label>
 						</li>
@@ -97,7 +115,7 @@
 						<li>
 							<input type="text" id="input-common" name="addr2" tabindex="10">
 						</li>
-						<li>
+						<li id="must-insert">
 							<p id="label-dot">*</p>
 							<label>휴대전화</label>
 						</li>
@@ -130,6 +148,149 @@
 						<li>
 							<input type="checkbox" id="checkbox-agreement" name="chk-agree">
 							<span id="agreement-color">[필수]</span> <span>만 14세 이상입니다.</span>
+						</li>
+						<li>
+							<input type="checkbox" id="checkbox-agreement" name="chk-agree">
+							<span id="agreement-color">[필수]</span> <span>이용 약관</span><a id="detail1">자세히</a>
+						</li>
+						<li>
+							<input type="checkbox" id="checkbox-agreement" name="chk-agree">
+							<span id="agreement-color">[필수]</span> <span>개인정보 수집 및 이용 동의</span><a id="detail2">자세히</a>
+						</li>
+						<li>
+							<input type="checkbox" id="agreement-choice" name="chk-agree">
+							<span id="choice-span">[선택]</span> <span>마케팅 정보 메일, SMS 수신동의</span>
+						</li>
+						
+						<li>
+							<button type="submit" id="button-gradient" tabindex="16">가입하기</button>
+						</li>
+					</ul>
+				</div>
+			</form>
+			
+			<!-- 법인 등록 -->
+			<form action="join_proc.do" name="joinForm" method="post" id="content-3">
+				<div>
+					<ul>
+						<li id="must-insert">
+							<p id="label-dot">*</p>
+							<label>회사_아이디</label>
+						</li>
+						<li>
+							<input type="text" id="input-id" name="company_id" value="회사" placeholder="영문,숫자 5~10자리" tabindex="1">
+							<button type="button" id="check-btn-style">중복체크</button>
+							<span id="idMsg"></span>
+						</li>
+						<li id="must-insert">
+							<p id="label-dot">*</p>
+							<label>비밀번호</label>
+						</li>
+						<li>
+							<input type="password" id="input-common" name="password" placeholder="숫자,영문,특수문자 조합 최소 8자" tabindex="2">
+							<input type="checkbox" id="pwd-check-img">
+							<span id="pwdMsg"></span>
+						</li>
+						<li>
+							<input type="password" id="input-common" name="password-check" placeholder="비밀번호 재입력" tabindex="3">
+							<input type="checkbox" id="pwd-check-img-1">
+							<span id="pwdMsg-check"></span>
+						</li>
+						<li id="must-insert">
+							<p id="label-dot">*</p>
+							<label>회사명</label>
+						</li>
+						<li>
+							<input type="text" id="input-common" name="name" tabindex="4">
+							<span id="nameMsg"></span>
+						</li>
+						<li id="must-insert">
+							<p id="label-dot">*</p>
+							<label>이메일</label>
+						</li>
+						<li>
+							<input type="text" id="input-email" name="email1" tabindex="5">
+							<span>@</span>
+							<input type="text" id="input-email" name="email2" tabindex="6">
+							<select name="email3" id="selectbox-email" tabindex="7">
+								<option value="default">선택</option>
+								<option value="naver.com">naver.com</option>
+								<option value="gmail.com">gmail.com</option>
+								<option value="daum.net">daum.net</option>
+								<option value="direct">직접입력</option>
+							</select>
+							<span id="emailMsg"></span>
+						</li>
+						<li>
+							<label>주소</label>
+						</li>
+						<li>
+							<input type="text" id="input-address" name="addr1" tabindex="8">
+							<button type="button" id="address-btn-style" tabindex="9">검색</button>
+						</li>
+						<li>
+							<label>상세 주소</label>
+						</li>
+						<li>
+							<input type="text" id="input-common" name="addr2" tabindex="10">
+						</li>
+						<li id="must-insert">
+							<p id="label-dot">*</p>
+							<label>대표번호</label>
+						</li>
+						<li>
+							<select id="selectbox-mobile" name="tel" tabindex="11">
+								<option value="default">선택</option>
+								<option value="SKT">SKT</option>
+								<option value="KT">KT</option>
+								<option value="LGU+">LGU+</option>
+								<option value="MVNO">알뜰폰</option>
+							</select>
+							<select id="selectbox-phone" name="phone1" tabindex="12">
+								<option value="default">선택</option>
+								<option value="010">010</option>
+								<option value="011">011</option>
+								<option value="012">012</option>
+							</select>
+							-
+							<input type="text" id="input-phone" name="phone2" tabindex="13">
+							-
+							<input type="text" id="input-phone" name="phone3" tabindex="14">
+							<span id="phoneMsg"></span>
+						</li>
+						<li id="must-insert">
+							<p id="label-dot">*</p>
+							<label>예금주</label>
+						</li>
+						<li>
+							<input type="text" id="input-common" name="account-info-name" tabindex="15">
+						</li>
+						<li id="must-insert">
+							<p id="label-dot">*</p>
+							<label>은행명</label>
+						</li>
+						<li>
+							<select id="account-info" name="account-info-bank" tabindex="16">
+								<option value="default">선택</option>
+								<option value="Hana">하나은행</option>
+								<option value="Kookmin">국민은행</option>
+								<option value="Woori">우리은행</option>
+								<option value="Shinhan">신한은행</option>
+							</select>
+						</li>
+						<li id="must-insert">
+							<p id="label-dot">*</p>
+							<label>계좌 등록</label>
+						</li>
+						<li>
+							<input type="text" id="input-common" name="account-info" tabindex="17">
+						</li>
+						
+					</ul>
+					<ul>
+						<li id="agreement-box">
+							<input type="checkbox" name="agreementAll" id="chk-circle" tabindex="18">
+							<span id="span_agreementAll">전체 동의하기</span>
 						</li>
 						<li>
 							<input type="checkbox" id="checkbox-agreement" name="chk-agree">

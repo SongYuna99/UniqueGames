@@ -95,9 +95,12 @@
 				<ul id="link-tab">
 					<li>
 						<a href="/uniquegames/findId.do" id="link-find">아이디 찾기</a>
-						<a href="/uniquegames/findPwd.do" id="link-find-pwd">비밀번호 찾기</a>
-						<a href="/uniquegames/joinChoice.do" id="link-signUp">
+						<a href="findId.do?selectedTab=prom" id="link-find">비밀번호 찾기</a>
+					</li>
+					<li>
+						<a href="/uniquegames/join.do" id="link-signUp">
 							<span>Sign Up</span></a>
+						<a href="join.do?selectedTab=company" id="link-signUp">Company Sign Up</a>
 					</li>
 				</ul>
 			</div>

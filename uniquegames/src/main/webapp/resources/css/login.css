@@ -1436,12 +1436,15 @@ td#payment-totalPrice {
 	height: 14px;
 }
 /* join, myPage telecom selectbox */
-#selectbox-mobile {
+#selectbox-mobile,
+#account-info {
 	width: 70px;
 	height: 43px;
 	border: 1px solid lightgray;
 	border-radius: 3px;
+	margin: 5px 0;
 }
+
 /* join, myPage 010 selectbox */
 #selectbox-phone {
 	width: 60px;
@@ -1641,9 +1644,7 @@ td#payment-totalPrice {
 	color: red;
 }
 
-#content-1 form[name='joinForm'] ul li:first-child, #content-1 form[name='joinForm'] ul li:nth-child(3),
-	#content-1 form[name='joinForm'] ul li:nth-child(6), #content-1 form[name='joinForm'] ul li:nth-child(8),
-	#content-1 form[name='joinForm'] ul li:nth-child(14) {
+#must-insert {
 	position: relative;
 }
 
@@ -1760,7 +1761,9 @@ div.detail1, div.detail2, div.detail3, div.detail4 {
 }
 
 
-div.deleteComplete {
+div.deleteComplete,
+div.deleteComplete1,
+div.find-id-none {
 	display: none;
 }
 
@@ -1772,4 +1775,145 @@ div.deleteComplete {
 div.agreement2 {
 	height: 300px;
 }
+
+#button-gradient-gotoLogin,
+#button-gradient-gotoPwd,
+#button-gradient-gotoFind,
+#button-gradient-gotoJoin {
+	border: none;
+	width: 180px;
+	height: 50px;
+	cursor: pointer;
+	color: white;
+	background: linear-gradient(to right, #682CAD, #2FC0CC);
+	border-radius: 3px;
+	font-family: "YouandiModern", sans-serif; /***/
+	margin-top: 20px;
+	font-size: 20px; /***/
+}
 /*******************************모달창************************************/
+/* #tab01, #tab02 {
+	
+}
+
+#tab01+label, #tab02+label {
+	display: inline-block;
+	padding: 20px 55px; *
+	background: rgb(243, 243, 243);
+	color: rgb(180, 179, 178);
+	font-size: 14px;
+	cursor: pointer;
+	border-bottom: 1px solid rgb(243, 243, 243);
+}
+
+#tab01:checked+label, #tab02:checked+label {
+	background: white;
+	color: #000;
+	font-weight: bold;
+	border-bottom: white;
+	font-size: 16px; *
+	font-family: "YouandiModern", sans-serif; *
+} 
+
+#tab01:checked ~ #find-id, #tab02:checked ~ #find-pwd {
+	display: block;
+}
+*/
+#content-3 {
+	width: 40%;
+	margin: auto;
+	text-align: left;
+	padding-left: 45px;
+}
+
+
+#individual:checked ~ #content-2,
+#company:checked ~ #content-3,
+#individual:checked ~ #findIdForm,
+#prom:checked ~ #findPwdForm {
+	display: block;
+}
+
+#content-2,
+#content-3 {
+	display: none;
+}						
+
+#account-info {
+	width: 394px;
+	height: 60px;
+	border: 1px solid lightgray;
+	border-radius: 3px;
+	margin: 5px 0;
+}
+
+/*****회원가입 (개인,법인)********/
+#individual,
+#company,
+#prom {
+	display: none;
+}
+
+#individual-tab,
+#company-tab,
+#prom-tab {
+	display: inline-block;
+	margin: 0 0 5px 0;
+	padding: 15px 63px;
+	font-weight: 600;
+	text-align: center;
+	color: #bbb;
+	border: 1px solid transparent;}
+
+#individual-tab:hover,
+#company-tab:hover,
+#prom-tab:hover {
+    color: #2e9cdf;
+    cursor: pointer;}
+
+/*input 클릭시, label 스타일*/
+#individual:checked + #individual-tab,
+#company:checked + #company-tab,
+#prom:checked + #prom-tab {
+    color: #555;
+    border: 1px solid #ddd;
+    border-top: 2px solid #2e9cdf;
+    border-bottom: 1px solid #ffffff;
+}
+
+#findIdForm,
+#findPwdForm {
+	display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,10 +3,7 @@ package com.uniquegames.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.uniquegames.dao.MemberDao;
-import com.uniquegames.vo.MemberVo;
 
 @Controller
 public class LoginController {
@@ -15,7 +12,7 @@ public class LoginController {
 	public String login() {
 		return "/login/login";
 	}
-	
+	/*
 	@RequestMapping(value="/login_proc.do", method=RequestMethod.POST)
 	public ModelAndView login_proc(MemberVo memberVo) {
 		
@@ -33,7 +30,7 @@ public class LoginController {
 			
 		return mav;
 	}
-
+	*/
 	
 	
 

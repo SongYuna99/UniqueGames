@@ -26,7 +26,7 @@
 	</section>
 	<section id="content-1">
 		<p id="intro">마이페이지</p>
-		<form action="#" name="joinForm" method="get" id="content-2">
+		<form action="#" name="joinForm" method="get" id="content-myPage">
 			<div>
 				<ul>
 					<li>
