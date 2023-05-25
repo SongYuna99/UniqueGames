@@ -1,16 +1,38 @@
 $(document).ready(function (){
 	let method;
+	let checkedIdList;
+	
 	/** cart **/
-	// checkAll
-    $("th #checkAll").change(function (){
-        let isChecked = $(this).is(":checked");
-
-        if(isChecked){
-            $("td #checkOne").prop("checked", true);
+    $("input[name='checkAll']").change(function (){
+        if($(this).is(":checked")){
+            $("input[name='checkOne']").prop("checked", true);
         }
         else {
-            $("td #checkOne").prop("checked", false);
+            $("input[name='checkOne']").prop("checked", false);
         }
+    });
+    $("input[name='checkOne']").change(function (){
+        let total = $("input[name='checkOne']").length;
+        let checked = $("input[name='checkOne']:checked").length;
+
+        if(total == checked){
+            $("input[name='checkAll']").prop("checked", true);
+        }
+        else {
+            $("input[name='checkAll']").prop("checked", false);
+        }
+    });
+    $("input").change(function (){
+		let checked = $("input[name='checkOne']:checked").length;		
+		$("#count").html("총 " + checked + "개");
+		
+		var totalAmount = 0;
+		$("input[name='checkOne']:checked").each(function() {
+			let amount = $(this).parent().attr("id");
+			
+			totalAmount += parseInt(amount);
+		});
+		$("#totalAmount").html(totalAmount);
     });
 	
 	

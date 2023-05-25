@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -34,28 +35,32 @@
 				<button type="button" id="btn-deleteSelected">선택삭제</button>
 			</div>
 			<div id="div-table">
+				<input type="hidden" id="m_id" value="${ m_id }">
 				<table id="table-gameList">
 					<tr>
-						<th><input type="checkbox" id="checkAll">선택</th>
+						<th><input type="checkbox" id="checkAll" name="checkAll" checked="checked">선택</th>
 						<th></th>
 						<th>상품명</th>
 						<th>가격</th>
 						<th>삭제</th>
 					</tr>
+					<c:forEach var="cart" items="${cartList}">
 					<tr>
-						<td>
-							<input type="checkbox" id="checkOne">
+						<td id="${ cart.amount }">
+							<input type="checkbox" id="checkOne" name="checkOne" checked="checked" value="${ cart.id }">
 						</td>
-						<td><a><img src="#"></a></td>
+						<td><a><img src="${ cart.game_img }"></a></td>
 						<td>
-							<p><a>이것이 상품명입니다.</a></p>
-							<p>이건 상품 간단 설명? 옵션?</p>
+							<p><a>${ cart.gametitle }</a></p>
 						</td>
-						<td>999,999,999</td>
 						<td>
-							<button type="button" id="btn-deleteOne">삭제</button>
+							<fmt:formatNumber type="currency" value="${ cart.amount }"/>
+						</td>
+						<td>
+							<button type="button" id="btn-deleteOne" value="${ cart.id }">삭제</button>
 						</td>
 					</tr>
+					</c:forEach>
 				</table>
 			</div>
 		</div>
@@ -67,8 +72,8 @@
 					
 				</tr>
 				<tr>
-					<td>총 n개</td>
-					<td>999,999,999</td>
+					<td id="count">총 ${ count }개</td>
+					<td id="totalAmount">${ totalAmount }</td>
 				</tr>
 			</table>
 		</div>
