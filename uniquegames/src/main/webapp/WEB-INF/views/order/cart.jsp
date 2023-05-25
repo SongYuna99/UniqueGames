@@ -25,7 +25,7 @@
 	</div>
 </section>
 
-<form name="cartForm" action="cart_proc.do" method="post">
+<form name="cartForm" action="cart_proc.do" method="get">
 	<h1>Cart</h1>
 	<section id="cart">
 		<div id="div-gameList">
