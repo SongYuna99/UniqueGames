@@ -23,6 +23,7 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+META-INF/
 
 # External tool builders
 .externalToolBuilders/
