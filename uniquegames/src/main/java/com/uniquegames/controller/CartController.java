@@ -26,4 +26,20 @@ public class CartController {
 
 		return model;
 	}
+	
+	@RequestMapping(value = "/cart_delete_all.do", method = RequestMethod.GET)
+	public String cart_delete_all(int m_id) {
+		String view;
+		OrderDao orderDao = new OrderDao();
+		int result = orderDao.getCartDeleteAll(m_id);
+		
+		if(result == 1) {
+			view = "redirect://cart.do?m_id="+m_id;			
+		}
+		else {
+			view = "/order/error";
+		}
+		
+		return view;
+	}
 }

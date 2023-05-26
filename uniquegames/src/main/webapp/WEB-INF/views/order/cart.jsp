@@ -31,8 +31,12 @@
 	<section id="cart">
 		<div id="div-gameList">
 			<div id = div-delete>
-				<button type="button" id="btn-deleteAll">전체삭제</button>
-				<button type="button" id="btn-deleteSelected">선택삭제</button>
+				<a href="http://localhost:9000/uniquegames/cart_delete_all.do?m_id=${ m_id }">
+					<button type="button" id="btn-deleteAll">전체삭제</button>
+				</a>
+				<a href="http://localhost:9000/uniquegames/cart_delete_selected.do">
+					<button type="button" id="btn-deleteSelected">선택삭제</button>
+				</a>
 			</div>
 			<div id="div-table">
 				<input type="hidden" id="m_id" value="${ m_id }">
