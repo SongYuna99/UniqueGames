@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Unique Games</title>
-<link rel="stylesheet" href="http://localhost:9000/myuniquegames/css/unigames.css">
-<link rel="stylesheet" href="http://localhost:9000/myuniquegames/css/board.css">
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
-<script src="http://localhost:9000/myuniquegames/js/board.js"></script>
+	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/mainunigames.css">
+	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/board.css">
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script><!-- 마이크로소프트 jQuery-->
+	<script src="http://localhost:9000/uniquegames/js/board.js"></script>
 </head>
 
 <body>
@@ -18,15 +18,15 @@
 	<section id="top-bg">
 		<div id="base-layer">
 			<div id="top-bg-textarea">
-				<p id="top-title">Board</p>
-				<p id="top-subtitle">#게시판</p>
+				<p id="top-title">Notice</p>
+				<p id="top-subtitle">#공지사항</p>
 			</div>
 		</div>
 	</section>
 	<div id="content">
 		<div id="board-write">
 			<div id="board-top-menu">
-				<p>Board</p>
+				<p>Notice</p>
 				<div>
 					<ul>
 						<li><button type="button" id="btn-style" name="write">저장</button></li>
@@ -35,15 +35,15 @@
 				</div>
 				<div id="clearFix"></div>
 			</div>
-			<form name="writeForm" action="#" method="post">
+			<form name="writeForm" action="notice_write_proc.do" method="post">
 				<table>
 					<tr>
 						<th>제목</th>
-						<td><input type="text" name="btitle" id="default-write"></td>
+						<td><input type="text" name="title" id="default-write"></td>
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td><textarea name="bcontent" cols="30" rows="5"
+						<td><textarea name="content" cols="30" rows="5"
 								id="default-write"></textarea></td>
 					</tr>
 				</table>
