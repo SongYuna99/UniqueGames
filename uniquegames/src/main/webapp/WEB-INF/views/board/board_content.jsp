@@ -17,6 +17,12 @@
 	<c:when test="${result eq 'fail'}">
 		<script>alert("작업에 실패했습니다.\n잠시후에 다시 시도해주세요.")</script>
 	</c:when>
+	<c:when test="${cmtresult eq 'success'}">
+		<script>alert("댓글이 성공적으로 등록되었습니다.")</script>
+	</c:when>
+	<c:when test="${cmtresult eq 'fail'}">
+		<script>alert("작업에 실패했습니다.\n잠시후에 다시 시도해주세요.")</script>
+	</c:when>
 </c:choose>
 </head>
 <body>
@@ -60,9 +66,7 @@
 				</tr>
 				<tr>
 					<td colspan="6" style="border:none;">
-						<div id="details">
-						${noticeVo.content}
-						</div>
+						<div id="details">${noticeVo.content}</div>
 					</td>
 				</tr>
 			</table>
@@ -70,30 +74,21 @@
 		<section id="comment-box">
 			<div>
 				<!-- Comment form-->
-				<form id="comment-write">
-					<textarea id="form-control" rows="3"
+				<form id="comment-write" name="commentWriteForm" action="comment_write_proc.do" method="post">
+					<input type="hidden" name="post_id" value="${noticeVo.post_id}">
+					<input type="hidden" name="member_id" value="mtest">
+					<textarea id="form-control" rows="3" name="comment_content"
 						placeholder="타인에게 불쾌함을 주는 댓글은 통보없이 삭제될 수 있습니다."></textarea>
-					<button type="button" id="btn-style">등록</button>
+					<button type="button" id="btn-style" name="cmtWrite">등록</button>
 				</form>
-				<!-- Comment with nested comments-->
+				<!-- Comment -->
+				<c:forEach var="c" items="${commList}">
 				<div id="comment1">
-					<!-- Parent comment-->
-					<div id="msg-1">
-						<div id="user-name">김니다</div>
-						<div><span id="msg-date">2023-05-08</span><span id="report" class="report">신고</span></div>
-						댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용
-						댓글내용댓글내용댓글내용댓글내용댓글내용
-					</div>
+					<div id="${c.comment_id}">
+						<div id="user-name">${c.member_id}</div>
+						<div><span id="msg-date">${c.comment_date}</span><span id="report" class="report">신고</span></div>${c.comment_content}</div>
 				</div>
-				<!-- Single comment-->
-				<div id="comment1">
-					<div id="msg-2">
-						<div id="user-name">ㅇㅇ</div>
-						<div><span id="msg-date">2023-05-08</span><span id="report" class="report">신고</span></div>
-						댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용
-						댓글내용댓글내용댓글내용댓글내용댓글내용
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</section>
 		<div id="modal-background" class="test">
@@ -125,5 +120,40 @@
 		<jsp:include page="../main/footer.jsp"></jsp:include>
 	</footer>
 	<form name="noticeDelete" action="notice_delete.do" method="post"><input type="hidden" name="no" value="${noticeVo.post_id}"></form>
+	<script type="text/javascript">
+		const reportBtn = document.querySelectorAll(".report");
+		const modal = document.getElementById("modal-background");
+		const modalCloseBtn = document.getElementById("modal-close");
+		const modalReportBtn = document.getElementById("modal-report");
+	
+		function modalOff() {
+			modal.style.display = "none";
+		}
+		reportBtn.forEach(e => {
+			e.addEventListener("click", e => {
+				modal.style.display = "flex";
+			});
+		});
+
+		modalCloseBtn.addEventListener("click", e => {
+			modalOff();
+		});
+		modalReportBtn.addEventListener("click", e => {
+			modalOff();
+		});
+	
+		modal.addEventListener("click", e => {
+			const eventTarget = e.target;
+			if (eventTarget.classList.contains("test")) {
+				modalOff()
+			};
+		});
+	
+		window.addEventListener("keyup", e => {
+			if (modal.style.display === "flex" && e.key === "Escape") {
+				modalOff()
+			};
+		});
+	</script>
 </body>
 </html>
