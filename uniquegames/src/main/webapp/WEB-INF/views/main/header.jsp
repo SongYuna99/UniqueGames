@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Unique Games</title>
-    <link rel="stylesheet" type="text/css" href="http://localhost:9000/uniquegames/css/mainunigames.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost:9000/uniquegames/css/unigames.css">
 	<style>
 		#btn-hearder-search {
 			border:none;
@@ -44,11 +44,11 @@
         <div id="header-top-menu">
             <nav id="nav1">
                 <ul>
-                    <li><a href="../login/login.do">Login</a></li>
-                    <li><a href="../join/join.do">Join</a></li>
-                    <li><a href="../myPage/myPage.do"><img src="http://localhost:9000/uniquegames/images/img_icon_mypage.png"></a></li>
-                    <li><a href="../order/cart.do"><img src="http://localhost:9000/uniquegames/images/img_icon_cart.png"></a></li>
-                    <li><button type="button" id="btn-hearder-search" onclick="toggleSearch()"><img src="http://localhost:9000/uniquegames/images/img_icon_search.png"></button></li>
+                    <li><a href="/uniquegames/login.do">Login</a></li>
+                    <li><a href="/uniquegames/join.do">Join</a></li>
+                    <li><a href="/uniquegames/myPage.do"><img src="/uniquegames/images/img_icon_mypage.png"></a></li>
+                    <li><a href="/uniquegames/cart.do"><img src="/uniquegames/images/img_icon_cart.png"></a></li>
+                    <li><button type="button" id="btn-hearder-search" onclick="toggleSearch()"><img src="/uniquegames/images/img_icon_search.png"></button></li>
                 </ul>
             </nav>
             <div class="search-menu" id="search-container">
@@ -56,19 +56,17 @@
     		</div>
         </div>
         <div id="hearder-logo">
-            <a href="http://localhost:9000/uniquegames/" target="_parent">
-                <img src="http://localhost:9000/uniquegames/images/img_title_logo.png">
+            <a href="/uniquegames/index.do" target="_parent">
+                <img src="/uniquegames/images/img_title_logo.png">
             </a>
         </div>
         <div id="header-bottom-menu">
             <nav id="nav2">
                 <ul>
-                    <li><a href="http://localhost:9000/uniquegames/topgame.do">Top Game</a></li>
-                    <li><a href="http://localhost:9000/uniquegames/alllist.do">All List</a></li>
-                    <li><a href="http://localhost:9000/uniquegames/index.do#menu-main1">Recommendations</a></li>
-<%--                    <li><a href="http://localhost:9000/uniquegames/solution_list.do">Solution</a></li>--%>
-<%--                    <li><a href="http://localhost:9000/uniquegames/event_list.do">Event</a></li>--%>
-                    <li><a href="http://localhost:9000/uniquegames/notice_list.do">Notice</a></li>
+                    <li><a href="/uniquegames/topgame.do">Top Game</a></li>
+                    <li><a href="/uniquegames/alllist.do">All List</a></li>
+                    <li><a href="/uniquegames/index.do#menu-main1">Recommendations</a></li>
+                    <li><a href="/uniquegames/notice_list.do">Notice</a></li>
                 </ul>
             </nav>
         </div>
