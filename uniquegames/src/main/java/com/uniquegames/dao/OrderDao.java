@@ -1,10 +1,11 @@
 package com.uniquegames.dao;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import com.uniquegames.vo.OrderVo;
 
-public class OrderDao extends DBConn {
+public class OrderDao extends DBConnOrder {
 	/** Cart **/
 	// getCartList
 	public ArrayList<OrderVo> getCartList(int m_id) {
@@ -80,26 +81,4 @@ public class OrderDao extends DBConn {
 
 		return result;
 	} // getTotalAmount
-	
-	// getCartDeleteAll
-	public int getCartDeleteAll(int m_id) {
-		int result = 0;
-		StringBuffer sql = new StringBuffer(100);
-		sql.append("DELETE FROM ORDERS ");
-		sql.append("WHERE PAYMENT_STATUS = 'NOT' AND M_ID = ? ");
-		getPreparedStatement(sql.toString());
-		
-		try {
-			pstmt.setInt(1, m_id);
-			rs = pstmt.executeQuery();
-			
-			while (rs.next()) {
-				result = rs.getInt(1);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
-	} // getCartDeleteAll
 }

@@ -12,7 +12,6 @@ import com.uniquegames.vo.OrderVo;
 
 @Controller
 public class CartController {
-	/**	cart.do **/
 	@RequestMapping(value = "/cart.do", method = RequestMethod.GET)
 	public ModelAndView cart(int m_id) {
 		ModelAndView model = new ModelAndView();
@@ -25,23 +24,6 @@ public class CartController {
 		model.addObject("m_id", cartList.get(0).getId());
 		model.setViewName("/order/cart");
 
-		return model;
-	}
-	
-	/**	cart_delete_all.do **/
-	@RequestMapping(value = "/cart_delete_all.do", method = RequestMethod.GET)
-	public ModelAndView cart_delete_all(int m_id) {
-		ModelAndView model = new ModelAndView();
-		OrderDao orderDao = new OrderDao();
-		int result = orderDao.getCartDeleteAll(m_id);
-		
-		if(result == 1) {
-			model.setViewName("/order/cart");			
-		}
-		else {
-			model.setViewName("/order/error");
-		}
-		
 		return model;
 	}
 }
