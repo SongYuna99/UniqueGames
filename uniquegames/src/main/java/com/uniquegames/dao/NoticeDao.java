@@ -146,7 +146,7 @@ public class NoticeDao extends DBConnBoard {
 	/**
 	 * hitCount - 조회수 증가
 	 */
-	public void hitCount(String no) {
+	public void hitsCount(String no) {
 
 		String sql = "UPDATE NOTICE SET NOTICE_HITS = NOTICE_HITS + 1 WHERE POST_ID = ?";
 		getPreparedStatment(sql);

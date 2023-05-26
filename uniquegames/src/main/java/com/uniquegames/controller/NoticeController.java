@@ -11,15 +11,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.uniquegames.dao.CommentDao;
 import com.uniquegames.dao.NoticeDao;
+import com.uniquegames.service.CommentService;
 import com.uniquegames.service.NoticeService;
 import com.uniquegames.vo.CommentVo;
 import com.uniquegames.vo.NoticeVo;
 
 @Controller
 public class NoticeController {
-	
+
 	@Autowired
 	NoticeService noticeService;
+	
+	@Autowired
+	CommentService commentService;
 
 	/**
 	 * notice-list.do 공지사항 - 전체 리스트
@@ -53,14 +57,14 @@ public class NoticeController {
 			endCount = pageSize;
 		}
 
-		ArrayList<NoticeVo> list = noticeService.getSelect(startCount, endCount);
+		ArrayList<NoticeVo> list = noticeService.getNoticeList(startCount, endCount);
 		model.addObject("list", list);
 		model.addObject("dbCount", dbCount);
 		model.addObject("pageSize", pageSize);
 		model.addObject("pageCount", pageCount);
 		model.addObject("page", reqPage);
 
-		model.setViewName("/board/board_list");
+		model.setViewName("/notice/notice_list");
 
 		return model;
 	}
@@ -78,7 +82,7 @@ public class NoticeController {
 	 */
 	@RequestMapping(value = "/notice_write.do", method = RequestMethod.GET)
 	public String noticeWrite() {
-		return "/board/board_write";
+		return "/notice/notice_write";
 	}
 
 	/**
@@ -87,8 +91,7 @@ public class NoticeController {
 	@RequestMapping(value = "/notice_write_proc.do", method = RequestMethod.POST)
 	public String noticeWriteProc(NoticeVo noticeVo, RedirectAttributes attributes) {
 
-		NoticeDao noticeDao = new NoticeDao();
-		int result = noticeDao.insert(noticeVo);
+		int result = noticeService.insert(noticeVo);
 
 		if (result == 1) {
 			attributes.addFlashAttribute("result", "success");
@@ -105,21 +108,14 @@ public class NoticeController {
 	@RequestMapping(value = "/notice_content.do", method = RequestMethod.GET)
 	public ModelAndView noticeContent(String no) {
 		ModelAndView model = new ModelAndView();
-		NoticeDao noticeDao = new NoticeDao();
-		CommentDao commentDao = new CommentDao();
 
-		NoticeVo noticeVo = noticeDao.select(no);
+		NoticeVo noticeVo = noticeService.getNoticeContent(no);
 
-		if (noticeVo != null) {
-			noticeDao.hitCount(no);
-			noticeVo.setNotice_hits(noticeVo.getNotice_hits() + 1);
-		}
-
-		ArrayList<CommentVo> commList = commentDao.select(no);
+		ArrayList<CommentVo> commList = commentService.select(no);
 
 		model.addObject("noticeVo", noticeVo);
 		model.addObject("commList", commList);
-		model.setViewName("/board/board_content");
+		model.setViewName("/notice/notice_content");
 
 		return model;
 	}
@@ -130,9 +126,7 @@ public class NoticeController {
 	@RequestMapping(value = "/notice_delete.do", method = RequestMethod.POST)
 	public String noticeDelete(String no, RedirectAttributes attributes) {
 
-		NoticeDao noticeDao = new NoticeDao();
-
-		int result = noticeDao.delete(no);
+		int result = noticeService.delete(no);
 		if (result == 1) {
 			attributes.addFlashAttribute("result", "complete");
 		} else {
@@ -148,12 +142,11 @@ public class NoticeController {
 	@RequestMapping(value = "/notice_update.do", method = RequestMethod.GET)
 	public ModelAndView noticeUpdate(String no) {
 		ModelAndView model = new ModelAndView();
-		NoticeDao noticeDao = new NoticeDao();
 
-		NoticeVo noticeVo = noticeDao.select(no);
+		NoticeVo noticeVo = noticeService.getNoticeContent(no);
 
 		model.addObject("noticeVo", noticeVo);
-		model.setViewName("/board/board_update");
+		model.setViewName("/notice/notice_update");
 
 		return model;
 	}
@@ -163,9 +156,8 @@ public class NoticeController {
 	 */
 	@RequestMapping(value = "/notice_update_proc.do", method = RequestMethod.POST)
 	public String noticeUpdateProc(NoticeVo noticeVo, RedirectAttributes attributes) {
-		NoticeDao noticeDao = new NoticeDao();
 
-		int result = noticeDao.update(noticeVo);
+		int result = noticeService.update(noticeVo);
 		if (result == 1) {
 			attributes.addFlashAttribute("result", "success");
 		} else {
@@ -180,10 +172,8 @@ public class NoticeController {
 	 */
 	@RequestMapping(value = "comment_write_proc.do", method = RequestMethod.POST)
 	public String commentWriteProc(CommentVo commentVo, RedirectAttributes attributes) {
-		CommentDao commentDao = new CommentDao();
-		
-		commentVo.setComment_content(commentVo.getComment_content().replaceAll("\r\n", "<br>"));
-		int result = commentDao.insert(commentVo);
+
+		int result = commentService.commentInsert(commentVo);
 		if (result == 1) {
 			attributes.addFlashAttribute("cmtresult", "success");
 		} else {

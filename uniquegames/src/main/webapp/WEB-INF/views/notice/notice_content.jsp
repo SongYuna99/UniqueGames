@@ -82,16 +82,19 @@
 					<button type="button" id="btn-style" name="cmtWrite">등록</button>
 				</form>
 				<!-- Comment -->
-				<c:forEach var="c" items="${commList}">
-				<div id="comment1">
-					<div id="${c.comment_id}">
-						<div id="user-name">${c.member_id}</div>
-						<div><span id="msg-date">${c.comment_date}</span><span id="report" class="report">신고</span></div>${c.comment_content}</div>
-				</div>
-				</c:forEach>
+				<form name="commentDelete" action="comment_delete.do" method="post">
+					<c:forEach var="c" items="${commList}">
+					<div id="comment1">
+						<div id="${c.comment_id}">
+							<div id="user-name">${c.member_id}</div>
+							<div><span id="msg-date">${c.comment_date}</span><span id="cmtDelete" class="cmtDelete">삭제</span></div>${c.comment_content}</div>
+					</div>
+					<input type="hidden" name="no" value="${c.comment_id}">
+					</c:forEach>
+				</form>
 			</div>
 		</section>
-		<div id="modal-background" class="test">
+<!-- 		<div id="modal-background" class="test">
 			<div id="modal-container">
 				<div id="modal-title">
 					<h2>신고</h2>
@@ -113,47 +116,12 @@
 					<div id="modal-report">신고</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 	<footer>
 		<!-- <iframe src="../main/footer.jsp" scrolling="no" width="100%" height="646px" frameborder=0></iframe> -->
 		<jsp:include page="../main/footer.jsp"></jsp:include>
 	</footer>
 	<form name="noticeDelete" action="notice_delete.do" method="post"><input type="hidden" name="no" value="${noticeVo.post_id}"></form>
-	<script type="text/javascript">
-		const reportBtn = document.querySelectorAll(".report");
-		const modal = document.getElementById("modal-background");
-		const modalCloseBtn = document.getElementById("modal-close");
-		const modalReportBtn = document.getElementById("modal-report");
-	
-		function modalOff() {
-			modal.style.display = "none";
-		}
-		reportBtn.forEach(e => {
-			e.addEventListener("click", e => {
-				modal.style.display = "flex";
-			});
-		});
-
-		modalCloseBtn.addEventListener("click", e => {
-			modalOff();
-		});
-		modalReportBtn.addEventListener("click", e => {
-			modalOff();
-		});
-	
-		modal.addEventListener("click", e => {
-			const eventTarget = e.target;
-			if (eventTarget.classList.contains("test")) {
-				modalOff()
-			};
-		});
-	
-		window.addEventListener("keyup", e => {
-			if (modal.style.display === "flex" && e.key === "Escape") {
-				modalOff()
-			};
-		});
-	</script>
 </body>
 </html>
