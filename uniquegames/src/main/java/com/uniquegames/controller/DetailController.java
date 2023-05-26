@@ -56,27 +56,27 @@ public class DetailController {
         return "detail/company";
     }
 
-    /**
-     * @param vo 회사소개 저장객체
-     * @return
-     * @throws IOException 예외처리
-     */
-    @RequestMapping(value = "/insertIntro",method = RequestMethod.GET)
-    public String insertIntro(IntroVo vo) throws IOException {
-        System.out.println("글 등록 처리");
-        //파일 업로드 처리
-        MultipartFile uploadFile = vo.getUploadFile();
-
-        if(uploadFile!=null && !uploadFile.isEmpty()){
-            String fileName = uploadFile.getOriginalFilename();
-            uploadFile.transferTo(new File("C:/Users/jeon/Desktop" + fileName));
-        }
-        companyServiceImpl.insertIntro(vo);
-        if(vo.getName() == null)
-            return "detail/company_regi";
-        else
-            return "redirect:main/allList";
-    }
+//    /**
+//     * @param vo 회사소개 저장객체
+//     * @return
+//     * @throws IOException 예외처리
+//     */
+//    @RequestMapping(value = "/insertIntro",method = RequestMethod.GET)
+//    public String insertIntro(IntroVo vo) throws IOException {
+//        System.out.println("글 등록 처리");
+//        //파일 업로드 처리
+//        MultipartFile uploadFile = vo.getUploadFile();
+//
+//        if(uploadFile!=null && !uploadFile.isEmpty()){
+//            String fileName = uploadFile.getOriginalFilename();
+//            uploadFile.transferTo(new File("C:/Users/jeon/Desktop" + fileName));
+//        }
+//        companyServiceImpl.insertIntro(vo);
+//        if(vo.getName() == null)
+//            return "detail/company_regi";
+//        else
+//            return "redirect:main/allList";
+//    }
 
  /*
     @RequestMapping(value = "/order", method = RequestMethod.GET)
