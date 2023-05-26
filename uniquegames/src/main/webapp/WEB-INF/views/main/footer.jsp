@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>footer</title>
     <link rel="stylesheet" type="text/css" href="http://localhost:9000/uniquegames/css/mainunigames.css">
-<%--    <link rel="stylesheet" type="text/css" href="http://localhost:9000/uniquegames/css/footer.css">--%>
+
 </head>
 <body>
 <div id="event-banner">

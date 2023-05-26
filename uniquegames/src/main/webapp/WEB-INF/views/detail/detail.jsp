@@ -19,6 +19,7 @@
 
 <jsp:include page="../main/header.jsp"></jsp:include>
 <div id="image-top-bg" ></div>
+<form action="detail/searchGameList" method="get">
 <div class="parent-container" style="display: grid">
   <div class="main-container">
   <div class="row equal-height">
@@ -224,7 +225,7 @@
     </div>
   </div>
 </div>
-
+</form>
 <script type="text/javascript">
   var title = "디 엑시트 이터널 매터스";
   var img = "https://directg.net/upload/product/goods_1681697853_opengraph.jpg";
