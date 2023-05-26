@@ -14,20 +14,92 @@ public class GameDao extends DBConn {
     * SQL 쿼리
     * 삽입, 수정, 삭제, 조회, 전체 조회
     * */
-    private final String GAME_INSERT = "INSERT INTO GAME(NAME,GENRE) VALUES(?,?)";
+    private final String GAME_INSERT = "INSERT INTO GAME(NAME,IMAGE_PATH,GAME_GENRE,DONATION_STATUS,DESCRIPTION) VALUES(?,?,?,?,?)";
     private final String GAME_UPDATE = "UPDATE GAME SET NAME=? WHERE ID=?";
     private final String GAME_DELETE = "DELETE GAME WHERE ID=?";
     private final String GAME_GET = "SELECT * FROM GAME WHERE ID=?";
     private final String GAME_LIST = "SELECT * FROM GAME ORDER BY ID DESC";
+    
+    private final String LIKE_LIST = "SELECT COUNT(*) FROM LIKE_INFO WHERE G_ID=?";
+    private final String DONATION_LIST = "SELECT * FROM GAME WHERE DONATION_STATUS = 1";
+    private final String RANKING_LIST = "SELECT G.*, COUNT(L.ID) AS LIKE_COUNT FROM GAME G LEFT JOIN LIKE_INFO L ON G.ID = L.G_ID GROUP BY G.ID ORDER BY LIKE_COUNT DESC";
+    
   /*  private final String GAME_LIST_T = "SELECT * FROM GAME WHERE TITLE LIKE '%'||?||'%' order by seq desc";
     private final String GAME_LIST_C = "SELECT * FROM GAME WHERE CONTENT LIKE '%'||?||'%' order by seq desc";*/
-
+    public ArrayList<GameVo> select_ranking() {
+    	ArrayList<GameVo> gameList = new ArrayList<GameVo>();
+    	try {
+    		pstmt = conn.prepareStatement(RANKING_LIST);
+	 		rs = pstmt.executeQuery();
+            while (rs.next()) {
+                GameVo game = new GameVo();
+                game.setId(rs.getInt("ID"));
+                game.setName(rs.getString("NAME"));
+                game.setImage_path(rs.getString("GENRE"));
+                game.setGame_genre(rs.getString("GAME_GENRE"));
+                game.setDonation_status(rs.getInt("DONATION_STATUS"));
+                game.setDescription(rs.getString("DESCRIPTION"));
+                gameList.add(game);
+            }
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	} finally {
+            close();
+        }
+        return gameList;
+    }
+    
+    public ArrayList<GameVo> select_donation() {
+    	ArrayList<GameVo> gameList = new ArrayList<GameVo>();
+    	try {
+    		pstmt = conn.prepareStatement(DONATION_LIST);
+	 		rs = pstmt.executeQuery();
+            while (rs.next()) {
+                GameVo game = new GameVo();
+                game.setId(rs.getInt("ID"));
+                game.setName(rs.getString("NAME"));
+                game.setImage_path(rs.getString("GENRE"));
+                game.setGame_genre(rs.getString("GAME_GENRE"));
+                game.setDonation_status(rs.getInt("DONATION_STATUS"));
+                game.setDescription(rs.getString("DESCRIPTION"));
+                gameList.add(game);
+            }
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	} finally {
+            close();
+        }
+        return gameList;
+    	
+    }
+    public int select_like(int gid) {
+    	int count = 0;
+    	try {
+    		pstmt = conn.prepareStatement(LIKE_LIST);
+    		pstmt.setInt(1, gid);
+	 		rs = pstmt.executeQuery();
+	 		if (rs.next()) {
+	 			count = rs.getInt(1);
+	 		}
+    		 
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	} finally {
+            close();
+        }
+        return count;
+    }
+    
+    
     public void insertGame(GameVo vo) {
         System.out.println("===> JDBC로 insertGame() 기능 처리");
         try {
             pstmt = conn.prepareStatement(GAME_INSERT);
             pstmt.setString(1, vo.getName());
-            pstmt.setString(2, vo.getImages());
+            pstmt.setString(2, vo.getImage_path());
+            pstmt.setString(3, vo.getGame_genre());
+            pstmt.setInt(4, vo.getDonation_status());
+            pstmt.setString(5, vo.getDescription());
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -74,8 +146,10 @@ public class GameDao extends DBConn {
                 game = new GameVo();
                 game.setId(rs.getInt("ID"));
                 game.setName(rs.getString("NAME"));
-                game.setLike_cnt(rs.getInt("LIKE_CNT"));
-                game.setImages(rs.getString("GENRE"));
+                game.setImage_path(rs.getString("GENRE"));
+                game.setGame_genre(rs.getString("GAME_GENRE"));
+                game.setDonation_status(rs.getInt("DONATION_STATUS"));
+                game.setDescription(rs.getString("DESCRIPTION"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -100,8 +174,10 @@ public class GameDao extends DBConn {
                 GameVo game = new GameVo();
                 game.setId(rs.getInt("ID"));
                 game.setName(rs.getString("NAME"));
-                game.setLike_cnt(rs.getInt("LIKE_CNT"));
-                game.setImages(rs.getString("GENRE"));
+                game.setImage_path(rs.getString("GENRE"));
+                game.setGame_genre(rs.getString("GAME_GENRE"));
+                game.setDonation_status(rs.getInt("DONATION_STATUS"));
+                game.setDescription(rs.getString("DESCRIPTION"));
                 gameList.add(game);
             }
         } catch (Exception e) {
