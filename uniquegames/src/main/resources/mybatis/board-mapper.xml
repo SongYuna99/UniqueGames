@@ -28,5 +28,5 @@
   <select id="getBoardList" resultType="Board">
     SELECT * FROM board ORDER BY id
   </select>
-  <!-- TESTSDTSDT -->
+  
 </mapper>
