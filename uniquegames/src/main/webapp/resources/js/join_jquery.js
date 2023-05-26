@@ -360,6 +360,7 @@ $("#button-gradient-delete").click(function(){
 							let jdata = JSON.parse(result);
 							$("#modal2").show();
 							$("#delete-member-id").html(jdata.jlist.member_id);
+							$("#delete-id").html(jdata.jlist.member_id);
 							$("#agreement-content1").html($(".deleteComplete").html());
 							
 													

@@ -50,13 +50,11 @@
 		});
 		
 		let join = "${message }";
-		
 		if(join=="success"){
 			alert("회원가입 성공");
 		}
 		
 		let login = "${login_result }";
-		
 		if(login=="fail"){
 			alert("로그인 실패");
 		}
@@ -94,8 +92,8 @@
 				</ul>
 				<ul id="link-tab">
 					<li>
-						<a href="/uniquegames/findId.do" id="link-find">아이디 찾기</a>
-						<a href="findId.do?selectedTab=prom" id="link-find">비밀번호 찾기</a>
+						<a href="findId.do" id="link-findAccount">아이디 찾기</a>
+						<a href="findId.do?selectedTab=findPwd" id="link-findAccount">비밀번호 찾기</a>
 					</li>
 					<li>
 						<a href="/uniquegames/join.do" id="link-signUp">

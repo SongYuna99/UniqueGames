@@ -87,7 +87,7 @@
 	</section>
 	<section id="content-1">
 		<p id="intro">회원탈퇴</p>
-		<form action="#" name="loginForm" method="post"><!-- findIdForm -->
+		<form action="#" name="loginForm" method="post">
 			<div>
 				<p id="intro-1">탈퇴 사유</p>
 				<ul>
@@ -111,7 +111,7 @@
 						<span id="msgPwd"></span>
 					</li>
 					<li id="goodbye">
-						<p id="delete-id">UniqueGames 님!</p>
+						<p id="delete-id">님!</p>
 						<p id="delete-content">회원 탈퇴하려고 하신다니 저희 사이트의 서비스가 많이 부족하고 미흡했나 봅니다.<br>
 						불만사항이나 사유를 알려주신다면 적극 반영해서 고객님의 불편함을 해결해드리도록 노력하겠습니다.
 						회원 탈퇴시의 아래 사항을 숙지하시기 바랍니다.</p>

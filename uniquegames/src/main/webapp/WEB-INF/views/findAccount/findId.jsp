@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var urlParams = new URLSearchParams(window.location.search);
     var selectedTab = urlParams.get('selectedTab');
     
+    
     // 선택한 탭을 표시
     if (selectedTab) {
         document.getElementById(selectedTab).checked = true;
@@ -24,11 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <script>
 	$(document).ready(function(){
-		/*
-		$("#tab-menu li").find("a").click(function(){
-			location.href="findPwd.do";
-		});
-		*/
 		 
 	$("#button-gradient").click(function(){
 			
@@ -63,17 +59,17 @@ document.addEventListener('DOMContentLoaded', function() {
 				alert("아이디를 입력해주세요");
 				$("input[name='member_id']").focus();
 				return false;
-			}else if($("#input-common-pwd").val()==""){
+			}else if($("#input-common-phone").val()==""){
 				alert("휴대전화를 입력해주세요");
-				$("#input-common-pwd").focus();
+				$("#input-common-phone").focus();
 				return false;
 			}else {
 				$.ajax({
-					url : "findPwd_check.do?member_id="+$("input[name='member_id']").val()+"&phone_num="+$("#input-common-pwd").val(),
+					url : "findPwd_check.do?member_id="+$("input[name='member_id']").val()+"&phone_num="+$("#input-common-phone").val(),
 					success : function(result) {
 						if(result=="") {
 							$("#modal2").show();
-							$("#agreement-content1").html($(".find-id-none").html());
+							$("#agreement-content1").html($(".find-pwd-none").html());
 						}else {
 							$("#modal2").show();
 							$("#find-pwd-result").html(result);
@@ -107,14 +103,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			$("#modal2").hide();
 			$("input[name='name']").val("").focus();
+			$("input[name='member_id']").val("").focus();
 			$("input[name='phone_num']").val("");
+			
 			
 			});
 		
 		$(document).on("click", "#button-gradient-gotoPwd", function(event){
 
 			$("#modal2").hide();
-			location.href="http://localhost:9000/uniquegames/findId.do?selectedTab=prom";
+			location.href="http://localhost:9000/uniquegames/findId.do?selectedTab=findPwd";
 			
 			});
 		$(document).on("click", "#button-gradient-gotoLogin", function(event){
@@ -150,10 +148,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	</section>
 	<section id="content-1"><!-- find-id -->
 		<p id="intro">아이디/비밀번호 찾기</p>
-			<input id="individual" type="radio" name="findAccount" checked>
-			<label for="individual" id="individual-tab">아이디 찾기</label>
-			<input id="prom" type="radio" name="findAccount">
-			<label for="prom" id="prom-tab">비밀번호 찾기</label>
+			<input id="findId" type="radio" name="findAccount" checked>
+			<label for="findId" id="findId-tab">아이디 찾기</label>
+			<input id="findPwd" type="radio" name="findAccount">
+			<label for="findPwd" id="findPwd-tab">비밀번호 찾기</label>
 			
 			<form action="findId_check.do" name="findIdForm" method="post" id="findIdForm">
 				<ul>
@@ -179,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
 						<span id="msgId"></span>
 					</li>
 					<li>
-						<input type="text" id="input-common-pwd" name="phone_num" placeholder="휴대전화">
+						<input type="text" id="input-common-phone" name="phone_num" placeholder="휴대전화">
 						<span id="msgPhone"></span>
 					</li>
 					<li>
@@ -231,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			</li>
 		</ul>
 	</div>
-	<div class="find-id-none">
+	<div class="find-pwd-none">
 		<p id="agreement-title">비밀번호 찾기</p>
 		<span id="delete-span">등록된 회원정보가 없습니다</span>
 		<ul>

@@ -14,20 +14,6 @@ public class FindAccountController {
 	public String findId() {
 		return "/findAccount/findId";
 	}
-	/*
-	@RequestMapping(value="/findId_proc.do", method=RequestMethod.POST)
-	public ModelAndView findId_proc(MemberVo memberVo) {
-		ModelAndView mav = new ModelAndView();
-		MemberDao memberDao = new MemberDao();
-		String member_id = memberDao.findId(memberVo);
-		
-		if(!member_id.equals("")) {
-			mav.addObject("member_id", member_id);
-			mav.setViewName("/findAccount/findId");
-		}
-		return mav;
-	}
-	*/
 	
 	@RequestMapping(value="/findId_check.do", method=RequestMethod.GET)
 	@ResponseBody

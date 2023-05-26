@@ -1,11 +1,14 @@
 package com.uniquegames.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.uniquegames.vo.UserVo;
+import com.uniquegames.dao.MemberDao;
+import com.uniquegames.vo.MemberVo;
 
 @Controller
 public class MyPageController {
@@ -17,14 +20,14 @@ public class MyPageController {
 	
 	/*
 	@RequestMapping(value="/myPage.do", method=RequestMethod.GET)
-	public ModelAndView myPage(String id) {
+	public ModelAndView myPage(String id, HttpSession session) {
 		
 		ModelAndView mav = new ModelAndView();
-		UserDao userDao = new UserDao();
-		UserVo userVo = userDao.select(id);
+		MemberDao memberDao = new MemberDao();
+		MemberVo memberVo = memberDao.select(session.getAttribute("member_id"));
 		
-		if(userVo != null) {
-			mav.addObject("userVo", userVo);
+		if(memberVo != null) {
+			mav.addObject("memberVo", memberVo);
 			mav.setViewName("/myPage/myPage");
 		}else {
 			mav.addObject("myPage_result", "fail");

@@ -4,6 +4,28 @@ import com.uniquegames.vo.MemberVo;
 
 public class MemberDao extends DBConn {
 	
+	
+	public int login(MemberVo memberVo) {
+		int result=0;
+		String sql = "select count(*) from member where member_id=? and password=?";
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, memberVo.getMember_id());
+			pstmt.setString(2, memberVo.getPassword());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 	/**sign up member*/
 	public int insert(MemberVo memberVo) {
 		int result=0;
@@ -114,7 +136,7 @@ public class MemberDao extends DBConn {
 			pstmt.setString(2, phone_num);
 			
 			rs = pstmt.executeQuery();
-			
+			System.out.println(result);
 			if(rs.next()) {
 				result= rs.getString(1);
 			}
@@ -123,6 +145,35 @@ public class MemberDao extends DBConn {
 		}
 		
 		return result;
+	}
+	
+	public MemberVo select(Object member_id) {
+		MemberVo memberVo = null;
+		String sql = "select member_id, password, name, email, phone_num, addr, tel from member where member_id=?";
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, (String) member_id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				memberVo = new MemberVo();
+				
+				memberVo.setMember_id(rs.getString(1));
+				memberVo.setPassword(rs.getString(2));
+				memberVo.setName(rs.getString(3));
+				memberVo.setEmail(rs.getString(4));
+				memberVo.setPhone_num(rs.getString(5));
+				memberVo.setAddr(rs.getString(6));
+				memberVo.setTel(rs.getString(7));
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return memberVo;
 	}
 	
 
