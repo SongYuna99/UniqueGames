@@ -8,7 +8,6 @@
     INSERT INTO board (id, title, content, writer)
     VALUES (board_seq.nextval, #{title}, #{content}, #{writer})
   </insert>
-
   <!-- 게시물 조회 -->
   <select id="getBoard" parameterType="Long" resultType="Board">
     SELECT * FROM board WHERE id = #{id}
@@ -29,5 +28,5 @@
   <select id="getBoardList" resultType="Board">
     SELECT * FROM board ORDER BY id
   </select>
-
+  
 </mapper>

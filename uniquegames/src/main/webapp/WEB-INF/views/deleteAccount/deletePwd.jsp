@@ -6,13 +6,37 @@
 <head>
 	<meta charset="UTF-8">
 	<title>회원탈퇴</title>
-	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">ss">
+	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">
 	<script src="http://localhost:9000/uniquegames/js/jquery-3.6.4.min.js"></script>
+	<script src="http://localhost:9000/uniquegames/js/join_jquery.js"></script>
 	<script>
-	
+		/*
 		$(document).ready(function(){
 			
+			let delete_result = "${delete_result }";
+			
 			$("#button-gradient-delete").click(function(){
+				
+				if($("#input[name='password']").val()==""){
+					$("#msgPwd").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+				}else {
+					$.ajax({
+						url : "delete_check.do?member_id="+$("input[name='member_id']").val()+"&password="+$("input[name='password']").val(),
+						success : function(result) {
+							if(result==1) {
+								alert("성공");
+							}else {
+								$("#msgPwd").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+							}
+						}
+					});
+				}
+
+			});
+		});
+		*/
+			
+			/* $("#button-gradient-delete").click(function(){
 				if($("input[name='pwd']").val()==""){
 					alert("비밀번호를 입력해주세요");
 					$("input[name='pwd']").focus();
@@ -22,7 +46,8 @@
 					$("#selectbox-find").focus();
 					return false;
 				}else {
-					$("#modal2").show();
+					loginForm.submit();
+					
 					
 					$("#agreement-content1").html($(".deleteComplete").html());
 				}	
@@ -39,13 +64,12 @@
 		
 		$(document).on("click", "#button-gradient", function(event){
 			$("#modal2").hide();
-			location.href="../main/index.html";
 			
 			});
 		
 		
 		
-		});
+		}); */
 	
 	</script>
 </head>
@@ -63,7 +87,7 @@
 	</section>
 	<section id="content-1">
 		<p id="intro">회원탈퇴</p>
-		<form action="#" name="loginForm" method="get"><!-- findIdForm -->
+		<form action="#" name="loginForm" method="post">
 			<div>
 				<p id="intro-1">탈퇴 사유</p>
 				<ul>
@@ -80,14 +104,14 @@
 						</select>
 					</li>
 					<li>
-						<input type="text" id="input-common" name="id" value="UniqueGames" disabled>
+						<input type="text" id="input-common" name="member_id" placeholder="아이디">
 					</li>
 					<li>
-						<input type="text" id="input-common" name="pwd" placeholder="비밀번호">
+						<input type="text" id="input-common" name="password" placeholder="비밀번호">
 						<span id="msgPwd"></span>
 					</li>
 					<li id="goodbye">
-						<p id="delete-id">UniqueGames 님!</p>
+						<p id="delete-id">님!</p>
 						<p id="delete-content">회원 탈퇴하려고 하신다니 저희 사이트의 서비스가 많이 부족하고 미흡했나 봅니다.<br>
 						불만사항이나 사유를 알려주신다면 적극 반영해서 고객님의 불편함을 해결해드리도록 노력하겠습니다.
 						회원 탈퇴시의 아래 사항을 숙지하시기 바랍니다.</p>
@@ -118,12 +142,12 @@
 	<div class="deleteComplete">
 		<p id="agreement-title">회원탈퇴</p>
 		<span id="delete-span">
-		UniqueGames님!<br>
+		<span id="delete-member-id"></span>님!<br>
 		회원 탈퇴가 정상적으로 완료되었습니다.
 		</span>
 		<ul>
 			<li>
-				<button type="button" id="button-gradient" name="btn-agreement">홈으로</button>
+				<button type="button" id="button-gradient-home" name="btn-agreement">홈으로</button>
 			</li>
 		</ul>
 	</div>

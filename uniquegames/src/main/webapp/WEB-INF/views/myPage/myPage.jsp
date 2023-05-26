@@ -26,7 +26,7 @@
 	</section>
 	<section id="content-1">
 		<p id="intro">마이페이지</p>
-		<form action="#" name="joinForm" method="get" id="content-2">
+		<form action="#" name="joinForm" method="get" id="content-myPage">
 			<div>
 				<ul>
 					<li>
@@ -34,7 +34,7 @@
 						<label>아이디</label>
 					</li>
 					<li>
-						<input type="text" id="input-common" name="id" value="${userVo.id }" disabled>
+						<input type="text" id="input-common" name="id" value="${memberVo.member_id }" disabled>
 					</li>
 					<li>
 						<p id="label-dot">*</p>
@@ -55,24 +55,22 @@
 						<label>이름</label>
 					</li>
 					<li>
-						<input type="text" id="input-common" name="name" value="${userVo.name }" disabled>
+						<input type="text" id="input-common" name="name" value="${memberVo.name }" disabled>
 					</li>
 					<li>
 						<p id="label-dot">*</p>
 						<label>이메일</label>
 					</li>
 					<li>
-						<input type="text" id="input-email" name="email1" value="${userVo.email1 }">
+						<input type="text" id="input-email" name="email1">
 						@
-						<input type="text" id="input-email" name="email2" value="${userVo.email2 }">
+						<input type="text" id="input-email" name="email2">
 						<select name="email3" id="selectbox-email">
 							<option value="">선택</option>
-							<c:forEach var="userVo" items="${userVo.email3 }">
-								<option value="default">naver.com</option>
-								<option value="gmail.com">gmail.com</option>
-								<option value="daum.net">daum.net</option>
-								<option value="direct">직접입력</option>
-							</c:forEach>
+							<option value="default">naver.com</option>
+							<option value="gmail.com">gmail.com</option>
+							<option value="daum.net">daum.net</option>
+							<option value="direct">직접입력</option>
 						</select>
 						<span id="emailMsg"></span>
 					</li>
@@ -80,14 +78,14 @@
 						<label>주소</label>
 					</li>
 					<li>
-						<input type="text" id="input-address" name="addr1" value="${userVo.addr1 }">
+						<input type="text" id="input-address" name="addr1" value="${memberVo.addr1 }">
 						<button type="button" id="address-btn-style">검색</button>
 					</li>
 					<li>
 						<label>상세 주소</label>
 					</li>
 					<li>
-						<input type="text" id="input-common" name="addr2" value="${userVo.addr2 }">
+						<input type="text" id="input-common" name="addr2" value="${memberVo.addr2 }">
 					</li>
 					<li>
 						<p id="label-dot">*</p>
@@ -106,16 +104,16 @@
 							<option value="012">012</option>
 						</select>
 						-
-						<input type="text" id="input-phone" name="phone2" value="${userVo.phone2 }">
+						<input type="text" id="input-phone" name="phone2" value="${memberVo.phone2 }">
 						-
-						<input type="text" id="input-phone" name="phone3" value="${userVo.phone3 }">
+						<input type="text" id="input-phone" name="phone3" value="${memberVo.phone3 }">
 						<span id="phoneMsg"></span>
 					</li>
 					<li>
 						<button type="button" id="button-gradient">수정하기</button>
 					</li>
 					<li>
-						<a href="../deleteAccount/deletePwd.html" id="link-deleteAccount">
+						<a href="deletePwd.do" id="link-deleteAccount">
 							<span name="withdraw" id="span-deleteAccount">회원탈퇴 ></span>
 						</a>
 					</li>

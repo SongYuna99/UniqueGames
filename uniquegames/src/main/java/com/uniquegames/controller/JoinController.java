@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.uniquegames.dao.UserDao;
-import com.uniquegames.vo.UserVo;
+import com.uniquegames.dao.MemberDao;
+import com.uniquegames.vo.MemberVo;
 
 @Controller
 public class JoinController {
@@ -17,18 +17,27 @@ public class JoinController {
 		return "/join/join";
 	}
 	
+	@RequestMapping(value="/joinChoice.do", method=RequestMethod.GET)
+	public String joinChoice() {
+		return "/join/joinChoice";
+	}
+	
+	@RequestMapping(value="/companyJoin.do", method=RequestMethod.GET)
+	public String companyJoin() {
+		return "join/companyJoin";
+	}
+	
 	@RequestMapping(value="/join_proc.do", method=RequestMethod.POST)
-	public ModelAndView join_proc(UserVo userVo) {
+	public ModelAndView join_proc(MemberVo memberVo) {
 		ModelAndView mav = new ModelAndView();
-		UserDao userDao = new UserDao();
-		int result = userDao.insert(userVo);
+		MemberDao memberDao = new MemberDao();
+		int result = memberDao.insert(memberVo);
 		
 		if(result==1) {
 			mav.addObject("join_result", "succcess");
 			mav.setViewName("/login/login");
 		}else {
-			mav.addObject("join_result", "fail");
-			mav.setViewName("/join/join");
+			System.out.println("½ÇÆÐ");
 		}
 		
 		return mav;
@@ -39,9 +48,10 @@ public class JoinController {
 	public String id_check(String id) {
 		String viewName = "";
 		
-		UserDao userDao = new UserDao();
-		int result = userDao.idCheck(id);
+		MemberDao memberDao = new MemberDao();
+		int result = memberDao.idCheck(id);
 		
 		return String.valueOf(result);
 	}
+	
 }

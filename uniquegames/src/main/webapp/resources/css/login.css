@@ -113,7 +113,7 @@ a:visited {
 
 /* public input style */
 #input-common, #section_member input, #section_member select,
-#input-id {
+#input-id, #input-common-phone {
 	width: 394px;
 	padding: 20px 0;
 	margin: 5px 0;
@@ -123,7 +123,7 @@ a:visited {
 	outline: none;
 	font-size: 16px;
 }
-
+/*Sign Up - ID input style*/
 #input-id {
 	width: 305px;
 }
@@ -1281,8 +1281,24 @@ td#payment-totalPrice {
 #clearFix {
 	clear: both;
 }
+/****************************************************************/
 
-/* deleteAccount */
+/* AllPage; introduce p tag */
+#intro {
+	font-family: "YouandiModern", sans-serif;
+	font-size: 24px;
+	padding-bottom: 60px;
+}
+
+/* AllPage; section */
+#content-1 {
+	width: 1100px;
+	margin: auto;
+	text-align: center;
+	padding: 60px 0 100px 0;
+}
+
+/* deletePwd; button-style */
 #button-gradient-delete {
 	border: none;
 	width: 394px;
@@ -1296,23 +1312,59 @@ td#payment-totalPrice {
 	margin: 10px 0;
 }
 
-/* public input style */
-
-/* public input  */
-#input-common {
+/* deletePwd; page intro style */
+#intro-1 {
+	font-family: "YouandiModern", sans-serif; /***/
 	width: 394px;
-	padding: 20px 0;
-	margin: 5px 0;
-	text-indent: 10px;
-	border-radius: 3px;
-	border: 1px solid lightgray;
-	outline: none;
+	margin: auto;
+	text-align: left;
+	font-size: 16px;
+	padding: 20px 0 14px 0;
 }
-/* public input:focus */
-#input-common:focus {
+
+/* deletePwd; delete-reason selectbox style*/
+#selectbox-find {
+	width: 394px;
+	height: 60px;
+	margin: 10px 0;
+	border: 1px solid lightgray;
+	border-radius: 4px;
+}
+
+/* deletePwd; selectbox:hover style */
+#selectbox-find:focus {
 	border: 1px solid gray;
 }
-/* join; email, zip-code input */
+
+/*deletePwd; intro*/
+#goodbye {
+	width: 394px;
+	margin: auto;
+	text-align: left;
+	padding: 40px 0;
+}
+/*deletePwd; delete-id p tag*/
+#delete-id {
+	font-size: 18px;
+	font-family: "YouandiModern", sans-serif;
+}
+/*deletePwd; delete-content p tag*/
+#delete-content {
+	font-size: 13px;
+	font-family: "Noto Sans";
+	padding: 22px 0 20px 0;
+}
+/*deletePwd; delete-caution p tag*/
+#delete-caution {
+	background: #E6E6E6;
+	padding: 20px 11px 20px 20px;
+	color: #D81E42;
+	font-size: 13px;
+	font-family: "Noto Sans";
+	font-weight: 700;
+}
+
+/* SignUp; email input style */
 #input-email {
 	width: 130px;
 	padding: 20px 0;
@@ -1323,7 +1375,7 @@ td#payment-totalPrice {
 	font-size: 16px;
 }
 
-/* join; email selectbox */
+/* SignUp; email selectbox style */
 #selectbox-email {
 	width: 110px;
 	padding: 22px 0 20px 0;
@@ -1333,6 +1385,7 @@ td#payment-totalPrice {
 	outline: none;
 }
 
+/*SignUp; phone input style except 010*/
 #input-phone {
 	width: 109px;
 	height: 43px;
@@ -1341,7 +1394,7 @@ td#payment-totalPrice {
 	font-size: 16px;
 	text-indent: 10px;
 }
-
+/*SignUp; addr input style */
 #input-address {
 	width: 325px;
 	padding: 20px 0;
@@ -1353,96 +1406,31 @@ td#payment-totalPrice {
 	font-size: 16px;
 }
 
-/* page introduce */
-#intro {
-	font-family: "YouandiModern", sans-serif;
-	font-size: 24px;
-	padding-bottom: 60px;
-}
-/* detail explanation */
-#intro-1 {
-	font-family: "YouandiModern", sans-serif; /***/
-	width: 394px;
-	margin: auto;
-	text-align: left;
-	font-size: 16px;
-	padding: 20px 0 14px 0;
-}
-/* public section */
-#content-1 {
-	width: 1100px;
-	margin: auto;
-	text-align: center;
-	padding: 60px 0 100px 0;
-}
-
-/*join form-id*/
-#content-2 {
+/*SignUp,myPage; individual form style*/
+#content-2,
+#content-myPage {
 	width: 40%;
 	margin: auto;
 	text-align: left;
 	padding-left: 45px;
 }
 
-/* login; link to find-id, find-pwd */
-#link-find, #link-find-pwd {
-	background: white;
-	color: #2B2B2B;
-	font-size: 14px;
-	border-right: 1px solid gray;
-	padding: 0 8px;
-	text-decoration: none;
-	font-family: "YouandiModern", sans-serif;
-}
-/* login; link to sign up */
-#link-signUp {
-	font-family: "Apex New";
-	font-weight: 500;
-	color: #2E7AF6;
-	text-decoration: none;
-	font-size: 11pt;
-	padding: 0 8px;
-}
-/* login; link to find-id, find-pwd, sign up hover */
-#link-find:hover, #link-signUp:hover {
-	text-decoration: underline;
-}
-
-/* find-id; selectbox */
-#selectbox-find {
-	width: 394px;
-	height: 60px;
-	margin: 10px 0;
-	border: 1px solid lightgray;
-	border-radius: 4px;
-}
-/* find-id; selectbox:hover */
-#selectbox-find:focus {
-	border: 1px solid gray;
-}
-
-/* join,myPage password */
-#pwd-check {
-	position: relative;
-	background: white;
-	cursor: pointer;
-	right: 40px;
-	top: 2px;
-	border: none;
-}
-/* join,myPage password eye img */
+/* SignUp,myPage; password eye img style*/
 #pwd-check-img {
 	width: 21px;
 	height: 14px;
 }
-/* join, myPage telecom selectbox */
+
+/* SignUp, Company-SignUp, myPage; telecom selectbox style */
 #selectbox-mobile {
 	width: 70px;
 	height: 43px;
 	border: 1px solid lightgray;
 	border-radius: 3px;
+	margin: 5px 0;
 }
-/* join, myPage 010 selectbox */
+
+/* SignUp, Company SignUp, myPage; 010 selectbox style*/
 #selectbox-phone {
 	width: 60px;
 	height: 43px;
@@ -1451,19 +1439,19 @@ td#payment-totalPrice {
 	border-radius: 3px;
 }
 
-/* join margin between cellphone - agreement  */
+/* SignUp,Company-SignUp; margin between cellphone and agreement radiobox  */
 #agreement-box {
 	margin: 30px 0 10px 0;
 	width: 394px;
 	font-size: 10pt;
 }
 
-/* join agreement font-color */
+/* SignUp; agreement span font-color */
 #agreement-color {
 	color: tomato;
 	margin: 0 3px;
 }
-/* join agreement more link */
+/* SignUp; agreement jasehee link */
 #detail1, #detail2 {
 	text-decoration: underline;
 	color: blue;
@@ -1471,24 +1459,10 @@ td#payment-totalPrice {
 	cursor: pointer;
 	color: #6E6E6E;
 }
-/* join agreement more link:hover */
 
-/* myPage; delete link */
-#link-deleteAccount {
-	width: 40%;
-	text-decoration: none;
-	color: #333;
-	font-weight: bold;
-}
-/* myPage delete link*/
-#span-deleteAccount {
-	display: block;
-	font-size: 10pt;
-	margin-bottom: 8px;
-	padding-left: 330px;
-}
 
-/* join,myPage zip-code find button*/
+/* SignUp,myPage zip-code find button
+SignUp IdCheck button style*/
 #address-btn-style,
 #check-btn-style {
 	background: #393939;
@@ -1500,21 +1474,12 @@ td#payment-totalPrice {
 	cursor: pointer;
 	margin: 0 8px;
 }
-
+/*SignUp IdCheck button style*/
 #check-btn-style {
 	width: 80px;
 }
 
-/* join checkbox agreement*/
-#chk-circle {
-	width: 1rem;
-	height: 1rem;
-	border: 2px solid #2C2C2C;
-	border-radius: 50%;
-	appearance: none;
-	cursor: pointer;
-}
-
+/*SignUp,Company-SignUp All agreement span style*/
 #span_agreementAll {
 	width: 150px;
 	padding-left: 10px;
@@ -1526,6 +1491,7 @@ td#payment-totalPrice {
 	opacity: 1;
 }
 
+/*SignUp,Company-SignUp; agreement input style*/
 #checkbox-agreement {
 	width: 18px;
 	height: 12px;
@@ -1535,104 +1501,13 @@ td#payment-totalPrice {
 	cursor: pointer;
 }
 
+/*SignUp, Company-SignUp; agreement input style checked*/
 #checkbox-agreement:checked {
 	background-image: url("../images/btn_check_select.png");
 	background-repeat: no-repeat;
 }
-/*****************************tab**************************************/
-/* #tab01, #tab02 {
-	
-}
 
-#tab01+label, #tab02+label {
-	display: inline-block;
-	padding: 20px 55px; *
-	background: rgb(243, 243, 243);
-	color: rgb(180, 179, 178);
-	font-size: 14px;
-	cursor: pointer;
-	border-bottom: 1px solid rgb(243, 243, 243);
-}
-
-#tab01:checked+label, #tab02:checked+label {
-	background: white;
-	color: #000;
-	font-weight: bold;
-	border-bottom: white;
-	font-size: 16px; *
-	font-family: "YouandiModern", sans-serif; *
-} 
-
-#tab01:checked ~ #find-id, #tab02:checked ~ #find-pwd {
-	display: block;
-}
-
-*/
-
-#tab-menu> li {
-	display: inline-block;
-}
-
-#tab-menu> li a.active {
-	color: black;
-	font-weight: 700;
-	background: white;
-	text-decoration: none;
-}
-
-#tab-menu> li a {
-	color: black;
-	background: lightgray;
-	display: block;
-	padding: 20px 56px;
-	border-radius: 3px;
-	
-}
-
-#find-id, #find-pwd {
-	background: #white;
-	margin: 0 auto;
-	margin-top: 20px;
-}
-
-
-
-#intro-2 {
-	width: 394px;
-	margin: auto;
-	text-align: left;
-	font-size: 16px;
-	padding-bottom: 14px;
-	font-family: "YouandiModern", sans-serif;
-}
-
-#goodbye {
-	width: 394px;
-	margin: auto;
-	text-align: left;
-	padding: 40px 0;
-}
-
-#delete-id {
-	font-size: 18px;
-	font-family: "YouandiModern", sans-serif;
-}
-
-#delete-content {
-	font-size: 13px;
-	font-family: "Noto Sans";
-	padding: 22px 0 20px 0;
-}
-
-#delete-caution {
-	background: #E6E6E6;
-	padding: 20px 11px 20px 20px;
-	color: #D81E42;
-	font-size: 13px;
-	font-family: "Noto Sans";
-	font-weight: 700;
-}
-
+/*SignUp, Company-SignUp; must insert dot style*/
 #label-dot {
 	display: inline-block;
 	position: absolute;
@@ -1640,21 +1515,20 @@ td#payment-totalPrice {
 	left: -4px;
 	color: red;
 }
-
-#content-1 form[name='joinForm'] ul li:first-child, #content-1 form[name='joinForm'] ul li:nth-child(3),
-	#content-1 form[name='joinForm'] ul li:nth-child(6), #content-1 form[name='joinForm'] ul li:nth-child(8),
-	#content-1 form[name='joinForm'] ul li:nth-child(14) {
+/*SignUp, Company-SignUp; must insert li style*/
+#must-insert {
 	position: relative;
 }
 
+/*SignUp; input validation span check style*/
 #idMsg, #pwdMsg, #nameMsg, #phoneMsg {
 	display: none;
 }
-
+/*SignUp; agreement not must check style*/
 #choice-span {
 	margin: 0 3px;
 }
-
+/*SignUp; agreement not must check style*/
 #agreement-choice {
 	width: 18px;
 	height: 12px;
@@ -1663,12 +1537,13 @@ td#payment-totalPrice {
 	appearance: none;
 	cursor: pointer;
 }
-
+/*SignUp; agreement not must check style*/
 #agreement-choice:checked {
 	background-image: url("../images/btn_check_select.png");
 	background-repeat: no-repeat;
 }
 
+/*SignUp, Company SignUp; password check img style*/
 #pwd-check-img, #pwd-check-img-1 {
 	width: 24px;
 	height: 16px;
@@ -1680,12 +1555,55 @@ td#payment-totalPrice {
 	right: 40px;
 	top: 2px;
 }
-
+/*SignUp, Company SignUp; password check img style*/
 #pwd-check-img:checked, #pwd-check-img-1:checked {
 	background-image: url("../images/btn_eye_select.png");
 	background-repeat: no-repeat;
 }
 
+/* login; find-ID link style*/
+#link-findAccount {
+	background: white;
+	color: #2B2B2B;
+	font-size: 14px;
+	padding: 0 8px;
+	text-decoration: none;
+	font-family: "YouandiModern", sans-serif;
+}
+
+/* login; SignUp link style */
+#link-signUp {
+	font-family: "Apex New";
+	font-weight: 500;
+	color: #2E7AF6;
+	text-decoration: none;
+	font-size: 11pt;
+	padding: 0 8px;
+}
+/* login; link to find-ID, signUp hover style */
+#link-findAccount:hover, #link-signUp:hover {
+	text-decoration: underline;
+}
+
+/* myPage; deletePwd link style*/
+#link-deleteAccount {
+	margin-left: 330px;
+	text-decoration: none;
+	color: #333;
+	font-weight: bold;
+	font-size: 10pt;
+}
+/*findId; findPwd intro*/
+#intro-2 {
+	width: 394px;
+	margin: auto;
+	text-align: left;
+	font-size: 16px;
+	padding-bottom: 14px;
+	font-family: "YouandiModern", sans-serif;
+}
+
+/*login,findId; input validation check span*/
 #msgId,
 #msgPwd,
 #msgName,
@@ -1697,7 +1615,10 @@ td#payment-totalPrice {
 
 /*****************************cmj**************************************/
 /*******************************모달창************************************/
-div#modal {
+/*SignUp; modal style
+deletePwd, findId; modal2 style */
+div#modal,
+#modal2 {
 	position: fixed;
 	top:50%; 			
 	left:50%;
@@ -1707,8 +1628,10 @@ div#modal {
 	background: rgba(128, 128, 128, .3);
 	display: none;
 }
-
-div.agreement {
+/*SignUp; agreement style
+deletePwd, findId; agreement2 style */
+div.agreement,
+div.agreement2 {
 	position: fixed;
 	top:50%; 			
 	left:50%;
@@ -1721,6 +1644,8 @@ div.agreement {
 	border-radius: 10px;
 	box-shadow: inset 0px 3px 6px #0000001A, 0px 10px 20px #00000029;
 }
+
+/*SignUp, deletePwd, findId; agreement-title style */
 #agreement-title {
 	margin: 0px 0px 20px 0px;
 	padding-top: 30px;
@@ -1729,7 +1654,7 @@ div.agreement {
 	color: #2B2B2B;
 	font-size: 24px;
 }
-
+/*SignUp, deletePwd, findId; agreement-content style */
 #agreement-content {
 	text-align: center;
 	width: 370px;			height: 340px;
@@ -1741,13 +1666,126 @@ div.agreement {
 	margin: auto;
 	overflow: auto;
 }
+/*SignUp; modal button style*/
 div.agreement button#button-gradient {
 	margin: 20px 0 10px 0;
 	width: 250px;
 	font-size: 20px;
 }
-
+/*SignUp; modal detail style*/
 div.detail1, div.detail2, div.detail3, div.detail4 {
 	display: none;
 }
-/*******************************모달창************************************/
+
+/**********************************************************/
+/*deletePwd, findId(id), findId(password); modal style*/
+div.deleteComplete,
+div.deleteComplete1,
+div.find-id-none,
+div.find-pwd-none {
+	display: none;
+}
+/*deletePwd,findId(id,password); modal style*/
+#delete-span {
+	display: inline-block;
+	margin: 25px 0;
+}
+/*deletePwd, findId; modal style*/
+div.agreement2 {
+	height: 300px;
+}
+/*findId; modal button style*/
+#button-gradient-gotoLogin,
+#button-gradient-gotoPwd,
+#button-gradient-gotoFind,
+#button-gradient-gotoJoin {
+	border: none;
+	width: 180px;
+	height: 50px;
+	cursor: pointer;
+	color: white;
+	background: linear-gradient(to right, #682CAD, #2FC0CC);
+	border-radius: 3px;
+	font-family: "YouandiModern", sans-serif; /***/
+	margin-top: 20px;
+	font-size: 20px; /***/
+}
+/*Company-SignUp form id style*/
+#content-3 {
+	width: 40%;
+	margin: auto;
+	text-align: left;
+	padding-left: 45px;
+}
+
+/*SignUp, Company-SignUp, 
+findId input radiobox style*/
+#individual:checked ~ #content-2,
+#company:checked ~ #content-3,
+#findId:checked ~ #findIdForm,
+#findPwd:checked ~ #findPwdForm {
+	display: block;
+}
+/*SignUp, Company-SignUp form id*/
+#content-2,
+#content-3 {
+	display: none;
+}						
+/*Company-SignUp bank choice selectbox*/
+#account-info {
+	width: 394px;
+	height: 60px;
+	border: 1px solid lightgray;
+	border-radius: 3px;
+	margin: 5px 0;
+}
+
+/*SignUp, Company-SignUp input-radiobox
+findId input-radiobox style*/
+#individual,
+#company,
+#findId,
+#findPwd {
+	display: none;
+}
+
+#individual-tab,
+#company-tab,
+#findId-tab,
+#findPwd-tab {
+	display: inline-block;
+	margin: 0 0 5px 0;
+	padding: 15px 63px;
+	font-weight: 600;
+	text-align: center;
+	color: #bbb;
+	border: 1px solid transparent;
+}
+
+#findId-tab,
+#findPwd-tab {
+	padding: 15px 55px;
+}
+
+#individual-tab:hover,
+#company-tab:hover,
+#findId-tab:hover,
+#findPwd-tab:hover {
+    color: #2e9cdf;
+    cursor: pointer;}
+
+/*SignUp, Company-SignUp, findId; input radio click style*/
+#individual:checked + #individual-tab,
+#company:checked + #company-tab,
+#findId:checked + #findId-tab,
+#findPwd:checked + #findPwd-tab {
+    color: #555;
+    border: 1px solid #ddd;
+    border-top: 2px solid #2e9cdf;
+    border-bottom: 1px solid #ffffff;
+}
+/*findId; form id */
+#findIdForm,
+#findPwdForm {
+	display: none;
+}

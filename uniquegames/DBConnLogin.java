@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class DBConn {
+public class DBConnLogin {
 
 	Connection conn;
 	PreparedStatement pstmt;
@@ -15,7 +15,7 @@ public class DBConn {
 	
 	String driver = "com.mysql.cj.jdbc.Driver";
 	String url = "jdbc:mysql://localhost:3306/uniquegames?serverTimezone=UTC";
-	String user = "cmj";
+	String user = "unique_games'@'localhost";
 	String pass = "1234";
 	
 	public DBConn() {

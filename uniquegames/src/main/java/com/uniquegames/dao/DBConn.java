@@ -19,11 +19,10 @@ public class DBConn {
 	// Constructor
 	public DBConn(){
 		try {
-			// 0. ����̹� �غ�: ������Ʈ�� jdbc ����̹� ����Ʈ
-			// 1. ����̹� �ε�
+
 			Class.forName(driver);
 
-			// 2. connection ��ü ����
+
 			conn = DriverManager.getConnection(url, user, pass);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -34,7 +33,7 @@ public class DBConn {
 	// PreparedStatement
 	public void getPreparedStatement(String sql) {
 		try {
-			// 3. PreparedStatement ��ü ����
+			// 3. PreparedStatement
 			pstmt = conn.prepareStatement(sql);
 		} catch (Exception e) {
 			e.printStackTrace();

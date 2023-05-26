@@ -239,8 +239,8 @@ $(document).ready(function(){
 	$("#address-btn-style").click(function(){
 		 new daum.Postcode({
 		        oncomplete: function(data) {
-		        	$("input[name='address1']").val("("+data.zonecode+") "+data.address);
-		        	$("input[name='address2']").focus();
+		        	$("input[name='addr1']").val("("+data.zonecode+") "+data.address);
+		        	$("input[name='addr2']").focus();
 		        }
 		    }).open();
 	});
@@ -346,14 +346,43 @@ $("#check-btn-style").click(function(){
 	});
 	
 /*************************************************************************
-	
+								회원탈퇴 모달창 보이기
 *************************************************************************/
+$("#button-gradient-delete").click(function(){
+				
+				if($("#input[name='password']").val()==""){
+					$("#msgPwd").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+					//비밀번호 validation 만들기
+				}else {
+					$.ajax({
+						url : "delete_check.do?member_id="+$("input[name='member_id']").val()+"&password="+$("input[name='password']").val(),
+						success : function(result) {
+							let jdata = JSON.parse(result);
+							$("#modal2").show();
+							$("#delete-member-id").html(jdata.jlist.member_id);
+							$("#delete-id").html(jdata.jlist.member_id);
+							$("#agreement-content1").html($(".deleteComplete").html());
+							
+													
+						}
+					});
+				}
+
+			});
+			
 /*************************************************************************
-	
+						모달창 닫고 메인으로 이동(모달창 버튼)
 *************************************************************************/
+$(document).on("click", "#button-gradient-home", function(event){
+			$("#modal2").hide();
+			location.href="http://localhost:9000/uniquegames/";
+			});
+
 /*************************************************************************
-	
+						아이디, 비밀번호 찾기 모달창 보이기
 *************************************************************************/
+
+
 /*************************************************************************
 	
 *************************************************************************/
