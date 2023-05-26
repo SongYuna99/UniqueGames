@@ -9,8 +9,8 @@ public class DBConn {
 	// Field
 	String driver = "com.mysql.cj.jdbc.Driver";
 	String url = "jdbc:mysql://localhost:3306/uniquegames";
-	String user = "unique_games";
-	String pass = "1234";
+	String user = "root";
+	String pass = "tiger";
 
 	Connection conn;
 	PreparedStatement pstmt;
@@ -21,9 +21,9 @@ public class DBConn {
 		try {
 
 			Class.forName(driver);
-
-
 			conn = DriverManager.getConnection(url, user, pass);
+			
+			System.out.println("Connected");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

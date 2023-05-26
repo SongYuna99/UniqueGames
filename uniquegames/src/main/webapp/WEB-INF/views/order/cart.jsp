@@ -31,7 +31,7 @@
 	<section id="cart">
 		<div id="div-gameList">
 			<div id = div-delete>
-				<button type="button" id="btn-deleteAll">전체삭제</button>
+				<a href="http://uniquegames/cart_delete_all.do?m_id=1"><button type="button" id="btn-deleteAll">전체삭제</button></a>
 				<button type="button" id="btn-deleteSelected">선택삭제</button>
 			</div>
 			<div id="div-table">
