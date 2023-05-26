@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-  <link rel="stylesheet" href="../../css/unigames.css">
+  <link rel="stylesheet" href="http://localhost:9000/uniquegames/css/mainunigames.css">
   <title>제작사(팀) 소개</title>
   <!--css 초기화-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
@@ -107,9 +107,7 @@
 </head>
 
 <body style="padding: 0">
-<header>
-  <iframe src="../main/header.html" scrolling="no" width="100%" height="230px" frameborder=0></iframe>
-</header>
+<jsp:include page="../main/header.jsp"></jsp:include>
 <div class="container">
   <!--  제작팀 소개 -->
   <div  style="margin: 70px 20px 0 150px ">
@@ -452,9 +450,7 @@
   })
 </script>
 
-<footer>
-  <iframe src="../main/footer.html" scrolling="no" height="630px" width="100%" frameborder=0></iframe>
-</footer>
+<jsp:include page="../main/footer.jsp"></jsp:include>
 </body>
 
 </html>

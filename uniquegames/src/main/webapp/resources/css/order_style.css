@@ -46,6 +46,17 @@ hr {
 	margin: 10px 0;
 }
 
+select {
+	border: 1px solid #DDDDDD;
+	border-collapse: collapse;
+	float : right;
+	padding: 5px 10px;
+	margin-bottom : 5px;
+
+	font-family:"YouandiModern";
+	text-align: center;
+}
+
 /******* Table *******/
 #div-table {
 	padding-bottom: 150px;

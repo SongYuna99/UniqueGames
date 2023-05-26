@@ -53,19 +53,6 @@
 			</table>
 		</div>
 	</div>
-	<div id="div-price">
-		<table id="cart-price">
-			<tr>
-				<th>개수</th>
-				<th>총 금액</th>
-				
-			</tr>
-			<tr>
-				<td>총 n개</td>
-				<td>999,999,999</td>
-			</tr>
-		</table>
-	</div>
 </section>
 
 <!-- footer -->

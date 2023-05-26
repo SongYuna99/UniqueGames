@@ -1,15 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
 <head>
 <meta charset="UTF-8">
 <title>Unique Games</title>
-<link rel="stylesheet" href="http://localhost:9000/myuniquegames/css/unigames.css">
-<link rel="stylesheet" href="http://localhost:9000/myuniquegames/css/board.css">
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script><!-- 마이크로소프트 jQuery-->
-<script src="http://localhost:9000/myuniquegames/js/board.js"></script>
+<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/mainunigames.css">
+<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/board.css">
+<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/am-pagination.css">
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+<script src="http://localhost:9000/uniquegames/js/board.js"></script>
+<script src="http://localhost:9000/uniquegames/js/am-pagination.js"></script>
+<script>
+	$(document).ready(function(){
+		var pager = jQuery('#ampaginationsm').pagination({
+		
+		    maxSize: '${pageCount}',	    		// max page size
+		    totals: '${dbCount}',	// total pages	
+		    page: '${page}',		// initial page		
+		    pageSize: '${pageSize}',			// max number items per page
+		
+		    // custom labels		
+		    lastText: '&raquo;&raquo;', 		
+		    firstText: '&laquo;&laquo;',		
+		    prevText: '&laquo;',		
+		    nextText: '&raquo;',
+				     
+		    btnSize:'sm'	// 'sm'  or 'lg'		
+		});
+		
+		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
+			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
+	           $(location).attr('href', "http://localhost:9000/uniquegames/notice_list.do?page="+e.page);         
+	    });
+		
+ 	});
+</script> 
+<c:choose>
+	<c:when test="${result eq 'success'}">
+		<script>alert("성공적으로 등록되었습니다.")</script>
+	</c:when>
+	<c:when test="${result eq 'fail'}">
+		<script>alert("작업에 실패했습니다.\n잠시후에 다시 시도해주세요.")</script>
+	</c:when>
+</c:choose>
 </head>
 
 <body>
@@ -19,20 +55,22 @@
 	<section id="top-bg">
 		<div id="base-layer">
 			<div id="top-bg-textarea">
-				<p id="top-title">Board</p>
-				<p id="top-subtitle">#게시판</p>
+				<p id="top-title">Notice</p>
+				<p id="top-subtitle">#공지사항</p>
 			</div>
 		</div>
 	</section>
 	<div id="content">
 		<div id="board-list">
 			<div id="board-top-menu">
-				<p>Board</p>
+				<p>Notice</p>
 				<div>
 					<label for=""> <input type="text" name="search"
 						placeholder="검색어를 입력해주세요.">
 						<button type="button" id="btn-search">
-							<img src="../../images/btn_boardSearch_press.png" alt="">
+							<img
+								src="http://localhost:9000/uniquegames/images/btn_boardSearch_press.png"
+								alt="">
 						</button>
 					</label>
 					<ul>
@@ -43,7 +81,7 @@
 					</ul>
 				</div>
 			</div>
-			<form name="boardManage" action="#" method="post">
+			<form name="boardManage" action="#" method="get">
 				<table id="admin-btable">
 					<tr>
 						<th>선택</th>
@@ -52,40 +90,17 @@
 						<th>작성자</th>
 						<th>작성일</th>
 					</tr>
-					<%
-						String bid = "id";
-						for (int i = 1; i <= 10; i++) {
-					%>
+					<c:forEach var="noticeVo" items="${list}">
 					<tr>
-						<td><input type="checkbox" name="list[]" value=<%= bid + i %>></td>
-						<td><%= i %></td>
-						<td><a href="board-content.do?no=<%= bid + i %>">아 제목인데 너무 길게 쓰지않고 적당한
-								길이로 대충 때울려고합니다~예~ 그럼요</a></td>
-						<td>관리자</td>
-						<td>2023.04.25</td>
+						<td><input type="checkbox" name="list[]" value="${noticeVo.post_id}"></td>
+						<td>${noticeVo.rno}</td>
+						<td><a href="notice_content.do?no=${noticeVo.post_id}">${noticeVo.title}</a></td>
+						<td>${noticeVo.company_id}</td>
+						<td>${noticeVo.date_output}</td>
 					</tr>
-					<%
-						}
-					%>
+					</c:forEach>
 					<tr>
-						<td colspan="5">
-							<ul id="paging">
-								<li><a href="?page=1"><<</a></li>
-								<li><a href="?page=-1"><</a></li>
-								<li><a href="?page=1">1</a></li>
-								<li><a href="?page=2">2</a></li>
-								<li><a href="?page=3">3</a></li>
-								<li><a href="?page=4">4</a></li>
-								<li><a href="?page=5">5</a></li>
-								<li><a href="?page=6">6</a></li>
-								<li><a href="?page=7">7</a></li>
-								<li><a href="?page=8">8</a></li>
-								<li><a href="?page=9">9</a></li>
-								<li><a href="?page=10">10</a></li>
-								<li><a href="?page=+1">></a></li>
-								<li><a href="?page=11">>></a></li>
-							</ul>
-						</td>
+						<td colspan="5"><div id="ampaginationsm"></div></td>
 					</tr>
 				</table>
 			</form>

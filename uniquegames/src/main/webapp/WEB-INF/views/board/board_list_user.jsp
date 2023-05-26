@@ -6,8 +6,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Unique Games</title>
-	<!-- 04/25 임시 주소 -->
-	<link rel="stylesheet" href="../../css/unigames.css">
+	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/mainunigames.css">
+	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/board.css">
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script><!-- 마이크로소프트 jQuery-->
+	<script src="http://localhost:9000/uniquegames/js/board.js"></script>
 </head>
 
 <body>
@@ -17,15 +19,15 @@
 	<section id="top-bg">
 		<div id="base-layer">
 			<div id="top-bg-textarea">
-			<p id="top-title">Board</p>
-			<p id="top-subtitle">#게시판</p>
+				<p id="top-title">Notice</p>
+				<p id="top-subtitle">#공지사항</p>
 			</div>
 		</div>
 	</section>	
 	<div id="content">
 		<div id="board-list">
 			<div id="board-top-menu">
-				<p>Board</p>
+				<p>Notice</p>
 				<div id="bsearch-box">
 					<label for="">
 						<input type="text" name="search" placeholder="검색어를 입력해주세요.">
