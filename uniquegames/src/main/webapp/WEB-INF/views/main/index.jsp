@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +11,31 @@
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script>
+    	$(document).ready(function() {
+    	  // 좋아요 버튼 클릭 이벤트 처리
+    	  $("#btn-like-style").click(function() {
+    	    $.ajax({
+    	      url: "/like", // 요청을 보낼 URL
+    	      method: "POST", // 요청 메서드 (POST)
+    	      success: function(response) {
+    	        // 요청이 성공적으로 처리된 후 수행할 동작
+    	        console.log("좋아요 요청이 성공적으로 처리되었습니다.");
+    	      },
+    	      error: function(jqXHR, textStatus, errorThrown) {
+    	        // 요청이 실패한 경우 수행할 동작
+    	        console.error("좋아요 요청을 처리하는 중 오류가 발생했습니다:", textStatus, errorThrown);
+    	      }
+    	    });
+    	  });
+    	});
+    </script>
     <!-- SWIPER 외부 라이브러리 연결-->
-
+	<style>
+		#gList {
+			margin:0px 5px 40px 5px;
+		}
+	</style>
 </head>
 <body>
     <!-- <iframe src="./header.html" scrolling="no" width="100%" height="228px" frameborder=0></iframe> -->
@@ -22,7 +46,7 @@
             <div class="silde1">
               <div id="slide-text">
                 <h2>내 손안에서 깨어난 새로운 리듬</h2>
-                <h1>New Game of Music</h1>
+			      <h1>New Game of Music</h1>
                 <p>새로운 감각의 New RPG 뉴게임오브뮤직</p>
                 <a href="#"><button id="btn-main-style" type="button">자세히보기</button></a>
             </div>
@@ -63,233 +87,263 @@
         <div class="swiper-pagination"></div>
     
         <div class="swiper-button-prev">
-          <button class="btn__prev"><img src="http://localhost:9000/uniquegames/images/btn_main-arrow_left.png"></button>
+          <button class="btn__prev"><img src="/uniquegames/images/btn_main-arrow_left.png"></button>
         </div>
         <div class="swiper-button-next">
-          <button class="btn__next"><img src="http://localhost:9000/uniquegames/images/btn_main-arrow_right.png"></button>
+          <button class="btn__next"><img src="/uniquegames/images/btn_main-arrow_right.png"></button>
         </div>
       </div>
-</div>
-    <img id="topGame-title" src="http://localhost:9000/uniquegames/images/imt_title_top.png" width="135px" height="32px">
+    <img id="topGame-title" src="/uniquegames/images/imt_title_top.png" width="135px" height="32px">
     <div id="menu-topGame">
         <div id="topGameList">
+        <c:forEach var="ranking" items="${ranking }">
             <div id="tList">
-                <img alt="#" src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_500240.png" width="500px" height="240px">
+                <img alt="#" src="${ranking.image_path }" width="500px" height="240px">
                 <div>
-                    <p>1</p>
-                    <p>New Game of Music</p>
-                    <p>새로운 감각의 New RPG 뉴게임오브뮤직</p>
-                    <button id="readmore-plus" type="button"><img src="http://localhost:9000/uniquegames/images/btn_plus_normal.png" width="30px" height="30px"></button>
+                    <p>${ranking.rno} </p>
+                    <p>${ranking.name }</p>
+                    <p>${ranking.description }</p>
+                    <button id="readmore-plus" type="button"><img src="/uniquegames/images/btn_plus_normal.png" width="30px" height="30px"></button>
                 </div>
             </div>
-            <div id="tList">
-                <img alt="#" src="http://localhost:9000/uniquegames/images/img_game_thumbnail_2_500240.png" width="500px" height="240px">
+       </c:forEach>
+            <!-- <div id="tList">
+                <img alt="#" src="/uniquegames/images/img_game_thumbnail_2_500240.png" width="500px" height="240px">
                 <div>
                     <p>2</p>
                     <p>New Game of Music</p>
                     <p>새로운 감각의 New RPG 뉴게임오브뮤직</p>
-                    <button id="readmore-plus" type="button"><img src="http://localhost:9000/uniquegames/images/btn_plus_normal.png" width="30px" height="30px"></button>
+                    <button id="readmore-plus" type="button"><img src="/uniquegames/images/btn_plus_normal.png" width="30px" height="30px"></button>
                 </div>
             </div>
             <div id="tList">
-                <img alt="#" src="http://localhost:9000/uniquegames/images/img_game_thumbnail_3_500240.png" width="500px" height="240px">
+                <img alt="#" src="/uniquegames/images/img_game_thumbnail_3_500240.png" width="500px" height="240px">
                 <div>
                     <p>3</p>
                     <p>New Game of Music</p>
                     <p>새로운 감각의 New RPG 뉴게임오브뮤직</p>
-                    <button id="readmore-plus" type="button"><img src="http://localhost:9000/uniquegames/images/btn_plus_normal.png" width="30px" height="30px"></button>
+                    <button id="readmore-plus" type="button"><img src="/uniquegames/images/btn_plus_normal.png" width="30px" height="30px"></button>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <section id="menu-main1">
-        <img id="recommendations-title" src="http://localhost:9000/uniquegames/images/img_title_recommendations.png" width="262px" height="26px">
+        <img id="recommendations-title" src="/uniquegames/images/img_title_recommendations.png" width="262px" height="26px">
         <p id="subTitle">#최근 반응이 좋은</p>
         <div id="menu-recommendations">
             <div id="recommendList">
-                <div id="rList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+            <c:forEach var="donation" items="${donation }">
+            	<div id="rList">
+            		<img src="${donation.image_path }" width="260px" height="180px">
+            		<ul>
+            			<li>Hot</li>
+                        <li>${donation.name }</li>
+                        <li>${donation.game_genre} </li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
+                    </ul>
+                    <div>
+                        <button id="btn-recommend-style" type="button">자세히보기</button>
+                    </div>
+            	</div>
+            </c:forEach>
+                <!-- <div id="rList">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>Hot</li>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                     <div>
                         <button id="btn-recommend-style" type="button">자세히보기</button>
                     </div>
                 </div>
                 <div id="rList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>Hot</li>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                     <div>
                         <button id="btn-recommend-style" type="button">자세히보기</button>
                     </div>
                 </div>
                 <div id="rList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>Hot</li>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                     <div>
                         <button id="btn-recommend-style" type="button">자세히보기</button>
                     </div>
                 </div>
                 <div id="rList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>Hot</li>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                     <div>
                         <button id="btn-recommend-style" type="button">자세히보기</button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         </section>
     <section id="menu-main2">
-        <img id="allList-title" src="http://localhost:9000/uniquegames/images/img_title_AllList.png" width="100px" height="24px">
+        <img id="allList-title" src="/uniquegames/images/img_title_AllList.png" width="100px" height="24px">
         <div id="menu-allList">
             <div id="gameList">
+           	<c:forEach var="game" items="${gameVo}">
                 <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="${game.image_path } " width="260px" height="180px">
+                    <ul>
+                        <li>${game.name }</li>
+                        <li>${game.game_genre}</li>
+                        <li><button id="btn-like-style" type="button"></button></li>
+                        <li></li>
+                        <%--  <li>${game.liked}</li> --%>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
+                    </ul>
+                </div>
+            </c:forEach>
+            </div>
+            <!-- <div id="gameList">
+                <div id="gList">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
                         <li><button id="btn-like-style" type="button"></button></li>
                         <li>number</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
                 <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
                         <li><button id="btn-like-style" type="button"></button></li>
                         <li>number</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
                 <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
                         <li><button id="btn-like-style" type="button"></button></li>
                         <li>number</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
                 <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
                         <li><button id="btn-like-style" type="button"></button></li>
                         <li>number</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
             </div>
             <div id="gameList">
                 <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
                         <li><button id="btn-like-style" type="button"></button></li>
                         <li>number</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
                 <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
                         <li><button id="btn-like-style" type="button"></button></li>
                         <li>number</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
                 <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
                         <li><button id="btn-like-style" type="button"></button></li>
                         <li>number</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
                 <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
                         <li><button id="btn-like-style" type="button"></button></li>
                         <li>number</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
             </div>
             <div id="gameList">
                 <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
                         <li><button id="btn-like-style" type="button"></button></li>
                         <li>number</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
                 <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
                         <li><button id="btn-like-style" type="button"></button></li>
                         <li>number</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
                 <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
                         <li><button id="btn-like-style" type="button"></button></li>
                         <li>number</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
                 <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
                         <li><button id="btn-like-style" type="button"></button></li>
                         <li>number</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
             </div>
             <div id="gameList">
                 <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
@@ -299,7 +353,7 @@
                     </ul>
                 </div>
                 <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
@@ -309,73 +363,31 @@
                     </ul>
                 </div>
                 <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
                         <li><button id="btn-like-style" type="button"></button></li>
                         <li>number</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
                 <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
+                    <img src="/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
                     <ul>
                         <li>New Game of Music</li>
                         <li>Action RPG</li>
                         <li><button id="btn-like-style" type="button"></button></li>
                         <li>number</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
-            </div>
-            <div id="gameList">
-                <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
-                    <ul>
-                        <li>New Game of Music</li>
-                        <li>Action RPG</li>
-                        <li><button id="btn-like-style" type="button"></button></li>
-                        <li>number</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
-                    </ul>
-                </div>
-                <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
-                    <ul>
-                        <li>New Game of Music</li>
-                        <li>Action RPG</li>
-                        <li><button id="btn-like-style" type="button"></button></li>
-                        <li>number</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
-                    </ul>
-                </div>
-                <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
-                    <ul>
-                        <li>New Game of Music</li>
-                        <li>Action RPG</li>
-                        <li><button id="btn-like-style" type="button"></button></li>
-                        <li>number</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
-                    </ul>
-                </div>
-                <div id="gList">
-                    <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" width="260px" height="180px">
-                    <ul>
-                        <li>New Game of Music</li>
-                        <li>Action RPG</li>
-                        <li><button id="btn-like-style" type="button"></button></li>
-                        <li>number</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
-                    </ul>
-                </div>
-            </div>
+            </div> -->
         </div>
     </section>
     <section id="menu-main3">
-        <img id="solution-title" src="http://localhost:9000/uniquegames/images/img_title_solution.png" width="120px" height="25px">
-        <p id="subTitle">#도대체 어케 깸?</p>
+        <img id="solution-title" src="/uniquegames/images/img_title_notice.png" width="90px" height="25px">
+        <p id="subTitle">#공지사항 #필독</p>
         <div id="menu-solution">
             <table>
                 <tr>

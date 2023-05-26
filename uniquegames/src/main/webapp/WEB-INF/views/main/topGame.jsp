@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,16 +24,18 @@
                 <p id="intro-allList">게임 순위</p>
                 <div>
                     <div>
+                    <c:forEach var="ranking" items="${ranking }" >
                         <div id="tList-detail">
-                            <img alt="#" src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_500240.png" width="500px" height="240px">
+                            <img alt="#" src="${ranking.image_path } " width="500px" height="240px">
                             <div>
-                                <p>1</p>
-                                <p>New Game of Music</p>
-                                <p>새로운 감각의 New RPG 뉴게임오브뮤직</p>
+                                <p>${ranking.rno }</p>
+                                <p>${ranking.name}</p>
+                                <p>${ranking.description }</p>
                                 <button id="btn-readmore-topGame" type="button">자세히보기</button>
                             </div>
                         </div>
-                        <div id="tList-detail">
+                     </c:forEach>
+                       <!--  <div id="tList-detail">
                             <img alt="#" src="http://localhost:9000/uniquegames/images/img_game_thumbnail_2_500240.png" width="500px" height="240px">
                             <div>
                                 <p>2</p>
@@ -67,7 +70,7 @@
                                 <p>새로운 감각의 New RPG 뉴게임오브뮤직</p>
                                 <button id="btn-readmore-topGame" type="button">자세히보기</button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
