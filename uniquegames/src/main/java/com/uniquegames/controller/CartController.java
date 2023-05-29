@@ -18,28 +18,35 @@ public class CartController {
 		OrderDao orderDao = new OrderDao();
 		ArrayList<OrderVo> cartList = orderDao.getCartList(m_id);
 
-		model.addObject("cartList", cartList);
-		model.addObject("count", orderDao.getCartCount(m_id));
-		model.addObject("totalAmount", orderDao.getTotalAmount(m_id));
-		model.addObject("m_id", cartList.get(0).getId());
-		model.setViewName("/order/cart");
+		if (cartList != null) {
+			model.addObject("cartList", cartList);
+			model.addObject("nothingInCart", false);
+		} else {
+			model.addObject("nothingInCart", true);
+		}
+		model.addObject("m_id", m_id);
+		model.setViewName("/order/cart");		
 
 		return model;
 	}
-	
+
 	@RequestMapping(value = "/cart_delete_all.do", method = RequestMethod.GET)
 	public String cart_delete_all(int m_id) {
 		String view;
 		OrderDao orderDao = new OrderDao();
 		int result = orderDao.getCartDeleteAll(m_id);
-		
-		if(result == 1) {
-			view = "redirect://cart.do?m_id="+m_id;			
-		}
-		else {
+
+		if (result != 0) {
+			view = "redirect://cart.do?m_id=" + m_id;
+		} else {
 			view = "/order/error";
 		}
-		
+
 		return view;
+	}
+
+	@RequestMapping(value = "/error.do", method = RequestMethod.GET)
+	public String error() {
+		return "/order/error";
 	}
 }

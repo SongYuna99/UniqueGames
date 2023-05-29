@@ -2,6 +2,8 @@ $(document).ready(function (){
 	let method;
 	let checkedIdList;
 	
+	showPrice();
+	
 	/** cart **/
     $("input[name='checkAll']").change(function (){
         if($(this).is(":checked")){
@@ -23,7 +25,11 @@ $(document).ready(function (){
         }
     });
     $("input").change(function (){
-		let checked = $("input[name='checkOne']:checked").length;		
+		showPrice();
+    });
+    
+    function showPrice() {
+    	let checked = $("input[name='checkOne']:checked").length;		
 		$("#count").html("총 " + checked + "개");
 		
 		var totalAmount = 0;
@@ -33,7 +39,7 @@ $(document).ready(function (){
 			totalAmount += parseInt(amount);
 		});
 		$("#totalAmount").html(totalAmount);
-    });
+    }
 	
 	
 	
