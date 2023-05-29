@@ -1,10 +1,13 @@
 package com.uniquegames.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uniquegames.dao.OrderDao;
@@ -25,13 +28,46 @@ public class CartController {
 			model.addObject("nothingInCart", true);
 		}
 		model.addObject("m_id", m_id);
-		model.setViewName("/order/cart");		
+		model.setViewName("/order/cart");
 
 		return model;
 	}
 
+	@RequestMapping(value = "/cart_delete_one.do", method = RequestMethod.GET)
+	public String cart_delete_one(int id, int m_id) {
+		String view;
+		OrderDao orderDao = new OrderDao();
+		int result = orderDao.getCartDeleteOne(id);
+
+		if (result != 0) {
+			view = "redirect://cart.do?m_id=" + m_id;
+		} else {
+			view = "/order/error";
+		}
+
+		return view;
+	}
+
+	@RequestMapping(value = "/cart_delete_selected.do", method = RequestMethod.POST)
+	public String cart_delete_selected(Integer m_id, @RequestParam(value = "checkedList[]") List<Integer> checkedList) {
+		String view;
+		OrderDao orderDao = new OrderDao();
+		int result = 0;
+		
+		for (int i = 0; i < checkedList.size(); i++) {
+			result = orderDao.getCartDeleteOne((int)checkedList.get(i));
+			if (result == 0) {
+				view = "/order/error";
+				return view;
+			}
+		}
+		view = "redirect://cart.do?m_id=" + m_id;
+		
+		return view;
+	}
+
 	@RequestMapping(value = "/cart_delete_all.do", method = RequestMethod.GET)
-	public String cart_delete_all(int m_id) {
+	public String cart_delete_selected(int m_id) {
 		String view;
 		OrderDao orderDao = new OrderDao();
 		int result = orderDao.getCartDeleteAll(m_id);

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -40,18 +41,18 @@
 						<th>가격</th>
 						<th>삭제</th>
 					</tr>
-					<tr>
-						<td>1</td>
-						<td><a><img src="#"></a></td>
-						<td>
-							<p><a>이것이 상품명입니다.</a></p>
-							<p>이건 상품 간단 설명? 옵션?</p>
-						</td>
-						<td>999,999,999</td>
-						<td>
-							<button type="button" id="btn-deleteOne">삭제</button>
-						</td>
-					</tr>
+					<c:forEach var="order" items="${orderList}">
+						<tr>
+							<td></td>
+							<td><a><img src="${ order.game_img }"></a></td>
+							<td><p><a>${ order.gametitle }</a></p></td>
+							<td><fmt:formatNumber type="currency" value="${ order.amount }" /></td>
+							<td>
+								<a href="http://localhost:9000/uniquegames/cart_delete_one.do?id=${ order.id }&m_id=${ m_id }" id="a-delete">
+								<button type="button" id="btn-deleteOne" value="${ order.id }">삭제</button></a>
+							</td>
+						</tr>
+					</c:forEach>
 				</table>
 			</div>
 		</div>
@@ -87,11 +88,11 @@
 			<div id="div-agreement">
 				<input type="checkbox" id="checkAll"><span>전체 동의하기</span>
 					<ul>
-						<li><input type="checkbox" name="agreement">[필수] 만 14세 이상입니다.</li>
-						<li><input type="checkbox" name="agreement">[필수] 이용 약관<a id="detail1">자세히</a></li>
-						<li><input type="checkbox" name="agreement">[필수] 개인정보 수집 및 이용 동의<a id="detail2">자세히</a></li>
-						<li><input type="checkbox" name="agreement">[필수] 개인정보 제 3자 제공 동의<a id="detail3">자세히</a></li>
-						<li><input type="checkbox" name="agreement">[필수] 전자결제대행 이용 동의<a id="detail4">자세히</a></li>
+						<li><input type="checkbox" id="agreement" name="checkOne">[필수] 만 14세 이상입니다.</li>
+						<li><input type="checkbox" id="agreement" name="checkOne">[필수] 이용 약관<a id="detail1">자세히</a></li>
+						<li><input type="checkbox" id="agreement" name="checkOne">[필수] 개인정보 수집 및 이용 동의<a id="detail2">자세히</a></li>
+						<li><input type="checkbox" id="agreement" name="checkOne">[필수] 개인정보 제 3자 제공 동의<a id="detail3">자세히</a></li>
+						<li><input type="checkbox" id="agreement" name="checkOne">[필수] 전자결제대행 이용 동의<a id="detail4">자세히</a></li>
 					</ul>
 			</div>
 			<div id="div-price">

@@ -27,7 +27,7 @@
 		</div>
 	</section>
 
-	<form name="cartForm" action="cart_proc.do" method="post">
+	<form name="cartForm" action="order.do" method="post">
 		<h1>Cart</h1>
 		<section id="cart">
 			<c:if test="${ nothingInCart != 'true' }">
@@ -57,7 +57,8 @@
 									<td><p><a>${ cart.gametitle }</a></p></td>
 									<td><fmt:formatNumber type="currency" value="${ cart.amount }" /></td>
 									<td>
-										<button type="button" id="btn-deleteOne" value="${ cart.id }">삭제</button>
+										<a href="http://localhost:9000/uniquegames/cart_delete_one.do?id=${ cart.id }&m_id=${ m_id }" id="a-delete">
+										<button type="button" id="btn-deleteOne" value="${ cart.id }">삭제</button></a>
 									</td>
 								</tr>
 							</c:forEach>
@@ -76,7 +77,7 @@
 						</table>
 					</div>
 					<div id="div-button">
-						<button id="btn-cart">주문하기</button>
+						<button type="button" id="btn-cart">주문하기</button>
 					</div>
 				</div>
 			</c:if>
