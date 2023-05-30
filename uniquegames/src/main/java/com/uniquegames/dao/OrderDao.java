@@ -6,6 +6,7 @@ import java.util.List;
 import com.uniquegames.vo.OrderVo;
 
 public class OrderDao extends DBConnOrder {
+	// http://localhost:9000/uniquegames/cart.do?m_id=1
 	/** Cart **/
 	// getCartList
 	public ArrayList<OrderVo> getCartList(int m_id) {
@@ -112,13 +113,14 @@ public class OrderDao extends DBConnOrder {
 		getPreparedStatement(sql.toString());
 
 		try {
-			for(int i = 0; i<checkedList.size();i++) {
+			for (int i = 0; i < checkedList.size(); i++) {
 				pstmt.setInt(1, checkedList.get(i));
 				rs = pstmt.executeQuery();
 
 				while (rs.next()) {
 					OrderVo cart = new OrderVo();
 
+					cart.setRno(i + 1);
 					cart.setId(rs.getInt(1));
 					cart.setG_id(rs.getInt(2));
 					cart.setGame_img(rs.getString(3));
@@ -134,4 +136,53 @@ public class OrderDao extends DBConnOrder {
 
 		return orderList;
 	} // getCartList
+
+	// getOrderAmount
+	public int getOrderAmount(ArrayList<Integer> list) {
+		int result = 0;
+
+		StringBuffer sql = new StringBuffer(100);
+		sql.append("SELECT AMOUNT FROM ORDERS WHERE ID = ?");
+		getPreparedStatement(sql.toString());
+
+		try {
+			for (int i = 0; i < list.size(); i++) {
+				pstmt.setInt(1, list.get(i));
+				rs = pstmt.executeQuery();
+
+				while (rs.next()) {
+					result += rs.getInt(1);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	} // getOrderAmount
+	
+	// getOrderComplete
+	public int getOrderComplete(ArrayList<Integer> list) {
+		int result = 0;
+		
+		StringBuffer sql = new StringBuffer(100);
+		// 결제결과 / 날짜 / 결제방식
+		sql.append("UPDATE ORDERS SET PAYMENT_STATUS = 'COMPLETE' WHERE ID = ?");
+		getPreparedStatement(sql.toString());
+		
+		try {
+			for (int i = 0; i < list.size(); i++) {
+				pstmt.setInt(1, list.get(i));
+				result = pstmt.executeUpdate();
+				
+				if(result == 0) {
+					i = list.size();
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	} // getOrderComplete
 }

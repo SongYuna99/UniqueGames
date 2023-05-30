@@ -9,9 +9,10 @@
 	<meta charset="UTF-8">
 	<title>Unique Games</title>
 	<link rel="stylesheet" href="css/order_style.css">
-	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script> <!-- 마이크로소프트 jQuery-->
-	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+	<!-- 마이크로소프트 jQuery-->
 	<script src="js/order_script.js"></script>
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>
 <body>
 <!-- header -->
@@ -28,92 +29,92 @@
 </section>
 
 <!-- orderForm -->
-<form name="orderForm" action="order_proc.do" method="post">
-	<h1>Order / Payment</h1>
-	<section id="order">
-		<div id="div-gameList">
-			<div id="div-table">
-				<table id="table-gameList">
+<h1>Order / Payment</h1>
+<section id="order">
+	<div id="div-gameList">
+		<input type="hidden" id="m_id" name="m_id" value="${ m_id }">
+		<input type="hidden" id="totalAmount" name="totalAmount" value="${ amount }">
+		<div id="div-table">
+			<table id="table-gameList">
+				<tr>
+					<th>번호</th>
+					<th></th>
+					<th>상품명</th>
+					<th>가격</th>
+					<th>삭제</th>
+				</tr>
+				<c:forEach var="order" items="${orderList}">
 					<tr>
-						<th>번호</th>
-						<th></th>
-						<th>상품명</th>
-						<th>가격</th>
-						<th>삭제</th>
+						<td>${ order.rno }</td>
+						<td><a><img src="${ order.game_img }"></a></td>
+						<td><p><a>${ order.gametitle }</a></p></td>
+						<td><fmt:formatNumber type="currency" value="${ order.amount }" /></td>
+						<td>
+							<a href="http://localhost:9000/uniquegames/order_delete_one.do?id=${ order.id }&m_id=${ m_id }" id="a-delete">
+							<button type="button" id="btn-deleteOne" name="btn-deleteOne" value="${ order.id }">삭제</button></a>
+						</td>
 					</tr>
-					<c:forEach var="order" items="${orderList}">
-						<tr>
-							<td></td>
-							<td><a><img src="${ order.game_img }"></a></td>
-							<td><p><a>${ order.gametitle }</a></p></td>
-							<td><fmt:formatNumber type="currency" value="${ order.amount }" /></td>
-							<td>
-								<a href="http://localhost:9000/uniquegames/cart_delete_one.do?id=${ order.id }&m_id=${ m_id }" id="a-delete">
-								<button type="button" id="btn-deleteOne" value="${ order.id }">삭제</button></a>
-							</td>
-						</tr>
-					</c:forEach>
-				</table>
-			</div>
+				</c:forEach>
+			</table>
 		</div>
-		<div id="div-info">
-			<h2>결제 정보</h2>
-			<div id="div-paymentMethod">
-				<h3>결제 수단</h3>
-				<div id="div-method">
-					<button id="btn-method" type="button" value="card">카드 결제</button>
-					<button id="btn-method" type="button" value="vbank">가상 계좌</button>
-					<button id="btn-method" type="button" value="trans">계좌이체</button>
-					<button id="btn-method" type="button" value="phone">휴대폰소액결제</button>
-					<button id="btn-method" type="button" value="kakao">카카오 페이</button>
-				</div>	
-			</div>
-			<hr>
-			<div>
-				<h3>환불 안내</h3>
-				<div id="div-infomation">
-					환불 절차와 조건은 다음과 같습니다.
-					
-					<br><p id="p-infomationTitle">1. 환불 절차</p>
-					<br><p id="p-infomationContent">환불 조건에 적합한 건에 대하여 선택하신 결제 수단으로 2주내 환불이 이루어집니다.</p>
-					
-					<br><p id="p-infomationTitle">2. 환불 조건</p>
-					<br><p id="p-infomationContent">결제 후 2주가 지나지 않은 건에 대해서는 100% 환불이 가능하며 이외의 환불에 대해서는 아래의 링크를 참고하여주시길 바랍니다.</p>
-					<br><p id="p-infomationContent"><a href="#">기간에 따른 환불 안내</a></p>
-					
-				</div>	
-			</div>
-			<hr>
-			<h3>결제 동의</h3>
-			<div id="div-agreement">
-				<input type="checkbox" id="checkAll"><span>전체 동의하기</span>
-					<ul>
-						<li><input type="checkbox" id="agreement" name="checkOne">[필수] 만 14세 이상입니다.</li>
-						<li><input type="checkbox" id="agreement" name="checkOne">[필수] 이용 약관<a id="detail1">자세히</a></li>
-						<li><input type="checkbox" id="agreement" name="checkOne">[필수] 개인정보 수집 및 이용 동의<a id="detail2">자세히</a></li>
-						<li><input type="checkbox" id="agreement" name="checkOne">[필수] 개인정보 제 3자 제공 동의<a id="detail3">자세히</a></li>
-						<li><input type="checkbox" id="agreement" name="checkOne">[필수] 전자결제대행 이용 동의<a id="detail4">자세히</a></li>
-					</ul>
-			</div>
-			<div id="div-price">
-				<table id="cart-price">
-					<tr>
-						<th>개수</th>
-						<th>총 금액</th>
-						
-					</tr>
-					<tr>
-						<td>총 n개</td>
-						<td>999,999,999</td>
-					</tr>
-				</table>
-			</div>
+	</div>
+	<div id="div-info">
+		<h2>결제 정보</h2>
+		<div id="div-paymentMethod">
+			<h3>결제 수단</h3>
+			<div id="div-method">
+				<button id="btn-method" type="button" value="card">카드 결제</button>
+				<button id="btn-method" type="button" value="vbank">가상 계좌</button>
+				<button id="btn-method" type="button" value="trans">계좌이체</button>
+				<button id="btn-method" type="button" value="phone">휴대폰소액결제</button>
+				<button id="btn-method" type="button" value="kakao">카카오 페이</button>
+			</div>	
 		</div>
-		<div id="div-button">
-			<button type="button" id="btn-order">결제하기</button>
+		<hr>
+		<div>
+			<h3>환불 안내</h3>
+			<div id="div-infomation">
+				환불 절차와 조건은 다음과 같습니다.
+				
+				<br><p id="p-infomationTitle">1. 환불 절차</p>
+				<br><p id="p-infomationContent">환불 조건에 적합한 건에 대하여 선택하신 결제 수단으로 2주내 환불이 이루어집니다.</p>
+				
+				<br><p id="p-infomationTitle">2. 환불 조건</p>
+				<br><p id="p-infomationContent">결제 후 2주가 지나지 않은 건에 대해서는 100% 환불이 가능하며 이외의 환불에 대해서는 아래의 링크를 참고하여주시길 바랍니다.</p>
+				<br><p id="p-infomationContent"><a href="#">기간에 따른 환불 안내</a></p>
+				
+			</div>	
 		</div>
-	</section>
-</form>
+		<hr>
+		<h3>결제 동의</h3>
+		<div id="div-agreement">
+			<input type="checkbox" id="checkAll" name="checkAll"><span>전체 동의하기</span>
+				<ul>
+					<li><input type="checkbox" id="agreement" name="checkOne">[필수] 만 14세 이상입니다.</li>
+					<li><input type="checkbox" id="agreement" name="checkOne">[필수] 이용 약관<a id="detail1">자세히</a></li>
+					<li><input type="checkbox" id="agreement" name="checkOne">[필수] 개인정보 수집 및 이용 동의<a id="detail2">자세히</a></li>
+					<li><input type="checkbox" id="agreement" name="checkOne">[필수] 개인정보 제 3자 제공 동의<a id="detail3">자세히</a></li>
+					<li><input type="checkbox" id="agreement" name="checkOne">[필수] 전자결제대행 이용 동의<a id="detail4">자세히</a></li>
+				</ul>
+		</div>
+		<div id="div-price">
+			<table id="cart-price">
+				<tr>
+					<th>개수</th>
+					<th>총 금액</th>
+					
+				</tr>
+				<tr>
+					<td>총 ${ count }개</td>
+					<td><fmt:formatNumber type="currency" value="${ amount }" /></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div id="div-button">
+		<button type="button" id="btn-order" name="btn-order">결제하기</button>
+	</div>
+</section>
 
 <!-- modal -->
 <div id="modal">

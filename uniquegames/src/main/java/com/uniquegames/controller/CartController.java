@@ -42,13 +42,13 @@ public class CartController {
 		if (result != 0) {
 			view = "redirect://cart.do?m_id=" + m_id;
 		} else {
-			view = "/order/error";
+			view = "/order/error?m_id" + m_id;
 		}
 
 		return view;
 	}
 
-	@RequestMapping(value = "/cart_delete_selected.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/cart_delete_selected.do")
 	public String cart_delete_selected(Integer m_id, @RequestParam(value = "checkedList[]") List<Integer> checkedList) {
 		String view;
 		OrderDao orderDao = new OrderDao();
@@ -57,7 +57,7 @@ public class CartController {
 		for (int i = 0; i < checkedList.size(); i++) {
 			result = orderDao.getCartDeleteOne((int)checkedList.get(i));
 			if (result == 0) {
-				view = "/order/error";
+				view = "/order/error?m_id" + m_id;
 				return view;
 			}
 		}
@@ -82,7 +82,12 @@ public class CartController {
 	}
 
 	@RequestMapping(value = "/error.do", method = RequestMethod.GET)
-	public String error() {
-		return "/order/error";
+	public ModelAndView error(int m_id) {
+		ModelAndView model = new ModelAndView();
+		model.addObject("m_id", m_id);
+		model.setViewName("/order/error");
+		
+		return model;
 	}
+
 }

@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="css/order_style.css">
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 	<!-- 마이크로소프트 jQuery-->
-	<script src="js/order_script.js"></script>
+	<script src="js/cart_script.js"></script>
 </head>
 <body>
 	<!-- header -->
@@ -26,72 +26,69 @@
 			</div>
 		</div>
 	</section>
-
-	<form name="cartForm" action="order.do" method="post">
-		<h1>Cart</h1>
-		<section id="cart">
-			<c:if test="${ nothingInCart != 'true' }">
-				<div id="div-gameList">
-					<div id=div-delete>
-						<a href="http://localhost:9000/uniquegames/cart_delete_all.do?m_id=${ m_id }" id="a-delete">
-							<button type="button" id="btn-deleteAll">전체삭제</button>
-						</a>
-						<button type="button" id="btn-deleteSelected">선택삭제</button>
-					</div>
-					<div id="div-table">
-						<input type="hidden" id="m_id" value="${ m_id }">
-						<table id="table-gameList">
-							<tr>
-								<th><input type="checkbox" id="checkAll" name="checkAll"
-									checked="checked">선택</th>
-								<th></th>
-								<th>상품명</th>
-								<th>가격</th>
-								<th>삭제</th>
-							</tr>
-							<c:forEach var="cart" items="${cartList}">
-								<tr>
-									<td id="${ cart.amount }">
-									<input type="checkbox" id="${ cart.id }" name="checkOne" checked="checked" value="${ cart.id }"></td>
-									<td><a><img src="${ cart.game_img }"></a></td>
-									<td><p><a>${ cart.gametitle }</a></p></td>
-									<td><fmt:formatNumber type="currency" value="${ cart.amount }" /></td>
-									<td>
-										<a href="http://localhost:9000/uniquegames/cart_delete_one.do?id=${ cart.id }&m_id=${ m_id }" id="a-delete">
-										<button type="button" id="btn-deleteOne" value="${ cart.id }">삭제</button></a>
-									</td>
-								</tr>
-							</c:forEach>
-						</table>
-					</div>
-					<div id="div-price">
-						<table id="cart-price">
-							<tr>
-								<th>개수</th>
-								<th>총 금액</th>
-							</tr>
-							<tr>
-								<td id="count">총 ${ count }개</td>
-								<td id="totalAmount">${ totalAmount }</td>
-							</tr>
-						</table>
-					</div>
-					<div id="div-button">
-						<button type="button" id="btn-cart">주문하기</button>
-					</div>
+	<h1>Cart</h1>
+	<section id="cart">
+		<c:if test="${ nothingInCart != 'true' }">
+			<div id="div-gameList">
+				<div id=div-delete>
+					<a href="http://localhost:9000/uniquegames/cart_delete_all.do?m_id=${ m_id }" id="a-delete">
+						<button type="button" id="btn-deleteAll">전체삭제</button>
+					</a>
+					<button type="button" id="btn-deleteSelected">선택삭제</button>
 				</div>
-			</c:if>
-			<c:if test="${ nothingInCart == 'true' }">
-				<div id="div-nothing">
-					<p id="p-nothing">장바구니가 비어있습니다.</p>
+				<div id="div-table">
+					<input type="hidden" id="m_id" value="${ m_id }">
+					<table id="table-gameList">
+						<tr>
+							<th><input type="checkbox" id="checkAll" name="checkAll"
+								checked="checked">선택</th>
+							<th></th>
+							<th>상품명</th>
+							<th>가격</th>
+							<th>삭제</th>
+						</tr>
+						<c:forEach var="cart" items="${cartList}">
+							<tr>
+								<td id="${ cart.amount }">
+								<input type="checkbox" id="${ cart.id }" name="checkOne" checked="checked" value="${ cart.id }"></td>
+								<td><a><img src="${ cart.game_img }"></a></td>
+								<td><p><a>${ cart.gametitle }</a></p></td>
+								<td><fmt:formatNumber type="currency" value="${ cart.amount }" /></td>
+								<td>
+									<a href="http://localhost:9000/uniquegames/cart_delete_one.do?id=${ cart.id }&m_id=${ m_id }" id="a-delete">
+									<button type="button" id="btn-deleteOne" value="${ cart.id }">삭제</button></a>
+								</td>
+							</tr>
+						</c:forEach>
+					</table>
 				</div>
-					<div id="div-button">
-						<button type="button" id="btn-main">메인으로</button>
-					</div>
-			</c:if>
-		</section>
-	</form>
-
+				<div id="div-price">
+					<table id="cart-price">
+						<tr>
+							<th>개수</th>
+							<th>총 금액</th>
+						</tr>
+						<tr>
+							<td id="count">총 ${ count }개</td>
+							<td id="totalAmount">${ totalAmount }</td>
+						</tr>
+					</table>
+				</div>
+				<div id="div-button">
+					<button type="button" id="btn-cart">주문하기</button>
+				</div>
+			</div>
+		</c:if>
+		<c:if test="${ nothingInCart == 'true' }">
+			<div id="div-nothing">
+				<p id="p-nothing">장바구니가 비어있습니다.</p>
+			</div>
+				<div id="div-button">
+					<a href="http://localhost:9000/uniquegames/index.do"><button type="button" id="btn-main">메인으로</button></a>
+				</div>
+		</c:if>
+	</section>
+		
 	<!-- footer -->
 	<jsp:include page="../main/footer.jsp"></jsp:include>
 </body>

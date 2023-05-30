@@ -178,6 +178,9 @@ input[name="checkOne"] {
 input[name="checkOne"]:checked {
 	appearance: auto;
 }
+#div-agreement input[name="checkOne"] {
+	border: none;
+}
 
 /******* a *******/
 a {
