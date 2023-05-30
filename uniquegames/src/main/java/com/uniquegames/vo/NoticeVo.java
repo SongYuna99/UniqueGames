@@ -2,6 +2,8 @@ package com.uniquegames.vo;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class NoticeVo {
 	int rno;
 	int post_id;
@@ -11,6 +13,9 @@ public class NoticeVo {
 	int notice_hits;
 	Date notice_date;
 	String date_output;
+	CommonsMultipartFile file;
+	String image_id;
+	String upload_file;
 
 	public int getRno() {
 		return rno;
@@ -74,6 +79,30 @@ public class NoticeVo {
 
 	public void setDate_output(String date_output) {
 		this.date_output = date_output;
+	}
+
+	public CommonsMultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(CommonsMultipartFile file) {
+		this.file = file;
+	}
+
+	public String getImage_id() {
+		return image_id;
+	}
+
+	public void setImage_id(String image_id) {
+		this.image_id = image_id;
+	}
+
+	public String getUpload_file() {
+		return upload_file;
+	}
+
+	public void setUpload_file(String upload_file) {
+		this.upload_file = upload_file;
 	}
 
 }

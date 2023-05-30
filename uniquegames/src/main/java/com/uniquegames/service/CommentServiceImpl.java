@@ -31,5 +31,14 @@ public class CommentServiceImpl implements CommentService {
 
 		return commentDao.select(no);
 	}
+	
+	/**
+	 * 댓글 - 삭제
+	 */
+	@Override
+	public void delete(String no) {
+		
+		commentDao.delete(no);
+	}
 
 }

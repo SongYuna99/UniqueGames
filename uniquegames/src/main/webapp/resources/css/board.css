@@ -167,6 +167,37 @@ td {
 	resize: none;
 }
 
+#filebox #upload-name {
+    display: inline-block;
+    height: 40px;
+    width: 200px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    color: #999999;
+}
+
+#filebox label {
+    display: inline-block;
+   	background: #393939;
+	border-radius: 5px;
+	width: 80px;
+	color: #FFFFFF;
+	font-size: 14px;
+	vertical-align: middle;
+	cursor: pointer;
+	padding: 5px 0;
+}
+
+#filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
 /* board - content */
 #board-content>table th {
 	padding: 19px 8px;
@@ -224,7 +255,7 @@ td {
 	resize: vertical;
   }
 
-#comment1 {
+.comment1 {
 	border-top: 1px solid #C5C9D3;
 	padding: 10px 5px;
 }

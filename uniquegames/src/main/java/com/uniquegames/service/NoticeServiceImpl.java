@@ -1,5 +1,7 @@
 package com.uniquegames.service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 
 import com.uniquegames.dao.NoticeDao;
+import com.uniquegames.vo.FileVo;
 import com.uniquegames.vo.NoticeVo;
 
 @Service
@@ -70,10 +73,19 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public NoticeVo getNoticeContent(String no) {
 		NoticeVo noticeVo = noticeDao.select(no);
-
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		if (noticeVo != null) {
+			FileVo fileVo = noticeDao.fileSelect(noticeVo.getPost_id());
+
+			if (fileVo != null) {
+				noticeVo.setImage_id(fileVo.getImage_id());
+				noticeVo.setUpload_file(fileVo.getUpload_file());
+			}
+
 			noticeDao.hitsCount(no);
 			noticeVo.setNotice_hits(noticeVo.getNotice_hits() + 1);
+			noticeVo.setDate_output(format.format(noticeVo.getNotice_date()));
+			
 		}
 
 		return noticeVo;
@@ -85,7 +97,13 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public int insert(NoticeVo noticeVo) {
 
-		return noticeDao.insert(noticeVo);
+		int insResult = noticeDao.insert(noticeVo);
+
+		if (noticeVo.getImage_id() != null) {
+			noticeDao.insertFile(noticeVo);
+		}
+
+		return insResult;
 	}
 
 	/**
@@ -96,13 +114,13 @@ public class NoticeServiceImpl implements NoticeService {
 
 		return noticeDao.update(noticeVo);
 	}
-	
+
 	/**
 	 * 공지사항 - 삭제
 	 */
 	@Override
 	public int delete(String no) {
-		
+
 		return noticeDao.delete(no);
 	}
 

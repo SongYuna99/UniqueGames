@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/board.css">
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script><!-- 마이크로소프트 jQuery-->
 	<script src="http://localhost:9000/uniquegames/js/board.js"></script>
+	
 </head>
 
 <body>
@@ -35,7 +36,7 @@
 				</div>
 				<div id="clearFix"></div>
 			</div>
-			<form name="writeForm" action="notice_write_proc.do" method="post">
+			<form name="writeForm" action="notice_write_proc.do" method="post" enctype="multipart/form-data">
 				<table>
 					<tr>
 						<th>제목</th>
@@ -46,13 +47,22 @@
 						<td><textarea name="content" cols="30" rows="5"
 								id="default-write"></textarea></td>
 					</tr>
+					<tr>
+						<th>이미지</th>
+						<td>
+							<div id="filebox">
+								<input id="upload-name" value="첨부파일" placeholder="첨부파일">
+								<label for="upload-hidden">파일 찾기</label>
+								<input type="file" name="file" id="upload-hidden">
+								<span>*이미지는 본문 위에 삽입됩니다.</span>
+							</div>
+						</td>
+					</tr>
 				</table>
 			</form>
 		</div>
 	</div>
-	<footer>
-		<jsp:include page="../main/header.jsp"></jsp:include>
-	</footer>
+	<jsp:include page="../main/footer.jsp"></jsp:include>
 </body>
 
 </html>

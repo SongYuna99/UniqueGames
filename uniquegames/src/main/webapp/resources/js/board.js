@@ -78,6 +78,12 @@ $(document).ready(function() {
 			location.href = "notice_list.do";
 		}
 	});
+	
+	// file
+	$('#upload-hidden').on('change', function() {
+		let fileName = $('#upload-hidden').val();
+		$('#upload-name').val(fileName);
+	});
 
 	/**
 	 * content 버튼 이벤트
@@ -110,13 +116,14 @@ $(document).ready(function() {
 	})
 	
 	// 댓글 삭제 이벤트
-	$('.cmtDelete').on("click", function() {
+/*	$('.cmtDelete').on("click", function() {
 		if (confirm('댓글을 삭제하시겠습니까?')) {
 			commentDelete.submit();
 		} else {
 			return false;
 		}
 	})
+*/
 	
 	// 신고버튼
 /*
@@ -156,3 +163,28 @@ $(document).ready(function() {
 */
 
 });
+
+function commentDelete(commentId) {
+	if (confirm('댓글을 삭제하시겠습니까?')) {
+		let url = window.location.href;
+	
+		$.ajax({
+			url : "comment_delete.do",
+			data : {
+					no : commentId,
+					url : url
+			},
+			type : "POST",
+			success : function(url) {
+				alert("댓글이 삭제되었습니다.");
+				window.location.replace(url);
+			},
+			error : function(error) {
+				alert("실패");
+			}
+			
+		});
+	} else {
+		return false;
+	}
+}
