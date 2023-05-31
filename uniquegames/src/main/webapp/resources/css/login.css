@@ -1366,7 +1366,7 @@ td#payment-totalPrice {
 
 /* SignUp; email input style */
 #input-email {
-	width: 130px;
+	width: 127px;
 	padding: 20px 0;
 	text-indent: 10px;
 	border-radius: 3px;
@@ -1377,7 +1377,7 @@ td#payment-totalPrice {
 
 /* SignUp; email selectbox style */
 #selectbox-email {
-	width: 110px;
+	width: 106px;
 	padding: 22px 0 20px 0;
 	border: 1px solid lightgray;
 	text-indent: 10px;
@@ -1388,6 +1388,15 @@ td#payment-totalPrice {
 /*SignUp; phone input style except 010*/
 #input-phone {
 	width: 109px;
+	height: 43px;
+	border-radius: 3px;
+	border: 1px solid lightgray;
+	font-size: 16px;
+	text-indent: 10px;
+}
+
+#input-phone-company {
+	width: 118px;
 	height: 43px;
 	border-radius: 3px;
 	border: 1px solid lightgray;
@@ -1434,7 +1443,15 @@ td#payment-totalPrice {
 #selectbox-phone {
 	width: 60px;
 	height: 43px;
-	margin-left: 20px;
+	margin-left: 2px;
+	border: 1px solid lightgray;
+	border-radius: 3px;
+}
+
+#selectbox-phone-company {
+	width: 118px;
+	height: 43px;
+	margin-left: 2px;
 	border: 1px solid lightgray;
 	border-radius: 3px;
 }
@@ -1563,27 +1580,33 @@ SignUp IdCheck button style*/
 
 /* login; find-ID link style*/
 #link-findAccount {
+	display: inline-block;
 	background: white;
 	color: #2B2B2B;
 	font-size: 14px;
 	padding: 0 8px;
 	text-decoration: none;
 	font-family: "YouandiModern", sans-serif;
+	margin-top: 30px;
 }
 
 /* login; SignUp link style */
 #link-signUp {
+	display: inline-block;
 	font-family: "Apex New";
 	font-weight: 500;
 	color: #2E7AF6;
 	text-decoration: none;
-	font-size: 11pt;
-	padding: 0 8px;
+	font-size: 14px;
+	margin: 25px 10px 0 15px;
 }
 /* login; link to find-ID, signUp hover style */
 #link-findAccount:hover, #link-signUp:hover {
 	text-decoration: underline;
 }
+
+/*login; line, space between linkAccount and link-SignUp style */
+
 
 /* myPage; deletePwd link style*/
 #link-deleteAccount {
@@ -1718,26 +1741,23 @@ div.agreement2 {
 	padding-left: 45px;
 }
 
-/*SignUp, Company-SignUp, 
+/*SignUp, Company-SignUp, login; form id*/
+#content-2,
+#content-3,
+#individual-loginForm,
+#company-loginForm {
+	display: none;
+}
+
+/*SignUp, Company-SignUp, login 
 findId input radiobox style*/
 #individual:checked ~ #content-2,
 #company:checked ~ #content-3,
 #findId:checked ~ #findIdForm,
-#findPwd:checked ~ #findPwdForm {
+#findPwd:checked ~ #findPwdForm,
+#individual-login:checked ~ #individual-loginForm,
+#company-login:checked ~ #company-loginForm {
 	display: block;
-}
-/*SignUp, Company-SignUp form id*/
-#content-2,
-#content-3 {
-	display: none;
-}						
-/*Company-SignUp bank choice selectbox*/
-#account-info {
-	width: 394px;
-	height: 60px;
-	border: 1px solid lightgray;
-	border-radius: 3px;
-	margin: 5px 0;
 }
 
 /*SignUp, Company-SignUp input-radiobox
@@ -1745,17 +1765,21 @@ findId input-radiobox style*/
 #individual,
 #company,
 #findId,
-#findPwd {
+#findPwd,
+#individual-login,
+#company-login {
 	display: none;
 }
 
 #individual-tab,
 #company-tab,
 #findId-tab,
-#findPwd-tab {
+#findPwd-tab,
+#individual-login-tab,
+#company-login-tab {
 	display: inline-block;
 	margin: 0 0 5px 0;
-	padding: 15px 63px;
+	padding: 15px 61px;
 	font-weight: 600;
 	text-align: center;
 	color: #bbb;
@@ -1764,13 +1788,15 @@ findId input-radiobox style*/
 
 #findId-tab,
 #findPwd-tab {
-	padding: 15px 55px;
+	padding: 15px 50px;
 }
 
 #individual-tab:hover,
 #company-tab:hover,
 #findId-tab:hover,
-#findPwd-tab:hover {
+#findPwd-tab:hover,
+#individual-login-tab:hover,
+#company-login-tab:hover {
     color: #2e9cdf;
     cursor: pointer;}
 
@@ -1778,7 +1804,9 @@ findId input-radiobox style*/
 #individual:checked + #individual-tab,
 #company:checked + #company-tab,
 #findId:checked + #findId-tab,
-#findPwd:checked + #findPwd-tab {
+#findPwd:checked + #findPwd-tab,
+#individual-login:checked + #individual-login-tab,
+#company-login:checked + #company-login-tab {
     color: #555;
     border: 1px solid #ddd;
     border-top: 2px solid #2e9cdf;

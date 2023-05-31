@@ -10,66 +10,61 @@
 	<script src="http://localhost:9000/uniquegames/js/jquery-3.6.4.min.js"></script>
 	<script src="http://localhost:9000/uniquegames/js/join_jquery.js"></script>
 	<script>
-		/*
+
 		$(document).ready(function(){
 			
-			let delete_result = "${delete_result }";
-			
-			$("#button-gradient-delete").click(function(){
+		$("#button-gradient-delete").click(function(){
 				
-				if($("#input[name='password']").val()==""){
-					$("#msgPwd").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
-				}else {
-					$.ajax({
-						url : "delete_check.do?member_id="+$("input[name='member_id']").val()+"&password="+$("input[name='password']").val(),
-						success : function(result) {
-							if(result==1) {
-								alert("성공");
-							}else {
-								$("#msgPwd").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
-							}
-						}
-					});
-				}
+			if($("input[name='member_id']").val()==""){
+				alert("아이디를 입력하세요");
+				$("input[name='member_id']").focus();
+				return false;
+			}else if($("input[name='password']").val()=="") {
+				alert("비밀번호를 입력하세요")
+				$("input[name='password']").focus();
+				return false;
+			}else {
+				$.ajax({
+					url : "delete_check.do?member_id="+$("input[name='member_id']").val()+"&password="+$("input[name='password']").val(),
+					success : function(result) {
+						let jdata = JSON.parse(result);
+						$("#modal2").show();
+						$("#delete-member-id").html(jdata.jlist.member_id);
+						$("#delete-id").html(jdata.jlist.member_id);
+						$("#agreement-content1").html($(".deleteComplete").html());
+						
+												
+					}
+				});
+			}
 
-			});
 		});
-		*/
+		
+		$("input[name='member_id']").blur(function(){
 			
-			/* $("#button-gradient-delete").click(function(){
-				if($("input[name='pwd']").val()==""){
-					alert("비밀번호를 입력해주세요");
-					$("input[name='pwd']").focus();
-					return false;
-				}else if($("#selectbox-find").val()=="default"){
-					alert("탈퇴 사유를 선택해주세요");
-					$("#selectbox-find").focus();
-					return false;
-				}else {
-					loginForm.submit();
-					
-					
-					$("#agreement-content1").html($(".deleteComplete").html());
-				}	
-			});
+			if($("input[name='member_id']").val()==""){
+				$("#msgId").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+			}else {
+				$("#msgId").css("display","none");
+			}
+		});
+
 			
-		$("input[name='pwd']").blur(function(){
+		$("input[name='password']").blur(function(){
 				
-				if($("input[name='pwd']").val()==""){
+				if($("input[name='password']").val()==""){
 					$("#msgPwd").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
 				}else {
 					$("#msgPwd").css("display","none");
 				}
 			});
-		
-		$(document).on("click", "#button-gradient", function(event){
+
+		$(document).on("click", "#button-gradient-home", function(event){
 			$("#modal2").hide();
-			
+			location.href="/index.do";
 			});
 		
-		
-		
-		}); */
+		});
 	
 	</script>
 </head>
@@ -105,6 +100,7 @@
 					</li>
 					<li>
 						<input type="text" id="input-common" name="member_id" placeholder="아이디">
+						<span id="msgId"></span>
 					</li>
 					<li>
 						<input type="text" id="input-common" name="password" placeholder="비밀번호">

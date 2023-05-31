@@ -27,7 +27,7 @@ public class LoginController {
 		
 		if(result==1) {
 			mav.addObject("login_result", "success");
-			mav.setViewName("redirect:/");
+			mav.setViewName("redirect:/index.do");
 		}else {
 			mav.addObject("login_result", "fail");
 			mav.setViewName("login/login");

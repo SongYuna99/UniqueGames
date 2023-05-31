@@ -43,7 +43,7 @@ public class MemberDao extends DBConn {
 			pstmt.setString(7, memberVo.getTel());
 			
 			result = pstmt.executeUpdate();
-			
+			System.out.println(result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

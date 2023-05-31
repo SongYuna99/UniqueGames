@@ -1,27 +1,27 @@
 $(document).ready(function(){
 /*************************************************************************
-						회원가입 폼 체크
+						개인 - 회원가입 폼 체크
 *************************************************************************/
-	$("#button-gradient").click(function(){
-		if($("input[name='id'").val()=="") {
+	$("#button-gradient-individual").click(function(){
+		if($("input[name='member_id']").val()=="") {
 			alert("아이디는 필수 입력 항목입니다");
-			$("input[name='id'").focus();
+			$("input[name='member_id']").focus();
 			return false;
-		}else if(!idCheck2($("input[name='id']").val())) {
+		}else if(!idCheck2($("input[name='member_id']").val())) {
 			alert("아이디는 영문 또는 영문+숫자로 작성해주세요");
-			$("input[name='id'").focus();
+			$("input[name='member_id']").focus();
 			return false;
-		}else if(!idCheck3($("input[name='id']").val())) {
+		}else if(!idCheck3($("input[name='member_id']").val())) {
 			alert("아이디는 5~10글자로 작성해주세요");
-			$("input[name='id'").focus();
+			$("input[name='member_id']").focus();
 			return false;
-		}else if($("input[name='password'").val()==""){
+		}else if($("input[name='password']").val()==""){
 			alert("비밀번호는 필수 입력 항목입니다");
-			$("input[name='password'").focus();
+			$("input[name='password']").focus();
 			return false;
 		}else if(!pwdCheck($("input[name='password']").val())) {
 			alert("비밀번호는 영문,숫자,특수문자 1글자 이상 조합하여 작성해주세요");
-			$("input[name='password'").focus();
+			$("input[name='password']").focus();
 			return false;
 		}else if($("input[name='password-check']").val()=="") {
 			alert("비밀번호 확인칸을 입력해주세요");
@@ -80,7 +80,87 @@ $(document).ready(function(){
 			$("#agreement").focus();
 			return false;
 		}else {
-			joinForm.submit();
+			joinIndividual.submit();
+		}
+	});
+/*************************************************************************
+						법인 - 회원가입 폼 체크
+*************************************************************************/
+	$("#button-gradient-company").click(function(){
+		if($("input[name='company_id']").val()=="") {
+			alert("아이디는 필수 입력 항목입니다");
+			$("input[name='company_id']").focus();
+			return false;
+		}else if(!idCheck2($("input[name='company_id']").val())) {
+			alert("아이디는 영문 또는 영문+숫자로 작성해주세요");
+			$("input[name='company_id']").focus();
+			return false;
+		}else if(!idCheck3($("input[name='company_id']").val())) {
+			alert("아이디는 5~10글자로 작성해주세요");
+			$("input[name='company_id']").focus();
+			return false;
+		}else if($("input[name='password']").val()==""){
+			alert("비밀번호는 필수 입력 항목입니다");
+			$("input[name='password']").focus();
+			return false;
+		}else if(!pwdCheck($("input[name='password']").val())) {
+			alert("비밀번호는 영문,숫자,특수문자 1글자 이상 조합하여 작성해주세요");
+			$("input[name='password']").focus();
+			return false;
+		}else if($("input[name='password-check']").val()=="") {
+			alert("비밀번호 확인칸을 입력해주세요");
+			$("input[name='password-check']").focus();
+			return false;
+		}else if($("input[name='password']").val() != $("input[name='password-check']").val()){
+			alert("비밀번호가 서로 동일하지 않습니다");
+			$("input[name='password-check']").focus();
+			return false;
+		}else if($("input[name='name']").val()==""){
+			alert("이름은 필수 입력 항목입니다");
+			$("input[name='name']").focus();
+			return false;
+		}else if(!nameCheck($("input[name='name']").val())) {
+			alert("이름은 한글로만 작성해주세요");
+			$("input[name='name']").focus();
+			return false;
+		}else if($("#input-email1").val()==""){
+			alert("이메일은 필수 입력 항목입니다");
+			$("input[name='email1']").focus();
+			return false;
+		}else if(!emailCheck($("#input-email").val())){
+			alert("이메일은 영문+숫자로 입력해주세요");
+			$("input[name='email1']").focus();
+			return false;
+		}else if($("input[name='email2']").val()=="" && $("#selectbox-email").val()=="default"){
+			alert("이메일 주소를 전부 작성해주세요");
+			$("input[name='email2']").focus();
+			return false;
+		}else if($("#selectbox-phone").val()=="default") {
+			alert("휴대전화는 필수 입력 항목입니다");
+			$("#selectbox-phone").focus();
+			return false;
+		}else if($("input[name='phone2']").val()=="") {
+			alert("휴대전화는 필수 입력 항목입니다");
+			$("input[name='phone2']").focus();
+			return false;
+		}else if(!phoneCheck($("input[name='phone2']").val())) {
+			alert("휴대전화는 숫자 3,4자리로 입력해주세요");
+			$("input[name='phone2']").focus();
+			return false;
+		}else if($("input[name='phone3']").val()=="") {
+			alert("휴대전화는 필수 입력 항목입니다");
+			$("input[name='phone3']").focus();
+			return false;
+		}else if(!phoneCheck($("input[name='phone3']").val())) {
+			alert("휴대전화는 숫자 3,4자리로 입력해주세요");
+			$("input[name='phone3']").focus();
+			return false;
+		}else if($("#checkbox-agreement:checked").length!=3) {
+			alert("약간 동의를 체크해주세요");
+			$("#agreement").focus();
+			return false;
+		}else {
+			joinIndividual.submit();
 		}
 	});
 /*************************************************************************
@@ -135,13 +215,13 @@ $(document).ready(function(){
 	}
 	
 	
-	$("input[name='id']").blur(function(){
+	$("input[name='member_id']").blur(function(){
 		if($("input[name='id']").val()==""){
 			$("#idMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
 		}else {
-			if(!idCheck2($("input[name='id']").val())){
+			if(!idCheck2($("input[name='member_id']").val())){
 				$("#idMsg").text("영문 또는 숫자로 작성해주세요").css("color","red").css("font-size","11px").css("display","block");
-			}else if(!idCheck3($("input[name='id']").val())) {
+			}else if(!idCheck3($("input[name='member_id']").val())) {
 				$("#idMsg").text("5~10자리로 작성해주세요").css("color","red").css("font-size","11px").css("display","block");
 			}else {
 				$("#idMsg").css("display","none");
@@ -350,9 +430,14 @@ $("#check-btn-style").click(function(){
 *************************************************************************/
 $("#button-gradient-delete").click(function(){
 				
-				if($("#input[name='password']").val()==""){
+				if($("#input[name='member_id']").val()==""){
+					$("#msgId").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+					$("input[name='member_id']").focus();
+					return false;
+				}else if($("input[name='password']").val()=="") {
 					$("#msgPwd").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
-					//비밀번호 validation 만들기
+					$("input[name='password']").focus();
+					return false;
 				}else {
 					$.ajax({
 						url : "delete_check.do?member_id="+$("input[name='member_id']").val()+"&password="+$("input[name='password']").val(),

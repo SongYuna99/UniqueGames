@@ -11,14 +11,6 @@
 	<script src="http://localhost:9000/uniquegames/js/join_jquery.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
-	let c = "${message }";
-	
-	if(c == "fail")
-		alert("회원가입 실패");
-	
-	
-	</script>
-	<script>
         // JavaScript 코드
         document.addEventListener('DOMContentLoaded', function() {
             // URL에서 selectedTab 파라미터 값을 가져옴
@@ -30,6 +22,12 @@
                 document.getElementById(selectedTab).checked = true;
             }
         });
+        
+    	let c = "${message }";
+    	if(c == "fail")
+    		alert("회원가입 실패");
+    	
+    	
     </script>
 </head>
 <body>
@@ -51,7 +49,7 @@
 			<input id="company" type="radio" name="joinSelect">
 			<label for="company" id="company-tab">법인 회원</label>
 			
-			<form action="join_proc.do" name="joinForm" method="post" id="content-2">
+			<form action="join_individual_proc.do" name="joinIndividual" method="post" id="content-2">
 				<div>
 					<ul>
 						<li id="must-insert">
@@ -59,7 +57,7 @@
 							<label>아이디</label>
 						</li>
 						<li>
-							<input type="text" id="input-id" name="member_id" value="개인" placeholder="영문,숫자 5~10자리" tabindex="1">
+							<input type="text" id="input-id" name="member_id" placeholder="영문,숫자 5~10자리" tabindex="1">
 							<button type="button" id="check-btn-style">중복체크</button>
 							<span id="idMsg"></span>
 						</li>
@@ -163,14 +161,14 @@
 						</li>
 						
 						<li>
-							<button type="submit" id="button-gradient" tabindex="16">가입하기</button>
+							<button type="button" id="button-gradient-individual" tabindex="16">가입하기</button>
 						</li>
 					</ul>
 				</div>
 			</form>
 			
 			<!-- 법인 등록 -->
-			<form action="join_proc.do" name="joinForm" method="post" id="content-3">
+			<form action="join_company_proc.do" name="joinCompany" method="post" id="content-3">
 				<div>
 					<ul>
 						<li id="must-insert">
@@ -178,7 +176,7 @@
 							<label>회사_아이디</label>
 						</li>
 						<li>
-							<input type="text" id="input-id" name="company_id" value="회사" placeholder="영문,숫자 5~10자리" tabindex="1">
+							<input type="text" id="input-id" name="company_id" placeholder="영문,숫자 5~10자리" tabindex="1">
 							<button type="button" id="check-btn-style">중복체크</button>
 							<span id="idMsg"></span>
 						</li>
@@ -239,14 +237,7 @@
 							<label>대표번호</label>
 						</li>
 						<li>
-							<select id="selectbox-mobile" name="tel" tabindex="11">
-								<option value="default">선택</option>
-								<option value="SKT">SKT</option>
-								<option value="KT">KT</option>
-								<option value="LGU+">LGU+</option>
-								<option value="MVNO">알뜰폰</option>
-							</select>
-							<select id="selectbox-phone" name="phone1" tabindex="12">
+							<select id="selectbox-phone-company" name="phone1" tabindex="12">
 								<option value="default">선택</option>
 								<option value="010">010</option>
 								<option value="011">011</option>
@@ -257,35 +248,7 @@
 							-
 							<input type="text" id="input-phone" name="phone3" tabindex="14">
 							<span id="phoneMsg"></span>
-						</li>
-						<li id="must-insert">
-							<p id="label-dot">*</p>
-							<label>예금주</label>
-						</li>
-						<li>
-							<input type="text" id="input-common" name="account-info-name" tabindex="15">
-						</li>
-						<li id="must-insert">
-							<p id="label-dot">*</p>
-							<label>은행명</label>
-						</li>
-						<li>
-							<select id="account-info" name="account-info-bank" tabindex="16">
-								<option value="default">선택</option>
-								<option value="Hana">하나은행</option>
-								<option value="Kookmin">국민은행</option>
-								<option value="Woori">우리은행</option>
-								<option value="Shinhan">신한은행</option>
-							</select>
-						</li>
-						<li id="must-insert">
-							<p id="label-dot">*</p>
-							<label>계좌 등록</label>
-						</li>
-						<li>
-							<input type="text" id="input-common" name="account-info" tabindex="17">
-						</li>
-						
+						</li>						
 					</ul>
 					<ul>
 						<li id="agreement-box">
@@ -304,9 +267,8 @@
 							<input type="checkbox" id="agreement-choice" name="chk-agree">
 							<span id="choice-span">[선택]</span> <span>마케팅 정보 메일, SMS 수신동의</span>
 						</li>
-						
 						<li>
-							<button type="submit" id="button-gradient" tabindex="16">가입하기</button>
+							<button type="button" id="button-gradient-company" tabindex="16">가입하기</button>
 						</li>
 					</ul>
 				</div>

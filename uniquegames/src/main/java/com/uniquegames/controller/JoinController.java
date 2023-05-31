@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.uniquegames.dao.CompanyDao;
 import com.uniquegames.dao.MemberDao;
+import com.uniquegames.vo.CompanyVo;
 import com.uniquegames.vo.MemberVo;
 
 @Controller
@@ -22,19 +24,31 @@ public class JoinController {
 		return "/join/joinChoice";
 	}
 	
-	@RequestMapping(value="/companyJoin.do", method=RequestMethod.GET)
-	public String companyJoin() {
-		return "join/companyJoin";
-	}
 	
-	@RequestMapping(value="/join_proc.do", method=RequestMethod.POST)
+	@RequestMapping(value="/join_individual_proc.do", method=RequestMethod.POST)
 	public ModelAndView join_proc(MemberVo memberVo) {
 		ModelAndView mav = new ModelAndView();
 		MemberDao memberDao = new MemberDao();
 		int result = memberDao.insert(memberVo);
 		
 		if(result==1) {
-			mav.addObject("join_result", "succcess");
+			mav.addObject("join_individual_result", "succcess");
+			mav.setViewName("/login/login");
+		}else {
+			System.out.println("실패");
+		}
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/join_company_proc.do", method=RequestMethod.POST)
+	public ModelAndView companyJoin(CompanyVo companyVo) {
+		ModelAndView mav = new ModelAndView();
+		CompanyDao companyDao = new CompanyDao();
+		int result = companyDao.insert(companyVo);
+		
+		if(result==1) {
+			mav.addObject("join_company_result", "success");
 			mav.setViewName("/login/login");
 		}else {
 			System.out.println("실패");

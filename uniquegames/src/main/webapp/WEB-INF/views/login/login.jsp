@@ -49,9 +49,14 @@
 				
 		});
 		
-		let join = "${message }";
-		if(join=="success"){
-			alert("회원가입 성공");
+		let join_individual = "${join_individual_result }";
+		if(join_individual=="success"){
+			alert("개인 회원가입 성공");
+		}
+		
+		let join_company = "${join_company_result }";
+		if(join_company=="success"){
+			alert("법인 회원가입 성공");
 		}
 		
 		let login = "${login_result }";
@@ -75,7 +80,12 @@
 	</section>
 	<section id="content-1"><!-- login-content -->
 		<p id="intro">로그인</p>
-		<form action="login_proc.do" name="loginForm" method="post">
+		<input id="individual-login" type="radio" name="loginSelect" checked>
+		<label for="individual-login" id="individual-login-tab">개인 회원</label>
+		<input id="company-login" type="radio" name="loginSelect">
+		<label for="company-login" id="company-login-tab">법인 회원</label>
+		
+		<form action="login_proc.do" name="loginForm" method="post" id="individual-loginForm">
 			<div>
 				<ul>
 					<li>
@@ -90,6 +100,26 @@
 						<button type="button" id="button-gradient">LOGIN</button>
 					</li>
 				</ul>
+			</div>
+		</form>
+		<form action="login_proc.do" name="loginForm" method="post" id="company-loginForm">
+			<div>
+				<ul>
+					<li>
+						<input type="text" id="input-common" name="company_id" placeholder="법인 아이디">
+						<span id="msgId"></span>
+					</li>
+					<li>
+						<input type="password" id="input-common" name="password" placeholder="비밀번호" size="15">
+						<span id="msgPwd"></span>
+					</li>
+					<li>
+						<button type="button" id="button-gradient">LOGIN</button>
+					</li>
+				</ul>
+			</div>
+		</form>
+			<div>
 				<ul id="link-tab">
 					<li>
 						<a href="findId.do" id="link-findAccount">아이디 찾기</a>
@@ -102,7 +132,7 @@
 					</li>
 				</ul>
 			</div>
-		</form>
+		
 	</section>
 	<footer>
 		<jsp:include page="../main/footer.jsp"></jsp:include>
