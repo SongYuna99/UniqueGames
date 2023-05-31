@@ -6,17 +6,20 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uniquegames.dao.NoticeDao;
-import com.uniquegames.vo.FileVo;
 import com.uniquegames.vo.NoticeVo;
 
 @Service
 public class NoticeServiceImpl implements NoticeService {
 
-	NoticeDao noticeDao = new NoticeDao();
+	@Autowired
+	private NoticeDao noticeDao;
 
 	/**
 	 * 공지사항 - 전체 리스트 조회
@@ -75,7 +78,7 @@ public class NoticeServiceImpl implements NoticeService {
 		NoticeVo noticeVo = noticeDao.select(no);
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		if (noticeVo != null) {
-			FileVo fileVo = noticeDao.fileSelect(noticeVo.getPost_id());
+			NoticeVo fileVo = noticeDao.fileSelect(noticeVo.getPost_id());
 
 			if (fileVo != null) {
 				noticeVo.setImage_id(fileVo.getImage_id());
@@ -85,7 +88,7 @@ public class NoticeServiceImpl implements NoticeService {
 			noticeDao.hitsCount(no);
 			noticeVo.setNotice_hits(noticeVo.getNotice_hits() + 1);
 			noticeVo.setDate_output(format.format(noticeVo.getNotice_date()));
-			
+
 		}
 
 		return noticeVo;
@@ -98,7 +101,8 @@ public class NoticeServiceImpl implements NoticeService {
 	public int insert(NoticeVo noticeVo) {
 
 		int insResult = noticeDao.insert(noticeVo);
-
+		System.out.println("postid = " + noticeVo.getPost_id());
+		System.out.println("imageid = " + noticeVo.getImage_id());
 		if (noticeVo.getImage_id() != null) {
 			noticeDao.insertFile(noticeVo);
 		}
@@ -112,7 +116,18 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public int update(NoticeVo noticeVo) {
 
-		return noticeDao.update(noticeVo);
+		int result = noticeDao.update(noticeVo);
+
+		if (noticeVo.getImage_id() != null) {
+			
+			if (noticeDao.fileCheck(noticeVo) == 1) {
+				noticeDao.updateFile(noticeVo);
+			} else {
+				noticeDao.update_insertFile(noticeVo);
+			}
+		}
+
+		return result;
 	}
 
 	/**

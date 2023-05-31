@@ -1,48 +1,34 @@
 package com.uniquegames.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.uniquegames.vo.NoticeVo;
-import com.uniquegames.vo.FileVo;
 
+@Repository
 public class NoticeDao extends DBConnBoard {
 
+	@Autowired
+	private SqlSessionTemplate sqlSession; 
+	
+	private static final String NAMESPACE = "com.uniquegames.noticeMapper";
 	/**
 	 * select - 전체 리스트 조회
 	 */
 	public ArrayList<NoticeVo> select(int startCount, int endCount) {
-		ArrayList<NoticeVo> list = new ArrayList<NoticeVo>();
-
-		String sql = "SELECT * FROM (SELECT @ROWNUM:= @ROWNUM + 1 AS RNO, POST_ID, TITLE, CONTENT, COMPANY_ID, NOTICE_HITS, CAST( DATE_FORMAT( NOTICE_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS NOTICE_DATE\r\n"
-				+ " FROM (SELECT POST_ID, TITLE, CONTENT, COMPANY_ID, NOTICE_HITS, NOTICE_DATE FROM NOTICE ORDER BY NOTICE_DATE DESC, POST_ID DESC) SUB, (SELECT @ROWNUM:=0) TMP) T1 \r\n"
-				+ " WHERE RNO between ? AND ?";
-
-		getPreparedStatment(sql);
-
-		try {
-
-			pstmt.setInt(1, startCount);
-			pstmt.setInt(2, endCount);
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-
-				NoticeVo noticeVo = new NoticeVo();
-				noticeVo.setRno(rs.getInt(1));
-				noticeVo.setPost_id(rs.getInt(2));
-				noticeVo.setTitle(rs.getString(3));
-				noticeVo.setContent(rs.getString(4));
-				noticeVo.setCompany_id(rs.getString(5));
-				noticeVo.setNotice_hits(rs.getInt(6));
-				noticeVo.setNotice_date(rs.getTimestamp(7));
-
-				list.add(noticeVo);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
+		Map<String, Integer> param = new HashMap<String, Integer>();
+		param.put("start", startCount);
+		param.put("end", endCount);
+		
+		List<NoticeVo> list = sqlSession.selectList(NAMESPACE + ".selectNotice", param);
+		
+		return (ArrayList<NoticeVo>) list;
 	}
 
 	/**
@@ -206,6 +192,27 @@ public class NoticeDao extends DBConnBoard {
 
 		return result;
 	}
+	
+	/**
+	 * 파일 업데이트
+	 */
+	public int updateFile(NoticeVo noticeVo) {
+		return sqlSession.update(NAMESPACE + ".updateFile", noticeVo);
+	}
+	
+	/**
+	 * 파일 업데이트 - 파일 없을 때 저장
+	 */
+	public int update_insertFile(NoticeVo noticeVo) {
+		return sqlSession.insert(NAMESPACE + ".updateUploadFile", noticeVo);
+	}
+	
+	/**
+	 * 파일 있는지 체크
+	 */
+	public int fileCheck(NoticeVo noticeVo) {
+		return sqlSession.selectOne(NAMESPACE + ".fileCheck", noticeVo);
+	}
 
 	/**
 	 * 파일 저장용 id값
@@ -226,9 +233,9 @@ public class NoticeDao extends DBConnBoard {
 	/**
 	 * 파일명 가져오기
 	 */
-	public FileVo fileSelect(int postId) {
-		FileVo fileVo = new FileVo();
-		String sql = "SELECT IMAGE_ID, POST_ID, UPLOAD_FILE, UPLOAD_DATE FROM NOTICE_IMAGE WHERE POST_ID = ?";
+	public NoticeVo fileSelect(int postId) {
+		NoticeVo fileVo = new NoticeVo();
+		String sql = "SELECT IMAGE_ID, UPLOAD_FILE FROM NOTICE_IMAGE WHERE POST_ID = ?";
 		getPreparedStatment(sql);
 
 		try {
@@ -239,9 +246,7 @@ public class NoticeDao extends DBConnBoard {
 			while (rs.next()) {
 
 				fileVo.setImage_id(rs.getString(1));
-				fileVo.setPost_id(rs.getInt(2));
-				fileVo.setUpload_file(rs.getString(3));
-				fileVo.setUpload_date(rs.getString(4));
+				fileVo.setUpload_file(rs.getString(2));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

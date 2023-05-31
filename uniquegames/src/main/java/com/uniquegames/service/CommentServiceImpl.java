@@ -36,9 +36,15 @@ public class CommentServiceImpl implements CommentService {
 	 * 댓글 - 삭제
 	 */
 	@Override
-	public void delete(String no) {
+	public String delete(String no) {
+		String result = "FAIL";
+		int dbResult = commentDao.delete(no);
 		
-		commentDao.delete(no);
+		if (dbResult == 1) {
+			result = "SUCCESS";
+		}
+		
+		return result;
 	}
 
 }

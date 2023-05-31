@@ -2,31 +2,52 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="crud.mybatis_board.board.BoardMapper">
-<!-- 게시물 등록 -->
-  <insert id="createBoard" parameterType="Board">
-    INSERT INTO board (id, title, content, writer)
-    VALUES (board_seq.nextval, #{title}, #{content}, #{writer})
-  </insert>
-  <!-- 게시물 조회 -->
-  <select id="getBoard" parameterType="Long" resultType="Board">
-    SELECT * FROM board WHERE id = #{id}
-  </select>
+<mapper namespace="com.uniquegames.noticeMapper">
 
-  <!-- 게시물 수정 -->
-  <update id="updateBoard" parameterType="Board">
-  UPDATE board SET title = #{title}, content = #{content}, writer = #{writer}, regDate = #{regDate}
-  WHERE id = #{id}
-    </update>
+	<select id="selectNotice" resultType="NoticeVo">
+		SELECT * 
+		FROM (
+			SELECT @ROWNUM:= @ROWNUM + 1 AS RNO, 
+			POST_ID, TITLE, CONTENT, COMPANY_ID, 
+			NOTICE_HITS, 
+			CAST( DATE_FORMAT( NOTICE_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS NOTICE_DATE
+			FROM (
+				SELECT POST_ID, 
+				TITLE, 
+				CONTENT, 
+				COMPANY_ID, 
+				NOTICE_HITS, 
+				NOTICE_DATE 
+				FROM NOTICE 
+				ORDER BY NOTICE_DATE DESC, POST_ID DESC
+			) SUB, 
+			(SELECT @ROWNUM:=0) TMP) T1
+			WHERE RNO between #{start} AND #{end}
+	</select>
 
-  <!-- 게시물 삭제 -->
-  <delete id="deleteBoard" parameterType="Long">
-    DELETE FROM board WHERE id = #{id}
-  </delete>
+	<update id="updateFile" parameterType="NoticeVo">
 
-  <!-- 게시글 전부 가져오기 -->
-  <select id="getBoardList" resultType="Board">
-    SELECT * FROM board ORDER BY id
-  </select>
-  
+		UPDATE NOTICE_IMAGE 
+			SET IMAGE_ID = #{image_id},
+				UPLOAD_FILE = #{upload_file}
+			WHERE POST_ID = #{post_id}
+
+	</update>
+	
+	<insert id="updateUploadFile" parameterType="NoticeVo">
+		INSERT INTO NOTICE_IMAGE (
+			IMAGE_ID, 
+			POST_ID, 
+			UPLOAD_FILE
+		) 
+		VALUES ( 
+			#{image_id}, 
+			#{post_id}, 
+			#{upload_file}
+		)
+	</insert>
+	
+	<select id="fileCheck" parameterType="NoticeVo" resultType="int">
+		SELECT COUNT(*) FROM NOTICE_IMAGE WHERE POST_ID = #{post_id}
+	</select>
 </mapper>

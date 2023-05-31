@@ -10,5 +10,5 @@ public interface CommentService {
 	
 	public ArrayList<CommentVo> select(String no);
 	
-	public void delete(String no);
+	public String delete(String no);
 }

@@ -2,12 +2,14 @@ package com.uniquegames.controller;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -176,10 +178,27 @@ public class NoticeController {
 	 * notice_update_proc.do 공지사항 - 수정 처리
 	 */
 	@RequestMapping(value = "/notice_update_proc.do", method = RequestMethod.POST)
-	public String noticeUpdateProc(NoticeVo noticeVo, RedirectAttributes attributes) {
+	public String noticeUpdateProc(NoticeVo noticeVo, HttpServletRequest request, RedirectAttributes attributes)
+			throws Exception {
+		String root_path = request.getSession().getServletContext().getRealPath("/");
+		String attach_path = "\\resources\\upload\\";
 
+		if (noticeVo.getFile().getOriginalFilename() != null && !noticeVo.getFile().getOriginalFilename().equals("")) {
+
+			String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+			String upload_file = noticeVo.getFile().getOriginalFilename();
+			String image_id = uuid + upload_file;
+
+			noticeVo.setUpload_file(upload_file);
+			noticeVo.setImage_id(image_id);
+
+		}
 		int result = noticeService.update(noticeVo);
+
 		if (result == 1) {
+
+			File saveFile = new File(root_path + attach_path + noticeVo.getImage_id());
+			noticeVo.getFile().transferTo(saveFile);
 			attributes.addFlashAttribute("result", "success");
 		} else {
 			attributes.addFlashAttribute("result", "fail");
@@ -209,9 +228,10 @@ public class NoticeController {
 	 */
 	@RequestMapping(value = "comment_delete.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String commentDelete(@RequestParam("no") String no, @RequestParam("url") String url) {
-		
-		commentService.delete(no);
-		return url;
+	public String commentDelete(@RequestParam("no") String no) {
+
+		String result = commentService.delete(no);
+
+		return result;
 	}
 }

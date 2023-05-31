@@ -81,8 +81,17 @@ $(document).ready(function() {
 	
 	// file
 	$('#upload-hidden').on('change', function() {
-		let fileName = $('#upload-hidden').val();
-		$('#upload-name').val(fileName);
+		let file = 	$("#upload-hidden")[0].files[0];
+		let fileName = file.name;
+		let fileType = file.type;
+
+		if (fileType.startsWith("image/")) { 
+			$('#upload-name').val(file.name);
+		} else {
+			alert("이미지만 선택 가능합니다.");
+			$('#upload-hidden').val(null);
+			$('#upload-name').val("");
+		}
 	});
 
 	/**
@@ -172,15 +181,19 @@ function commentDelete(commentId) {
 			url : "comment_delete.do",
 			data : {
 					no : commentId,
-					url : url
 			},
+			dataType : "text",
 			type : "POST",
-			success : function(url) {
-				alert("댓글이 삭제되었습니다.");
+			success : function(result) {
+				if (result == "SUCCESS") {
+					alert("댓글이 삭제되었습니다.");
+				} else {
+					alert("댓글 삭제가 실패하였습니다.");
+				}
 				window.location.replace(url);
 			},
 			error : function(error) {
-				alert("실패");
+				alert("지금은 시도할 수 없습니다.\n상태가 지속될 경우 관리자에게 문의하세요.");
 			}
 			
 		});
