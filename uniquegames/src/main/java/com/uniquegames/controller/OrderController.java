@@ -74,9 +74,9 @@ public class OrderController {
 
 	/** order_complete.do **/
 	@RequestMapping(value = "/order_complete.do", method = RequestMethod.POST)
-	public String order_complete() {
+	public String order_complete(String method) {
 		OrderDao orderDao = new OrderDao();
-		int result = orderDao.getOrderComplete(list);
+		int result = orderDao.getOrderComplete(list, method);
 		String view = "";
 
 		if (result != 0) {

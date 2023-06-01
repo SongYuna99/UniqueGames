@@ -83,9 +83,9 @@
 			<div id="div-nothing">
 				<p id="p-nothing">장바구니가 비어있습니다.</p>
 			</div>
-				<div id="div-button">
-					<a href="http://localhost:9000/uniquegames/index.do"><button type="button" id="btn-main">메인으로</button></a>
-				</div>
+			<div id="div-button">
+				<a href="http://localhost:9000/uniquegames/index.do"><button type="button" id="btn-main">메인으로</button></a>
+			</div>
 		</c:if>
 	</section>
 		
