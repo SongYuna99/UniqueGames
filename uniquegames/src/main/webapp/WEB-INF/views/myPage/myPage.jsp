@@ -26,7 +26,7 @@
 	</section>
 	<section id="content-1">
 		<p id="intro">마이페이지</p>
-		<form action="#" name="joinForm" method="get" id="content-myPage">
+		<form action="myPage_proc.do" name="joinForm" method="post" id="content-myPage">
 			<div>
 				<ul>
 					<li>
@@ -62,9 +62,9 @@
 						<label>이메일</label>
 					</li>
 					<li>
-						<input type="text" id="input-email" name="email1">
+						<input type="text" id="input-email" name="email1" value="${memberVo.email1 }">
 						@
-						<input type="text" id="input-email" name="email2">
+						<input type="text" id="input-email" name="email2" value="${memberVo.email2 }">
 						<select name="email3" id="selectbox-email">
 							<option value="">선택</option>
 							<option value="default">naver.com</option>
@@ -78,7 +78,7 @@
 						<label>주소</label>
 					</li>
 					<li>
-						<input type="text" id="input-address" name="addr1" value="${memberVo.addr1 }">
+						<input type="text" id="input-addr1" name="addr1" value="${memberVo.addr1 }">
 						<button type="button" id="address-btn-style">검색</button>
 					</li>
 					<li>
@@ -113,7 +113,7 @@
 						<button type="button" id="button-gradient">수정하기</button>
 					</li>
 					<li>
-						<a href="deletePwd.do" id="link-deleteAccount">
+						<a href="deletePwd.do?member_id=${memberVo.member_id }" id="link-deleteAccount">
 							<span name="withdraw" id="span-deleteAccount">회원탈퇴 ></span>
 						</a>
 					</li>

@@ -1,27 +1,32 @@
 $(document).ready(function(){
+
 /*************************************************************************
-						회원가입 폼 체크
+						개인 - 회원가입 폼 체크
 *************************************************************************/
 	$("#button-gradient").click(function(){
-		if($("input[name='id'").val()=="") {
+		if($("input[name='member_id']").val()=="") {
 			alert("아이디는 필수 입력 항목입니다");
-			$("input[name='id'").focus();
+			$("input[name='member_id']").focus();
 			return false;
-		}else if(!idCheck2($("input[name='id']").val())) {
+		}else if(!idCheck2($("input[name='member_id']").val())) {
 			alert("아이디는 영문 또는 영문+숫자로 작성해주세요");
-			$("input[name='id'").focus();
+			$("input[name='member_id']").focus();
 			return false;
-		}else if(!idCheck3($("input[name='id']").val())) {
+		}else if(!idCheck3($("input[name='member_id']").val())) {
 			alert("아이디는 5~10글자로 작성해주세요");
-			$("input[name='id'").focus();
+			$("input[name='member_id']").focus();
 			return false;
-		}else if($("input[name='password'").val()==""){
+		}else if($("#idMsg").text() == ""){
+			alert("중복체크를 진행해주세요");
+			$("#check-btn-style").focus();
+			return false;
+		}else if($("input[name='password']").val()==""){
 			alert("비밀번호는 필수 입력 항목입니다");
-			$("input[name='password'").focus();
+			$("input[name='password']").focus();
 			return false;
 		}else if(!pwdCheck($("input[name='password']").val())) {
 			alert("비밀번호는 영문,숫자,특수문자 1글자 이상 조합하여 작성해주세요");
-			$("input[name='password'").focus();
+			$("input[name='password']").focus();
 			return false;
 		}else if($("input[name='password-check']").val()=="") {
 			alert("비밀번호 확인칸을 입력해주세요");
@@ -75,14 +80,96 @@ $(document).ready(function(){
 			alert("휴대전화는 숫자 3,4자리로 입력해주세요");
 			$("input[name='phone3']").focus();
 			return false;
-		}else if($("#checkbox-agreement:checked").length!=3) {
+		}else if($("#checkbox-agreement:checked").length!=3 && !$("#chk-circle").is(":checked")) {
 			alert("약간 동의를 체크해주세요");
 			$("#agreement").focus();
 			return false;
 		}else {
-			joinForm.submit();
+			joinIndividual.submit();
 		}
 	});
+/*************************************************************************
+						법인 - 회원가입 폼 체크(회사명: 한글,영어 입력 가능)
+*************************************************************************/
+	$("#button-gradient-company").click(function(){
+		if($("input[name='company_id']").val()=="") {
+			alert("회사 아이디는 필수 입력 항목입니다");
+			$("input[name='company_id']").focus();
+			return false;
+		}else if(!idCheck2($("input[name='company_id']").val())) {
+			alert("회사 아이디는 영문 또는 영문+숫자로 작성해주세요");
+			$("input[name='company_id']").focus();
+			return false;
+		}else if(!idCheck3($("input[name='company_id']").val())) {
+			alert("회사 아이디는 5~10글자로 작성해주세요");
+			$("input[name='company_id']").focus();
+			return false;
+		}else if($("#c-idMsg").text() == ""){
+			alert("중복체크를 진행해주세요");
+			$("#c-check-btn-style").focus();
+			return false;
+		}else if($("#company-password").val()==""){
+			alert("비밀번호는 필수 입력 항목입니다");
+			$("#company-password").focus();
+			return false;
+		}else if(!pwdCheck($("#company-password").val())) {
+			alert("비밀번호는 영문,숫자,특수문자 1글자 이상 조합하여 작성해주세요");
+			$("#company-password").focus();
+			return false;
+		}else if($("#company-password-check").val()=="") {
+			alert("비밀번호 확인칸을 입력해주세요");
+			$("#company-password-check").focus();
+			return false;
+		}else if($("#company-password").val() != $("#company-password-check").val()){
+			alert("비밀번호가 서로 동일하지 않습니다");
+			$("#company-password-check").focus();
+			return false;
+		}else if($("#company-name").val()==""){
+			alert("회사명은 필수 입력 항목입니다");
+			$("#company-name").focus();
+			return false;
+		}else if($("#company-email1").val()==""){
+			alert("이메일은 필수 입력 항목입니다");
+			$("#company-email1").focus();
+			return false;
+		}else if(!emailCheck($("#company-email1").val())){ //
+			alert("이메일은 영문 또는 숫자로 4자리 이상 입력해주세요");
+			$("#company-email1").focus();
+			return false;
+		}else if($("#company-email2").val()=="" && $("#company-selectbox-email").val()=="default"){
+			alert("이메일 주소를 전부 작성해주세요");
+			$("input[name='email2']").focus();
+			return false;
+		}else if($("#company-selectbox-phone").val()=="default") {
+			alert("대표 전화는 필수 입력 항목입니다");
+			$("#company-selectbox-phone").focus();
+			return false;
+		}else if($("#company-phone2").val()=="") {
+			alert("대표 전화는 필수 입력 항목입니다");
+			$("#company-phone2").focus();
+			return false;
+		}else if(!phoneCheck($("#company-phone2").val())) {
+			alert("대표 전화는 숫자 3,4자리로 입력해주세요");
+			$("#company-phone2").focus();
+			return false;
+		}else if($("#company-phone3").val()=="") {
+			alert("대표 전화는 필수 입력 항목입니다");
+			$("input[name='phone3']").focus();
+			return false;
+		}else if(!phoneCheck($("#company-phone3").val())) {
+			alert("대표 전화는 숫자 3,4자리로 입력해주세요");
+			$("#company-phone3").focus();
+			return false;
+		}else if($("#c-checkbox-agreement:checked").length!=2 && !$("#c-chk-circle").is(":checked")) {
+			alert("약간 동의를 체크해주세요");
+			$("#agreement").focus();
+			return false;
+		}else {
+			joinCompany.submit();
+		}
+	});
+	
+	
 /*************************************************************************
 						input null값 확인
 *************************************************************************/
@@ -123,7 +210,7 @@ $(document).ready(function(){
 	}
 	
 	function emailCheck(asValue){
-		var regex = /^[A-za-z0-9]{4,12}$/;
+		var regex = /[A-za-z0-9]{4,20}$/;
 		
 		return regex.test(asValue);
 	}
@@ -134,21 +221,21 @@ $(document).ready(function(){
 		return regex.test(asValue);
 	}
 	
-	
-	$("input[name='id']").blur(function(){
-		if($("input[name='id']").val()==""){
+	/*
+	$("input[name='member_id']").blur(function(){
+		if($("input[name='member_id']").val()==""){
 			$("#idMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
 		}else {
-			if(!idCheck2($("input[name='id']").val())){
+			if(!idCheck2($("input[name='member_id']").val())){
 				$("#idMsg").text("영문 또는 숫자로 작성해주세요").css("color","red").css("font-size","11px").css("display","block");
-			}else if(!idCheck3($("input[name='id']").val())) {
+			}else if(!idCheck3($("input[name='member_id']").val())) {
 				$("#idMsg").text("5~10자리로 작성해주세요").css("color","red").css("font-size","11px").css("display","block");
 			}else {
 				$("#idMsg").css("display","none");
 			}
 		}
 	});
-	
+	*/
 	
 	
 	$("input[name='password']").blur(function(){
@@ -199,7 +286,7 @@ $(document).ready(function(){
 		}else{
 			
 			if(!emailCheck($("input[name='email1']").val())){
-				$("#emailMsg").text("이메일은 영문+숫자로 입력해주세요").css("color","red").css("font-size","11px").css("display","block");
+				$("#emailMsg").text("이메일은 영문 또는 숫자로 4자리 이상 입력해주세요").css("color","red").css("font-size","11px").css("display","block");
 			}else{
 				$("#emailMsg").css("display","none");
 			}
@@ -212,6 +299,88 @@ $(document).ready(function(){
 			$("#phoneMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
 		}else {
 			$("#phoneMsg").css("display","none");
+		}
+	});
+	
+	//---------------------------------------------법인----------------------------------------------------------------------------
+	/*
+	$("input[name='company_id']").blur(function(){
+		if($("input[name='company_id']").val()==""){
+			$("#c-idMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		}else {
+			if(!idCheck2($("input[name='company_id']").val())){
+				$("#c-idMsg").text("영문 또는 숫자로 작성해주세요").css("color","red").css("font-size","11px").css("display","block");
+			}else if(!idCheck3($("input[name='company_id']").val())) {
+				$("#c-idMsg").text("5~10자리로 작성해주세요").css("color","red").css("font-size","11px").css("display","block");
+			}else {
+				$("#c-idMsg").css("display","none");
+			}
+		}
+	});
+	*/
+	
+	
+	$("#company-password").blur(function(){
+		if($("#company-password").val()=="") {
+			$("#c-pwdMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		}else {
+			if(!pwdCheck($("#company-password").val())) {
+				$("#c-pwdMsg").text("올바른 비밀번호 형식이 아닙니다").css("color","red").css("font-size","11px").css("display","block");
+			}else {
+				$("#c-pwdMsg").css("display","none");
+			}
+		}
+	});
+	
+	
+	$("#company-password-check").blur(function(){
+		
+		if($("#company-password-check").val()=="") {
+			
+			$("#c-pwdMsg-check").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+			
+		}else if($("#company-password").val()!="" && $("#company-password-check").val()!="") {
+			
+			if($("#company-password").val() == $("#company-password-check").val()){
+				$("#c-pwdMsg-check").text("비밀번호가 서로 동일합니다").css("color","blue").css("font-size","11px").css("display","block");
+			}else {
+				$("#c-pwdMsg-check").text("비밀번호가 서로 동일하지 않습니다").css("color","red").css("font-size","11px").css("display","block");
+			}
+		} 
+		
+	});
+	
+	$("#company-name").blur(function(){
+		if($("#company-name").val()=="") {
+			$("#c-nameMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		}else {
+			if(!nameCheck($("#company-name").val())) {
+				$("#c-nameMsg").text("올바른 이름 형식이 아닙니다").css("color","red").css("font-size","11px").css("display","block");
+			}else {
+				$("#c-nameMsg").css("display","none");
+			}
+		}
+	});
+	
+	$("#company-email1").blur(function(){
+		if($("#company-email1").val()==""){
+			$("#c-emailMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		}else{
+			
+			if(!emailCheck($("#company-email1").val())){
+				$("#c-emailMsg").text("이메일은 영문 또는 숫자로 4자리 이상 입력해주세요").css("color","red").css("font-size","11px").css("display","block");
+			}else{
+				$("#c-emailMsg").css("display","none");
+			}
+			
+		}
+	});
+	
+	$("#company-phone3").blur(function(){
+		if($("#company-selectbox-phone").val()=="default" || $("#company-phone2").val()=="" || $("#company-phone3").val()=="") {
+			$("#c-phoneMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		}else {
+			$("#c-phoneMsg").css("display","none");
 		}
 	});
 	
@@ -232,6 +401,21 @@ $(document).ready(function(){
 			$("input[name='email2']").val($("#selectbox-email").val());
 		}
 	});
+	//--------------------------법인 이메일 선택 시 input창 자동 입력-----------------------------
+	
+	$("#company-selectbox-email").change(function(){
+		
+		if($("#company-selectbox-email").val()=="default") {
+			$("#company-email2").val("");
+			$("#emailMsg").text("이메일을 선택해주세요").css("color","red").css("font-size","11px").css("display","block");
+			$("#company-selectbox-email").focus();
+			return false;
+		}else if($("#company-selectbox-email").val()=="direct") {
+			$("#company-email2").val("").focus();
+		}else {
+			$("#company-email2").val($("#company-selectbox-email").val());
+		}
+	});
 	
 /*************************************************************************
 							주소 찾기
@@ -244,35 +428,26 @@ $(document).ready(function(){
 		        }
 		    }).open();
 	});
-/*************************************************************************
-					이용약관 & 개인정보 수집 팝업창
-*************************************************************************
-	$("#agreement-link").click(function(){
-		
-		$("#modal.modal-overlay").css("display","flex");
-		
-	});
 	
-	$("#close-area").click(function(){
-		
-		$("#modal.modal-overlay").css("display","none");
-		
+	//---------------------------법인------------------------------
+	$("#company-address-btn-style").click(function(){
+		 new daum.Postcode({
+		        oncomplete: function(data) {
+		        	$("#company-addr1").val("("+data.zonecode+") "+data.address);
+		        	$("#company-addr2").focus();
+		        }
+		    }).open();
 	});
-	
-	$("#agreement-link-1").click(function(){
-		
-		window.open("http://localhost:9000/cmjgames/agreement-1.html","개인정보수집","width=600,height=400,scrollbars=yes");
-		
-	});
+
 /*************************************************************************
-				비밀번호  누르면 비밀번호 보이기
+							비밀번호  누르면 비밀번호 보이기
 *************************************************************************/
 	$("#pwd-check-img").change(function(){
 
 		if($("#pwd-check-img").is(":checked") == false) {
-			$("input[name='password']").attr("type","password");
+			$("#input-common-password").attr("type","password");
 		}else if($("#pwd-check-img").is(":checked") == true) {
-			$("input[name='password']").attr("type","text");
+			$("#input-common-password").attr("type","text");
 		}
 		
 	});
@@ -280,22 +455,88 @@ $(document).ready(function(){
 	$("#pwd-check-img-1").change(function(){
 
 		if($("#pwd-check-img-1").is(":checked") == false) {
-			$("input[name='password-check']").attr("type","password");
+			$("#input-common-password-check").attr("type","password");
 		}else if($("#pwd-check-img-1").is(":checked") == true) {
-			$("input[name='password-check']").attr("type","text");
+			$("#input-common-password-check").attr("type","text");
 		}
 		
 	});
 	
+	//-------------------------법인 왜 안돼-------------------------
+	
+	
+	
+	$("#c-pwd-check-img").on("change", function() {
+	    var passwordInput = $("#company-password");
+	    if ($(this).is(":checked")) {
+	      passwordInput.attr("type", "text");
+	    } else {
+	      passwordInput.attr("type", "password");
+	    }
+  	});
+	
+	 $("#c-pwd-check-img-1").on("change", function() {
+	    var passwordCheckInput = $("#company-password-check");
+	    if ($(this).is(":checked")) {
+	      passwordCheckInput.attr("type", "text");
+	    } else {
+	      passwordCheckInput.attr("type", "password");
+	    }
+  	});
+
+	
 /*************************************************************************
-								전체 동의
+							개인 회원가입; 전체 동의
 *************************************************************************/
 	$("#chk-circle").click(function(){
+	
 		if($("#chk-circle").is(":checked"))
 			$("input[name='chk-agree']").prop("checked",true);
 		else
 			$("input[name='chk-agree']").prop("checked",false);
 	});
+	
+/*************************************************************************
+					개인 회원가입; 동의 하나라도 체크 해제 시 전체동의 해제
+*************************************************************************/
+	$("input[name='chk-agree']").click(function(){
+		
+		var total = $("input[name='chk-agree']").length;
+		var checked = $("input[name='chk-agree']:checked").length;
+		
+		if(total != checked){
+			$("#chk-circle").prop("checked",false);
+		}else if(total == checked){
+			$("#chk-circle").prop("checked",true);
+		}
+	});
+	
+/*************************************************************************
+							법인 회원가입; 전체 동의
+*************************************************************************/
+	$("#c-chk-circle").click(function(){
+	
+		if($("#c-chk-circle").is(":checked"))
+			$("input[name='c-chk-agree']").prop("checked",true);
+		else
+			$("input[name='c-chk-agree']").prop("checked",false);
+	});
+	
+/*************************************************************************
+					법인 회원가입; 동의 하나라도 체크 해제 시 전체동의 해제
+*************************************************************************/
+	$("input[name='c-chk-agree']").click(function(){
+		
+		var total = $("input[name='c-chk-agree']").length;
+		var checked = $("input[name='c-chk-agree']:checked").length;
+		
+		if(total != checked){
+			$("#c-chk-circle").prop("checked",false);
+		}else if(total == checked){
+			$("#c-chk-circle").prop("checked",true);
+		}
+	});	
+	
 /*************************************************************************
 							모달창
 *************************************************************************/
@@ -311,10 +552,10 @@ $("a").click(function(){
     	$("#agreement-content").html($("div.detail2").html());
     }
 });
-	
+
 	
 // Agreement-btn
-$("button[name='btn-agreement']").click(function() {
+$(document).on("click", "button[name='btn-agreement']", function(event){
 	$("#modal").hide();
 });
 /*************************************************************************
@@ -324,19 +565,50 @@ $("#check-btn-style").click(function(){
 		
 		if($("#input-id").val()=="") {
 			$("#idMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		}else if(!idCheck2($("input[name='member_id']").val())){
+				$("#idMsg").text("영문 또는 숫자로 작성해주세요").css("color","red").css("font-size","11px").css("display","block");
+		}else if(!idCheck3($("input[name='member_id']").val())) {
+				$("#idMsg").text("5~10자리로 작성해주세요").css("color","red").css("font-size","11px").css("display","block");
 		}else {
 			$.ajax({
-				url : "id_check.do?id="+$("#input-id").val(),
+				url : "id_check.do?member_id="+$("#input-id").val(),
 				success : function(result) {
 					if(result == 1){
 							$("#idMsg").text("이미 사용중인 아이디 입니다. 다시 입력해주세요")
 							.css("color","red").css("font-size","11px").css("display","block");
-							
-							$("#id").val("").focus();
+							$("input[name='member_id']").val("").focus();
 						}else if(result == 0){
 							$("#idMsg").text("사용 가능한 아이디 입니다")
 							.css("color","blue").css("font-size","11px").css("display","block");
 							$("input[name='password']").focus();
+						}
+					}
+			});
+		}
+
+	});
+//-----------------------법인---------------------------------
+$("#c-check-btn-style").click(function(){
+		
+		if($("input[name='company_id']").val()=="") {
+			$("#c-idMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		}else if(!idCheck2($("input[name='company_id']").val())) {
+				$("#c-idMsg").text("영문 또는 숫자로 작성해주세요").css("color","red").css("font-size","11px").css("display","block");
+		}else if(!idCheck3($("input[name='company_id']").val())) {
+				$("#c-idMsg").text("5~10자리로 작성해주세요").css("color","red").css("font-size","11px").css("display","block");
+		}else {
+			$.ajax({
+				url : "c_id_check.do?company_id="+$("input[name='company_id']").val(),
+				success : function(result) {
+					if(result == 1){
+							$("#c-idMsg").text("이미 사용중인 아이디 입니다. 다시 입력해주세요")
+							.css("color","red").css("font-size","11px").css("display","block");
+							
+							$("input[name='company_id']").val("").focus();
+						}else if(result == 0){
+							$("#c-idMsg").text("사용 가능한 아이디 입니다")
+							.css("color","blue").css("font-size","11px").css("display","block");
+							$("#company-password").focus();
 						}
 					}
 			});
@@ -350,25 +622,30 @@ $("#check-btn-style").click(function(){
 *************************************************************************/
 $("#button-gradient-delete").click(function(){
 				
-				if($("#input[name='password']").val()==""){
-					$("#msgPwd").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
-					//비밀번호 validation 만들기
-				}else {
-					$.ajax({
-						url : "delete_check.do?member_id="+$("input[name='member_id']").val()+"&password="+$("input[name='password']").val(),
-						success : function(result) {
-							let jdata = JSON.parse(result);
-							$("#modal2").show();
-							$("#delete-member-id").html(jdata.jlist.member_id);
-							$("#delete-id").html(jdata.jlist.member_id);
-							$("#agreement-content1").html($(".deleteComplete").html());
-							
-													
-						}
-					});
-				}
+	if($("#input[name='member_id']").val()==""){
+		$("#msgId").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		$("input[name='member_id']").focus();
+		return false;
+	}else if($("input[name='password']").val()=="") {
+		$("#msgPwd").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		$("input[name='password']").focus();
+		return false;
+	}else {
+		$.ajax({
+			url : "delete_check.do?member_id="+$("input[name='member_id']").val()+"&password="+$("input[name='password']").val(),
+			success : function(result) {
+				let jdata = JSON.parse(result);
+				$("#modal2").show();
+				$("#delete-member-id").html(jdata.jlist.member_id);
+				$("#delete-id").html(jdata.jlist.member_id);
+				$("#agreement-content1").html($(".deleteComplete").html());
+				
+										
+			}
+		});
+	}
 
-			});
+});
 			
 /*************************************************************************
 						모달창 닫고 메인으로 이동(모달창 버튼)
@@ -379,7 +656,7 @@ $(document).on("click", "#button-gradient-home", function(event){
 			});
 
 /*************************************************************************
-						아이디, 비밀번호 찾기 모달창 보이기
+						
 *************************************************************************/
 
 

@@ -10,66 +10,67 @@
 	<script src="http://localhost:9000/uniquegames/js/jquery-3.6.4.min.js"></script>
 	<script src="http://localhost:9000/uniquegames/js/join_jquery.js"></script>
 	<script>
-		/*
+
 		$(document).ready(function(){
 			
-			let delete_result = "${delete_result }";
-			
-			$("#button-gradient-delete").click(function(){
+		$("#button-gradient-delete").click(function(){
 				
-				if($("#input[name='password']").val()==""){
-					$("#msgPwd").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
-				}else {
-					$.ajax({
-						url : "delete_check.do?member_id="+$("input[name='member_id']").val()+"&password="+$("input[name='password']").val(),
-						success : function(result) {
-							if(result==1) {
-								alert("성공");
-							}else {
-								$("#msgPwd").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
-							}
+			if($("input[name='member_id']").val()==""){
+				alert("아이디를 입력하세요");
+				$("input[name='member_id']").focus();
+				return false;
+			}else if($("input[name='password']").val()=="") {
+				alert("비밀번호를 입력하세요");
+				$("input[name='password']").focus();
+				return false;
+			}else {
+				$.ajax({
+					url : "delete_check.do?member_id="+$("input[name='member_id']").val()+"&password="+$("input[name='password']").val(),
+					success : function(result) {
+						let jdata = JSON.parse(result);
+						if($("input[name='password']").val()==jdata.password){
+							$("#modal2").show();
+							$("#delete-member-id").html(jdata.member_id);
+							$("#delete-id").html(jdata.member_id);
+							$("#agreement-content1").html($(".deleteComplete").html());	
+						}else {
+							alert("11");
 						}
-					});
-				}
+							
+					
+							
+					}
+					
+				});
+			}
 
-			});
 		});
-		*/
+		
+		$("input[name='member_id']").blur(function(){
 			
-			/* $("#button-gradient-delete").click(function(){
-				if($("input[name='pwd']").val()==""){
-					alert("비밀번호를 입력해주세요");
-					$("input[name='pwd']").focus();
-					return false;
-				}else if($("#selectbox-find").val()=="default"){
-					alert("탈퇴 사유를 선택해주세요");
-					$("#selectbox-find").focus();
-					return false;
-				}else {
-					loginForm.submit();
-					
-					
-					$("#agreement-content1").html($(".deleteComplete").html());
-				}	
-			});
+			if($("input[name='member_id']").val()==""){
+				$("#msgId").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+			}else {
+				$("#msgId").css("display","none");
+			}
+		});
+
 			
-		$("input[name='pwd']").blur(function(){
+		$("input[name='password']").blur(function(){
 				
-				if($("input[name='pwd']").val()==""){
+				if($("input[name='password']").val()==""){
 					$("#msgPwd").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
 				}else {
 					$("#msgPwd").css("display","none");
 				}
 			});
-		
-		$(document).on("click", "#button-gradient", function(event){
+
+		$(document).on("click", "#button-gradient-home", function(event){
 			$("#modal2").hide();
-			
+			location.href="http://localhost:9000/uniquegames/";
 			});
 		
-		
-		
-		}); */
+		});
 	
 	</script>
 </head>
@@ -104,14 +105,15 @@
 						</select>
 					</li>
 					<li>
-						<input type="text" id="input-common" name="member_id" placeholder="아이디">
+						<input type="text" id="input-common" name="member_id" value="${memberVo.member_id }" disabled>
+						<span id="msgId"></span>
 					</li>
 					<li>
 						<input type="text" id="input-common" name="password" placeholder="비밀번호">
 						<span id="msgPwd"></span>
 					</li>
 					<li id="goodbye">
-						<p id="delete-id">님!</p>
+						<p id="delete-id">${memberVo.member_id }님!</p>
 						<p id="delete-content">회원 탈퇴하려고 하신다니 저희 사이트의 서비스가 많이 부족하고 미흡했나 봅니다.<br>
 						불만사항이나 사유를 알려주신다면 적극 반영해서 고객님의 불편함을 해결해드리도록 노력하겠습니다.
 						회원 탈퇴시의 아래 사항을 숙지하시기 바랍니다.</p>

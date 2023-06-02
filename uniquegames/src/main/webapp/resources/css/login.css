@@ -98,7 +98,9 @@ a:visited {
 	font-size: 20px; /***/
 }
 
-#button-gradient1 {
+#button-gradient-findPwd,
+#button-gradient-company-login,
+#button-gradient-findPwd {
 	border: none;
 	width: 394px;
 	height: 60px;
@@ -112,8 +114,7 @@ a:visited {
 }
 
 /* public input style */
-#input-common, #section_member input, #section_member select,
-#input-id, #input-common-phone {
+#input-common, #section_member input, #section_member select {
 	width: 394px;
 	padding: 20px 0;
 	margin: 5px 0;
@@ -1365,8 +1366,8 @@ td#payment-totalPrice {
 }
 
 /* SignUp; email input style */
-#input-email {
-	width: 130px;
+#input-email,#company-email1, #company-email2 {
+	width: 127px;
 	padding: 20px 0;
 	text-indent: 10px;
 	border-radius: 3px;
@@ -1376,8 +1377,8 @@ td#payment-totalPrice {
 }
 
 /* SignUp; email selectbox style */
-#selectbox-email {
-	width: 110px;
+#selectbox-email,#company-selectbox-email {
+	width: 116px;
 	padding: 22px 0 20px 0;
 	border: 1px solid lightgray;
 	text-indent: 10px;
@@ -1386,7 +1387,10 @@ td#payment-totalPrice {
 }
 
 /*SignUp; phone input style except 010*/
-#input-phone {
+#input-phone,
+#company-phone1,
+#company-phone2,
+#company-phone3 {
 	width: 109px;
 	height: 43px;
 	border-radius: 3px;
@@ -1394,8 +1398,25 @@ td#payment-totalPrice {
 	font-size: 16px;
 	text-indent: 10px;
 }
+
+#company-phone1,
+#company-phone2,
+#company-phone3 {
+	width: 123px;
+}
+
+
+#input-phone-company {
+	width: 118px;
+	height: 43px;
+	border-radius: 3px;
+	border: 1px solid lightgray;
+	font-size: 16px;
+	text-indent: 10px;
+}
 /*SignUp; addr input style */
-#input-address {
+#input-addr1,
+#company-addr1 {
 	width: 325px;
 	padding: 20px 0;
 	margin: 5px 0;
@@ -1431,12 +1452,20 @@ td#payment-totalPrice {
 }
 
 /* SignUp, Company SignUp, myPage; 010 selectbox style*/
-#selectbox-phone {
+#selectbox-phone,
+#company-selectbox-phone {
 	width: 60px;
 	height: 43px;
-	margin-left: 20px;
 	border: 1px solid lightgray;
 	border-radius: 3px;
+}
+#selectbox-phone {
+	margin-left: 21px;
+}
+
+#company-selectbox-phone {
+	width: 120px;	
+
 }
 
 /* SignUp,Company-SignUp; margin between cellphone and agreement radiobox  */
@@ -1464,7 +1493,9 @@ td#payment-totalPrice {
 /* SignUp,myPage zip-code find button
 SignUp IdCheck button style*/
 #address-btn-style,
-#check-btn-style {
+#company-address-btn-style,
+#check-btn-style,
+#c-check-btn-style {
 	background: #393939;
 	border-radius: 5px;
 	width: 50px;
@@ -1474,8 +1505,9 @@ SignUp IdCheck button style*/
 	cursor: pointer;
 	margin: 0 8px;
 }
-/*SignUp IdCheck button style*/
-#check-btn-style {
+/*SignUp, Company SignUp; IdCheck button style*/
+#check-btn-style,
+#c-check-btn-style {
 	width: 80px;
 }
 
@@ -1492,7 +1524,8 @@ SignUp IdCheck button style*/
 }
 
 /*SignUp,Company-SignUp; agreement input style*/
-#checkbox-agreement {
+#checkbox-agreement,
+#c-checkbox-agreement {
 	width: 18px;
 	height: 12px;
 	background-image: url("../images/btn_check_normal.png");
@@ -1502,7 +1535,8 @@ SignUp IdCheck button style*/
 }
 
 /*SignUp, Company-SignUp; agreement input style checked*/
-#checkbox-agreement:checked {
+#checkbox-agreement:checked,
+#c-checkbox-agreement:checked {
 	background-image: url("../images/btn_check_select.png");
 	background-repeat: no-repeat;
 }
@@ -1529,7 +1563,8 @@ SignUp IdCheck button style*/
 	margin: 0 3px;
 }
 /*SignUp; agreement not must check style*/
-#agreement-choice {
+#agreement-choice,
+#c-agreement-choice {
 	width: 18px;
 	height: 12px;
 	background-image: url("../images/btn_check_normal.png");
@@ -1538,13 +1573,15 @@ SignUp IdCheck button style*/
 	cursor: pointer;
 }
 /*SignUp; agreement not must check style*/
-#agreement-choice:checked {
+#agreement-choice:checked,
+#c-agreement-choice:checked {
 	background-image: url("../images/btn_check_select.png");
 	background-repeat: no-repeat;
 }
 
 /*SignUp, Company SignUp; password check img style*/
-#pwd-check-img, #pwd-check-img-1 {
+#pwd-check-img, #pwd-check-img-1,
+#c-pwd-check-img, #c-pwd-check-img-1 {
 	width: 24px;
 	height: 16px;
 	background-image: url("../images/btn_eye_normal.png");
@@ -1556,34 +1593,41 @@ SignUp IdCheck button style*/
 	top: 2px;
 }
 /*SignUp, Company SignUp; password check img style*/
-#pwd-check-img:checked, #pwd-check-img-1:checked {
+#pwd-check-img:checked, #pwd-check-img-1:checked,
+#c-pwd-check-img:checked, #c-pwd-check-img-1:checked {
 	background-image: url("../images/btn_eye_select.png");
 	background-repeat: no-repeat;
 }
 
 /* login; find-ID link style*/
 #link-findAccount {
+	display: inline-block;
 	background: white;
 	color: #2B2B2B;
 	font-size: 14px;
 	padding: 0 8px;
 	text-decoration: none;
 	font-family: "YouandiModern", sans-serif;
+	margin-top: 30px;
 }
 
 /* login; SignUp link style */
 #link-signUp {
+	display: inline-block;
 	font-family: "Apex New";
 	font-weight: 500;
 	color: #2E7AF6;
 	text-decoration: none;
-	font-size: 11pt;
-	padding: 0 8px;
+	font-size: 14px;
+	margin: 25px 10px 0 15px;
 }
 /* login; link to find-ID, signUp hover style */
 #link-findAccount:hover, #link-signUp:hover {
 	text-decoration: underline;
 }
+
+/*login; line, space between linkAccount and link-SignUp style */
+
 
 /* myPage; deletePwd link style*/
 #link-deleteAccount {
@@ -1607,7 +1651,9 @@ SignUp IdCheck button style*/
 #msgId,
 #msgPwd,
 #msgName,
-#msgPhone {
+#msgPhone,
+#msgName1,
+#msgPhone1 {
 	width: 394px;
 	margin: auto;
 	text-align: left;
@@ -1718,26 +1764,23 @@ div.agreement2 {
 	padding-left: 45px;
 }
 
-/*SignUp, Company-SignUp, 
+/*SignUp, Company-SignUp, login; form id*/
+#content-2,
+#content-3,
+#individual-loginForm,
+#company-loginForm {
+	display: none;
+}
+
+/*SignUp, Company-SignUp, login 
 findId input radiobox style*/
 #individual:checked ~ #content-2,
 #company:checked ~ #content-3,
 #findId:checked ~ #findIdForm,
-#findPwd:checked ~ #findPwdForm {
+#findPwd:checked ~ #findPwdForm,
+#individual-login:checked ~ #individual-loginForm,
+#company-login:checked ~ #company-loginForm {
 	display: block;
-}
-/*SignUp, Company-SignUp form id*/
-#content-2,
-#content-3 {
-	display: none;
-}						
-/*Company-SignUp bank choice selectbox*/
-#account-info {
-	width: 394px;
-	height: 60px;
-	border: 1px solid lightgray;
-	border-radius: 3px;
-	margin: 5px 0;
 }
 
 /*SignUp, Company-SignUp input-radiobox
@@ -1745,14 +1788,18 @@ findId input-radiobox style*/
 #individual,
 #company,
 #findId,
-#findPwd {
+#findPwd,
+#individual-login,
+#company-login {
 	display: none;
 }
 
 #individual-tab,
 #company-tab,
 #findId-tab,
-#findPwd-tab {
+#findPwd-tab,
+#individual-login-tab,
+#company-login-tab {
 	display: inline-block;
 	margin: 0 0 5px 0;
 	padding: 15px 63px;
@@ -1764,13 +1811,15 @@ findId input-radiobox style*/
 
 #findId-tab,
 #findPwd-tab {
-	padding: 15px 55px;
+	padding: 15px 51px;
 }
 
 #individual-tab:hover,
 #company-tab:hover,
 #findId-tab:hover,
-#findPwd-tab:hover {
+#findPwd-tab:hover,
+#individual-login-tab:hover,
+#company-login-tab:hover {
     color: #2e9cdf;
     cursor: pointer;}
 
@@ -1778,7 +1827,9 @@ findId input-radiobox style*/
 #individual:checked + #individual-tab,
 #company:checked + #company-tab,
 #findId:checked + #findId-tab,
-#findPwd:checked + #findPwd-tab {
+#findPwd:checked + #findPwd-tab,
+#individual-login:checked + #individual-login-tab,
+#company-login:checked + #company-login-tab {
     color: #555;
     border: 1px solid #ddd;
     border-top: 2px solid #2e9cdf;
@@ -1788,4 +1839,62 @@ findId input-radiobox style*/
 #findIdForm,
 #findPwdForm {
 	display: none;
+}
+
+/****************************5.31 css update***********************************/
+
+/* join; Company Sign Up button style */
+#button-gradient-company {
+	border: none;
+	width: 394px;
+	height: 60px;
+	cursor: pointer;
+	color: white;
+	background: linear-gradient(to right, #682CAD, #2FC0CC);
+	border-radius: 3px;
+	font-family: "YouandiModern", sans-serif; 
+	margin-top: 20px;
+	font-size: 20px; 
+} 
+/*input-id~ : join.jsp,
+input-common-password (because isn't applied password-button)
+input-common-phone : findId.jsp
+c-input-common : login.jsp (link to company findPwd)
+*/
+#input-id,
+#input-common-password,
+#input-common-password-check,
+#company-password, #company-password-check,
+#company-name,
+#company-addr2,
+#company-selectbox-phone1,
+#input-common-phone,
+#input-common-name,
+#c-input-common {
+	width: 394px;
+	padding: 20px 0;
+	margin: 5px 0;
+	text-indent: 10px;
+	border-radius: 3px;
+	border: 1px solid lightgray;
+	outline: none;
+	font-size: 16px;
+}
+
+/*Sign Up - ID input style*/
+#input-id {
+	width: 305px;
+}
+/*chk-circle same; c-chk-circle*/
+#c-chk-circle {
+	width: 1rem;
+	height: 1rem;
+	border: 2px solid #2C2C2C;
+	border-radius: 50%;
+	appearance: none;
+	cursor: pointer;
+}
+/*Company Sign Up; agreementAll checkbox*/
+#c-chk-circle:checked {
+	background: #2C2C2C;
 }
