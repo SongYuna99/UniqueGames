@@ -61,4 +61,24 @@ public class CommentDao extends DBConnBoard {
 
 		return result;
 	}
+	
+	/**
+	 * 댓글 삭제
+	 */
+	public int delete(String no) {
+		int result = 0;
+		
+		String sql = "DELETE FROM COMMENT WHERE COMMENT_ID = ?";
+		getPreparedStatment(sql);
+		
+		try {
+			
+			pstmt.setString(1, no);
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
