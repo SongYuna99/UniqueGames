@@ -8,10 +8,12 @@ out/
 .idea/
 *.iml
 target
-
+.classpath
+.project
 
 
 ### Eclipse ###
+.classpath
 .metadata
 bin/
 tmp/
@@ -23,8 +25,7 @@ local.properties
 .settings/
 .loadpath
 .recommenders
-META-INF/
-.classpath
+*/META-INF/*
 
 # External tool builders
 .externalToolBuilders/

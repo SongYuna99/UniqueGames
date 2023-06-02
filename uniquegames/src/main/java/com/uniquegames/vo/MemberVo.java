@@ -129,7 +129,7 @@ public class MemberVo {
 
 	public String getAddr() {
 		if(addr1!=null) {
-			addr = addr1 + addr2;
+			addr = addr1 +" "+ addr2;
 		}
 		return addr;
 	}

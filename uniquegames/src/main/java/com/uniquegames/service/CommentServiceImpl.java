@@ -2,6 +2,7 @@ package com.uniquegames.service;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uniquegames.dao.CommentDao;
@@ -10,7 +11,8 @@ import com.uniquegames.vo.CommentVo;
 @Service
 public class CommentServiceImpl implements CommentService {
 
-	CommentDao commentDao = new CommentDao();
+	@Autowired
+	CommentDao commentDao;
 
 	/**
 	 * 댓글 - 작성
@@ -30,6 +32,21 @@ public class CommentServiceImpl implements CommentService {
 	public ArrayList<CommentVo> select(String no) {
 
 		return commentDao.select(no);
+	}
+	
+	/**
+	 * 댓글 - 삭제
+	 */
+	@Override
+	public String delete(String no) {
+		String result = "FAIL";
+		int dbResult = commentDao.delete(no);
+		
+		if (dbResult == 1) {
+			result = "SUCCESS";
+		}
+		
+		return result;
 	}
 
 }

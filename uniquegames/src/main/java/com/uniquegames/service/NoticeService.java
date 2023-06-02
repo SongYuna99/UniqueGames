@@ -1,6 +1,7 @@
 package com.uniquegames.service;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import com.uniquegames.vo.NoticeVo;
 
@@ -17,4 +18,6 @@ public interface NoticeService {
 	public int update(NoticeVo noticeVo);
 	
 	public int delete(String no);
+	
+	public int deleteList(String[] list);
 }

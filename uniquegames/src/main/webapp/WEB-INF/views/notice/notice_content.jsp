@@ -62,11 +62,11 @@
 					<th>조회수</th>
 					<td style="text-align: center;">${noticeVo.notice_hits}</td>
 					<th>등록일</th>
-					<td>${noticeVo.notice_date}</td>
+					<td>${noticeVo.date_output}</td>
 				</tr>
 				<tr>
 					<td colspan="6" style="border:none;">
-						<div id="details">${noticeVo.content}</div>
+						<div id="details"><c:if test="${noticeVo.image_id != null}"><img src="http://localhost:9000/uniquegames/upload/${noticeVo.image_id}" style="max-width:1024px;"><br></c:if>${noticeVo.content}</div>
 					</td>
 				</tr>
 			</table>
@@ -82,16 +82,14 @@
 					<button type="button" id="btn-style" name="cmtWrite">등록</button>
 				</form>
 				<!-- Comment -->
-				<form name="commentDelete" action="comment_delete.do" method="post">
-					<c:forEach var="c" items="${commList}">
-					<div id="comment1">
-						<div id="${c.comment_id}">
-							<div id="user-name">${c.member_id}</div>
-							<div><span id="msg-date">${c.comment_date}</span><span id="cmtDelete" class="cmtDelete">삭제</span></div>${c.comment_content}</div>
+					<c:forEach var="c" items="${commList}" varStatus="status">
+					<div id="comment${status.count}" class="comment1">
+						<input type="hidden" name="no" value="${c.comment_id}">
+						<div id="user-name">${c.member_id}</div>
+						<div><span id="msg-date">${c.comment_date}</span><span id="cmtDelete" class="cmtDelete" onclick="javascript:commentDelete(${c.comment_id})">삭제</span></div>
+						${c.comment_content}
 					</div>
-					<input type="hidden" name="no" value="${c.comment_id}">
 					</c:forEach>
-				</form>
 			</div>
 		</section>
 <!-- 		<div id="modal-background" class="test">
@@ -117,11 +115,8 @@
 				</div>
 			</div>
 		</div> -->
+		<form name="noticeDelete" action="notice_delete.do" method="post"><input type="hidden" name="no" value="${noticeVo.post_id}"></form>
 	</div>
-	<footer>
-		<!-- <iframe src="../main/footer.jsp" scrolling="no" width="100%" height="646px" frameborder=0></iframe> -->
-		<jsp:include page="../main/footer.jsp"></jsp:include>
-	</footer>
-	<form name="noticeDelete" action="notice_delete.do" method="post"><input type="hidden" name="no" value="${noticeVo.post_id}"></form>
+	<jsp:include page="../main/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -81,7 +81,7 @@
 					</ul>
 				</div>
 			</div>
-			<form name="boardManage" action="#" method="get">
+			<form name="boardManage" action="board_manage.do" method="post">
 				<table id="admin-btable">
 					<tr>
 						<th>선택</th>
@@ -92,7 +92,7 @@
 					</tr>
 					<c:forEach var="noticeVo" items="${list}">
 					<tr>
-						<td><input type="checkbox" name="list[]" value="${noticeVo.post_id}"></td>
+						<td><input type="checkbox" name="list" value="${noticeVo.post_id}"></td>
 						<td>${noticeVo.rno}</td>
 						<td><a href="notice_content.do?no=${noticeVo.post_id}">${noticeVo.title}</a></td>
 						<td>${noticeVo.company_id}</td>
@@ -106,9 +106,7 @@
 			</form>
 		</div>
 	</div>
-	<footer>
-		<jsp:include page="../main/footer.jsp"></jsp:include>
-	</footer>
+	<jsp:include page="../main/footer.jsp"></jsp:include>
 </body>
 
 </html>

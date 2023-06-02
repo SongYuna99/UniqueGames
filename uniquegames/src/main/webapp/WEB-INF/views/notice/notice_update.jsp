@@ -36,7 +36,7 @@
 				</div>
 				<div id="clearFix"></div>
 			</div>
-			<form name="writeForm" action="notice_update_proc.do" method="post">
+			<form name="writeForm" action="notice_update_proc.do" method="post" enctype="multipart/form-data">
 				<table>
 					<tr>
 						<th>제목</th>
@@ -47,14 +47,23 @@
 						<td><textarea name="content" cols="30" rows="5"
 								id="default-write">${noticeVo.content}</textarea></td>
 					</tr>
+					<tr>
+						<th>이미지</th>
+						<td>
+							<div id="filebox">
+								<input id="upload-name" value="${noticeVo.image_id}" placeholder="첨부파일" disabled>
+								<button type="button" id="btn-style" name="file">파일 찾기</button>
+								<input type="file" name="file" id="upload-hidden" accept="image/*">
+								<span>*이미지는 하나만 선택할 수 있으며, 본문 위에 삽입됩니다.</span>
+							</div>
+						</td>
+					</tr>
 				</table>
 				<input type="hidden" name="post_id" value="${noticeVo.post_id}">
 			</form>
 		</div>
 	</div>
-	<footer>
-		<jsp:include page="../main/footer.jsp"></jsp:include>
-	</footer>
+	<jsp:include page="../main/footer.jsp"></jsp:include>
 </body>
 
 </html>

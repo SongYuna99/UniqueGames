@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Unique Games</title>
-    <link rel="stylesheet" href="http://localhost:9000/myuniquegames/css/unigames.css">
+    <link rel="stylesheet" href="http://localhost:9000/myuniquegames/css/mainunigames.css">
     <link rel="stylesheet" href="http://localhost:9000/myuniquegames/css/board.css">
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
     <script src="http://localhost:9000/myuniquegames/js/board.js"></script>
@@ -248,15 +248,19 @@
             <p>Game_registration</p>
             <div id="clearFix"></div>
         </div>
-        <form  action="/insertIntro" method="post" enctype="multipart/form-data">
+        <form  action="insertIntro.do" method="post" enctype="multipart/form-data">
             <table>
                 <tr>
                     <th>회사 이름</th>
                     <td><input type="text" name="name" class="default-write"></td>
                 </tr>
                 <tr>
+                    <th>제목</th>
+                    <td><input type="text" name="title" class="default-write"></td>
+                </tr>
+                <tr>
                     <th>소개 글</th>
-                    <td><textarea type="text" name="intro" cols="30" rows="5"
+                    <td><textarea type="text" name="content" cols="30" rows="5"
                                   class="default-write"></textarea></td>
                 </tr>
                 <tr>
@@ -264,7 +268,7 @@
                     <input type="file" name ="uploadFile" style="height: 30px;"/> </td>
                 </tr>
                 <tr>
-                    <td colspan="2" align="center"><input type="submit" style="height: 30px;" value=" 새글 등록"/></td>
+                    <td colspan="2" align="center"><input type="submit" style="height: 30px;" value="새글 등록"/></td>
                 </tr>
             </table>
         </form>

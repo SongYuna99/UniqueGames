@@ -12,20 +12,36 @@
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script>
 		$(document).ready(function(){
-			
+
 			$("#button-gradient").click(function(){
 				
 				if($("input[name='member_id']").val()=="") {
 					alert("아이디를 입력해주세요");
-					$("input[name='id']").focus();
+					$("input[name='member_id']").focus();
 					return false;
 				}else if($("input[name='password']").val()=="") {
 					alert("비밀번호를 입력해주세요");
-					$("input[name='pwd']").focus();
+					$("input[name='password']").focus();
 					return false;
 				}else{
 					loginForm.submit();
 				}
+			});
+			
+			$("#button-gradient-company-login").click(function(){
+				
+				if($("input[name='company_id']").val()=="") {
+					alert("아이디를 입력해주세요");
+					$("input[name='company_id']").focus();
+					return false;
+				}else if($("#input-common-p").val()=="") {
+					alert("비밀번호를 입력해주세요");
+					$("#input-common-p").focus();
+					return false;
+				}else{
+					loginCompanyForm.submit();
+				}
+				
 			});
 			
 			$("input[name='id']").blur(function(){
@@ -49,9 +65,14 @@
 				
 		});
 		
-		let join = "${message }";
-		if(join=="success"){
-			alert("회원가입 성공");
+		let join_individual = "${join_individual_result }";
+		if(join_individual=="success"){
+			alert("개인 회원가입 성공");
+		}
+		
+		let join_company = "${join_company_result }";
+		if(join_company=="success"){
+			alert("법인 회원가입 성공");
 		}
 		
 		let login = "${login_result }";
@@ -75,7 +96,12 @@
 	</section>
 	<section id="content-1"><!-- login-content -->
 		<p id="intro">로그인</p>
-		<form action="login_proc.do" name="loginForm" method="post">
+		<input id="individual-login" type="radio" name="loginSelect" checked>
+		<label for="individual-login" id="individual-login-tab">개인 회원</label>
+		<input id="company-login" type="radio" name="loginSelect">
+		<label for="company-login" id="company-login-tab">법인 회원</label>
+		
+		<form action="login_proc.do" name="loginForm" method="post" id="individual-loginForm">
 			<div>
 				<ul>
 					<li>
@@ -89,12 +115,38 @@
 					<li>
 						<button type="button" id="button-gradient">LOGIN</button>
 					</li>
-				</ul>
-				<ul id="link-tab">
 					<li>
 						<a href="findId.do" id="link-findAccount">아이디 찾기</a>
 						<a href="findId.do?selectedTab=findPwd" id="link-findAccount">비밀번호 찾기</a>
 					</li>
+				</ul>
+			</div>
+		</form>
+		
+		<form action="login_proc.do" name="loginCompanyForm" method="post" id="company-loginForm">
+			<div>
+				<ul>
+					<li>
+						<input type="text" id="input-common" name="company_id" placeholder="법인 아이디">
+						<span id="msgId"></span>
+					</li>
+					<li>
+						<input type="password" id="c-input-common" name="password" placeholder="비밀번호" size="15">
+						<span id="msgPwd"></span>
+					</li>
+					<li>
+						<button type="button" id="button-gradient-company-login">LOGIN</button>
+					</li>
+					<li>
+						<a href="findCompany.do" id="link-findAccount">아이디 찾기</a>
+						<a href="findCompany.do?selectedTab=findPwd" id="link-findAccount">비밀번호 찾기</a>
+					</li>
+				</ul>
+			</div>
+		</form>
+		
+			<div>
+				<ul>
 					<li>
 						<a href="/uniquegames/join.do" id="link-signUp">
 							<span>Sign Up</span></a>
@@ -102,7 +154,7 @@
 					</li>
 				</ul>
 			</div>
-		</form>
+		
 	</section>
 	<footer>
 		<jsp:include page="../main/footer.jsp"></jsp:include>

@@ -22,6 +22,11 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById(selectedTab).checked = true;
     }
 });
+
+	let c = "${find_result }";
+	if(c == "fail"){
+		alert("등록된 회원정보가 없습니다");
+	}
 </script>
 <script>
 	$(document).ready(function(){
@@ -59,6 +64,25 @@ document.addEventListener('DOMContentLoaded', function() {
 				alert("아이디를 입력해주세요");
 				$("input[name='member_id']").focus();
 				return false;
+			}else if($("#input-common-name").val()==""){
+				alert("이름을 입력해주세요");
+				$("#input-common-name").focus();
+				return false;
+			}else if($("#input-common-phone").val()==""){
+				alert("휴대전화를 입력해주세요");
+				$("#input-common-phone").focus();
+				return false;
+			}else {
+				findPwdForm.submit();
+			}
+		});
+	
+		/* $("#button-gradient1").click(function(){
+			
+			if($("input[name='member_id']").val()==""){
+				alert("아이디를 입력해주세요");
+				$("input[name='member_id']").focus();
+				return false;
 			}else if($("#input-common-phone").val()==""){
 				alert("휴대전화를 입력해주세요");
 				$("#input-common-phone").focus();
@@ -78,8 +102,8 @@ document.addEventListener('DOMContentLoaded', function() {
 					}
 				});
 			}
-		});
-
+		}); */
+		/* 아이디 찾기
 		$("input[name='name']").blur(function(){
 			
 			if($("input[name='name']").val()=="") {
@@ -98,6 +122,38 @@ document.addEventListener('DOMContentLoaded', function() {
 				$("#msgPhone").css("display","none");
 			}
 		});
+		
+		//비밀번호 찾기
+		
+		$("input[name='member_id']").blur(function(){
+			
+			if($("input[name='member_id']").val()=="") {
+				$("#msgId").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+			}else {
+				$("#msgId").css("display","none");
+			}
+			
+		});
+		
+		$("#input-common-name").blur(function(){
+			
+			if($("#input-common-name").val()==""){
+				$("#msgName1").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+			}else {
+				$("#msgName1").css("display","none");
+			}
+		});
+		
+		$("#input-common-phone").blur(function(){
+			
+			if($("#input-common-phone").val()==""){
+				$("#msgPhone1").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+			}else {
+				$("#msgPhone1").css("display","none");
+			}
+		});
+		*/
+		
 		
 		$(document).on("click", "#button-gradient-gotoFind", function(event){
 
@@ -147,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		</div>
 	</section>
 	<section id="content-1"><!-- find-id -->
-		<p id="intro">아이디/비밀번호 찾기</p>
+		<p id="intro">개인 회원</p>
 			<input id="findId" type="radio" name="findAccount" checked>
 			<label for="findId" id="findId-tab">아이디 찾기</label>
 			<input id="findPwd" type="radio" name="findAccount">
@@ -177,11 +233,15 @@ document.addEventListener('DOMContentLoaded', function() {
 						<span id="msgId"></span>
 					</li>
 					<li>
-						<input type="text" id="input-common-phone" name="phone_num" placeholder="휴대전화">
-						<span id="msgPhone"></span>
+						<input type="text" id="input-common-name" name="name" placeholder="이름">
+						<span id="msgName1"></span>
 					</li>
 					<li>
-						<button type="button" id="button-gradient1">비밀번호 찾기</button>
+						<input type="text" id="input-common-phone" name="phone_num" placeholder="휴대전화">
+						<span id="msgPhone1"></span>
+					</li>
+					<li>
+						<button type="button" id="button-gradient-findPwd">비밀번호 찾기</button>
 					</li>
 				</ul>
 			</form>
@@ -196,8 +256,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	<div class="deleteComplete">
 		<p id="agreement-title">아이디 찾기</p>
-		<span id="delete-span">회원님의 아이디는
-		<span id="find-id-result"></span>입니다
+		<span id="delete-span">아이디 : 
+		<span id="find-id-result"></span>
 		</span>
 		<ul>
 			<li>
@@ -219,8 +279,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	<div class="deleteComplete1">
 		<p id="agreement-title">비밀번호 찾기</p>
-		<span id="delete-span">회원님의 비밀번호는
-		<span id="find-pwd-result"></span>입니다
+		<span id="delete-span">비밀번호 : 
+		<span id="find-pwd-result"></span>
 		</span>
 		<ul>
 			<li>
