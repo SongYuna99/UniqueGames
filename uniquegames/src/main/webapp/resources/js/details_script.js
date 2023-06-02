@@ -5,8 +5,6 @@ $(document).ready(function (){
     	let array = $("#select-order").val();		
 		let m_id = $("#m_id").val();
 		
-		alert(array + "    " + m_id);
-		
 		$.ajax({
 			url : "payment_detail_data.do?m_id="+m_id,
 			data : {
@@ -50,7 +48,8 @@ $(document).ready(function (){
 				}
 				
 				// output 출력
-				$("#div-table").remove();
+				$("#table-gameList").remove();
+				$("#div-price").remove();
 				$("#div-select").after(output);   		
 			} // success	
 		}); // ajax	
@@ -59,7 +58,5 @@ $(document).ready(function (){
     $("#select-order").change(function() {
     	showDetails();
     });
-
-
 	
 });

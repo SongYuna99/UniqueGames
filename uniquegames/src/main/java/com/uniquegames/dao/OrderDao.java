@@ -198,9 +198,9 @@ public class OrderDao extends DBConnOrder {
 		} else if (array.equals("orderdate_asc")) {
 			sql.append("SELECT ROW_NUMBER() OVER(ORDER BY ORDER_DATE ASC) AS RNO, ");
 		} else if (array.equals("amount_desc")) {
-			sql.append("SELECT ROW_NUMBER() OVER(ORDER BY AMOUNT DESC) AS RNO, ");
-		} else if (array.equals("amount_asc")) {
 			sql.append("SELECT ROW_NUMBER() OVER(ORDER BY AMOUNT ASC) AS RNO, ");
+		} else if (array.equals("amount_asc")) {
+			sql.append("SELECT ROW_NUMBER() OVER(ORDER BY AMOUNT DESC) AS RNO, ");
 		}
 		sql.append("DATE_FORMAT(ORDER_DATE, '%y-%m-%d') ORDER_DATE, GAMETITLE, AMOUNT FROM ORDERS ");
 		sql.append("WHERE M_ID = ? AND PAYMENT_STATUS = 'COMPLETE' ");
@@ -219,6 +219,7 @@ public class OrderDao extends DBConnOrder {
 				payment.setAmount(rs.getInt(4));
 
 				paymentList.add(payment);
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -226,7 +227,7 @@ public class OrderDao extends DBConnOrder {
 
 		return paymentList;
 	} // getPaymentDetail
-	
+
 	// getPaymentCount
 	public int getPaymentCount(int m_id) {
 		int result = 0;
@@ -234,21 +235,21 @@ public class OrderDao extends DBConnOrder {
 		sql.append("SELECT COUNT(*) FROM ORDERS WHERE M_ID = ? ");
 		sql.append("AND PAYMENT_STATUS = 'COMPLETE'");
 		getPreparedStatement(sql.toString());
-		
+
 		try {
 			pstmt.setInt(1, m_id);
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				result = rs.getInt(1);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return result;
 	} // getPaymentCount
-	
+
 	// getPaymentAmount
 	public int getPaymentAmount(int m_id) {
 		int result = 0;
@@ -256,18 +257,18 @@ public class OrderDao extends DBConnOrder {
 		sql.append("SELECT SUM(AMOUNT) FROM ORDERS WHERE M_ID = ? ");
 		sql.append("AND PAYMENT_STATUS = 'COMPLETE'");
 		getPreparedStatement(sql.toString());
-		
+
 		try {
 			pstmt.setInt(1, m_id);
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				result = rs.getInt(1);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return result;
 	} // getPaymentAmount
 }

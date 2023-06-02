@@ -120,6 +120,14 @@ select {
 	color: #000000;
 }
 
+#table-gameList {
+	margin-bottom: 100px;
+}
+
+#div-price {
+	margin-bottom: 200px;
+}
+
 /******* Button *******/
 #btn-deleteAll, #btn-deleteSelected, #btn-deleteOne {
 	padding: 3px 14px;
