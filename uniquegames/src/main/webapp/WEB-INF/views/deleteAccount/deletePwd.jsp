@@ -20,7 +20,7 @@
 				$("input[name='member_id']").focus();
 				return false;
 			}else if($("input[name='password']").val()=="") {
-				alert("비밀번호를 입력하세요")
+				alert("비밀번호를 입력하세요");
 				$("input[name='password']").focus();
 				return false;
 			}else {
@@ -28,13 +28,19 @@
 					url : "delete_check.do?member_id="+$("input[name='member_id']").val()+"&password="+$("input[name='password']").val(),
 					success : function(result) {
 						let jdata = JSON.parse(result);
-						$("#modal2").show();
-						$("#delete-member-id").html(jdata.jlist.member_id);
-						$("#delete-id").html(jdata.jlist.member_id);
-						$("#agreement-content1").html($(".deleteComplete").html());
-						
-												
+						if($("input[name='password']").val()==jdata.password){
+							$("#modal2").show();
+							$("#delete-member-id").html(jdata.member_id);
+							$("#delete-id").html(jdata.member_id);
+							$("#agreement-content1").html($(".deleteComplete").html());	
+						}else {
+							alert("11");
+						}
+							
+					
+							
 					}
+					
 				});
 			}
 
@@ -61,7 +67,7 @@
 
 		$(document).on("click", "#button-gradient-home", function(event){
 			$("#modal2").hide();
-			location.href="/index.do";
+			location.href="http://localhost:9000/uniquegames/";
 			});
 		
 		});
@@ -99,7 +105,7 @@
 						</select>
 					</li>
 					<li>
-						<input type="text" id="input-common" name="member_id" placeholder="아이디">
+						<input type="text" id="input-common" name="member_id" value="${memberVo.member_id }" disabled>
 						<span id="msgId"></span>
 					</li>
 					<li>
@@ -107,7 +113,7 @@
 						<span id="msgPwd"></span>
 					</li>
 					<li id="goodbye">
-						<p id="delete-id">님!</p>
+						<p id="delete-id">${memberVo.member_id }님!</p>
 						<p id="delete-content">회원 탈퇴하려고 하신다니 저희 사이트의 서비스가 많이 부족하고 미흡했나 봅니다.<br>
 						불만사항이나 사유를 알려주신다면 적극 반영해서 고객님의 불편함을 해결해드리도록 노력하겠습니다.
 						회원 탈퇴시의 아래 사항을 숙지하시기 바랍니다.</p>

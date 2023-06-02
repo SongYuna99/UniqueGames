@@ -32,7 +32,7 @@ public class JoinController {
 		int result = memberDao.insert(memberVo);
 		
 		if(result==1) {
-			mav.addObject("join_individual_result", "succcess");
+			mav.addObject("join_individual_result", "success");
 			mav.setViewName("/login/login");
 		}else {
 			System.out.println("½ÇÆÐ");
@@ -59,11 +59,21 @@ public class JoinController {
 	
 	@RequestMapping(value="/id_check.do", method=RequestMethod.GET)
 	@ResponseBody
-	public String id_check(String id) {
+	public String id_check(String member_id) {
 		String viewName = "";
 		
 		MemberDao memberDao = new MemberDao();
-		int result = memberDao.idCheck(id);
+		int result = memberDao.idCheck(member_id);
+		
+		return String.valueOf(result);
+	}
+	
+	@RequestMapping(value="/c_id_check.do", method=RequestMethod.GET)
+	@ResponseBody
+	public String c_id_check(String company_id) {
+		
+		CompanyDao memberDao = new CompanyDao();
+		int result = memberDao.idCheck(company_id);
 		
 		return String.valueOf(result);
 	}

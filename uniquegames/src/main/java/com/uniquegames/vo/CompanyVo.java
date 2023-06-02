@@ -119,7 +119,7 @@ public class CompanyVo {
 
 	public String getAddr() {
 		if(addr1!=null) {
-			addr = addr+" "+addr2;
+			addr = addr1+" "+addr2;
 		}
 		return addr;
 	}

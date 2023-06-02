@@ -66,12 +66,12 @@
 							<label>비밀번호</label>
 						</li>
 						<li>
-							<input type="password" id="input-common" name="password" placeholder="숫자,영문,특수문자 조합 최소 8자" tabindex="2">
+							<input type="password" id="input-common-password" name="password" placeholder="숫자,영문,특수문자 조합 최소 8자" tabindex="2">
 							<input type="checkbox" id="pwd-check-img">
 							<span id="pwdMsg"></span>
 						</li>
 						<li>
-							<input type="password" id="input-common" name="password-check" placeholder="비밀번호 재입력" tabindex="3">
+							<input type="password" id="input-common-password-check" name="password-check" placeholder="비밀번호 재입력" tabindex="3">
 							<input type="checkbox" id="pwd-check-img-1">
 							<span id="pwdMsg-check"></span>
 						</li>
@@ -104,7 +104,7 @@
 							<label>주소</label>
 						</li>
 						<li>
-							<input type="text" id="input-address" name="addr1" tabindex="8">
+							<input type="text" id="input-addr1" name="addr1" tabindex="8">
 							<button type="button" id="address-btn-style" tabindex="9">검색</button>
 						</li>
 						<li>
@@ -161,7 +161,7 @@
 						</li>
 						
 						<li>
-							<button type="button" id="button-gradient-individual" tabindex="16">가입하기</button>
+							<button type="button" id="button-gradient" tabindex="16">가입하기</button>
 						</li>
 					</ul>
 				</div>
@@ -177,102 +177,98 @@
 						</li>
 						<li>
 							<input type="text" id="input-id" name="company_id" placeholder="영문,숫자 5~10자리" tabindex="1">
-							<button type="button" id="check-btn-style">중복체크</button>
-							<span id="idMsg"></span>
+							<button type="button" id="c-check-btn-style">중복체크</button>
+							<span id="c-idMsg"></span>
 						</li>
 						<li id="must-insert">
 							<p id="label-dot">*</p>
 							<label>비밀번호</label>
 						</li>
 						<li>
-							<input type="password" id="input-common" name="password" placeholder="숫자,영문,특수문자 조합 최소 8자" tabindex="2">
-							<input type="checkbox" id="pwd-check-img">
-							<span id="pwdMsg"></span>
+							<input type="password" id="company-password" name="password" placeholder="숫자,영문,특수문자 조합 최소 8자" tabindex="2">
+							<input type="checkbox" id="c-pwd-check-img">
+							<span id="c-pwdMsg"></span>
 						</li>
 						<li>
-							<input type="password" id="input-common" name="password-check" placeholder="비밀번호 재입력" tabindex="3">
-							<input type="checkbox" id="pwd-check-img-1">
-							<span id="pwdMsg-check"></span>
+							<input type="password" id="company-password-check" name="password-check" placeholder="비밀번호 재입력" tabindex="3">
+							<input type="checkbox" id="c-pwd-check-img-1">
+							<span id="c-pwdMsg-check"></span>
 						</li>
 						<li id="must-insert">
 							<p id="label-dot">*</p>
 							<label>회사명</label>
 						</li>
 						<li>
-							<input type="text" id="input-common" name="name" tabindex="4">
-							<span id="nameMsg"></span>
+							<input type="text" id="company-name" name="name" tabindex="4">
+							<span id="c-nameMsg"></span>
 						</li>
 						<li id="must-insert">
 							<p id="label-dot">*</p>
 							<label>이메일</label>
 						</li>
 						<li>
-							<input type="text" id="input-email" name="email1" tabindex="5">
+							<input type="text" id="company-email1" name="email1" tabindex="5">
 							<span>@</span>
-							<input type="text" id="input-email" name="email2" tabindex="6">
-							<select name="email3" id="selectbox-email" tabindex="7">
+							<input type="text" id="company-email2" name="email2" tabindex="6">
+							<select name="email3" id="company-selectbox-email" tabindex="7">
 								<option value="default">선택</option>
 								<option value="naver.com">naver.com</option>
 								<option value="gmail.com">gmail.com</option>
 								<option value="daum.net">daum.net</option>
 								<option value="direct">직접입력</option>
 							</select>
-							<span id="emailMsg"></span>
+							<span id="c-emailMsg"></span>
 						</li>
 						<li>
 							<label>주소</label>
 						</li>
 						<li>
-							<input type="text" id="input-address" name="addr1" tabindex="8">
-							<button type="button" id="address-btn-style" tabindex="9">검색</button>
+							<input type="text" id="company-addr1" name="addr1" tabindex="8">
+							<button type="button" id="company-address-btn-style" tabindex="9">검색</button>
 						</li>
 						<li>
 							<label>상세 주소</label>
 						</li>
 						<li>
-							<input type="text" id="input-common" name="addr2" tabindex="10">
+							<input type="text" id="company-addr2" name="addr2" tabindex="10">
 						</li>
 						<li id="must-insert">
 							<p id="label-dot">*</p>
 							<label>대표번호</label>
 						</li>
 						<li>
-							<select id="selectbox-phone-company" name="phone1" tabindex="12">
-								<option value="default">선택</option>
-								<option value="010">010</option>
-								<option value="011">011</option>
-								<option value="012">012</option>
-							</select>
+							<input type="text" id="company-phone1" name="phone1" tabindex="11">
 							-
-							<input type="text" id="input-phone" name="phone2" tabindex="13">
+							<input type="text" id="company-phone2" name="phone2" tabindex="12">
 							-
-							<input type="text" id="input-phone" name="phone3" tabindex="14">
-							<span id="phoneMsg"></span>
+							<input type="text" id="company-phone3" name="phone3" tabindex="13">
+							<span id="c-phoneMsg"></span>
 						</li>						
 					</ul>
 					<ul>
 						<li id="agreement-box">
-							<input type="checkbox" name="agreementAll" id="chk-circle" tabindex="18">
+							<input type="checkbox" name="agreementAll" id="c-chk-circle">
 							<span id="span_agreementAll">전체 동의하기</span>
 						</li>
 						<li>
-							<input type="checkbox" id="checkbox-agreement" name="chk-agree">
+							<input type="checkbox" id="c-checkbox-agreement" name="c-chk-agree">
 							<span id="agreement-color">[필수]</span> <span>이용 약관</span><a id="detail1">자세히</a>
 						</li>
 						<li>
-							<input type="checkbox" id="checkbox-agreement" name="chk-agree">
+							<input type="checkbox" id="c-checkbox-agreement" name="c-chk-agree">
 							<span id="agreement-color">[필수]</span> <span>개인정보 수집 및 이용 동의</span><a id="detail2">자세히</a>
 						</li>
 						<li>
-							<input type="checkbox" id="agreement-choice" name="chk-agree">
+							<input type="checkbox" id="c-agreement-choice" name="c-chk-agree">
 							<span id="choice-span">[선택]</span> <span>마케팅 정보 메일, SMS 수신동의</span>
 						</li>
 						<li>
-							<button type="button" id="button-gradient-company" tabindex="16">가입하기</button>
+							<button type="button" id="button-gradient-company">가입하기</button>
 						</li>
 					</ul>
 				</div>
 			</form>
+			
 		</section>
 		
 		

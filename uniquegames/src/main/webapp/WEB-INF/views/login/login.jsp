@@ -12,20 +12,36 @@
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script>
 		$(document).ready(function(){
-			
+
 			$("#button-gradient").click(function(){
 				
 				if($("input[name='member_id']").val()=="") {
 					alert("아이디를 입력해주세요");
-					$("input[name='id']").focus();
+					$("input[name='member_id']").focus();
 					return false;
 				}else if($("input[name='password']").val()=="") {
 					alert("비밀번호를 입력해주세요");
-					$("input[name='pwd']").focus();
+					$("input[name='password']").focus();
 					return false;
 				}else{
 					loginForm.submit();
 				}
+			});
+			
+			$("#button-gradient-company-login").click(function(){
+				
+				if($("input[name='company_id']").val()=="") {
+					alert("아이디를 입력해주세요");
+					$("input[name='company_id']").focus();
+					return false;
+				}else if($("#input-common-p").val()=="") {
+					alert("비밀번호를 입력해주세요");
+					$("#input-common-p").focus();
+					return false;
+				}else{
+					loginCompanyForm.submit();
+				}
+				
 			});
 			
 			$("input[name='id']").blur(function(){
@@ -99,10 +115,15 @@
 					<li>
 						<button type="button" id="button-gradient">LOGIN</button>
 					</li>
+					<li>
+						<a href="findId.do" id="link-findAccount">아이디 찾기</a>
+						<a href="findId.do?selectedTab=findPwd" id="link-findAccount">비밀번호 찾기</a>
+					</li>
 				</ul>
 			</div>
 		</form>
-		<form action="login_proc.do" name="loginForm" method="post" id="company-loginForm">
+		
+		<form action="login_proc.do" name="loginCompanyForm" method="post" id="company-loginForm">
 			<div>
 				<ul>
 					<li>
@@ -110,21 +131,22 @@
 						<span id="msgId"></span>
 					</li>
 					<li>
-						<input type="password" id="input-common" name="password" placeholder="비밀번호" size="15">
+						<input type="password" id="c-input-common" name="password" placeholder="비밀번호" size="15">
 						<span id="msgPwd"></span>
 					</li>
 					<li>
-						<button type="button" id="button-gradient">LOGIN</button>
+						<button type="button" id="button-gradient-company-login">LOGIN</button>
+					</li>
+					<li>
+						<a href="findCompany.do" id="link-findAccount">아이디 찾기</a>
+						<a href="findCompany.do?selectedTab=findPwd" id="link-findAccount">비밀번호 찾기</a>
 					</li>
 				</ul>
 			</div>
 		</form>
+		
 			<div>
-				<ul id="link-tab">
-					<li>
-						<a href="findId.do" id="link-findAccount">아이디 찾기</a>
-						<a href="findId.do?selectedTab=findPwd" id="link-findAccount">비밀번호 찾기</a>
-					</li>
+				<ul>
 					<li>
 						<a href="/uniquegames/join.do" id="link-signUp">
 							<span>Sign Up</span></a>

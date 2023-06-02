@@ -146,14 +146,14 @@ public class MemberDao extends DBConn {
 		
 		return result;
 	}
-	
+	/**mypage session id information*/
 	public MemberVo select(Object member_id) {
 		MemberVo memberVo = null;
 		String sql = "select member_id, password, name, email, phone_num, addr, tel from member where member_id=?";
 		getPreparedStatement(sql);
 		
 		try {
-			pstmt.setString(1, (String) member_id);
+			pstmt.setString(1, (String)member_id);
 			
 			rs = pstmt.executeQuery();
 			
@@ -175,6 +175,79 @@ public class MemberDao extends DBConn {
 		
 		return memberVo;
 	}
+	
+	/**mypage session id information update*/
+	public int update(MemberVo memberVo) {
+		int result=0;
+		String sql = "update member set email1=?, email2=?, addr1=?, addr2=?, phone1=?, phone2=?, phone3=? where member_id=? and password=?";
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, memberVo.getEmail1());
+			pstmt.setString(2, memberVo.getEmail2());
+			pstmt.setString(3, memberVo.getAddr1());
+			pstmt.setString(4, memberVo.getAddr2());
+			pstmt.setString(5, memberVo.getPhone1());
+			pstmt.setString(6, memberVo.getPhone2());
+			pstmt.setString(7, memberVo.getPhone3());
+			pstmt.setString(8, memberVo.getMember_id());
+			pstmt.setString(9, memberVo.getPassword());
+			
+			result = pstmt.executeUpdate();
+			System.out.println(result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	/*********************넘어오는 name값을 받아서 여기 있으면 member로 아니면 company로(도전)****************************************/
+	public int selectMode(String name, String phone_num) {
+		int result=0;
+		String sql = "select count(*) from member where name=? and phone_num=?";
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, name);
+			pstmt.setString(2, phone_num);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	/*********************비밀번호 재설정****************************************/
+	public int select(String member_id, String name, String phone_num) {
+		int result=0;
+		String sql = "select count(*) from member where member_id=? and name=? and phone_num=?";
+		getPreparedStatement(sql);
+		
+		try {
+			
+			pstmt.setString(1, member_id);
+			pstmt.setString(2, name);
+			pstmt.setString(3, phone_num);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	
 	
 
 }

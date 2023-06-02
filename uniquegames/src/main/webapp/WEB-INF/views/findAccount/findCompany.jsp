@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		</div>
 	</section>
 	<section id="content-1"><!-- find-id -->
-		<p id="intro">개인 회원</p>
+		<p id="intro">법인 회원</p>
 			<input id="findId" type="radio" name="findAccount" checked>
 			<label for="findId" id="findId-tab">아이디 찾기</label>
 			<input id="findPwd" type="radio" name="findAccount">
