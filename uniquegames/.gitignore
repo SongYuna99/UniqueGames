@@ -24,6 +24,7 @@ local.properties
 .loadpath
 .recommenders
 META-INF/
+.classpath
 
 # External tool builders
 .externalToolBuilders/
