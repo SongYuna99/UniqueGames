@@ -273,7 +273,7 @@
 		
 		
 		<div id="modal">
-			<div class="agreement" id="agreement">
+			<div class="agreement" id="agreement-join">
 				<h1 id="agreement-title">이용 약관</h1>
 				<div id="agreement-content">
 				</div>

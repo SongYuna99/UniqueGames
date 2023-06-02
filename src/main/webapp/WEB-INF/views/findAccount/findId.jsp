@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	</section>
 	
 	<div id="modal2">
-		<div class="agreement2" id="agreement">
+		<div class="agreement2" id="agreement-findId">
 			<div id="agreement-content1">
 			</div>
 		</div>

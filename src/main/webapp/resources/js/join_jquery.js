@@ -543,20 +543,22 @@ $(document).ready(function(){
 /** Agreement **/
 // Agreement
 $("a").click(function(){
-    $("#modal").show();
-    
+    $("#modal").css("display", "block");
+	
     if($(this).attr("id") == "detail1"){
     	$("#agreement-content").html($("div.detail1").html());
     }
     else if($(this).attr("id") == "detail2"){
     	$("#agreement-content").html($("div.detail2").html());
+    }else {
+    	$("#modal").css("display", "none");
     }
 });
 
 	
 // Agreement-btn
-$(document).on("click", "button[name='btn-agreement']", function(event){
-	$("#modal").hide();
+$(document).on("click", "button[name='btn-agreement']", function(){
+	$("#modal").css("display", "none");
 });
 /*************************************************************************
 							아이디 중복체크

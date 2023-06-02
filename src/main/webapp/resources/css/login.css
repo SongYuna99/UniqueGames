@@ -1663,7 +1663,7 @@ SignUp IdCheck button style*/
 /*******************************¸ð´ÞÃ¢************************************/
 /*SignUp; modal style
 deletePwd, findId; modal2 style */
-div#modal,
+#modal,
 #modal2 {
 	position: fixed;
 	top:50%; 			

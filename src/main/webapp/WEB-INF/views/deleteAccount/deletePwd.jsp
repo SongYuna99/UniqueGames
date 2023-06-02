@@ -28,13 +28,14 @@
 					url : "delete_check.do?member_id="+$("input[name='member_id']").val()+"&password="+$("input[name='password']").val(),
 					success : function(result) {
 						let jdata = JSON.parse(result);
-						if($("input[name='password']").val()==jdata.password){
-							$("#modal2").show();
+						if($("input[name='password']").val() === jdata.password){
+							alert(jdata.password);
+							$("#modal2").css("display", "block");
 							$("#delete-member-id").html(jdata.member_id);
 							$("#delete-id").html(jdata.member_id);
 							$("#agreement-content1").html($(".deleteComplete").html());	
 						}else {
-							alert("11");
+							alert("비밀번호가 일치하지 않습니다");
 						}
 							
 					
@@ -109,7 +110,7 @@
 						<span id="msgId"></span>
 					</li>
 					<li>
-						<input type="text" id="input-common" name="password" placeholder="비밀번호">
+						<input type="password" id="input-common" name="password" placeholder="비밀번호">
 						<span id="msgPwd"></span>
 					</li>
 					<li id="goodbye">
@@ -135,7 +136,7 @@
 	</section>
 	
 	<div id="modal2">
-		<div class="agreement2" id="agreement">
+		<div class="agreement2" id="agreement-deleteAccount">
 			<div id="agreement-content1">
 			</div>
 		</div>
