@@ -118,5 +118,6 @@
 		<form name="noticeDelete" action="notice_delete.do" method="post"><input type="hidden" name="no" value="${noticeVo.post_id}"></form>
 	</div>
 	<jsp:include page="../main/footer.jsp"></jsp:include>
+	
 </body>
 </html>
