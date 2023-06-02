@@ -67,6 +67,7 @@
                     <li><a href="/uniquegames/alllist.do">All List</a></li>
                     <li><a href="/uniquegames/index.do#menu-main1">Recommendations</a></li>
                     <li><a href="/uniquegames/notice_list.do">Notice</a></li>
+                    <li><a href="/uniquegames/detail/getIntroList.do">Team Intro</a></li>
                 </ul>
             </nav>
         </div>

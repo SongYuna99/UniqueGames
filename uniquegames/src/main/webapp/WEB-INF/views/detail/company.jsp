@@ -112,18 +112,32 @@
   <!--  제작팀 소개 -->
   <div  style="margin: 70px 20px 0 150px ">
     <div style="display: flex; align-items: center;">
-      <img src="../../images/img_team_profile_big.png" alt="Crazy Game Dog 팀 로고" style="margin-right: 20px">
-      <div id="introduce">
-        <div  style="font: italic normal 900 28px Apex New;"> CGD(Crazy Game Dog) Team</div>
-        <p> Game Delover Team</p>
-        <p style="">재미있는 마법 이야기에 푹 빠져 사는 사람들이 모여서 미친 상상력에 개처럼 달려드는 사람들이 모인 팀<br>
-          우리가 상상하는 모든것들을 게임으로 출시하는게 팀의 목적입니다.<br>
-          쉽고 재밌게 게임을 즐기며 살자!!</p>
-      </div>
+<%--      <img src="../../images/img_team_profile_big.png" alt="${intro.name} 팀 로고" style="margin-right: 20px">--%>
+      <form action="updateIntro.do" method="post">
 
+        <input name="id" type="hidden" value="${intro.id}">
+        <c:if test="${intro.upload != null}">
+          <img src="http://localhost:9000/uniquegames/upload/${intro.upload}" alt="${intro.name} 팀 로고" style="margin-right: 20px; width: 225px; height: 225px;" >
+        </c:if>
+<%--        <input type="file" name ="uploadFile" style="height: 30px;"/>--%>
+        <div id="introduce">
+          <div  style="font: italic normal 900 28px Apex New;">${intro.name}</div>
+          <p> Game Delover Team</p>
+          <p><input type="text" name="title" value="${intro.title}"></p>
+          <p><textarea name="content">${intro.content}</textarea></p>
+        </div>
+        <div align="right"><input type="submit" value="글 수정"/></div>
+      </form>
+        <a href="insertIntro.do">글등록</a>&nbsp;&nbsp;&nbsp;
+        <a href="deleteIntro.do?id=${intro.id}">글삭제</a>&nbsp;&nbsp;&nbsp;
+        <a href="getIntroList.do">글목록</a>&nbsp;&nbsp;&nbsp;
     </div>
 
-
+<%--
+재미있는 마법 이야기에 푹 빠져 사는 사람들이 모여서 미친 상상력에 개처럼 달려드는 사람들이 모인 팀<br>
+          우리가 상상하는 모든것들을 게임으로 출시하는게 팀의 목적입니다.<br>
+          쉽고 재밌게 게임을 즐기며 살자!!
+--%>
 
   </div>
 

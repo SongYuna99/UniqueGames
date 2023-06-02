@@ -12,6 +12,7 @@ target
 
 
 ### Eclipse ###
+.classpath
 .metadata
 bin/
 tmp/
@@ -23,7 +24,7 @@ local.properties
 .settings/
 .loadpath
 .recommenders
-META-INF/
+*/META-INF/*
 
 # External tool builders
 .externalToolBuilders/
