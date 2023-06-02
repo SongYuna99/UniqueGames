@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.uniquegames.vo.OrderVo;
 
-public class OrderDao extends DBConnOrder {
+public class OrderDao extends DBConn{
 	// http://localhost:9000/uniquegames/cart.do?m_id=1
 	/** Cart **/
 	// getCartList
@@ -271,4 +271,45 @@ public class OrderDao extends DBConnOrder {
 
 		return result;
 	} // getPaymentAmount
+	
+	// getPaymentDetail
+	public ArrayList<OrderVo> getDonationDetail(int c_id, String array) {
+		ArrayList<OrderVo> donationList = new ArrayList<OrderVo>();
+
+		StringBuffer sql = new StringBuffer(100);
+		if (array.equals("orderdate_desc")) {
+			sql.append("SELECT ROW_NUMBER() OVER(ORDER BY DATE_FORMAT(ORDER_DATE, '%y-%m') DESC) AS RNO, ");
+		} else if (array.equals("orderdate_asc")) {
+			sql.append("SELECT ROW_NUMBER() OVER(ORDER BY DATE_FORMAT(ORDER_DATE, '%y-%m') ASC) AS RNO, ");
+		} else if (array.equals("amount_desc")) {
+			sql.append("SELECT ROW_NUMBER() OVER(ORDER BY SUM(AMOUNT) DESC) AS RNO, DATE_FORMAT(ORDER_DATE, '%y-%m') ORDER_DATE, ");
+		} else if (array.equals("amount_asc")) {
+			sql.append("SELECT ROW_NUMBER() OVER(ORDER BY SUM(AMOUNT) ASC) AS RNO, DATE_FORMAT(ORDER_DATE, '%y-%m') ORDER_DATE, ");
+		}
+		sql.append("DATE_FORMAT(ORDER_DATE, '%y-%m') ORDER_DATE, GAMETITLE, SUM(AMOUNT) AMOUNT FROM ORDERS ");
+		sql.append("WHERE C_ID = ? AND PAYMENT_STATUS = 'COMPLETE' ");
+		sql.append("GROUP BY DATE_FORMAT(ORDER_DATE, '%y-%m'), GAMETITLE ");
+		getPreparedStatement(sql.toString());
+
+		try {
+			pstmt.setInt(1, c_id);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				OrderVo donation = new OrderVo();
+
+				donation.setRno(rs.getInt(1));
+				donation.setOrderdate(rs.getString(2));
+				donation.setGametitle(rs.getString(3));
+				donation.setAmount(rs.getInt(4));
+
+				donationList.add(donation);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return donationList;
+	} // getPaymentDetail
 }
