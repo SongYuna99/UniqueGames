@@ -24,53 +24,19 @@
                 <p id="intro-allList">게임 순위</p>
                 <div>
                     <div>
-                    <c:forEach var="ranking" items="${ranking }" >
-                        <div id="tList-detail">
-                            <img alt="#" src="${ranking.image_path } " width="500px" height="240px">
-                            <div>
-                                <p>${ranking.rno }</p>
-                                <p>${ranking.name}</p>
-                                <p>${ranking.description }</p>
-                                <button id="btn-readmore-topGame" type="button">자세히보기</button>
-                            </div>
-                        </div>
+                        <c:forEach var="ranking" items="${ranking }" varStatus="loop">
+                            <c:if test="${loop.count <= 10}">
+                                <div id="tList-detail">
+                                    <img alt="#" src="${ranking.image_path } " width="500px" height="240px">
+                                    <div>
+                                        <p>${loop.count} </p>
+                                        <p>${ranking.name}</p>
+                                        <p>${ranking.description }</p>
+                                        <button id="btn-readmore-topGame" type="button">자세히보기</button>
+                                    </div>
+                                </div>
+                            </c:if>
                      </c:forEach>
-                       <!--  <div id="tList-detail">
-                            <img alt="#" src="http://localhost:9000/uniquegames/images/img_game_thumbnail_2_500240.png" width="500px" height="240px">
-                            <div>
-                                <p>2</p>
-                                <p>New Game of Music</p>
-                                <p>새로운 감각의 New RPG 뉴게임오브뮤직</p>
-                                <button id="btn-readmore-topGame" type="button">자세히보기</button>
-                            </div>
-                        </div>
-                        <div id="tList-detail">
-                            <img alt="#" src="http://localhost:9000/uniquegames/images/img_game_thumbnail_3_500240.png" width="500px" height="240px">
-                            <div>
-                                <p>3</p>
-                                <p>New Game of Music</p>
-                                <p>새로운 감각의 New RPG 뉴게임오브뮤직</p>
-                                <button id="btn-readmore-topGame" type="button">자세히보기</button>
-                            </div>
-                        </div>
-                        <div id="tList-detail">
-                            <img alt="#" src="http://localhost:9000/uniquegames/images/img_game_thumbnail_3_500240.png" width="500px" height="240px">
-                            <div>
-                                <p>4</p>
-                                <p>New Game of Music</p>
-                                <p>새로운 감각의 New RPG 뉴게임오브뮤직</p>
-                                <button id="btn-readmore-topGame" type="button">자세히보기</button>
-                            </div>
-                        </div>
-                        <div id="tList-detail">
-                            <img alt="#" src="http://localhost:9000/uniquegames/images/img_game_thumbnail_3_500240.png" width="500px" height="240px">
-                            <div>
-                                <p>5</p>
-                                <p>New Game of Music</p>
-                                <p>새로운 감각의 New RPG 뉴게임오브뮤직</p>
-                                <button id="btn-readmore-topGame" type="button">자세히보기</button>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>

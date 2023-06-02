@@ -18,8 +18,7 @@ import com.uniquegames.vo.GameVo;
 
 @Controller
 public class MainController {
-	
-	
+
 	@RequestMapping(value="/index.do", method=RequestMethod.GET)
 	public ModelAndView index(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();

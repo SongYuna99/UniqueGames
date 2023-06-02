@@ -6,13 +6,19 @@ import lombok.Setter;
 @Getter
 @Setter
 public class GameVo {
-    int id;
+    int id, rno;
     String name = "";
     String game_genre = "";
     String image_path = "";
     String description = "";
-    int donation_status;
-    
+	int donation_status;
+	int like_count;
+
+
+	public int getLike_count() {return like_count;}
+	public void setLike_count(int like_count) {this.like_count = like_count;}
+	public int getRno() {return rno;}
+	public void setRno(int rno) {this.rno = rno;}
 	public int getId() {
 		return id;
 	}
