@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
 public interface DetailMapper {
     void insertIntro(IntroVo vo);
     IntroVo getIntro(int id);
-    IntroVo getIntroTitle(String title);
     void updateIntro(IntroVo vo);
     void deleteIntro(int id);
     List<IntroVo> getIntroList();

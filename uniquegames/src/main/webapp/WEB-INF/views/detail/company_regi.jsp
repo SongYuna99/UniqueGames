@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Unique Games</title>
-    <link rel="stylesheet" href="http://localhost:9000/myuniquegames/css/unigames.css">
+    <link rel="stylesheet" href="http://localhost:9000/myuniquegames/css/mainunigames.css">
     <link rel="stylesheet" href="http://localhost:9000/myuniquegames/css/board.css">
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
     <script src="http://localhost:9000/myuniquegames/js/board.js"></script>

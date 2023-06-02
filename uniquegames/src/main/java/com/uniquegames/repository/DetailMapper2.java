@@ -2,7 +2,10 @@ package com.uniquegames.repository;
 
 import com.uniquegames.vo.IntroVo;
 import java.util.List;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 
@@ -16,8 +19,13 @@ public interface DetailMapper2 {
     @Insert("INSERT INTO intro (name,title, content,upload)"
             + " VALUES ( #{name}, #{title}, #{content},#{upload})")
     void insertIntro(IntroVo vo);
+    @Select("SELECT * FROM intro WHERE id = #{id}")
     IntroVo getIntro(int id);
+    @Update(" UPDATE intro SET title = #{title}, content = #{content}, name = #{name}"
+            + "  WHERE id = #{id}")
     void updateIntro(IntroVo vo);
+    @Delete("DELETE FROM intro WHERE id = #{id}")
     void deleteIntro(int id);
+    @Select("SELECT * FROM intro ORDER BY id")
     List<IntroVo> getIntroList();
 }

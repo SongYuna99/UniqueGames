@@ -34,8 +34,8 @@ public class DetailMapperController {
     @Autowired
     public DetailMapperController(CompanyServiceMapper companyServiceMapper,
             CompanyServiceMapper2 companyServiceMapper2) {
-        this.companyServiceMapper = companyServiceMapper;
-        this.companyServiceMapper2 = companyServiceMapper2;
+        this.companyServiceMapper = companyServiceMapper; // 매퍼 방식
+        this.companyServiceMapper2 = companyServiceMapper2; // 인터페이스 only
     }
 
     /**
@@ -48,9 +48,14 @@ public class DetailMapperController {
         return "detail/detail";
     }
 
+    /**
+     * @param vo 회사 소개 저장객체
+     * @param request 현재 url을 가져오기 위한 객체
+     * @return 이름 또는 제목이 null이면 회사등록 페이지 리턴. 아니면 회사 목록 페이지 리턴
+     * @throws IOException
+     */
     @RequestMapping(value = "/insertIntro.do")
     public String insertIntro(IntroVo vo, HttpServletRequest request) throws IOException {
-        //파일 업로드 처리 - spring 파일업로드 기능
        /* MultipartFile uploadFile = vo.getUploadFile();
         String root_path = request.getSession().getServletContext().getRealPath("/");
         String attach_path = "\\resources\\upload\\";
@@ -64,7 +69,7 @@ public class DetailMapperController {
         }*/
         FileUtil fileUtil = new FileUtil(vo, request);
         IntroVo introVo = fileUtil.getUpload();
-        if(introVo.getTitle() == null)
+        if(introVo.getTitle() == null || introVo.getName() == null)
             return "detail/company_regi";
         else{
             companyServiceMapper.insertIntro(introVo);
@@ -79,8 +84,8 @@ public class DetailMapperController {
     }
 
     @RequestMapping(value = "/deleteIntro.do")
-    public String deleteIntro(int id){
-        companyServiceMapper.deleteIntro(id);
+    public String deleteIntro(IntroVo vo){
+        companyServiceMapper.deleteIntro(vo.getId());
         return "redirect:getIntroList.do";
     }
 

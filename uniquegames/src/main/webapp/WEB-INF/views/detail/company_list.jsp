@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>Unique Games</title>
     <link rel="stylesheet" href="http://localhost:9000/uniquegames/css/mainunigames.css">
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 </head>
 <body>
 <%--header--%>
@@ -13,7 +14,7 @@
 <section id="top-bg">
     <div id="base-layer">
         <div id="top-bg-textarea">
-            <p id="top-title">All List</p>
+            <p id="top-title">All Company List</p>
             <p id="top-subtitle">#전체 회사(개발팀)목록</p>
         </div>
     </div>
