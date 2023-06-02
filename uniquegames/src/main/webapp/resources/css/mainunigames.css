@@ -433,7 +433,7 @@ a:visited {
 	height: 310px;
 	box-shadow: 0px 5px 10px #0000001A;
 	position: relative;
-	margin: 0 5px;
+	margin: 0 5px 40px 5px;
 	background-color: #fff;
 }
 #menu-solution > table {
