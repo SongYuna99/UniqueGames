@@ -167,6 +167,10 @@ td {
 	resize: none;
 }
 
+#filebox {
+	margin-right: 164px;
+}
+
 #filebox #upload-name {
     display: inline-block;
     height: 40px;
@@ -177,16 +181,11 @@ td {
     color: #999999;
 }
 
-#filebox label {
+#filebox>button {
     display: inline-block;
-   	background: #393939;
-	border-radius: 5px;
-	width: 80px;
-	color: #FFFFFF;
-	font-size: 14px;
 	vertical-align: middle;
 	cursor: pointer;
-	padding: 5px 0;
+	margin: 0 3px;
 }
 
 #filebox input[type="file"] {

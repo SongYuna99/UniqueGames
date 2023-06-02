@@ -66,7 +66,7 @@
 				</tr>
 				<tr>
 					<td colspan="6" style="border:none;">
-						<div id="details"><c:if test="${noticeVo.image_id != null}"><img src="http://localhost:9000/uniquegames/upload/${noticeVo.image_id}"><br></c:if>${noticeVo.content}</div>
+						<div id="details"><c:if test="${noticeVo.image_id != null}"><img src="http://localhost:9000/uniquegames/upload/${noticeVo.image_id}" style="max-width:1024px;"><br></c:if>${noticeVo.content}</div>
 					</td>
 				</tr>
 			</table>

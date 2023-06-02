@@ -5,23 +5,32 @@ $(document).ready(function() {
 	 */
 	// 전체 삭제 버튼 이벤트
 	$('button[name="listDeleteAll"]').on("click", function() {
+
+		let list = $("input[name='list'");
+
 		if (confirm("모든 게시글을 삭제하시겠습니까?")) {
-			alert("펑");
+
+			list.prop("checked", true);
+			boardManage.submit();
+
 		};
 	});
 
 	// 삭제 버튼 이벤트
 	$('button[name="listDelete"]').on("click", function() {
-		let checked = $("input[name='list[]']:checked").get();
+		let checked = $("input[name='list']:checked").get();
 
 		if (checked.length == 0) {
 			alert("선택된 게시글이 없습니다.");
+
 			return false;
 		} else {
 			if (confirm("정말로 삭제하시겠습니까?")) {
 				boardManage.submit();
+
 			} else {
 				$("input[name='list[]']").prop("checked", false);
+
 				return false;
 			}
 		}
@@ -33,20 +42,23 @@ $(document).ready(function() {
 
 		if (checked.length == 0) {
 			alert("선택된 게시글이 없습니다.");
+
 			return false;
 		} else {
 			if (checked.length > 1) {
 				alert("하나만 선택하세요");
 				$("input[name='list[]']").prop("checked", false);
+
 				return false;
 			} else {
-				location.href = "notice_write.do?f=up&id=" + $(checked).val();
+				location.href = "notice_update.do?no=" + $(checked).val();
 			}
 		}
 	});
 
 	// 작성 버튼 이벤트
 	$('button[name="listWrite"]').on("click", function() {
+
 		location.href = "notice_write.do";
 	});
 
@@ -55,28 +67,38 @@ $(document).ready(function() {
 	 */
 	// 작성 버튼 이벤트
 	$('button[name="write"]').on("click", function() {
-		if ($("input[name='btitle']").val() != "" && $("textarea[name='bcontent']").val() != "") {
+		if ($("input[name='title']").val() != "" && $("textarea[name='content']").val() != "") {
 			writeForm.submit();
-		} else if ($("input[name='btitle']").val() == "") {
-			alert("제목을 입력해주세요.")
-			$("input[name='btitle']").focus();
-			return false;
-		} else if ($("textarea[name='bcontent']").val() == ""){
-			alert("내용을 입력해주세요.")
-			$("textarea[name='bcontent']").focus();
+
+		} else if ($("input[name='title']").val() == "") {
+			alert("제목을 입력해주세요.");
+			$("input[name='title']").focus();
+
 			return false;
 		}
+		/*
+		} else if ($("textarea[name='content']").val() == ""){
+			alert("내용을 입력해주세요.");
+			$("textarea[name='content']").focus();
+			
+			return false;
+		}
+		*/
 	});
 
 	// 취소 버튼 이벤트
 	$('button[name="cancel"]').on("click", function() {
 		const URLSearch = new URLSearchParams(location.search);
-		console.log(URLSearch.get('f'));
-		if (URLSearch.get('f') == "up") {
-			location.href = "notice_content.do";
+		if (window.location.href.indexOf("update") > -1) {
+			location.replace("notice_content.do?no=" + URLSearch.get('no'));
 		} else {
 			location.href = "notice_list.do";
 		}
+	});
+	
+	// 파일 버튼 이벤트
+	$('button[name="file"]').on("click", function() {
+		$('#upload-hidden').click();
 	});
 	
 	// file
@@ -87,6 +109,18 @@ $(document).ready(function() {
 
 		if (fileType.startsWith("image/")) { 
 			$('#upload-name').val(file.name);
+
+			let output = "<button type='button' id='btn-style' name='filedel'>취소</button>";
+			$('span').before(output);
+			$("#filebox").css("margin-right", "78px");
+				// 파일 취소 버튼 이벤트
+			$('#filebox button[name="filedel"]').on("click", function() {
+				$('#upload-hidden').val(null);
+				$('#upload-name').val("");
+				$('button[name="filedel"]').remove();
+				$("#filebox").css("margin-right", "164px");
+			});
+			
 		} else {
 			alert("이미지만 선택 가능합니다.");
 			$('#upload-hidden').val(null);
@@ -99,7 +133,7 @@ $(document).ready(function() {
 	 */
 	// 수정 버튼 이벤트
 	$('button[name="update"]').on("click", function() {
-		let no = $("input[name='no']").val();
+		let no = $("input[name='post_id']").val();
 		location.href = "notice_update.do?no=" + no;
 	})
 

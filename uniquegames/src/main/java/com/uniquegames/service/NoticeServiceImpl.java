@@ -6,9 +6,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -77,13 +74,8 @@ public class NoticeServiceImpl implements NoticeService {
 	public NoticeVo getNoticeContent(String no) {
 		NoticeVo noticeVo = noticeDao.select(no);
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		if (noticeVo != null) {
-			NoticeVo fileVo = noticeDao.fileSelect(noticeVo.getPost_id());
 
-			if (fileVo != null) {
-				noticeVo.setImage_id(fileVo.getImage_id());
-				noticeVo.setUpload_file(fileVo.getUpload_file());
-			}
+		if (noticeVo != null) {
 
 			noticeDao.hitsCount(no);
 			noticeVo.setNotice_hits(noticeVo.getNotice_hits() + 1);
@@ -101,8 +93,6 @@ public class NoticeServiceImpl implements NoticeService {
 	public int insert(NoticeVo noticeVo) {
 
 		int insResult = noticeDao.insert(noticeVo);
-		System.out.println("postid = " + noticeVo.getPost_id());
-		System.out.println("imageid = " + noticeVo.getImage_id());
 		if (noticeVo.getImage_id() != null) {
 			noticeDao.insertFile(noticeVo);
 		}
@@ -119,11 +109,13 @@ public class NoticeServiceImpl implements NoticeService {
 		int result = noticeDao.update(noticeVo);
 
 		if (noticeVo.getImage_id() != null) {
-			
+
 			if (noticeDao.fileCheck(noticeVo) == 1) {
 				noticeDao.updateFile(noticeVo);
+
 			} else {
 				noticeDao.update_insertFile(noticeVo);
+
 			}
 		}
 
@@ -137,6 +129,12 @@ public class NoticeServiceImpl implements NoticeService {
 	public int delete(String no) {
 
 		return noticeDao.delete(no);
+	}
+
+	@Override
+	public int deleteList(String[] list) {
+
+		return noticeDao.deleteList(list);
 	}
 
 }

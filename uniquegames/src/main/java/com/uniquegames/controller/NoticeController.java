@@ -2,14 +2,12 @@ package com.uniquegames.controller;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -233,5 +231,16 @@ public class NoticeController {
 		String result = commentService.delete(no);
 
 		return result;
+	}
+	
+	/**
+	 * board_manage.do 리스트 선택 삭제 처리
+	 */
+	@RequestMapping(value = "board_manage.do", method = RequestMethod.POST)
+	public String boardManage(String[] list) {
+		
+		noticeService.deleteList(list);
+		
+		return "redirect:/notice_list.do";
 	}
 }

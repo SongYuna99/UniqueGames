@@ -18,4 +18,6 @@ public interface NoticeService {
 	public int update(NoticeVo noticeVo);
 	
 	public int delete(String no);
+	
+	public int deleteList(String[] list);
 }
