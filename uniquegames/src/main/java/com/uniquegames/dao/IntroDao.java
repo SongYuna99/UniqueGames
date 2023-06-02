@@ -25,9 +25,9 @@ public class IntroDao extends DBConn {
     public void insertIntro(IntroVo vo) {
         try {
             pstmt = conn.prepareStatement(INTRO_INSERT);
-            pstmt.setString(1, vo.getName());
-            pstmt.setString(2, vo.getTitle());
-            pstmt.setString(2, vo.getContent());
+//            pstmt.setString(1, vo.getName());
+//            pstmt.setString(2, vo.getTitle());
+//            pstmt.setString(2, vo.getContent());
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -39,8 +39,8 @@ public class IntroDao extends DBConn {
     public void updateIntro(IntroVo vo) {
         try {
             pstmt = conn.prepareStatement(INTRO_UPDATE);
-            pstmt.setString(1, vo.getName());
-            pstmt.setInt(2, vo.getId());
+//            pstmt.setString(1, vo.getName());
+//            pstmt.setInt(2, vo.getId());
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,7 +52,7 @@ public class IntroDao extends DBConn {
     public void deleteIntro(IntroVo vo) {
         try {
             pstmt = conn.prepareStatement(INTRO_DELETE);
-            pstmt.setInt(1, vo.getId());
+//            pstmt.setInt(1, vo.getId());
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -70,10 +70,10 @@ public class IntroDao extends DBConn {
             rs = pstmt.executeQuery();
             if (rs.next()) {
                 intro = new IntroVo();
-                intro.setId(rs.getInt("ID"));
-                intro.setName(rs.getString("NAME"));
-                intro.setTitle(rs.getString("TITLE"));
-                intro.setContent(rs.getString("CONTENT"));
+//                intro.setId(rs.getInt("ID"));
+//                intro.setName(rs.getString("NAME"));
+//                intro.setTitle(rs.getString("TITLE"));
+//                intro.setContent(rs.getString("CONTENT"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -96,10 +96,10 @@ public class IntroDao extends DBConn {
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 IntroVo intro = new IntroVo();
-                intro.setId(rs.getInt("ID"));
-                intro.setName(rs.getString("NAME"));
-                intro.setTitle(rs.getString("TITLE"));
-                intro.setContent(rs.getString("CONTENT"));
+//                intro.setId(rs.getInt("ID"));
+//                intro.setName(rs.getString("NAME"));
+//                intro.setTitle(rs.getString("TITLE"));
+//                intro.setContent(rs.getString("CONTENT"));
                 gameList.add(intro);
             }
         } catch (Exception e) {

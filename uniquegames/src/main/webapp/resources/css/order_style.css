@@ -5,7 +5,7 @@
 }
 
 /******* Base *******/
-h1, #div-gameList, #order-complete, #div-info , #div-price , #div-button {
+h1, #div-gameList, #order-complete, #div-info , #div-price , #div-button, #div-nothing {
 	margin: auto;
 	width: 1100px;
 }
@@ -57,7 +57,14 @@ select {
 	text-align: center;
 }
 
+#p-nothing {
+	margin-bottom: 200px;
 
+	text-align: center;
+	font-family:"YouandiModern", sans-serif;
+	font-size: 25px;
+	color: #2B2B2B;
+}
 
 /******* Table *******/
 #div-table {
@@ -113,6 +120,14 @@ select {
 	color: #000000;
 }
 
+#table-gameList {
+	margin-bottom: 100px;
+}
+
+#div-price {
+	margin-bottom: 200px;
+}
+
 /******* Button *******/
 #btn-deleteAll, #btn-deleteSelected, #btn-deleteOne {
 	padding: 3px 14px;
@@ -124,7 +139,7 @@ select {
 	cursor: pointer;
 }
 
-#btn-cart, #btn-order, #btn-main, #btn-list, #btn-method, #btn-modal {
+#btn-cart, #btn-order, #btn-main, #btn-list, #btn-method, #btn-modal, #btn-goCart {
 	padding: 12px 80px;
 	border: none;
 	border-radius: 3px;
@@ -161,15 +176,18 @@ select {
 	background: #2C2C2C;
 }
 
-#checkOne {
+input[name="checkOne"] {
 	width: 20px;	height: 20px;
 	appearance: none;
 	border: 1px solid #959595;
 	border-radius: 0px;
 	cursor: pointer;
 }
-#checkOne:checked {
+input[name="checkOne"]:checked {
 	appearance: auto;
+}
+#div-agreement input[name="checkOne"] {
+	border: none;
 }
 
 /******* a *******/
