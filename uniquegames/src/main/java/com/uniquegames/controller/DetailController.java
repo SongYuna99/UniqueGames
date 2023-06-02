@@ -6,11 +6,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -18,9 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
  * 회사 소개 페이지 컨트롤러
  * CRUD 메소드 구현
  */
-@Controller
-@SessionAttributes("game")
-@RequestMapping(value = "/detail")
 public class DetailController {
 //    @ModelAttribute("conditonMap")
 //    public Map<String,String> searchConditionMap(){
@@ -40,7 +35,7 @@ public class DetailController {
      * @param companyId 회사 소개글 인덱스
      * @return 회사 상세페이지 리턴
      */
-    @RequestMapping(value = "/{companyId}")
+    @RequestMapping(value = "/{companyId}",method = RequestMethod.GET)
     public String goDetail(@PathVariable int companyId) {
         companyServiceImpl.getIntro(companyId);
         return "detail/detail";
@@ -50,55 +45,53 @@ public class DetailController {
      * @param companyId 회사 소개글 인덱스
      * @return 회사 소개페이지 리턴
      */
-    @RequestMapping(value = "/{companyId}", method = RequestMethod.POST)
+/*    @RequestMapping(value = "/{companyId}", method = RequestMethod.POST)
     public String goCompany(@PathVariable int companyId) {
         companyServiceImpl.getIntro(companyId);
         return "detail/company";
-    }
+    }*/
 
-//    /**
-//     * @param vo 회사소개 저장객체
-//     * @return
-//     * @throws IOException 예외처리
-//     */
-//    @RequestMapping(value = "/insertIntro",method = RequestMethod.GET)
+    /**
+     * @param vo 회사소개 저장객체
+     * @return
+     * @throws IOException 예외처리
+     */
+//    @RequestMapping(value = "/insertIntro.do",method = RequestMethod.GET)
 //    public String insertIntro(IntroVo vo) throws IOException {
 //        System.out.println("글 등록 처리");
-//        //파일 업로드 처리
-//        MultipartFile uploadFile = vo.getUploadFile();
 //
-//        if(uploadFile!=null && !uploadFile.isEmpty()){
-//            String fileName = uploadFile.getOriginalFilename();
-//            uploadFile.transferTo(new File("C:/Users/jeon/Desktop" + fileName));
-//        }
-//        companyServiceImpl.insertIntro(vo);
-//        if(vo.getName() == null)
-//            return "detail/company_regi";
-//        else
-//            return "redirect:main/allList";
+//        return "detail/company_regi";
+//
 //    }
 
- /*
-    @RequestMapping(value = "/order", method = RequestMethod.GET)
-    public String goDonate(){
-        return "order/order";
+    @RequestMapping(value = "/insertIntro.do")
+    public String insertIntro(IntroVo vo) throws IOException {
+        System.out.println("글 등록 처리");
+        //파일 업로드 처리
+        MultipartFile uploadFile = vo.getUploadFile();
+
+        if(uploadFile!=null && !uploadFile.isEmpty()){
+            String fileName = uploadFile.getOriginalFilename();
+            uploadFile.transferTo(new File("C:/Users/jeon/Desktop" + fileName));
+        }
+//        if(vo.getTitle().equals("")){
+//            throw new IllegalArgumentException("제목은 반드시 입력해야 합니다.");
+//        }
+
+        if(vo.getName() == null)
+            return "detail/company_regi";
+        else{
+            companyServiceImpl.insertIntro(vo);
+            return "redirect:main/allList";
+        }
+
     }
-    @RequestMapping(value = "/insertIntro")
-    public String insertIntro(IntroVo vo){
-        System.out.println("게임 등록");
-        companyServiceImpl.insertIntro(vo);
-//        if(vo.getWriter() == null)
-//            return "insertIntro";company
-//        else
-        return "redirect:main/allList";
-    }
-*/
-    @RequestMapping(value = "/updateIntro")
+    @RequestMapping(value = "/updateIntro.do")
     public void updateIntro(IntroVo vo){
         companyServiceImpl.updateIntro(vo);
     }
 
-    @RequestMapping(value = "/deleteIntro")
+    @RequestMapping(value = "/deleteIntro.do")
     public void deleteIntro(IntroVo vo){
         companyServiceImpl.deleteIntro(vo);
     }
@@ -111,7 +104,7 @@ public class DetailController {
 //        return company;
 //    }
 
-    @RequestMapping(value = "/searchIntroList")
+    @RequestMapping(value = "/searchIntroList.do")
     public List<IntroVo> searchIntroList(){
         return companyServiceImpl.getIntroList();
     }

@@ -24,8 +24,8 @@ public class LikeController {
         /*
         MemberVo member = (MemberVo) session.getAttribute("member");
         if (member == null) {
-            model.setViewName("redirect:/login");
-            return model;
+            com.uniquegames.model.setViewName("redirect:/login");
+            return com.uniquegames.model;
         }
 
         int memberId = member.getId();
@@ -34,12 +34,12 @@ public class LikeController {
 
         if (hasLiked) {
             likeInfoDao.removeLikeInfo(memberId, gameId);
-            model.addObject("message", "좋아요가 취소되었습니다.");
+            com.uniquegames.model.addObject("message", "좋아요가 취소되었습니다.");
         } else {
             likeInfoDao.addLikeInfo(memberId, gameId);
-            model.addObject("message", "좋아요가 추가되었습니다.");
+            com.uniquegames.model.addObject("message", "좋아요가 추가되었습니다.");
         }
-        model.setViewName("redirect:/game/details?gameId=" + gameId);*/
+        com.uniquegames.model.setViewName("redirect:/game/details?gameId=" + gameId);*/
         return model;
     }
 }
