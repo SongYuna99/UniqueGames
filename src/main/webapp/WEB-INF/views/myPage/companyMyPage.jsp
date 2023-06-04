@@ -14,7 +14,7 @@
 	<script>
 	
 	$(document).ready(function(){
-		var password = "${memberVo.password}";
+		var password = "${companyVo.password}";
 		
 		$("#button-gradient").click(function(){
 			if($("input[name='password']").val()==""){
@@ -52,10 +52,6 @@
 			}else if($("input[name='email2']").val()=="" && $("#selectbox-email").val()=="default"){
 				alert("이메일 주소를 전부 작성해주세요");
 				$("input[name='email2']").focus();
-				return false;
-			}else if($("#selectbox-mobile").val()=="default") {
-				alert("통신사를 선택해주세요");
-				$("#selectbox-mobile").focus();
 				return false;
 			}else if($("#selectbox-phone").val()=="default") {
 				alert("휴대전화는 필수 입력 항목입니다");
@@ -101,6 +97,12 @@
 			}
 			
 		});
+		
+		/* else if($("#selectbox-mobile").val()=="default") {
+			alert("통신사를 선택해주세요");
+			$("#selectbox-mobile").focus();
+			return false;
+		} */
 	});
 	</script>
 </head>
@@ -118,17 +120,16 @@
 	</section>
 	<section id="content-1">
 		<p id="intro">마이페이지</p>
-		<form action="myPage_proc.do" name="myPageForm" method="post" id="content-myPage">
+		<form action="companyMyPage_proc.do" name="companyMyPageForm" method="post" id="content-myPage">
 			<div>
 				<ul>
 					<li>
 						<p id="label-dot">*</p>
-						<label>아이디</label>
+						<label>회사 아이디</label>
 					</li>
 					<li>
-						<input type="text" id="input-common" name="member_id" value="${memberVo.member_id }" disabled>
-						<input type="hidden" name="member_id" value="${memberVo.member_id }">
-						${memberVo.password }
+						<input type="text" id="input-common" name="company_id" value="${companyVo.company_id }" disabled>
+						<input type="hidden" name="company_id" value="${companyVo.company_id }">
 					</li>
 					<li>
 						<p id="label-dot">*</p>
@@ -149,21 +150,21 @@
 						<label>이름</label>
 					</li>
 					<li>
-						<input type="text" id="input-common" name="name" value="${memberVo.name }" disabled>
+						<input type="text" id="input-common" name="name" value="${companyVo.name }" disabled>
 					</li>
 					<li>
 						<p id="label-dot">*</p>
 						<label>이메일</label>
 					</li>
 					<li>
-						<input type="text" id="input-email" name="email1" value="${memberVo.email1 }">
+						<input type="text" id="input-email" name="email1" value="${companyVo.email1 }">
 						@
-						<input type="text" id="input-email" name="email2" value="${memberVo.email2 }">
+						<input type="text" id="input-email" name="email2" value="${companyVo.email2 }">
 						<select name="email3" id="selectbox-email">
 							<option value="">선택</option>
-							<option value="naver.com" ${memberVo.email3  == 'naver.com' ? 'selected' : ''}>naver.com</option>
-							<option value="gmail.com" ${memberVo.email3  == 'gmail.com' ? 'selected' : ''}>gmail.com</option>
-							<option value="daum.net" ${memberVo.email3  == 'daum.net' ? 'selected' : ''}>daum.net</option>
+							<option value="naver.com" ${companyVo.email3  == 'naver.com' ? 'selected' : ''}>naver.com</option>
+							<option value="gmail.com" ${companyVo.email3  == 'gmail.com' ? 'selected' : ''}>gmail.com</option>
+							<option value="daum.net" ${companyVo.email3  == 'daum.net' ? 'selected' : ''}>daum.net</option>
 							<option value="direct">직접입력</option>
 						</select>
 						<span id="emailMsg"></span>
@@ -172,45 +173,47 @@
 						<label>주소</label>
 					</li>
 					<li>
-						<input type="text" id="input-addr1" name="addr1" value="${memberVo.addr1 }">
+						<input type="text" id="input-addr1" name="addr1" value="${companyVo.addr1 }">
 						<button type="button" id="address-btn-style">검색</button>
 					</li>
 					<li>
 						<label>상세 주소</label>
 					</li>
 					<li>
-						<input type="text" id="input-common" name="addr2" value="${memberVo.addr2 }">
+						<input type="text" id="input-common" name="addr2" value="${companyVo.addr2 }">
 					</li>
 					<li>
 						<p id="label-dot">*</p>
 						<label>휴대전화</label>
 					</li>
 					<li>
-						<select name="tel" id="selectbox-mobile">
+						<%-- <select name="tel" id="selectbox-mobile">
 							<option value=""></option>
-							<option value="SKT" ${memberVo.tel == 'SKT' ? 'selected' : '' }>SKT</option>
-							<option value="KT" ${memberVo.tel == 'KT' ? 'selected' : '' }>KT</option>
-							<option value="LGU+" ${memberVo.tel == 'LGU+' ? 'selected' : '' }>LGU+</option>
-							<option value="MVNO" ${memberVo.tel == 'MVNO' ? 'selected' : '' }>알뜰폰</option>
-						</select>
+							<option value="SKT" ${companyVo.tel == 'SKT' ? 'selected' : '' }>SKT</option>
+							<option value="KT" ${companyVo.tel == 'KT' ? 'selected' : '' }>KT</option>
+							<option value="LGU+" ${companyVo.tel == 'LGU+' ? 'selected' : '' }>LGU+</option>
+							<option value="MVNO" ${companyVo.tel == 'MVNO' ? 'selected' : '' }>알뜰폰</option>
+						</select> 
 						<select name="phone1" id="selectbox-phone">
 							<option value="">선택</option>
-							<option value="010" ${memberVo.phone1 == '010' ? 'selected' : ''}>010</option>
-    						<option value="011" ${memberVo.phone1 == '011' ? 'selected' : ''}>011</option>
-    						<option value="012" ${memberVo.phone1 == '012' ? 'selected' : ''}>012</option>
+							<option value="010" ${companyVo.phone1 == '010' ? 'selected' : ''}>010</option>
+    						<option value="011" ${companyVo.phone1 == '011' ? 'selected' : ''}>011</option>
+    						<option value="012" ${companyVo.phone1 == '012' ? 'selected' : ''}>012</option>
 						</select>
+						--%>
+						<input type="text" id="input-phone" name="phone1" value="${companyVo.phone1 }">
 						-
-						<input type="text" id="input-phone" name="phone2" value="${memberVo.phone2 }">
+						<input type="text" id="input-phone" name="phone2" value="${companyVo.phone2 }">
 						-
-						<input type="text" id="input-phone" name="phone3" value="${memberVo.phone3 }">
+						<input type="text" id="input-phone" name="phone3" value="${companyVo.phone3 }">
 						<span id="phoneMsg"></span>
 					</li>
 					<li>
-						<button type="submit" id="button-gradient">수정하기</button>
+						<button type="button" id="button-gradient">수정하기</button>
 					</li>
 					<li>
-						<a href="deletePwd.do?member_id=${memberVo.member_id }" id="link-deleteAccount">
-							<span name="withdraw" id="span-deleteAccount">회원탈퇴 ></span>
+						<a href="deletePwd.do?company_id=${companyVo.company_id }" id="link-deleteAccount">
+							<span id="span-deleteAccount">회원탈퇴 ></span>
 						</a>
 					</li>
 				</ul>

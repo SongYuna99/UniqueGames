@@ -1,6 +1,7 @@
 package com.uniquegames.dao;
 
 import com.uniquegames.vo.CompanyVo;
+import com.uniquegames.vo.MemberVo;
 
 public class CompanyDao extends DBConn{
 
@@ -93,5 +94,75 @@ public class CompanyDao extends DBConn{
 		
 		
 		return result;
+	}
+	
+	public int select(String company_id, String name, String phone_num) {
+		int result=0;
+		String sql = "select count(*) from company where company_id=? and name=? and phone_num=?";
+		getPreparedStatement(sql);
+		
+		try {
+			
+			pstmt.setString(1, company_id);
+			pstmt.setString(2, name);
+			pstmt.setString(3, phone_num);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public int changeCpassword(String company_id, String cnewpassword) {
+		int result=0;
+		String sql = "update company set password=? where company_id=?";
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, cnewpassword);
+			pstmt.setString(2, company_id);
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	/**companyMypage session id information*/
+	public CompanyVo select(Object company_id) {
+		CompanyVo companyVo = null;
+		String sql = "select company_id, password, name, email, phone_num, addr from company where company_id=?";
+		//tel
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, (String)company_id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				companyVo = new CompanyVo();
+				
+				companyVo.setCompany_id(rs.getString(1));
+				companyVo.setPassword(rs.getString(2));
+				companyVo.setName(rs.getString(3));
+				companyVo.setEmail(rs.getString(4));
+				companyVo.setPhone_num(rs.getString(5));
+				companyVo.setAddr(rs.getString(6));
+				//companyVo.setTel(rs.getString(7));
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return companyVo;
 	}
 }

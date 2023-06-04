@@ -13,28 +13,29 @@
 
 		$(document).ready(function(){
 			
+			var password = "${memberVo.password}";
+			
 		$("#button-gradient-delete").click(function(){
 				
-			if($("input[name='member_id']").val()==""){
-				alert("아이디를 입력하세요");
-				$("input[name='member_id']").focus();
-				return false;
-			}else if($("input[name='password']").val()=="") {
+			if($("input[name='password']").val()=="") {
 				alert("비밀번호를 입력하세요");
 				$("input[name='password']").focus();
 				return false;
 			}else {
+				alert($("input[name='password']").val());
 				$.ajax({
-					url : "delete_check.do?member_id="+$("input[name='member_id']").val()+"&password="+$("input[name='password']").val(),
+					url : "delete_check.do?member_id="+$("input[name='member_id']").val()+"&password="+password,
 					success : function(result) {
-						let jdata = JSON.parse(result);
-						if($("input[name='password']").val() === jdata.password){
-							alert(jdata.password);
+						alert(result);
+						
+						if($("input[name='password']").val() === password){
+							alert(password);
 							$("#modal2").css("display", "block");
 							$("#delete-member-id").html(jdata.member_id);
 							$("#delete-id").html(jdata.member_id);
 							$("#agreement-content1").html($(".deleteComplete").html());	
 						}else {
+							alert(password);
 							alert("비밀번호가 일치하지 않습니다");
 						}
 							

@@ -20,7 +20,7 @@ public class DeleteAccountController {
 		ModelAndView mav = new ModelAndView();
 		MemberDao memberDao = new MemberDao();
 		MemberVo memberVo = memberDao.select(member_id);
-		
+		System.out.println("--------------------"+ memberVo.getPassword());
 		mav.addObject("memberVo", memberVo);
 		mav.setViewName("/deleteAccount/deletePwd");
 		return mav;
@@ -28,15 +28,15 @@ public class DeleteAccountController {
 	
 	@RequestMapping(value="/delete_check.do", method=RequestMethod.GET)
 	@ResponseBody
-	public String delete_check(MemberVo memberVo) {
-		
+	public String delete_check(String member_id, String password) {
+		System.out.println("1-1-1-1-1-1-1-1-1-1-"+password);
 		MemberDao memberDao = new MemberDao();
-		int result = memberDao.deleteCheck(memberVo);
+		int result = memberDao.deleteCheck(member_id, password);
 		
 		JsonObject jobj = new JsonObject();
 		
-		jobj.addProperty("member_id", memberVo.getMember_id());
-		jobj.addProperty("password", memberVo.getPassword());
+		jobj.addProperty("member_id", member_id);
+		jobj.addProperty("password", password);
 		jobj.addProperty("result", result);
 		
 		return new Gson().toJson(jobj);

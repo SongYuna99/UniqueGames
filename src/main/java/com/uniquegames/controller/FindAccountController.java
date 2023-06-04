@@ -17,6 +17,11 @@ public class FindAccountController {
 		return "/findAccount/findId";
 	}
 	
+	@RequestMapping(value="/findPwd.do", method=RequestMethod.GET)
+	public String findPwd() {
+		return "/findAccount/findPwd";
+	}
+	
 	@RequestMapping("/findCompany.do")
 	public String findCompany() {
 		return "/findAccount/findCompany";
@@ -55,6 +60,7 @@ public class FindAccountController {
 		int result = memberDao.select(member_id, name, phone_num);
 		
 		if(result == 1) {
+			mav.addObject("member_id", member_id);
 			mav.setViewName("/findAccount/newPassword");
 		}else {
 			mav.addObject("find_result", "fail");
@@ -64,9 +70,53 @@ public class FindAccountController {
 		return mav;
 	}
 	
-	
-	@RequestMapping(value="/findPwd.do", method=RequestMethod.GET)
-	public String findPwd() {
-		return "/findAccount/findPwd";
+	@RequestMapping(value="/cfindPwd_check.do", method=RequestMethod.POST)
+	public ModelAndView cfindPwd_check(String company_id, String name, String phone_num) {
+		ModelAndView mav = new ModelAndView();
+		CompanyDao companyDao = new CompanyDao();
+		int result= companyDao.select(company_id, name, phone_num);
+		
+		if(result == 1) {
+			mav.addObject("company_id", company_id);
+			mav.setViewName("/findAccount/cnewPassword");
+		}else {
+			mav.addObject("find_result", "fail");
+			mav.setViewName("/findAccount/findCompany");
+		}
+		
+		return mav;
 	}
+	
+	@RequestMapping(value="/mChangePassword.do", method=RequestMethod.POST)
+	public String Mnewpassword(String member_id, String mnewpassword) {
+		String viewName="";
+		MemberDao memberDao = new MemberDao();
+		int result = memberDao.changeMpassword(member_id, mnewpassword);
+		
+		if(result==1) {
+			viewName="redirect:/login.do";
+		}else {
+			System.out.println(mnewpassword);
+			System.out.println(member_id);
+			System.out.println("비밀번호 변경 실패");
+		}
+		return viewName;
+	}
+	
+	@RequestMapping(value="/cChangePassword.do", method=RequestMethod.POST)
+	public String Cnewpassword(String company_id, String cnewpassword) {
+		String viewName="";
+		CompanyDao companyDao = new CompanyDao();
+		int result = companyDao.changeCpassword(company_id, cnewpassword);
+		
+		if(result==1) {
+			viewName="redirect:/login.do";
+		}else {
+			System.out.println("비밀번호 변경 실패");
+		}
+		return viewName;
+	}
+	
+	
+	
 }

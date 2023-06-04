@@ -1378,7 +1378,7 @@ td#payment-totalPrice {
 
 /* SignUp; email selectbox style */
 #selectbox-email,#company-selectbox-email {
-	width: 116px;
+	width: 106px;
 	padding: 22px 0 20px 0;
 	border: 1px solid lightgray;
 	text-indent: 10px;

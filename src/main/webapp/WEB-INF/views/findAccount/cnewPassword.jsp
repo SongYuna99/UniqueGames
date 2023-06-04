@@ -20,15 +20,15 @@
 		</div>
 	</section>
 	<section id="content-1">
-		<p id="intro">개인 회원</p>
-		<form action="mChangePassword.do" name="mChangePassword" method="post" id="newPasswordForm">
+		<p id="intro">법인 회원</p>
+		<form action="cChangePassword.do" name="cchangePassword" method="post" id="newPasswordForm">
 			<ul>
 				<li>
-					<input type="password" id="input-common" name="mnewpassword" placeholder="새로운 비밀번호">
-					<input type="hidden" name="member_id" value="${member_id }">
+					<input type="password" id="input-common" name="cnewpassword" placeholder="새로운 비밀번호">
+					<input type="hidden" name="company_id" value="${company_id }">
 				</li>
 				<li>
-					<input type="password" id="input-common" name="mnewpassword-check" placeholder="새로운 비밀번호 확인">
+					<input type="password" id="input-common" name="cnewpassword-check" placeholder="새로운 비밀번호 확인">
 					<span id="msgPassword"></span>
 				</li>
 				<li>

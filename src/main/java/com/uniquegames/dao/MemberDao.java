@@ -87,17 +87,17 @@ public class MemberDao extends DBConn {
 		return result;
 	}
 	/**delete Account Ajax*/
-	public int deleteCheck(MemberVo memberVo) {
+	public int deleteCheck(String member_id, String password) {
 		int result=0;
 		String sql = "delete from member where member_id=? and password=?";
 		getPreparedStatement(sql);
-		
+		System.out.println("MemberDao에서 확인하는 패스워드=" + password);
 		try {
-			pstmt.setString(1, memberVo.getMember_id());
-			pstmt.setString(2, memberVo.getPassword());
+			pstmt.setString(1, member_id);
+			pstmt.setString(2, password);
 			
 			result = pstmt.executeUpdate();
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -179,22 +179,21 @@ public class MemberDao extends DBConn {
 	/**mypage session id information update*/
 	public int update(MemberVo memberVo) {
 		int result=0;
-		String sql = "update member set email1=?, email2=?, addr1=?, addr2=?, phone1=?, phone2=?, phone3=? where member_id=? and password=?";
+		String sql = "update member set email=?, addr=?, phone_num=? where member_id=? and password=?";
 		getPreparedStatement(sql);
 		
 		try {
-			pstmt.setString(1, memberVo.getEmail1());
-			pstmt.setString(2, memberVo.getEmail2());
-			pstmt.setString(3, memberVo.getAddr1());
-			pstmt.setString(4, memberVo.getAddr2());
-			pstmt.setString(5, memberVo.getPhone1());
-			pstmt.setString(6, memberVo.getPhone2());
-			pstmt.setString(7, memberVo.getPhone3());
-			pstmt.setString(8, memberVo.getMember_id());
-			pstmt.setString(9, memberVo.getPassword());
+			pstmt.setString(1, memberVo.getEmail());
+			pstmt.setString(2, memberVo.getAddr());
+			pstmt.setString(3, memberVo.getPhone_num());
+			pstmt.setString(4, memberVo.getMember_id());
+			pstmt.setString(5, memberVo.getPassword());
 			
 			result = pstmt.executeUpdate();
+			System.out.println(memberVo.getMember_id());
+			System.out.println(memberVo.getPassword());
 			System.out.println(result);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -247,7 +246,42 @@ public class MemberDao extends DBConn {
 		return result;
 	}
 	
+	/*********************이메일 중복확인****************************************/
+	public int emailCheck(String email1, String email2) {
+		int result=0;
+		String sql = "select count(*) from member where email1=? and email2=?";
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, email1);
+			pstmt.setString(2, email2);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
-	
+	public int changeMpassword(String member_id, String mnewpassword) {
+		int result=0;
+		String sql = "update member set password=? where member_id=?";
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, mnewpassword);
+			pstmt.setString(2, member_id);
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+		
+	}
 
 }

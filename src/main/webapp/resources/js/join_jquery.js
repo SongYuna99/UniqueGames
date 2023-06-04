@@ -48,8 +48,8 @@ $(document).ready(function(){
 			alert("이메일은 필수 입력 항목입니다");
 			$("input[name='email1']").focus();
 			return false;
-		}else if(!emailCheck($("#input-email").val())){
-			alert("이메일은 영문+숫자로 입력해주세요");
+		}else if(!emailCheck($("#input-email1").val())){
+			alert("이메일은 영문 또는 숫자로 4자리 이상 입력해주세요");
 			$("input[name='email1']").focus();
 			return false;
 		}else if($("input[name='email2']").val()=="" && $("#selectbox-email").val()=="default"){
@@ -281,7 +281,7 @@ $(document).ready(function(){
 	});
 	
 	$("input[name='email1']").blur(function(){
-		if($("input[name='email1']").val()==""){
+		if($("input[name='email1']").val()=="" && $("input[name='email2']").val()==""){
 			$("#emailMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
 		}else{
 			

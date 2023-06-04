@@ -3,9 +3,17 @@ package com.uniquegames.vo;
 public class MemberVo {
 	
 	int id;
-	String member_id, password, name, email1, email2, phone1, phone2, phone3, addr1, addr2, tel;
+	String member_id, password, name, email1, email2, email3, phone1, phone2, phone3, addr1, addr2, tel;
 	
-	String email, phone_num, addr;
+	public String getEmail3() {
+		return email3;
+	}
+
+	public void setEmail3(String email3) {
+		this.email3 = email3;
+	}
+
+	String email, phone_num, addr, mnewpassword;
 
 	public int getId() {
 		return id;
@@ -129,7 +137,7 @@ public class MemberVo {
 
 	public String getAddr() {
 		if(addr1!=null) {
-			addr = addr1 +" "+ addr2;
+			addr = addr1 +"   "+ addr2;
 		}
 		return addr;
 	}

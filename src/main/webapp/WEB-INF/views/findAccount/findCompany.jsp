@@ -58,11 +58,11 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		});
 		
-	$("#button-gradient1").click(function(){
+	$("#button-gradient-findPwd").click(function(){
 			
-			if($("input[name='member_id']").val()==""){
+			if($("input[name='company_id']").val()==""){
 				alert("아이디를 입력해주세요");
-				$("input[name='member_id']").focus();
+				$("input[name='company_id']").focus();
 				return false;
 			}else if($("#input-common-name").val()==""){
 				alert("이름을 입력해주세요");
@@ -76,83 +76,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				findPwdForm.submit();
 			}
 		});
-	
-		/* $("#button-gradient1").click(function(){
-			
-			if($("input[name='member_id']").val()==""){
-				alert("아이디를 입력해주세요");
-				$("input[name='member_id']").focus();
-				return false;
-			}else if($("#input-common-phone").val()==""){
-				alert("휴대전화를 입력해주세요");
-				$("#input-common-phone").focus();
-				return false;
-			}else {
-				$.ajax({
-					url : "findPwd_check.do?member_id="+$("input[name='member_id']").val()+"&phone_num="+$("#input-common-phone").val(),
-					success : function(result) {
-						if(result=="") {
-							$("#modal2").show();
-							$("#agreement-content1").html($(".find-pwd-none").html());
-						}else {
-							$("#modal2").show();
-							$("#find-pwd-result").html(result);
-							$("#agreement-content1").html($(".deleteComplete1").html());
-						}
-					}
-				});
-			}
-		}); */
-		/* 아이디 찾기
-		$("input[name='name']").blur(function(){
-			
-			if($("input[name='name']").val()=="") {
-				$("#msgName").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
-			}else {
-				$("#msgName").css("display","none");
-			}
-			
-		});
-		
-		$("input[name='phone_num']").blur(function(){
-			
-			if($("input[name='phone_num']").val()==""){
-				$("#msgPhone").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
-			}else {
-				$("#msgPhone").css("display","none");
-			}
-		});
-		
-		//비밀번호 찾기
-		
-		$("input[name='member_id']").blur(function(){
-			
-			if($("input[name='member_id']").val()=="") {
-				$("#msgId").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
-			}else {
-				$("#msgId").css("display","none");
-			}
-			
-		});
-		
-		$("#input-common-name").blur(function(){
-			
-			if($("#input-common-name").val()==""){
-				$("#msgName1").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
-			}else {
-				$("#msgName1").css("display","none");
-			}
-		});
-		
-		$("#input-common-phone").blur(function(){
-			
-			if($("#input-common-phone").val()==""){
-				$("#msgPhone1").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
-			}else {
-				$("#msgPhone1").css("display","none");
-			}
-		});
-		*/
 		
 		
 		$(document).on("click", "#button-gradient-gotoFind", function(event){
@@ -225,11 +148,11 @@ document.addEventListener('DOMContentLoaded', function() {
 				</ul>
 			</form>
 			
-			<form action="findPwd_check.do" name="findPwdForm" method="post" id="findPwdForm">
+			<form action="cfindPwd_check.do" name="findPwdForm" method="post" id="findPwdForm">
 				<p id="intro-2">비밀번호를 찾으려는 아이디</p>
 				<ul>
 					<li>
-						<input type="text" id="input-common" name="member_id" placeholder="아이디">
+						<input type="text" id="input-common" name="company_id" placeholder="아이디">
 						<span id="msgId"></span>
 					</li>
 					<li>

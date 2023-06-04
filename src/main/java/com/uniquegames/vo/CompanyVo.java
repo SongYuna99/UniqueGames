@@ -3,7 +3,7 @@ package com.uniquegames.vo;
 public class CompanyVo {
 	
 	int id;
-	String company_id, password, name, email1, email2, phone1, phone2, phone3, addr1, addr2;
+	String company_id, password, name, email1, email2, email3, phone1, phone2, phone3, addr1, addr2;
 	
 	String email, phone_num, addr;
 
@@ -13,6 +13,14 @@ public class CompanyVo {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getEmail3() {
+		return email3;
+	}
+
+	public void setEmail3(String email3) {
+		this.email3 = email3;
 	}
 
 	public String getCompany_id() {
@@ -119,7 +127,7 @@ public class CompanyVo {
 
 	public String getAddr() {
 		if(addr1!=null) {
-			addr = addr1+" "+addr2;
+			addr = addr1+"   "+addr2;
 		}
 		return addr;
 	}

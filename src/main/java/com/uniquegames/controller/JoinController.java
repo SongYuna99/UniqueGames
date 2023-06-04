@@ -72,8 +72,18 @@ public class JoinController {
 	@ResponseBody
 	public String c_id_check(String company_id) {
 		
-		CompanyDao memberDao = new CompanyDao();
-		int result = memberDao.idCheck(company_id);
+		CompanyDao companyDao = new CompanyDao();
+		int result = companyDao.idCheck(company_id);
+		
+		return String.valueOf(result);
+	}
+	
+	@RequestMapping(value="/email_check.do", method=RequestMethod.GET)
+	@ResponseBody
+	public String email_check(String email1, String email2) {
+		
+		MemberDao memberDao = new MemberDao();
+		int result = memberDao.emailCheck(email1, email2);
 		
 		return String.valueOf(result);
 	}

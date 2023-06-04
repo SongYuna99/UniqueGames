@@ -80,6 +80,17 @@
 			alert("로그인 실패");
 		}
 		
+		document.addEventListener('DOMContentLoaded', function() {
+            // URL에서 selectedTab 파라미터 값을 가져옴
+            var urlParams = new URLSearchParams(window.location.search);
+            var selectedTab = urlParams.get('selectedTab');
+            
+            // 선택한 탭을 표시
+            if (selectedTab) {
+                document.getElementById(selectedTab).checked = true;
+            }
+        });
+		
 	</script>
 </head>
 <body>
