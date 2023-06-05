@@ -27,7 +27,6 @@
 </head>
 <body>
 	<header>
-		<!-- <iframe src="../main/header.html" scrolling="no" width="100%" height="228px" frameborder=0></iframe> -->
 		<jsp:include page="../main/header.jsp"></jsp:include>
 	</header>
 	<section id="top-bg">

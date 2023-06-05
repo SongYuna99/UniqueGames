@@ -54,16 +54,39 @@
 								<input id="upload-name" value="${noticeVo.image_id}" placeholder="첨부파일" disabled>
 								<button type="button" id="btn-style" name="file">파일 찾기</button>
 								<input type="file" name="file" id="upload-hidden" accept="image/*">
+								<nav id="fileDelbtn"></nav>
 								<span>*이미지는 하나만 선택할 수 있으며, 본문 위에 삽입됩니다.</span>
 							</div>
 						</td>
 					</tr>
 				</table>
 				<input type="hidden" name="post_id" value="${noticeVo.post_id}">
+				<input type="hidden" name="image_id" value="${noticeVo.image_id}">
 			</form>
 		</div>
 	</div>
 	<jsp:include page="../main/footer.jsp"></jsp:include>
+	<script type="text/javascript">
+		let hidden = document.getElementById("upload-hidden");
+		let name = document.getElementById("upload-name");
+		let hidden2 = document.getElementsByName("image_id");
+
+		if ($('#upload-name').val() != "") {
+			let output = "<button type='button' id='btn-style' name='filedel'>취소</button>";
+			$('#fileDelbtn').html(output);
+			$("#filebox").css("margin-right", "78px");
+
+			// 파일 취소 버튼 이벤트
+			$('#filebox button[name="filedel"]').on("click", function() {
+				hidden.value = null;
+				name.value = "";
+				hidden2[0].value = "";
+				$('button[name="filedel"]').remove();
+				$("#filebox").css("margin-right", "164px");
+
+			});
+		}
+	</script>
 </body>
 
 </html>
