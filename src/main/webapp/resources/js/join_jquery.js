@@ -140,6 +140,10 @@ $(document).ready(function(){
 			alert("이메일 주소를 전부 작성해주세요");
 			$("input[name='email2']").focus();
 			return false;
+		}else if($("#company-selectbox-mobile").val()=="default") {
+			alert("통신사를 선택해주세요");
+			$("#company-selectbox-mobile").focus();
+			return false;
 		}else if($("#company-selectbox-phone").val()=="default") {
 			alert("대표 전화는 필수 입력 항목입니다");
 			$("#company-selectbox-phone").focus();
@@ -658,7 +662,17 @@ $(document).on("click", "#button-gradient-home", function(event){
 			});
 
 /*************************************************************************
-						
+				SELECT * FROM MEMBER;
+
+SELECT * FROM COMPANY;
+UPDATE COMPANY SET G_ID='1' WHERE COMPANY_ID='NEXON' AND PASSWORD='test123#';
+SELECT * FROM GAME;
+INSERT INTO GAME (NAME, GAME_GENRE, IMG_PATH, DONATION_STATUS) VALUES ('MAPLE', 'RPG', 'HTTP','1000');
+DESC GAME;
+DESC COMPANY;
+
+SELECT A.NAME COMPANY_NAME, B.NAME GAME_NAME, B.GAME_GENRE FROM COMPANY A, GAME B WHERE A.G_ID=B.ID;
+SELECT B.NAME GAME_NAME FROM COMPANY A, GAME B WHERE A.G_ID = B.ID;		
 *************************************************************************/
 
 

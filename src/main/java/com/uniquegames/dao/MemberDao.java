@@ -179,21 +179,18 @@ public class MemberDao extends DBConn {
 	/**mypage session id information update*/
 	public int update(MemberVo memberVo) {
 		int result=0;
-		String sql = "update member set email=?, addr=?, phone_num=? where member_id=? and password=?";
+		String sql = "update member set email=?, addr=?, phone_num=?, tel=? where member_id=? and password=?";
 		getPreparedStatement(sql);
 		
 		try {
 			pstmt.setString(1, memberVo.getEmail());
 			pstmt.setString(2, memberVo.getAddr());
 			pstmt.setString(3, memberVo.getPhone_num());
-			pstmt.setString(4, memberVo.getMember_id());
-			pstmt.setString(5, memberVo.getPassword());
+			pstmt.setString(4, memberVo.getTel());
+			pstmt.setString(5, memberVo.getMember_id());
+			pstmt.setString(6, memberVo.getPassword());
 			
 			result = pstmt.executeUpdate();
-			System.out.println(memberVo.getMember_id());
-			System.out.println(memberVo.getPassword());
-			System.out.println(result);
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

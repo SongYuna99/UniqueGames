@@ -8,8 +8,8 @@ public class CompanyDao extends DBConn{
 	/**sign up member*/
 	public int insert(CompanyVo companyVo) {
 		int result=0;
-		String sql = "insert into company (company_id, password, name, email,"
-				+ " phone_num, addr) values (?,?,?,?,?,?)";
+		String sql = "insert into company (company_id, password, name, email, tel, "
+				+ " phone_num, addr) values (?,?,?,?,?,?,?)";
 		getPreparedStatement(sql);
 		
 		try {
@@ -17,8 +17,9 @@ public class CompanyDao extends DBConn{
 			pstmt.setString(2, companyVo.getPassword());
 			pstmt.setString(3, companyVo.getName());
 			pstmt.setString(4, companyVo.getEmail());
-			pstmt.setString(5, companyVo.getPhone_num());
-			pstmt.setString(6, companyVo.getAddr());
+			pstmt.setString(5, companyVo.getTel());
+			pstmt.setString(6, companyVo.getPhone_num());
+			pstmt.setString(7, companyVo.getAddr());
 			
 			result = pstmt.executeUpdate();
 			
@@ -138,7 +139,7 @@ public class CompanyDao extends DBConn{
 	/**companyMypage session id information*/
 	public CompanyVo select(Object company_id) {
 		CompanyVo companyVo = null;
-		String sql = "select company_id, password, name, email, phone_num, addr from company where company_id=?";
+		String sql = "select company_id, password, name, email, tel, phone_num, addr from company where company_id=?";
 		//tel
 		getPreparedStatement(sql);
 		
@@ -154,9 +155,9 @@ public class CompanyDao extends DBConn{
 				companyVo.setPassword(rs.getString(2));
 				companyVo.setName(rs.getString(3));
 				companyVo.setEmail(rs.getString(4));
-				companyVo.setPhone_num(rs.getString(5));
-				companyVo.setAddr(rs.getString(6));
-				//companyVo.setTel(rs.getString(7));
+				companyVo.setTel(rs.getString(5));
+				companyVo.setPhone_num(rs.getString(6));
+				companyVo.setAddr(rs.getString(7));
 				
 			}
 		} catch (Exception e) {
@@ -164,5 +165,28 @@ public class CompanyDao extends DBConn{
 		}
 		
 		return companyVo;
+	}
+	
+	public int update(CompanyVo companyVo) {
+		int result=0;
+		String sql = "update company set company_id=?, g_id=?, name=?, email=?, addr=?, tel=?, phone_num=? where company_id=? and password=?";
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, companyVo.getCompany_id());
+			pstmt.setInt(2, companyVo.getG_id());
+			pstmt.setString(3, companyVo.getName());
+			pstmt.setString(4, companyVo.getEmail());
+			pstmt.setString(5, companyVo.getAddr());
+			pstmt.setString(6, companyVo.getTel());
+			pstmt.setString(7, companyVo.getPhone_num());
+			pstmt.setString(8, companyVo.getCompany_id());
+			pstmt.setString(9, companyVo.getPassword());
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

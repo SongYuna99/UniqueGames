@@ -2,10 +2,22 @@ package com.uniquegames.vo;
 
 public class CompanyVo {
 	
-	int id;
-	String company_id, password, name, email1, email2, email3, phone1, phone2, phone3, addr1, addr2;
+	int id, g_id;
+	String company_id, password, name, email1, email2, email3, tel, phone1, phone2, phone3, addr1, addr2;
 	
-	String email, phone_num, addr;
+	
+
+	
+
+	String email, phone_num, addr, cnewpassword;
+
+	public int getG_id() {
+		return g_id;
+	}
+
+	public void setG_id(int g_id) {
+		this.g_id = g_id;
+	}
 
 	public int getId() {
 		return id;
@@ -61,6 +73,14 @@ public class CompanyVo {
 
 	public void setEmail2(String email2) {
 		this.email2 = email2;
+	}
+	
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 
 	public String getPhone1() {
@@ -136,6 +156,13 @@ public class CompanyVo {
 		this.addr = addr;
 	}
 	
+	public String getCnewpassword() {
+		return cnewpassword;
+	}
+
+	public void setCnewpassword(String cnewpassword) {
+		this.cnewpassword = cnewpassword;
+	}
 	
 
 }

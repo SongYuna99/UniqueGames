@@ -32,10 +32,13 @@
 					<span id="msgPassword"></span>
 				</li>
 				<li>
-					<button type="submit" id="button-gradient">수정하기</button>
+					<button type="button" id="button-gradient">수정하기</button>
 				</li>
 			</ul>
 		</form>
 	</section>
+	<footer>
+		<jsp:include page="../main/footer.jsp"></jsp:include>
+	</footer>
 </body>
 </html>

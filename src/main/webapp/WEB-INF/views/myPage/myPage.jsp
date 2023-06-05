@@ -25,10 +25,6 @@
 				alert("비밀번호 확인칸을 입력해주세요");
 				$("input[name='password-check']").focus();
 				return false;
-			}else if($("input[name='password']").val() != $("input[name='password-check']").val()){
-				alert("비밀번호가 서로 동일하지 않습니다");
-				$("input[name='password-check']").focus();
-				return false;
 			}else if($("input[name='password']").val() != password){
 				alert("비밀번호가 일치하지 않습니다");
 				$("input[name='password']").focus();
@@ -101,6 +97,20 @@
 			}
 			
 		});
+		
+		/*change password link click*/
+		$("#link-changePassword").click(function(){
+			
+			if($("input[name='password']").val()==""){
+				alert("비밀번호를 입력해주세요");
+				$("input[name='password']").focus();
+				return false;
+			}else if($("input[name='password']").val() != password){
+				alert("비밀번호가 일치하지 않습니다");
+				$("input[name='password']").focus();
+				return false;
+			}
+		});
 	});
 	</script>
 </head>
@@ -121,16 +131,15 @@
 		<form action="myPage_proc.do" name="myPageForm" method="post" id="content-myPage">
 			<div>
 				<ul>
-					<li>
+					<li id="must-insert">
 						<p id="label-dot">*</p>
 						<label>아이디</label>
 					</li>
 					<li>
 						<input type="text" id="input-common" name="member_id" value="${memberVo.member_id }" disabled>
 						<input type="hidden" name="member_id" value="${memberVo.member_id }">
-						${memberVo.password }
 					</li>
-					<li>
+					<li id="must-insert">
 						<p id="label-dot">*</p>
 						<label>비밀번호</label>
 					</li>
@@ -140,18 +149,18 @@
 						<span id="pwdMsg"></span>
 					</li>
 					<li>
-						<input type="password" id="input-common" name="password-check">
-						<input type="checkbox" id="pwd-check-img-1">
-						<span id="pwdMsg-check"></span>
+						<a href="myPageChangePassword.do?member_id=${memberVo.member_id }" id="link-changePassword">
+							<span>비밀번호 변경 ></span>
+						</a>
 					</li>
-					<li>
+					<li id="must-insert">
 						<p id="label-dot">*</p>
 						<label>이름</label>
 					</li>
 					<li>
 						<input type="text" id="input-common" name="name" value="${memberVo.name }" disabled>
 					</li>
-					<li>
+					<li id="must-insert">
 						<p id="label-dot">*</p>
 						<label>이메일</label>
 					</li>
@@ -181,13 +190,13 @@
 					<li>
 						<input type="text" id="input-common" name="addr2" value="${memberVo.addr2 }">
 					</li>
-					<li>
+					<li id="must-insert">
 						<p id="label-dot">*</p>
 						<label>휴대전화</label>
 					</li>
 					<li>
 						<select name="tel" id="selectbox-mobile">
-							<option value=""></option>
+							<option value="">선택</option>
 							<option value="SKT" ${memberVo.tel == 'SKT' ? 'selected' : '' }>SKT</option>
 							<option value="KT" ${memberVo.tel == 'KT' ? 'selected' : '' }>KT</option>
 							<option value="LGU+" ${memberVo.tel == 'LGU+' ? 'selected' : '' }>LGU+</option>

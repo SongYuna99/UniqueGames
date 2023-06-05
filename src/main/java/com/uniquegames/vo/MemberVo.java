@@ -13,6 +13,14 @@ public class MemberVo {
 		this.email3 = email3;
 	}
 
+	public String getMnewpassword() {
+		return mnewpassword;
+	}
+
+	public void setMnewpassword(String mnewpassword) {
+		this.mnewpassword = mnewpassword;
+	}
+
 	String email, phone_num, addr, mnewpassword;
 
 	public int getId() {

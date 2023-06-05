@@ -6,6 +6,61 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">
+<script src="http://localhost:9000/uniquegames/js/jquery-3.6.4.min.js"></script>
+<script>
+	//현재 비밀번호와 다르게 하는 설정 & 값 입력하라는 유효성 체크
+	$(document).ready(function(){
+		
+		var password = "${password}";
+		
+		
+		$("#button-gradient").click(function(){
+			
+			if($("input[name='mnewpassword']").val()==""){
+				alert("새 비밀번호를 입력하세요");
+				$("input[name='mnewpassword']").focus();
+				return false;
+			}else if($("input[name='mnewpassword-check']").val()==""){
+				alert("새 비밀번호 확인칸을 입력하세요");
+				$("input[name='mnewpassword-check']").focus();
+				return false;
+			}else if($("input[name='mnewpassword']").val() != $("input[name='mnewpassword-check']").val()){
+				alert("비밀번호가 동일하지 않습니다");
+				$("input[name='mnewpassword-check']").focus();
+				return false;
+			}else if($("input[name='mnewpassword']").val()&&$("input[name='mnewpassword-check']").val() === password){
+				alert("기존 비밀번호와 동일하게 변경할 수 없습니다");
+				$("input[name='mnewpassword']").focus();
+				return false;
+			}else {
+				mChangePassword.submit();
+			}
+		
+		});
+		
+		$("#pwd-check-img").change(function(){
+
+			if($("#pwd-check-img").is(":checked") == false) {
+				$("input[name='mnewpassword']").attr("type","password");
+			}else if($("#pwd-check-img").is(":checked") == true) {
+				$("input[name='mnewpassword']").attr("type","text");
+			}
+			
+		});
+		
+		$("#pwd-check-img-1").change(function(){
+
+			if($("#pwd-check-img-1").is(":checked") == false) {
+				$("input[name='mnewpassword-check']").attr("type","password");
+			}else if($("#pwd-check-img-1").is(":checked") == true) {
+				$("input[name='mnewpassword-check']").attr("type","text");
+			}
+			
+		});
+		
+	});
+
+</script>
 </head>
 <body>
 	<header>
@@ -25,17 +80,22 @@
 			<ul>
 				<li>
 					<input type="password" id="input-common" name="mnewpassword" placeholder="새로운 비밀번호">
+					<input type="checkbox" id="pwd-check-img">
 					<input type="hidden" name="member_id" value="${member_id }">
 				</li>
 				<li>
 					<input type="password" id="input-common" name="mnewpassword-check" placeholder="새로운 비밀번호 확인">
+					<input type="checkbox" id="pwd-check-img-1">
 					<span id="msgPassword"></span>
 				</li>
 				<li>
-					<button type="submit" id="button-gradient">수정하기</button>
+					<button type="button" id="button-gradient">수정하기</button>
 				</li>
 			</ul>
 		</form>
 	</section>
+	<footer>
+		<jsp:include page="../main/footer.jsp"></jsp:include>
+	</footer>
 </body>
 </html>

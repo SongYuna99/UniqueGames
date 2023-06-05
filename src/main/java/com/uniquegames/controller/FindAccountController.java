@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.uniquegames.dao.CompanyDao;
 import com.uniquegames.dao.MemberDao;
+import com.uniquegames.vo.MemberVo;
 
 @Controller
 public class FindAccountController {
@@ -88,19 +89,30 @@ public class FindAccountController {
 	}
 	
 	@RequestMapping(value="/mChangePassword.do", method=RequestMethod.POST)
-	public String Mnewpassword(String member_id, String mnewpassword) {
-		String viewName="";
+	public ModelAndView Mnewpassword(String member_id, String mnewpassword) {
+		ModelAndView mav = new ModelAndView();
 		MemberDao memberDao = new MemberDao();
 		int result = memberDao.changeMpassword(member_id, mnewpassword);
 		
 		if(result==1) {
-			viewName="redirect:/login.do";
+			mav.addObject("changePassword_result", "success");
+			mav.setViewName("/login/login");
 		}else {
-			System.out.println(mnewpassword);
-			System.out.println(member_id);
 			System.out.println("비밀번호 변경 실패");
 		}
-		return viewName;
+		return mav;
+	}
+	
+	@RequestMapping(value="/myPageChangePassword.do", method=RequestMethod.GET)
+	public ModelAndView MyPageChangePassword(String member_id) {
+		ModelAndView mav = new ModelAndView();
+		MemberDao memberDao = new MemberDao();
+		MemberVo memberVo = memberDao.select(member_id);
+		
+		mav.addObject("member_id", memberVo.getMember_id());
+		mav.addObject("password", memberVo.getPassword());
+		mav.setViewName("/findAccount/newPassword");
+		return mav;
 	}
 	
 	@RequestMapping(value="/cChangePassword.do", method=RequestMethod.POST)
@@ -117,6 +129,13 @@ public class FindAccountController {
 		return viewName;
 	}
 	
+	@RequestMapping(value="/CompanyPageChangePassword.do", method=RequestMethod.GET)
+	public ModelAndView CompanyPageChangePassword(String company_id) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("company_id", company_id);
+		mav.setViewName("/findAccount/cnewPassword");
+		return mav;
+	}
 	
 	
 }

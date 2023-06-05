@@ -237,12 +237,24 @@
 							<label>대표번호</label>
 						</li>
 						<li>
-							<input type="text" id="company-phone1" name="phone1" tabindex="11">
+							<select id="company-selectbox-mobile" name="tel" tabindex="11">
+								<option value="default">선택</option>
+								<option value="SKT">SKT</option>
+								<option value="KT">KT</option>
+								<option value="LGU+">LGU+</option>
+								<option value="MVNO">알뜰폰</option>
+							</select>
+							<select id="company-selectbox-phone" name="phone1" tabindex="12">
+								<option value="default">선택</option>
+								<option value="010">010</option>
+								<option value="011">011</option>
+								<option value="012">012</option>
+							</select>
 							-
-							<input type="text" id="company-phone2" name="phone2" tabindex="12">
+							<input type="text" id="company-phone2" name="phone2" tabindex="13">
 							-
-							<input type="text" id="company-phone3" name="phone3" tabindex="13">
-							<span id="c-phoneMsg"></span>
+							<input type="text" id="company-phone3" name="phone3" tabindex="14">
+							<span id="phoneMsg"></span>
 						</li>						
 					</ul>
 					<ul>

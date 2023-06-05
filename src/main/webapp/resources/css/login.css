@@ -1378,7 +1378,7 @@ td#payment-totalPrice {
 
 /* SignUp; email selectbox style */
 #selectbox-email,#company-selectbox-email {
-	width: 106px;
+	width: 116px;
 	padding: 22px 0 20px 0;
 	border: 1px solid lightgray;
 	text-indent: 10px;
@@ -1398,13 +1398,6 @@ td#payment-totalPrice {
 	font-size: 16px;
 	text-indent: 10px;
 }
-
-#company-phone1,
-#company-phone2,
-#company-phone3 {
-	width: 123px;
-}
-
 
 #input-phone-company {
 	width: 118px;
@@ -1443,7 +1436,8 @@ td#payment-totalPrice {
 }
 
 /* SignUp, Company-SignUp, myPage; telecom selectbox style */
-#selectbox-mobile {
+#selectbox-mobile,
+#company-selectbox-mobile {
 	width: 70px;
 	height: 43px;
 	border: 1px solid lightgray;
@@ -1456,17 +1450,11 @@ td#payment-totalPrice {
 #company-selectbox-phone {
 	width: 60px;
 	height: 43px;
+	margin-left: 21px;
 	border: 1px solid lightgray;
 	border-radius: 3px;
 }
-#selectbox-phone {
-	margin-left: 21px;
-}
 
-#company-selectbox-phone {
-	width: 120px;	
-
-}
 
 /* SignUp,Company-SignUp; margin between cellphone and agreement radiobox  */
 #agreement-box {
@@ -1619,7 +1607,7 @@ SignUp IdCheck button style*/
 	color: #2E7AF6;
 	text-decoration: none;
 	font-size: 14px;
-	margin: 25px 10px 0 15px;
+	margin: 25px 10px 0 8px;
 }
 /* login; link to find-ID, signUp hover style */
 #link-findAccount:hover, #link-signUp:hover {
@@ -1630,12 +1618,17 @@ SignUp IdCheck button style*/
 
 
 /* myPage; deletePwd link style*/
-#link-deleteAccount {
+#link-deleteAccount,
+#link-changePassword {
 	margin-left: 330px;
 	text-decoration: none;
 	color: #333;
 	font-weight: bold;
 	font-size: 10pt;
+}
+
+#link-changePassword {
+	margin-left: 300px;
 }
 /*findId; findPwd intro*/
 #intro-2 {
@@ -1897,4 +1890,9 @@ c-input-common : login.jsp (link to company findPwd)
 /*Company Sign Up; agreementAll checkbox*/
 #c-chk-circle:checked {
 	background: #2C2C2C;
+}
+
+/*myPage change password link*/
+#changePassword {
+	border: 1px solid red;
 }
