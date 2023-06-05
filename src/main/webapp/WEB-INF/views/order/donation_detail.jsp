@@ -13,7 +13,7 @@
 			showDetails();
 	
 		    function showDetails() {
-		    	let array = $("#select-order").val();		
+		    	let array = $("#select-order").val();	
 				let c_id = $("#c_id").val();
 				
 				$.ajax({
@@ -54,9 +54,9 @@
 							output += '</table>';
 							output += '<div id="div-price">';
 							output += '<table id="cart-price">';
-							output += '<tr><th>월 평균</th><th>총 금액</th></tr>';
+							output += '<tr><th>이번달 예상</th><th>총 금액</th></tr>';
 							output += '<tr>';
-							output += "<td>" + jdata.monthAvg + "</td>";
+							output += "<td>" + jdata.expected + "</td>";
 							output += "<td>" + jdata.totalAmount + "<td>";
 							output += '</tr></table></div>';
 						}
@@ -97,9 +97,9 @@
 		<div id="div-select">
 			<select id="select-order">
 				<option value="orderdate_desc">최근 날짜순</option>
-				<option value="orderdate_acs">오래된 날짜순</option>
-				<option value="amount_acs">높은 후원금순</option>
-				<option value="amount_desc">낮은 후원금순</option>			
+				<option value="orderdate_asc">오래된 날짜순</option>
+				<option value="amount_asc">낮은 후원금순</option>
+				<option value="amount_desc">높은 후원금순</option>			
 			</select>
 		</div>	
 	</div>

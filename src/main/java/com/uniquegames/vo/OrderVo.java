@@ -2,12 +2,20 @@ package com.uniquegames.vo;
 
 public class OrderVo {
 	// Field
-	String orderdate, method, payment_status, gametitle, game_img;
+	String orderdate, method, payment_status, gametitle, game_img, userId;
 	int id, m_id, c_id, g_id, amount, rno;
 
 	// Method
 	public int getRno() {
 		return rno;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public void setRno(int rno) {
