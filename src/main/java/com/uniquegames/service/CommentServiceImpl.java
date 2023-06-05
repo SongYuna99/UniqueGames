@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.uniquegames.dao.CommentDao;
 import com.uniquegames.repository.NoticeMapper;
 import com.uniquegames.vo.CommentVo;
 
