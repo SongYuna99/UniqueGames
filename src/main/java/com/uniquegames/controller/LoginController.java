@@ -63,10 +63,10 @@ public class LoginController {
 		
 		if(member_id != null) {
 			session.invalidate();
-			System.out.println("·Î±×¾Æ¿ô ¼º°ø");
+			System.out.println("ï¿½Î±×¾Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			viewName = "redirect:/index.do";
 		}else {
-			System.out.println("·Î±×¾Æ¿ô ½ÇÆÐ");
+			System.out.println("ï¿½Î±×¾Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}
 		return viewName;
 		*/

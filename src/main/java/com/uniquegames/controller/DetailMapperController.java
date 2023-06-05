@@ -72,7 +72,7 @@ public class DetailMapperController {
         if(introVo.getTitle() == null || introVo.getName() == null)
             return "detail/company_regi";
         else{
-            companyServiceMapper.insertIntro(introVo);
+            companyServiceMapper2.insertIntro(introVo);
             return "redirect:getIntroList.do";
         }
 
