@@ -11,10 +11,12 @@ public class GameVo {
 	String game_genre = "";
 	String image_path = "";
 	String description = "";
+	String like_list = "";
 	int donation_status;
 	int like_count;
 
-
+	public String getLike_list() {return like_list;}
+	public void setLike_list(String like_list) {this.like_list = like_list;}
 	public int getLike_count() {return like_count;}
 	public void setLike_count(int like_count) {this.like_count = like_count;}
 	public int getRno() {return rno;}
