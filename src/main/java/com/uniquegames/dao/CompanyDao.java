@@ -189,4 +189,26 @@ public class CompanyDao extends DBConn{
 		}
 		return result;
 	}
+	
+	public String getGameNameByCID(Object company_id) {
+		String result="";
+		String sql = "select b.name from company a, game b where a.G_ID = b.ID and company_id=?";
+		getPreparedStatement(sql);
+		
+		try {
+			
+			pstmt.setString(1, (String)company_id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result=rs.getString(1);
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

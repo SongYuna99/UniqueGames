@@ -1,5 +1,6 @@
 package com.uniquegames.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -8,10 +9,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.uniquegames.dao.CompanyDao;
 import com.uniquegames.dao.MemberDao;
+import com.uniquegames.service.MemberService;
 import com.uniquegames.vo.MemberVo;
 
 @Controller
 public class FindAccountController {
+	
+	@Autowired
+	private MemberService memberService;
 
 	@RequestMapping(value="/findId.do", method=RequestMethod.GET)
 	public String findId() {
@@ -27,7 +32,7 @@ public class FindAccountController {
 	public String findCompany() {
 		return "/findAccount/findCompany";
 	}
-	
+	/*
 	@RequestMapping(value="/findId_check.do", method=RequestMethod.GET)
 	@ResponseBody
 	public String findId_check(String name, String phone_num) {
@@ -40,6 +45,14 @@ public class FindAccountController {
 		}else {
 			result = companyDao.findIdCheck(name, phone_num);
 		}
+		return result;
+	}
+	*/
+	@RequestMapping(value="/findId_check.do", method=RequestMethod.GET)
+	@ResponseBody
+	public String findId_check(MemberVo memberVo) {
+		String result = memberService.getFindIdResult(memberVo);
+		
 		return result;
 	}
 	

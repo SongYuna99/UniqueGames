@@ -108,6 +108,15 @@
 			}
 		});
 		
+		$("#company-address-btn-style").click(function(){
+			 new daum.Postcode({
+			        oncomplete: function(data) {
+			        	$("#company-addr1").val("("+data.zonecode+") "+data.address);
+			        	$("#company-addr2").focus();
+			        }
+			    }).open();
+		});
+		
 		function emailCheck(asValue){
 			var regex = /[A-za-z0-9]{4,20}$/;
 			
@@ -151,7 +160,7 @@
 						<label>게임명</label>
 					</li>
 					<li>
-						<input type="text" id="input-common" name="g_id" value="">
+						<input type="text" id="input-common" name="game" value="${companyVo.game }">
 					</li>
 					<li id="must-insert">
 						<p id="label-dot">*</p>

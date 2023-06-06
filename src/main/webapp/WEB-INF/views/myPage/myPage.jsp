@@ -16,26 +16,27 @@
 	$(document).ready(function(){
 		var password = "${memberVo.password}";
 		
+		function emailCheck(asValue){
+			var regex = /[A-za-z0-9]{4,20}$/;
+			
+			return regex.test(asValue);
+		}
+		
+		function phoneCheck(asValue) {
+			var regex = /^\d{3,4}$/;
+			
+			return regex.test(asValue);
+		}
+		
 		$("#button-gradient").click(function(){
+			
 			if($("input[name='password']").val()==""){
 				alert("비밀번호를 입력해주세요");
 				$("input[name='password']").focus();
 				return false;
-			}else if($("input[name='password-check']").val()=="") {
-				alert("비밀번호 확인칸을 입력해주세요");
-				$("input[name='password-check']").focus();
-				return false;
 			}else if($("input[name='password']").val() != password){
 				alert("비밀번호가 일치하지 않습니다");
 				$("input[name='password']").focus();
-				return false;
-			}else if($("input[name='name']").val()==""){
-				alert("이름은 필수 입력 항목입니다");
-				$("input[name='name']").focus();
-				return false;
-			}else if(!nameCheck($("input[name='name']").val())) {
-				alert("이름은 한글로만 작성해주세요");
-				$("input[name='name']").focus();
 				return false;
 			}else if($("#input-email1").val()==""){
 				alert("이메일은 필수 입력 항목입니다");
@@ -110,6 +111,15 @@
 				$("input[name='password']").focus();
 				return false;
 			}
+		});
+		
+		$("#address-btn-style").click(function(){
+			 new daum.Postcode({
+			        oncomplete: function(data) {
+			        	$("input[name='addr1']").val("("+data.zonecode+") "+data.address);
+			        	$("input[name='addr2']").focus();
+			        }
+			    }).open();
 		});
 	});
 	</script>

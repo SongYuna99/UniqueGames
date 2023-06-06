@@ -1,11 +1,21 @@
 package com.uniquegames.dao;
 
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.uniquegames.vo.MemberVo;
 
-public class MemberDao extends DBConn {
+@Repository
+public class MemberDao extends DBConn{
+	
+	@Autowired
+	private SqlSessionTemplate sqlSession;
 	
 	
 	public int login(MemberVo memberVo) {
+		return sqlSession.selectOne("mapper.member.login", memberVo);
+		/*
 		int result=0;
 		String sql = "select count(*) from member where member_id=? and password=?";
 		getPreparedStatement(sql);
@@ -24,10 +34,13 @@ public class MemberDao extends DBConn {
 		}
 		
 		return result;
+		*/
 	}
 	
 	/**sign up member*/
 	public int insert(MemberVo memberVo) {
+		return sqlSession.insert("mapper.member.insert", memberVo);
+		/*
 		int result=0;
 		String sql = "insert into member (member_id, password, name, email,"
 				+ " phone_num, addr, tel) values (?,?,?,?,?,?,?)";
@@ -49,9 +62,12 @@ public class MemberDao extends DBConn {
 		}
 		
 		return result;
+		*/
 	}
 	/**ID checking*/
 	public int idCheck(String member_id) {
+		return sqlSession.selectOne("mapper.member.idCheck", member_id);
+		/*
 		int result=0;
 		String sql = "select count(*) from member where member_id=?";
 		getPreparedStatement(sql);
@@ -68,43 +84,13 @@ public class MemberDao extends DBConn {
 			e.printStackTrace();
 		}
 		return result;
+		*/
 	}
 	
-	/**delete Account*/
-	public int delete(MemberVo memberVo) {
-		int result=0;
-		String sql = "delete from member where member_id=? and password=?";
-		getPreparedStatement(sql);
-		
-		try {
-			pstmt.setString(1, memberVo.getMember_id());
-			pstmt.setString(2, memberVo.getPassword());
-			
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
-	/**delete Account Ajax*/
-	public int deleteCheck(String member_id, String password) {
-		int result=0;
-		String sql = "delete from member where member_id=? and password=?";
-		getPreparedStatement(sql);
-		System.out.println("MemberDao에서 확인하는 패스워드=" + password);
-		try {
-			pstmt.setString(1, member_id);
-			pstmt.setString(2, password);
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
 	/**find-id-check*/
-	public String findIdCheck(String name, String phone_num) {
+	public String findIdCheck(MemberVo memberVo) {
+		return sqlSession.selectOne("mapper.member.findId", memberVo);
+		/*
 		String result="";
 		String sql = "select member_id from member where name=? and phone_num=?";
 		getPreparedStatement(sql);
@@ -123,6 +109,7 @@ public class MemberDao extends DBConn {
 		}
 		
 		return result;
+		*/
 	}
 	
 	/**find-pwd-check*/
@@ -280,5 +267,42 @@ public class MemberDao extends DBConn {
 		return result;
 		
 	}
+	
+
+	/**delete Account*/
+	public int delete(MemberVo memberVo) {
+		int result=0;
+		String sql = "delete from member where member_id=? and password=?";
+		getPreparedStatement(sql);
+		
+		try {
+			pstmt.setString(1, memberVo.getMember_id());
+			pstmt.setString(2, memberVo.getPassword());
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	/**delete Account Ajax*/
+	public int deleteCheck(String member_id, String password) {
+		int result=0;
+		String sql = "delete from member where member_id=? and password=?";
+		getPreparedStatement(sql);
+		System.out.println("MemberDao에서 확인하는 패스워드=" + password);
+		try {
+			pstmt.setString(1, member_id);
+			pstmt.setString(2, password);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 
 }

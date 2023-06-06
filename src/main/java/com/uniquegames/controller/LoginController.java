@@ -4,6 +4,7 @@ package com.uniquegames.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.uniquegames.dao.CompanyDao;
 import com.uniquegames.dao.MemberDao;
+import com.uniquegames.service.MemberService;
 import com.uniquegames.vo.CompanyVo;
 import com.uniquegames.vo.MemberVo;
 
@@ -18,13 +20,14 @@ import com.uniquegames.vo.MemberVo;
 @Controller
 public class LoginController {
 	
-	HttpSession session;
+	@Autowired
+	private MemberService memberService;
 	
 	@RequestMapping(value="/login.do", method=RequestMethod.GET)
 	public String login() {
 		return "/login/login";
 	}
-	
+	/*
 	@RequestMapping(value="/login_proc.do", method=RequestMethod.POST)
 	public ModelAndView login_proc(MemberVo memberVo,CompanyVo companyVo, HttpServletRequest request) {
 		
@@ -50,6 +53,22 @@ public class LoginController {
 			mav.setViewName("login/login");
 		}
 			
+		return mav;
+	}
+	*/
+	@RequestMapping(value="/login_proc.do", method=RequestMethod.POST)
+	public ModelAndView login_proc(MemberVo memberVo, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		int result = memberService.getLoginResult(memberVo);
+		
+		if(result==1) {
+			session.setAttribute("member_id", memberVo.getMember_id());
+			session.setMaxInactiveInterval(60);
+			mav.setViewName("redirect:/index.do");
+		}else {
+			mav.setViewName("redirect:/login.do");
+		}
+		
 		return mav;
 	}
 	

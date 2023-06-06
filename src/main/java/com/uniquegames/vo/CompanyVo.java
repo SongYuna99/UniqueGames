@@ -4,12 +4,16 @@ public class CompanyVo {
 	
 	int id, g_id;
 	String company_id, password, name, email1, email2, email3, tel, phone1, phone2, phone3, addr1, addr2;
-	
-	
 
-	
+	String email, phone_num, addr, cnewpassword, game;
 
-	String email, phone_num, addr, cnewpassword;
+	public String getGame() {
+		return game;
+	}
+
+	public void setGame(String game) {
+		this.game = game;
+	}
 
 	public int getG_id() {
 		return g_id;

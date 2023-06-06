@@ -85,9 +85,11 @@ public class MyPageController {
 	public ModelAndView companyMyPage(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		CompanyDao companyDao = new CompanyDao();
+		String Gname = companyDao.getGameNameByCID(session.getAttribute("company_id"));
 		CompanyVo companyVo = companyDao.select(session.getAttribute("company_id"));
 		
 		if(companyVo != null) {
+			
 			String password = companyVo.getPassword();
 			String email1 = companyVo.getEmail().split("@")[0];
 			String email2 = companyVo.getEmail().split("@")[1];
@@ -124,6 +126,7 @@ public class MyPageController {
 	            }
 	        }
 			//String tel = companyVo.getTel();
+			companyVo.setGame(Gname);
 			companyVo.setEmail1(email1);
 			companyVo.setEmail2(email2);
 			companyVo.setEmail3(email3);
@@ -135,6 +138,7 @@ public class MyPageController {
 			mav.addObject("companyVo", companyVo);
 			mav.setViewName("/myPage/companyMyPage");
 		}else {
+			System.out.println("5678"+Gname);
 			mav.addObject("myPage_result", "fail");
 			mav.setViewName("/login/login");
 		}
