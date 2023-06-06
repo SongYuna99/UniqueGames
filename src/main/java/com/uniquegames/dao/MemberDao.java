@@ -4,6 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.uniquegames.vo.CompanyVo;
 import com.uniquegames.vo.MemberVo;
 
 @Repository
@@ -15,125 +16,54 @@ public class MemberDao extends DBConn{
 	
 	public int login(MemberVo memberVo) {
 		return sqlSession.selectOne("mapper.member.login", memberVo);
-		/*
-		int result=0;
-		String sql = "select count(*) from member where member_id=? and password=?";
-		getPreparedStatement(sql);
-		
-		try {
-			pstmt.setString(1, memberVo.getMember_id());
-			pstmt.setString(2, memberVo.getPassword());
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				result = rs.getInt(1);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
-		*/
 	}
-	
+
+	/*
+	public int login(Object vo) {
+		int result=0;
+		if(vo instanceof MemberVo) {
+			MemberVo memberVo = (MemberVo)vo;
+			result=sqlSession.selectOne("mapper.member.login", memberVo);
+		}else if(vo instanceof CompanyVo) {
+			CompanyVo companyVo = (CompanyVo)vo;
+			result=sqlSession.selectOne("mapper.member.login", companyVo);
+		}
+		return result;
+	}
+	*/
 	/**sign up member*/
 	public int insert(MemberVo memberVo) {
 		return sqlSession.insert("mapper.member.insert", memberVo);
-		/*
-		int result=0;
-		String sql = "insert into member (member_id, password, name, email,"
-				+ " phone_num, addr, tel) values (?,?,?,?,?,?,?)";
-		getPreparedStatement(sql);
-		
-		try {
-			pstmt.setString(1, memberVo.getMember_id());
-			pstmt.setString(2, memberVo.getPassword());
-			pstmt.setString(3, memberVo.getName());
-			pstmt.setString(4, memberVo.getEmail());
-			pstmt.setString(5, memberVo.getPhone_num());
-			pstmt.setString(6, memberVo.getAddr());
-			pstmt.setString(7, memberVo.getTel());
-			
-			result = pstmt.executeUpdate();
-			System.out.println(result);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
-		*/
+
 	}
 	/**ID checking*/
 	public int idCheck(String member_id) {
 		return sqlSession.selectOne("mapper.member.idCheck", member_id);
-		/*
-		int result=0;
-		String sql = "select count(*) from member where member_id=?";
-		getPreparedStatement(sql);
-		
-		try {
-			pstmt.setString(1, member_id);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				result = rs.getInt(1);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return result;
-		*/
 	}
 	
 	/**find-id-check*/
 	public String findIdCheck(MemberVo memberVo) {
 		return sqlSession.selectOne("mapper.member.findId", memberVo);
-		/*
-		String result="";
-		String sql = "select member_id from member where name=? and phone_num=?";
-		getPreparedStatement(sql);
-		
-		try {
-			pstmt.setString(1, name);
-			pstmt.setString(2, phone_num);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				result= rs.getString(1);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
-		*/
 	}
 	
-	/**find-pwd-check*/
-	public String findPwdCheck(String member_id, String phone_num) {
-		String result="";
-		String sql = "select password from member where member_id=? and phone_num=?";
-		getPreparedStatement(sql);
-		
-		try {
-			pstmt.setString(1, member_id);
-			pstmt.setString(2, phone_num);
-			
-			rs = pstmt.executeQuery();
-			System.out.println(result);
-			if(rs.next()) {
-				result= rs.getString(1);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
+	/*********************비밀번호 재설정****************************************/
+	public int select(MemberVo memberVo) {
+		return sqlSession.selectOne("mapper.member.select", memberVo);
 	}
-	/**mypage session id information*/
+	
+	/**mypage session id information update*/
+	public int update(MemberVo memberVo) {
+		return sqlSession.update("mapper.member.update", memberVo);
+	}
+	
+	public int changeMpassword(String member_id, String mnewpassword) {
+		MemberVo memberVo = new MemberVo();
+		memberVo.setMember_id(member_id);
+		memberVo.setMnewpassword(mnewpassword);
+		return sqlSession.update("mapper.member.changeMpassword", memberVo);
+	}
+	
+	/**mypage session id information
 	public MemberVo select(Object member_id) {
 		MemberVo memberVo = null;
 		String sql = "select member_id, password, name, email, phone_num, addr, tel from member where member_id=?";
@@ -162,27 +92,29 @@ public class MemberDao extends DBConn{
 		
 		return memberVo;
 	}
+	*/
 	
-	/**mypage session id information update*/
-	public int update(MemberVo memberVo) {
-		int result=0;
-		String sql = "update member set email=?, addr=?, phone_num=?, tel=? where member_id=? and password=?";
-		getPreparedStatement(sql);
-		
-		try {
-			pstmt.setString(1, memberVo.getEmail());
-			pstmt.setString(2, memberVo.getAddr());
-			pstmt.setString(3, memberVo.getPhone_num());
-			pstmt.setString(4, memberVo.getTel());
-			pstmt.setString(5, memberVo.getMember_id());
-			pstmt.setString(6, memberVo.getPassword());
-			
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return result;
+	public MemberVo myPage(String member_id) {
+		return sqlSession.selectOne("mapper.member.myPage", member_id);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/*********************넘어오는 name값을 받아서 여기 있으면 member로 아니면 company로(도전)****************************************/
 	public int selectMode(String name, String phone_num) {
@@ -206,29 +138,7 @@ public class MemberDao extends DBConn{
 		return result;
 	}
 	
-	/*********************비밀번호 재설정****************************************/
-	public int select(String member_id, String name, String phone_num) {
-		int result=0;
-		String sql = "select count(*) from member where member_id=? and name=? and phone_num=?";
-		getPreparedStatement(sql);
-		
-		try {
-			
-			pstmt.setString(1, member_id);
-			pstmt.setString(2, name);
-			pstmt.setString(3, phone_num);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				result = rs.getInt(1);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
+	
 	
 	/*********************이메일 중복확인****************************************/
 	public int emailCheck(String email1, String email2) {
@@ -249,23 +159,6 @@ public class MemberDao extends DBConn{
 			e.printStackTrace();
 		}
 		return result;
-	}
-	
-	public int changeMpassword(String member_id, String mnewpassword) {
-		int result=0;
-		String sql = "update member set password=? where member_id=?";
-		getPreparedStatement(sql);
-		
-		try {
-			pstmt.setString(1, mnewpassword);
-			pstmt.setString(2, member_id);
-			
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return result;
-		
 	}
 	
 

@@ -32,49 +32,22 @@ public class FindAccountController {
 	public String findCompany() {
 		return "/findAccount/findCompany";
 	}
-	/*
-	@RequestMapping(value="/findId_check.do", method=RequestMethod.GET)
-	@ResponseBody
-	public String findId_check(String name, String phone_num) {
-		String result = "";
-		MemberDao memberDao = new MemberDao();
-		CompanyDao companyDao = new CompanyDao();
-		int name_result = memberDao.selectMode(name, phone_num);
-		if(name_result==1) {
-			result = memberDao.findIdCheck(name, phone_num);
-		}else {
-			result = companyDao.findIdCheck(name, phone_num);
-		}
-		return result;
-	}
-	*/
+
 	@RequestMapping(value="/findId_check.do", method=RequestMethod.GET)
 	@ResponseBody
 	public String findId_check(MemberVo memberVo) {
 		String result = memberService.getFindIdResult(memberVo);
-		
 		return result;
 	}
 	
-	/*
-	@RequestMapping(value="/findPwd_check.do", method=RequestMethod.GET)
-	@ResponseBody
-	public String findPwd_check(String id, String phone_num) {
-		MemberDao memberDao = new MemberDao();
-		String result = memberDao.findPwdCheck(id, phone_num);
-		
-		return result;
-	}
-	*/
-	
+	/**Member password change; href to newpassword.jsp*/
 	@RequestMapping(value="/findPwd_check.do", method=RequestMethod.POST)
-	public ModelAndView findPwd_check(String member_id, String name, String phone_num) {
+	public ModelAndView findPwd_check(MemberVo memberVo) {
 		ModelAndView mav = new ModelAndView();
-		MemberDao memberDao = new MemberDao();
-		int result = memberDao.select(member_id, name, phone_num);
+		int result = memberService.getFindPwdResult(memberVo);
 		
 		if(result == 1) {
-			mav.addObject("member_id", member_id);
+			mav.addObject("member_id", memberVo.getMember_id());
 			mav.setViewName("/findAccount/newPassword");
 		}else {
 			mav.addObject("find_result", "fail");
@@ -84,6 +57,34 @@ public class FindAccountController {
 		return mav;
 	}
 	
+	/**findPwd -> newpassword.jsp -> actual change password logic*/
+	@RequestMapping(value="/mChangePassword.do", method=RequestMethod.POST)
+	public ModelAndView Mnewpassword(String member_id, String mnewpassword) {
+		ModelAndView mav = new ModelAndView();
+		int result = memberService.getChangeMPassword(member_id, mnewpassword);
+		
+		if(result==1) {
+			mav.addObject("changePassword_result", "success");
+			mav.setViewName("/login/login");
+		}else {
+			System.out.println("비밀번호 변경 실패");
+		}
+		return mav;
+	}
+	/** myPage -> changing Password*/
+	@RequestMapping(value="/myPageChangePassword.do", method=RequestMethod.GET)
+	public ModelAndView MyPageChangePassword(String member_id) {
+		ModelAndView mav = new ModelAndView();
+		MemberVo memberVo = memberService.getMyPageResult(member_id);
+		
+		mav.addObject("member_id", memberVo.getMember_id());
+		mav.addObject("password", memberVo.getPassword());
+		mav.setViewName("/findAccount/newPassword");
+		
+		return mav;
+	}
+	
+	/**Company password change; href to cnewpassword.jsp*/
 	@RequestMapping(value="/cfindPwd_check.do", method=RequestMethod.POST)
 	public ModelAndView cfindPwd_check(String company_id, String name, String phone_num) {
 		ModelAndView mav = new ModelAndView();
@@ -101,33 +102,6 @@ public class FindAccountController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/mChangePassword.do", method=RequestMethod.POST)
-	public ModelAndView Mnewpassword(String member_id, String mnewpassword) {
-		ModelAndView mav = new ModelAndView();
-		MemberDao memberDao = new MemberDao();
-		int result = memberDao.changeMpassword(member_id, mnewpassword);
-		
-		if(result==1) {
-			mav.addObject("changePassword_result", "success");
-			mav.setViewName("/login/login");
-		}else {
-			System.out.println("비밀번호 변경 실패");
-		}
-		return mav;
-	}
-	
-	@RequestMapping(value="/myPageChangePassword.do", method=RequestMethod.GET)
-	public ModelAndView MyPageChangePassword(String member_id) {
-		ModelAndView mav = new ModelAndView();
-		MemberDao memberDao = new MemberDao();
-		MemberVo memberVo = memberDao.select(member_id);
-		
-		mav.addObject("member_id", memberVo.getMember_id());
-		mav.addObject("password", memberVo.getPassword());
-		mav.setViewName("/findAccount/newPassword");
-		return mav;
-	}
-	
 	@RequestMapping(value="/cChangePassword.do", method=RequestMethod.POST)
 	public String Cnewpassword(String company_id, String cnewpassword) {
 		String viewName="";
@@ -141,7 +115,7 @@ public class FindAccountController {
 		}
 		return viewName;
 	}
-	
+	/**CompanyMyPage -> changing Password*/
 	@RequestMapping(value="/CompanyPageChangePassword.do", method=RequestMethod.GET)
 	public ModelAndView CompanyPageChangePassword(String company_id) {
 		ModelAndView mav = new ModelAndView();

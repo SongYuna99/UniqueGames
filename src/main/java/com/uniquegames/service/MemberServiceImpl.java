@@ -1,5 +1,7 @@
 package com.uniquegames.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +13,18 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	private MemberDao memberDao;
-
+	
 	@Override
 	public int getLoginResult(MemberVo memberVo) {
 		return memberDao.login(memberVo);
 	}
-
+	
+	/*
+	@Override
+	public int getLoginResult(Object vo) {
+		return 0;
+	}
+	*/
 	@Override
 	public int getJoinResult(MemberVo memberVo) {
 		
@@ -28,22 +36,20 @@ public class MemberServiceImpl implements MemberService {
 		int result = memberDao.idCheck(member_id);
 		return String.valueOf(result);
 	}
-
+	
 	@Override
 	public String getFindIdResult(MemberVo memberVo) {
 		return memberDao.findIdCheck(memberVo);
 	}
-
+	 
 	@Override
-	public String getFindPwdResult(String member_id, String phone_num) {
-		// TODO Auto-generated method stub
-		return null;
+	public int getFindPwdResult(MemberVo memberVo) {
+		return memberDao.select(memberVo);
 	}
 
 	@Override
 	public int getUpdateResult(MemberVo memberVo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return memberDao.update(memberVo);
 	}
 
 	@Override
@@ -53,9 +59,15 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int getChangePassword(String member_id, String mnewpassword) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getChangeMPassword(String member_id, String mnewpassword) {
+		return memberDao.changeMpassword(member_id, mnewpassword);
 	}
+
+	@Override
+	public MemberVo getMyPageResult(String member_id) {
+		return memberDao.myPage(member_id);
+	}
+
+	
 
 }

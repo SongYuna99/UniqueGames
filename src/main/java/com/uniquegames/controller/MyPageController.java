@@ -2,6 +2,7 @@ package com.uniquegames.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,23 +10,21 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.uniquegames.dao.CompanyDao;
 import com.uniquegames.dao.MemberDao;
+import com.uniquegames.service.MemberService;
 import com.uniquegames.vo.CompanyVo;
 import com.uniquegames.vo.MemberVo;
 
 @Controller
 public class MyPageController {
-	/*
-	@RequestMapping(value="/myPage.do", method=RequestMethod.GET)
-	public String myPage() {
-		return "/myPage/myPage";
-	}
-	*/
 	
+	@Autowired
+	private MemberService memberService;
+	
+	//show information about member user
 	@RequestMapping(value="/myPage.do", method=RequestMethod.GET)
 	public ModelAndView myPage(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		MemberDao memberDao = new MemberDao();
-		MemberVo memberVo = memberDao.select(session.getAttribute("member_id"));
+		MemberVo memberVo = memberService.getMyPageResult((String)session.getAttribute("member_id"));
 		
 		if(memberVo != null) {
 			String password = memberVo.getPassword();
@@ -42,15 +41,13 @@ public class MyPageController {
 	            // addr 값이 null인 경우 처리
 	            memberVo.setAddr1(""); // 대체값 할당
 	            memberVo.setAddr2(""); // 대체값 할당
-	            
-	        } else {
-	        	
+	        }else {
 	        	String[] addrSplit = addr.split("   ");
 	            if (addrSplit.length == 1) {
 	                // addr1 값만 있는 경우
 	            	String addr1=addrSplit[0];
 	                memberVo.setAddr1(addr1);
-	                memberVo.setAddr2(""); // 대체값 할당
+	                memberVo.setAddr2("");
 	            } else if (addrSplit.length == 2) {
 	                // addr1, addr2 값이 모두 있는 경우
 	            	String addr1 = addrSplit[0];
@@ -76,6 +73,22 @@ public class MyPageController {
 		}else {
 			mav.addObject("myPage_result", "fail");
 			mav.setViewName("/login/login");
+		}
+		
+		return mav;
+	}
+	
+	//mypage actual update
+	@RequestMapping(value="/myPage_proc.do", method=RequestMethod.POST)
+	public ModelAndView myPage_proc(MemberVo memberVo) {
+		ModelAndView mav = new ModelAndView();
+		int result = memberService.getUpdateResult(memberVo);
+
+		if(result == 1) {
+			mav.addObject("update_result", "success");
+			mav.setViewName("redirect:/index.do");
+		}else {
+			System.out.println("update실패");
 		}
 		
 		return mav;
@@ -141,26 +154,6 @@ public class MyPageController {
 			System.out.println("5678"+Gname);
 			mav.addObject("myPage_result", "fail");
 			mav.setViewName("/login/login");
-		}
-		
-		return mav;
-	}
-	
-	//마이페이지 update
-	@RequestMapping(value="/myPage_proc.do", method=RequestMethod.POST)
-	public ModelAndView myPage_proc(MemberVo memberVo) {
-		ModelAndView mav = new ModelAndView();
-		MemberDao memberDao = new MemberDao();
-		int result = memberDao.update(memberVo);
-
-		if(result == 1) {
-			mav.addObject("update_result", "success");
-			mav.setViewName("redirect:/index.do");
-		}else {
-			System.out.println(memberVo.getEmail());
-			System.out.println(memberVo.getAddr());
-			System.out.println(memberVo.getPhone_num());
-			System.out.println("update실패");
 		}
 		
 		return mav;
