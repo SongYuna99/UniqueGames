@@ -61,13 +61,26 @@ $(document).ready(function() {
 
 		location.href = "notice_write.do";
 	});
+	
+	// 검색 버튼 이벤트
+	$("#btn-search").on("click", function() {
+		searchScript();
+	})
+
+	$('input[name="search"]').on("keydown",function(event) {
+		if (event.keyCode === 13) {
+			event.preventDefault();
+			searchScript();
+
+		}
+	})
 
 	/**
 	 * write 버튼 이벤트
 	 */
 	// 작성 버튼 이벤트
 	$('button[name="write"]').on("click", function() {
-		if ($("input[name='title']").val() != "" && $("textarea[name='content']").val() != "") {
+		if ($("input[name='title']").val() != "") {
 			writeForm.submit();
 
 		} else if ($("input[name='title']").val() == "") {
@@ -106,17 +119,19 @@ $(document).ready(function() {
 		let file = 	$("#upload-hidden")[0].files[0];
 		let fileName = file.name;
 		let fileType = file.type;
+		let hidden = document.getElementById("upload-hidden");
+		let name = document.getElementById("upload-name");
 
 		if (fileType.startsWith("image/")) { 
 			$('#upload-name').val(file.name);
 
 			let output = "<button type='button' id='btn-style' name='filedel'>취소</button>";
-			$('span').before(output);
+			$('#fileDelbtn').html(output);
 			$("#filebox").css("margin-right", "78px");
 				// 파일 취소 버튼 이벤트
 			$('#filebox button[name="filedel"]').on("click", function() {
-				$('#upload-hidden').val(null);
-				$('#upload-name').val("");
+				hidden.value = null;
+				name.value = "";
 				$('button[name="filedel"]').remove();
 				$("#filebox").css("margin-right", "164px");
 			});
@@ -233,5 +248,16 @@ function commentDelete(commentId) {
 		});
 	} else {
 		return false;
+	}
+}
+
+function searchScript() {
+	if($('input[name="search"]').val() == "") {
+		alert("검색어를 입력하세요");
+		
+		return false;
+	} else {
+
+		boardSearch.submit();
 	}
 }

@@ -1,8 +1,8 @@
 package com.uniquegames.controller;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.UUID;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.uniquegames.fileutil.BoardUtil;
 import com.uniquegames.service.CommentService;
 import com.uniquegames.service.NoticeService;
 import com.uniquegames.vo.CommentVo;
@@ -23,11 +24,14 @@ import com.uniquegames.vo.NoticeVo;
 @Controller
 public class NoticeController {
 
-	@Autowired
 	NoticeService noticeService;
+	CommentService commentService;
 
 	@Autowired
-	CommentService commentService;
+	public NoticeController(NoticeService noticeService, CommentService commentService) {
+		this.noticeService = noticeService;
+		this.commentService = commentService;
+	}
 
 	/**
 	 * notice-list.do 공지사항 - 전체 리스트
@@ -37,36 +41,14 @@ public class NoticeController {
 		ModelAndView model = new ModelAndView();
 
 		// 페이징 처리 - startCount, endCount 구하기
-		int startCount = 0;
-		int endCount = 0;
-		int pageSize = 10; // 한페이지당 게시물 수
-		int reqPage = 1; // 요청페이지
-		int pageCount = 1; // 전체 페이지 수
-		int dbCount = noticeService.getTotRowCount(); // DB에서 가져온 전체 행수
+		Map<String, Integer> pageMap = BoardUtil.getPagination(page, "list");
+		ArrayList<NoticeVo> list = noticeService.getNoticeList(pageMap.get("startCount"), pageMap.get("endCount"));
 
-		// 총 페이지 수 계산
-		if (dbCount % pageSize == 0) {
-			pageCount = dbCount / pageSize;
-		} else {
-			pageCount = dbCount / pageSize + 1;
-		}
-
-		// 요청 페이지 계산
-		if (page != null) {
-			reqPage = Integer.parseInt(page);
-			startCount = (reqPage - 1) * pageSize + 1;
-			endCount = reqPage * pageSize;
-		} else {
-			startCount = 1;
-			endCount = pageSize;
-		}
-
-		ArrayList<NoticeVo> list = noticeService.getNoticeList(startCount, endCount);
 		model.addObject("list", list);
-		model.addObject("dbCount", dbCount);
-		model.addObject("pageSize", pageSize);
-		model.addObject("pageCount", pageCount);
-		model.addObject("page", reqPage);
+		model.addObject("dbCount", pageMap.get("dbCount"));
+		model.addObject("pageSize", pageMap.get("pageSize"));
+		model.addObject("pageCount", pageMap.get("pageCount"));
+		model.addObject("page", pageMap.get("reqPage"));
 
 		model.setViewName("/notice/notice_list");
 
@@ -96,28 +78,16 @@ public class NoticeController {
 	public String noticeWriteProc(NoticeVo noticeVo, HttpServletRequest request, RedirectAttributes attributes)
 			throws Exception {
 
-		String root_path = request.getSession().getServletContext().getRealPath("/");
-		String attach_path = "\\resources\\upload\\";
-
-		if (noticeVo.getFile().getOriginalFilename() != null && !noticeVo.getFile().getOriginalFilename().equals("")) {
-
-			String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-			String upload_file = noticeVo.getFile().getOriginalFilename();
-			String image_id = uuid + upload_file;
-
-			noticeVo.setUpload_file(upload_file);
-			noticeVo.setImage_id(image_id);
-		}
-
+		noticeVo = BoardUtil.fileUtil(request, noticeVo);
 		int result = noticeService.insert(noticeVo);
 
 		if (result == 1) {
-
-			File saveFile = new File(root_path + attach_path + noticeVo.getImage_id());
-			noticeVo.getFile().transferTo(saveFile);
+			BoardUtil.fileSaveUtil(noticeVo);
 			attributes.addFlashAttribute("result", "success");
+
 		} else {
 			attributes.addFlashAttribute("result", "fail");
+
 		}
 
 		return "redirect:/notice_list.do";
@@ -145,13 +115,16 @@ public class NoticeController {
 	 * notice_delete.do 공지사항 - 삭제
 	 */
 	@RequestMapping(value = "/notice_delete.do", method = RequestMethod.POST)
-	public String noticeDelete(String no, RedirectAttributes attributes) {
+	public String noticeDelete(String no, String imgdel, RedirectAttributes attributes) {
 
 		int result = noticeService.delete(no);
 		if (result == 1) {
+			BoardUtil.fileDeleteUtil(imgdel);
 			attributes.addFlashAttribute("result", "complete");
+
 		} else {
 			attributes.addFlashAttribute("result", "fail");
+
 		}
 
 		return "redirect:/notice_list.do";
@@ -178,28 +151,17 @@ public class NoticeController {
 	@RequestMapping(value = "/notice_update_proc.do", method = RequestMethod.POST)
 	public String noticeUpdateProc(NoticeVo noticeVo, HttpServletRequest request, RedirectAttributes attributes)
 			throws Exception {
-		String root_path = request.getSession().getServletContext().getRealPath("/");
-		String attach_path = "\\resources\\upload\\";
+		String oldFileName = noticeVo.getImage_id();
 
-		if (noticeVo.getFile().getOriginalFilename() != null && !noticeVo.getFile().getOriginalFilename().equals("")) {
-
-			String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-			String upload_file = noticeVo.getFile().getOriginalFilename();
-			String image_id = uuid + upload_file;
-
-			noticeVo.setUpload_file(upload_file);
-			noticeVo.setImage_id(image_id);
-
-		}
+		noticeVo = BoardUtil.fileUtil(request, noticeVo);
 		int result = noticeService.update(noticeVo);
-
 		if (result == 1) {
-
-			File saveFile = new File(root_path + attach_path + noticeVo.getImage_id());
-			noticeVo.getFile().transferTo(saveFile);
+			BoardUtil.fileUpdateUtil(noticeVo, oldFileName);
 			attributes.addFlashAttribute("result", "success");
+
 		} else {
 			attributes.addFlashAttribute("result", "fail");
+
 		}
 
 		return "redirect:/notice_content.do?no=" + noticeVo.getPost_id();
@@ -232,15 +194,36 @@ public class NoticeController {
 
 		return result;
 	}
-	
+
 	/**
 	 * board_manage.do 리스트 선택 삭제 처리
 	 */
 	@RequestMapping(value = "board_manage.do", method = RequestMethod.POST)
 	public String boardManage(String[] list) {
-		
+
 		noticeService.deleteList(list);
-		
+
 		return "redirect:/notice_list.do";
+	}
+
+	/**
+	 * boardSearchProc.do 리스트 검색 처리
+	 */
+	@RequestMapping(value = "/boardSearchProc.do")
+	@SuppressWarnings("unchecked")
+	public ModelAndView boardSearchProc(String keyword, String page) {
+		ModelAndView model = new ModelAndView();
+
+		Map<String, Integer> pageMap = BoardUtil.getPagination(page, keyword);
+		List<NoticeVo> list = (List<NoticeVo>) noticeService.search(keyword, pageMap.get("startCount"),
+				pageMap.get("endCount"));
+		model.addObject("list", list);
+		model.addObject("dbCount", pageMap.get("dbCount"));
+		model.addObject("pageSize", pageMap.get("pageSize"));
+		model.addObject("pageCount", pageMap.get("pageCount"));
+		model.addObject("page", pageMap.get("reqPage"));
+		model.setViewName("/notice/notice_list");
+
+		return model;
 	}
 }
