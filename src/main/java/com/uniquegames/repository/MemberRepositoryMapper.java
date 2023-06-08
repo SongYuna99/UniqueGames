@@ -11,13 +11,11 @@ public interface MemberRepositoryMapper {
 
    //@Insert("insert into member(email, name, password) values(#{email}, #{name}, #{password})")
    //@Options(useGeneratedKeys = true, keyProperty = "id")
-   //XmlMapper로 구현
    void save(MemberVo member);
 
    //@Select("select * from member where id = #{findId}")
-   //XmlMapper로 구현
 //   MemberVo findById(Long findId);
-
+//
    @Select("select * from member where member_id = #{member_id}")
    MemberVo findById(String member_id);
 
@@ -26,7 +24,7 @@ public interface MemberRepositoryMapper {
 
    //@Select("select * from member where email = #{email} and name = #{name}")
    //XmlMapper로 구현
-   Optional<MemberVo> findByEmailAndName(String email, String name);
+//   Optional<MemberVo> findByEmailAndName(String email, String name);
 
    @Select("update member set name=#{name}, password=#{oldPassword} where email=#{email}")
    Integer update(MemberVo member);

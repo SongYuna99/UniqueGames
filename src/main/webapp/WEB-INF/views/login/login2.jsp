@@ -101,7 +101,7 @@
 		<input id="company-login" type="radio" name="loginSelect">
 		<label for="company-login" id="company-login-tab">법인 회원</label>
 		
-		<form action="login2.do" name="loginForm" method="post" id="individual-loginForm">
+		<form action="login2.do?redirectURL=${param.redirectURL}" name="loginForm" method="post" id="individual-loginForm">
 			<div>
 				<ul>
 					<li>
@@ -123,15 +123,15 @@
 			</div>
 		</form>
 		
-		<form action="login2.do" name="loginCompanyForm" method="post" id="company-loginForm">
+		<form action="login2.do?redirectURL=${param.redirectURL}" name="loginCompanyForm" method="post" id="company-loginForm">
 			<div>
 				<ul>
 					<li>
-						<input type="text" id="input-common" name="company_id" placeholder="법인 아이디">
+						<input type="text" id="input-common" name="company_id" placeholder="법인 아이디" value="${company.company_id}">
 						<span id="msgId"></span>
 					</li>
 					<li>
-						<input type="password" id="c-input-common" name="password" placeholder="비밀번호" size="15">
+						<input type="password" id="c-input-common" name="password" placeholder="비밀번호" size="15" value="${company.password}">
 						<span id="msgPwd"></span>
 					</li>
 					<li>
