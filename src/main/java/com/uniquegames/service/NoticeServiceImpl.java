@@ -48,11 +48,12 @@ public class NoticeServiceImpl implements NoticeService {
 
 	/**
 	 * 공지사항 - 작성
-	 * @throws Exception 
+	 * 
+	 * @throws Exception
 	 */
 	@Override
 	public int insert(NoticeVo noticeVo) {
-		
+
 		int insResult = noticeMapper.insertNotice(noticeVo);
 		if (noticeVo.getImage_id() != null) {
 			noticeMapper.insertFile(noticeVo);
@@ -70,7 +71,7 @@ public class NoticeServiceImpl implements NoticeService {
 
 		result = noticeMapper.updateNotice(noticeVo);
 
-		if (noticeVo.getImage_id() != null && noticeVo.getUpload_file() != null) {
+		if (noticeVo.getFile() != null && !noticeVo.getFile().isEmpty()) {
 
 			if (noticeMapper.fileCheck(noticeVo) == 1) {
 				noticeMapper.updateFile(noticeVo);
@@ -80,7 +81,7 @@ public class NoticeServiceImpl implements NoticeService {
 
 			}
 
-		} else if (noticeVo.getImage_id().equals("")) {
+		} else if (noticeVo.getImage_id() != null && noticeVo.getImage_id().split("!")[0].equals("delete")) {
 
 			noticeMapper.deleteFile(noticeVo);
 		}

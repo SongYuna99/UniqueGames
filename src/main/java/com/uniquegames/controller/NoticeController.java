@@ -82,6 +82,7 @@ public class NoticeController {
 		int result = noticeService.insert(noticeVo);
 
 		if (result == 1) {
+			BoardUtil.fileSaveUtil(noticeVo);
 			attributes.addFlashAttribute("result", "success");
 
 		} else {
@@ -114,13 +115,16 @@ public class NoticeController {
 	 * notice_delete.do 공지사항 - 삭제
 	 */
 	@RequestMapping(value = "/notice_delete.do", method = RequestMethod.POST)
-	public String noticeDelete(String no, RedirectAttributes attributes) {
+	public String noticeDelete(String no, String imgdel, RedirectAttributes attributes) {
 
 		int result = noticeService.delete(no);
 		if (result == 1) {
+			BoardUtil.fileDeleteUtil(imgdel);
 			attributes.addFlashAttribute("result", "complete");
+
 		} else {
 			attributes.addFlashAttribute("result", "fail");
+
 		}
 
 		return "redirect:/notice_list.do";
@@ -147,10 +151,12 @@ public class NoticeController {
 	@RequestMapping(value = "/notice_update_proc.do", method = RequestMethod.POST)
 	public String noticeUpdateProc(NoticeVo noticeVo, HttpServletRequest request, RedirectAttributes attributes)
 			throws Exception {
+		String oldFileName = noticeVo.getImage_id();
+
 		noticeVo = BoardUtil.fileUtil(request, noticeVo);
 		int result = noticeService.update(noticeVo);
-
 		if (result == 1) {
+			BoardUtil.fileUpdateUtil(noticeVo, oldFileName);
 			attributes.addFlashAttribute("result", "success");
 
 		} else {
@@ -204,11 +210,11 @@ public class NoticeController {
 	 * boardSearchProc.do 리스트 검색 처리
 	 */
 	@RequestMapping(value = "/boardSearchProc.do")
+	@SuppressWarnings("unchecked")
 	public ModelAndView boardSearchProc(String keyword, String page) {
 		ModelAndView model = new ModelAndView();
 
 		Map<String, Integer> pageMap = BoardUtil.getPagination(page, keyword);
-		@SuppressWarnings("unchecked")
 		List<NoticeVo> list = (List<NoticeVo>) noticeService.search(keyword, pageMap.get("startCount"),
 				pageMap.get("endCount"));
 		model.addObject("list", list);

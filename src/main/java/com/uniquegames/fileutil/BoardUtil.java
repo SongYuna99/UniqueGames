@@ -1,7 +1,6 @@
 package com.uniquegames.fileutil;
 
 import java.io.File;
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -16,6 +15,9 @@ import com.uniquegames.dao.NoticeDao;
 import com.uniquegames.vo.NoticeVo;
 
 public class BoardUtil {
+
+	private static String root_path;
+	private static String attach_path;
 
 	/**
 	 * 페이징 처리 유틸
@@ -34,7 +36,7 @@ public class BoardUtil {
 		int pageCount = 1; // 전체 페이지 수
 		int dbCount = 0; // DB에서 가져온 전체 행수
 
-		if (keyword.equals("list")) {
+		if (keyword.equals("list")) { // 검색 키워드가 없는 전체 리스트
 			dbCount = noticeDao.totRowCount("list");
 
 		} else {
@@ -68,8 +70,14 @@ public class BoardUtil {
 
 		return result;
 	}
-	
-	public static List<NoticeVo> getDateOutput(List<NoticeVo> result) {		
+
+	/**
+	 * 리스트 날짜 출력 방식 변경
+	 * 
+	 * @param result
+	 * @return
+	 */
+	public static List<NoticeVo> getDateOutput(List<NoticeVo> result) {
 		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM.dd");
 		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 
@@ -99,14 +107,22 @@ public class BoardUtil {
 			// date_output 변수를 사용하여 필요한 작업 수행
 			nvo.setDate_output(date_output);
 		}
-		
+
 		return result;
 	}
-	
+
+	/**
+	 * 파일 체크
+	 * 
+	 * @param request
+	 * @param noticeVo
+	 * @return
+	 * @throws Exception
+	 */
 	public static NoticeVo fileUtil(HttpServletRequest request, NoticeVo noticeVo) throws Exception {
-		String root_path = request.getSession().getServletContext().getRealPath("/");
-		String attach_path = "\\resources\\upload\\";
-		
+		root_path = request.getSession().getServletContext().getRealPath("/");
+		attach_path = "\\resources\\upload\\";
+
 		if (noticeVo.getFile() != null && !noticeVo.getFile().isEmpty()) {
 
 			String uuid = UUID.randomUUID().toString().replaceAll("-", "");
@@ -116,10 +132,72 @@ public class BoardUtil {
 			noticeVo.setUpload_file(upload_file);
 			noticeVo.setImage_id(image_id);
 
-			File saveFile = new File(root_path + attach_path + noticeVo.getImage_id());
-			noticeVo.getFile().transferTo(saveFile);
 		}
 
 		return noticeVo;
 	}
+
+	/**
+	 * 파일 저장
+	 * 
+	 * @param noticeVo
+	 * @throws Exception
+	 */
+	public static void fileSaveUtil(NoticeVo noticeVo) throws Exception {
+
+		if (noticeVo.getFile() != null && !noticeVo.getFile().isEmpty()) {
+			File saveFile = new File(root_path + attach_path + noticeVo.getImage_id());
+			noticeVo.getFile().transferTo(saveFile);
+
+		}
+
+	}
+
+	/**
+	 * 파일 업데이트
+	 * @param noticeVo
+	 * @throws Exception
+	 */
+	public static void fileUpdateUtil(NoticeVo noticeVo, String oldFileName) throws Exception {
+		String stat = "";
+
+		if (oldFileName.indexOf("!") > -1) {
+			String[] tmp = oldFileName.split("!");
+			stat = tmp[0];
+			oldFileName = tmp[1];
+		}
+		
+		if (noticeVo.getFile() != null && !noticeVo.getFile().isEmpty()) {
+			File saveFile = new File(root_path + attach_path + noticeVo.getImage_id());
+			noticeVo.getFile().transferTo(saveFile);
+
+		}
+
+		if (!noticeVo.getFile().isEmpty() || stat.equals("delete")) {
+			File deleteFile = new File(root_path + attach_path + oldFileName);
+
+			if (deleteFile.exists()) {
+				deleteFile.delete();
+
+			}
+		}
+	}
+	
+	/**
+	 * 파일 삭제
+	 * @param imgdel
+	 * @param request
+	 */
+	public static void fileDeleteUtil(String imgdel) {
+
+		if (imgdel != null && !imgdel.equals("")) {
+			File deleteFile = new File(root_path + attach_path + imgdel);
+			if (deleteFile.exists()) {
+				deleteFile.delete();
+
+			}
+
+		}
+	}
+
 }
