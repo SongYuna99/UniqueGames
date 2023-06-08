@@ -28,7 +28,7 @@
 		    prevText: '&laquo;',		
 		    nextText: '&raquo;',
 				     
-		    btnSize:'sm'	// 'sm'  or 'lg'		
+		    btnSize:'lg'	// 'sm'  or 'lg'		
 		});
 		
 		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
@@ -65,14 +65,14 @@
 			<div id="board-top-menu">
 				<p>Notice</p>
 				<div>
-					<label for=""> <input type="text" name="search"
-						placeholder="검색어를 입력해주세요.">
-						<button type="button" id="btn-search">
-							<img
-								src="http://localhost:9000/uniquegames/images/btn_boardSearch_press.png"
-								alt="">
-						</button>
-					</label>
+ 					 <form name="boardSearch" action="boardSearchProc.do" method="get">
+						<label>
+							<input type="text" name="keyword" placeholder="검색어를 입력해주세요.">
+							<button type="button" id="btn-search">
+								<img src="http://localhost:9000/uniquegames/images/btn_boardSearch_press.png">
+							</button>
+						</label>
+					 </form>
 					<ul>
 						<li><button type="button" id="btn-style" name="listWrite">작성</button></li>
 						<li><button type="button" id="btn-style" name="listUpdate">수정</button></li>
