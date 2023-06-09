@@ -36,7 +36,6 @@
    		}
 
 	</style>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -51,9 +50,9 @@
                     <li><button type="button" id="btn-hearder-search" onclick="toggleSearch()"><img src="/uniquegames/images/img_icon_search.png"></button></li>
                 </ul>
             </nav>
-            <div class="search-menu" id="search-container">
-    			<input type="text" id="input-search" placeholder="검색하실 게임 이름을 입력해주세요.">
-    		</div>
+<%--            <div class="search-menu" id="search-container">--%>
+<%--    			<input type="text" id="input-search" placeholder="검색하실 게임 이름을 입력해주세요.">--%>
+<%--    		</div>--%>
         </div>
         <div id="hearder-logo">
             <a href="/uniquegames/index.do" target="_parent">
@@ -72,27 +71,27 @@
             </nav>
         </div>
     </header>
-    <script>
-        // 검색창 토글 함수
-        function toggleSearch() {
-            var searchContainer = $('#search-container');
-            searchContainer.toggle();
-        }
+<%--    <script>--%>
+<%--        // 검색창 토글 함수--%>
+<%--        function toggleSearch() {--%>
+<%--            var searchContainer = $('#search-container');--%>
+<%--            searchContainer.toggle();--%>
+<%--        }--%>
 
-        // 엔터 키 이벤트 핸들러
-        $(document).on('keydown', '#input-search', function(event) {
-            if (event.which === 13) {
-                var inputText = $(this).val();
-                console.log('입력한 텍스트:', inputText);
-                // 입력한 텍스트를 원하는 방식으로 처리할 수 있습니다.
-                // 예: 서버로 전송, 검색 실행 등
-            }
-        });
+<%--        // 엔터 키 이벤트 핸들러--%>
+<%--        $(document).on('keydown', '#input-search', function(event) {--%>
+<%--            if (event.which === 13) {--%>
+<%--                var inputText = $(this).val();--%>
+<%--                console.log('입력한 텍스트:', inputText);--%>
+<%--                // 입력한 텍스트를 원하는 방식으로 처리할 수 있습니다.--%>
+<%--                // 예: 서버로 전송, 검색 실행 등--%>
+<%--            }--%>
+<%--        });--%>
 
-        // 페이지 로드 시 검색창 초기화
-        $(document).ready(function() {
-            $('#search-container').hide();
-        });
-    </script>
+<%--        // 페이지 로드 시 검색창 초기화--%>
+<%--        $(document).ready(function() {--%>
+<%--            $('#search-container').hide();--%>
+<%--        });--%>
+<%--    </script>--%>
 </body>
 </html>

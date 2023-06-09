@@ -45,7 +45,7 @@
                     <h2>내 손안에서 깨어난 새로운 리듬</h2>
                     <h1>New Game of Music</h1>
                     <p>새로운 감각의 New RPG 뉴게임오브뮤직</p>
-                    <a href="#"><button id="btn-main-style" type="button">자세히보기</button></a>
+                    <a href="deteil.do?g_id="><button id="btn-main-style" type="button">자세히보기</button></a>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
                     <h2>지금까지 존재하지 않은 RPG</h2>
                     <h1>Dead Lift 550</h1>
                     <p>참고로 전 3대 605</p>
-                    <a href="#"><button id="btn-main-style" type="button">자세히보기</button></a>
+                    <a href="deteil.do?g_id="><button id="btn-main-style" type="button">자세히보기</button></a>
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
                     <h2>모니터를 통해 보여주는 이세계의 모험</h2>
                     <h1>Morning Star Desert</h1>
                     <p>조선을 배경으로하는 사극 판타지 RPG</p>
-                    <a href="#"><button id="btn-main-style" type="button">자세히보기</button></a>
+                    <a href="deteil.do?g_id="><button id="btn-main-style" type="button">자세히보기</button></a>
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@
                     <h2>이 세상 게임이 아니다</h2>
                     <h1>Life Standing</h1>
                     <p>살기 위해 오늘도 길을 나선다 탐험 액션</p>
-                    <a href="#"><button id="btn-main-style" type="button">자세히보기</button></a>
+                    <a href="deteil.do?g_id="><button id="btn-main-style" type="button">자세히보기</button></a>
                 </div>
             </div>
         </div>
@@ -101,7 +101,7 @@
                         <p>${loop.count} </p>
                         <p>${game.name }</p>
                         <p>${game.description }</p>
-                        <button id="readmore-plus" type="button"><img src="/uniquegames/images/btn_plus_normal.png" width="30px" height="30px"></button>
+                        <a href="deteil.do?g_id=${game.id }"><button id="readmore-plus" type="button"><img src="/uniquegames/images/btn_plus_normal.png" width="30px" height="30px"></button><a>
                     </div>
                 </div>
             </c:if>
@@ -113,19 +113,23 @@
     <p id="subTitle">#최근 반응이 좋은</p>
     <div id="menu-recommendations">
         <div id="recommendList">
-            <c:forEach var="game" items="${donation }">
-                <div id="rList">
-                    <img src="${game.image_path }" width="260px" height="180px">
-                    <ul>
-                        <li>Hot</li>
-                        <li>${game.name }</li>
-                        <li>${game.game_genre} </li>
-                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
-                    </ul>
-                    <div>
-                        <button id="btn-recommend-style" type="button">자세히보기</button>
+            <c:forEach var="game" items="${donation}" varStatus="loop">
+                <c:if test="${loop.index < 4}">
+                    <div id="rList">
+                        <img src="${game.image_path}" width="260px" height="180px">
+                        <ul>
+                            <li>Hot</li>
+                            <li>${game.name}</li>
+                            <li>${game.game_genre}</li>
+                            <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
+                        </ul>
+                        <div>
+                            <a href="deteil.do?g_id=${game.id }">
+                                <button id="btn-recommend-style" type="button">자세히보기</button>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                </c:if>
             </c:forEach>
         </div>
     </div>
@@ -142,7 +146,7 @@
                         <li>${game.game_genre}</li>
                         <li><button id="btn-like-style" type="button"data-game-id="${game.id}"></button></li>
                         <li>${game.like_count}</li>
-                        <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><a href="deteil.do?g_id=${game.id }"><img src="/uniquegames/images/img_icon_rPc.png"></a></li>
                     </ul>
                 </div>
             </c:forEach>
@@ -172,7 +176,7 @@
             </c:forEach>
         </table>
         <div id="solution-btn-area">
-            <a href="#"><button id="btn-solution" type="button">자세히보기</button></a>
+            <a href="notice_list.do"><button id="btn-solution" type="button">자세히보기</button></a>
         </div>
     </div>
 </section>
