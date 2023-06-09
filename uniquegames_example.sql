@@ -30,6 +30,9 @@ VALUES('namgoong', '123', '남궁길동', 'namgoong@korea.kr', '서울시 지리
 INSERT INTO MEMBER (MEMBER_ID, PASSWORD, NAME, EMAIL, ADDR, TEL, PHONE_NUM)
 VALUES('choi', '123', '최길동', 'choi@naver.com', '서울시 렛잇구', 'SKT', '010-1111-2222');
 
+INSERT INTO MEMBER (MEMBER_ID, PASSWORD, NAME, EMAIL, ADDR, TEL, PHONE_NUM)
+VALUES('mtest', '123', ' 엠길동', 'mtest@naver.com', '서울시 렛잇구', 'SKT', '010-3431-2222');
+
 
 -- GAME
 SELECT *FROM GAME;
@@ -96,6 +99,9 @@ VALUES ('TT', '123', 'TANKGAME', 'TT@gmail.com', '판교', 'KT', '010-5365-1646'
 INSERT INTO COMPANY (COMPANY_ID, PASSWORD, NAME, EMAIL, ADDR, TEL, PHONE_NUM, G_ID)
 VALUES ('YY', '123', 'YAYGAME', 'YY@gmail.com', '판교', 'KT', '010-3757-8966', 10);
 
+INSERT INTO COMPANY (COMPANY_ID, PASSWORD, NAME, EMAIL, ADDR, TEL, PHONE_NUM)
+VALUES ('test', '123', 'test', 'test@gmail.com', '판교', 'KT', '010-3412-3144');
+
 -- ORDERS - NOT
 SELECT *FROM ORDERS;
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
@@ -116,27 +122,43 @@ VALUES(5, 'hong', 'WW', 6, 50000, 'BABA IS YOU', 'http://localhost:9000/uniquega
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
 VALUES(6, 'hong', 'RR', 8, 100000, '60 SECONDS', 'http://localhost:9000/uniquegames/images/60S.png');
 
+
+INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
+VALUES(555, 'mtest', 'FF', 4, 10000, 'FALL GUYS', 'http://localhost:9000/uniquegames/images/FG.png');
+
+INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
+VALUES(4444, 'mtest', 'WW', 6, 50000, 'BABA IS YOU', 'http://localhost:9000/uniquegames/images/BIY.png');
+
+INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
+VALUES(8888, 'mtest', 'RR', 8, 100000, '60 SECONDS', 'http://localhost:9000/uniquegames/images/60S.png');
+
+INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
+VALUES(34234, 'mtest', 'RR', 8, 1000, '60 SECONDS', 'http://localhost:9000/uniquegames/images/60S.png');
+
+
 -- ORDERS - COMPLETE
 SELECT *FROM ORDERS;
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, ORDER_DATE, AMOUNT, METHOD, PAYMENT_STATUS, GAMETITLE, GAME_IMG)
-VALUES(7, 'hong', 'RR', 8, '2023-01-02', 10000, 'KAKAO', 'COMPLETE', '60 SECONDS', 'http://localhost:9000/uniquegames/images/60S.png');
+VALUES(123, 'mtest', 'RR', 8, '2023-01-02', 10000, 'KAKAO', 'COMPLETE', '60 SECONDS', 'http://localhost:9000/uniquegames/images/60S.png');
 
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, ORDER_DATE, AMOUNT, METHOD, PAYMENT_STATUS, GAMETITLE, GAME_IMG)
-VALUES(8, 'hong', 'AA', 1, '2023-02-02', 50000, 'KAKAO', 'COMPLETE', 'DARK SOUL', 'http://localhost:9000/uniquegames/images/DS.png');
+VALUES(1223, 'mtest', 'AA', 1, '2023-02-02', 50000, 'KAKAO', 'COMPLETE', 'DARK SOUL', 'http://localhost:9000/uniquegames/images/DS.png');
 
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, ORDER_DATE, AMOUNT, METHOD, PAYMENT_STATUS, GAMETITLE, GAME_IMG)
-VALUES(9, 'hong', 'EE', 7, '2023-03-03', 50000, 'KAKAO', 'COMPLETE', 'ALT F4', 'http://localhost:9000/uniquegames/images/AF.png', '몰루', 1);
+VALUES(93, 'mtest', 'EE', 7, '2023-03-03', 50000, 'KAKAO', 'COMPLETE', 'ALT F4', 'http://localhost:9000/uniquegames/images/AF.png');
 
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, ORDER_DATE, AMOUNT, METHOD, PAYMENT_STATUS, GAMETITLE, GAME_IMG)
-VALUES(10, 'hong', 'WW', 6, '2022-11-02', 10000, 'KAKAO', 'COMPLETE', 'BABA IS YOU', 'http://localhost:9000/uniquegames/images/BIY.png');
+VALUES(11230, 'mtest', 'WW', 6, '2022-11-02', 10000, 'KAKAO', 'COMPLETE', 'BABA IS YOU', 'http://localhost:9000/uniquegames/images/BIY.png');
 
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, ORDER_DATE, AMOUNT, METHOD, PAYMENT_STATUS, GAMETITLE, GAME_IMG)
-VALUES(11, 'hong', 'FF', 4, '2023-01-13', 30000, 'KAKAO', 'COMPLETE', 'FALL GUYS', 'http://localhost:9000/uniquegames/images/FG.png');
+VALUES(131, 'mtest', 'FF', 4, '2023-01-13', 30000, 'KAKAO', 'COMPLETE', 'FALL GUYS', 'http://localhost:9000/uniquegames/images/FG.png');
 
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, ORDER_DATE, AMOUNT, METHOD, PAYMENT_STATUS, GAMETITLE, GAME_IMG)
-VALUES(12, 'hong', 'SS', 2, '2023-01-17', 30000, 'KAKAO', 'COMPLETE', 'ELDEN RING', 'http://localhost:9000/uniquegames/images/ER.png');
+VALUES(132, 'mtest', 'SS', 2, '2023-01-17', 30000, 'KAKAO', 'COMPLETE', 'ELDEN RING', 'http://localhost:9000/uniquegames/images/ER.png');
 
 
+COMMIT;
 
-
+SELECT ID, G_ID, GAME_IMG, GAMETITLE, AMOUNT 
+		FROM ORDERS WHERE PAYMENT_STATUS = 'NOT' AND M_ID = 'mtest';
 

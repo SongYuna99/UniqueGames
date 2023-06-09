@@ -6,7 +6,7 @@
 	<!-- Cart -->
 	<select id="getCartList" parameterType="String" resultType="OrderVo">
 		SELECT ID, G_ID, GAME_IMG, GAMETITLE, AMOUNT 
-		FROM ORDERS WHERE PAYMENT_STATUS = 'NOT' AND M_ID = #{m_id} 
+		FROM ORDERS WHERE PAYMENT_STATUS = 'NOT' AND M_ID = 'mtest' 
 	</select>
 	
 	<select id="getCartCount" parameterType="String" resultType="int">

@@ -94,7 +94,7 @@ $(document).ready(function (){
 			buyer_postcode: "01181"
 			}, function (rsp) { // callback
 				if(rsp.success){
-					location.replace("order_complete.do?method=" + method + "&m_id=" + $("#m_id").val());
+					location.replace("order_proc.do?method=" + method + "&m_id=" + $("#m_id").val());
 				}
 				else {
 					alert("결제에 실패했습니다. 장바구니로 돌아갑니다.");

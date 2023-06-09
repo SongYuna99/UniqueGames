@@ -96,7 +96,7 @@ public class OrderDao extends DBConn {
 	public ArrayList<OrderVo> getPaymentDetail(String m_id, String array) {
 		Map<String, String> param = new HashMap<String, String>();
 		param.put("m_id", m_id);
-		param.put(array, array);
+		param.put("array", array);
 
 		List<Object> oList = sqlSession.selectList("com.uniquegames.orderMapper.getPaymentDetail", param);
 		ArrayList<OrderVo> paymentList = new ArrayList<OrderVo>();
@@ -122,7 +122,7 @@ public class OrderDao extends DBConn {
 	public ArrayList<OrderVo> getDonationDetail(String c_id, String array) {
 		Map<String, String> param = new HashMap<String, String>();
 		param.put("c_id", c_id);
-		param.put(array, array);
+		param.put("array", array);
 
 		List<Object> oList = sqlSession.selectList("com.uniquegames.orderMapper.getDonationDetail", param);
 		ArrayList<OrderVo> donationList = new ArrayList<OrderVo>();
