@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.mysql.cj.xdevapi.Session;
+import com.uniquegames.repository.NoticeMapper;
+import com.uniquegames.service.CommentService;
 import com.uniquegames.service.IndexServiceMapper;
+import com.uniquegames.service.NoticeService;
+import com.uniquegames.service.NoticeServiceImpl;
 import com.uniquegames.vo.MemberVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,10 +31,12 @@ import com.uniquegames.vo.GameVo;
 public class MainController {
 
 	private final IndexServiceMapper indexServiceMapper;
+	NoticeService noticeService;
 
 	@Autowired
-	public MainController(IndexServiceMapper indexServiceMapper) {
+	public MainController(IndexServiceMapper indexServiceMapper, NoticeService noticeService) {
 		this.indexServiceMapper = indexServiceMapper;
+		this.noticeService = noticeService;
 	}
 
 	@RequestMapping(value="/index.do", method=RequestMethod.GET)
@@ -38,6 +44,7 @@ public class MainController {
 		model.addAttribute("gameList",indexServiceMapper.getGameList());
 		model.addAttribute("donation",indexServiceMapper.getDonationList());
 		model.addAttribute("ranking",indexServiceMapper.getRankingList());
+		model.addAttribute("noticeList", noticeService.getNoticeList(1, 4));
         return "/main/index";
 	}
 	

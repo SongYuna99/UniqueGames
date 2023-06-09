@@ -161,34 +161,15 @@
                 <th>작성자</th>
                 <th>작성일</th>
             </tr>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>1</td>
-                <td><a href="./board_content.html">아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</a></td>
-                <td>관리자</td>
-                <td>2023.04.25</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>1</td>
-                <td><a href="./board_content.html">아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</a></td>
-                <td>관리자</td>
-                <td>2023.04.25</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>1</td>
-                <td><a href="./board_content.html">아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</a></td>
-                <td>관리자</td>
-                <td>2023.04.25</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>1</td>
-                <td><a href="./board_content.html">아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</a></td>
-                <td>관리자</td>
-                <td>2023.04.25</td>
-            </tr>
+            <c:forEach var="noticeVo" items="${noticeList}">
+                <tr>
+                    <td><input type="checkbox" name="list" value="${noticeVo.post_id}"></td>
+                    <td>${noticeVo.rno}</td>
+                    <td><a href="notice_content.do?no=${noticeVo.post_id}">${noticeVo.title}</a></td>
+                    <td>${noticeVo.company_id}</td>
+                    <td>${noticeVo.date_output}</td>
+                </tr>
+            </c:forEach>
         </table>
         <div id="solution-btn-area">
             <a href="#"><button id="btn-solution" type="button">자세히보기</button></a>
