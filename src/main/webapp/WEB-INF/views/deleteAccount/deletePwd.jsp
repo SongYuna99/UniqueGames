@@ -12,38 +12,37 @@
 	<script>
 
 		$(document).ready(function(){
+			var member_id = "${memberVo.member_id }";
+			var password = "${memberVo.password}";
 			
 		$("#button-gradient-delete").click(function(){
 				
-			if($("input[name='member_id']").val()==""){
-				alert("아이디를 입력하세요");
-				$("input[name='member_id']").focus();
-				return false;
-			}else if($("input[name='password']").val()=="") {
+			if($("input[name='password']").val()=="") {
 				alert("비밀번호를 입력하세요");
 				$("input[name='password']").focus();
 				return false;
 			}else {
+				
 				$.ajax({
-					url : "delete_check.do?member_id="+$("input[name='member_id']").val()+"&password="+$("input[name='password']").val(),
+					url: "delete_check.do",
+				    type: "POST",
+				    data: {
+				      member_id: $("input[name='member_id']").val(),
+				      password: $("input[name='password']").val()
+				    },
 					success : function(result) {
-						let jdata = JSON.parse(result);
-						if($("input[name='password']").val()==jdata.password){
-							$("#modal2").show();
-							$("#delete-member-id").html(jdata.member_id);
-							$("#delete-id").html(jdata.member_id);
+						
+						if(result==1){
+							$("#modal2").css("display", "block");
+							$("#delete-member-id").html(member_id);
 							$("#agreement-content1").html($(".deleteComplete").html());	
 						}else {
-							alert("11");
+							alert("비밀번호가 일치하지 않습니다");
+							$("input[name='password']").val("").focus();
 						}
-							
-					
-							
 					}
-					
 				});
 			}
-
 		});
 		
 		$("input[name='member_id']").blur(function(){
@@ -88,7 +87,7 @@
 	</section>
 	<section id="content-1">
 		<p id="intro">회원탈퇴</p>
-		<form action="#" name="loginForm" method="post">
+		<form action="delete_check.do" name="loginForm" method="post">
 			<div>
 				<p id="intro-1">탈퇴 사유</p>
 				<ul>
@@ -106,10 +105,11 @@
 					</li>
 					<li>
 						<input type="text" id="input-common" name="member_id" value="${memberVo.member_id }" disabled>
+						<input type="hidden" name="member_id" value="${memberVo.member_id }">
 						<span id="msgId"></span>
 					</li>
 					<li>
-						<input type="text" id="input-common" name="password" placeholder="비밀번호">
+						<input type="password" id="input-common" name="password" placeholder="비밀번호">
 						<span id="msgPwd"></span>
 					</li>
 					<li id="goodbye">
@@ -135,7 +135,7 @@
 	</section>
 	
 	<div id="modal2">
-		<div class="agreement2" id="agreement">
+		<div class="agreement2" id="agreement-deleteAccount">
 			<div id="agreement-content1">
 			</div>
 		</div>
@@ -153,6 +153,8 @@
 			</li>
 		</ul>
 	</div>
+	
+	
 	
 	<footer>
 		<jsp:include page="../main/footer.jsp"></jsp:include>

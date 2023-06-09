@@ -1,78 +1,78 @@
 package com.uniquegames.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.uniquegames.dao.LikeInfoDao;
+import com.mysql.cj.xdevapi.Session;
+import com.uniquegames.service.IndexServiceMapper;
 import com.uniquegames.vo.MemberVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uniquegames.dao.GameDao;
 import com.uniquegames.vo.GameVo;
 
 @Controller
+@SessionAttributes({"game","test_id"})
 public class MainController {
-	
-	
+
+	private final IndexServiceMapper indexServiceMapper;
+
+	@Autowired
+	public MainController(IndexServiceMapper indexServiceMapper) {
+		this.indexServiceMapper = indexServiceMapper;
+	}
+
 	@RequestMapping(value="/index.do", method=RequestMethod.GET)
-	public ModelAndView index(HttpServletRequest request) {
-		ModelAndView model = new ModelAndView();
-		GameDao gameDao = new GameDao();
-		LikeInfoDao likeInfoDao = new LikeInfoDao();
-		List<GameVo> gameVo = gameDao.getGameList();
-		ArrayList<GameVo> donation = gameDao.select_donation();
-		ArrayList<GameVo> ranking = gameDao.select_ranking();
-		
-		int like_cnt = 0;
-        
-        HttpSession session = request.getSession();
-        MemberVo member = (MemberVo) session.getAttribute("member");
-       if (member != null) {
-           int mid = member.getId();
-           like_cnt = gameDao.select_like(mid);
-            for (GameVo vo : gameVo) {
-                int gid = vo.getId();
-				boolean liked = likeInfoDao.hasLiked(mid, gid);
-            }
-        }
-        
-        model.addObject("ranking", ranking);
-        model.addObject("donation", donation);
-        model.addObject("gameVo", gameVo);
-        model.addObject("like_cnt", like_cnt);
-        model.setViewName("/main/index");
-        
-        return model;
+	public String index(Model model) throws IOException {
+		model.addAttribute("gameList",indexServiceMapper.getGameList());
+		model.addAttribute("donation",indexServiceMapper.getDonationList());
+		model.addAttribute("ranking",indexServiceMapper.getRankingList());
+        return "/main/index";
 	}
 	
 	@RequestMapping(value="/alllist.do", method=RequestMethod.GET)
-	public ModelAndView alllist() {
-		ModelAndView model = new ModelAndView();
-		GameDao gameDao = new GameDao();
-		List<GameVo> gameVo = gameDao.getGameList();
-		
-		model.addObject("gameVo", gameVo);
-		model.setViewName("/main/allList");
-		
-		return model;
+	public String alllist(Model model) {
+		model.addAttribute("gameList", indexServiceMapper.getGameList());
+		return "/main/allList";
 	}
 	
 	@RequestMapping(value="/topgame.do", method=RequestMethod.GET)
-	public ModelAndView topgame() {
-		ModelAndView model = new ModelAndView();
-		GameDao gameDao = new GameDao();
-		ArrayList<GameVo> ranking = gameDao.select_ranking(); 
-		
-		model.addObject("ranking", ranking);
-		model.setViewName("/main/topGame");
-		
-		return model;
+	public String topgame(Model model) {
+		model.addAttribute("ranking", indexServiceMapper.getRankingList());
+		return "/main/topGame";
 	}
-	
+
+//	@RequestMapping(value = "/like", method = RequestMethod.POST)
+//	public String handleLikeRequest(@RequestParam("gameId") int gameId, HttpSession session) {
+//		SessionVo svo = session.getAttribute("member");
+//		if (member == null) {
+//			model.setViewName("redirect:/login");
+//			return model;
+//		}
+//
+//		int memberId = member.getId();
+//
+//		int hasLiked = gameDao.hasLiked(memberId, gameId);
+//
+//		if (hasLiked == 1) {
+//			gameDao.removeLikeInfo(memberId, gameId);
+//			model.addObject("message", "좋아요가 취소되었습니다.");
+//		} else {
+//			gameDao.addLikeInfo(memberId, gameId);
+//			model.addObject("message", "좋아요가 추가되었습니다.");
+//		}
+//
+//		return "redirect:/game/details?gameId=" + gameId;
+//	}
 }  

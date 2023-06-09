@@ -21,7 +21,7 @@
 <section id="menu-main2">
     <div id="menu-allList">
         <div id="gameList">
-            <c:forEach var="game" items="${gameVo}">
+            <c:forEach var="game" items="${gameList}">
                 <div id="gList">
                     <img src="${game.image_path } " width="260px" height="180px">
                     <ul>

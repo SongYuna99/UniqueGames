@@ -20,7 +20,7 @@
 
                 // AJAX 요청을 통해 서버에 좋아요 처리 요청 전송
                 var xhr = new XMLHttpRequest();
-                xhr.open('POST', '/like', true);
+                xhr.open('POST', '/uniquegames/like', true);
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4 && xhr.status === 200) {
@@ -93,14 +93,14 @@
 <img id="topGame-title" src="/uniquegames/images/imt_title_top.png" width="135px" height="32px">
 <div id="menu-topGame">
     <div id="topGameList">
-        <c:forEach var="ranking" items="${ranking }" varStatus="loop">
+        <c:forEach var="game" items="${ranking }" varStatus="loop">
             <c:if test="${loop.count <= 4}">
                 <div id="tList">
-                    <img alt="#" src="${ranking.image_path }" width="500px" height="240px">
+                    <img alt="#" src="${game.image_path }" width="500px" height="240px">
                     <div>
                         <p>${loop.count} </p>
-                        <p>${ranking.name }</p>
-                        <p>${ranking.description }</p>
+                        <p>${game.name }</p>
+                        <p>${game.description }</p>
                         <button id="readmore-plus" type="button"><img src="/uniquegames/images/btn_plus_normal.png" width="30px" height="30px"></button>
                     </div>
                 </div>
@@ -113,13 +113,13 @@
     <p id="subTitle">#최근 반응이 좋은</p>
     <div id="menu-recommendations">
         <div id="recommendList">
-            <c:forEach var="donation" items="${donation }">
+            <c:forEach var="game" items="${donation }">
                 <div id="rList">
-                    <img src="${donation.image_path }" width="260px" height="180px">
+                    <img src="${game.image_path }" width="260px" height="180px">
                     <ul>
                         <li>Hot</li>
-                        <li>${donation.name }</li>
-                        <li>${donation.game_genre} </li>
+                        <li>${game.name }</li>
+                        <li>${game.game_genre} </li>
                         <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
                     <div>
@@ -134,7 +134,7 @@
     <img id="allList-title" src="/uniquegames/images/img_title_AllList.png" width="100px" height="24px">
     <div id="menu-allList">
         <div id="gameList">
-            <c:forEach var="game" items="${gameVo}">
+            <c:forEach var="game" items="${gameList}">
                 <div id="gList">
                     <img src="${game.image_path } " width="260px" height="180px">
                     <ul>
