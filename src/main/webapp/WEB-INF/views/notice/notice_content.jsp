@@ -27,7 +27,6 @@
 </head>
 <body>
 	<header>
-		<!-- <iframe src="../main/header.html" scrolling="no" width="100%" height="228px" frameborder=0></iframe> -->
 		<jsp:include page="../main/header.jsp"></jsp:include>
 	</header>
 	<section id="top-bg">
@@ -115,7 +114,7 @@
 				</div>
 			</div>
 		</div> -->
-		<form name="noticeDelete" action="notice_delete.do" method="post"><input type="hidden" name="no" value="${noticeVo.post_id}"></form>
+		<form name="noticeDelete" action="notice_delete.do" method="post"><input type="hidden" name="no" value="${noticeVo.post_id}"><c:if test="${noticeVo.image_id !=null}"><input type="hidden" name="imgdel" value="${noticeVo.image_id}"></c:if></form>
 	</div>
 	<jsp:include page="../main/footer.jsp"></jsp:include>
 	

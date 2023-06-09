@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Unique Games</title>
-    <link rel="stylesheet" type="text/css" href="http://localhost:9000/uniquegames/css/unigames.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost:9000/uniquegames/css/mainunigames.css">
 	<style>
 		#btn-hearder-search {
 			border:none;

@@ -18,7 +18,7 @@
 				let m_id = $("#m_id").val();
 				
 				$.ajax({
-					url : "payment_detail_data.do?m_id="+m_id,
+					url : "payment_detail_data.do",
 					data : {
 						m_id : m_id,
 						array : array
