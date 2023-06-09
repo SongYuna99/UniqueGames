@@ -34,7 +34,7 @@ public class OrderController {
 		int count = list.size();
 		int amount = orderServiece.getOrderAmount(list);
 
-		model.addObject("m_id", Integer.parseInt(m_id));
+		model.addObject("m_id", m_id);
 		model.addObject("list", list);
 		model.addObject("orderList", orderList);
 		model.addObject("count", count);
@@ -45,7 +45,7 @@ public class OrderController {
 	}
 
 	@RequestMapping(value = "/order_delete_one.do")
-	public ModelAndView order_delete_one(int id, int m_id) {
+	public ModelAndView order_delete_one(int id, String m_id) {
 		ModelAndView model = new ModelAndView();
 
 		for (int i = 0; i < list.size(); i++) {

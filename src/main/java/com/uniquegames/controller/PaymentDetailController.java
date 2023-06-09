@@ -23,7 +23,7 @@ public class PaymentDetailController {
 	
 	/** payment_detail.do **/
 	@RequestMapping(value = "/payment_detail.do", method = RequestMethod.GET)
-	public ModelAndView payment_detail(int m_id) {
+	public ModelAndView payment_detail(String m_id) {
 		ModelAndView model = new ModelAndView();
 		model.addObject("m_id", m_id);
 		model.setViewName("/order/payment_detail");
@@ -34,7 +34,7 @@ public class PaymentDetailController {
 	/** payment_detail_data.do **/
 	@RequestMapping(value = "/payment_detail_data.do", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String payment_detail_data(int m_id, String array) {
+	public String payment_detail_data(String m_id, String array) {
 		ArrayList<OrderVo> list = orderService.getPaymentDetail(m_id, array);
 
 		// list 객체의 데이터를 JSON 형태로 생성
@@ -67,7 +67,7 @@ public class PaymentDetailController {
 
 	/** donation_detail.do **/
 	@RequestMapping(value = "/donation_detail.do", method = RequestMethod.GET)
-	public ModelAndView donation_detail(int c_id) {
+	public ModelAndView donation_detail(String c_id) {
 		ModelAndView model = new ModelAndView();
 		model.addObject("c_id", c_id);
 		model.setViewName("/order/donation_detail");
@@ -78,7 +78,7 @@ public class PaymentDetailController {
 	/** donation_detail_data.do **/
 	@RequestMapping(value = "/donation_detail_data.do", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String donation_detail_data(int c_id, String array) {
+	public String donation_detail_data(String c_id, String array) {
 		ArrayList<OrderVo> list = orderService.getDonationDetail(c_id, array);
 
 		// list 객체의 데이터를 JSON 형태로 생성
@@ -111,7 +111,7 @@ public class PaymentDetailController {
 	
 	/** donation_rank.do **/
 	@RequestMapping(value = "/donation_rank.do", method = RequestMethod.GET)
-	public ModelAndView donation_rank(int c_id) {
+	public ModelAndView donation_rank(String c_id) {
 		ModelAndView model = new ModelAndView();
 		model.addObject("c_id", c_id);
 		model.setViewName("/order/donation_rank");
@@ -122,7 +122,7 @@ public class PaymentDetailController {
 	/** donation_rank_data.do **/
 	@RequestMapping(value = "/donation_rank_data.do", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String donation_rank_data(int c_id) {
+	public String donation_rank_data(String c_id) {
 		ArrayList<OrderVo> list = orderService.getDonationRank(c_id);
 		
 		// list 객체의 데이터를 JSON 형태로 생성

@@ -15,17 +15,17 @@ public class OrderServiceImpl implements OrderService {
 	OrderDao orderDao;
 
 	@Override
-	public ArrayList<OrderVo> getCartList(int m_id) {
+	public ArrayList<OrderVo> getCartList(String m_id) {
 		return orderDao.getCartList(m_id);
 	}
 
 	@Override
-	public int getCartCount(int m_id) {
+	public int getCartCount(String m_id) {
 		return orderDao.getCartCount(m_id);
 	}
 
 	@Override
-	public int getCartDeleteAll(int m_id) {
+	public int getCartDeleteAll(String m_id) {
 		return orderDao.getCartDeleteAll(m_id);
 	}
 
@@ -50,37 +50,37 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public ArrayList<OrderVo> getPaymentDetail(int m_id, String array) {
+	public ArrayList<OrderVo> getPaymentDetail(String m_id, String array) {
 		return orderDao.getPaymentDetail(m_id, array);
 	}
 
 	@Override
-	public int getPaymentCount(int m_id) {
+	public int getPaymentCount(String m_id) {
 		return orderDao.getPaymentCount(m_id);
 	}
 
 	@Override
-	public int getPaymentAmount(int m_id) {
+	public int getPaymentAmount(String m_id) {
 		return orderDao.getPaymentAmount(m_id);
 	}
 
 	@Override
-	public ArrayList<OrderVo> getDonationDetail(int c_id, String array) {
+	public ArrayList<OrderVo> getDonationDetail(String c_id, String array) {
 		return orderDao.getDonationDetail(c_id, array);
 	}
 
 	@Override
-	public int getExpected(int c_id) {
+	public int getExpected(String c_id) {
 		return orderDao.getExpected(c_id);
 	}
 
 	@Override
-	public int getTotalDonation(int c_id) {
+	public int getTotalDonation(String c_id) {
 		return orderDao.getTotalDonation(c_id);
 	}
 
 	@Override
-	public ArrayList<OrderVo> getDonationRank(int c_id) {
+	public ArrayList<OrderVo> getDonationRank(String c_id) {
 		return orderDao.getDonationRank(c_id);
 	}
 
