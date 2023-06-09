@@ -2,26 +2,10 @@ package com.uniquegames.vo;
 
 public class OrderVo {
 	// Field
-	String orderdate, method, payment_status, gametitle, game_img, userId;
-	int id, m_id, c_id, g_id, amount, rno;
+	String orderdate, method, payment_status, gametitle, game_img, userId, m_id, c_id;
+	int id, g_id, amount, rno;
 
 	// Method
-	public int getRno() {
-		return rno;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	public void setRno(int rno) {
-		this.rno = rno;
-	}
-
 	public String getOrderdate() {
 		return orderdate;
 	}
@@ -62,28 +46,36 @@ public class OrderVo {
 		this.game_img = game_img;
 	}
 
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getM_id() {
+		return m_id;
+	}
+
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
+
+	public String getC_id() {
+		return c_id;
+	}
+
+	public void setC_id(String c_id) {
+		this.c_id = c_id;
+	}
+
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getM_id() {
-		return m_id;
-	}
-
-	public void setM_id(int m_id) {
-		this.m_id = m_id;
-	}
-
-	public int getC_id() {
-		return c_id;
-	}
-
-	public void setC_id(int c_id) {
-		this.c_id = c_id;
 	}
 
 	public int getG_id() {
@@ -100,5 +92,13 @@ public class OrderVo {
 
 	public void setAmount(int amount) {
 		this.amount = amount;
+	}
+
+	public int getRno() {
+		return rno;
+	}
+
+	public void setRno(int rno) {
+		this.rno = rno;
 	}
 }

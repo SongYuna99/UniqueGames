@@ -143,7 +143,7 @@ CREATE TABLE ORDERS (
                         G_ID INT UNSIGNED NOT NULL,
                         ORDER_DATE DATETIME DEFAULT CURRENT_TIMESTAMP,
                         AMOUNT INT NOT NULL,
-                        METHOD VARCHAR(20) NOT NULL,
+                        METHOD VARCHAR(20),
                         PAYMENT_STATUS VARCHAR(30) DEFAULT 'NOT' NOT NULL,
                         GAMETITLE VARCHAR(50) NOT NULL,
                         GAME_IMG VARCHAR(100) NOT NULL,
