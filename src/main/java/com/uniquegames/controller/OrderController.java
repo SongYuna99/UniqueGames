@@ -17,7 +17,7 @@ import com.uniquegames.vo.OrderVo;
 public class OrderController {
 	@Autowired
 	OrderServiceImpl orderServiece;
-	
+
 	List<Integer> list;
 
 	/** order.do **/
@@ -34,7 +34,7 @@ public class OrderController {
 		int count = list.size();
 		int amount = orderServiece.getOrderAmount(list);
 
-		model.addObject("m_id", Integer.parseInt(m_id));
+		model.addObject("m_id", m_id);
 		model.addObject("list", list);
 		model.addObject("orderList", orderList);
 		model.addObject("count", count);
@@ -45,7 +45,7 @@ public class OrderController {
 	}
 
 	@RequestMapping(value = "/order_delete_one.do")
-	public ModelAndView order_delete_one(int id, int m_id) {
+	public ModelAndView order_delete_one(int id, String m_id) {
 		ModelAndView model = new ModelAndView();
 
 		for (int i = 0; i < list.size(); i++) {
@@ -76,18 +76,28 @@ public class OrderController {
 		return model;
 	}
 
-	/** order_complete.do **/
-	@RequestMapping(value = "/order_complete.do", method = RequestMethod.POST)
-	public String order_complete(String method) {
+	/** order_proc.do **/
+	@RequestMapping(value = "/order_proc.do", method = RequestMethod.GET)
+	public ModelAndView order_complete(String method, String m_id) {
+		ModelAndView model = new ModelAndView();
 		int result = orderServiece.getOrderComplete(list, method);
-		String view = "";
 
+		model.addObject("m_id", m_id);
 		if (result != 0) {
-			view = "/order/order_complete";
+			model.setViewName("order_complete.do?m_id=" + m_id);
 		} else {
-			view = "/order/error";
+			model.setViewName("/order/error");
 		}
 
-		return view;
+		return model;
+	}
+
+	/** order_proc.do **/
+	@RequestMapping(value = "/order_complete.do", method = RequestMethod.GET)
+	public ModelAndView order_complete(String m_id) {
+		ModelAndView model = new ModelAndView();
+		model.addObject("m_id", m_id);
+		model.setViewName("/order/order_complete");
+		return model;
 	}
 }

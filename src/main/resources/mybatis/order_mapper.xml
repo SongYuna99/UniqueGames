@@ -4,17 +4,17 @@
   
 <mapper namespace="com.uniquegames.orderMapper">
 	<!-- Cart -->
-	<select id="getSelectList" parameterType="int" resultType="OrderVo">
+	<select id="getCartList" parameterType="String" resultType="OrderVo">
 		SELECT ID, G_ID, GAME_IMG, GAMETITLE, AMOUNT 
-		FROM ORDERS WHERE PAYMENT_STATUS = 'NOT' AND M_ID = #{m_id}
+		FROM ORDERS WHERE PAYMENT_STATUS = 'NOT' AND M_ID = 'mtest' 
 	</select>
 	
-	<select id="getCartCount" parameterType="int" resultType="int">
+	<select id="getCartCount" parameterType="String" resultType="int">
 		SELECT COUNT(G_ID) FROM ORDERS 
 		WHERE PAYMENT_STATUS = 'NOT' AND M_ID = #{m_id} 
 	</select>
 	
-	<delete id="getCartDeleteAll" parameterType="int">
+	<delete id="getCartDeleteAll" parameterType="String">
 		DELETE FROM ORDERS 
 		WHERE PAYMENT_STATUS = 'NOT' AND M_ID = #{m_id}  
 	</delete>
@@ -55,12 +55,12 @@
 		WHERE M_ID = #{m_id} AND PAYMENT_STATUS = 'COMPLETE' 
 	</select>
 	
-	<select id="getPaymentCount" parameterType="int" resultType="int">
+	<select id="getPaymentCount" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM ORDERS WHERE M_ID = #{m_id} 
 		AND PAYMENT_STATUS = 'COMPLETE' 
 	</select>
 	
-	<select id="getPaymentAmount" parameterType="int" resultType="int">
+	<select id="getPaymentAmount" parameterType="String" resultType="int">
 		SELECT SUM(AMOUNT) FROM ORDERS WHERE M_ID = #{m_id} 
 		AND PAYMENT_STATUS = 'COMPLETE' 
 	</select>
@@ -80,21 +80,21 @@
 		GROUP BY DATE_FORMAT(ORDER_DATE, '%y-%m'), GAMETITLE 
 	</select>
 		
-	<select id="getExpected" parameterType="int" resultType="int">
+	<select id="getExpected" parameterType="String" resultType="int">
 		SELECT SUM(AMOUNT) AMOUNT FROM ORDERS WHERE C_ID = #{c_id} AND PAYMENT_STATUS = 'COMPLETE' 
 		AND DATE_FORMAT(ORDER_DATE, '%y-%m') = DATE_FORMAT(NOW(), '%y-%m') 
 	</select>
 	
-	<select id="getTotalDonation" parameterType="int" resultType="int">
+	<select id="getTotalDonation" parameterType="String" resultType="int">
 		SELECT SUM(AMOUNT) AMOUNT FROM ORDERS 
 		WHERE C_ID = #{c_id} AND PAYMENT_STATUS = 'COMPLETE' 
 	</select>
 		
-	<select id="getDonationRank" parameterType="int" resultType="OrderVo">
+	<select id="getDonationRank" parameterType="String" resultType="OrderVo">
 		SELECT ROW_NUMBER() OVER(ORDER BY SUM(AMOUNT) DESC) AS RNO, 
 		M.MEMBER_ID USERID, O.GAMETITLE, SUM(AMOUNT) FROM ORDERS AS O 
 		INNER JOIN MEMBER AS M ON O.M_ID = M.ID 
-		WHERE C_ID = ? AND PAYMENT_STATUS = 'COMPLETE' 
+		WHERE C_ID = #{c_id} AND PAYMENT_STATUS = 'COMPLETE' 
 		GROUP BY M.MEMBER_ID, O.GAMETITLE 
 	</select>
 	

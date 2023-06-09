@@ -6,11 +6,11 @@ import java.util.List;
 import com.uniquegames.vo.OrderVo;
 
 public interface OrderService {
-	ArrayList<OrderVo> getCartList(int m_id);
+	ArrayList<OrderVo> getCartList(String m_id);
 
-	int getCartCount(int m_id);
+	int getCartCount(String m_id);
 
-	int getCartDeleteAll(int m_id);
+	int getCartDeleteAll(String m_id);
 
 	int getCartDeleteOne(int id);
 
@@ -20,18 +20,18 @@ public interface OrderService {
 
 	int getOrderComplete(List<Integer> checkedList, String method);
 
-	ArrayList<OrderVo> getPaymentDetail(int m_id, String array);
+	ArrayList<OrderVo> getPaymentDetail(String m_id, String array);
 
-	int getPaymentCount(int m_id);
+	int getPaymentCount(String m_id);
 
-	int getPaymentAmount(int m_id);
+	int getPaymentAmount(String m_id);
 
-	ArrayList<OrderVo> getDonationDetail(int c_id, String array);
+	ArrayList<OrderVo> getDonationDetail(String c_id, String array);
 
-	int getExpected(int c_id);
+	int getExpected(String c_id);
 
-	int getTotalDonation(int c_id);
+	int getTotalDonation(String c_id);
 
-	ArrayList<OrderVo> getDonationRank(int c_id);
+	ArrayList<OrderVo> getDonationRank(String c_id);
 
 }

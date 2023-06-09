@@ -18,11 +18,15 @@ public class OrderDao extends DBConn {
 
 	/** Cart **/
 	// getCartList
-	public ArrayList<OrderVo> getCartList(int m_id) {
-		List<Object> oList = sqlSession.selectList("com.uniquegames.orderMapper.getSelectList", m_id);
+	public ArrayList<OrderVo> getCartList(String m_id) {
+		List<Object> oList = sqlSession.selectList("com.uniquegames.orderMapper.getCartList", m_id);
 		ArrayList<OrderVo> cartList = new ArrayList<OrderVo>();
-
+		
+		System.out.println(m_id + " dao");
+		System.out.println(oList.size());
 		for (Object cart : oList) {
+			OrderVo ov = (OrderVo) cart;
+			System.out.println(ov.getId());
 			cartList.add((OrderVo) cart);
 		}
 
@@ -30,12 +34,12 @@ public class OrderDao extends DBConn {
 	} // getCartList
 
 	// getCartCount
-	public int getCartCount(int m_id) {
+	public int getCartCount(String m_id) {
 		return sqlSession.selectOne("com.uniquegames.orderMapper.getCartCount", m_id);
 	} // getCartCount
 
 	// getCartDeleteAll
-	public int getCartDeleteAll(int m_id) {
+	public int getCartDeleteAll(String m_id) {
 		return sqlSession.delete("com.uniquegames.orderMapper.getCartDeleteAll", m_id);
 	} // getCartDeleteAll
 
@@ -77,10 +81,10 @@ public class OrderDao extends DBConn {
 			Map<String, String> param = new HashMap<String, String>();
 			param.put("id", String.valueOf(checkedList.get(i)));
 			param.put("method", method);
-			
+
 			result = sqlSession.selectOne("com.uniquegames.orderMapper.getOrderComplete", param);
-			
-			if(result == 0) {
+
+			if (result == 0) {
 				i = checkedList.size();
 			}
 		}
@@ -89,10 +93,10 @@ public class OrderDao extends DBConn {
 	} // getOrderComplete
 
 	// getPaymentDetail
-	public ArrayList<OrderVo> getPaymentDetail(int m_id, String array) {
+	public ArrayList<OrderVo> getPaymentDetail(String m_id, String array) {
 		Map<String, String> param = new HashMap<String, String>();
-		param.put("m_id", String.valueOf(m_id));
-		param.put(array, array);
+		param.put("m_id", m_id);
+		param.put("array", array);
 
 		List<Object> oList = sqlSession.selectList("com.uniquegames.orderMapper.getPaymentDetail", param);
 		ArrayList<OrderVo> paymentList = new ArrayList<OrderVo>();
@@ -105,20 +109,20 @@ public class OrderDao extends DBConn {
 	} // getPaymentDetail
 
 	// getPaymentCount
-	public int getPaymentCount(int m_id) {
+	public int getPaymentCount(String m_id) {
 		return sqlSession.selectOne("com.uniquegames.orderMapper.getPaymentCount", m_id);
 	} // getPaymentCount
 
 	// getPaymentAmount
-	public int getPaymentAmount(int m_id) {
+	public int getPaymentAmount(String m_id) {
 		return sqlSession.selectOne("com.uniquegames.orderMapper.getPaymentAmount", m_id);
 	} // getPaymentAmount
 
 	// getDonationDetail
-	public ArrayList<OrderVo> getDonationDetail(int c_id, String array) {
+	public ArrayList<OrderVo> getDonationDetail(String c_id, String array) {
 		Map<String, String> param = new HashMap<String, String>();
-		param.put("c_id", String.valueOf(c_id));
-		param.put(array, array);
+		param.put("c_id", c_id);
+		param.put("array", array);
 
 		List<Object> oList = sqlSession.selectList("com.uniquegames.orderMapper.getDonationDetail", param);
 		ArrayList<OrderVo> donationList = new ArrayList<OrderVo>();
@@ -131,17 +135,17 @@ public class OrderDao extends DBConn {
 	} // getDonationDetail
 
 	// getExpected
-	public int getExpected(int c_id) {
+	public int getExpected(String c_id) {
 		return sqlSession.selectOne("com.uniquegames.orderMapper.getExpected", c_id);
 	} // getExpected
 
 	// getTotalDonation
-	public int getTotalDonation(int c_id) {
+	public int getTotalDonation(String c_id) {
 		return sqlSession.selectOne("com.uniquegames.orderMapper.getTotalDonation", c_id);
 	} // getTotalDonation
 
 	// getDonationRank
-	public ArrayList<OrderVo> getDonationRank(int c_id) {
+	public ArrayList<OrderVo> getDonationRank(String c_id) {
 		List<Object> oList = sqlSession.selectList("com.uniquegames.orderMapper.getDonationRank", c_id);
 		ArrayList<OrderVo> rankList = new ArrayList<OrderVo>();
 

@@ -5,13 +5,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.uniquegames.dao.OrderDao;
 import com.uniquegames.service.OrderServiceImpl;
 import com.uniquegames.vo.OrderVo;
 
@@ -19,12 +17,13 @@ import com.uniquegames.vo.OrderVo;
 public class CartController {
 	@Autowired
 	OrderServiceImpl orderService;
-	
+
 	@RequestMapping(value = "/cart.do", method = RequestMethod.GET)
-	public ModelAndView cart(int m_id) {
+	public ModelAndView cart(String m_id) {
 		ModelAndView model = new ModelAndView();
 		ArrayList<OrderVo> cartList = orderService.getCartList(m_id);
 
+		System.out.println(m_id + " controller");
 		if (cartList != null) {
 			model.addObject("cartList", cartList);
 			model.addObject("nothingInCart", false);
@@ -38,7 +37,7 @@ public class CartController {
 	}
 
 	@RequestMapping(value = "/cart_delete_one.do", method = RequestMethod.GET)
-	public String cart_delete_one(int id, int m_id) {
+	public String cart_delete_one(int id, String m_id) {
 		String view;
 		int result = orderService.getCartDeleteOne(id);
 
@@ -52,24 +51,24 @@ public class CartController {
 	}
 
 	@RequestMapping(value = "/cart_delete_selected.do")
-	public String cart_delete_selected(Integer m_id, @RequestParam(value = "checkedList[]") List<Integer> checkedList) {
+	public String cart_delete_selected(String m_id, @RequestParam(value = "checkedList[]") List<Integer> checkedList) {
 		String view;
 		int result = 0;
-		
+
 		for (int i = 0; i < checkedList.size(); i++) {
-			result = orderService.getCartDeleteOne((int)checkedList.get(i));
+			result = orderService.getCartDeleteOne((int) checkedList.get(i));
 			if (result == 0) {
 				view = "/order/error?m_id" + m_id;
 				return view;
 			}
 		}
 		view = "redirect://cart.do?m_id=" + m_id;
-		
+
 		return view;
 	}
 
 	@RequestMapping(value = "/cart_delete_all.do", method = RequestMethod.GET)
-	public String cart_delete_selected(int m_id) {
+	public String cart_delete_selected(String m_id) {
 		String view;
 		int result = orderService.getCartDeleteAll(m_id);
 
@@ -83,11 +82,11 @@ public class CartController {
 	}
 
 	@RequestMapping(value = "/error.do", method = RequestMethod.GET)
-	public ModelAndView error(int m_id) {
+	public ModelAndView error(String m_id) {
 		ModelAndView model = new ModelAndView();
 		model.addObject("m_id", m_id);
 		model.setViewName("/order/error");
-		
+
 		return model;
 	}
 
