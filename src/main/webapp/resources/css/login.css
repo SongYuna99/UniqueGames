@@ -1366,7 +1366,7 @@ td#payment-totalPrice {
 }
 
 /* SignUp; email input style */
-#input-email,#company-email1, #company-email2 {
+#input-email,#company-email1, #company-email2, #join-email2 {
 	width: 127px;
 	padding: 20px 0;
 	text-indent: 10px;
@@ -1399,13 +1399,6 @@ td#payment-totalPrice {
 	text-indent: 10px;
 }
 
-#company-phone1,
-#company-phone2,
-#company-phone3 {
-	width: 123px;
-}
-
-
 #input-phone-company {
 	width: 118px;
 	height: 43px;
@@ -1429,44 +1422,44 @@ td#payment-totalPrice {
 
 /*SignUp,myPage; individual form style*/
 #content-2,
-#content-myPage {
+#content-myPage,
+#newPasswordForm {
 	width: 40%;
 	margin: auto;
 	text-align: left;
 	padding-left: 45px;
 }
 
-/* SignUp,myPage; password eye img style*/
+/* SignUp,myPage; password eye img style
 #pwd-check-img {
 	width: 21px;
 	height: 14px;
 }
-
+*/
 /* SignUp, Company-SignUp, myPage; telecom selectbox style */
-#selectbox-mobile {
+#selectbox-mobile,
+#company-selectbox-mobile {
 	width: 70px;
-	height: 43px;
+	height: 45px;
 	border: 1px solid lightgray;
 	border-radius: 3px;
 	margin: 5px 0;
+	position: relative;
+	top: -1px;
 }
 
 /* SignUp, Company SignUp, myPage; 010 selectbox style*/
 #selectbox-phone,
 #company-selectbox-phone {
 	width: 60px;
-	height: 43px;
+	height: 45px;
+	margin-left: 21px;
 	border: 1px solid lightgray;
 	border-radius: 3px;
-}
-#selectbox-phone {
-	margin-left: 21px;
+	position: relative;
+	top: -1px;
 }
 
-#company-selectbox-phone {
-	width: 120px;	
-
-}
 
 /* SignUp,Company-SignUp; margin between cellphone and agreement radiobox  */
 #agreement-box {
@@ -1619,7 +1612,7 @@ SignUp IdCheck button style*/
 	color: #2E7AF6;
 	text-decoration: none;
 	font-size: 14px;
-	margin: 25px 10px 0 15px;
+	margin: 25px 10px 0 8px;
 }
 /* login; link to find-ID, signUp hover style */
 #link-findAccount:hover, #link-signUp:hover {
@@ -1630,12 +1623,17 @@ SignUp IdCheck button style*/
 
 
 /* myPage; deletePwd link style*/
-#link-deleteAccount {
+#link-deleteAccount,
+#link-changePassword {
 	margin-left: 330px;
 	text-decoration: none;
 	color: #333;
 	font-weight: bold;
 	font-size: 10pt;
+}
+
+#link-changePassword {
+	margin-left: 300px;
 }
 /*findId; findPwd intro*/
 #intro-2 {
@@ -1663,7 +1661,7 @@ SignUp IdCheck button style*/
 /*******************************¸ð´ÞÃ¢************************************/
 /*SignUp; modal style
 deletePwd, findId; modal2 style */
-div#modal,
+#modal,
 #modal2 {
 	position: fixed;
 	top:50%; 			
@@ -1744,7 +1742,8 @@ div.agreement2 {
 #button-gradient-gotoLogin,
 #button-gradient-gotoPwd,
 #button-gradient-gotoFind,
-#button-gradient-gotoJoin {
+#button-gradient-gotoJoin,
+#button-gradient-home {
 	border: none;
 	width: 180px;
 	height: 50px;
@@ -1897,4 +1896,9 @@ c-input-common : login.jsp (link to company findPwd)
 /*Company Sign Up; agreementAll checkbox*/
 #c-chk-circle:checked {
 	background: #2C2C2C;
+}
+
+/*myPage change password link*/
+#changePassword {
+	border: 1px solid red;
 }

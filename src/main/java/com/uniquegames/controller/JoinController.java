@@ -1,5 +1,6 @@
 package com.uniquegames.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -8,11 +9,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.uniquegames.dao.CompanyDao;
 import com.uniquegames.dao.MemberDao;
+import com.uniquegames.service.CompanyMemberService;
+import com.uniquegames.service.MemberService;
 import com.uniquegames.vo.CompanyVo;
 import com.uniquegames.vo.MemberVo;
 
 @Controller
 public class JoinController {
+	
+	@Autowired
+	private MemberService memberService;
+	
+	@Autowired
+	private CompanyMemberService companyMemberService;
 
 	@RequestMapping(value="/join.do", method=RequestMethod.GET)
 	public String join() {
@@ -28,8 +37,7 @@ public class JoinController {
 	@RequestMapping(value="/join_individual_proc.do", method=RequestMethod.POST)
 	public ModelAndView join_proc(MemberVo memberVo) {
 		ModelAndView mav = new ModelAndView();
-		MemberDao memberDao = new MemberDao();
-		int result = memberDao.insert(memberVo);
+		int result = memberService.memberJoinResult(memberVo);
 		
 		if(result==1) {
 			mav.addObject("join_individual_result", "success");
@@ -41,11 +49,41 @@ public class JoinController {
 		return mav;
 	}
 	
+	@RequestMapping(value="/id_check.do", method=RequestMethod.GET)
+	@ResponseBody
+	public String id_check(String member_id) {
+		return memberService.memberIdCheckResult(member_id);
+	}
+	
+	/**이메일 중복체크*/
+	@RequestMapping(value="/email_check.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String email_check(String email1, String email2) {
+		String email = email1 + "@" + email2;
+		
+		int result = memberService.memberEmailCheckResult(email);
+		System.out.println("result="+result);
+		return String.valueOf(result);
+	}
+	
+	/**휴대전화 중복체크*/
+	@RequestMapping(value="/phone_check.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String phone_check(String phone1, String phone2, String phone3) {
+		String phone_num = phone1+"-"+phone2+"-"+phone3;
+		
+		System.out.println("phone_num="+ phone_num);
+		
+		int result = memberService.memberPhoneCheckResult(phone_num);
+		System.out.println("result="+result);
+		return String.valueOf(result);
+	}
+	
+	/******************************************************************법인**********************************************************************/
 	@RequestMapping(value="/join_company_proc.do", method=RequestMethod.POST)
 	public ModelAndView companyJoin(CompanyVo companyVo) {
 		ModelAndView mav = new ModelAndView();
-		CompanyDao companyDao = new CompanyDao();
-		int result = companyDao.insert(companyVo);
+		int result = companyMemberService.companyJoinResult(companyVo);
 		
 		if(result==1) {
 			mav.addObject("join_company_result", "success");
@@ -57,25 +95,39 @@ public class JoinController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/id_check.do", method=RequestMethod.GET)
+	@RequestMapping(value="/c_id_check.do", method=RequestMethod.GET)
 	@ResponseBody
-	public String id_check(String member_id) {
-		String viewName = "";
-		
-		MemberDao memberDao = new MemberDao();
-		int result = memberDao.idCheck(member_id);
+	public String c_id_check(String company_id) {
+		int result = companyMemberService.companyIdCheckResult(company_id);
 		
 		return String.valueOf(result);
 	}
 	
-	@RequestMapping(value="/c_id_check.do", method=RequestMethod.GET)
+	/**이메일 중복체크*/
+	@RequestMapping(value="/c_email_check.do", method=RequestMethod.POST)
 	@ResponseBody
-	public String c_id_check(String company_id) {
+	public String c_email_check(String email1, String email2) {
+		String email = email1 + "@" + email2;
 		
-		CompanyDao memberDao = new CompanyDao();
-		int result = memberDao.idCheck(company_id);
+		int result = companyMemberService.companyEmailCheckResult(email);
 		
 		return String.valueOf(result);
 	}
+	
+	
+	
+	/**휴대전화 중복체크*/
+	@RequestMapping(value="/c_phone_check.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String c_phone_check(String phone1, String phone2, String phone3) {
+		String phone_num = phone1+"-"+phone2+"-"+phone3;
+		
+		System.out.println("phone_num="+ phone_num);
+		
+		int result = companyMemberService.companyPhoneCheckResult(phone_num);
+		System.out.println("result="+result);
+		return String.valueOf(result);
+	}
+	
 	
 }

@@ -80,6 +80,22 @@
 			alert("로그인 실패");
 		}
 		
+		let changePassword = "${changePassword_result}";
+		if(changePassword == "success"){
+			alert("비밀번호 변경 성공");
+		}
+		
+		document.addEventListener('DOMContentLoaded', function() {
+            // URL에서 selectedTab 파라미터 값을 가져옴
+            var urlParams = new URLSearchParams(window.location.search);
+            var selectedTab = urlParams.get('selectedTab');
+            
+            // 선택한 탭을 표시
+            if (selectedTab) {
+                document.getElementById(selectedTab).checked = true;
+            }
+        });
+		
 	</script>
 </head>
 <body>
@@ -118,12 +134,14 @@
 					<li>
 						<a href="findId.do" id="link-findAccount">아이디 찾기</a>
 						<a href="findId.do?selectedTab=findPwd" id="link-findAccount">비밀번호 찾기</a>
+						<a href="/uniquegames/join.do" id="link-signUp">
+							<span>Sign Up</span></a>
 					</li>
 				</ul>
 			</div>
 		</form>
 		
-		<form action="login_proc.do" name="loginCompanyForm" method="post" id="company-loginForm">
+		<form action="company_login_proc.do" name="loginCompanyForm" method="post" id="company-loginForm">
 			<div>
 				<ul>
 					<li>
@@ -140,20 +158,11 @@
 					<li>
 						<a href="findCompany.do" id="link-findAccount">아이디 찾기</a>
 						<a href="findCompany.do?selectedTab=findPwd" id="link-findAccount">비밀번호 찾기</a>
-					</li>
-				</ul>
-			</div>
-		</form>
-		
-			<div>
-				<ul>
-					<li>
-						<a href="/uniquegames/join.do" id="link-signUp">
-							<span>Sign Up</span></a>
 						<a href="join.do?selectedTab=company" id="link-signUp">Company Sign Up</a>
 					</li>
 				</ul>
 			</div>
+		</form>
 		
 	</section>
 	<footer>

@@ -43,7 +43,13 @@ document.addEventListener('DOMContentLoaded', function() {
 				return false;
 			}else {
 				$.ajax({
-					url : "findId_check.do?name="+$("input[name='name']").val()+"&phone_num="+$("input[name='phone_num']").val(),
+					url : "cfindId_check.do",
+					type : "POST",
+					data : {
+						name : $("input[name='name']").val(),
+						phone_num :$("input[name='phone_num']").val()
+					},
+					
 					success : function(result) {
 						if(result=="") {
 							$("#modal2").show();
@@ -58,11 +64,11 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		});
 		
-	$("#button-gradient1").click(function(){
+	$("#button-gradient-findPwd").click(function(){
 			
-			if($("input[name='member_id']").val()==""){
+			if($("input[name='company_id']").val()==""){
 				alert("아이디를 입력해주세요");
-				$("input[name='member_id']").focus();
+				$("input[name='company_id']").focus();
 				return false;
 			}else if($("#input-common-name").val()==""){
 				alert("이름을 입력해주세요");
@@ -73,86 +79,9 @@ document.addEventListener('DOMContentLoaded', function() {
 				$("#input-common-phone").focus();
 				return false;
 			}else {
-				findPwdForm.submit();
+				cfindPwdForm.submit();
 			}
 		});
-	
-		/* $("#button-gradient1").click(function(){
-			
-			if($("input[name='member_id']").val()==""){
-				alert("아이디를 입력해주세요");
-				$("input[name='member_id']").focus();
-				return false;
-			}else if($("#input-common-phone").val()==""){
-				alert("휴대전화를 입력해주세요");
-				$("#input-common-phone").focus();
-				return false;
-			}else {
-				$.ajax({
-					url : "findPwd_check.do?member_id="+$("input[name='member_id']").val()+"&phone_num="+$("#input-common-phone").val(),
-					success : function(result) {
-						if(result=="") {
-							$("#modal2").show();
-							$("#agreement-content1").html($(".find-pwd-none").html());
-						}else {
-							$("#modal2").show();
-							$("#find-pwd-result").html(result);
-							$("#agreement-content1").html($(".deleteComplete1").html());
-						}
-					}
-				});
-			}
-		}); */
-		/* 아이디 찾기
-		$("input[name='name']").blur(function(){
-			
-			if($("input[name='name']").val()=="") {
-				$("#msgName").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
-			}else {
-				$("#msgName").css("display","none");
-			}
-			
-		});
-		
-		$("input[name='phone_num']").blur(function(){
-			
-			if($("input[name='phone_num']").val()==""){
-				$("#msgPhone").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
-			}else {
-				$("#msgPhone").css("display","none");
-			}
-		});
-		
-		//비밀번호 찾기
-		
-		$("input[name='member_id']").blur(function(){
-			
-			if($("input[name='member_id']").val()=="") {
-				$("#msgId").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
-			}else {
-				$("#msgId").css("display","none");
-			}
-			
-		});
-		
-		$("#input-common-name").blur(function(){
-			
-			if($("#input-common-name").val()==""){
-				$("#msgName1").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
-			}else {
-				$("#msgName1").css("display","none");
-			}
-		});
-		
-		$("#input-common-phone").blur(function(){
-			
-			if($("#input-common-phone").val()==""){
-				$("#msgPhone1").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
-			}else {
-				$("#msgPhone1").css("display","none");
-			}
-		});
-		*/
 		
 		
 		$(document).on("click", "#button-gradient-gotoFind", function(event){
@@ -168,20 +97,20 @@ document.addEventListener('DOMContentLoaded', function() {
 		$(document).on("click", "#button-gradient-gotoPwd", function(event){
 
 			$("#modal2").hide();
-			location.href="http://localhost:9000/uniquegames/findId.do?selectedTab=findPwd";
+			location.href="http://localhost:9000/uniquegames/findCompany.do?selectedTab=findPwd";
 			
 			});
 		$(document).on("click", "#button-gradient-gotoLogin", function(event){
 
 			$("#modal2").hide();
-			location.href="http://localhost:9000/uniquegames/login.do";
+			location.href="http://localhost:9000/uniquegames/login.do?selectedTab=company-login";
 			
 			});
 		
 		$(document).on("click", "#button-gradient-gotoJoin", function(event){
 
 			$("#modal2").hide();
-			location.href="http://localhost:9000/uniquegames/join.do";
+			location.href="http://localhost:9000/uniquegames/join.do?selectedTab=company";
 			
 			});
 		
@@ -209,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			<input id="findPwd" type="radio" name="findAccount">
 			<label for="findPwd" id="findPwd-tab">비밀번호 찾기</label>
 			
-			<form action="findId_check.do" name="findIdForm" method="post" id="findIdForm">
+			<form action="cfindId_check.do" name="cfindIdForm" method="post" id="findIdForm">
 				<ul>
 					<li>
 						<input type="text" id="input-common" name="name" placeholder="이름">
@@ -225,11 +154,11 @@ document.addEventListener('DOMContentLoaded', function() {
 				</ul>
 			</form>
 			
-			<form action="findPwd_check.do" name="findPwdForm" method="post" id="findPwdForm">
+			<form action="cfindPwd_check.do" name="cfindPwdForm" method="post" id="findPwdForm">
 				<p id="intro-2">비밀번호를 찾으려는 아이디</p>
 				<ul>
 					<li>
-						<input type="text" id="input-common" name="member_id" placeholder="아이디">
+						<input type="text" id="input-common" name="company_id" placeholder="아이디">
 						<span id="msgId"></span>
 					</li>
 					<li>
@@ -248,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	</section>
 	
 	<div id="modal2">
-		<div class="agreement2" id="agreement">
+		<div class="agreement2" id="agreement-findId">
 			<div id="agreement-content1">
 			</div>
 		</div>

@@ -2,10 +2,26 @@ package com.uniquegames.vo;
 
 public class CompanyVo {
 	
-	int id;
-	String company_id, password, name, email1, email2, phone1, phone2, phone3, addr1, addr2;
-	
-	String email, phone_num, addr;
+	int id, g_id;
+	String company_id, password, name, email1, email2, email3, tel, phone1, phone2, phone3, addr1, addr2;
+
+	String email, phone_num, addr, cnewpassword, game;
+
+	public String getGame() {
+		return game;
+	}
+
+	public void setGame(String game) {
+		this.game = game;
+	}
+
+	public int getG_id() {
+		return g_id;
+	}
+
+	public void setG_id(int g_id) {
+		this.g_id = g_id;
+	}
 
 	public int getId() {
 		return id;
@@ -13,6 +29,14 @@ public class CompanyVo {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getEmail3() {
+		return email3;
+	}
+
+	public void setEmail3(String email3) {
+		this.email3 = email3;
 	}
 
 	public String getCompany_id() {
@@ -53,6 +77,14 @@ public class CompanyVo {
 
 	public void setEmail2(String email2) {
 		this.email2 = email2;
+	}
+	
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 
 	public String getPhone1() {
@@ -119,7 +151,7 @@ public class CompanyVo {
 
 	public String getAddr() {
 		if(addr1!=null) {
-			addr = addr1+" "+addr2;
+			addr = addr1+"   "+addr2;
 		}
 		return addr;
 	}
@@ -128,6 +160,13 @@ public class CompanyVo {
 		this.addr = addr;
 	}
 	
+	public String getCnewpassword() {
+		return cnewpassword;
+	}
+
+	public void setCnewpassword(String cnewpassword) {
+		this.cnewpassword = cnewpassword;
+	}
 	
 
 }

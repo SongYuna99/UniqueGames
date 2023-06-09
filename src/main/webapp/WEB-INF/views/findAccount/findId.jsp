@@ -43,7 +43,13 @@ document.addEventListener('DOMContentLoaded', function() {
 				return false;
 			}else {
 				$.ajax({
-					url : "findId_check.do?name="+$("input[name='name']").val()+"&phone_num="+$("input[name='phone_num']").val(),
+					url : "findId_check.do",
+					type : "POST",
+					data : {
+						name : $("input[name='name']").val(),
+						phone_num : $("input[name='phone_num']").val()
+					},
+					
 					success : function(result) {
 						if(result=="") {
 							$("#modal2").show();
@@ -57,8 +63,8 @@ document.addEventListener('DOMContentLoaded', function() {
 				});
 			}
 		});
-		
-	$("#button-gradient1").click(function(){
+	
+	$("#button-gradient-findPwd").click(function(){
 			
 			if($("input[name='member_id']").val()==""){
 				alert("아이디를 입력해주세요");
@@ -248,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	</section>
 	
 	<div id="modal2">
-		<div class="agreement2" id="agreement">
+		<div class="agreement2" id="agreement-findId">
 			<div id="agreement-content1">
 			</div>
 		</div>
