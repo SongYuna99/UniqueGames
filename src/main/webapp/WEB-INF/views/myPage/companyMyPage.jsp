@@ -41,15 +41,15 @@
 				alert("이메일은 영문 또는 숫자로 4자리 이상 입력해주세요");
 				$("#company-email1").focus();
 				return false;
-			}else if($("#company-email2").val()=="" && $("#company-selectbox-email").val()=="default"){
+			}else if($("#company-email2").val()=="" && $("#company-selectbox-email").val()=="choose" || $("#company-email2").val()=="" && $("#company-selectbox-email").val()=="direct"){
 				alert("이메일 주소를 전부 작성해주세요");
-				$("input[name='email2']").focus();
+				$("#company-email2").focus();
 				return false;
-			}else if($("#company-selectbox-mobile").val()=="default") {
+			}else if($("#company-selectbox-mobile").val()=="choose") {
 				alert("통신사를 선택해주세요");
 				$("#selectbox-mobile").focus();
 				return false;
-			}else if($("#company-selectbox-phone").val()=="default") {
+			}else if($("#company-selectbox-phone").val()=="choose") {
 				alert("대표 전화는 필수 입력 항목입니다");
 				$("#company-selectbox-phone").focus();
 				return false;
@@ -74,6 +74,21 @@
 			}
 		});
 		
+		$("#company-selectbox-email").change(function(){
+			
+			if($("#company-selectbox-email").val()=="choose") {
+				$("#company-email2").val("");
+				$("#emailMsg").text("이메일을 선택해주세요").css("color","red").css("font-size","11px").css("display","block");
+				$("#company-selectbox-email").focus();
+				return false;
+			}else if($("#company-selectbox-email").val()=="direct") {
+				$("#company-email2").val("").focus();
+			}else {
+				$("#company-email2").val($("#company-selectbox-email").val());
+			}
+		});
+		
+		
 		$("#pwd-check-img").change(function(){
 
 			if($("#pwd-check-img").is(":checked") == false) {
@@ -94,19 +109,6 @@
 			
 		});
 		
-		$("#company-selectbox-email").change(function(){
-			
-			if($("#company-selectbox-email").val()=="default") {
-				$("#company-email2").val("");
-				$("#emailMsg").text("이메일을 선택해주세요").css("color","red").css("font-size","11px").css("display","block");
-				$("#company-selectbox-email").focus();
-				return false;
-			}else if($("#company-selectbox-email").val()=="direct") {
-				$("#company-email2").val("").focus();
-			}else {
-				$("#company-email2").val($("#company-selectbox-email").val());
-			}
-		});
 		
 		$("#company-address-btn-style").click(function(){
 			 new daum.Postcode({
@@ -115,6 +117,19 @@
 			        	$("#company-addr2").focus();
 			        }
 			    }).open();
+		});
+		
+		$("#link-changePassword").click(function(){
+			
+			if($("input[name='password']").val()==""){
+				alert("비밀번호를 입력해주세요");
+				$("input[name='password']").focus();
+				return false;
+			}else if($("input[name='password']").val() != password){
+				alert("비밀번호가 일치하지 않습니다");
+				$("input[name='password']").focus();
+				return false;
+			}
 		});
 		
 		function emailCheck(asValue){
@@ -154,13 +169,14 @@
 						<label>회사 아이디</label>
 					</li>
 					<li>
-						<input type="text" id="input-common" name="company_id" value="${companyVo.company_id }">
+						<input type="text" id="input-common" name="company_id" value="${companyVo.company_id }" disabled>
+						<input type="hidden" name="company_id" value="${companyVo.company_id }">
 					</li>
 					<li>
 						<label>게임명</label>
 					</li>
 					<li>
-						<input type="text" id="input-common" name="game" value="${companyVo.game }">
+						<input type="text" id="input-common" name="game" value="${companyVo.game }" disabled>
 					</li>
 					<li id="must-insert">
 						<p id="label-dot">*</p>
@@ -172,7 +188,7 @@
 						<span id="c-pwdMsg"></span>
 					</li>
 					<li>
-						<a href="CompanyPageChangePassword.do" id="link-changePassword">
+						<a href="CompanyPageChangePassword.do?company_id=${companyVo.company_id }" id="link-changePassword">
 							<span>비밀번호 변경 ></span>
 						</a>
 					</li>
@@ -192,7 +208,7 @@
 						@
 						<input type="text" id="company-email2" name="email2" value="${companyVo.email2 }">
 						<select id="company-selectbox-email" name="email3">
-							<option value="">선택</option>
+							<option value="choose">선택</option>
 							<option value="naver.com" ${companyVo.email3  == 'naver.com' ? 'selected' : ''}>naver.com</option>
 							<option value="gmail.com" ${companyVo.email3  == 'gmail.com' ? 'selected' : ''}>gmail.com</option>
 							<option value="daum.net" ${companyVo.email3  == 'daum.net' ? 'selected' : ''}>daum.net</option>
@@ -219,14 +235,14 @@
 					</li>
 					<li>
 						<select name="tel" id="company-selectbox-mobile">
-							<option value="">선택</option>
+							<option value="choose">선택</option>
 							<option value="SKT" ${companyVo.tel == 'SKT' ? 'selected' : '' }>SKT</option>
 							<option value="KT" ${companyVo.tel == 'KT' ? 'selected' : '' }>KT</option>
 							<option value="LGU+" ${companyVo.tel == 'LGU+' ? 'selected' : '' }>LGU+</option>
 							<option value="MVNO" ${companyVo.tel == 'MVNO' ? 'selected' : '' }>알뜰폰</option>
 						</select> 
 						<select name="phone1" id="company-selectbox-phone">
-							<option value="">선택</option>
+							<option value="choose">선택</option>
 							<option value="010" ${companyVo.phone1 == '010' ? 'selected' : ''}>010</option>
     						<option value="011" ${companyVo.phone1 == '011' ? 'selected' : ''}>011</option>
     						<option value="012" ${companyVo.phone1 == '012' ? 'selected' : ''}>012</option>
@@ -241,7 +257,7 @@
 						<button type="button" id="button-gradient-company">수정하기</button>
 					</li>
 					<li>
-						<a href="deletePwd.do?company_id=${companyVo.company_id }" id="link-deleteAccount">
+						<a href="deleteCompany.do?company_id=${companyVo.company_id }" id="link-deleteAccount">
 							<span id="span-deleteAccount">회원탈퇴 ></span>
 						</a>
 					</li>

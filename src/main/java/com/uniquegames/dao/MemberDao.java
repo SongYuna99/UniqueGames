@@ -8,7 +8,7 @@ import com.uniquegames.vo.CompanyVo;
 import com.uniquegames.vo.MemberVo;
 
 @Repository
-public class MemberDao extends DBConn{
+public class MemberDao{
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
@@ -98,6 +98,20 @@ public class MemberDao extends DBConn{
 		return sqlSession.selectOne("mapper.member.myPage", member_id);
 	}
 	
+	/**delete Account Ajax*/
+	public int delete(MemberVo memberVo) {
+		return sqlSession.delete("mapper.member.delete", memberVo);
+	}
+	
+	/**email check*/
+	public int emailCheck(String email) {
+		return sqlSession.selectOne("mapper.member.emailCheck", email);
+	}
+	
+	/**phone check*/
+	public int phoneCheck(String phone_num) {
+		return sqlSession.selectOne("mapper.member.phoneCheck", phone_num);
+	}
 	
 	
 	
@@ -115,8 +129,7 @@ public class MemberDao extends DBConn{
 	
 	
 	
-	
-	/*********************넘어오는 name값을 받아서 여기 있으면 member로 아니면 company로(도전)****************************************/
+	/*********************넘어오는 name값을 받아서 여기 있으면 member로 아니면 company로(도전)
 	public int selectMode(String name, String phone_num) {
 		int result=0;
 		String sql = "select count(*) from member where name=? and phone_num=?";
@@ -137,32 +150,12 @@ public class MemberDao extends DBConn{
 		}
 		return result;
 	}
+	****************************************/
 	
 	
-	
-	/*********************이메일 중복확인****************************************/
-	public int emailCheck(String email1, String email2) {
-		int result=0;
-		String sql = "select count(*) from member where email1=? and email2=?";
-		getPreparedStatement(sql);
-		
-		try {
-			pstmt.setString(1, email1);
-			pstmt.setString(2, email2);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				result = rs.getInt(1);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
 	
 
-	/**delete Account*/
+	/**delete Account
 	public int delete(MemberVo memberVo) {
 		int result=0;
 		String sql = "delete from member where member_id=? and password=?";
@@ -178,24 +171,7 @@ public class MemberDao extends DBConn{
 		}
 		return result;
 	}
-	
-	/**delete Account Ajax*/
-	public int deleteCheck(String member_id, String password) {
-		int result=0;
-		String sql = "delete from member where member_id=? and password=?";
-		getPreparedStatement(sql);
-		System.out.println("MemberDao에서 확인하는 패스워드=" + password);
-		try {
-			pstmt.setString(1, member_id);
-			pstmt.setString(2, password);
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
+	*/
 	
 
 }

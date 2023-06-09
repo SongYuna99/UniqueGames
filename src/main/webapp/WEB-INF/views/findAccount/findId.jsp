@@ -43,7 +43,13 @@ document.addEventListener('DOMContentLoaded', function() {
 				return false;
 			}else {
 				$.ajax({
-					url : "findId_check.do?name="+$("input[name='name']").val()+"&phone_num="+$("input[name='phone_num']").val(),
+					url : "findId_check.do",
+					type : "POST",
+					data : {
+						name : $("input[name='name']").val(),
+						phone_num : $("input[name='phone_num']").val()
+					},
+					
 					success : function(result) {
 						if(result=="") {
 							$("#modal2").show();
@@ -57,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				});
 			}
 		});
-		
+	
 	$("#button-gradient-findPwd").click(function(){
 			
 			if($("input[name='member_id']").val()==""){

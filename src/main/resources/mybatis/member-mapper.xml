@@ -41,6 +41,17 @@
 		select member_id, password, name, email, phone_num, addr, tel from member where member_id=#{member_id}
 	</select>
 	
+	<delete id="delete" parameterType="com.uniquegames.vo.MemberVo">
+		delete from member where member_id=#{member_id} and password=#{password}
+	</delete>
+	
+	<select id="emailCheck" parameterType="java.lang.String" resultType="int">
+		select count(*) from member where email=#{email}
+	</select>
+	
+	<select id="phoneCheck" parameterType="java.lang.String" resultType="int">
+		select count(*) from member where phone_num=#{phone_num}
+	</select>
 	
 	
 	

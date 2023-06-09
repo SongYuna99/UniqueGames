@@ -12,7 +12,7 @@
 	<script>
 
 		$(document).ready(function(){
-			
+			var member_id = "${memberVo.member_id }";
 			var password = "${memberVo.password}";
 			
 		$("#button-gradient-delete").click(function(){
@@ -22,30 +22,27 @@
 				$("input[name='password']").focus();
 				return false;
 			}else {
-				alert($("input[name='password']").val());
+				
 				$.ajax({
-					url : "delete_check.do?member_id="+$("input[name='member_id']").val()+"&password="+password,
+					url: "delete_check.do",
+				    type: "POST",
+				    data: {
+				      member_id: $("input[name='member_id']").val(),
+				      password: $("input[name='password']").val()
+				    },
 					success : function(result) {
-						alert(result);
 						
-						if($("input[name='password']").val() === password){
-							alert(password);
+						if(result==1){
 							$("#modal2").css("display", "block");
-							$("#delete-member-id").html(jdata.member_id);
-							$("#delete-id").html(jdata.member_id);
+							$("#delete-member-id").html(member_id);
 							$("#agreement-content1").html($(".deleteComplete").html());	
 						}else {
-							alert(password);
 							alert("비밀번호가 일치하지 않습니다");
+							$("input[name='password']").val("").focus();
 						}
-							
-					
-							
 					}
-					
 				});
 			}
-
 		});
 		
 		$("input[name='member_id']").blur(function(){
@@ -90,7 +87,7 @@
 	</section>
 	<section id="content-1">
 		<p id="intro">회원탈퇴</p>
-		<form action="#" name="loginForm" method="post">
+		<form action="delete_check.do" name="loginForm" method="post">
 			<div>
 				<p id="intro-1">탈퇴 사유</p>
 				<ul>
@@ -108,6 +105,7 @@
 					</li>
 					<li>
 						<input type="text" id="input-common" name="member_id" value="${memberVo.member_id }" disabled>
+						<input type="hidden" name="member_id" value="${memberVo.member_id }">
 						<span id="msgId"></span>
 					</li>
 					<li>
@@ -155,6 +153,8 @@
 			</li>
 		</ul>
 	</div>
+	
+	
 	
 	<footer>
 		<jsp:include page="../main/footer.jsp"></jsp:include>

@@ -27,8 +27,8 @@
     	if(c == "fail")
     		alert("회원가입 실패");
     	
-    	
     </script>
+
 </head>
 <body>
 	<header>
@@ -60,6 +60,7 @@
 							<input type="text" id="input-id" name="member_id" placeholder="영문,숫자 5~10자리" tabindex="1">
 							<button type="button" id="check-btn-style">중복체크</button>
 							<span id="idMsg"></span>
+							<span id="capsLockMsg"></span>
 						</li>
 						<li id="must-insert">
 							<p id="label-dot">*</p>
@@ -90,7 +91,7 @@
 						<li>
 							<input type="text" id="input-email" name="email1" tabindex="5">
 							<span>@</span>
-							<input type="text" id="input-email" name="email2" tabindex="6">
+							<input type="text" id="join-email2" name="email2" tabindex="6">
 							<select name="email3" id="selectbox-email" tabindex="7">
 								<option value="default">선택</option>
 								<option value="naver.com">naver.com</option>
@@ -254,12 +255,12 @@
 							<input type="text" id="company-phone2" name="phone2" tabindex="13">
 							-
 							<input type="text" id="company-phone3" name="phone3" tabindex="14">
-							<span id="phoneMsg"></span>
+							<span id="c-phoneMsg"></span>
 						</li>						
 					</ul>
 					<ul>
 						<li id="agreement-box">
-							<input type="checkbox" name="agreementAll" id="c-chk-circle">
+							<input type="checkbox" name="agreementAll" id="c-chk-circle" tabindex="15">
 							<span id="span_agreementAll">전체 동의하기</span>
 						</li>
 						<li>

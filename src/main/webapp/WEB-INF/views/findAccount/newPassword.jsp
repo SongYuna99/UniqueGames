@@ -28,7 +28,7 @@
 				alert("비밀번호가 동일하지 않습니다");
 				$("input[name='mnewpassword-check']").focus();
 				return false;
-			}else if($("input[name='mnewpassword']").val()&&$("input[name='mnewpassword-check']").val() === password){
+			}else if($("input[name='mnewpassword']").val() && $("input[name='mnewpassword-check']").val() === password){
 				alert("기존 비밀번호와 동일하게 변경할 수 없습니다");
 				$("input[name='mnewpassword']").focus();
 				return false;

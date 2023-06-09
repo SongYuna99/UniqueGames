@@ -43,7 +43,13 @@ document.addEventListener('DOMContentLoaded', function() {
 				return false;
 			}else {
 				$.ajax({
-					url : "findId_check.do?name="+$("input[name='name']").val()+"&phone_num="+$("input[name='phone_num']").val(),
+					url : "cfindId_check.do",
+					type : "POST",
+					data : {
+						name : $("input[name='name']").val(),
+						phone_num :$("input[name='phone_num']").val()
+					},
+					
 					success : function(result) {
 						if(result=="") {
 							$("#modal2").show();
@@ -73,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				$("#input-common-phone").focus();
 				return false;
 			}else {
-				findPwdForm.submit();
+				cfindPwdForm.submit();
 			}
 		});
 		
@@ -91,20 +97,20 @@ document.addEventListener('DOMContentLoaded', function() {
 		$(document).on("click", "#button-gradient-gotoPwd", function(event){
 
 			$("#modal2").hide();
-			location.href="http://localhost:9000/uniquegames/findId.do?selectedTab=findPwd";
+			location.href="http://localhost:9000/uniquegames/findCompany.do?selectedTab=findPwd";
 			
 			});
 		$(document).on("click", "#button-gradient-gotoLogin", function(event){
 
 			$("#modal2").hide();
-			location.href="http://localhost:9000/uniquegames/login.do";
+			location.href="http://localhost:9000/uniquegames/login.do?selectedTab=company-login";
 			
 			});
 		
 		$(document).on("click", "#button-gradient-gotoJoin", function(event){
 
 			$("#modal2").hide();
-			location.href="http://localhost:9000/uniquegames/join.do";
+			location.href="http://localhost:9000/uniquegames/join.do?selectedTab=company";
 			
 			});
 		
@@ -132,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			<input id="findPwd" type="radio" name="findAccount">
 			<label for="findPwd" id="findPwd-tab">비밀번호 찾기</label>
 			
-			<form action="findId_check.do" name="findIdForm" method="post" id="findIdForm">
+			<form action="cfindId_check.do" name="cfindIdForm" method="post" id="findIdForm">
 				<ul>
 					<li>
 						<input type="text" id="input-common" name="name" placeholder="이름">
@@ -148,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				</ul>
 			</form>
 			
-			<form action="cfindPwd_check.do" name="findPwdForm" method="post" id="findPwdForm">
+			<form action="cfindPwd_check.do" name="cfindPwdForm" method="post" id="findPwdForm">
 				<p id="intro-2">비밀번호를 찾으려는 아이디</p>
 				<ul>
 					<li>
@@ -171,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	</section>
 	
 	<div id="modal2">
-		<div class="agreement2" id="agreement">
+		<div class="agreement2" id="agreement-findId">
 			<div id="agreement-content1">
 			</div>
 		</div>

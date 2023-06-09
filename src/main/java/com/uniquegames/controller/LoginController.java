@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.uniquegames.dao.CompanyDao;
 import com.uniquegames.dao.MemberDao;
+import com.uniquegames.service.CompanyMemberService;
 import com.uniquegames.service.MemberService;
 import com.uniquegames.vo.CompanyVo;
 import com.uniquegames.vo.MemberVo;
@@ -23,43 +24,18 @@ public class LoginController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+	private CompanyMemberService companyMemberService;
+	
 	@RequestMapping(value="/login.do", method=RequestMethod.GET)
 	public String login() {
 		return "/login/login";
 	}
-	/*
-	@RequestMapping(value="/login_proc.do", method=RequestMethod.POST)
-	public ModelAndView login_proc(MemberVo memberVo,CompanyVo companyVo, HttpServletRequest request) {
-		
-		ModelAndView mav = new ModelAndView();
-		MemberDao memberDao = new MemberDao();
-		CompanyDao companyDao = new CompanyDao();
-		int result = memberDao.login(memberVo);
-		int company_result = companyDao.login(companyVo);
-		if(result==1) {
-			mav.setViewName("redirect:/index.do");
-			session = request.getSession();
-			
-			session.setAttribute("member_id", memberVo.getMember_id());
-			session.setMaxInactiveInterval(1*60);
-		}else if(company_result==1) {
-			mav.setViewName("redirect:/index.do");
-			session = request.getSession();
-			
-			session.setAttribute("company_id", companyVo.getCompany_id());
-			session.setMaxInactiveInterval(1*60);
-		}else {
-			mav.addObject("login_result", "fail");
-			mav.setViewName("login/login");
-		}
-			
-		return mav;
-	}
-	*/
+
 	@RequestMapping(value="/login_proc.do", method=RequestMethod.POST)
 	public ModelAndView login_proc(MemberVo memberVo, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		int result = memberService.getLoginResult(memberVo);
+		int result = memberService.memberLoginResult(memberVo);
 		
 		if(result==1) {
 			session.setAttribute("member_id", memberVo.getMember_id());
@@ -72,26 +48,40 @@ public class LoginController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/logout.do", method=RequestMethod.GET)
-	public String logout(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		session.invalidate();
-		/*
-		String viewName = "";
-		String member_id = (String)session.getAttribute("member_id");
+	@RequestMapping(value="/company_login_proc.do", method=RequestMethod.POST)
+	public ModelAndView company_login_proc(CompanyVo companyVo, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		int result = companyMemberService.companyLoginResult(companyVo);
 		
+		if(result==1) {
+			session.setAttribute("company_id", companyVo.getCompany_id());
+			session.setMaxInactiveInterval(60);
+			mav.setViewName("redirect:/index.do");
+		}else {
+			mav.setViewName("redirect:/login.do");
+		}
+		
+		return mav;
+	}
+	/*
+	@RequestMapping(value="/logout.do", method=RequestMethod.GET)
+	public String logout(HttpSession session) {
+		String member_id = (String)session.getAttribute("member_id");
 		if(member_id != null) {
 			session.invalidate();
-			System.out.println("로그아웃 성공");
-			viewName = "redirect:/index.do";
-		}else {
-			System.out.println("로그아웃 실패");
 		}
-		return viewName;
-		*/
 		return "redirect:/index.do";
 	}
 	
+	@RequestMapping(value="/logout.do", method=RequestMethod.GET)
+	public String clogout(HttpSession session) {
+		String company_id = (String)session.getAttribute("company_id");
+		if(company_id != null) {
+			session.invalidate();
+		}
+		return "redirect:/index.do";
+	}
+	*/
 	
 	
 

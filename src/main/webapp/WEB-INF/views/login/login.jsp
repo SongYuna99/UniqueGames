@@ -141,7 +141,7 @@
 			</div>
 		</form>
 		
-		<form action="login_proc.do" name="loginCompanyForm" method="post" id="company-loginForm">
+		<form action="company_login_proc.do" name="loginCompanyForm" method="post" id="company-loginForm">
 			<div>
 				<ul>
 					<li>

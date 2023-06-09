@@ -15,7 +15,7 @@ public class MemberServiceImpl implements MemberService {
 	private MemberDao memberDao;
 	
 	@Override
-	public int getLoginResult(MemberVo memberVo) {
+	public int memberLoginResult(MemberVo memberVo) {
 		return memberDao.login(memberVo);
 	}
 	
@@ -26,46 +26,62 @@ public class MemberServiceImpl implements MemberService {
 	}
 	*/
 	@Override
-	public int getJoinResult(MemberVo memberVo) {
+	public int memberJoinResult(MemberVo memberVo) {
 		
 		return memberDao.insert(memberVo);
 	}
 
 	@Override
-	public String getIdCheckResult(String member_id) {
+	public String memberIdCheckResult(String member_id) {
 		int result = memberDao.idCheck(member_id);
 		return String.valueOf(result);
 	}
 	
 	@Override
-	public String getFindIdResult(MemberVo memberVo) {
+	public String memberFindIdResult(MemberVo memberVo) {
 		return memberDao.findIdCheck(memberVo);
 	}
 	 
 	@Override
-	public int getFindPwdResult(MemberVo memberVo) {
+	public int memberFindPwdResult(MemberVo memberVo) {
 		return memberDao.select(memberVo);
 	}
 
 	@Override
-	public int getUpdateResult(MemberVo memberVo) {
+	public int memberUpdateResult(MemberVo memberVo) {
 		return memberDao.update(memberVo);
 	}
 
 	@Override
-	public int getChangePwdResult(String member_id, String name, String phone_num) {
+	public int memberChangePwdResult(String member_id, String name, String phone_num) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int getChangeMPassword(String member_id, String mnewpassword) {
+	public int memberChangeMPassword(String member_id, String mnewpassword) {
 		return memberDao.changeMpassword(member_id, mnewpassword);
 	}
 
 	@Override
-	public MemberVo getMyPageResult(String member_id) {
+	public MemberVo memberMyPageResult(String member_id) {
 		return memberDao.myPage(member_id);
+	}
+
+	@Override
+	public int memberDeleteResult(MemberVo memberVo) {
+		return memberDao.delete(memberVo);
+	}
+
+	@Override
+	public int memberEmailCheckResult(String email) {
+		
+		return memberDao.emailCheck(email);
+	}
+
+	@Override
+	public int memberPhoneCheckResult(String phone_num) {
+		return memberDao.phoneCheck(phone_num);
 	}
 
 	

@@ -1,142 +1,69 @@
 package com.uniquegames.dao;
 
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.uniquegames.vo.CompanyVo;
-import com.uniquegames.vo.MemberVo;
 
-public class CompanyDao extends DBConn{
+@Repository
+public class CompanyDao {
 
+	@Autowired
+	private SqlSessionTemplate sqlSession;
+	
+	/**company login*/
+	public int login(CompanyVo companyVo) {
+		return sqlSession.selectOne("mapper.companyMember.login", companyVo);
+	}
+	
 	/**sign up member*/
 	public int insert(CompanyVo companyVo) {
-		int result=0;
-		String sql = "insert into company (company_id, password, name, email, tel, "
-				+ " phone_num, addr) values (?,?,?,?,?,?,?)";
-		getPreparedStatement(sql);
-		
-		try {
-			pstmt.setString(1, companyVo.getCompany_id());
-			pstmt.setString(2, companyVo.getPassword());
-			pstmt.setString(3, companyVo.getName());
-			pstmt.setString(4, companyVo.getEmail());
-			pstmt.setString(5, companyVo.getTel());
-			pstmt.setString(6, companyVo.getPhone_num());
-			pstmt.setString(7, companyVo.getAddr());
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
+		return sqlSession.insert("mapper.companyMember.insert", companyVo);
 	}
 	/**id checking*/
 	public int idCheck(String company_id) {
-		int result=0;
-		String sql = "select count(*) from company where company_id=?";
-		getPreparedStatement(sql);
-		
-		try {
-			
-			pstmt.setString(1, company_id);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				result= rs.getInt(1);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
+		return sqlSession.selectOne("mapper.companyMember.idCheck", company_id);
 	}
 	
 	/**find-id-check*/
-	public String findIdCheck(String name, String phone_num) {
-		String result="";
-		String sql = "select company_id from company where name=? and phone_num=?";
-		getPreparedStatement(sql);
-		
-		try {
-			pstmt.setString(1, name);
-			pstmt.setString(2, phone_num);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				result= rs.getString(1);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
+	public String findIdCheck(CompanyVo companyVo) {
+		return sqlSession.selectOne("mapper.companyMember.findId", companyVo);
 	}
 	
-	public int login(CompanyVo companyVo) {
-		int result=0;
-		String sql = "select count(*) from company where company_id=? and password=?";
-		getPreparedStatement(sql);
-		
-		try {
-			
-			pstmt.setString(1, companyVo.getCompany_id());
-			pstmt.setString(2, companyVo.getPassword());
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				result = rs.getInt(1);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		
-		return result;
+	public int findPwdCheck(CompanyVo companyVo) {
+		return sqlSession.selectOne("mapper.companyMember.findPwd", companyVo);
 	}
 	
-	public int select(String company_id, String name, String phone_num) {
-		int result=0;
-		String sql = "select count(*) from company where company_id=? and name=? and phone_num=?";
-		getPreparedStatement(sql);
-		
-		try {
-			
-			pstmt.setString(1, company_id);
-			pstmt.setString(2, name);
-			pstmt.setString(3, phone_num);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				result = rs.getInt(1);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return result;
+	public int update(CompanyVo companyVo) {
+		return sqlSession.update("mapper.companyMember.update", companyVo);
 	}
 	
-	public int changeCpassword(String company_id, String cnewpassword) {
-		int result=0;
-		String sql = "update company set password=? where company_id=?";
-		getPreparedStatement(sql);
-		
-		try {
-			pstmt.setString(1, cnewpassword);
-			pstmt.setString(2, company_id);
-			
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return result;
+	public CompanyVo companyPage(String company_id) {
+		return sqlSession.selectOne("mapper.companyMember.companyPage", company_id);
 	}
 	
-	/**companyMypage session id information*/
+	public int changeCpassword(CompanyVo companyVo) {
+		return sqlSession.update("mapper.companyMember.changeCpassword", companyVo);
+	}
+	
+	public String getGameNameByCID(String company_id) {
+		return sqlSession.selectOne("mapper.companyMember.getGameName", company_id);
+	}
+	
+	public int deleteCompany(CompanyVo companyVo) {
+		return sqlSession.delete("mapper.companyMember.deleteCompany", companyVo);
+	}
+	
+	public int emailCheck(String email) {
+		return sqlSession.selectOne("mapper.companyMember.emailCheck", email);
+	}
+	
+	public int phoneCheck(String phone_num) {
+		return sqlSession.selectOne("mapper.companyMember.phoneCheck", phone_num);
+	}
+	
+	/**companyMypage session id information
 	public CompanyVo select(Object company_id) {
 		CompanyVo companyVo = null;
 		String sql = "select company_id, password, name, email, tel, phone_num, addr from company where company_id=?";
@@ -166,49 +93,6 @@ public class CompanyDao extends DBConn{
 		
 		return companyVo;
 	}
+	*/
 	
-	public int update(CompanyVo companyVo) {
-		int result=0;
-		String sql = "update company set company_id=?, g_id=?, name=?, email=?, addr=?, tel=?, phone_num=? where company_id=? and password=?";
-		getPreparedStatement(sql);
-		
-		try {
-			pstmt.setString(1, companyVo.getCompany_id());
-			pstmt.setInt(2, companyVo.getG_id());
-			pstmt.setString(3, companyVo.getName());
-			pstmt.setString(4, companyVo.getEmail());
-			pstmt.setString(5, companyVo.getAddr());
-			pstmt.setString(6, companyVo.getTel());
-			pstmt.setString(7, companyVo.getPhone_num());
-			pstmt.setString(8, companyVo.getCompany_id());
-			pstmt.setString(9, companyVo.getPassword());
-			
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
-	
-	public String getGameNameByCID(Object company_id) {
-		String result="";
-		String sql = "select b.name from company a, game b where a.G_ID = b.ID and company_id=?";
-		getPreparedStatement(sql);
-		
-		try {
-			
-			pstmt.setString(1, (String)company_id);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				result=rs.getString(1);
-				
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
 }

@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.uniquegames.dao.CompanyDao;
 import com.uniquegames.dao.MemberDao;
+import com.uniquegames.service.CompanyMemberService;
 import com.uniquegames.service.MemberService;
 import com.uniquegames.vo.CompanyVo;
 import com.uniquegames.vo.MemberVo;
@@ -20,11 +21,14 @@ public class MyPageController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+	private CompanyMemberService companyMemberService;
+	
 	//show information about member user
 	@RequestMapping(value="/myPage.do", method=RequestMethod.GET)
 	public ModelAndView myPage(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		MemberVo memberVo = memberService.getMyPageResult((String)session.getAttribute("member_id"));
+		MemberVo memberVo = memberService.memberMyPageResult((String)session.getAttribute("member_id"));
 		
 		if(memberVo != null) {
 			String password = memberVo.getPassword();
@@ -82,7 +86,7 @@ public class MyPageController {
 	@RequestMapping(value="/myPage_proc.do", method=RequestMethod.POST)
 	public ModelAndView myPage_proc(MemberVo memberVo) {
 		ModelAndView mav = new ModelAndView();
-		int result = memberService.getUpdateResult(memberVo);
+		int result = memberService.memberUpdateResult(memberVo);
 
 		if(result == 1) {
 			mav.addObject("update_result", "success");
@@ -97,9 +101,9 @@ public class MyPageController {
 	@RequestMapping(value="/companyMyPage.do", method=RequestMethod.GET)
 	public ModelAndView companyMyPage(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		CompanyDao companyDao = new CompanyDao();
-		String Gname = companyDao.getGameNameByCID(session.getAttribute("company_id"));
-		CompanyVo companyVo = companyDao.select(session.getAttribute("company_id"));
+		
+		CompanyVo companyVo = companyMemberService.companyPageResult((String)session.getAttribute("company_id"));
+		String Gname = companyMemberService.companyGameName((String)session.getAttribute("company_id"));
 		
 		if(companyVo != null) {
 			
@@ -138,7 +142,7 @@ public class MyPageController {
 	            	companyVo.setAddr2(""); // 대체값 할당
 	            }
 	        }
-			//String tel = companyVo.getTel();
+			
 			companyVo.setGame(Gname);
 			companyVo.setEmail1(email1);
 			companyVo.setEmail2(email2);
@@ -151,7 +155,7 @@ public class MyPageController {
 			mav.addObject("companyVo", companyVo);
 			mav.setViewName("/myPage/companyMyPage");
 		}else {
-			System.out.println("5678"+Gname);
+			
 			mav.addObject("myPage_result", "fail");
 			mav.setViewName("/login/login");
 		}
@@ -162,9 +166,8 @@ public class MyPageController {
 	@RequestMapping(value="/companyMyPage_proc.do", method=RequestMethod.POST)
 	public ModelAndView companyMyPage_proc(CompanyVo companyVo) {
 		ModelAndView mav = new ModelAndView();
-		CompanyDao companyDao = new CompanyDao();
-		int result = companyDao.update(companyVo);
-		System.out.println("---------------------------------------"+result);
+		int result = companyMemberService.companyUpdateResult(companyVo);
+		
 		if(result == 1) {
 			mav.addObject("update_result", "success");
 			mav.setViewName("redirect:/index.do");

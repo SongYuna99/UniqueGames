@@ -1366,7 +1366,7 @@ td#payment-totalPrice {
 }
 
 /* SignUp; email input style */
-#input-email,#company-email1, #company-email2 {
+#input-email,#company-email1, #company-email2, #join-email2 {
 	width: 127px;
 	padding: 20px 0;
 	text-indent: 10px;
@@ -1422,37 +1422,42 @@ td#payment-totalPrice {
 
 /*SignUp,myPage; individual form style*/
 #content-2,
-#content-myPage {
+#content-myPage,
+#newPasswordForm {
 	width: 40%;
 	margin: auto;
 	text-align: left;
 	padding-left: 45px;
 }
 
-/* SignUp,myPage; password eye img style*/
+/* SignUp,myPage; password eye img style
 #pwd-check-img {
 	width: 21px;
 	height: 14px;
 }
-
+*/
 /* SignUp, Company-SignUp, myPage; telecom selectbox style */
 #selectbox-mobile,
 #company-selectbox-mobile {
 	width: 70px;
-	height: 43px;
+	height: 45px;
 	border: 1px solid lightgray;
 	border-radius: 3px;
 	margin: 5px 0;
+	position: relative;
+	top: -1px;
 }
 
 /* SignUp, Company SignUp, myPage; 010 selectbox style*/
 #selectbox-phone,
 #company-selectbox-phone {
 	width: 60px;
-	height: 43px;
+	height: 45px;
 	margin-left: 21px;
 	border: 1px solid lightgray;
 	border-radius: 3px;
+	position: relative;
+	top: -1px;
 }
 
 
@@ -1737,7 +1742,8 @@ div.agreement2 {
 #button-gradient-gotoLogin,
 #button-gradient-gotoPwd,
 #button-gradient-gotoFind,
-#button-gradient-gotoJoin {
+#button-gradient-gotoJoin,
+#button-gradient-home {
 	border: none;
 	width: 180px;
 	height: 50px;

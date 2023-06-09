@@ -46,15 +46,15 @@
 				alert("이메일은 영문 또는 숫자로 4자리 이상 입력해주세요");
 				$("input[name='email1']").focus();
 				return false;
-			}else if($("input[name='email2']").val()=="" && $("#selectbox-email").val()=="default"){
+			}else if($("input[name='email2']").val()=="" && $("#selectbox-email").val()=="choose" || $("input[name='email2']").val()=="" && $("#selectbox-email").val()=="direct"){
 				alert("이메일 주소를 전부 작성해주세요");
 				$("input[name='email2']").focus();
 				return false;
-			}else if($("#selectbox-mobile").val()=="default") {
+			}else if($("#selectbox-mobile").val()=="choose") {
 				alert("통신사를 선택해주세요");
 				$("#selectbox-mobile").focus();
 				return false;
-			}else if($("#selectbox-phone").val()=="default") {
+			}else if($("#selectbox-phone").val()=="choose") {
 				alert("휴대전화는 필수 입력 항목입니다");
 				$("#selectbox-phone").focus();
 				return false;
@@ -76,6 +76,20 @@
 				return false;
 			}else {
 				myPageForm.submit();
+			}
+		});
+		
+		$("#selectbox-email").change(function(){
+			
+			if($("#selectbox-email").val()=="choose") {
+				$("input[name='email2']").val("");
+				$("#emailMsg").text("이메일을 선택해주세요").css("color","red").css("font-size","11px").css("display","block");
+				$("#selectbox-email").focus();
+				return false;
+			}else if($("#selectbox-email").val()=="direct") {
+				$("input[name='email2']").val("").focus();
+			}else {
+				$("input[name='email2']").val($("#selectbox-email").val());
 			}
 		});
 		
@@ -156,7 +170,6 @@
 					<li>
 						<input type="password" id="input-common" name="password">
 						<input type="checkbox" id="pwd-check-img">
-						<span id="pwdMsg"></span>
 					</li>
 					<li>
 						<a href="myPageChangePassword.do?member_id=${memberVo.member_id }" id="link-changePassword">
@@ -179,7 +192,7 @@
 						@
 						<input type="text" id="input-email" name="email2" value="${memberVo.email2 }">
 						<select name="email3" id="selectbox-email">
-							<option value="">선택</option>
+							<option value="choose">선택</option>
 							<option value="naver.com" ${memberVo.email3  == 'naver.com' ? 'selected' : ''}>naver.com</option>
 							<option value="gmail.com" ${memberVo.email3  == 'gmail.com' ? 'selected' : ''}>gmail.com</option>
 							<option value="daum.net" ${memberVo.email3  == 'daum.net' ? 'selected' : ''}>daum.net</option>
@@ -206,14 +219,14 @@
 					</li>
 					<li>
 						<select name="tel" id="selectbox-mobile">
-							<option value="">선택</option>
+							<option value="choose">선택</option>
 							<option value="SKT" ${memberVo.tel == 'SKT' ? 'selected' : '' }>SKT</option>
 							<option value="KT" ${memberVo.tel == 'KT' ? 'selected' : '' }>KT</option>
 							<option value="LGU+" ${memberVo.tel == 'LGU+' ? 'selected' : '' }>LGU+</option>
 							<option value="MVNO" ${memberVo.tel == 'MVNO' ? 'selected' : '' }>알뜰폰</option>
 						</select>
 						<select name="phone1" id="selectbox-phone">
-							<option value="">선택</option>
+							<option value="choose">선택</option>
 							<option value="010" ${memberVo.phone1 == '010' ? 'selected' : ''}>010</option>
     						<option value="011" ${memberVo.phone1 == '011' ? 'selected' : ''}>011</option>
     						<option value="012" ${memberVo.phone1 == '012' ? 'selected' : ''}>012</option>
@@ -225,7 +238,7 @@
 						<span id="phoneMsg"></span>
 					</li>
 					<li>
-						<button type="submit" id="button-gradient">수정하기</button>
+						<button type="button" id="button-gradient">수정하기</button>
 					</li>
 					<li>
 						<a href="deletePwd.do?member_id=${memberVo.member_id }" id="link-deleteAccount">
