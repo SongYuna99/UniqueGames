@@ -158,7 +158,7 @@ INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, ORDER_DATE, AMOUNT, METHOD, PAYMENT_ST
 VALUES(132, 'mtest', 'SS', 2, '2023-01-17', 30000, 'KAKAO', 'COMPLETE', 'ELDEN RING', 'http://localhost:9000/uniquegames/images/ER.png');
 
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
-VALUES(124598, 'mtest', 'FF', 4, 10000, 'FALL GUYS', 'http://localhost:9000/uniquegames/images/FG.png');
+VALUES(55124598, 'mtest', 'FF', 4, 10000, 'FALL GUYS', 'http://localhost:9000/uniquegames/images/FG.png');
 COMMIT;
 SELECT *FROM ORDERS where m_id='mtest';
 

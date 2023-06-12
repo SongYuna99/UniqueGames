@@ -30,7 +30,7 @@
                                 <img alt="#" src="${ranking.image_path } " width="500px" height="240px">
                                 <div>
                                     <p>${loop.count} </p>
-                                    <p>${ranking.name}</p>
+                                    <p id="cyber">${ranking.name}</p>
                                     <p>${ranking.description }</p>
                                     <button id="btn-readmore-topGame" type="button">자세히보기</button>
                                 </div>

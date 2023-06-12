@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.uniquegames.dao.GameDao;
 import com.uniquegames.vo.GameVo;
 
 @Controller
@@ -38,6 +37,8 @@ public class MainController {
 		this.indexServiceMapper = indexServiceMapper;
 		this.noticeService = noticeService;
 	}
+
+
 
 	@RequestMapping(value="/index.do", method=RequestMethod.GET)
 	public String index(Model model) throws IOException {

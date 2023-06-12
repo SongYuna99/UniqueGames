@@ -32,7 +32,6 @@
 		<interceptor>
 			<mapping path="/detail/insertIntro.do"/>
 			<mapping path="/notice_write.do"/>
-			<mapping path="/cart.do"/>
 			<beans:bean id="loginCheckInterceptor" class="com.uniquegames.interceptor.LoginCheckInterceptor"/>
 		</interceptor>
 	</interceptors>
