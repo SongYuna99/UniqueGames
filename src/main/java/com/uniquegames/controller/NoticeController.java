@@ -90,7 +90,7 @@ public class NoticeController {
 
 		}
 
-		return "redirect:/notice_list.do";
+		return "redirect:/notice_content.do?no=" + noticeVo.getPost_id();
 	}
 
 	/**
