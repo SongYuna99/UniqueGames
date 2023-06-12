@@ -78,5 +78,10 @@ $(document).ready(function (){
 		});
 		$("#totalAmount").html(totalAmount);
     }
+    
+    $("#btn-deleteAll").click(function() {
+    	let m_id = $("#m_id").val();
+    	location.href="http://localhost:9000/uniquegames/cart_delete_all.do?m_id=" + m_id;
+    });
 
 });

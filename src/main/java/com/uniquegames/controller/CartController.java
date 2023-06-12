@@ -23,8 +23,7 @@ public class CartController {
 		ModelAndView model = new ModelAndView();
 		ArrayList<OrderVo> cartList = orderService.getCartList(m_id);
 
-		System.out.println(m_id + " controller");
-		if (cartList != null) {
+		if (cartList.size() > 0) {
 			model.addObject("cartList", cartList);
 			model.addObject("nothingInCart", false);
 		} else {

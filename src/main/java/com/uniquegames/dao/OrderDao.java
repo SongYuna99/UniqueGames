@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.uniquegames.vo.OrderVo;
 
 @Repository
-public class OrderDao extends DBConn {
+public class OrderDao{
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
@@ -22,11 +22,7 @@ public class OrderDao extends DBConn {
 		List<Object> oList = sqlSession.selectList("com.uniquegames.orderMapper.getCartList", m_id);
 		ArrayList<OrderVo> cartList = new ArrayList<OrderVo>();
 		
-		System.out.println(m_id + " dao");
-		System.out.println(oList.size());
 		for (Object cart : oList) {
-			OrderVo ov = (OrderVo) cart;
-			System.out.println(ov.getId());
 			cartList.add((OrderVo) cart);
 		}
 
@@ -53,8 +49,9 @@ public class OrderDao extends DBConn {
 	public ArrayList<OrderVo> getOrderList(List<Integer> checkedList) {
 		ArrayList<OrderVo> orderList = new ArrayList<OrderVo>();
 
-		for (int id : checkedList) {
-			OrderVo order = sqlSession.selectOne("com.uniquegames.orderMapper.getOrderList", id);
+		for (int i = 0; i < checkedList.size(); i++) {
+			OrderVo order = sqlSession.selectOne("com.uniquegames.orderMapper.getOrderList", checkedList.get(i));
+			order.setRno(i + 1);
 			orderList.add(order);
 		}
 
@@ -79,10 +76,10 @@ public class OrderDao extends DBConn {
 
 		for (int i = 0; i < checkedList.size(); i++) {
 			Map<String, String> param = new HashMap<String, String>();
-			param.put("id", String.valueOf(checkedList.get(i)));
+			param.put("id", checkedList.get(i).toString());
 			param.put("method", method);
 
-			result = sqlSession.selectOne("com.uniquegames.orderMapper.getOrderComplete", param);
+			result = sqlSession.update("com.uniquegames.orderMapper.getOrderComplete", param);
 
 			if (result == 0) {
 				i = checkedList.size();

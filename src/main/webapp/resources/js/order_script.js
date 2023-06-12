@@ -56,7 +56,6 @@ $(document).ready(function (){
     // btn-order
     $("#btn-order").click(function() {
     	if(method == ""){
-    		alert("2-1");
     		alert("결제 방식을 선택해주세요.");
     	}
     	else {

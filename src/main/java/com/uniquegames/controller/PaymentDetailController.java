@@ -54,7 +54,7 @@ public class PaymentDetailController {
 			JsonObject jobj = new JsonObject();
 
 			jobj.addProperty("rno", payment.getRno());
-			jobj.addProperty("orderdate", payment.getOrderdate());
+			jobj.addProperty("orderdate", payment.getOrder_date());
 			jobj.addProperty("gametitle", payment.getGametitle());
 			jobj.addProperty("amount", payment.getAmount());
 
@@ -98,7 +98,7 @@ public class PaymentDetailController {
 			JsonObject jobj = new JsonObject();
 
 			jobj.addProperty("rno", payment.getRno());
-			jobj.addProperty("orderdate", payment.getOrderdate());
+			jobj.addProperty("orderdate", payment.getOrder_date());
 			jobj.addProperty("gametitle", payment.getGametitle());
 			jobj.addProperty("amount", payment.getAmount());
 

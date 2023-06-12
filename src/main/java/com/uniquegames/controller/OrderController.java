@@ -64,7 +64,7 @@ public class OrderController {
 			int amount = orderServiece.getOrderAmount(list);
 
 			model.addObject("m_id", m_id);
-			if (orderList != null) {
+			if (orderList.size() > 0) {
 				model.addObject("list", list);
 				model.addObject("orderList", orderList);
 				model.addObject("count", count);
@@ -84,7 +84,7 @@ public class OrderController {
 
 		model.addObject("m_id", m_id);
 		if (result != 0) {
-			model.setViewName("order_complete.do?m_id=" + m_id);
+			model.setViewName("redirect://order_complete.do");
 		} else {
 			model.setViewName("/order/error");
 		}

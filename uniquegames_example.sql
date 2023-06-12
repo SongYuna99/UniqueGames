@@ -104,8 +104,9 @@ VALUES ('test', '123', 'test', 'test@gmail.com', '판교', 'KT', '010-3412-3144'
 
 -- ORDERS - NOT
 SELECT *FROM ORDERS;
+COMMIT;
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
-VALUES(1, 'hong', 'AA', 1, 10000, 'DARK SOUL', 'http://localhost:9000/uniquegames/images/DS.png');
+VALUES(357, 'hong', 'AA', 1, 10000, 'DARK SOUL', 'http://localhost:9000/uniquegames/images/DS.png');
 
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
 VALUES(2, 'hong', 'SS', 2, 100000, 'ELDEN RING', 'http://localhost:9000/uniquegames/images/ER.png');
@@ -156,9 +157,19 @@ VALUES(131, 'mtest', 'FF', 4, '2023-01-13', 30000, 'KAKAO', 'COMPLETE', 'FALL GU
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, ORDER_DATE, AMOUNT, METHOD, PAYMENT_STATUS, GAMETITLE, GAME_IMG)
 VALUES(132, 'mtest', 'SS', 2, '2023-01-17', 30000, 'KAKAO', 'COMPLETE', 'ELDEN RING', 'http://localhost:9000/uniquegames/images/ER.png');
 
-
+INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
+VALUES(124598, 'mtest', 'FF', 4, 10000, 'FALL GUYS', 'http://localhost:9000/uniquegames/images/FG.png');
 COMMIT;
+SELECT *FROM ORDERS where m_id='mtest';
+
+SELECT ROW_NUMBER() OVER(ORDER BY AMOUNT DESC) AS RNO, 
+			
+		DATE_FORMAT(ORDER_DATE, '%y-%m-%d') ORDER_DATE, GAMETITLE, AMOUNT FROM ORDERS 
+		WHERE M_ID = 'mtest' AND PAYMENT_STATUS = 'COMPLETE' ;
 
 SELECT ID, G_ID, GAME_IMG, GAMETITLE, AMOUNT 
 		FROM ORDERS WHERE PAYMENT_STATUS = 'NOT' AND M_ID = 'mtest';
+        
+        
+GRANT ALL PRIVILEGES ON *.* TO 'uniquegames'@'localhost' IDENTIFIED BY '1234';
 
