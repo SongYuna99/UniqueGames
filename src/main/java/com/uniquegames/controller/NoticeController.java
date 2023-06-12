@@ -97,10 +97,10 @@ public class NoticeController {
 	 * notice_content.do 공지사항 - 상세 보기
 	 */
 	@RequestMapping(value = "/notice_content.do", method = RequestMethod.GET)
-	public ModelAndView noticeContent(String no) {
+	public ModelAndView noticeContent(String stat, String no) {
 		ModelAndView model = new ModelAndView();
 
-		NoticeVo noticeVo = noticeService.getNoticeContent(no);
+		NoticeVo noticeVo = noticeService.getNoticeContent(stat, no);
 
 		ArrayList<CommentVo> commList = commentService.select(no);
 
@@ -134,10 +134,10 @@ public class NoticeController {
 	 * notice_update.do 공지사항 - 수정
 	 */
 	@RequestMapping(value = "/notice_update.do", method = RequestMethod.GET)
-	public ModelAndView noticeUpdate(String no) {
+	public ModelAndView noticeUpdate(String stat, String no) {
 		ModelAndView model = new ModelAndView();
 
-		NoticeVo noticeVo = noticeService.getNoticeContent(no);
+		NoticeVo noticeVo = noticeService.getNoticeContent(stat, no);
 
 		model.addObject("noticeVo", noticeVo);
 		model.setViewName("/notice/notice_update");
@@ -164,7 +164,7 @@ public class NoticeController {
 
 		}
 
-		return "redirect:/notice_content.do?no=" + noticeVo.getPost_id();
+		return "redirect:/notice_content.do?stat=up&no=" + noticeVo.getPost_id();
 	}
 
 	/**

@@ -31,14 +31,16 @@ public class NoticeServiceImpl implements NoticeService {
 	 * 공지사항 - 상세 보기
 	 */
 	@Override
-	public NoticeVo getNoticeContent(String no) {
+	public NoticeVo getNoticeContent(String stat, String no) {
 		NoticeVo noticeVo = noticeMapper.selectContent(no);
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 		if (noticeVo != null) {
+			if (stat == null || stat.equals("")) {
+				noticeMapper.hitsCount(no);
+				noticeVo.setNotice_hits(noticeVo.getNotice_hits() + 1);
+			}
 
-			noticeMapper.hitsCount(no);
-			noticeVo.setNotice_hits(noticeVo.getNotice_hits() + 1);
 			noticeVo.setDate_output(format.format(noticeVo.getNotice_date()));
 
 		}

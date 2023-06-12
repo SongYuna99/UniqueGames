@@ -8,7 +8,7 @@ public interface NoticeService {
 	
 	public ArrayList<NoticeVo> getNoticeList(int startCount, int endCount);
 	
-	public NoticeVo getNoticeContent(String no);
+	public NoticeVo getNoticeContent(String stat, String no);
 	
 	public int insert(NoticeVo noticeVo);
 	

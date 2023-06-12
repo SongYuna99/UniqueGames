@@ -6,14 +6,20 @@ $(document).ready(function() {
 	// 전체 삭제 버튼 이벤트
 	$('button[name="listDeleteAll"]').on("click", function() {
 
-		let list = $("input[name='list'");
+		let list = $("input[name='list']");
 
-		if (confirm("모든 게시글을 삭제하시겠습니까?")) {
-
-			list.prop("checked", true);
-			boardManage.submit();
-
-		};
+		if (list[0] != null) {
+			if (confirm("모든 게시글을 삭제하시겠습니까?")) {
+	
+				list.prop("checked", true);
+				boardManage.submit();
+	
+			};
+		} else {
+			alert("게시글이 존재하지 않습니다.");
+			
+			return false;
+		}
 	});
 
 	// 삭제 버튼 이벤트
@@ -28,17 +34,13 @@ $(document).ready(function() {
 			if (confirm("정말로 삭제하시겠습니까?")) {
 				boardManage.submit();
 
-			} else {
-				$("input[name='list[]']").prop("checked", false);
-
-				return false;
 			}
 		}
 	});
 
 	// 수정 버튼 이벤트
 	$('button[name="listUpdate"]').on("click", function() {
-		let checked = $("input[name='list[]']:checked").get();
+		let checked = $("input[name='list']:checked").get();
 
 		if (checked.length == 0) {
 			alert("선택된 게시글이 없습니다.");
@@ -46,8 +48,8 @@ $(document).ready(function() {
 			return false;
 		} else {
 			if (checked.length > 1) {
-				alert("하나만 선택하세요");
-				$("input[name='list[]']").prop("checked", false);
+				alert("게시글을 하나만 선택하세요.");
+				$("input[name='list']").prop("checked", false);
 
 				return false;
 			} else {
@@ -103,7 +105,7 @@ $(document).ready(function() {
 	$('button[name="cancel"]').on("click", function() {
 		const URLSearch = new URLSearchParams(location.search);
 		if (window.location.href.indexOf("update") > -1) {
-			location.replace("notice_content.do?no=" + URLSearch.get('no'));
+			location.href = "notice_content.do?stat=up&no=" + URLSearch.get('no');
 		} else {
 			location.href = "notice_list.do";
 		}
@@ -149,7 +151,7 @@ $(document).ready(function() {
 	// 수정 버튼 이벤트
 	$('button[name="update"]').on("click", function() {
 		let no = $("input[name='post_id']").val();
-		location.href = "notice_update.do?no=" + no;
+		location.href = "notice_update.do?stat=up&no=" + no;
 	})
 
 	// 삭제 버튼 이벤트
@@ -260,4 +262,34 @@ function searchScript() {
 
 		boardSearch.submit();
 	}
+}
+
+function writeSuccess(result) {
+	if (result == 'success') {
+		alert("게시글이 성공적으로 등록되었습니다.");
+	}
+	if (result == 'fail') {
+		alert("작업에 실패했습니다.\n잠시후에 다시 시도해주세요.");
+	}
+	history.replaceState({},null,null);
+}
+
+function updateSuccess(result) {
+	if (result == 'success') {
+		alert("수정되었습니다.");
+	}
+	if (result == 'fail') {
+		alert("작업에 실패했습니다.\n잠시후에 다시 시도해주세요.");
+	}
+	history.replaceState({},null,null);
+}
+
+function cmtSuccess(result) {
+	if (result == 'success') {
+		alert("댓글이 등록되었습니다.");
+	}
+	if (result == 'fail') {
+		alert("작업에 실패했습니다.\n잠시후에 다시 시도해주세요.");
+	}
+	history.replaceState({},null,null);
 }

@@ -38,14 +38,12 @@
 		
  	});
 </script> 
-<c:choose>
-	<c:when test="${result eq 'success'}">
-		<script>alert("성공적으로 등록되었습니다.")</script>
-	</c:when>
-	<c:when test="${result eq 'fail'}">
-		<script>alert("작업에 실패했습니다.\n잠시후에 다시 시도해주세요.")</script>
-	</c:when>
-</c:choose>
+<c:if test="${result != null}">
+	<script type="text/javascript">
+		let result = '<c:out value="${result}"/>';
+		writeSuccess(result);
+	</script>
+</c:if>
 </head>
 
 <body>
