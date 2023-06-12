@@ -83,7 +83,7 @@ public class NoticeController {
 
 		if (result == 1) {
 			BoardUtil.fileSaveUtil(noticeVo);
-			attributes.addFlashAttribute("result", "success");
+			attributes.addFlashAttribute("result", "insuccess");
 
 		} else {
 			attributes.addFlashAttribute("result", "fail");
@@ -157,7 +157,7 @@ public class NoticeController {
 		int result = noticeService.update(noticeVo);
 		if (result == 1) {
 			BoardUtil.fileUpdateUtil(noticeVo, oldFileName);
-			attributes.addFlashAttribute("result", "success");
+			attributes.addFlashAttribute("result", "upsuccess");
 
 		} else {
 			attributes.addFlashAttribute("result", "fail");

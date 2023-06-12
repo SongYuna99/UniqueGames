@@ -13,13 +13,13 @@
 <c:if test="${result != null}">
 	<script type="text/javascript">
 		let result = '<c:out value="${result}"/>';
-		updateSuccess(result);
+		getResult(result);
 	</script>
 </c:if>
 <c:if test="${cmtresult != null}">
 	<script type="text/javascript">
 		let result = '<c:out value="${cmtresult}"/>';
-		cmtSuccess(result);
+		getResultCmt(result);
 	</script>
 </c:if>
 </head>
