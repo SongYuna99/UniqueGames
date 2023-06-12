@@ -10,20 +10,18 @@
 <link rel="stylesheet" href="http://localhost:9000/uniquegames/css/board.css">
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script><!-- 마이크로소프트 jQuery-->
 <script src="http://localhost:9000/uniquegames/js/board.js"></script>
-<c:choose>
-	<c:when test="${result eq 'success'}">
-		<script>alert("수정되었습니다.")</script>
-	</c:when>
-	<c:when test="${result eq 'fail'}">
-		<script>alert("작업에 실패했습니다.\n잠시후에 다시 시도해주세요.")</script>
-	</c:when>
-	<c:when test="${cmtresult eq 'success'}">
-		<script>alert("댓글이 성공적으로 등록되었습니다.")</script>
-	</c:when>
-	<c:when test="${cmtresult eq 'fail'}">
-		<script>alert("작업에 실패했습니다.\n잠시후에 다시 시도해주세요.")</script>
-	</c:when>
-</c:choose>
+<c:if test="${result != null}">
+	<script type="text/javascript">
+		let result = '<c:out value="${result}"/>';
+		updateSuccess(result);
+	</script>
+</c:if>
+<c:if test="${cmtresult != null}">
+	<script type="text/javascript">
+		let result = '<c:out value="${cmtresult}"/>';
+		cmtSuccess(result);
+	</script>
+</c:if>
 </head>
 <body>
 	<header>
