@@ -20,6 +20,24 @@
     </div>
 </section>
 <section id="menu-main2">
+    <div id="board-top-menu">
+        <div>
+<%--            <form name="boardSearch" action="boardSearchProc.do" method="get">--%>
+<%--                <label>--%>
+<%--                    <input type="text" name="keyword" placeholder="검색어를 입력해주세요.">--%>
+<%--                    <button type="button" id="btn-search">--%>
+<%--                        <img src="http://localhost:9000/uniquegames/images/btn_boardSearch_press.png">--%>
+<%--                    </button>--%>
+<%--                </label>--%>
+<%--            </form>--%>
+            <ul>
+                <li><button type="button" id="btn-style" name="listWrite">작성</button></li>
+                <li><button type="button" id="btn-style" name="listUpdate">수정</button></li>
+                <li><button type="button" id="btn-style" name="listDelete">삭제</button></li>
+                <li><button type="button" id="btn-style" name="listDeleteAll">전체삭제</button></li>
+            </ul>
+        </div>
+    </div>
     <div id="menu-allList">
         <div id="gameList">
             <c:forEach items="${companyList}" var="intro">
@@ -38,5 +56,12 @@
 </section>
 <%--footer--%>
 <jsp:include page="../main/footer.jsp"></jsp:include>
+<script>
+  // 작성 버튼 이벤트
+  $('button[name="listWrite"]').on("click", function() {
+
+    location.href = "../detail/insertIntro.do";
+  });
+</script>
 </body>
 </html>

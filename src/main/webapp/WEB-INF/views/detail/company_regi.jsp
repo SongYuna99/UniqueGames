@@ -251,7 +251,7 @@
         <form  action="insertIntro.do" method="post" enctype="multipart/form-data">
             <table>
                 <tr>
-                    <th>회사 이름</th>
+                    <th>회사 명</th>
                     <td><input type="text" name="name" class="default-write"></td>
                 </tr>
                 <tr>

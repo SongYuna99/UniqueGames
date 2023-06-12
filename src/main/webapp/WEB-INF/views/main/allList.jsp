@@ -25,7 +25,7 @@
                 <div id="gList">
                     <img src="${game.image_path } " width="260px" height="180px">
                     <ul>
-                        <li>${game.name }</li>
+                        <li><a href ='detail/${game.description}'>${game.name }</a> </li>
                         <li>${game.game_genre}</li>
                         <li><button id="btn-like-style" type="button"data-game-id="${game.id}"></button></li>
                         <li>${game.like_count}</li>

@@ -27,4 +27,13 @@
 	<context:component-scan base-package="com.uniquegames.controller" />
 	<context:component-scan base-package="com.uniquegames.service" />
 
+	<!-- 인터셉터 등록-->
+	<interceptors>
+		<interceptor>
+			<mapping path="/detail/insertIntro.do"/>
+			<mapping path="/notice_write.do"/>
+			<mapping path="/cart.do"/>
+			<beans:bean id="loginCheckInterceptor" class="com.uniquegames.interceptor.LoginCheckInterceptor"/>
+		</interceptor>
+	</interceptors>
 </beans:beans>

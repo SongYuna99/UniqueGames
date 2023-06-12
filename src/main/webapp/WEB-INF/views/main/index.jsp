@@ -45,7 +45,7 @@
                     <h2>내 손안에서 깨어난 새로운 리듬</h2>
                     <h1>New Game of Music</h1>
                     <p>새로운 감각의 New RPG 뉴게임오브뮤직</p>
-                    <a href="deteil.do?g_id="><button id="btn-main-style" type="button">자세히보기</button></a>
+                    <a href="detail/detail1.do"><button id="btn-main-style" type="button" style='cursor:pointer'>자세히보기</button></a>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
                     <h2>지금까지 존재하지 않은 RPG</h2>
                     <h1>Dead Lift 550</h1>
                     <p>참고로 전 3대 605</p>
-                    <a href="deteil.do?g_id="><button id="btn-main-style" type="button">자세히보기</button></a>
+                    <a href="detail/detail2.do"><button id="btn-main-style" type="button" style='cursor:pointer'>자세히보기</button></a>
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
                     <h2>모니터를 통해 보여주는 이세계의 모험</h2>
                     <h1>Morning Star Desert</h1>
                     <p>조선을 배경으로하는 사극 판타지 RPG</p>
-                    <a href="deteil.do?g_id="><button id="btn-main-style" type="button">자세히보기</button></a>
+                    <a href="detail/detail3.do"><button id="btn-main-style" type="button" style='cursor:pointer'>자세히보기</button></a>
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@
                     <h2>이 세상 게임이 아니다</h2>
                     <h1>Life Standing</h1>
                     <p>살기 위해 오늘도 길을 나선다 탐험 액션</p>
-                    <a href="deteil.do?g_id="><button id="btn-main-style" type="button">자세히보기</button></a>
+                    <a href="detail/detail4.do"><button id="btn-main-style" type="button"  style='cursor:pointer'>자세히보기</button></a>
                 </div>
             </div>
         </div>
@@ -99,8 +99,8 @@
                     <img alt="#" src="${game.image_path }" width="500px" height="240px">
                     <div>
                         <p>${loop.count} </p>
-                        <p>${game.name }</p>
-                        <p>${game.description }</p>
+                        <li><a href ='detail/${game.description}'>${game.name }</a> </li>
+<%--                        <p>${game.description }</p>--%>
                         <a href="deteil.do?g_id=${game.id }"><button id="readmore-plus" type="button"><img src="/uniquegames/images/btn_plus_normal.png" width="30px" height="30px"></button><a>
                     </div>
                 </div>
@@ -142,7 +142,7 @@
                 <div id="gList">
                     <img src="${game.image_path } " width="260px" height="180px">
                     <ul>
-                        <li>${game.name }</li>
+                        <li><a href ='detail/${game.description}'>${game.name }</a> </li>>
                         <li>${game.game_genre}</li>
                         <li><button id="btn-like-style" type="button"data-game-id="${game.id}"></button></li>
                         <li>${game.like_count}</li>

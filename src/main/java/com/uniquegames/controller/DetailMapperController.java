@@ -42,12 +42,42 @@ public class DetailMapperController {
      * @param companyId 회사 소개글 인덱스
      * @return 회사 상세페이지 리턴
      */
-    @RequestMapping(value = "/{companyId}",method = RequestMethod.GET)
-    public String goDetail(@PathVariable int companyId, Model model) {
-        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
+    @RequestMapping(value = "/detail1.do",method = RequestMethod.GET)
+    public String goDetail() {
+//        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
         return "detail/detail";
     }
 
+    @RequestMapping(value = "/detail2.do",method = RequestMethod.GET)
+    public String goDetail2() {
+//        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
+        return "detail/detail2";
+    }
+    @RequestMapping(value = "/detail3.do",method = RequestMethod.GET)
+    public String goDetail3() {
+//        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
+        return "detail/detail3";
+    }
+    @RequestMapping(value = "/detail4.do",method = RequestMethod.GET)
+    public String goDetail4() {
+//        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
+        return "detail/detail4";
+    }
+    /*@RequestMapping(value = "/{companyId}",method = RequestMethod.GET)
+    public String goDetail3(@PathVariable int companyId, Model model) {
+        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
+        return "detail/detail3";
+    }
+    @RequestMapping(value = "/{companyId}",method = RequestMethod.GET)
+    public String goDetail4(@PathVariable int companyId, Model model) {
+        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
+        return "detail/detail4";
+    }
+    @RequestMapping(value = "/{companyId}",method = RequestMethod.GET)
+    public String goDetail5(@PathVariable int companyId, Model model) {
+        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
+        return "detail/detail5";
+    }*/
     /**
      * @param vo 회사 소개 저장객체
      * @param request 현재 url을 가져오기 위한 객체
