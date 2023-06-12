@@ -1,11 +1,14 @@
 package com.uniquegames.controller;
 
 import com.uniquegames.fileutil.FileUtil;
+import com.uniquegames.model.SessionConstants;
 import com.uniquegames.service.CompanyServiceMapper;
 import com.uniquegames.service.CompanyServiceMapper2;
+import com.uniquegames.vo.CompanyVo;
 import com.uniquegames.vo.IntroVo;
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -85,7 +88,7 @@ public class DetailMapperController {
      * @throws IOException
      */
     @RequestMapping(value = "/insertIntro.do")
-    public String insertIntro(IntroVo vo, HttpServletRequest request) throws IOException {
+    public String insertIntro(IntroVo vo, HttpServletRequest request,Model model) throws IOException {
        /* MultipartFile uploadFile = vo.getUploadFile();
         String root_path = request.getSession().getServletContext().getRealPath("/");
         String attach_path = "\\resources\\upload\\";
@@ -99,8 +102,12 @@ public class DetailMapperController {
         }*/
         FileUtil fileUtil = new FileUtil(vo, request);
         IntroVo introVo = fileUtil.getUpload();
-        if(introVo.getTitle() == null || introVo.getName() == null)
+        if(introVo.getTitle() == null || introVo.getName() == null){
+            HttpSession session = request.getSession();
+            CompanyVo company = (CompanyVo) session.getAttribute(SessionConstants.LOGIN_MEMBER);
+            model.addAttribute("company",company);
             return "detail/company_regi";
+        }
         else{
             companyServiceMapper2.insertIntro(introVo);
             return "redirect:getIntroList.do";

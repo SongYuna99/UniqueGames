@@ -45,7 +45,7 @@
 
                     <img src="http://localhost:9000/uniquegames/upload/${intro.upload}" width="260px" height="180px">
                     <ul>
-                        <li><a href="getIntro.do?id=${intro.id}">${intro.name}</a></li>
+                        <li><a href="getIntro.do?id=${intro.id}" style="cursor: pointer">${intro.name}</a></li>
                         <li>${intro.id}</li>
                         <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>

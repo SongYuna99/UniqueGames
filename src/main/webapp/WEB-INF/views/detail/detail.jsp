@@ -189,7 +189,7 @@
                               <button type="button" class="btn btn-default btn-lg" id="btn_wishlist" data="50004122" style="width: 90px;">
                                 <img src="http://localhost:9000/uniquegames/images/btn_like_select.png">
                                 Like</button>
-                              <button type="button" class="btn btn-warning btn-lg" id="btn_donate" data="50004122" data-assetid="3402" data-prodtp="1" style="width: 150px">후원하기</button>
+                              <button type="button" class="btn btn-warning btn-lg" id="btn_donate" name="btn_donate" data="50004122" data-assetid="3402" data-prodtp="1" style="width: 150px">후원하기</button>
 
                             </div>
                           </div>
@@ -264,8 +264,15 @@
     window.open(url,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
     //return false;
   }
+
+  $('button[name="btn_donate"]').on("click", function() {
+
+    location.href = "../cart.do";
+  });
+
 </script>
 <jsp:include page="../main/footer.jsp"></jsp:include>
+
 </body>
 
 </html>

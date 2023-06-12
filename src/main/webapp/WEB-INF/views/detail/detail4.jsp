@@ -264,6 +264,11 @@
     window.open(url,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
     //return false;
   }
+
+  $('button[id="btn_donate"]').on("click", function() {
+
+    location.href = "../cart.do";
+  });
 </script>
 <jsp:include page="../main/footer.jsp"></jsp:include>
 </body>

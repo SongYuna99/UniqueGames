@@ -252,7 +252,7 @@
             <table>
                 <tr>
                     <th>회사 명</th>
-                    <td><input type="text" name="name" class="default-write"></td>
+                    <td><input type="text" name="name" class="default-write"  value="${company.name}" readonly></td>
                 </tr>
                 <tr>
                     <th>제목</th>

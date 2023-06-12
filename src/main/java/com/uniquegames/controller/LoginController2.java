@@ -60,6 +60,9 @@ public class LoginController2 {
 			if(loginMember!=null&& Objects.equals(loginMember.getMember_id(), member.getMember_id())&& Objects.equals(
 					loginMember.getPassword(), member.getPassword())){
 			session.setAttribute(SessionConstants.LOGIN_MEMBER, loginMember);   // 세션에 로그인 회원 정보 보관
+				if(redirectURL.equals("notice_write.do")||redirectURL.equals("detail/insertIntro.do")){
+					return "redirect:login2.do?redirectURL="+redirectURL;
+				}
 			}
 			/* 기업 회원 로그인일 시 세션처리 */
 			else if(loginMemberCom!=null&& Objects.equals(loginMemberCom.getCompany_id(), company.getCompany_id())&& Objects.equals(
