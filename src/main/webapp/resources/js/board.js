@@ -264,19 +264,12 @@ function searchScript() {
 	}
 }
 
-function writeSuccess(result) {
-	if (result == 'success') {
+function getResult(result) {
+	if (result == 'insuccess') {
 		alert("게시글이 성공적으로 등록되었습니다.");
 	}
-	if (result == 'fail') {
-		alert("작업에 실패했습니다.\n잠시후에 다시 시도해주세요.");
-	}
-	history.replaceState({},null,null);
-}
-
-function updateSuccess(result) {
-	if (result == 'success') {
-		alert("수정되었습니다.");
+	if (result == 'upsuccess') {
+	alert("수정되었습니다.");
 	}
 	if (result == 'fail') {
 		alert("작업에 실패했습니다.\n잠시후에 다시 시도해주세요.");
@@ -284,7 +277,7 @@ function updateSuccess(result) {
 	history.replaceState({},null,null);
 }
 
-function cmtSuccess(result) {
+function getResultCmt(result) {
 	if (result == 'success') {
 		alert("댓글이 등록되었습니다.");
 	}
