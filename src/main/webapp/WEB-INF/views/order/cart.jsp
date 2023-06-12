@@ -31,9 +31,7 @@
 		<c:if test="${ nothingInCart != 'true' }">
 			<div id="div-gameList">
 				<div id=div-delete>
-					<a href="http://localhost:9000/uniquegames/cart_delete_all.do?m_id=${ m_id }" id="a-delete">
-						<button type="button" id="btn-deleteAll">전체삭제</button>
-					</a>
+					<button type="button" id="btn-deleteAll">전체삭제</button>
 					<button type="button" id="btn-deleteSelected">선택삭제</button>
 				</div>
 				<div id="div-table">

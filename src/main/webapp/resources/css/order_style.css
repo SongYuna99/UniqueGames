@@ -57,14 +57,6 @@ select {
 	text-align: center;
 }
 
-#p-nothing {
-	margin-bottom: 200px;
-
-	text-align: center;
-	font-family:"YouandiModern", sans-serif;
-	font-size: 25px;
-	color: #2B2B2B;
-}
 
 /******* Table *******/
 #div-table {
@@ -130,12 +122,13 @@ select {
 
 /******* Button *******/
 #btn-deleteAll, #btn-deleteSelected, #btn-deleteOne {
-	padding: 3px 14px;
+	padding: 3px 10px;
 	background: #393939;
 	border-radius: 5px;
 	
 	color: #FFFFFF;
 	font-size: 14px;
+	text-align: center;
 	cursor: pointer;
 }
 
@@ -352,4 +345,13 @@ div.detail1, div.detail2, div.detail3, div.detail4 {
 	display: none;
 }
 
+/******* nothing in cart *******/
+#p-nothing {
+	margin-bottom: 200px;
+
+	text-align: center;
+	font-family:"YouandiModern", sans-serif;
+	font-size: 25px;
+	color: #2B2B2B;
+}
 

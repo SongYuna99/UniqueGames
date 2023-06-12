@@ -2,16 +2,16 @@ package com.uniquegames.vo;
 
 public class OrderVo {
 	// Field
-	String orderdate, method, payment_status, gametitle, game_img, userId, m_id, c_id;
+	String order_date, method, payment_status, gametitle, game_img, userId, m_id, c_id;
 	int id, g_id, amount, rno;
 
 	// Method
-	public String getOrderdate() {
-		return orderdate;
+	public String getOrder_date() {
+		return order_date;
 	}
 
-	public void setOrderdate(String orderdate) {
-		this.orderdate = orderdate;
+	public void setOrder_date(String order_date) {
+		this.order_date = order_date;
 	}
 
 	public String getMethod() {
