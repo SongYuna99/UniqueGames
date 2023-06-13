@@ -101,7 +101,7 @@
 		<input id="company-login" type="radio" name="loginSelect">
 		<label for="company-login" id="company-login-tab">법인 회원</label>
 		
-		<form action="login2.do?redirectURL=${param.redirectURL}" name="loginForm" method="post" id="individual-loginForm">
+		<form action="login.do?redirectURL=${param.redirectURL}" name="loginForm" method="post" id="individual-loginForm">
 			<div>
 				<ul>
 					<li>
@@ -123,7 +123,7 @@
 			</div>
 		</form>
 		
-		<form action="login2.do?redirectURL=${param.redirectURL}" name="loginCompanyForm" method="post" id="company-loginForm">
+		<form action="login.do?redirectURL=${param.redirectURL}" name="loginCompanyForm" method="post" id="company-loginForm">
 			<div>
 				<ul>
 					<li>

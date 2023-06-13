@@ -41,8 +41,7 @@ public class DetailMapperController {
         this.companyServiceMapper2 = companyServiceMapper2; // 인터페이스 only
     }
 
-    /**
-     * @param companyId 회사 소개글 인덱스
+    /** goDetail()
      * @return 회사 상세페이지 리턴
      */
     @RequestMapping(value = "/detail1.do",method = RequestMethod.GET)
@@ -66,21 +65,7 @@ public class DetailMapperController {
 //        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
         return "detail/detail4";
     }
-    /*@RequestMapping(value = "/{companyId}",method = RequestMethod.GET)
-    public String goDetail3(@PathVariable int companyId, Model model) {
-        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
-        return "detail/detail3";
-    }
-    @RequestMapping(value = "/{companyId}",method = RequestMethod.GET)
-    public String goDetail4(@PathVariable int companyId, Model model) {
-        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
-        return "detail/detail4";
-    }
-    @RequestMapping(value = "/{companyId}",method = RequestMethod.GET)
-    public String goDetail5(@PathVariable int companyId, Model model) {
-        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
-        return "detail/detail5";
-    }*/
+
     /**
      * @param vo 회사 소개 저장객체
      * @param request 현재 url을 가져오기 위한 객체

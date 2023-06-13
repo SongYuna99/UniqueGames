@@ -51,6 +51,6 @@
 
 	<!-- 세션 유지 시간 설정 단위: 분-->
 	<session-config>
-		<session-timeout>1</session-timeout>
+		<session-timeout>20</session-timeout>
 	</session-config>
 </web-app>
