@@ -1498,6 +1498,11 @@ SignUp IdCheck button style*/
 	cursor: pointer;
 	margin: 0 8px;
 }
+
+#address-btn-style,
+#company-address-btn-style {
+	margin-left: 15px;
+}
 /*SignUp, Company SignUp; IdCheck button style*/
 #check-btn-style,
 #c-check-btn-style {
@@ -1624,7 +1629,8 @@ SignUp IdCheck button style*/
 
 /* myPage; deletePwd link style*/
 #link-deleteAccount,
-#link-changePassword {
+#link-changePassword,
+#link-donation {
 	margin-left: 330px;
 	text-decoration: none;
 	color: #333;
@@ -1635,6 +1641,11 @@ SignUp IdCheck button style*/
 #link-changePassword {
 	margin-left: 300px;
 }
+
+#link-donation {
+	margin-left: 285px;
+}
+
 /*findId; findPwd intro*/
 #intro-2 {
 	width: 394px;

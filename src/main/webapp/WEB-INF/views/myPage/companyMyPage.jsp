@@ -257,6 +257,9 @@
 						<button type="button" id="button-gradient-company">수정하기</button>
 					</li>
 					<li>
+						<a href="donation_detail.do" id="link-donation">
+							<span id="span-deleteAccount">후원금 정산 내역 ></span>
+						</a>
 						<a href="deleteCompany.do?company_id=${companyVo.company_id }" id="link-deleteAccount">
 							<span id="span-deleteAccount">회원탈퇴 ></span>
 						</a>

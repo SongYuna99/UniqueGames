@@ -241,6 +241,9 @@
 						<button type="button" id="button-gradient">수정하기</button>
 					</li>
 					<li>
+						<a href="payment_detail.do" id="link-deleteAccount">
+							<span name="withdraw" id="span-deleteAccount">결제내역 ></span>
+						</a>
 						<a href="deletePwd.do?member_id=${memberVo.member_id }" id="link-deleteAccount">
 							<span name="withdraw" id="span-deleteAccount">회원탈퇴 ></span>
 						</a>
