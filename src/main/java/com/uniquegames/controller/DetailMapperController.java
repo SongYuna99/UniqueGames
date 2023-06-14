@@ -6,6 +6,7 @@ import com.uniquegames.service.CompanyServiceMapper;
 import com.uniquegames.service.CompanyServiceMapper2;
 import com.uniquegames.vo.CompanyVo;
 import com.uniquegames.vo.IntroVo;
+import com.uniquegames.vo.MemberVo;
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -87,15 +88,23 @@ public class DetailMapperController {
         }*/
         FileUtil fileUtil = new FileUtil(vo, request);
         IntroVo introVo = fileUtil.getUpload();
-        if(introVo.getTitle() == null || introVo.getName() == null){
-            HttpSession session = request.getSession();
-            CompanyVo company = (CompanyVo) session.getAttribute(SessionConstants.LOGIN_MEMBER);
-            model.addAttribute("company",company);
-            return "detail/company_regi";
+        HttpSession session = request.getSession();
+        Object loginMemberObj = session.getAttribute(SessionConstants.LOGIN_MEMBER);
+        boolean isMemberVo = loginMemberObj instanceof MemberVo;
+        if(!isMemberVo){
+            if(introVo.getTitle() == null || introVo.getName() == null){
+
+                CompanyVo company = (CompanyVo) session.getAttribute(SessionConstants.LOGIN_MEMBER);
+                model.addAttribute("company",company);
+                return "detail/company_regi";
+            }
+            else{
+                companyServiceMapper2.insertIntro(introVo);
+                return "redirect:getIntroList.do";
+            }
         }
         else{
-            companyServiceMapper2.insertIntro(introVo);
-            return "redirect:getIntroList.do";
+            return "redirect:/";
         }
 
     }

@@ -95,31 +95,36 @@ public class LoginController {
 	*/
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public String loginOk(@Validated @ModelAttribute MemberVo member,@Validated @ModelAttribute
-	CompanyVo company,  HttpServletRequest request, @RequestParam(defaultValue = "/") String redirectURL)
-	{
-
+	public String loginOk(
+			@Validated @ModelAttribute MemberVo member,
+			@Validated @ModelAttribute CompanyVo company,
+			HttpServletRequest request,
+			@RequestParam(defaultValue = "/") String redirectURL
+	) {
 		HttpSession session = request.getSession(); // 세션이 있으면 있는 세션 반환, 없으면 신규 세션을 생성하여 반환
+
 		MemberVo loginMember = memberRepositoryMapper.findById(member.getMember_id());
 		CompanyVo loginMemberCom = companyRepositoryMapper.findById(company.getCompany_id());
+
 		/* 일반 회원 로그인일 시 세션처리 */
-		if(loginMember!=null&& Objects.equals(loginMember.getMember_id(), member.getMember_id())&& Objects.equals(
-				loginMember.getPassword(), member.getPassword())){
-			session.setAttribute(SessionConstants.LOGIN_MEMBER, loginMember);   // 세션에 로그인 회원 정보 보관
-			if(redirectURL.equals("notice_write.do")||redirectURL.equals("detail/insertIntro.do")){
-				return "redirect:login.do?redirectURL="+redirectURL;
+		if (loginMember != null && loginMember.getPassword().equals(member.getPassword())) {
+			session.setAttribute(SessionConstants.LOGIN_MEMBER, loginMember); // 세션에 로그인 회원 정보 보관
+			if (redirectURL.equals("notice_write.do") || redirectURL.equals("detail/insertIntro.do")) {
+				return "redirect:/";
 			}
 		}
 		/* 기업 회원 로그인일 시 세션처리 */
-		else if(loginMemberCom!=null&& Objects.equals(loginMemberCom.getCompany_id(), company.getCompany_id())&& Objects.equals(
-				loginMemberCom.getPassword(),company.getPassword() )){
-			session.setAttribute(SessionConstants.LOGIN_MEMBER, loginMemberCom);   // 세션에 로그인 회원 정보 보관
+		else if (loginMemberCom != null && loginMemberCom.getPassword().equals(company.getPassword())) {
+			session.setAttribute(SessionConstants.LOGIN_MEMBER, loginMemberCom); // 세션에 로그인 회원 정보 보관
 		}
-		if(redirectURL.equals(""))
-			redirectURL="/";
 
-		return "redirect:"+redirectURL;
+		if (redirectURL.isEmpty()) {
+			redirectURL = "/";
+		}
+
+		return "redirect:" + redirectURL;
 	}
+
 
 	@RequestMapping(value="/logout.do", method=RequestMethod.GET)
 	public String logout(HttpServletRequest request) {
