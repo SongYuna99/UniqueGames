@@ -55,7 +55,7 @@
 <%--    		</div>--%>
         </div>
         <div id="hearder-logo">
-            <a href="/uniquegames/index.do" target="_parent">
+            <a href="/uniquegames/" target="_parent">
                 <img src="/uniquegames/images/img_title_logo.png">
             </a>
         </div>
@@ -64,7 +64,7 @@
                 <ul>
                     <li><a href="/uniquegames/topgame.do">Top Game</a></li>
                     <li><a href="/uniquegames/alllist.do">All List</a></li>
-                    <li><a href="/uniquegames/index.do#menu-main1">Recommendations</a></li>
+                    <li><a href="/uniquegames/#menu-main1">Recommendations</a></li>
                     <li><a href="/uniquegames/notice_list.do">Notice</a></li>
                     <li><a href="/uniquegames/detail/getIntroList.do">Team Intro</a></li>
                 </ul>

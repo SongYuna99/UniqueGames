@@ -40,7 +40,7 @@ public class MainController {
 
 
 
-	@RequestMapping(value="/index.do", method=RequestMethod.GET)
+	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String index(Model model) throws IOException {
 		model.addAttribute("gameList",indexServiceMapper.getGameList());
 		model.addAttribute("donation",indexServiceMapper.getDonationList());

@@ -42,26 +42,26 @@ public class MyPageController {
 			String addr = memberVo.getAddr();
 			
 			if (addr == null) {
-	            // addr 값이 null인 경우 처리
-	            memberVo.setAddr1(""); // 대체값 할당
-	            memberVo.setAddr2(""); // 대체값 할당
+	            // addr ???? null?? ??? ???
+	            memberVo.setAddr1(""); // ????? ???
+	            memberVo.setAddr2(""); // ????? ???
 	        }else {
 	        	String[] addrSplit = addr.split("   ");
 	            if (addrSplit.length == 1) {
-	                // addr1 값만 있는 경우
+	                // addr1 ???? ??? ???
 	            	String addr1=addrSplit[0];
 	                memberVo.setAddr1(addr1);
 	                memberVo.setAddr2("");
 	            } else if (addrSplit.length == 2) {
-	                // addr1, addr2 값이 모두 있는 경우
+	                // addr1, addr2 ???? ??? ??? ???
 	            	String addr1 = addrSplit[0];
 	            	String addr2 = addrSplit[1];
 	                memberVo.setAddr1(addr1);
 	                memberVo.setAddr2(addr2);
 	            } else {
-	                // addr 값 형식이 잘못된 경우 또는 다른 처리 방식을 선택할 경우
-	                memberVo.setAddr1(""); // 대체값 할당
-	                memberVo.setAddr2(""); // 대체값 할당
+	                // addr ?? ?????? ????? ??? ??? ??? ??? ????? ?????? ???
+	                memberVo.setAddr1(""); // ????? ???
+	                memberVo.setAddr2(""); // ????? ???
 	            }
 	        }
 			
@@ -90,9 +90,9 @@ public class MyPageController {
 
 		if(result == 1) {
 			mav.addObject("update_result", "success");
-			mav.setViewName("redirect:/index.do");
+			mav.setViewName("redirect:/");
 		}else {
-			System.out.println("update실패");
+			System.out.println("update????");
 		}
 		
 		return mav;
@@ -118,28 +118,28 @@ public class MyPageController {
 			String addr = companyVo.getAddr();
 			
 			if (addr == null) {
-	            // addr 값이 null인 경우 처리
-				companyVo.setAddr1(""); // 대체값 할당
-				companyVo.setAddr2(""); // 대체값 할당
+	            // addr ???? null?? ??? ???
+				companyVo.setAddr1(""); // ????? ???
+				companyVo.setAddr2(""); // ????? ???
 	            
 	        } else {
 	        	
 	        	String[] addrSplit = addr.split("   ");
 	            if (addrSplit.length == 1) {
-	                // addr1 값만 있는 경우
+	                // addr1 ???? ??? ???
 	            	String addr1=addrSplit[0];
 	            	companyVo.setAddr1(addr1);
-	            	companyVo.setAddr2(""); // 대체값 할당
+	            	companyVo.setAddr2(""); // ????? ???
 	            } else if (addrSplit.length == 2) {
-	                // addr1, addr2 값이 모두 있는 경우
+	                // addr1, addr2 ???? ??? ??? ???
 	            	String addr1 = addrSplit[0];
 	            	String addr2 = addrSplit[1];
 	            	companyVo.setAddr1(addr1);
 	            	companyVo.setAddr2(addr2);
 	            } else {
-	                // addr 값 형식이 잘못된 경우 또는 다른 처리 방식을 선택할 경우
-	            	companyVo.setAddr1(""); // 대체값 할당
-	            	companyVo.setAddr2(""); // 대체값 할당
+	                // addr ?? ?????? ????? ??? ??? ??? ??? ????? ?????? ???
+	            	companyVo.setAddr1(""); // ????? ???
+	            	companyVo.setAddr2(""); // ????? ???
 	            }
 	        }
 			
@@ -170,9 +170,9 @@ public class MyPageController {
 		
 		if(result == 1) {
 			mav.addObject("update_result", "success");
-			mav.setViewName("redirect:/index.do");
+			mav.setViewName("redirect:/");
 		}else {
-			System.out.println("update실패");
+			System.out.println("update????");
 		}
 		
 		return mav;

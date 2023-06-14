@@ -6,6 +6,7 @@ import com.uniquegames.service.CompanyServiceMapper;
 import com.uniquegames.service.CompanyServiceMapper2;
 import com.uniquegames.vo.CompanyVo;
 import com.uniquegames.vo.IntroVo;
+import com.uniquegames.vo.MemberVo;
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -41,8 +42,7 @@ public class DetailMapperController {
         this.companyServiceMapper2 = companyServiceMapper2; // 인터페이스 only
     }
 
-    /**
-     * @param companyId 회사 소개글 인덱스
+    /** goDetail()
      * @return 회사 상세페이지 리턴
      */
     @RequestMapping(value = "/detail1.do",method = RequestMethod.GET)
@@ -66,21 +66,7 @@ public class DetailMapperController {
 //        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
         return "detail/detail4";
     }
-    /*@RequestMapping(value = "/{companyId}",method = RequestMethod.GET)
-    public String goDetail3(@PathVariable int companyId, Model model) {
-        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
-        return "detail/detail3";
-    }
-    @RequestMapping(value = "/{companyId}",method = RequestMethod.GET)
-    public String goDetail4(@PathVariable int companyId, Model model) {
-        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
-        return "detail/detail4";
-    }
-    @RequestMapping(value = "/{companyId}",method = RequestMethod.GET)
-    public String goDetail5(@PathVariable int companyId, Model model) {
-        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
-        return "detail/detail5";
-    }*/
+
     /**
      * @param vo 회사 소개 저장객체
      * @param request 현재 url을 가져오기 위한 객체
@@ -102,15 +88,23 @@ public class DetailMapperController {
         }*/
         FileUtil fileUtil = new FileUtil(vo, request);
         IntroVo introVo = fileUtil.getUpload();
-        if(introVo.getTitle() == null || introVo.getName() == null){
-            HttpSession session = request.getSession();
-            CompanyVo company = (CompanyVo) session.getAttribute(SessionConstants.LOGIN_MEMBER);
-            model.addAttribute("company",company);
-            return "detail/company_regi";
+        HttpSession session = request.getSession();
+        Object loginMemberObj = session.getAttribute(SessionConstants.LOGIN_MEMBER);
+        boolean isMemberVo = loginMemberObj instanceof MemberVo;
+        if(!isMemberVo){
+            if(introVo.getTitle() == null || introVo.getName() == null){
+
+                CompanyVo company = (CompanyVo) session.getAttribute(SessionConstants.LOGIN_MEMBER);
+                model.addAttribute("company",company);
+                return "detail/company_regi";
+            }
+            else{
+                companyServiceMapper2.insertIntro(introVo);
+                return "redirect:getIntroList.do";
+            }
         }
         else{
-            companyServiceMapper2.insertIntro(introVo);
-            return "redirect:getIntroList.do";
+            return "redirect:/";
         }
 
     }
