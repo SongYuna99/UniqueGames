@@ -8,11 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.mysql.cj.xdevapi.Session;
+import com.uniquegames.annotation.Login;
 import com.uniquegames.repository.NoticeMapper;
 import com.uniquegames.service.CommentService;
 import com.uniquegames.service.IndexServiceMapper;
 import com.uniquegames.service.NoticeService;
 import com.uniquegames.service.NoticeServiceImpl;
+import com.uniquegames.vo.CompanyVo;
 import com.uniquegames.vo.MemberVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.uniquegames.vo.GameVo;
 
 @Controller
-@SessionAttributes({"game","test_id"})
+@SessionAttributes({"gameList","ranking"})
 public class MainController {
 
 	private final IndexServiceMapper indexServiceMapper;
@@ -36,18 +38,27 @@ public class MainController {
 	public MainController(IndexServiceMapper indexServiceMapper, NoticeService noticeService) {
 		this.indexServiceMapper = indexServiceMapper;
 		this.noticeService = noticeService;
+
 	}
 
+//	@RequestMapping(value="/", method=RequestMethod.GET)
+//	public String index2() {
+//		return  "/main/index";
+//	}
 
 
 	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String index(Model model) throws IOException {
+	public String index(Model model, @Login MemberVo vo, @Login CompanyVo cvo, HttpSession session) throws IOException {
 		model.addAttribute("gameList",indexServiceMapper.getGameList());
 		model.addAttribute("donation",indexServiceMapper.getDonationList());
 		model.addAttribute("ranking",indexServiceMapper.getRankingList());
 		model.addAttribute("noticeList", noticeService.getNoticeList(1, 4));
+		model.addAttribute("member", vo);
+		model.addAttribute("company", cvo);
+
         return "/main/index";
 	}
+
 	
 	@RequestMapping(value="/alllist.do", method=RequestMethod.GET)
 	public String alllist(Model model) {

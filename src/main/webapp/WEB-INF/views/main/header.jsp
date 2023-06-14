@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,15 +42,31 @@
 <body>
     <header>
         <div id="header-top-menu">
-            <nav id="nav1">
-                <ul>
-                    <li><a href="/uniquegames/login.do">Login</a></li>
-                    <li><a href="/uniquegames/join.do">Join</a></li>
-                    <li><a href="/uniquegames/myPage.do"><img src="/uniquegames/images/img_icon_mypage.png"></a></li>
-                    <li><a href="/uniquegames/cart.do?m_id=mtest"><img src="/uniquegames/images/img_icon_cart.png"></a></li>
-                    <li><button type="button" id="btn-hearder-search" onclick="toggleSearch()"><img src="/uniquegames/images/img_icon_search.png"></button></li>
-                </ul>
-            </nav>
+            <c:choose>
+                <c:when test="${sessionScope.loginMember.name == null}">
+                <nav id="nav1">
+                    <ul>
+                        <li><a href="/uniquegames/login.do">Login</a></li>
+                        <li><a href="/uniquegames/join.do">Join</a></li>
+<%--                        <li><a href="/uniquegames/myPage.do"><img src="/uniquegames/images/img_icon_mypage.png"></a></li>--%>
+<%--                        <li><a href="/uniquegames/cart.do?m_id=mtest"><img src="/uniquegames/images/img_icon_cart.png"></a></li>--%>
+                        <li><button type="button" id="btn-hearder-search" onclick="toggleSearch()"><img src="/uniquegames/images/img_icon_search.png"></button></li>
+                    </ul>
+                </nav>
+                </c:when>
+                <c:otherwise>
+                    <nav id="nav1">
+                        <ul>
+                            <li>${sessionScope.loginMember.name}님 반갑습니다.</li>
+                            <li><a href="/uniquegames/logout.do" target="_parent">Logout</a></li>
+                            <li><a href="/uniquegames/join.do">Join</a></li>
+                            <li><a href="/uniquegames/myPage.do"><img src="/uniquegames/images/img_icon_mypage.png"></a></li>
+                            <li><a href="/uniquegames/cart.do?m_id=mtest"><img src="/uniquegames/images/img_icon_cart.png"></a></li>
+                            <li><button type="button" id="btn-hearder-search" onclick="toggleSearch()"><img src="/uniquegames/images/img_icon_search.png"></button></li>
+                        </ul>
+                    </nav>
+                </c:otherwise>
+            </c:choose>
 <%--            <div class="search-menu" id="search-container">--%>
 <%--    			<input type="text" id="input-search" placeholder="검색하실 게임 이름을 입력해주세요.">--%>
 <%--    		</div>--%>

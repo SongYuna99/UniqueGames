@@ -33,8 +33,6 @@ public interface IndexMapper {
     @Delete("DELETE GAME WHERE ID=#{id}")
     void deleteGame(GameVo vo);
 
-
-
     @Select("SELECT COUNT(*) FROM GAME WHERE CONCAT(',', LIKELIST, ',') LIKE '%,#{gid},%' AND ID = #{mid}")
     int hasLiked(int gid, int mid);
 

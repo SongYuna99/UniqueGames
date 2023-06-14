@@ -44,11 +44,6 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-	<!-- 인덱스 페이지 매핑-->
-	<welcome-file-list>
-		<welcome-file>/WEB-INF/views/main/index.jsp</welcome-file>
-	</welcome-file-list>
-
 	<!-- 세션 유지 시간 설정 단위: 분-->
 	<session-config>
 		<session-timeout>20</session-timeout>
