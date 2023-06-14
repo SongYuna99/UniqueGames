@@ -173,3 +173,11 @@ SELECT ID, G_ID, GAME_IMG, GAMETITLE, AMOUNT
         
 GRANT ALL PRIVILEGES ON *.* TO 'uniquegames'@'localhost' IDENTIFIED BY '1234';
 
+INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
+VALUES(6607, 'mtest', 'test', 1, 10000, '디 엑시트 이터널 매터스', 'http://localhost:9000/uniquegames/images/img-game-deexit4.jpg');
+INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
+VALUES(5899, 'mtest', 'test', 2, 30000, '스트리트 파이터 6 디럭스', 'http://localhost:9000/uniquegames/images/img-game-street2.jpg');
+INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
+VALUES(4874, 'mtest', 'test', 3, 50000, '뱀파이어: 마스커레이드', 'http://localhost:9000/uniquegames/images/img-game-vampire2.jpg');
+INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
+VALUES(2038, 'mtest', 'test', 4, 100000, '더 라스트 오브 어스 파트 1', 'http://localhost:9000/uniquegames/images/img-game-last1.jpg');
