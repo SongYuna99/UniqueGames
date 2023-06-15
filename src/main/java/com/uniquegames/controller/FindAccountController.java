@@ -72,10 +72,10 @@ public class FindAccountController {
 		
 		if(result==1) {
 			mav.addObject("changePassword_result", "success");
-			session.invalidate();
-			mav.setViewName("/login/login");
+			//session.invalidate();
+			mav.setViewName("/login/login2");
 		}else {
-			System.out.println("ºñ¹Ð¹øÈ£ º¯°æ ½ÇÆÐ");
+			System.out.println("ë¹„ë°€ë²ˆí˜¸ ë³€ê²½ ì‹¤íŒ¨");
 		}
 		return mav;
 	}
@@ -91,7 +91,7 @@ public class FindAccountController {
 		
 		return mav;
 	}
-	/******************************************************************¹ýÀÎ**********************************************************************/
+	/******************************************************************ï¿½ï¿½ï¿½ï¿½**********************************************************************/
 	
 	@RequestMapping(value="/cfindId_check.do", method=RequestMethod.POST)
 	@ResponseBody
@@ -137,10 +137,10 @@ public class FindAccountController {
 		int result = companyMemberService.companyChangeCPassword(company_id, cnewpassword);
 		
 		if(result==1) {
-			session.invalidate();
-			viewName="redirect:/login.do";
+			//session.invalidate();
+			viewName="redirect:/login.do2";
 		}else {
-			System.out.println("ºñ¹Ð¹øÈ£ º¯°æ ½ÇÆÐ");
+			System.out.println("ë¹„ë°€ë²ˆí˜¸ ë³€ê²½ ì‹¤íŒ¨");
 		}
 		return viewName;
 	}
