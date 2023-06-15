@@ -30,7 +30,7 @@ public interface CompanyRepositoryMapper {
    @Select("update company set name=#{name}, password=#{oldPassword} where email=#{company_id}")
    Integer update(CompanyVo company);
    
-   @Select("select count(*) from member where member_id = #{member_id} and password = #{password}")
+   @Select("select count(*) from company where company_id = #{company_id} and password = #{password}")
    int passEqual(CompanyVo company);
 
 }

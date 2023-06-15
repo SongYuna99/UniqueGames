@@ -105,9 +105,11 @@ public class LoginController {
 		}
 		// company
 		else if (company != null && companyRepositoryMapper.passEqual(company) == 1) {
-			session.setAttribute(SessionConstants.LOGIN_MEMBER, company); // 세션에 로그인 회원 정보 보관
+			session.setAttribute(SessionConstants.LOGIN_MEMBER,  companyRepositoryMapper.findById(company.getCompany_id())); // 세션에 로그인 회원 정보 보관
 			session.setAttribute("login", "company");
 		}
+		
+		System.out.println(session.getAttribute("login"));
 
 		if (redirectURL.isEmpty()) {
 			redirectURL = "/";
