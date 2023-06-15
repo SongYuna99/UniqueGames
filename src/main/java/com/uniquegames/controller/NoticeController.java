@@ -5,23 +5,30 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.uniquegames.fileutil.BoardUtil;
+import com.uniquegames.model.SessionConstants;
 import com.uniquegames.service.CommentService;
 import com.uniquegames.service.NoticeService;
 import com.uniquegames.vo.CommentVo;
+import com.uniquegames.vo.CompanyVo;
 import com.uniquegames.vo.NoticeVo;
 
 @Controller
+@SessionAttributes(SessionConstants.LOGIN_MEMBER)
 public class NoticeController {
 
 	NoticeService noticeService;
@@ -37,9 +44,11 @@ public class NoticeController {
 	 * notice-list.do 공지사항 - 전체 리스트
 	 */
 	@RequestMapping(value = "/notice_list.do", method = RequestMethod.GET)
-	public ModelAndView noticeList(String page) {
+	public ModelAndView noticeList(String page, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
 		ModelAndView model = new ModelAndView();
 
+		HttpSession session = request.getSession();
 		// 페이징 처리 - startCount, endCount 구하기
 		Map<String, Integer> pageMap = BoardUtil.getPagination(page, "list");
 		ArrayList<NoticeVo> list = noticeService.getNoticeList(pageMap.get("startCount"), pageMap.get("endCount"));
@@ -75,10 +84,11 @@ public class NoticeController {
 	 * notice_write_proc.do 공지사항 - 작성 처리
 	 */
 	@RequestMapping(value = "/notice_write_proc.do", method = RequestMethod.POST)
-	public String noticeWriteProc(NoticeVo noticeVo, HttpServletRequest request, RedirectAttributes attributes)
+	public String noticeWriteProc(NoticeVo noticeVo, @ModelAttribute(SessionConstants.LOGIN_MEMBER) CompanyVo cvo ,HttpServletRequest request, RedirectAttributes attributes)
 			throws Exception {
 
 		noticeVo = BoardUtil.fileUtil(request, noticeVo);
+		noticeVo.setCompany_id(cvo.getCompany_id());
 		int result = noticeService.insert(noticeVo);
 
 		if (result == 1) {
@@ -101,8 +111,7 @@ public class NoticeController {
 		ModelAndView model = new ModelAndView();
 
 		NoticeVo noticeVo = noticeService.getNoticeContent(stat, no);
-
-		ArrayList<CommentVo> commList = commentService.select(no);
+		List<CommentVo> commList = commentService.select(no);
 
 		model.addObject("noticeVo", noticeVo);
 		model.addObject("commList", commList);
@@ -171,16 +180,12 @@ public class NoticeController {
 	 * comment_write_proc.do 댓글 - 작성 처리
 	 */
 	@RequestMapping(value = "comment_write_proc.do", method = RequestMethod.POST)
+	@ResponseBody
 	public String commentWriteProc(CommentVo commentVo, RedirectAttributes attributes) {
 
-		int result = commentService.commentInsert(commentVo);
-		if (result == 1) {
-			attributes.addFlashAttribute("cmtresult", "success");
-		} else {
-			attributes.addFlashAttribute("cmtresult", "fail");
-		}
+		String result = commentService.commentInsert(commentVo);
 
-		return "redirect:/notice_content.do?no=" + commentVo.getPost_id();
+		return result;
 	}
 
 	/**
@@ -207,22 +212,32 @@ public class NoticeController {
 	}
 
 	/**
-	 * boardSearchProc.do 리스트 검색 처리
+	 * notice_Search.do 리스트 검색 처리
 	 */
-	@RequestMapping(value = "/boardSearchProc.do")
+	@RequestMapping(value = "/notice_Search.do")
 	@SuppressWarnings("unchecked")
-	public ModelAndView boardSearchProc(String keyword, String page) {
+	public ModelAndView boardSearchProc(String keyword, String page, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 		ModelAndView model = new ModelAndView();
+		HttpSession session = request.getSession();
 
 		Map<String, Integer> pageMap = BoardUtil.getPagination(page, keyword);
 		List<NoticeVo> list = (List<NoticeVo>) noticeService.search(keyword, pageMap.get("startCount"),
 				pageMap.get("endCount"));
+
 		model.addObject("list", list);
 		model.addObject("dbCount", pageMap.get("dbCount"));
 		model.addObject("pageSize", pageMap.get("pageSize"));
 		model.addObject("pageCount", pageMap.get("pageCount"));
 		model.addObject("page", pageMap.get("reqPage"));
-		model.setViewName("/notice/notice_list");
+
+		if (session.getAttribute(SessionConstants.LOGIN_MEMBER) == null) {
+			model.setViewName("/notice/notice_list_user");
+
+		} else {
+			model.setViewName("/notice/notice_list");
+
+		}
 
 		return model;
 	}

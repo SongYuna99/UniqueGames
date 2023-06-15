@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 
@@ -13,10 +14,21 @@
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 <script src="http://localhost:9000/uniquegames/js/board.js"></script>
 <script src="http://localhost:9000/uniquegames/js/am-pagination.js"></script>
+<c:set var="loginMember" value='<%= session.getAttribute("loginMember") %>'/>
 <script>
-	$(document).ready(function(){
-		var pager = jQuery('#ampaginationsm').pagination({
+	$(document).ready(function(){	
+		getPagination();
+		diffPage('${loginMember}');
 		
+		$('button[name="getList"]').on("click", function() {
+
+			location.href = "notice_list.do";
+		})
+ 	});
+	
+	function getPagination() {
+		var pager = jQuery('#ampaginationsm').pagination({
+			
 		    maxSize: '${pageCount}',	    		// max page size
 		    totals: '${dbCount}',	// total pages	
 		    page: '${page}',		// initial page		
@@ -35,8 +47,8 @@
 			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
 	           $(location).attr('href', "http://localhost:9000/uniquegames/notice_list.do?page="+e.page);         
 	    });
-		
- 	});
+	}
+
 </script> 
 <c:if test="${result != null}">
 	<script type="text/javascript">
@@ -63,45 +75,89 @@
 			<div id="board-top-menu">
 				<p>Notice</p>
 				<div>
- 					 <form name="boardSearch" action="boardSearchProc.do" method="get">
+					  <form name='boardSearch' action='notice_Search.do' method='get'>
 						<label>
-							<input type="text" name="keyword" placeholder="검색어를 입력해주세요.">
-							<button type="button" id="btn-search">
-								<img src="http://localhost:9000/uniquegames/images/btn_boardSearch_press.png">
+							<input type='text' name='keyword' placeholder='검색어를 입력해주세요.'>
+							<button type='button' id='btn-search'>
+								<img src='http://localhost:9000/uniquegames/images/btn_boardSearch_press.png'>
 							</button>
 						</label>
 					 </form>
 					<ul>
-						<li><button type="button" id="btn-style" name="listWrite">작성</button></li>
-						<li><button type="button" id="btn-style" name="listUpdate">수정</button></li>
-						<li><button type="button" id="btn-style" name="listDelete">삭제</button></li>
-						<li><button type="button" id="btn-style" name="listDeleteAll">전체삭제</button></li>
+						<li><button type='button' id='btn-style' name='listWrite'>작성</button></li>
+						<li><button type='button' id='btn-style' name='listUpdate'>수정</button></li>
+						<li><button type='button' id='btn-style' name='listDelete'>삭제</button></li>
+						<li><button type='button' id='btn-style' name='listDeleteAll'>전체삭제</button></li>
 					</ul>
 				</div>
 			</div>
-			<form name="boardManage" action="board_manage.do" method="post">
-				<table id="admin-btable">
-					<tr>
-						<th>선택</th>
-						<th>번호</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>작성일</th>
-					</tr>
-					<c:forEach var="noticeVo" items="${list}">
-					<tr>
-						<td><input type="checkbox" name="list" value="${noticeVo.post_id}"></td>
-						<td>${noticeVo.rno}</td>
-						<td><a href="notice_content.do?no=${noticeVo.post_id}">${noticeVo.title}</a></td>
-						<td>${noticeVo.company_id}</td>
-						<td>${noticeVo.date_output}</td>
-					</tr>
-					</c:forEach>
-					<tr>
-						<td colspan="5"><div id="ampaginationsm"></div></td>
-					</tr>
-				</table>
-			</form>
+			<c:choose>
+				<c:when test='${fn:contains(loginMember, "CompanyVo")}'>
+					<form name="boardManage" action="board_manage.do" method="post">
+						<table id="admin-btable">
+							<tr>
+								<th>선택</th>
+								<th>번호</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>작성일</th>
+							</tr>
+							<c:choose>
+								<c:when test="${not empty list}">
+									<c:forEach var="noticeVo" items="${list}">
+										<tr>
+											<td><input type="checkbox" name="list"
+												value="${noticeVo.post_id}"></td>
+											<td>${noticeVo.rno}</td>
+											<td><a href="notice_content.do?no=${noticeVo.post_id}">${noticeVo.title}</a></td>
+											<td>${noticeVo.name}</td>
+											<td>${noticeVo.date_output}</td>
+										</tr>
+									</c:forEach>
+								</c:when>
+								<c:when test="${empty list}">
+									<tr>
+										<td colspan="5" style="padding: 50px 0">등록된 게시글이 없습니다.</td>
+									</tr>
+								</c:when>
+							</c:choose>
+							<tr>
+								<td colspan="5"><div id="ampaginationsm"></div></td>
+							</tr>
+						</table>
+					</form>
+				</c:when>
+				<c:otherwise>
+					<table id="user-btable">
+						<tr>
+							<th>번호</th>
+							<th>제목</th>
+							<th>작성자</th>
+							<th>작성일</th>
+						</tr>
+							<c:choose>
+								<c:when test="${not empty list}">
+									<c:forEach var="noticeVo" items="${list}">
+										<tr>
+											<td>${noticeVo.rno}</td>
+											<td><a href="notice_content.do?no=${noticeVo.post_id}">${noticeVo.title}</a></td>
+											<td>${noticeVo.name}</td>
+											<td>${noticeVo.date_output}</td>
+										</tr>
+									</c:forEach>
+								</c:when>
+								<c:when test="${empty list}">
+									<tr>
+										<td colspan="4" style="padding: 50px 0">등록된 게시글이 없습니다.</td>
+									</tr>
+								</c:when>
+							</c:choose>
+							<tr>
+								<td colspan="5"><div id="ampaginationsm"></div></td>
+							</tr>
+					</table>
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 	<jsp:include page="../main/footer.jsp"></jsp:include>

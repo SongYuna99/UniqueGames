@@ -151,6 +151,11 @@ td {
 
 #user-btable tr>td:nth-child(2) {
 	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 671px;
+	width: 671px;
 }
 
 #user-btable tr>td:nth-child(3) {

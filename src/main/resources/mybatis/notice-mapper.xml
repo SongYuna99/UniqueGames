@@ -8,44 +8,30 @@
 	<select id="selectNotice" resultType="NoticeVo">
 		SELECT *
 		FROM (
-			SELECT @ROWNUM:= @ROWNUM + 1 AS RNO,
-				POST_ID, TITLE, CONTENT, COMPANY_ID,
-				NOTICE_HITS,
-				CAST( DATE_FORMAT( NOTICE_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS
-				NOTICE_DATE
-			FROM (
-				SELECT POST_ID,
-				TITLE,
-				CONTENT,
-				COMPANY_ID,
-				NOTICE_HITS,
-				NOTICE_DATE
-				FROM NOTICE
-				ORDER BY NOTICE_DATE DESC, POST_ID DESC
-			) SUB,(SELECT @ROWNUM:=0) TMP
+			SELECT row_number() over(order by NOTICE_DATE DESC, POST_ID DESC) as RNO
+				 , POST_ID
+				 , TITLE
+				 , CONTENT
+				 , NOTICE.COMPANY_ID
+				 , COMPANY.NAME
+				 , NOTICE_HITS
+				 , CAST( DATE_FORMAT( NOTICE_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS NOTICE_DATE
+			FROM NOTICE
+			INNER JOIN COMPANY
+			ON NOTICE.COMPANY_ID = COMPANY.COMPANY_ID
 		) T1
-		WHERE RNO between #{start} AND #{end}
+		where RNO between 1 AND 10;
 	</select>
 	
 	<!-- 공지사항 리스트 검색 -->
 	<select id="searchList" resultType="NoticeVo">
 		SELECT *
-		FROM ( 
-			SELECT @ROWNUM:= @ROWNUM + 1 AS RNO,
-				POST_ID, TITLE, CONTENT, COMPANY_ID,
-				NOTICE_HITS,
-				CAST( DATE_FORMAT( NOTICE_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS
-				NOTICE_DATE
-			FROM (
-				SELECT POST_ID,
-				TITLE,
-				CONTENT,
-				COMPANY_ID,
-				NOTICE_HITS,
-				NOTICE_DATE
-				FROM NOTICE
-				ORDER BY NOTICE_DATE DESC, POST_ID DESC
-			) SUB, (SELECT @ROWNUM:=0) TMP
+		FROM (
+			SELECT
+				row_number() over(order by NOTICE_DATE DESC, POST_ID DESC) as RNO,
+				POST_ID, TITLE, CONTENT, COMPANY_ID, NOTICE_HITS, CAST( DATE_FORMAT(
+				NOTICE_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS NOTICE_DATE
+			FROM NOTICE
 		) T1
 		WHERE TITLE LIKE CONCAT('%',#{keyword},'%')
 		AND RNO between #{start} AND #{end}
@@ -65,7 +51,7 @@
 			NOTICE_DATE
 		)
 		VALUES (
-			'test', <!-- 테스트용 회사 id -->
+			#{company_id}, <!-- 테스트용 회사 id -->
 			#{title},
 			#{content},
 			0,
@@ -170,36 +156,5 @@
 		FROM NOTICE_IMAGE
 		WHERE POST_ID = #{post_id}
 	</select>
-	
-	<!-- 댓글 조회 -->
-	<select id="selectComment" resultType="CommentVo">
-		SELECT	COMMENT_ID,
-				POST_ID,
-				MEMBER_ID,
-				COMMENT_CONTENT,
-				CAST( DATE_FORMAT( COMMENT_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS COMMENT_DATE
-				FROM COMMENT
-				WHERE POST_ID = #{no}
-				ORDER BY COMMENT_DATE ASC
-	</select>
-	
-	<!-- 댓글 작성 -->
-	<insert id="insertComment" parameterType="CommentVo">
-		INSERT INTO COMMENT (
-			POST_ID,
-			MEMBER_ID,
-			COMMENT_CONTENT
-		)
-		VALUES (
-		#{post_id},
-		#{member_id},
-		#{comment_content}
-		)
-	</insert>
-	
-	<!-- 댓글 삭제 -->
-	<delete id="deleteComment">
-		DELETE FROM COMMENT WHERE COMMENT_ID = #{no}
-	</delete>
 
 </mapper>

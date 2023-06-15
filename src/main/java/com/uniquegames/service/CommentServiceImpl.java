@@ -1,37 +1,42 @@
 package com.uniquegames.service;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.uniquegames.repository.NoticeMapper;
+import com.uniquegames.repository.CommentMapper;
 import com.uniquegames.vo.CommentVo;
 
 @Service
 public class CommentServiceImpl implements CommentService {
 
 	@Autowired
-	NoticeMapper noticeMapper;
+	CommentMapper commentMapper;
 
 	/**
 	 * 댓글 - 작성
 	 */
 	@Override
-	public int commentInsert(CommentVo commentVo) {
+	public String commentInsert(CommentVo commentVo) {
+		String result = "FAIL";
 
 		commentVo.setComment_content(commentVo.getComment_content().replaceAll("\r\n", "<br>"));
+		int dbResult = commentMapper.insertComment(commentVo);
+		if (dbResult == 1) {
+			result = "SUCCESS";
+		}
 
-		return noticeMapper.insertComment(commentVo);
+		return result;
 	}
 
 	/**
 	 * 댓글 - 페이지별 댓글 전체 리스트
 	 */
 	@Override
-	public ArrayList<CommentVo> select(String no) {
+	public List<CommentVo> select(String no) {
 
-		return noticeMapper.selectComment(no);
+		return commentMapper.selectComment(no);
 	}
 	
 	/**
@@ -40,7 +45,7 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public String delete(String no) {
 		String result = "FAIL";
-		int dbResult = noticeMapper.deleteComment(no);
+		int dbResult = commentMapper.deleteComment(no);
 		
 		if (dbResult == 1) {
 			result = "SUCCESS";
