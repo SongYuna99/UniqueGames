@@ -2,7 +2,6 @@ package com.uniquegames.repository;
 
 import com.uniquegames.vo.MemberVo;
 import java.util.List;
-import java.util.Optional;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -21,6 +20,9 @@ public interface MemberRepositoryMapper {
 
    @Select("select * from member")
    List<MemberVo> findAll();
+   
+   @Select("select count(*) from member where member_id = #{member_id} and password = #{password}")
+   int passEqual(MemberVo member);
 
    //@Select("select * from member where email = #{email} and name = #{name}")
    //XmlMapper로 구현

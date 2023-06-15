@@ -172,7 +172,8 @@ SELECT ID, G_ID, GAME_IMG, GAMETITLE, AMOUNT
         
         
 GRANT ALL PRIVILEGES ON *.* TO 'uniquegames'@'localhost' IDENTIFIED BY '1234';
-
+DELETE FROM GAME WHERE ID < 100;
+SELECT *FROM GAME;
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
 VALUES(6607, 'mtest', 'test', 1, 10000, '디 엑시트 이터널 매터스', 'http://localhost:9000/uniquegames/images/img-game-deexit4.jpg');
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
@@ -190,3 +191,5 @@ INSERT INTO GAME (ID, NAME, IMAGE_PATH, GAME_GENRE, DONATION_STATUS, DESCRIPTION
 VALUES(3, '뱀파이어: 마스커레이드', 'http://localhost:9000/uniquegames/images/img-game-vampire2.jpg', '액션 어드벤처', 1,'월드 오브 다크니스에 오신 것을 환영합니다');
 INSERT INTO GAME (ID, NAME, IMAGE_PATH, GAME_GENRE, DONATION_STATUS, DESCRIPTION)
 VALUES(4, '더 라스트 오브 어스 파트 1', 'http://localhost:9000/uniquegames/images/img-game-last1.jpg', '액션', 1,'살기 위해 오늘도 길을 나선다 탐험 액션');
+
+COMMIT;

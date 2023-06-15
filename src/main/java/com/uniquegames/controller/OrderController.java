@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.uniquegames.dao.OrderDao;
-import com.uniquegames.model.SessionConstants;
 import com.uniquegames.service.OrderServiceImpl;
-import com.uniquegames.vo.MemberVo;
 import com.uniquegames.vo.OrderVo;
 
 @Controller
@@ -80,9 +77,7 @@ public class OrderController {
 
 	/** order_proc.do **/
 	@RequestMapping(value = "/order_proc.do", method = RequestMethod.GET)
-	public ModelAndView order_complete(String method, HttpSession request) {
-		MemberVo member = (MemberVo) request.getAttribute(SessionConstants.LOGIN_MEMBER);
-		String m_id = member.getMember_id();
+	public ModelAndView order_complete(String method) {
 		ModelAndView model = new ModelAndView();
 		int result = orderServiece.getOrderComplete(list, method);
 

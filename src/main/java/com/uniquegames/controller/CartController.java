@@ -3,7 +3,6 @@ package com.uniquegames.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +28,6 @@ public class CartController {
 		String m_id = member.getMember_id();
 		ModelAndView model = new ModelAndView();
 		ArrayList<OrderVo> cartList = orderService.getCartList(m_id);
-
-		if (member != null) {
-			System.out.println("1");
-		}
-		System.out.println(m_id + " = m_id");
 
 		if (cartList.size() > 0) {
 			model.addObject("cartList", cartList);
@@ -62,19 +56,15 @@ public class CartController {
 
 	@RequestMapping(value = "/cart_delete_selected.do")
 	public String cart_delete_selected(@RequestParam(value = "checkedList[]") List<Integer> checkedList) {
-		String view;
 		int result = 0;
 
 		for (int i = 0; i < checkedList.size(); i++) {
 			result = orderService.getCartDeleteOne((int) checkedList.get(i));
 			if (result == 0) {
-				view = "/order/error";
-				return view;
+				return "/order/error";
 			}
 		}
-		view = "redirect://cart.do";
-
-		return view;
+		return "redirect://cart.do";
 	}
 
 	@RequestMapping(value = "/cart_delete_all.do", method = RequestMethod.GET)
