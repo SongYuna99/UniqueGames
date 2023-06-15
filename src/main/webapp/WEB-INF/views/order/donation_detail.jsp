@@ -30,7 +30,7 @@
 							output += "<p id='p-nothing'>결제내역이 없습니다.</p>";
 							output += "</div>";
 							output += "<div id='div-button'>";
-							output += "<a href='http://localhost:9000/uniquegames/index.do'>";
+							output += "<a href='http://localhost:9000/uniquegames/'>";
 							output += "<button type='button' id='btn-main'>메인으로</button></a>";
 							output += "</div>";
 							
