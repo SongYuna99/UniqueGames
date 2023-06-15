@@ -19,7 +19,6 @@
 				$.ajax({
 					url : "donation_detail_data.do",
 					data : {
-						c_id : c_id,
 						array : array
 					},
 					success : function(result){				
@@ -91,7 +90,6 @@
 </section>
 
 <h1>Donation Detail</h1>
-<input type="hidden" id="c_id" name="c_id" value="${ c_id }">
 <section id="cart">
 	<div id="div-gameList">
 		<div id="div-select">

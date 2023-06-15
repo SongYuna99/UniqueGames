@@ -28,10 +28,9 @@
 <h1>Complete</h1>
 <div id="order-complete">
 	<div id="div-thankyou">결제가 완료되었습니다.</div>
-	<input type="hidden" id="m_id" name="m_id" value="${ m_id }">
 	<div id="div-button">
 		<a href="http://localhost:9000/uniquegames/index.do"><button type="button" id="btn-main">메인으로</button></a>
-		<a href="http://localhost:9000/uniquegames/payment_detail.do?m_id=${ m_id }"><button type="button" id="btn-list">결제내역</button></a>
+		<a href="http://localhost:9000/uniquegames/payment_detail.do"><button type="button" id="btn-list">결제내역</button></a>
 	</div>
 </div>
 

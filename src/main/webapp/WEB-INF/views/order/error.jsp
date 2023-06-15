@@ -30,7 +30,7 @@
 	<div id="div-thankyou">오류가 발생했습니다. 다시 시도해주세요.</div>
 	<div id="div-button">
 		<a href="http://localhost:9000/uniquegames/index.do"><button type="button" id="btn-main">메인으로</button></a>
-		<a href="http://localhost:9000/uniquegames/cart.do?m_id=${m_id}"><button type="button" id="btn-goCart">장바구니</button></a>
+		<a href="http://localhost:9000/uniquegames/cart.do"><button type="button" id="btn-goCart">장바구니</button></a>
 	</div>
 </div>
 

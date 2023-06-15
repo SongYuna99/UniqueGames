@@ -31,9 +31,8 @@
 <!-- orderForm -->
 <h1>Order / Payment</h1>
 <section id="order">
+	<input type="hidden" id="totalAmount" value="${ totalAmount }">
 	<div id="div-gameList">
-		<input type="hidden" id="m_id" name="m_id" value="${ m_id }">
-		<input type="hidden" id="totalAmount" name="totalAmount" value="${ amount }">
 		<div id="div-table">
 			<table id="table-gameList">
 				<tr>
@@ -50,7 +49,7 @@
 						<td><p><a>${ order.gametitle }</a></p></td>
 						<td><fmt:formatNumber type="currency" value="${ order.amount }" /></td>
 						<td>
-							<a href="http://localhost:9000/uniquegames/order_delete_one.do?id=${ order.id }&m_id=${ m_id }" id="a-delete">
+							<a href="http://localhost:9000/uniquegames/order_delete_one.do?id=${ order.id }" id="a-delete">
 							<button type="button" id="btn-deleteOne" name="btn-deleteOne" value="${ order.id }">삭제</button></a>
 						</td>
 					</tr>

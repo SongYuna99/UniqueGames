@@ -35,7 +35,6 @@
 					<button type="button" id="btn-deleteSelected">선택삭제</button>
 				</div>
 				<div id="div-table">
-					<input type="hidden" id="m_id" value="${ m_id }">
 					<table id="table-gameList">
 						<tr>
 							<th><input type="checkbox" id="checkAll" name="checkAll"
@@ -53,7 +52,7 @@
 								<td><p><a>${ cart.gametitle }</a></p></td>
 								<td><fmt:formatNumber type="currency" value="${ cart.amount }" /></td>
 								<td>
-									<a href="http://localhost:9000/uniquegames/cart_delete_one.do?id=${ cart.id }&m_id=${ m_id }" id="a-delete">
+									<a href="http://localhost:9000/uniquegames/cart_delete_one.do?id=${ cart.id }" id="a-delete">
 									<button type="button" id="btn-deleteOne" value="${ cart.id }">삭제</button></a>
 								</td>
 							</tr>

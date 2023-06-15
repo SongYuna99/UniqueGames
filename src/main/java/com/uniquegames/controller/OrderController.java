@@ -3,6 +3,8 @@ package com.uniquegames.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uniquegames.dao.OrderDao;
+import com.uniquegames.model.SessionConstants;
 import com.uniquegames.service.OrderServiceImpl;
+import com.uniquegames.vo.MemberVo;
 import com.uniquegames.vo.OrderVo;
 
 @Controller
@@ -22,7 +26,7 @@ public class OrderController {
 
 	/** order.do **/
 	@RequestMapping(value = "/order.do", method = RequestMethod.GET)
-	public ModelAndView order(String m_id, String[] checkedList) {
+	public ModelAndView order(String[] checkedList, HttpSession request) {
 		ModelAndView model = new ModelAndView();
 
 		list = new ArrayList<Integer>();
@@ -32,20 +36,19 @@ public class OrderController {
 
 		ArrayList<OrderVo> orderList = orderServiece.getOrderList(list);
 		int count = list.size();
-		int amount = orderServiece.getOrderAmount(list);
+		int totalAmount = orderServiece.getOrderAmount(list);
 
-		model.addObject("m_id", m_id);
 		model.addObject("list", list);
 		model.addObject("orderList", orderList);
 		model.addObject("count", count);
-		model.addObject("amount", amount);
+		model.addObject("totalAmount", totalAmount);
 		model.setViewName("/order/order");
 
 		return model;
 	}
 
 	@RequestMapping(value = "/order_delete_one.do")
-	public ModelAndView order_delete_one(int id, String m_id) {
+	public ModelAndView order_delete_one(int id) {
 		ModelAndView model = new ModelAndView();
 
 		for (int i = 0; i < list.size(); i++) {
@@ -56,14 +59,13 @@ public class OrderController {
 
 		if (list.size() == 0) {
 			model.addObject("nothingInCart", "order");
-			model.setViewName("redirect://cart.do?m_id=" + m_id);
+			model.setViewName("redirect://cart.do");
 		} else {
 
 			ArrayList<OrderVo> orderList = orderServiece.getOrderList(list);
 			int count = list.size();
 			int amount = orderServiece.getOrderAmount(list);
 
-			model.addObject("m_id", m_id);
 			if (orderList.size() > 0) {
 				model.addObject("list", list);
 				model.addObject("orderList", orderList);
@@ -78,11 +80,12 @@ public class OrderController {
 
 	/** order_proc.do **/
 	@RequestMapping(value = "/order_proc.do", method = RequestMethod.GET)
-	public ModelAndView order_complete(String method, String m_id) {
+	public ModelAndView order_complete(String method, HttpSession request) {
+		MemberVo member = (MemberVo) request.getAttribute(SessionConstants.LOGIN_MEMBER);
+		String m_id = member.getMember_id();
 		ModelAndView model = new ModelAndView();
 		int result = orderServiece.getOrderComplete(list, method);
 
-		model.addObject("m_id", m_id);
 		if (result != 0) {
 			model.setViewName("redirect://order_complete.do");
 		} else {
@@ -94,10 +97,7 @@ public class OrderController {
 
 	/** order_proc.do **/
 	@RequestMapping(value = "/order_complete.do", method = RequestMethod.GET)
-	public ModelAndView order_complete(String m_id) {
-		ModelAndView model = new ModelAndView();
-		model.addObject("m_id", m_id);
-		model.setViewName("/order/order_complete");
-		return model;
+	public String order_complete() {
+		return "/order/order_complete";
 	}
 }

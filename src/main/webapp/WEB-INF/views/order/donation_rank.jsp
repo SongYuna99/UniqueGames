@@ -18,9 +18,6 @@
 			
 			$.ajax({
 				url : "donation_rank_data.do",
-				data : {
-					c_id : c_id,
-				},
 				success : function(result){				
 					let jdata = JSON.parse(result);
 					let output = "";
@@ -73,7 +70,6 @@
 </section>
 
 <h1>Donation Ranking</h1>
-<input type="hidden" id="c_id" name="c_id" value="${ c_id }">
 <section id="cart">
 	<div id="div-gameList">
 		<div id="div-select">
