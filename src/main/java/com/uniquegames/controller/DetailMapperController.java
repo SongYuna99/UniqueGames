@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  * CRUD 메소드 구현
  */
 @Controller
-@SessionAttributes({"intro","test_id"})
+@SessionAttributes({"intro","status"})
 @RequestMapping(value = "/detail")
 public class DetailMapperController {
 
@@ -100,6 +100,7 @@ public class DetailMapperController {
             }
             else{
                 companyServiceMapper2.insertIntro(introVo);
+                model.addAttribute("status", "writeOnce");
                 return "redirect:getIntroList.do";
             }
         }
