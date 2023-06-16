@@ -6,6 +6,7 @@ import com.uniquegames.vo.MemberVo;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.core.MethodParameter;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -26,9 +27,9 @@ public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolve
         //resolveArgument를 실행하기 위한 조건
         //@Login 애노테이션이 존재 && (MemberVo || CompanyVo)타입이여야 한다.
         boolean hasLoginAnnotation = parameter.hasParameterAnnotation(Login.class);
-        boolean hasMemberType = MemberVo.class.isAssignableFrom(parameter.getParameterType());
-        boolean hasCompanyType = CompanyVo.class.isAssignableFrom(parameter.getParameterType());
-        return hasLoginAnnotation && (hasMemberType || hasCompanyType);
+        boolean hasMemberType = parameter.getParameterType().equals(MemberVo.class);;
+//        boolean hasCompanyType = CompanyVo.class.isAssignableFrom(parameter.getParameterType());
+        return hasLoginAnnotation && hasMemberType;
     }
 
     @Override

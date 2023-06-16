@@ -141,7 +141,7 @@
                               <div id="product-price2" style="padding-top:10px">
                                 <div class="PricebasePrice vm-display vm-price-value">
                                   <span class="vm-price-desc" >제작 </span>
-                                  <span class="PricebasePrice" ><a href="company.jsp" style="font: italic normal 900 18px Apex New; letter-spacing: 0px;color: #1c2025">에픽콘솔게임 Team</a>
+                                  <span class="PricebasePrice" ><a href="../detail/getIntro.do?id=2" style="font: italic normal 900 18px Apex New; letter-spacing: 0px;color: #1c2025">에픽콘솔게임 Team</a>
                                   </span>
                                 </div>
                                 <span class="price-crossed" ></span>

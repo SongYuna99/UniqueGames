@@ -29,9 +29,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @RequestMapping(value = "/detail")
 public class DetailMapperController {
 
-    /**
-     * 서비스 객체 의존성 주입
-     */
+
     private final CompanyServiceMapper companyServiceMapper;
     private final CompanyServiceMapper2 companyServiceMapper2;
 
@@ -41,13 +39,13 @@ public class DetailMapperController {
         this.companyServiceMapper = companyServiceMapper; // 매퍼 방식
         this.companyServiceMapper2 = companyServiceMapper2; // 인터페이스 only
     }
+    boolean writeBoardOnlyOnce = true;
 
     /** goDetail()
      * @return 회사 상세페이지 리턴
      */
     @RequestMapping(value = "/detail1.do",method = RequestMethod.GET)
     public String goDetail() {
-//        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
         return "detail/detail";
     }
 
@@ -75,17 +73,7 @@ public class DetailMapperController {
      */
     @RequestMapping(value = "/insertIntro.do")
     public String insertIntro(IntroVo vo, HttpServletRequest request,Model model) throws IOException {
-       /* MultipartFile uploadFile = vo.getUploadFile();
-        String root_path = request.getSession().getServletContext().getRealPath("/");
-        String attach_path = "\\resources\\upload\\";
 
-        if(uploadFile!=null && !uploadFile.isEmpty()){
-            String fileName = uploadFile.getOriginalFilename();
-            UUID uuid = UUID.randomUUID();
-            String upload = uuid + "_" + fileName;
-            uploadFile.transferTo(new File(root_path+attach_path + upload));
-            vo.setUpload(upload);
-        }*/
         FileUtil fileUtil = new FileUtil(vo, request);
         IntroVo introVo = fileUtil.getUpload();
         HttpSession session = request.getSession();
@@ -99,15 +87,14 @@ public class DetailMapperController {
                 return "detail/company_regi";
             }
             else{
+
                 companyServiceMapper2.insertIntro(introVo);
                 model.addAttribute("status", "writeOnce");
                 return "redirect:getIntroList.do";
+
             }
         }
-        else{
-            return "redirect:/";
-        }
-
+        return "redirect:/";
     }
     @RequestMapping(value = "/updateIntro.do")
     public String updateIntro(@ModelAttribute("intro") IntroVo vo){

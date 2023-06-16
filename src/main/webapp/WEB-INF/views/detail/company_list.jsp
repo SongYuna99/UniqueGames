@@ -7,6 +7,18 @@
     <title>Unique Games</title>
     <link rel="stylesheet" href="http://localhost:9000/uniquegames/css/mainunigames.css">
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+    <style>
+      .btn-style{
+        background: #393939;
+        border-radius: 5px;
+        width: 80px;
+        height: 30px;
+        color: #FFFFFF;
+        font-size: 14px;
+        vertical-align: top;
+        cursor: pointer;
+      }
+    </style>
 </head>
 <body>
 <%--header--%>
@@ -24,10 +36,10 @@
         <div>
 
             <ul>
-                <li><button type="button" id="btn-style" name="listWrite">작성</button></li>
-                <li><button type="button" id="btn-style" name="listUpdate">수정</button></li>
-                <li><button type="button" id="btn-style" name="listDelete">삭제</button></li>
-                <li><button type="button" id="btn-style" name="listDeleteAll">전체삭제</button></li>
+                <li><button type="button" class="btn-style" name="listWrite">작성</button></li>
+                <li><button type="button" class="btn-style" name="listUpdate">수정</button></li>
+                <li><button type="button" class="btn-style" name="listDelete">삭제</button></li>
+                <li><button type="button" class="btn-style" name="listDeleteAll">전체삭제</button></li>
             </ul>
         </div>
     </div>
@@ -46,10 +58,12 @@
             </c:forEach>
         </div>
     </div>
+
 </section>
 <%--footer--%>
 <jsp:include page="../main/footer.jsp"></jsp:include>
 <script>
+
   <%-- 회원의 타입에 따라 해당 메뉴 출력 여부 구현 --%>
   const element = document.getElementById('board-top-menu');
   const loginMember = '<%=session.getAttribute("loginMember")%>';

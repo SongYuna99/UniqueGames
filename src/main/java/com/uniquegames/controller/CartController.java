@@ -1,5 +1,7 @@
 package com.uniquegames.controller;
 
+import com.uniquegames.annotation.Login;
+import com.uniquegames.vo.MemberVo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,11 +25,14 @@ public class CartController {
 	OrderServiceImpl orderService;
 
 	@RequestMapping(value = "/cart.do", method = RequestMethod.GET)
+
+
 	public ModelAndView cart(HttpSession request) {
 		MemberVo member = (MemberVo) request.getAttribute(SessionConstants.LOGIN_MEMBER);
 		String m_id = member.getMember_id();
+
 		ModelAndView model = new ModelAndView();
-		ArrayList<OrderVo> cartList = orderService.getCartList(m_id);
+		ArrayList<OrderVo> cartList = orderService.getCartList(loginMember.getMember_id());
 
 		if (cartList.size() > 0) {
 			model.addObject("cartList", cartList);
@@ -35,6 +40,7 @@ public class CartController {
 		} else {
 			model.addObject("nothingInCart", true);
 		}
+
 		model.setViewName("/order/cart");
 
 		return model;
