@@ -17,6 +17,7 @@ public class NoticeVo {
 	CommonsMultipartFile file;
 	String image_id;
 	String upload_file;
+	int cmtCount;
 
 	public int getRno() {
 		return rno;
@@ -112,6 +113,14 @@ public class NoticeVo {
 
 	public void setUpload_file(String upload_file) {
 		this.upload_file = upload_file;
+	}
+
+	public int getCmtCount() {
+		return cmtCount;
+	}
+
+	public void setCmtCount(int cmtCount) {
+		this.cmtCount = cmtCount;
 	}
 
 }

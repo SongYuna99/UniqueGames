@@ -20,7 +20,7 @@
 			INNER JOIN COMPANY
 			ON NOTICE.COMPANY_ID = COMPANY.COMPANY_ID
 		) T1
-		where RNO between 1 AND 10;
+		where RNO between #{start} AND #{end};
 	</select>
 	
 	<!-- 공지사항 리스트 검색 -->
@@ -62,14 +62,17 @@
 	<!-- 공지사항 상세 보기 -->
 	<select id="selectContent" resultType="NoticeVo">
 		SELECT 	NOTICE.POST_ID,
-				COMPANY_ID,
+				NOTICE.COMPANY_ID,
+		        NAME,
 				TITLE,
 				CONTENT,
 				NOTICE_HITS,
 				CAST( DATE_FORMAT( NOTICE_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS NOTICE_DATE,
 		        IMAGE_ID,
 		        UPLOAD_FILE
-		FROM NOTICE 
+		FROM NOTICE
+		INNER JOIN COMPANY
+		ON NOTICE.COMPANY_ID = COMPANY.COMPANY_ID
 		LEFT JOIN NOTICE_IMAGE
 		ON NOTICE.POST_ID = NOTICE_IMAGE.POST_ID 
 		WHERE NOTICE.POST_ID = #{no};

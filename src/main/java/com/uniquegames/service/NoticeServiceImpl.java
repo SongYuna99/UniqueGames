@@ -24,7 +24,7 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public ArrayList<NoticeVo> getNoticeList(int startCount, int endCount) {
 
-		return (ArrayList<NoticeVo>) BoardUtil.getDateOutput(noticeMapper.selectNotice(startCount, endCount));
+		return (ArrayList<NoticeVo>) BoardUtil.getOutput(noticeMapper.selectNotice(startCount, endCount));
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public List<NoticeVo> search(String keyword, int startCount, int endCount) {
 
-		return BoardUtil.getDateOutput(noticeMapper.searchList(keyword, startCount, endCount));
+		return BoardUtil.getOutput(noticeMapper.searchList(keyword, startCount, endCount));
 	}
 
 }
