@@ -18,6 +18,7 @@ public class BoardUtil {
 
 	private static String root_path;
 	private static String attach_path;
+	static NoticeDao noticeDao = new NoticeDao();
 
 	/**
 	 * 페이징 처리 유틸
@@ -26,7 +27,7 @@ public class BoardUtil {
 	 * @return Map<String, Integer>
 	 */
 	public static Map<String, Integer> getPagination(String page, String keyword) {
-		NoticeDao noticeDao = new NoticeDao();
+
 		Map<String, Integer> result = new HashMap<String, Integer>();
 
 		int startCount = 0;
@@ -72,12 +73,12 @@ public class BoardUtil {
 	}
 
 	/**
-	 * 리스트 날짜 출력 방식 변경
+	 * 리스트 날짜, 제목 출력 방식 변경
 	 * 
 	 * @param result
 	 * @return
 	 */
-	public static List<NoticeVo> getDateOutput(List<NoticeVo> result) {
+	public static List<NoticeVo> getOutput(List<NoticeVo> result) {
 		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM.dd");
 		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 
@@ -106,6 +107,7 @@ public class BoardUtil {
 			}
 			// date_output 변수를 사용하여 필요한 작업 수행
 			nvo.setDate_output(date_output);
+			nvo.setCmtCount(noticeDao.getCmtCount(nvo.getPost_id()));
 		}
 
 		return result;

@@ -35,5 +35,29 @@ public class NoticeDao extends DBConn {
 
 		return result;
 	}
+	
+	/**
+	 * 댓글 개수 표시용
+	 */
+	public int getCmtCount(int no) {
+		int result = 0;
+		String sql = "SELECT COUNT(*) FROM COMMENT WHERE POST_ID = ?";
+		getPreparedStatement(sql);
+
+		try {
+			pstmt.setInt(1, no);
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				result = rs.getInt(1);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+
+		return result;
+	}
 
 }

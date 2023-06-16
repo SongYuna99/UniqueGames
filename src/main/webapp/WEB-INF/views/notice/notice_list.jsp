@@ -18,12 +18,13 @@
 <script>
 	$(document).ready(function(){	
 		getPagination();
-		diffPage('${loginMember}');
-		
+		// diffPage('${loginMember}');
+
 		$('button[name="getList"]').on("click", function() {
 
 			location.href = "notice_list.do";
 		})
+
  	});
 	
 	function getPagination() {
@@ -73,23 +74,44 @@
 	<div id="content">
 		<div id="board-list">
 			<div id="board-top-menu">
-				<p>Notice</p>
-				<div>
-					  <form name='boardSearch' action='notice_Search.do' method='get'>
-						<label>
-							<input type='text' name='keyword' placeholder='검색어를 입력해주세요.'>
-							<button type='button' id='btn-search'>
-								<img src='http://localhost:9000/uniquegames/images/btn_boardSearch_press.png'>
-							</button>
-						</label>
-					 </form>
-					<ul>
-						<li><button type='button' id='btn-style' name='listWrite'>작성</button></li>
-						<li><button type='button' id='btn-style' name='listUpdate'>수정</button></li>
-						<li><button type='button' id='btn-style' name='listDelete'>삭제</button></li>
-						<li><button type='button' id='btn-style' name='listDeleteAll'>전체삭제</button></li>
-					</ul>
-				</div>
+				<c:choose>
+					<c:when test='${fn:contains(loginMember, "CompanyVo")}'>
+						<p>Notice</p>
+						<div>
+							  <form name='boardSearch' action='notice_Search.do' method='get'>
+								<label>
+									<input type='text' name='keyword' placeholder='검색어를 입력해주세요.'>
+									<button type='button' id='btn-search'>
+										<img src='http://localhost:9000/uniquegames/images/btn_boardSearch_press.png'>
+									</button>
+								</label>
+							 </form>
+							<ul>
+								<li><button type='button' id='btn-style' name='listWrite'>작성</button></li>
+								<li><button type='button' id='btn-style' name='listUpdate'>수정</button></li>
+								<li><button type='button' id='btn-style' name='listDelete'>삭제</button></li>
+								<li><button type='button' id='btn-style' name='listDeleteAll'>전체삭제</button></li>
+							</ul>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<p>Notice</p>
+							<div id='bsearch-box'>
+								  <form name='boardSearch' action='notice_Search.do' method='get'>
+									<label>
+										<input type='text' name='keyword' placeholder='검색어를 입력해주세요.'>
+										<button type='button' id='btn-search'>
+											<img src='http://localhost:9000/uniquegames/images/btn_boardSearch_press.png'>
+										</button>
+									</label>
+								 </form>
+								<ul>
+									<li><button type='button' id='btn-style' name='getList'>목록</button></li>
+								</ul>
+							</div>
+							<div id='clearFix'></div>
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<c:choose>
 				<c:when test='${fn:contains(loginMember, "CompanyVo")}'>
@@ -108,10 +130,10 @@
 										<tr>
 											<td><input type="checkbox" name="list"
 												value="${noticeVo.post_id}"></td>
-											<td>${noticeVo.rno}</td>
-											<td><a href="notice_content.do?no=${noticeVo.post_id}">${noticeVo.title}</a></td>
-											<td>${noticeVo.name}</td>
-											<td>${noticeVo.date_output}</td>
+											<td><c:out value="${noticeVo.rno}"/></td>
+											<td><a href="notice_content.do?no=${noticeVo.post_id}"><c:out value="${noticeVo.title}" /><c:if test="${noticeVo.cmtCount > 0}"><c:out value="  [${noticeVo.cmtCount}]" /></c:if></a></td>
+											<td><c:out value="${noticeVo.name}" /></td>
+											<td><c:out value="${noticeVo.date_output}" /></td>
 										</tr>
 									</c:forEach>
 								</c:when>
@@ -139,10 +161,10 @@
 								<c:when test="${not empty list}">
 									<c:forEach var="noticeVo" items="${list}">
 										<tr>
-											<td>${noticeVo.rno}</td>
-											<td><a href="notice_content.do?no=${noticeVo.post_id}">${noticeVo.title}</a></td>
-											<td>${noticeVo.name}</td>
-											<td>${noticeVo.date_output}</td>
+											<td><c:out value="${noticeVo.rno}"/></td>
+											<td><a href="notice_content.do?no=${noticeVo.post_id}"><c:out value="${noticeVo.title}" /><c:if test="${noticeVo.cmtCount > 0}"><c:out value=" [${noticeVo.cmtCount}]" /></c:if></a></td>
+											<td><c:out value="${noticeVo.name}" /></td>
+											<td><c:out value="${noticeVo.date_output}" /></td>
 										</tr>
 									</c:forEach>
 								</c:when>

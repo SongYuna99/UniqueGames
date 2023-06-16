@@ -48,11 +48,10 @@ public class NoticeController {
 			throws Exception {
 		ModelAndView model = new ModelAndView();
 
-		HttpSession session = request.getSession();
 		// 페이징 처리 - startCount, endCount 구하기
 		Map<String, Integer> pageMap = BoardUtil.getPagination(page, "list");
 		ArrayList<NoticeVo> list = noticeService.getNoticeList(pageMap.get("startCount"), pageMap.get("endCount"));
-
+		
 		model.addObject("list", list);
 		model.addObject("dbCount", pageMap.get("dbCount"));
 		model.addObject("pageSize", pageMap.get("pageSize"));
@@ -84,8 +83,8 @@ public class NoticeController {
 	 * notice_write_proc.do 공지사항 - 작성 처리
 	 */
 	@RequestMapping(value = "/notice_write_proc.do", method = RequestMethod.POST)
-	public String noticeWriteProc(NoticeVo noticeVo, @ModelAttribute(SessionConstants.LOGIN_MEMBER) CompanyVo cvo ,HttpServletRequest request, RedirectAttributes attributes)
-			throws Exception {
+	public String noticeWriteProc(NoticeVo noticeVo, @ModelAttribute(SessionConstants.LOGIN_MEMBER) CompanyVo cvo,
+			HttpServletRequest request, RedirectAttributes attributes) throws Exception {
 
 		noticeVo = BoardUtil.fileUtil(request, noticeVo);
 		noticeVo.setCompany_id(cvo.getCompany_id());
@@ -231,13 +230,7 @@ public class NoticeController {
 		model.addObject("pageCount", pageMap.get("pageCount"));
 		model.addObject("page", pageMap.get("reqPage"));
 
-		if (session.getAttribute(SessionConstants.LOGIN_MEMBER) == null) {
-			model.setViewName("/notice/notice_list_user");
-
-		} else {
-			model.setViewName("/notice/notice_list");
-
-		}
+		model.setViewName("/notice/notice_list");
 
 		return model;
 	}
