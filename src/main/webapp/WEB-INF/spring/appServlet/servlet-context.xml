@@ -37,7 +37,6 @@
 	</interceptors>
 
 	<!-- 리졸버 등록-->
-	<beans:bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
 	<mvc:annotation-driven>
 		<mvc:argument-resolvers>
 			<beans:bean class="com.uniquegames.annotation.LoginMemberArgumentResolver"/>

@@ -41,7 +41,6 @@ $(document).ready(function (){
 	    		url: 'cart_delete_selected.do',
 	    		method: 'POST',
 	    		data: {
-	        		m_id : $('#m_id').val(),
 	        		checkedList: checkedList	//보내려는 데이터를 문자열로 변환하여 넣기
 	   			},
 	    		success: (result) => {
@@ -62,7 +61,7 @@ $(document).ready(function (){
         	alert("주문할 항목을 선택해주세요.");
         }
        	else {
-       		location.href = "http://localhost:9000/uniquegames/order.do?m_id="+$("#m_id").val()+"&checkedList="+checkedList;
+       		location.href = "http://localhost:9000/uniquegames/order.do?checkedList="+checkedList;
        	}	
     });
     
@@ -80,8 +79,7 @@ $(document).ready(function (){
     }
     
     $("#btn-deleteAll").click(function() {
-    	let m_id = $("#m_id").val();
-    	location.href="http://localhost:9000/uniquegames/cart_delete_all.do?m_id=" + m_id;
+    	location.href="http://localhost:9000/uniquegames/cart_delete_all.do";
     });
 
 });

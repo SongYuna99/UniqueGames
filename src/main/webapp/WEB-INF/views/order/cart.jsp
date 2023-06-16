@@ -35,7 +35,6 @@
 					<button type="button" id="btn-deleteSelected">선택삭제</button>
 				</div>
 				<div id="div-table">
-					<input type="hidden" id="m_id" value="${ m_id }">
 					<table id="table-gameList">
 						<tr>
 							<th><input type="checkbox" id="checkAll" name="checkAll"
@@ -53,7 +52,7 @@
 								<td><p><a>${ cart.gametitle }</a></p></td>
 								<td><fmt:formatNumber type="currency" value="${ cart.amount }" /></td>
 								<td>
-									<a href="http://localhost:9000/uniquegames/cart_delete_one.do?id=${ cart.id }&m_id=${ m_id }" id="a-delete">
+									<a href="http://localhost:9000/uniquegames/cart_delete_one.do?id=${ cart.id }" id="a-delete">
 									<button type="button" id="btn-deleteOne" value="${ cart.id }">삭제</button></a>
 								</td>
 							</tr>
@@ -82,7 +81,7 @@
 				<p id="p-nothing">장바구니가 비어있습니다.</p>
 			</div>
 			<div id="div-button">
-				<a href="http://localhost:9000/uniquegames/index.do"><button type="button" id="btn-main">메인으로</button></a>
+				<a href="http://localhost:9000/uniquegames/"><button type="button" id="btn-main">메인으로</button></a>
 			</div>
 		</c:if>
 	</section>

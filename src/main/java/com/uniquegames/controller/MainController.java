@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.context.request.SessionScope;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uniquegames.vo.GameVo;
@@ -48,13 +49,11 @@ public class MainController {
 
 
 	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String index(Model model, @Login MemberVo vo, @Login CompanyVo cvo, HttpSession session) throws IOException {
+	public String index(Model model, HttpSession session) throws IOException {
 		model.addAttribute("gameList",indexServiceMapper.getGameList());
 		model.addAttribute("donation",indexServiceMapper.getDonationList());
 		model.addAttribute("ranking",indexServiceMapper.getRankingList());
 		model.addAttribute("noticeList", noticeService.getNoticeList(1, 4));
-		model.addAttribute("member", vo);
-		model.addAttribute("company", cvo);
 
         return "/main/index";
 	}

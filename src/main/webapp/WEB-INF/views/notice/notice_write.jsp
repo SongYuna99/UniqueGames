@@ -51,9 +51,10 @@
 						<th>이미지</th>
 						<td>
 							<div id="filebox">
-								<input id="upload-name" value="첨부파일" placeholder="첨부파일" disabled>
+								<input id="upload-name" value="" placeholder="첨부파일" disabled>
 								<button type="button" id="btn-style" name="file">파일 찾기</button>
 								<input type="file" name="file" id="upload-hidden" accept="image/*">
+								<nav id="fileDelbtn"></nav>
 								<span>*이미지는 하나만 선택할 수 있으며, 본문 위에 삽입됩니다.</span>
 							</div>
 						</td>

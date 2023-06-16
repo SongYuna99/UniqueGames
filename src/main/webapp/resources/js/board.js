@@ -69,12 +69,17 @@ $(document).ready(function() {
 		searchScript();
 	})
 
-	$('input[name="search"]').on("keydown",function(event) {
+	$('input[name="keyword"]').on("keydown",function(event) {
 		if (event.keyCode === 13) {
 			event.preventDefault();
-			searchScript();
+			searchScript();			
+		} 
+	})
 
-		}
+	// 목록 버튼 이벤트
+	$('button[name="getList"]').on("click", function() {
+
+		location.href = "notice_list.do";
 	})
 
 	/**
@@ -161,17 +166,36 @@ $(document).ready(function() {
 			noticeDelete.submit();
 		}
 	})
-
+	
 	// 목록 버튼 이벤트
 	$('button[name="list"]').on("click", function() {
 		location.href = "notice_list.do";
 	})
 
 	// 댓글 작성 이벤트
-	$('button[name="cmtWrite"]').on("click", function() {
-		if ($("#form-control").val() != "")
-			commentWriteForm.submit();
-		else
+	$('button[name="cmtWrite"]').on("click", function () {
+		let url = window.location.href;
+
+		if ($("#form-control").val() != "") {
+			$.ajax({
+				url: "comment_write_proc.do",
+				data: $("#comment-write").serialize(),
+				dataType: "text",
+				async: true,
+				Cache: false,
+				type: "POST",
+				success: function (result) {
+					if (result == "SUCCESS") {
+						alert("댓글이 등록되었습니다.");
+						window.location.replace(url);
+					} else {
+						alert("댓글 등록이 실패하였습니다.");
+					}
+				},
+				error: function (xhr, status, error) { }
+			});
+
+		} else
 			alert("댓글 내용을 입력하세요.");
 	})
 	
@@ -224,6 +248,7 @@ $(document).ready(function() {
 
 });
 
+// 댓글 삭제 이벤트
 function commentDelete(commentId) {
 	if (confirm('댓글을 삭제하시겠습니까?')) {
 		let url = window.location.href;
@@ -253,8 +278,9 @@ function commentDelete(commentId) {
 	}
 }
 
+// 검색 이벤트
 function searchScript() {
-	if($('input[name="search"]').val() == "") {
+	if($('input[name="keyword"]').val() == "") {
 		alert("검색어를 입력하세요");
 		
 		return false;
@@ -264,16 +290,20 @@ function searchScript() {
 	}
 }
 
+// alert 중복 방지를 위한 스크립트
 function getResult(result) {
 	if (result == 'insuccess') {
 		alert("게시글이 성공적으로 등록되었습니다.");
 	}
+
 	if (result == 'upsuccess') {
 	alert("수정되었습니다.");
 	}
+
 	if (result == 'fail') {
 		alert("작업에 실패했습니다.\n잠시후에 다시 시도해주세요.");
 	}
+
 	history.replaceState({},null,null);
 }
 
@@ -281,8 +311,38 @@ function getResultCmt(result) {
 	if (result == 'success') {
 		alert("댓글이 등록되었습니다.");
 	}
+
 	if (result == 'fail') {
 		alert("작업에 실패했습니다.\n잠시후에 다시 시도해주세요.");
 	}
+
 	history.replaceState({},null,null);
+}
+
+// 세션에 따른 페이지 구성
+function diffPage(login) {
+	console.log(login);
+	if (login.includes("MemberVo") || login == "") {
+		
+		var str = "";
+
+		str += "		<p>Notice</p>";
+		str += "		<div id='bsearch-box'>";
+		str += "			  <form name='boardSearch' action='notice_Search.do' method='get'>";
+		str += "				<label>";
+		str += "					<input type='text' name='keyword' placeholder='검색어를 입력해주세요.'>";
+		str += "					<button type='button' id='btn-search'>";
+		str += "						<img src='http://localhost:9000/uniquegames/images/btn_boardSearch_press.png'>";
+		str += "					</button>";
+		str += "				</label>";
+		str += "			 </form>";
+		str += "			<ul>";
+		str += "				<li><button type='button' id='btn-style' name='getList'>목록</button></li>";
+		str += "			</ul>";
+		str += "		</div>";
+		str += "		<div id='clearFix'></div>";
+		$("#board-top-menu").html(str);
+
+	}
+
 }

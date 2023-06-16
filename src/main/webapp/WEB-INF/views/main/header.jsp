@@ -61,7 +61,7 @@
                             <li><a href="/uniquegames/logout.do" target="_parent">Logout</a></li>
                             <li><a href="/uniquegames/join.do">Join</a></li>
                             <li><a href="/uniquegames/myPage.do"><img src="/uniquegames/images/img_icon_mypage.png"></a></li>
-                            <li><a href="/uniquegames/cart.do?m_id=mtest"><img src="/uniquegames/images/img_icon_cart.png"></a></li>
+                            <li><a href="/uniquegames/cart.do"><img src="/uniquegames/images/img_icon_cart.png"></a></li>
                             <li><button type="button" id="btn-hearder-search" onclick="toggleSearch()"><img src="/uniquegames/images/img_icon_search.png"></button></li>
                         </ul>
                     </nav>

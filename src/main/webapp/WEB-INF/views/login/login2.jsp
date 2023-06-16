@@ -12,6 +12,20 @@
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script>
 		$(document).ready(function(){
+			
+			
+			$("#individual-loginForm").keypress(function(e){
+				if(e.keyCode == 13){
+					$("#button-gradient").click();
+				}
+			});
+			
+			$("#company-loginForm").keypress(function(e){
+				if(e.keyCode == 13){
+					$("#button-gradient-company-login").click();
+				}
+			});
+			
 
 			$("#button-gradient").click(function(){
 				
@@ -44,7 +58,7 @@
 				
 			});
 			
-			$("input[name='id']").blur(function(){
+			$("input[name='member_id']").blur(function(){
 				
 				if($("input[name='member_id']").val()=="") {
 					$("#msgId").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
@@ -79,6 +93,17 @@
 		if(login=="fail"){
 			alert("로그인 실패");
 		}
+		
+		document.addEventListener('DOMContentLoaded', function() {
+            // URL에서 selectedTab 파라미터 값을 가져옴
+            var urlParams = new URLSearchParams(window.location.search);
+            var selectedTab = urlParams.get('selectedTab');
+            
+            // 선택한 탭을 표시
+            if (selectedTab) {
+                document.getElementById(selectedTab).checked = true;
+            }
+        });
 		
 	</script>
 </head>
@@ -118,6 +143,8 @@
 					<li>
 						<a href="findId.do" id="link-findAccount">아이디 찾기</a>
 						<a href="findId.do?selectedTab=findPwd" id="link-findAccount">비밀번호 찾기</a>
+						<a href="/uniquegames/join.do" id="link-signUp">
+							<span>Sign Up</span></a>
 					</li>
 				</ul>
 			</div>
@@ -140,21 +167,11 @@
 					<li>
 						<a href="findCompany.do" id="link-findAccount">아이디 찾기</a>
 						<a href="findCompany.do?selectedTab=findPwd" id="link-findAccount">비밀번호 찾기</a>
-					</li>
-				</ul>
-			</div>
-		</form>
-		
-			<div>
-				<ul>
-					<li>
-						<a href="/uniquegames/join.do" id="link-signUp">
-							<span>Sign Up</span></a>
 						<a href="join.do?selectedTab=company" id="link-signUp">Company Sign Up</a>
 					</li>
 				</ul>
 			</div>
-		
+		</form>
 	</section>
 	<footer>
 		<jsp:include page="../main/footer.jsp"></jsp:include>

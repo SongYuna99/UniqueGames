@@ -60,7 +60,7 @@ select {
 
 /******* Table *******/
 #div-table {
-	padding-bottom: 150px;
+	padding-bottom: 100px;
 }
 
 #table-gameList, #cart-price {
@@ -113,15 +113,11 @@ select {
 }
 
 #table-gameList {
-	margin-bottom: 100px;
-}
-
-#div-price {
-	margin-bottom: 200px;
+	margin-bottom: 20px;
 }
 
 /******* Button *******/
-#btn-deleteAll, #btn-deleteSelected, #btn-deleteOne {
+#btn-deleteAll, #btn-deleteSelected, #btn-deleteOne, #btn-refund {
 	padding: 3px 10px;
 	background: #393939;
 	border-radius: 5px;

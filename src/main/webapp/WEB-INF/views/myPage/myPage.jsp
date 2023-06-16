@@ -182,6 +182,7 @@
 					</li>
 					<li>
 						<input type="text" id="input-common" name="name" value="${memberVo.name }" disabled>
+						<input type="hidden" name="name" value="${memberVo.name }">
 					</li>
 					<li id="must-insert">
 						<p id="label-dot">*</p>

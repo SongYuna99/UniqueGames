@@ -8,6 +8,7 @@ public class NoticeVo {
 	int rno;
 	int post_id;
 	String company_id;
+	String name;
 	String title;
 	String content;
 	int notice_hits;
@@ -39,6 +40,14 @@ public class NoticeVo {
 
 	public void setCompany_id(String company_id) {
 		this.company_id = company_id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getTitle() {

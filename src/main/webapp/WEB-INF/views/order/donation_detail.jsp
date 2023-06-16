@@ -19,7 +19,6 @@
 				$.ajax({
 					url : "donation_detail_data.do",
 					data : {
-						c_id : c_id,
 						array : array
 					},
 					success : function(result){				
@@ -31,7 +30,7 @@
 							output += "<p id='p-nothing'>결제내역이 없습니다.</p>";
 							output += "</div>";
 							output += "<div id='div-button'>";
-							output += "<a href='http://localhost:9000/uniquegames/index.do'>";
+							output += "<a href='http://localhost:9000/uniquegames/'>";
 							output += "<button type='button' id='btn-main'>메인으로</button></a>";
 							output += "</div>";
 							
@@ -91,7 +90,6 @@
 </section>
 
 <h1>Donation Detail</h1>
-<input type="hidden" id="c_id" name="c_id" value="${ c_id }">
 <section id="cart">
 	<div id="div-gameList">
 		<div id="div-select">

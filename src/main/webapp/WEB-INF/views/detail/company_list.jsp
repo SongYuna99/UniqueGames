@@ -34,6 +34,7 @@
 <section id="menu-main2">
     <div id="board-top-menu">
         <div>
+
             <ul>
                 <li><button type="button" class="btn-style" name="listWrite">작성</button></li>
                 <li><button type="button" class="btn-style" name="listUpdate">수정</button></li>
@@ -63,27 +64,20 @@
 <jsp:include page="../main/footer.jsp"></jsp:include>
 <script>
 
-
-  // 작성 버튼 이벤트
-  $('button[name="listWrite"],[name="listUpdate"],[name="listDelete"],[name="listDeleteAll"]').on("click", function() {
-    isMemberVoAlert()
-    function isMemberVoAlert(){
-
-      const loginMember = '<%=session.getAttribute("loginMember")%>';
-      if(loginMember.includes('MemberVo')){
-        alert('기업회원만 작성 가능합니다.');
-      }
-      else if(loginMember == 'null'){
-        // 알림창 표시 이후 페이지 이동
-        alert('로그인 후 이용 가능합니다.');
-        location.href = "../login.do?redirectURL=detail/insertIntro.do";
-      }
-      else{
-        location.href = "../detail/insertIntro.do";
-      }
-    }
-        });
-
+  <%-- 회원의 타입에 따라 해당 메뉴 출력 여부 구현 --%>
+  const element = document.getElementById('board-top-menu');
+  const loginMember = '<%=session.getAttribute("loginMember")%>';
+  if(loginMember.includes('MemberVo') || loginMember === 'null'){
+    element.style.visibility = 'hidden';
+  }else if(loginMember.includes('CompanyVo')  && '${status}' === 'writeOnce'){
+    $('button[name="listWrite"]').on("click", function() {
+      alert("글 작성은 한번만 가능합니다!");
+    });
+  }else if(loginMember.includes('CompanyVo')){
+    $('button[name="listWrite"]').on("click", function() {
+      location.href = "../detail/insertIntro.do";
+    });
+  }
 
 </script>
 </body>
