@@ -9,7 +9,7 @@ public class DBConn {
 	// Field
 	String driver = "com.mysql.cj.jdbc.Driver";
 	String url = "jdbc:mysql://localhost:3306/uniquegames";
-	String user = "unique_games";
+	String user = "uniquegames";
 	String pass = "1234";
 
 	Connection conn;
