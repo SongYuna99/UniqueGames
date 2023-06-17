@@ -19,7 +19,7 @@ public class OrderDao{
 	/** Cart **/
 	// getCartList
 	public ArrayList<OrderVo> getCartList(String m_id) {
-		List<Object> oList = sqlSession.selectList("com.uniquegames.orderMapper.getCartList", m_id);
+		List<Object> oList = sqlSession.selectList("com.uniquegames.repository.OrderMapper.getCartList", m_id);
 		ArrayList<OrderVo> cartList = new ArrayList<OrderVo>();
 		
 		for (Object cart : oList) {

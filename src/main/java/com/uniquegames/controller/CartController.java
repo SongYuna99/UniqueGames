@@ -25,14 +25,11 @@ public class CartController {
 	OrderServiceImpl orderService;
 
 	@RequestMapping(value = "/cart.do", method = RequestMethod.GET)
-
-
-	public ModelAndView cart(HttpSession request) {
-		MemberVo member = (MemberVo) request.getAttribute(SessionConstants.LOGIN_MEMBER);
-		String m_id = member.getMember_id();
+	public ModelAndView cart(HttpSession request,@Login MemberVo member) {
+//		MemberVo member = (MemberVo) request.getAttribute(SessionConstants.LOGIN_MEMBER);
 
 		ModelAndView model = new ModelAndView();
-		ArrayList<OrderVo> cartList = orderService.getCartList(loginMember.getMember_id());
+		ArrayList<OrderVo> cartList = orderService.getCartList(member.getMember_id());
 
 		if (cartList.size() > 0) {
 			model.addObject("cartList", cartList);

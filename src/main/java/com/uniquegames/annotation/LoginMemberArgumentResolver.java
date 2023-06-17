@@ -29,7 +29,8 @@ public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolve
         boolean hasLoginAnnotation = parameter.hasParameterAnnotation(Login.class);
         boolean hasMemberType = parameter.getParameterType().equals(MemberVo.class);;
 //        boolean hasCompanyType = CompanyVo.class.isAssignableFrom(parameter.getParameterType());
-        return hasLoginAnnotation && hasMemberType;
+        System.out.println("Test");
+        return  hasLoginAnnotation && hasMemberType;
     }
 
     @Override

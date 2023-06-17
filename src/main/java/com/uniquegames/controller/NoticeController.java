@@ -29,7 +29,9 @@ import com.uniquegames.vo.NoticeVo;
 
 @Controller
 @SessionAttributes(SessionConstants.LOGIN_MEMBER)
-public class NoticeController {
+public class
+
+NoticeController {
 
 	NoticeService noticeService;
 	CommentService commentService;
