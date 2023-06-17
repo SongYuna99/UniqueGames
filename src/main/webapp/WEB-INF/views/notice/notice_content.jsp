@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,10 @@
 <link rel="stylesheet" href="http://localhost:9000/uniquegames/css/board.css">
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script><!-- 마이크로소프트 jQuery-->
 <script src="http://localhost:9000/uniquegames/js/board.js"></script>
+<c:set var="loginMember" value='${sessionScope.loginMember}'/>
+<script type="text/javascript">
+	
+</script>
 <c:if test="${result != null}">
 	<script type="text/javascript">
 		let result = '<c:out value="${result}"/>';
@@ -51,15 +56,15 @@
 			<table>
 				<tr>
 					<th>제목</th>
-					<td colspan="5" id="btitle">${noticeVo.title}</td>
+					<td colspan="5" id="btitle"><c:out value="${noticeVo.title}" /></td>
 				</tr>
 				<tr>
 					<th>등록자</th>
-					<td>${noticeVo.company_id}</td>
+					<td><c:out value="${noticeVo.name}" /></td>
 					<th>조회수</th>
-					<td style="text-align: center;">${noticeVo.notice_hits}</td>
+					<td style="text-align: center;"><c:out value="${noticeVo.notice_hits}" /></td>
 					<th>등록일</th>
-					<td>${noticeVo.date_output}</td>
+					<td><c:out value="${noticeVo.date_output}" /></td>
 				</tr>
 				<tr>
 					<td colspan="6" style="border:none;">
@@ -67,13 +72,25 @@
 					</td>
 				</tr>
 			</table>
+			<input type="hidden" id="authorId" data-author-id="${noticeVo.company_id}">
+			
 		</div>
 		<section id="comment-box">
 			<div>
 				<!-- Comment form-->
 				<form id="comment-write" name="commentWriteForm" action="comment_write_proc.do" method="post">
 					<input type="hidden" name="post_id" value="${noticeVo.post_id}">
-					<input type="hidden" name="member_id" value="mtest">
+					<c:choose>
+						<c:when test='${fn:contains(loginMember, "CompanyVo")}'>
+							<input type="hidden" id="member_id" name="member_id" value="${loginMember.company_id}">
+						</c:when>
+						<c:when test='${fn:contains(loginMember, "MemberVo")}'>
+							<input type="hidden" id="member_id" name="member_id" value="${loginMember.member_id}">
+						</c:when>
+						<c:otherwise>
+							<input type="hidden" id="member_id" name="member_id" value="">
+						</c:otherwise>
+					</c:choose>
 					<textarea id="form-control" rows="3" name="comment_content"
 						placeholder="타인에게 불쾌함을 주는 댓글은 통보없이 삭제될 수 있습니다."></textarea>
 					<button type="button" id="btn-style" name="cmtWrite">등록</button>
