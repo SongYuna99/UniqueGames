@@ -39,37 +39,34 @@ public class DetailMapperController {
         this.companyServiceMapper = companyServiceMapper; // 매퍼 방식
         this.companyServiceMapper2 = companyServiceMapper2; // 인터페이스 only
     }
-    boolean writeBoardOnlyOnce = true;
 
     /** goDetail()
      * @return 회사 상세페이지 리턴
      */
-    @RequestMapping(value = "/detail1.do",method = RequestMethod.GET)
-    public String goDetail() {
-        return "detail/detail";
+    @RequestMapping(value = {"/detail1.do", "/detail2.do", "/detail3.do", "/detail4.do"}, method = RequestMethod.GET)
+    public String goDetail(HttpServletRequest request) {
+        String requestPath = request.getRequestURI().replaceFirst("/uniquegames/","");//최상단 컨텍스트(uniquegames)를 제외한 현재 요청 경로를 가져옴
+
+        // 요청 경로에 따라 처리
+        if (requestPath.equals("detail/detail1.do")) {
+            return "detail/detail";
+        } else if (requestPath.equals("detail/detail2.do")) {
+            return "detail/detail2";
+        } else if (requestPath.equals("detail/detail3.do")) {
+            return "detail/detail3";
+        } else if (requestPath.equals("detail/detail4.do")) {
+            return "detail/detail4";
+        }
+
+        return "redirect:/";
     }
 
-    @RequestMapping(value = "/detail2.do",method = RequestMethod.GET)
-    public String goDetail2() {
-//        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
-        return "detail/detail2";
-    }
-    @RequestMapping(value = "/detail3.do",method = RequestMethod.GET)
-    public String goDetail3() {
-//        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
-        return "detail/detail3";
-    }
-    @RequestMapping(value = "/detail4.do",method = RequestMethod.GET)
-    public String goDetail4() {
-//        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
-        return "detail/detail4";
-    }
 
     /**
      * @param vo 회사 소개 저장객체
      * @param request 현재 url을 가져오기 위한 객체
      * @return 이름 또는 제목이 null이면 회사등록 페이지 리턴. 아니면 회사 목록 페이지 리턴
-     * @throws IOException
+     * @throws IOException 입출력 예외 처리
      */
     @RequestMapping(value = "/insertIntro.do")
     public String insertIntro(IntroVo vo, HttpServletRequest request,Model model) throws IOException {
