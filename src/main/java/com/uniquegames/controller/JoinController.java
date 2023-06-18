@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.uniquegames.dao.CompanyDao;
 import com.uniquegames.dao.MemberDao;
 import com.uniquegames.service.CompanyMemberService;
+import com.uniquegames.service.MailSendService;
 import com.uniquegames.service.MemberService;
 import com.uniquegames.vo.CompanyVo;
 import com.uniquegames.vo.MemberVo;
@@ -22,6 +23,9 @@ public class JoinController {
 	
 	@Autowired
 	private CompanyMemberService companyMemberService;
+	
+	@Autowired
+	private MailSendService mailService;
 
 	@RequestMapping(value="/join.do", method=RequestMethod.GET)
 	public String join() {
@@ -43,7 +47,7 @@ public class JoinController {
 			mav.addObject("join_individual_result", "success");
 			mav.setViewName("/login/login");
 		}else {
-			System.out.println("½ÇÆÐ");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½");
 		}
 		
 		return mav;
@@ -55,7 +59,7 @@ public class JoinController {
 		return memberService.memberIdCheckResult(member_id);
 	}
 	
-	/**ÀÌ¸ÞÀÏ Áßº¹Ã¼Å©*/
+	/**ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ßºï¿½Ã¼Å©*/
 	@RequestMapping(value="/email_check.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String email_check(String email1, String email2) {
@@ -66,7 +70,7 @@ public class JoinController {
 		return String.valueOf(result);
 	}
 	
-	/**ÈÞ´ëÀüÈ­ Áßº¹Ã¼Å©*/
+	/**ï¿½Þ´ï¿½ï¿½ï¿½È­ ï¿½ßºï¿½Ã¼Å©*/
 	@RequestMapping(value="/phone_check.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String phone_check(String phone1, String phone2, String phone3) {
@@ -79,7 +83,15 @@ public class JoinController {
 		return String.valueOf(result);
 	}
 	
-	/******************************************************************¹ýÀÎ**********************************************************************/
+	@RequestMapping(value="/mailCheck.do", method=RequestMethod.GET)
+	@ResponseBody
+	public String mailCheck(String email) {
+		System.out.println("email------->>" + email);
+		
+		return mailService.joinEmail(email);
+	}
+	
+	/******************************************************************ï¿½ï¿½ï¿½ï¿½**********************************************************************/
 	@RequestMapping(value="/join_company_proc.do", method=RequestMethod.POST)
 	public ModelAndView companyJoin(CompanyVo companyVo) {
 		ModelAndView mav = new ModelAndView();
@@ -89,7 +101,7 @@ public class JoinController {
 			mav.addObject("join_company_result", "success");
 			mav.setViewName("/login/login");
 		}else {
-			System.out.println("½ÇÆÐ");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½");
 		}
 		
 		return mav;
@@ -103,7 +115,7 @@ public class JoinController {
 		return String.valueOf(result);
 	}
 	
-	/**ÀÌ¸ÞÀÏ Áßº¹Ã¼Å©*/
+	/**ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ßºï¿½Ã¼Å©*/
 	@RequestMapping(value="/c_email_check.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String c_email_check(String email1, String email2) {
@@ -116,7 +128,7 @@ public class JoinController {
 	
 	
 	
-	/**ÈÞ´ëÀüÈ­ Áßº¹Ã¼Å©*/
+	/**ï¿½Þ´ï¿½ï¿½ï¿½È­ ï¿½ßºï¿½Ã¼Å©*/
 	@RequestMapping(value="/c_phone_check.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String c_phone_check(String phone1, String phone2, String phone3) {

@@ -124,10 +124,6 @@ a:visited {
 	outline: none;
 	font-size: 16px;
 }
-/*Sign Up - ID input style*/
-#input-id {
-	width: 305px;
-}
 
 #input-common:focus, #section_member input:focus, #section_member select:focus
 	{
@@ -1367,7 +1363,7 @@ td#payment-totalPrice {
 
 /* SignUp; email input style */
 #input-email,#company-email1, #company-email2, #join-email2 {
-	width: 127px;
+	width: 122px;
 	padding: 20px 0;
 	text-indent: 10px;
 	border-radius: 3px;
@@ -1391,7 +1387,7 @@ td#payment-totalPrice {
 #company-phone1,
 #company-phone2,
 #company-phone3 {
-	width: 109px;
+	width: 100px;
 	height: 43px;
 	border-radius: 3px;
 	border: 1px solid lightgray;
@@ -1407,18 +1403,7 @@ td#payment-totalPrice {
 	font-size: 16px;
 	text-indent: 10px;
 }
-/*SignUp; addr input style */
-#input-addr1,
-#company-addr1 {
-	width: 325px;
-	padding: 20px 0;
-	margin: 5px 0;
-	text-indent: 10px;
-	border-radius: 3px;
-	border: 1px solid lightgray;
-	outline: none;
-	font-size: 16px;
-}
+
 
 /*SignUp,myPage; individual form style*/
 #content-2,
@@ -1488,25 +1473,29 @@ SignUp IdCheck button style*/
 #address-btn-style,
 #company-address-btn-style,
 #check-btn-style,
-#c-check-btn-style {
+#c-check-btn-style,
+#email-btn-style,
+#c-email-btn-style,
+#company-address-btn-style {
 	background: #393939;
 	border-radius: 5px;
-	width: 50px;
+	width: 80px;
 	height: 30px;
 	color: #FFFFFF;
 	font-size: 14px;
 	cursor: pointer;
-	margin: 0 8px;
+	position: relative;
+	top: -50px;
+	left: 410px;
 }
 
-#address-btn-style,
-#company-address-btn-style {
-	margin-left: 15px;
+#email-btn-style,
+#c-email-btn-style {
+	top: -47px;
 }
-/*SignUp, Company SignUp; IdCheck button style*/
-#check-btn-style,
-#c-check-btn-style {
-	width: 80px;
+
+.address-input {
+	margin-top: -30px;
 }
 
 /*SignUp,Company-SignUp All agreement span style*/
@@ -1540,7 +1529,7 @@ SignUp IdCheck button style*/
 }
 
 /*SignUp, Company-SignUp; must insert dot style*/
-#label-dot {
+#label-dot, #label-dot-1 {
 	display: inline-block;
 	position: absolute;
 	top: -9px;
@@ -1552,10 +1541,19 @@ SignUp IdCheck button style*/
 	position: relative;
 }
 
-/*SignUp; input validation span check style*/
-#idMsg, #pwdMsg, #nameMsg, #phoneMsg {
-	display: none;
+#must-insert-1 {
+	position: relative;
+	margin-top: -28px;
 }
+
+/*SignUp; input validation span check style*/
+#idMsg, #pwdMsg, #pwdMsg-check, #nameMsg, #phoneMsg, #emailMsg,
+#c-idMsg, #c-pwdMsg, #c-pwdMsg-check, #c-nameMsg, #c-emailMsg, #c-phoneMsg {
+	position: relative;
+	top: -1.5px;
+	left: 5px;
+}
+
 /*SignUp; agreement not must check style*/
 #choice-span {
 	margin: 0 3px;
@@ -1669,7 +1667,7 @@ SignUp IdCheck button style*/
 }
 
 /*****************************cmj**************************************/
-/*******************************¸ð´ÞÃ¢************************************/
+/*******************************ï¿½ï¿½ï¿½Ã¢************************************/
 /*SignUp; modal style
 deletePwd, findId; modal2 style */
 #modal,
@@ -1876,11 +1874,15 @@ c-input-common : login.jsp (link to company findPwd)
 #input-common-password-check,
 #company-password, #company-password-check,
 #company-name,
+#input-addr1,
+#company-addr1,
 #company-addr2,
 #company-selectbox-phone1,
 #input-common-phone,
 #input-common-name,
-#c-input-common {
+#c-input-common,
+#email-auth-check,
+#c-email-auth-check {
 	width: 394px;
 	padding: 20px 0;
 	margin: 5px 0;
@@ -1891,10 +1893,11 @@ c-input-common : login.jsp (link to company findPwd)
 	font-size: 16px;
 }
 
-/*Sign Up - ID input style*/
-#input-id {
-	width: 305px;
+#email-auth-check,
+#c-email-auth-check {
+	margin-top: -10px;
 }
+
 /*chk-circle same; c-chk-circle*/
 #c-chk-circle {
 	width: 1rem;
@@ -1912,4 +1915,10 @@ c-input-common : login.jsp (link to company findPwd)
 /*myPage change password link*/
 #changePassword {
 	border: 1px solid red;
+}
+
+#c-idMsg {
+	position: relative;
+	top: -1.5px;
+	left: 5px;
 }
