@@ -25,8 +25,8 @@ public class CartController {
 	OrderServiceImpl orderService;
 
 	@RequestMapping(value = "/cart.do", method = RequestMethod.GET)
-	public ModelAndView cart(HttpSession request,@Login MemberVo member) {
-//		MemberVo member = (MemberVo) request.getAttribute(SessionConstants.LOGIN_MEMBER);
+	public ModelAndView cart(HttpSession request) {
+		MemberVo member = (MemberVo) request.getAttribute(SessionConstants.LOGIN_MEMBER);
 
 		ModelAndView model = new ModelAndView();
 		ArrayList<OrderVo> cartList = orderService.getCartList(member.getMember_id());
