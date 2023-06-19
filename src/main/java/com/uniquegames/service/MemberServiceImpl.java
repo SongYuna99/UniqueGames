@@ -18,13 +18,7 @@ public class MemberServiceImpl implements MemberService {
 	public int memberLoginResult(MemberVo memberVo) {
 		return memberDao.login(memberVo);
 	}
-	
-	/*
-	@Override
-	public int getLoginResult(Object vo) {
-		return 0;
-	}
-	*/
+
 	@Override
 	public int memberJoinResult(MemberVo memberVo) {
 		

@@ -206,9 +206,9 @@
 					</li>
 					<li>
 						<input type="text" id="input-addr1" name="addr1" value="${memberVo.addr1 }">
-						<button type="button" id="address-btn-style">검색</button>
+						<button type="button" id="address-btn-style">주소 검색</button>
 					</li>
-					<li>
+					<li class="address-input">
 						<label>상세 주소</label>
 					</li>
 					<li>

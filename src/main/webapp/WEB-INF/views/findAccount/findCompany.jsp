@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	let c = "${find_result }";
 	if(c == "fail"){
 		alert("등록된 회원정보가 없습니다");
+		location.href="findCompany.do";
 	}
 </script>
 <script>

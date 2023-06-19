@@ -1370,11 +1370,12 @@ td#payment-totalPrice {
 	border: 1px solid lightgray;
 	outline: none;
 	font-size: 16px;
+	margin: 5px 0;
 }
 
 /* SignUp; email selectbox style */
 #selectbox-email,#company-selectbox-email {
-	width: 116px;
+	width: 125px;
 	padding: 22px 0 20px 0;
 	border: 1px solid lightgray;
 	text-indent: 10px;
@@ -1387,7 +1388,7 @@ td#payment-totalPrice {
 #company-phone1,
 #company-phone2,
 #company-phone3 {
-	width: 100px;
+	width: 109px;
 	height: 43px;
 	border-radius: 3px;
 	border: 1px solid lightgray;
@@ -1547,11 +1548,12 @@ SignUp IdCheck button style*/
 }
 
 /*SignUp; input validation span check style*/
-#idMsg, #pwdMsg, #pwdMsg-check, #nameMsg, #phoneMsg, #emailMsg,
-#c-idMsg, #c-pwdMsg, #c-pwdMsg-check, #c-nameMsg, #c-emailMsg, #c-phoneMsg {
+#idMsg, #pwdMsg, #pwdMsg-check, #nameMsg, #emailMsg, #emailAuth, #phoneMsg,
+#c-idMsg, #c-pwdMsg, #c-pwdMsg-check, #c-nameMsg, #c-emailMsg, #c-emailAuth, #c-phoneMsg {
 	position: relative;
 	top: -1.5px;
 	left: 5px;
+	margin-right: 5px;
 }
 
 /*SignUp; agreement not must check style*/

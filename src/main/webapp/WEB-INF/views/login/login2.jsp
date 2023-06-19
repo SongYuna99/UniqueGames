@@ -82,16 +82,26 @@
 		let join_individual = "${join_individual_result }";
 		if(join_individual=="success"){
 			alert("개인 회원가입 성공");
+			location.href="login.do";
 		}
+		
 		
 		let join_company = "${join_company_result }";
 		if(join_company=="success"){
 			alert("법인 회원가입 성공");
+			location.href="login.do";
 		}
 		
 		let login = "${login_result }";
 		if(login=="fail"){
 			alert("로그인 실패");
+			location.href="login.do";
+		}
+		
+		let passChange = "${changePassword_result}";
+		if(passChange=="success"){
+			alert("비밀번호 변경 성공");
+			location.href="login.do";
 		}
 		
 		document.addEventListener('DOMContentLoaded', function() {

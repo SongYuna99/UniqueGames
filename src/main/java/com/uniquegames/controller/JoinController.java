@@ -32,12 +32,6 @@ public class JoinController {
 		return "/join/join";
 	}
 	
-	@RequestMapping(value="/joinChoice.do", method=RequestMethod.GET)
-	public String joinChoice() {
-		return "/join/joinChoice";
-	}
-	
-	
 	@RequestMapping(value="/join_individual_proc.do", method=RequestMethod.POST)
 	public ModelAndView join_proc(MemberVo memberVo) {
 		ModelAndView mav = new ModelAndView();
@@ -45,9 +39,9 @@ public class JoinController {
 		
 		if(result==1) {
 			mav.addObject("join_individual_result", "success");
-			mav.setViewName("/login/login");
+			mav.setViewName("/login/login2");
 		}else {
-			System.out.println("����");
+			System.out.println("회원가입 실패");
 		}
 		
 		return mav;
@@ -59,39 +53,33 @@ public class JoinController {
 		return memberService.memberIdCheckResult(member_id);
 	}
 	
-	/**�̸��� �ߺ�üũ*/
+	/**이메일 중복 확인*/
 	@RequestMapping(value="/email_check.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String email_check(String email1, String email2) {
 		String email = email1 + "@" + email2;
 		
 		int result = memberService.memberEmailCheckResult(email);
-		System.out.println("result="+result);
 		return String.valueOf(result);
 	}
 	
-	/**�޴���ȭ �ߺ�üũ*/
+	/**휴대전화 중복확인*/
 	@RequestMapping(value="/phone_check.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String phone_check(String phone1, String phone2, String phone3) {
 		String phone_num = phone1+"-"+phone2+"-"+phone3;
 		
-		System.out.println("phone_num="+ phone_num);
-		
 		int result = memberService.memberPhoneCheckResult(phone_num);
-		System.out.println("result="+result);
 		return String.valueOf(result);
 	}
 	
-	@RequestMapping(value="/mailCheck.do", method=RequestMethod.GET)
+	@RequestMapping(value="/mailCheck.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String mailCheck(String email) {
-		System.out.println("email------->>" + email);
-		
 		return mailService.joinEmail(email);
 	}
 	
-	/******************************************************************����**********************************************************************/
+	/******************************************************************법인 회원가입**********************************************************************/
 	@RequestMapping(value="/join_company_proc.do", method=RequestMethod.POST)
 	public ModelAndView companyJoin(CompanyVo companyVo) {
 		ModelAndView mav = new ModelAndView();
@@ -99,9 +87,9 @@ public class JoinController {
 		
 		if(result==1) {
 			mav.addObject("join_company_result", "success");
-			mav.setViewName("/login/login");
+			mav.setViewName("/login/login2");
 		}else {
-			System.out.println("����");
+			System.out.println("회원가입 실패");
 		}
 		
 		return mav;
@@ -115,12 +103,11 @@ public class JoinController {
 		return String.valueOf(result);
 	}
 	
-	/**�̸��� �ߺ�üũ*/
+	/**법인 이메일 중복확인*/
 	@RequestMapping(value="/c_email_check.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String c_email_check(String email1, String email2) {
 		String email = email1 + "@" + email2;
-		
 		int result = companyMemberService.companyEmailCheckResult(email);
 		
 		return String.valueOf(result);
@@ -128,16 +115,13 @@ public class JoinController {
 	
 	
 	
-	/**�޴���ȭ �ߺ�üũ*/
+	/**법인 휴대전화 중복확인*/
 	@RequestMapping(value="/c_phone_check.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String c_phone_check(String phone1, String phone2, String phone3) {
 		String phone_num = phone1+"-"+phone2+"-"+phone3;
 		
-		System.out.println("phone_num="+ phone_num);
-		
 		int result = companyMemberService.companyPhoneCheckResult(phone_num);
-		System.out.println("result="+result);
 		return String.valueOf(result);
 	}
 	

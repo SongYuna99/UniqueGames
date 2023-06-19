@@ -63,36 +63,4 @@ public class CompanyDao {
 		return sqlSession.selectOne("mapper.companyMember.phoneCheck", phone_num);
 	}
 	
-	/**companyMypage session id information
-	public CompanyVo select(Object company_id) {
-		CompanyVo companyVo = null;
-		String sql = "select company_id, password, name, email, tel, phone_num, addr from company where company_id=?";
-		//tel
-		getPreparedStatement(sql);
-		
-		try {
-			pstmt.setString(1, (String)company_id);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				companyVo = new CompanyVo();
-				
-				companyVo.setCompany_id(rs.getString(1));
-				companyVo.setPassword(rs.getString(2));
-				companyVo.setName(rs.getString(3));
-				companyVo.setEmail(rs.getString(4));
-				companyVo.setTel(rs.getString(5));
-				companyVo.setPhone_num(rs.getString(6));
-				companyVo.setAddr(rs.getString(7));
-				
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return companyVo;
-	}
-	*/
-	
 }

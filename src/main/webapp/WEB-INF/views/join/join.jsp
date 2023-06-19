@@ -58,7 +58,7 @@
 						</li>
 						<li>
 							<input type="text" id="input-id" name="member_id" placeholder="영문,숫자 5~10자리" tabindex="1">
-							<button type="button" id="check-btn-style">중복체크</button>
+							<button type="button" id="check-btn-style">중복 체크</button>
 						</li>
 						<li id="must-insert-1">
 							<p id="label-dot-1">*</p>
@@ -84,7 +84,9 @@
 						</li>
 						<li id="must-insert">
 							<p id="label-dot">*</p>
-							<label>이메일</label><span id="emailMsg"></span>
+							<label>이메일</label>
+							<span id="emailMsg"></span>
+							<span id="emailAuth"></span>
 						</li>
 						<li>
 							<input type="text" id="input-email" name="email1" tabindex="5">
@@ -97,49 +99,49 @@
 								<option value="daum.net">daum.net</option>
 								<option value="direct">직접입력</option>
 							</select>
-							<button type="button" id="email-btn-style">인증번호</button>
-							<input type="text" name="email-auth-check" id="email-auth-check" placeholder="인증번호 6자리">
+							<button type="button" id="email-btn-style">인증 번호</button>
+							<input type="text" name="email-auth-check" id="email-auth-check" placeholder="인증번호 6자리" tabindex="8">
 						</li>
 						<li>
 							<label>주소</label>
 						</li>
 						<li>
-							<input type="text" id="input-addr1" name="addr1" tabindex="8">
-							<button type="button" id="address-btn-style" tabindex="9">주소검색</button>
+							<input type="text" id="input-addr1" name="addr1" tabindex="9">
+							<button type="button" id="address-btn-style" tabindex="10">주소 검색</button>
 						</li>
 						<li class="address-input">
 							<label>상세 주소</label>
 						</li>
 						<li>
-							<input type="text" id="input-common" name="addr2" tabindex="10">
+							<input type="text" id="input-common" name="addr2" tabindex="11">
 						</li>
 						<li id="must-insert">
 							<p id="label-dot">*</p>
 							<label>휴대전화</label><span id="phoneMsg"></span>
 						</li>
 						<li>
-							<select id="selectbox-mobile" name="tel" tabindex="11">
+							<select id="selectbox-mobile" name="tel" tabindex="12">
 								<option value="default">선택</option>
 								<option value="SKT">SKT</option>
 								<option value="KT">KT</option>
 								<option value="LGU+">LGU+</option>
 								<option value="MVNO">알뜰폰</option>
 							</select>
-							<select id="selectbox-phone" name="phone1" tabindex="12">
+							<select id="selectbox-phone" name="phone1" tabindex="13">
 								<option value="default">선택</option>
 								<option value="010">010</option>
 								<option value="011">011</option>
 								<option value="012">012</option>
 							</select>
 							-
-							<input type="text" id="input-phone" name="phone2" tabindex="13">
+							<input type="text" id="input-phone" name="phone2" tabindex="14">
 							-
-							<input type="text" id="input-phone" name="phone3" tabindex="14">
+							<input type="text" id="input-phone" name="phone3" tabindex="15">
 						</li>
 					</ul>
 					<ul>
 						<li id="agreement-box">
-							<input type="checkbox" name="agreementAll" id="chk-circle" tabindex="15">
+							<input type="checkbox" name="agreementAll" id="chk-circle" tabindex="16">
 							<span id="span_agreementAll">전체 동의하기</span>
 						</li>
 						<li>
@@ -160,7 +162,7 @@
 						</li>
 						
 						<li>
-							<button type="button" id="button-gradient" tabindex="16">가입하기</button>
+							<button type="button" id="button-gradient" tabindex="17">가입하기</button>
 						</li>
 					</ul>
 				</div>
@@ -176,7 +178,7 @@
 						</li>
 						<li>
 							<input type="text" id="input-id" name="company_id" placeholder="영문,숫자 5~10자리" tabindex="1">
-							<button type="button" id="c-check-btn-style">중복체크</button>
+							<button type="button" id="c-check-btn-style">중복 체크</button>
 						</li>
 						<li id="must-insert-1">
 							<p id="label-dot-1">*</p>
@@ -202,7 +204,9 @@
 						</li>
 						<li id="must-insert">
 							<p id="label-dot">*</p>
-							<label>이메일</label><span id="c-emailMsg"></span>
+							<label>이메일</label>
+							<span id="c-emailMsg"></span>
+							<span id="c-emailAuth"></span>
 						</li>
 						<li>
 							<input type="text" id="company-email1" name="email1" tabindex="5">
@@ -215,49 +219,49 @@
 								<option value="daum.net">daum.net</option>
 								<option value="direct">직접입력</option>
 							</select>
-							<button type="button" id="c-email-btn-style">인증번호</button>
-							<input type="text" name="c-email-auth-check" id="c-email-auth-check" placeholder="인증번호 6자리">
+							<button type="button" id="c-email-btn-style">인증 번호</button>
+							<input type="text" name="c-email-auth-check" id="c-email-auth-check" placeholder="인증번호 6자리" maxlength="6" tabindex="6">
 						</li>
 						<li>
 							<label>주소</label>
 						</li>
 						<li>
-							<input type="text" id="company-addr1" name="addr1" tabindex="8">
-							<button type="button" id="company-address-btn-style" tabindex="9">주소검색</button>
+							<input type="text" id="company-addr1" name="addr1" tabindex="9">
+							<button type="button" id="company-address-btn-style" tabindex="10">주소 검색</button>
 						</li>
 						<li class="address-input">
 							<label>상세 주소</label>
 						</li>
 						<li>
-							<input type="text" id="company-addr2" name="addr2" tabindex="10">
+							<input type="text" id="company-addr2" name="addr2" tabindex="11">
 						</li>
 						<li id="must-insert">
 							<p id="label-dot">*</p>
 							<label>대표번호</label><span id="c-phoneMsg"></span>
 						</li>
 						<li>
-							<select id="company-selectbox-mobile" name="tel" tabindex="11">
+							<select id="company-selectbox-mobile" name="tel" tabindex="12">
 								<option value="default">선택</option>
 								<option value="SKT">SKT</option>
 								<option value="KT">KT</option>
 								<option value="LGU+">LGU+</option>
 								<option value="MVNO">알뜰폰</option>
 							</select>
-							<select id="company-selectbox-phone" name="phone1" tabindex="12">
+							<select id="company-selectbox-phone" name="phone1" tabindex="13">
 								<option value="default">선택</option>
 								<option value="010">010</option>
 								<option value="011">011</option>
 								<option value="012">012</option>
 							</select>
 							-
-							<input type="text" id="company-phone2" name="phone2" tabindex="13">
+							<input type="text" id="company-phone2" name="phone2" tabindex="14">
 							-
-							<input type="text" id="company-phone3" name="phone3" tabindex="14">
+							<input type="text" id="company-phone3" name="phone3" tabindex="15">
 						</li>						
 					</ul>
 					<ul>
 						<li id="agreement-box">
-							<input type="checkbox" name="agreementAll" id="c-chk-circle" tabindex="15">
+							<input type="checkbox" name="agreementAll" id="c-chk-circle" tabindex="16">
 							<span id="span_agreementAll">전체 동의하기</span>
 						</li>
 						<li>
@@ -273,7 +277,7 @@
 							<span id="choice-span">[선택]</span> <span>마케팅 정보 메일, SMS 수신동의</span>
 						</li>
 						<li>
-							<button type="button" id="button-gradient-company">가입하기</button>
+							<button type="button" id="button-gradient-company" tabindex="17">가입하기</button>
 						</li>
 					</ul>
 				</div>

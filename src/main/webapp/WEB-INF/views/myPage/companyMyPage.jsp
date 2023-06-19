@@ -221,9 +221,9 @@
 					</li>
 					<li>
 						<input type="text" id="company-addr1" name="addr1" value="${companyVo.addr1 }">
-						<button type="button" id="company-address-btn-style">검색</button>
+						<button type="button" id="company-address-btn-style">주소 검색</button>
 					</li>
-					<li>
+					<li class="address-input">
 						<label>상세 주소</label>
 					</li>
 					<li>
@@ -260,7 +260,7 @@
 						<a href="donation_detail.do" id="link-donation">
 							<span id="span-deleteAccount">후원금 정산 내역 ></span>
 						</a>
-						<a href="deleteCompany.do?company_id=${companyVo.company_id }" id="link-deleteAccount">
+						<a href="deletePwd.do?company_id=${companyVo.company_id }" id="link-deleteAccount">
 							<span id="span-deleteAccount">회원탈퇴 ></span>
 						</a>
 					</li>
