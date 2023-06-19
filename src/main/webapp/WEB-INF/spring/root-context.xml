@@ -17,7 +17,6 @@
 	<context:component-scan base-package="com.uniquegames.repository" />
 	<context:component-scan base-package="com.uniquegames.model" />
 	<context:component-scan base-package="com.uniquegames.interceptor" />
-	<context:component-scan base-package="com.uniquegames.annotation" />
 	<context:property-placeholder location="classpath:config/database.properties"/>
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driver}"/>
@@ -44,10 +43,5 @@
 		<property name="maxUploadSize" value="1000000"/>
 	</bean>
 
-		<mvc:annotation-driven>
-			<mvc:argument-resolvers>
-				<bean class="com.uniquegames.annotation.LoginMemberArgumentResolver"/>
-			</mvc:argument-resolvers>
-		</mvc:annotation-driven>
 
 </beans>

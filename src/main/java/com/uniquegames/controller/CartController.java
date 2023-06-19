@@ -1,6 +1,5 @@
 package com.uniquegames.controller;
 
-import com.uniquegames.annotation.Login;
 import com.uniquegames.vo.MemberVo;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +8,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uniquegames.model.SessionConstants;
@@ -20,13 +21,13 @@ import com.uniquegames.vo.MemberVo;
 import com.uniquegames.vo.OrderVo;
 
 @Controller
+@SessionAttributes(SessionConstants.LOGIN_MEMBER)
 public class CartController {
 	@Autowired
 	OrderServiceImpl orderService;
 
 	@RequestMapping(value = "/cart.do", method = RequestMethod.GET)
-	public ModelAndView cart(HttpSession request) {
-		MemberVo member = (MemberVo) request.getAttribute(SessionConstants.LOGIN_MEMBER);
+	public ModelAndView cart(@ModelAttribute(SessionConstants.LOGIN_MEMBER) MemberVo member) {
 
 		ModelAndView model = new ModelAndView();
 		ArrayList<OrderVo> cartList = orderService.getCartList(member.getMember_id());

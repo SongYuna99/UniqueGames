@@ -4,7 +4,9 @@ import com.uniquegames.fileutil.FileUtil;
 import com.uniquegames.model.SessionConstants;
 import com.uniquegames.service.CompanyServiceMapper;
 import com.uniquegames.service.CompanyServiceMapper2;
+import com.uniquegames.service.IndexServiceMapper;
 import com.uniquegames.vo.CompanyVo;
+import com.uniquegames.vo.GameVo;
 import com.uniquegames.vo.IntroVo;
 import com.uniquegames.vo.MemberVo;
 import java.io.IOException;
@@ -25,41 +27,47 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  * CRUD 메소드 구현
  */
 @Controller
-@SessionAttributes({"intro","status"})
+@SessionAttributes({"intro","status","game"})
 @RequestMapping(value = "/detail")
 public class DetailMapperController {
 
 
     private final CompanyServiceMapper companyServiceMapper;
     private final CompanyServiceMapper2 companyServiceMapper2;
+    private final IndexServiceMapper indexServiceMapper;
 
     @Autowired
     public DetailMapperController(CompanyServiceMapper companyServiceMapper,
-            CompanyServiceMapper2 companyServiceMapper2) {
+            CompanyServiceMapper2 companyServiceMapper2, IndexServiceMapper indexServiceMapper) {
         this.companyServiceMapper = companyServiceMapper; // 매퍼 방식
         this.companyServiceMapper2 = companyServiceMapper2; // 인터페이스 only
+        this.indexServiceMapper = indexServiceMapper;
     }
 
     /** goDetail()
      * @return 회사 상세페이지 리턴
      */
-    @RequestMapping(value = {"/detail1.do", "/detail2.do", "/detail3.do", "/detail4.do"}, method = RequestMethod.GET)
-    public String goDetail(HttpServletRequest request) {
-        String requestPath = request.getRequestURI().replaceFirst("/uniquegames/","");//최상단 컨텍스트(uniquegames)를 제외한 현재 요청 경로를 가져옴
+    @RequestMapping(value = "/{detailId}.do", method = RequestMethod.GET)
+    public String goDetail(@PathVariable("detailId") int detailId, Model model) {
+        GameVo gameVo = indexServiceMapper.getGameForIndex(detailId);
+        model.addAttribute("game", gameVo);
 
-        // 요청 경로에 따라 처리
-        if (requestPath.equals("detail/detail1.do")) {
-            return "detail/detail";
-        } else if (requestPath.equals("detail/detail2.do")) {
-            return "detail/detail2";
-        } else if (requestPath.equals("detail/detail3.do")) {
-            return "detail/detail3";
-        } else if (requestPath.equals("detail/detail4.do")) {
-            return "detail/detail4";
+        // 요청된 detailId에 따라 해당 페이지로 이동
+        switch (detailId) {
+            case 1:
+                return "detail/detail";
+            case 2:
+                return "detail/detail2";
+            case 3:
+                return "detail/detail3";
+            case 4:
+                return "detail/detail4";
+            default:
+                return "redirect:/";
         }
-
-        return "redirect:/";
     }
+
+
 
 
     /**

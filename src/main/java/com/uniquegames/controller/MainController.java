@@ -1,32 +1,17 @@
 package com.uniquegames.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import com.mysql.cj.xdevapi.Session;
-import com.uniquegames.annotation.Login;
-import com.uniquegames.repository.NoticeMapper;
-import com.uniquegames.service.CommentService;
 import com.uniquegames.service.IndexServiceMapper;
 import com.uniquegames.service.NoticeService;
-import com.uniquegames.service.NoticeServiceImpl;
-import com.uniquegames.vo.CompanyVo;
-import com.uniquegames.vo.MemberVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.context.request.SessionScope;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.uniquegames.vo.GameVo;
 
 @Controller
 @SessionAttributes({"gameList","ranking"})

@@ -45,7 +45,7 @@
                     <h2>디 엑시트 이터널 매터스</h2>
                     <h1>DE-EXIT - Eternal Matters</h1>
                     <p>죽음을 넘어선 생명을 느끼다</p>
-                    <a href="detail/detail1.do"><button id="btn-main-style" type="button" style='cursor:pointer'>자세히보기</button></a>
+                    <a href="detail/1.do"><button id="btn-main-style" type="button" style='cursor:pointer'>자세히보기</button></a>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
                     <h2>스트리트 파이터 6 디럭스 에디션</h2>
                     <h1>Street Fighter 6</h1>
                     <p>시리즈 최신작 『Street Fighter 6(스트리트 파이터 6)』</p>
-                    <a href="detail/detail2.do"><button id="btn-main-style" type="button" style='cursor:pointer'>자세히보기</button></a>
+                    <a href="detail/2.do"><button id="btn-main-style" type="button" style='cursor:pointer'>자세히보기</button></a>
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
                     <h2>뱀파이어: 마스커레이드 - 스완송</h2>
                     <h1>Vampire: The Masquerade</h1>
                     <p>월드 오브 다크니스에 오신 것을 환영합니다</p>
-                    <a href="detail/detail3.do"><button id="btn-main-style" type="button" style='cursor:pointer'>자세히보기</button></a>
+                    <a href="detail/3.do"><button id="btn-main-style" type="button" style='cursor:pointer'>자세히보기</button></a>
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@
                     <h2>더 라스트 오브 어스 파트 1 디럭스 에디션</h2>
                     <h1>The Last of Us Part I </h1>
                     <p>살기 위해 오늘도 길을 나선다 탐험 액션</p>
-                    <a href="detail/detail4.do"><button id="btn-main-style" type="button"  style='cursor:pointer'>자세히보기</button></a>
+                    <a href="detail/4.do"><button id="btn-main-style" type="button"  style='cursor:pointer'>자세히보기</button></a>
                 </div>
             </div>
         </div>
@@ -96,10 +96,10 @@
         <c:forEach var="game" items="${ranking }" varStatus="loop">
             <c:if test="${loop.count <= 4}">
                 <div id="tList">
-                    <a href="detail/deteil{game.id }.do"><img alt="#" src="${game.image_path }" width="500px" height="240px"></a>
+                    <a href="detail/${game.id}.do"><img alt="#" src="${game.image_path }" width="500px" height="240px"></a>
                     <div>
                         <p>${loop.count} </p>
-                        <li id="cyber"><a href ='detail/detail${game.id}.do'>${game.name }</a> </li>
+                        <li id="cyber"><a href ='detail/${game.id}.do'>${game.name }</a> </li>
                         <p id="cyber2">${game.description }</p>
                         <a href="topgame.do"><button id="readmore-plus" type="button"><img src="/uniquegames/images/btn_plus_normal.png" width="30px" height="30px"></button><a>
                     </div>
@@ -124,7 +124,7 @@
                             <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                         </ul>
                         <div>
-                            <a href="detail/detail${game.id }.do">
+                            <a href="detail/${game.id }.do">
                                 <button id="btn-recommend-style" type="button">자세히보기</button>
                             </a>
                         </div>
@@ -142,9 +142,9 @@
                 <div id="gList">
                     <img src="${game.image_path } " width="260px" height="180px">
                     <ul>
-                        <li><a href="detail/detail${game.id }.do">${game.name }</a> </li>
+                        <li><a href="detail/${game.id }.do">${game.name }</a> </li>
                         <li>${game.game_genre}</li>
-                        <li><a href="detail/detail${game.id }.do"><button id="btn-like-style" type="button"data-game-id="${game.id}"></button></a></li>
+                        <li><a href="detail/${game.id }.do"><button id="btn-like-style" type="button"data-game-id="${game.id}"></button></a></li>
                         <li>${game.like_count}</li>
                         <li><img src="/uniquegames/images/img_icon_rPc.png"></li>
                     </ul>
