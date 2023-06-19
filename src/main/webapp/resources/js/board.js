@@ -232,43 +232,6 @@ $(document).ready(function() {
 
 		}
 	})
-	
-	// 신고버튼
-/*
-		const reportBtn = document.querySelectorAll(".report");
-		const modal = document.getElementById("modal-background");
-		const modalCloseBtn = document.getElementById("modal-close");
-		const modalReportBtn = document.getElementById("modal-report");
-	
-		function modalOff() {
-			modal.style.display = "none";
-		}
-		reportBtn.forEach(e => {
-			e.addEventListener("click", e => {
-				modal.style.display = "flex";
-			});
-		});
-
-		modalCloseBtn.addEventListener("click", e => {
-			modalOff();
-		});
-		modalReportBtn.addEventListener("click", e => {
-			modalOff();
-		});
-	
-		modal.addEventListener("click", e => {
-			const eventTarget = e.target;
-			if (eventTarget.classList.contains("test")) {
-				modalOff()
-			};
-		});
-	
-		window.addEventListener("keyup", e => {
-			if (modal.style.display === "flex" && e.key === "Escape") {
-				modalOff()
-			};
-		});
-*/
 
 });
 

@@ -65,14 +65,6 @@ NoticeController {
 		return model;
 	}
 
-//	/**
-//	 * notice-list-user.do ��ü ����Ʈ
-//	 */
-//	@RequestMapping(value = "/board-list-user.do", method = RequestMethod.GET)
-//	public String noticeListUser() {
-//		return "/board/board_list_user";
-//	}
-
 	/**
 	 * notice_write.do 공지사항 - 작성
 	 */
@@ -220,7 +212,6 @@ NoticeController {
 	public ModelAndView boardSearchProc(String keyword, String page, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		ModelAndView model = new ModelAndView();
-		HttpSession session = request.getSession();
 
 		Map<String, Integer> pageMap = BoardUtil.getPagination(page, keyword);
 		List<NoticeVo> list = (List<NoticeVo>) noticeService.search(keyword, pageMap.get("startCount"),
