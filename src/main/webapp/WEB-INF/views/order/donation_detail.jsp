@@ -13,8 +13,7 @@
 			showDetails();
 	
 		    function showDetails() {
-		    	let array = $("#select-order").val();	
-				let c_id = $("#c_id").val();
+		    	let array = $("#select-order").val();
 				
 				$.ajax({
 					url : "donation_detail_data.do",
@@ -58,6 +57,7 @@
 							output += "<td>" + jdata.expected + "</td>";
 							output += "<td>" + jdata.totalAmount + "<td>";
 							output += '</tr></table></div>';
+							output += '<div id="div-margin">';
 						}
 						
 						// output 출력

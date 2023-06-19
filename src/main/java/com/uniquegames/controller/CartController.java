@@ -28,6 +28,7 @@ public class CartController {
 
 	@RequestMapping(value = "/cart.do", method = RequestMethod.GET)
 	public ModelAndView cart(@ModelAttribute(SessionConstants.LOGIN_MEMBER) MemberVo member) {
+		System.out.println(member.getMember_id());
 
 		ModelAndView model = new ModelAndView();
 		ArrayList<OrderVo> cartList = orderService.getCartList(member.getMember_id());
@@ -72,8 +73,7 @@ public class CartController {
 	}
 
 	@RequestMapping(value = "/cart_delete_all.do", method = RequestMethod.GET)
-	public String cart_delete_selected(HttpSession request) {
-		MemberVo member = (MemberVo) request.getAttribute(SessionConstants.LOGIN_MEMBER);
+	public String cart_delete_selected(@ModelAttribute(SessionConstants.LOGIN_MEMBER) MemberVo member) {
 		String m_id = member.getMember_id();
 		int result = orderService.getCartDeleteAll(m_id);
 

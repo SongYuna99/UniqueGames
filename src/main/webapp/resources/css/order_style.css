@@ -255,6 +255,12 @@ a:visited {
 	margin: 0 0 20px 20px;
 }
 
+/******* div-margin *******/
+<!--  -->
+#div-margin {
+	margin-bottom: 100px;
+}
+
 /******* div-info *******/
 <!--  -->
 #div-infomation {
