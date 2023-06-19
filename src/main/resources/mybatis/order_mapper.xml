@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.uniquegames.repository.OrderMapper">
+<mapper namespace="mapper.orderMapper">
 	<!-- Cart -->
 	<select id="getCartList" parameterType="String" resultType="OrderVo">
 		SELECT ID, G_ID, GAME_IMG, GAMETITLE, AMOUNT 
@@ -56,12 +56,12 @@
 	</select>
 	
 	<select id="getPaymentCount" parameterType="String" resultType="int">
-		SELECT COUNT(*) FROM ORDERS WHERE M_ID = #{m_id} 
+		SELECT IFNULL(COUNT(*), 0) COUNT FROM ORDERS WHERE M_ID = #{m_id} 
 		AND PAYMENT_STATUS = 'COMPLETE' 
 	</select>
 	
 	<select id="getPaymentAmount" parameterType="String" resultType="int">
-		SELECT SUM(AMOUNT) FROM ORDERS WHERE M_ID = #{m_id} 
+		SELECT IFNULL(SUM(AMOUNT), 0) PAYMENT_AMOUNT FROM ORDERS WHERE M_ID = #{m_id} 
 		AND PAYMENT_STATUS = 'COMPLETE' 
 	</select>
 	
@@ -81,12 +81,12 @@
 	</select>
 		
 	<select id="getExpected" parameterType="String" resultType="int">
-		SELECT SUM(AMOUNT) AMOUNT FROM ORDERS WHERE C_ID = #{c_id} AND PAYMENT_STATUS = 'COMPLETE' 
+		SELECT IFNULL(SUM(AMOUNT), 0) AMOUNT FROM ORDERS WHERE C_ID = #{c_id} AND PAYMENT_STATUS = 'COMPLETE' 
 		AND DATE_FORMAT(ORDER_DATE, '%y-%m') = DATE_FORMAT(NOW(), '%y-%m') 
 	</select>
 	
 	<select id="getTotalDonation" parameterType="String" resultType="int">
-		SELECT SUM(AMOUNT) AMOUNT FROM ORDERS 
+		SELECT IFNULL(SUM(AMOUNT), 0) TOTAL_AMOUNT FROM ORDERS 
 		WHERE C_ID = #{c_id} AND PAYMENT_STATUS = 'COMPLETE' 
 	</select>
 		

@@ -81,19 +81,20 @@ $(document).ready(function (){
 		IMP.init("imp15073643");
 		
 		IMP.request_pay({
-			pg: "html5_inicis",
-			pay_method: method,
-			merchant_uid: uid,   // 주문번호
-			name: "UniqueGames",
-			amount: amnt,                         // 숫자 타입
-			buyer_email: "thddbsk7248@gmail.com",
-			buyer_name: "송유나",
-			buyer_tel: "010-4242-4242",
-			buyer_addr: "서울특별시 강남구 신사동",
-			buyer_postcode: "01181"
-			}, function (rsp) { // callback
+				pg: "html5_inicis",
+				pay_method: method,
+				merchant_uid: uid,   // 주문번호
+				name: "UniqueGames",
+				amount: amnt,                         // 숫자 타입
+				buyer_email: "thddbsk7248@gmail.com",
+				buyer_name: "송유나",
+				buyer_tel: "010-4242-4242",
+				buyer_addr: "서울특별시 강남구 신사동",
+				buyer_postcode: "01181"
+			}, 
+			function(rsp) { // callback
 				if(rsp.success){
-					location.replace("order_proc.do?method=" + method;
+					location.replace("order_proc.do?method=" + method);
 				}
 				else {
 					alert("결제에 실패했습니다. 장바구니로 돌아갑니다.");
