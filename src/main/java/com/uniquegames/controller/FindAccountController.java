@@ -83,6 +83,7 @@ public class FindAccountController {
 		int result = memberService.memberChangeMPassword(member_id, mnewpassword);
 		
 		if(result==1) {
+			session.invalidate();
 			mav.addObject("changePassword_result", "success");
 			mav.setViewName("/login/login2");
 		}else {
@@ -136,6 +137,7 @@ public class FindAccountController {
 		int result = companyMemberService.companyChangeCPassword(company_id, cnewpassword);
 		
 		if(result==1) {
+			session.invalidate();
 			mav.addObject("changePassword_result", "success");
 			mav.setViewName("/login/login2");
 		}else {
