@@ -81,6 +81,9 @@
 				<form id="comment-write" name="commentWriteForm" action="comment_write_proc.do" method="post">
 					<input type="hidden" name="post_id" value="${noticeVo.post_id}">
 					<c:choose>
+						<c:when test='${fn:contains(loginMember, "CompanyVo")}'>
+							<input type="hidden" id="member_id" name="member_id" value="${loginMember.company_id}">
+						</c:when>
 						<c:when test='${fn:contains(loginMember, "MemberVo")}'>
 							<input type="hidden" id="member_id" name="member_id" value="${loginMember.member_id}">
 						</c:when>
@@ -97,7 +100,7 @@
 					<div id="comment${status.count}" class="comment1">
 						<input type="hidden" name="no" value="${c.comment_id}">
 						<div id="user-name">${c.member_id}</div>
-						<div><span id="msg-date">${c.comment_date}</span><c:if test='${c.member_id eq loginMember.member_id}'><span id="cmtDelete" class="cmtDelete" onclick="javascript:commentDelete(${c.comment_id})">삭제</span></c:if></div>
+						<div><span id="msg-date">${c.comment_date}</span><c:if test='${fn:contains(loginMember, "MemberVo") && c.member_id eq loginMember.member_id}'><span id="cmtDelete" class="cmtDelete" onclick="javascript:commentDelete(${c.comment_id})">삭제</span></c:if></div>
 						${c.comment_content}
 					</div>
 					</c:forEach>

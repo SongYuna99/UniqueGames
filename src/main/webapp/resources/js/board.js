@@ -88,23 +88,26 @@ $(document).ready(function() {
 	 */
 	// 작성 버튼 이벤트
 	$('button[name="write"]').on("click", function() {
-		if ($("input[name='title']").val() != "") {
-			writeForm.submit();
-
-		} else if ($("input[name='title']").val() == "") {
+		if ($("input[name='title']").val() == "") {
 			alert("제목을 입력해주세요.");
 			$("input[name='title']").focus();
 
 			return false;
-		}
-		/*
-		} else if ($("textarea[name='content']").val() == ""){
-			alert("내용을 입력해주세요.");
+		} else if ($("input[name='title']").val().length > 50) {
+			alert("제목이 너무 깁니다. 제목은 50자 이내로 작성해주세요.");
+			$("input[name='title']").focus();
+
+			return false;
+		} else if ($("textarea[name='content']").val().length > 300) {
+			alert("내용이 너무 깁니다. 내용은 300자 이내로 작성해주세요.");
 			$("textarea[name='content']").focus();
 			
 			return false;
+		} else {
+			writeForm.submit();
+
 		}
-		*/
+		
 	});
 
 	// 취소 버튼 이벤트
@@ -215,7 +218,9 @@ $(document).ready(function() {
 							alert("댓글 등록이 실패하였습니다.");
 						}
 					},
-					error: function (xhr, status, error) { }
+					error: function (xhr, status, error) { 
+						alert("회사 ID는 댓글 작성이 불가합니다.");
+					}
 				});
 
 			} else
