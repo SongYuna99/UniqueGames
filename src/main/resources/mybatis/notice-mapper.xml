@@ -27,11 +27,17 @@
 	<select id="searchList" resultType="NoticeVo">
 		SELECT *
 		FROM (
-			SELECT
-				row_number() over(order by NOTICE_DATE DESC, POST_ID DESC) as RNO,
-				POST_ID, TITLE, CONTENT, COMPANY_ID, NOTICE_HITS, CAST( DATE_FORMAT(
-				NOTICE_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS NOTICE_DATE
+			SELECT row_number() over(order by NOTICE_DATE DESC, POST_ID DESC) as RNO
+				 , POST_ID
+				 , TITLE
+				 , CONTENT
+				 , NOTICE.COMPANY_ID
+				 , COMPANY.NAME
+				 , NOTICE_HITS
+				 , CAST( DATE_FORMAT( NOTICE_DATE, '%Y-%m-%d %H:%i:%s' ) AS CHAR(19) ) AS NOTICE_DATE
 			FROM NOTICE
+			INNER JOIN COMPANY
+			ON NOTICE.COMPANY_ID = COMPANY.COMPANY_ID
 		) T1
 		WHERE TITLE LIKE CONCAT('%',#{keyword},'%')
 		AND RNO between #{start} AND #{end}
