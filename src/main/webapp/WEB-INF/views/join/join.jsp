@@ -139,7 +139,7 @@
 							<input type="text" id="input-phone" name="phone3" tabindex="15">
 						</li>
 					</ul>
-					<ul>
+					<ul id="ul-agreement">
 						<li id="agreement-box">
 							<input type="checkbox" name="agreementAll" id="chk-circle" tabindex="16">
 							<span id="span_agreementAll">전체 동의하기</span>
@@ -220,7 +220,7 @@
 								<option value="direct">직접입력</option>
 							</select>
 							<button type="button" id="c-email-btn-style">인증 번호</button>
-							<input type="text" name="c-email-auth-check" id="c-email-auth-check" placeholder="인증번호 6자리" maxlength="6" tabindex="6">
+							<input type="text" name="email-auth-check" id="c-email-auth-check" placeholder="인증번호 6자리" maxlength="6" tabindex="6">
 						</li>
 						<li>
 							<label>주소</label>
@@ -259,21 +259,21 @@
 							<input type="text" id="company-phone3" name="phone3" tabindex="15">
 						</li>						
 					</ul>
-					<ul>
+					<ul id="ul-agreement">
 						<li id="agreement-box">
 							<input type="checkbox" name="agreementAll" id="c-chk-circle" tabindex="16">
 							<span id="span_agreementAll">전체 동의하기</span>
 						</li>
 						<li>
-							<input type="checkbox" id="c-checkbox-agreement" name="c-chk-agree">
+							<input type="checkbox" id="c-checkbox-agreement" name="chk-agree">
 							<span id="agreement-color">[필수]</span> <span>이용 약관</span><a id="detail1">자세히</a>
 						</li>
 						<li>
-							<input type="checkbox" id="c-checkbox-agreement" name="c-chk-agree">
+							<input type="checkbox" id="c-checkbox-agreement" name="chk-agree">
 							<span id="agreement-color">[필수]</span> <span>개인정보 수집 및 이용 동의</span><a id="detail2">자세히</a>
 						</li>
 						<li>
-							<input type="checkbox" id="c-agreement-choice" name="c-chk-agree">
+							<input type="checkbox" id="c-agreement-choice" name="chk-agree">
 							<span id="choice-span">[선택]</span> <span>마케팅 정보 메일, SMS 수신동의</span>
 						</li>
 						<li>

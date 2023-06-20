@@ -167,16 +167,24 @@ select {
 
 input[name="checkOne"] {
 	width: 20px;	height: 20px;
+	margin: 3px 0px 0px 5px;
 	appearance: none;
-	border: 1px solid #959595;
-	border-radius: 0px;
+	background-image: url("../images/btn_check_normal.png");
+	background-repeat: no-repeat;
 	cursor: pointer;
 }
 input[name="checkOne"]:checked {
-	appearance: auto;
+	background-image: url("../images/btn_check_select.png");
+	background-repeat: no-repeat;
 }
 #div-agreement input[name="checkOne"] {
 	border: none;
+}
+
+#span-agreement {
+	position: relative;
+	top: -10px;
+	font-size: 15px;
 }
 
 /******* a *******/
@@ -196,6 +204,8 @@ a:visited {
 }
 
 #detail1, #detail2, #detail3, #detail4 {
+	position: relative;
+	top: -10px;
 	padding: 0 10px;
 } 
 

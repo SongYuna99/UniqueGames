@@ -89,11 +89,11 @@
 		<div id="div-agreement">
 			<input type="checkbox" id="checkAll" name="checkAll"><span>전체 동의하기</span>
 				<ul>
-					<li><input type="checkbox" id="agreement" name="checkOne">[필수] 만 14세 이상입니다.</li>
-					<li><input type="checkbox" id="agreement" name="checkOne">[필수] 이용 약관<a id="detail1">자세히</a></li>
-					<li><input type="checkbox" id="agreement" name="checkOne">[필수] 개인정보 수집 및 이용 동의<a id="detail2">자세히</a></li>
-					<li><input type="checkbox" id="agreement" name="checkOne">[필수] 개인정보 제 3자 제공 동의<a id="detail3">자세히</a></li>
-					<li><input type="checkbox" id="agreement" name="checkOne">[필수] 전자결제대행 이용 동의<a id="detail4">자세히</a></li>
+					<li><input type="checkbox" id="agreement" name="checkOne"><span id="span-agreement">[필수] 만 14세 이상입니다.</span></li>
+					<li><input type="checkbox" id="agreement" name="checkOne"><span id="span-agreement">[필수] 이용 약관</span><a id="detail1">자세히</a></li>
+					<li><input type="checkbox" id="agreement" name="checkOne"><span id="span-agreement">[필수] 개인정보 수집 및 이용 동의</span><a id="detail2">자세히</a></li>
+					<li><input type="checkbox" id="agreement" name="checkOne"><span id="span-agreement">[필수] 개인정보 제 3자 제공 동의</span><a id="detail3">자세히</a></li>
+					<li><input type="checkbox" id="agreement" name="checkOne"><span id="span-agreement">[필수] 전자결제대행 이용 동의</span><a id="detail4">자세히</a></li>
 				</ul>
 		</div>
 		<div id="div-price">
