@@ -40,8 +40,6 @@ public class PaymentDetailController {
 	@ResponseBody
 	public String payment_detail_data(@ModelAttribute(SessionConstants.LOGIN_MEMBER) MemberVo member, String array) {
 		String m_id = member.getMember_id();
-		System.out.println("m_id = " + m_id);
-		System.out.println(111);
 		ArrayList<OrderVo> list = orderService.getPaymentDetail(m_id, array);
 
 		// list 객체의 데이터를 JSON 형태로 생성

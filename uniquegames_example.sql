@@ -74,11 +74,11 @@ DELETE FROM ORDERS WHERE ID < 100000;
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
 VALUES(1, 'mtest', 'test', 1, 10000, '디 엑시트 이터널 매터스', 'http://localhost:9000/uniquegames/images/img-game-deexit4.jpg');
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
-VALUES(2, 'mtest', 'test', 2, 30000, '스트리트 파이터 6 디럭스', 'http://localhost:9000/uniquegames/images/img-game-street2.jpg');
+VALUES(2, 'mtest', 'SS', 2, 30000, '스트리트 파이터 6 디럭스', 'http://localhost:9000/uniquegames/images/img-game-street2.jpg');
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
-VALUES(3, 'mtest', 'test', 3, 50000, '뱀파이어: 마스커레이드', 'http://localhost:9000/uniquegames/images/img-game-vampire2.jpg');
+VALUES(3, 'mtest', 'SS', 3, 50000, '뱀파이어: 마스커레이드', 'http://localhost:9000/uniquegames/images/img-game-vampire2.jpg');
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG)
-VALUES(4, 'mtest', 'test', 4, 100000, '더 라스트 오브 어스 파트 1', 'http://localhost:9000/uniquegames/images/img-game-last1.jpg');
+VALUES(4, 'mtest', 'DD', 4, 100000, '더 라스트 오브 어스 파트 1', 'http://localhost:9000/uniquegames/images/img-game-last1.jpg');
 
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG, PAYMENT_STATUS, METHOD, ORDER_DATE)
 VALUES(11, 'mtest', 'test', 1, 10000, '디 엑시트 이터널 매터스', 'http://localhost:9000/uniquegames/images/img-game-deexit4.jpg', 'COMPLETE', 'KAKAO', '2023-05-07');
@@ -88,5 +88,17 @@ INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG, PAYMENT_S
 VALUES(33, 'mtest', 'test', 3, 50000, '뱀파이어: 마스커레이드', 'http://localhost:9000/uniquegames/images/img-game-vampire2.jpg', 'COMPLETE', 'KAKAO', '2023-06-19');
 INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG, PAYMENT_STATUS, METHOD, ORDER_DATE)
 VALUES(44, 'mtest', 'test', 4, 100000, '더 라스트 오브 어스 파트 1', 'http://localhost:9000/uniquegames/images/img-game-last1.jpg', 'COMPLETE', 'KAKAO', '2023-02-01');
+
+UPDATE ORDERS SET ORDER_DATE = '2022-12-15' WHERE ID = 26;
+
+INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG, PAYMENT_STATUS, METHOD, ORDER_DATE)
+VALUES(47, 'lee', 'test', 1, 10000, '디 엑시트 이터널 매터스', 'http://localhost:9000/uniquegames/images/img-game-deexit4.jpg', 'COMPLETE', 'KAKAO', '2023-06-06');
+INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG, PAYMENT_STATUS, METHOD, ORDER_DATE)
+VALUES(48, 'hong', 'test', 1, 100000, '디 엑시트 이터널 매터스', 'http://localhost:9000/uniquegames/images/img-game-deexit4.jpg', 'COMPLETE', 'KAKAO', '2023-06-07');
+INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG, PAYMENT_STATUS, METHOD, ORDER_DATE)
+VALUES(49, 'mtest', 'test', 1, 50000, '디 엑시트 이터널 매터스', 'http://localhost:9000/uniquegames/images/img-game-deexit4.jpg', 'COMPLETE', 'KAKAO', '2023-06-07');
+INSERT INTO ORDERS (ID, M_ID, C_ID, G_ID, AMOUNT, GAMETITLE, GAME_IMG, PAYMENT_STATUS, METHOD, ORDER_DATE)
+VALUES(50, 'kim', 'test', 1, 30000, '디 엑시트 이터널 매터스', 'http://localhost:9000/uniquegames/images/img-game-deexit4.jpg', 'COMPLETE', 'KAKAO', '2023-06-07');
+
 
 COMMIT;

@@ -105,7 +105,7 @@
 				</tr>
 				<tr>
 					<td>총 ${ count }개</td>
-					<td><fmt:formatNumber type="currency" value="${ amount }" /></td>
+					<td><fmt:formatNumber type="currency" value="${ totalAmount }" /></td>
 				</tr>
 			</table>
 		</div>
