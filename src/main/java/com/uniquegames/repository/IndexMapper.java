@@ -18,6 +18,9 @@ public interface IndexMapper {
     @Select("SELECT * FROM GAME WHERE ID=?#{id}")
     GameVo getGame(GameVo vo);
 
+    @Select("SELECT * FROM GAME WHERE ID=#{id}")
+    GameVo getGameForIndex(int id);
+
     @Select("SELECT * FROM GAME WHERE DONATION_STATUS = 1")
     List<GameVo> getDonationList();
 

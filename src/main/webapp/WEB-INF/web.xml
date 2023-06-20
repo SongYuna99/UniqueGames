@@ -36,6 +36,10 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
+		<init-param>
+			<param-name>handlerMappings</param-name>
+			<param-value>com.uniquegames.annotation.LoginMemberArgumentResolver</param-value>
+		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 		

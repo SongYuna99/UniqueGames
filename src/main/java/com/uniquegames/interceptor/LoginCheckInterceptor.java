@@ -16,10 +16,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String requestURI = request.getRequestURI();
         HttpSession session = request.getSession(false);
-        String contextPath = request.getContextPath();
-//        requestURI.replaceFirst(contextPath+"/",""));
 
-//        log.info("redirectURL={}", request.getRequestURL());
         if(session == null || session.getAttribute(SessionConstants.LOGIN_MEMBER) == null){
             response.sendRedirect("/uniquegames/login.do?redirectURL="+requestURI.replaceFirst("/uniquegames/",""));
             //기존 요청을 쿼리 파라미터로 redirectURL로 지정함으로써 로그인한 이후에는 기존 요청 페이지로 리다이렉트 될 수 있도록 처리하는 것이 고객 입장에서 편리
@@ -33,9 +30,6 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
             ModelAndView modelAndView) throws Exception {
-
-//        if (log.isDebugEnabled()) {
-//            log.debug("===================        END        ===================\n");}
     }
 
     @Override

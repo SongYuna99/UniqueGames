@@ -41,11 +41,6 @@
 	font-size: 14px;
 }
 
-/* #board-top-menu>div>form label {
-	position: relative;
-	margin-left: 410px;
-} */
-
 #bsearch-box {
 	float: right;
 }
@@ -75,8 +70,6 @@
 	right: 10px;
 	cursor: pointer;
 }
-
-/* #btn-search:hover  */
 
 /* board */
 #admin-btable {
@@ -314,104 +307,4 @@ td {
 	font-size: 14px;
 	padding-left: 5px;
 	cursor: pointer;
-}
-
-/* board - modal */
-#modal-background {
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	left: 0;
-	top: 0;
-	display: none;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background: rgba(255, 255, 255, 0.25);
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-	backdrop-filter: blur(1.5px);
-	-webkit-backdrop-filter: blur(1.5px);
-	border-radius: 10px;
-	border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-#modal-container {
-	background: rgb(255, 255, 255);
-	box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-	backdrop-filter: blur( 13.5px );
-	-webkit-backdrop-filter: blur( 13.5px );
-	border-radius: 10px;
-	border: 1px solid rgba( 255, 255, 255, 0.18 );
-	width: 540px;
-	height: 606px;
-	position: relative;
-	padding: 10px;
-}
-
-#report-accept {
-	background: rgb(255, 255, 255);
-	box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-	backdrop-filter: blur( 13.5px );
-	-webkit-backdrop-filter: blur( 13.5px );
-	border-radius: 10px;
-	border: 1px solid rgba( 255, 255, 255, 0.18 );
-	width: 600px;
-	position: relative;
-	padding: 30px 30px 70px 30px;
-	display: none;
-}
-
-#modal-title {
-	padding: 40px 213px;
-}
-
-#modal-title h2 {
-	font-size: 24px;
-	display: inline;
-	margin-left: 30px;
-}
-
-#modal-selectarea {
-	float: right;
-	position: absolute;
-	right: 10px;
-	bottom: 20px;
-}
-
-#modal-close {
-	display: inline;
-	float: left;
-	padding-right: 40px;
-	cursor: pointer;
-}
-#modal-report {
-	display: inline;
-	padding-right: 20px;
-	color: red;	
-	cursor: pointer;
-}
-
-#modal-content {
-	margin: 0 60px;
-	padding: 0px 10px;
-	font-size: 14px;
-}
-
-#modal-content>p {
-	margin: 10px 0;
-	font-size: 18px;
-	cursor: pointer;
-}	
-
-#modal-content>p input {
-	margin-right: 10px;
-}
-
-#modal-content #chk-circle {
-	transition: background 0.2s;
-}
-
-#modal-content #chk-circle:checked {
-	background: #2C2C2C;
-	transition: background 0.2s;
 }

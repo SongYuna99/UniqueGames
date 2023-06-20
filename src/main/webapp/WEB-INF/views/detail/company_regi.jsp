@@ -31,21 +31,8 @@
         margin: 100px auto;
       }
 
-      #board-content>table, #user-btable, #admin-btable, #board-write>table {
+      #board-content>table, #board-write>table {
         border-collapse: collapse;
-        border-top: 2px solid #393939;
-        border-bottom: 2px solid #393939;
-      }
-
-      /* board top menu */
-      #board-top-menu {
-        padding-bottom: 10px;
-        font-size: 0px;
-      }
-
-      #board-write>table {
-        border-collapse: collapse;
-        border: 1px solid #DDDDDD;
         border-top: 2px solid #393939;
         border-bottom: 2px solid #393939;
       }
@@ -68,9 +55,6 @@
         margin-left: 410px;
       }
 
-      #bsearch-box {
-        float: right;
-      }
 
       #board-top-menu>div>ul>li:last-child>button {
         margin-right: 0;
@@ -100,27 +84,7 @@
 
       /* #btn-search:hover  */
 
-      /* board */
-      #admin-btable th {
-        border-bottom: 1px solid #DDDDDD;
-      }
 
-      #admin-btable th,
-      #admin-btable td {
-        padding: 18px;
-        text-align: center;
-      }
-
-      #admin-btable tr>th:first-child,
-      #admin-btable tr>td:first-child,
-      #admin-btable tr>th:nth-child(2),
-      #admin-btable tr>td:nth-child(2) {
-        padding: 8px;
-      }
-
-      #admin-btable tr>td:nth-child(3) {
-        text-align: left;
-      }
 
       #paging {
         font-size: 18px;
@@ -134,13 +98,6 @@
         padding: 5px;
       }
 
-      #user-btable, #admin-btable {
-        border-bottom: none;
-      }
-
-      #user-btable tr:last-child, #admin-btable tr:last-child {
-        border-top: 2px solid #393939;
-      }
 
       /* board - user */
       #user-table th {
@@ -264,8 +221,8 @@
                                   class="default-write"></textarea></td>
                 </tr>
                 <tr>
-                    <td bgcolor="#87cefa" width="90">업로드</td><td align="left"  >
-                    <input type="file" name ="uploadFile" style="height: 30px;"/> </td>
+                    <th>업로드</th>>
+                    <td><input type="file" name ="uploadFile" style="height: 30px;"/></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center"><input type="submit" style="height: 30px;" value="새글 등록"/></td>

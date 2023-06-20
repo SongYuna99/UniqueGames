@@ -32,9 +32,8 @@
               <div style="display:block;border: 1px solid rgba(255,255,255,0.1);padding-left:10px;padding-right:10px;"><img src="http://localhost:9000/uniquegames/images/img_team_profile_big.png" width="80"/></div>
             </div>
             <h1 style="font-size:20px;padding-left:110px;display:inline-block;text-transform:initial" >
-
 							<span>
-																												디 엑시트 이터널 매터스							</span><br/>
+																												${game.name}							</span><br/>
               <span style="text-transform:none">DE-EXIT - Eternal Matters</span>
             </h1>
           </div>

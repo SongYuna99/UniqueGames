@@ -4,7 +4,9 @@ import com.uniquegames.fileutil.FileUtil;
 import com.uniquegames.model.SessionConstants;
 import com.uniquegames.service.CompanyServiceMapper;
 import com.uniquegames.service.CompanyServiceMapper2;
+import com.uniquegames.service.IndexServiceMapper;
 import com.uniquegames.vo.CompanyVo;
+import com.uniquegames.vo.GameVo;
 import com.uniquegames.vo.IntroVo;
 import com.uniquegames.vo.MemberVo;
 import java.io.IOException;
@@ -25,51 +27,54 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  * CRUD 메소드 구현
  */
 @Controller
-@SessionAttributes({"intro","status"})
+@SessionAttributes({"intro","status","game"})
 @RequestMapping(value = "/detail")
 public class DetailMapperController {
 
 
     private final CompanyServiceMapper companyServiceMapper;
     private final CompanyServiceMapper2 companyServiceMapper2;
+    private final IndexServiceMapper indexServiceMapper;
 
     @Autowired
     public DetailMapperController(CompanyServiceMapper companyServiceMapper,
-            CompanyServiceMapper2 companyServiceMapper2) {
+            CompanyServiceMapper2 companyServiceMapper2, IndexServiceMapper indexServiceMapper) {
         this.companyServiceMapper = companyServiceMapper; // 매퍼 방식
         this.companyServiceMapper2 = companyServiceMapper2; // 인터페이스 only
+        this.indexServiceMapper = indexServiceMapper;
     }
-    boolean writeBoardOnlyOnce = true;
 
     /** goDetail()
      * @return 회사 상세페이지 리턴
      */
-    @RequestMapping(value = "/detail1.do",method = RequestMethod.GET)
-    public String goDetail() {
-        return "detail/detail";
+    @RequestMapping(value = "/{detailId}.do", method = RequestMethod.GET)
+    public String goDetail(@PathVariable("detailId") int detailId, Model model) {
+        GameVo gameVo = indexServiceMapper.getGameForIndex(detailId);
+        model.addAttribute("game", gameVo);
+
+        // 요청된 detailId에 따라 해당 페이지로 이동
+        switch (detailId) {
+            case 1:
+                return "detail/detail";
+            case 2:
+                return "detail/detail2";
+            case 3:
+                return "detail/detail3";
+            case 4:
+                return "detail/detail4";
+            default:
+                return "redirect:/";
+        }
     }
 
-    @RequestMapping(value = "/detail2.do",method = RequestMethod.GET)
-    public String goDetail2() {
-//        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
-        return "detail/detail2";
-    }
-    @RequestMapping(value = "/detail3.do",method = RequestMethod.GET)
-    public String goDetail3() {
-//        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
-        return "detail/detail3";
-    }
-    @RequestMapping(value = "/detail4.do",method = RequestMethod.GET)
-    public String goDetail4() {
-//        model.addAttribute("intro",companyServiceMapper.getIntro(companyId));
-        return "detail/detail4";
-    }
+
+
 
     /**
      * @param vo 회사 소개 저장객체
      * @param request 현재 url을 가져오기 위한 객체
      * @return 이름 또는 제목이 null이면 회사등록 페이지 리턴. 아니면 회사 목록 페이지 리턴
-     * @throws IOException
+     * @throws IOException 입출력 예외 처리
      */
     @RequestMapping(value = "/insertIntro.do")
     public String insertIntro(IntroVo vo, HttpServletRequest request,Model model) throws IOException {

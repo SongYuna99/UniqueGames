@@ -1,6 +1,5 @@
 package com.uniquegames.controller;
 
-import com.uniquegames.annotation.Login;
 import com.uniquegames.vo.MemberVo;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +8,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uniquegames.model.SessionConstants;
@@ -20,19 +21,17 @@ import com.uniquegames.vo.MemberVo;
 import com.uniquegames.vo.OrderVo;
 
 @Controller
+@SessionAttributes(SessionConstants.LOGIN_MEMBER)
 public class CartController {
 	@Autowired
 	OrderServiceImpl orderService;
 
 	@RequestMapping(value = "/cart.do", method = RequestMethod.GET)
-
-
-	public ModelAndView cart(HttpSession request) {
-		MemberVo member = (MemberVo) request.getAttribute(SessionConstants.LOGIN_MEMBER);
-		String m_id = member.getMember_id();
+	public ModelAndView cart(@ModelAttribute(SessionConstants.LOGIN_MEMBER) MemberVo member) {
+		System.out.println(member.getMember_id());
 
 		ModelAndView model = new ModelAndView();
-		ArrayList<OrderVo> cartList = orderService.getCartList(loginMember.getMember_id());
+		ArrayList<OrderVo> cartList = orderService.getCartList(member.getMember_id());
 
 		if (cartList.size() > 0) {
 			model.addObject("cartList", cartList);
@@ -74,8 +73,7 @@ public class CartController {
 	}
 
 	@RequestMapping(value = "/cart_delete_all.do", method = RequestMethod.GET)
-	public String cart_delete_selected(HttpSession request) {
-		MemberVo member = (MemberVo) request.getAttribute(SessionConstants.LOGIN_MEMBER);
+	public String cart_delete_selected(@ModelAttribute(SessionConstants.LOGIN_MEMBER) MemberVo member) {
 		String m_id = member.getMember_id();
 		int result = orderService.getCartDeleteAll(m_id);
 

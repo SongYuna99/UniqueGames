@@ -24,10 +24,8 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
 	<!-- 컨트롤러 패키지 빈 등록-->
 	<context:component-scan base-package="com.uniquegames.controller" />
-	<context:component-scan base-package="com.uniquegames.service" />
 
 	<!-- 인터셉터 등록-->
 	<interceptors>
@@ -37,13 +35,4 @@
 			<beans:bean id="loginCheckInterceptor" class="com.uniquegames.interceptor.LoginCheckInterceptor"/>
 		</interceptor>
 	</interceptors>
-
-	<!-- 리졸버 등록-->
-	<mvc:annotation-driven>
-		<mvc:argument-resolvers>
-			<beans:bean class="com.uniquegames.annotation.LoginMemberArgumentResolver"/>
-		</mvc:argument-resolvers>
-	</mvc:annotation-driven>
-	
-	
 </beans:beans>

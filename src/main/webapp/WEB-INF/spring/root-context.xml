@@ -3,21 +3,20 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	https://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd
 	http://mybatis.org/schema/mybatis-spring
-	https://mybatis.org/schema/mybatis-spring.xsd">
+	https://mybatis.org/schema/mybatis-spring.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<context:component-scan base-package="com.uniquegames.dao" />
 	<context:component-scan base-package="com.uniquegames.service" />
 	<context:component-scan base-package="com.uniquegames.repository" />
-
 	<context:component-scan base-package="com.uniquegames.model" />
 	<context:component-scan base-package="com.uniquegames.interceptor" />
-	<context:component-scan base-package="com.uniquegames.annotation" />
 	<context:property-placeholder location="classpath:config/database.properties"/>
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driver}"/>
@@ -43,39 +42,24 @@
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="1000000"/>
 	</bean>
-<!--	<bean id="memberRepositoryMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
-<!--		<property name="mapperInterface" value="com.uniquegames.repository.MemberRepositoryMapper" />-->
-<!--		<property name="sqlSessionFactory" ref="sqlSessionFactory" />-->
-<!--	</bean>-->
-<!--	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
-<!--		<property name="basePackage" value="com.uniquegames.repository" />-->
-<!--	</bean>-->
-
-	<context:property-placeholder location="classpath:config/email.properties" />
+  
+  <context:property-placeholder location="classpath:config/email.properties" />
 
    <!-- 이메일 인증 관련 빈 등록 -->
-   	  <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-      <property name="host" value="smtp.gmail.com" />
-      <property name="port" value="587" />
-      <property name="username" value="a01083529494@gmail.com" />
-      <property name="password" value="tohd zfgq phan zzrg" />
-      <property name="javaMailProperties">
-         <props>
-                <prop key="mail.transport.protocol">smtp</prop>
-                <prop key="mail.smtp.auth">true</prop>
-                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
-                <prop key="mail.smtp.starttls.enable">true</prop>
-                <prop key="mail.debug">true</prop>
-                <prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
-				<prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
-            </props>
-      </property>
-      
+   <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+     <property name="host" value="smtp.gmail.com" />
+     <property name="port" value="587" />
+     <property name="username" value="a01083529494@gmail.com" />
+     <property name="password" value="tohd zfgq phan zzrg" />    <property name="javaMailProperties">
+     <props>
+       <prop key="mail.transport.protocol">smtp</prop>
+       <prop key="mail.smtp.auth">true</prop>
+       <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+       <prop key="mail.smtp.starttls.enable">true</prop>
+       <prop key="mail.debug">true</prop>
+       <prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+       <prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+     </props>
+     </property>      
    </bean>
-
-
-
-
-
-
 </beans>

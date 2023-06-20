@@ -20,6 +20,9 @@ public class IndexServiceMapper {
     public GameVo getGame(GameVo vo) {
         return indexMapper.getGame(vo);
     }
+    public GameVo getGameForIndex(int id) {
+        return indexMapper.getGameForIndex(id);
+    }
 
     public List<GameVo> getDonationList() {
         return indexMapper.getDonationList();
