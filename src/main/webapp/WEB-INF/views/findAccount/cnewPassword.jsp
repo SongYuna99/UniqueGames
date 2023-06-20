@@ -92,8 +92,8 @@ $(document).ready(function(){
 			</ul>
 		</form>
 	</section>
-	<footer>
-		<jsp:include page="../main/footer.jsp"></jsp:include>
-	</footer>
+
+	<jsp:include page="../main/footer.jsp"></jsp:include>
+
 </body>
 </html>

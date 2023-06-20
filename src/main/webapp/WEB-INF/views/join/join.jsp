@@ -57,7 +57,7 @@
 							<label>아이디</label><span id="idMsg"></span>
 						</li>
 						<li>
-							<input type="text" id="input-id" name="member_id" placeholder="영문,숫자 5~10자리" tabindex="1">
+							<input type="text" id="input-common" name="member_id" placeholder="영문,숫자 5~10자리" tabindex="1">
 							<button type="button" id="check-btn-style">중복 체크</button>
 						</li>
 						<li id="must-insert-1">
@@ -177,7 +177,7 @@
 							<label class="check1">회사_아이디</label><span id="c-idMsg"></span>
 						</li>
 						<li>
-							<input type="text" id="input-id" name="company_id" placeholder="영문,숫자 5~10자리" tabindex="1">
+							<input type="text" id="input-common" name="company_id" placeholder="영문,숫자 5~10자리" tabindex="1">
 							<button type="button" id="c-check-btn-style">중복 체크</button>
 						</li>
 						<li id="must-insert-1">
@@ -334,9 +334,8 @@
 		<br>&nbsp;  : 귀하는 위와 같이 개인정보를 수집 및 이용하는 데 대한 동의를 거부할 권리가 있습니다.
 		<br>&nbsp;  - 동의를 거부하셔도 그에 따른 불이익은 없습니다.
 		</div>
-		
-	<footer>
-		<jsp:include page="../main/footer.jsp"></jsp:include>
-	</footer>
+
+	<jsp:include page="../main/footer.jsp"></jsp:include>
+
 </body>
 </html>

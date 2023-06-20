@@ -110,7 +110,7 @@
 						<input type="password" id="input-common" name="password" placeholder="비밀번호">
 						<span id="msgPwd"></span>
 					</li>
-					<li id="goodbye">
+					<li id="intro-3">
 						<p id="delete-id">${companyVo.company_id }님!</p>
 						<p id="delete-content">회원 탈퇴하려고 하신다니 저희 사이트의 서비스가 많이 부족하고 미흡했나 봅니다.<br>
 						불만사항이나 사유를 알려주신다면 적극 반영해서 고객님의 불편함을 해결해드리도록 노력하겠습니다.
@@ -150,11 +150,6 @@
 			</li>
 		</ul>
 	</div>
-	
-	
-	
-	<footer>
-		<jsp:include page="../main/footer.jsp"></jsp:include>
-	</footer>
+	<jsp:include page="../main/footer.jsp"></jsp:include>
 </body>
 </html>
