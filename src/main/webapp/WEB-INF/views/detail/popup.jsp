@@ -6,12 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>popup</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script> <!-- 마이크로소프트 jQuery-->
 
   <style>
     /* 라디오버튼 */
     .list-group {
-      max-width: 460px;
-      margin: 4rem auto;
+      max-width: 260px;
+      margin: 2rem auto;
     }
 
     .form-check-input:checked + .form-checked-content {
@@ -109,8 +110,9 @@
   </style>
 </head>
 <body>
-    <div> 테스트 : ${gameName}</div>
     <div class="list-group list-group-radio d-grid gap-2 border-0 w-auto">
+    <img src="${pageContext.request.contextPath}/images/img_title_logo.png" />
+    <div> 테스트 : ${gameName}</div>
       <div class="position-relative">
         <input class="form-check-input position-absolute top-50 end-0 me-3 fs-5" type="radio" name="listGroupRadioGrid" id="listGroupRadioGrid1" value="10000" checked>
         <label class="list-group-item py-3 pe-5" for="listGroupRadioGrid1">
@@ -147,7 +149,40 @@
       </div>
 
 </div>
+<script>
+  $(document).ready(function() {
+    $('#btn_donate').click(function() {
+      const selectedValue = $('input[name="listGroupRadioGrid"]:checked').val();
+      const sessionAccount = '${sessionScope.loginMember}';
+      let parentURL = window.opener.location.href; // 부모 창의 URL 가져오기
+      let id = parentURL.substring(parentURL.lastIndexOf('/') + 1, parentURL.lastIndexOf('.do')); // 사이트 동적 처리하기 위해 숫자 추출
+      if (sessionAccount.includes("MemberVo")) {
+        $.ajax({
+          url: '../cart.do',
+          method: 'POST',
+          data: { selectedValue: selectedValue },
+          success: function(response) {
+            // 서버 응답 처리 로직 작성
+            window.close();
+            window.opener.location.href = '../cart.do';
+          },
+          error: function(xhr, status, error) {
+            // 에러 처리 로직 작성
+            alert('에러가 발생했습니다: ' + error);
+          }
+        });
+      } else if(sessionAccount.includes("CompanyVo")){
+        alert("일반 회원만 후원 가능합니다!");
+      }
+      else {
+        alert("로그인 먼저 진행해 주세요!");
+        window.close();
+        window.opener.location.href = '../login.do?redirectURL=detail/' + id + '.do';
+      }
+    });
+  });
 
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

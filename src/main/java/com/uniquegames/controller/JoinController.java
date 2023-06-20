@@ -39,7 +39,7 @@ public class JoinController {
 		
 		if(result==1) {
 			mav.addObject("join_individual_result", "success");
-			mav.setViewName("/login/login2");
+			mav.setViewName("/login/login");
 		}else {
 			System.out.println("회원가입 실패");
 		}
@@ -87,7 +87,7 @@ public class JoinController {
 		
 		if(result==1) {
 			mav.addObject("join_company_result", "success");
-			mav.setViewName("/login/login2");
+			mav.setViewName("/login/login");
 		}else {
 			System.out.println("회원가입 실패");
 		}

@@ -139,7 +139,7 @@ $('#btn_donate').bind("click", function() {
 });
 
 function showPopup() {
-  window.open('../detail/popUp.do', "popup", "width=500, height=400, left=500, top=250");
+  window.open('../detail/popUp.do', "popup", "width=500, height=500, left=650, top=250");
 }
 
 

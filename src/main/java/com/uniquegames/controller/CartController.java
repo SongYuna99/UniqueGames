@@ -1,10 +1,9 @@
 package com.uniquegames.controller;
 
+import com.uniquegames.vo.GameVo;
 import com.uniquegames.vo.MemberVo;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,15 +16,24 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.uniquegames.model.SessionConstants;
 import com.uniquegames.service.OrderServiceImpl;
-import com.uniquegames.vo.MemberVo;
 import com.uniquegames.vo.OrderVo;
 
 @Controller
-@SessionAttributes(SessionConstants.LOGIN_MEMBER)
+@SessionAttributes({SessionConstants.LOGIN_MEMBER,"game"})
 public class CartController {
 	@Autowired
 	OrderServiceImpl orderService;
 
+	@RequestMapping(value = "/cart.do", method = RequestMethod.POST)
+	public String getValue(@RequestParam("selectedValue") String selectedValue, @ModelAttribute("game")
+			GameVo gameVo){
+		System.out.println("테스트 값은? : " + gameVo.getName());
+		/*
+		* orderService의 데이터 insert 기능 추가
+		* */
+//		orderService.insert
+		return "/order/cart";
+	}
 	@RequestMapping(value = "/cart.do", method = RequestMethod.GET)
 	public ModelAndView cart(@ModelAttribute(SessionConstants.LOGIN_MEMBER) MemberVo member) {
 		System.out.println(member.getMember_id());

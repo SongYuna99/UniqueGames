@@ -123,7 +123,7 @@ public class MyPageController {
 			mav.addObject("companyVo", companyVo);
 			mav.setViewName("/myPage/companyMyPage");
 		}else {
-			mav.setViewName("/login/login2");
+			mav.setViewName("/login/login");
 		}
 
 		return mav;

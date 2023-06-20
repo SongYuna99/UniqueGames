@@ -85,7 +85,7 @@ public class FindAccountController {
 		if(result==1) {
 			session.invalidate();
 			mav.addObject("changePassword_result", "success");
-			mav.setViewName("/login/login2");
+			mav.setViewName("/login/login");
 		}else {
 			System.out.println("비밀번호 변경 실패");
 		}
@@ -139,7 +139,7 @@ public class FindAccountController {
 		if(result==1) {
 			session.invalidate();
 			mav.addObject("changePassword_result", "success");
-			mav.setViewName("/login/login2");
+			mav.setViewName("/login/login");
 		}else {
 			System.out.println("비밀번호 변경 실패");
 		}

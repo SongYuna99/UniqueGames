@@ -68,9 +68,6 @@ public class DetailMapperController {
         }
     }
 
-
-
-
     /**
      * @param vo 회사 소개 저장객체
      * @param request 현재 url을 가져오기 위한 객체
@@ -127,14 +124,12 @@ public class DetailMapperController {
 
     @RequestMapping(value="/popUp.do", method = RequestMethod.POST)
     public String postPopUp(@RequestParam("gameName") String gameName, Model model){
-        System.out.println("gameName : " + gameName);
         model.addAttribute("gameName", gameName);
         return "detail/popup";
     }
 
     @RequestMapping(value="/popUp.do", method = RequestMethod.GET)
     public String getPopUp(@ModelAttribute("gameName") String gameName){
-
         return "detail/popup";
     }
 }
