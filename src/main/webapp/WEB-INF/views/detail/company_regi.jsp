@@ -5,10 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Unique Games</title>
-    <link rel="stylesheet" href="http://localhost:9000/uniquegames/css/mainunigames.css">
-    <link rel="stylesheet" href="http://localhost:9000/uniquegames/css/board.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mainunigames.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board.css">
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
-    <script src="http://localhost:9000/uniquegames/js/board.js"></script>
+    <script src="${pageContext.request.contextPath}/js/board.js"></script>
     <style>
       .btn-style{
         background: #393939;

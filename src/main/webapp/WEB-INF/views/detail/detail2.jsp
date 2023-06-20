@@ -5,8 +5,8 @@
 <head>
   <title>개발사 후원페이지</title>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" type="text/css" href="http://localhost:9000/uniquegames/css/detail.css">
-  <link rel="stylesheet" href="http://localhost:9000/uniquegames/css/mainunigames.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/detail.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mainunigames.css">
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script> <!-- 마이크로소프트 jQuery-->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -29,7 +29,7 @@
           <div class="productdetails-view productdetails">
             <div class="page-header">
               <div style="clear:both;position:absolute;margin-top:18px;z-index:10;text-align:center;">
-                <div style="display:block;border: 1px solid rgba(255,255,255,0.1);padding-left:10px;padding-right:10px;"><img src="http://localhost:9000/uniquegames/images/img-game-icon_1.jpg" width="80"/></div>
+                <div style="display:block;border: 1px solid rgba(255,255,255,0.1);padding-left:10px;padding-right:10px;"><img src="${pageContext.request.contextPath}/images/img-game-icon_1.jpg" width="80"/></div>
               </div>
               <h1 style="font-size:20px;padding-left:110px;display:inline-block;text-transform:initial" >
 
@@ -52,10 +52,10 @@
                         <div class='media_player_marker'><span>▶</span></div>												<img src="https://img.youtube.com/vi/BjxYggXttHU/1.jpg" data-type="media" data-url="<div class='embed-responsive embed-responsive-16by9'><iframe class='embed-responsive-item' src='https://www.youtube.com/embed/BjxYggXttHU'></iframe></div>" itemprop="thumbnailUrl">
                       </div>
                       <div class="item screenshot_thumbnail" style='cursor:pointer'>
-                        <img src="http://localhost:9000/uniquegames/images/img-game-thumnail_1.jpg" data-type="image/jpeg" data-url="<img src='http://localhost:9000/uniquegames/images/img-game-thumnail_1.jpg'>" itemprop="thumbnailUrl">
+                        <img src="${pageContext.request.contextPath}/images/img-game-thumnail_1.jpg" data-type="image/jpeg" data-url="<img src='${pageContext.request.contextPath}/images/img-game-thumnail_1.jpg'>" itemprop="thumbnailUrl">
                       </div>
                       <div class="item screenshot_thumbnail" style='cursor:pointer'>
-                        <img src="http://localhost:9000/uniquegames/images/img-game-thumnail_2.jpg" data-type="image/jpeg" data-url="<img src='http://localhost:9000/uniquegames/images/img-game-thumnail_2.jpg'>" itemprop="thumnailUrl">
+                        <img src="${pageContext.request.contextPath}/images/img-game-thumnail_2.jpg" data-type="image/jpeg" data-url="<img src='${pageContext.request.contextPath}/images/img-game-thumnail_2.jpg'>" itemprop="thumnailUrl">
                       </div>
 <%--                      <div class="item screenshot_thumbnail" style='cursor:pointer'>--%>
 <%--                        <img src="/plugins/fileUpload/server/php/files/50004062/thumbnail/ss_ed46aaa9ed94dd6f35a703070f8df16cee5aef61.1920x1080.jpg" data-type="image/jpeg" data-url="<img src='/plugins/fileUpload/server/php/files/50004062/medium/ss_ed46aaa9ed94dd6f35a703070f8df16cee5aef61.1920x1080.jpg'>" itemprop="thumbnailUrl">--%>
@@ -127,7 +127,7 @@
               <div class="right">
                 <div class="vm-product-details-container" >
                   <div class="module normal-module" >
-                    <div id="goods_img" ><img src="http://localhost:9000/uniquegames/images/img-game-thumnail_1.jpg" width="320" height="150"  title="유니크 게임즈" onerror="this.src='/images/404.jpg'"></div>
+                    <div id="goods_img" ><img src="${pageContext.request.contextPath}/images/img-game-thumnail_1.jpg" width="320" height="150"  title="유니크 게임즈" onerror="this.src='/images/404.jpg'"></div>
                     <div class="module-inner">
                       <div class="module-ct">
                         <div class="vmgroup single-product  normal-module" >
@@ -147,7 +147,7 @@
                                 <span class="price-crossed" ></span>
                                 <!--                              <div class="PricesalesPrice vm-display vm-price-value" style="text-align: center">-->
                                 <!--                                <a class="PricebasePrice" href="#" style="color: deepskyblue">-->
-                                <!--                                  <IMG src="http://localhost:9000/uniquegames/images/btn_boardSearch_normal.png">제작팀 소개 바로가기-->
+                                <!--                                  <IMG src="${pageContext.request.contextPath}/images/btn_boardSearch_normal.png">제작팀 소개 바로가기-->
                                 <!--                                </a>-->
                                 <!--                              </div>-->
                               </div>
@@ -199,7 +199,7 @@
                                   <span class="don-amount">2,000,000원</span>
                                 </div>
                                 <button type="button" class="btn btn-default btn-lg" id="btn_wishlist" data="50004122" style="width: 90px;">
-                                  <img src="http://localhost:9000/uniquegames/images/btn_like_select.png">
+                                  <img src="${pageContext.request.contextPath}/images/btn_like_select.png">
                                   Like</button>
                                 <button type="button" class="btn btn-warning btn-lg" id="btn_donate" data="50004122" data-assetid="3402" data-prodtp="1" style="width: 150px">후원하기</button>
 
@@ -286,5 +286,5 @@
 </body>
 
 </html>
-<script src="http://localhost:9000/uniquegames/js/detail.js"></script>
+<script src="${pageContext.request.contextPath}/js/detail.js"></script>
 <%--<%@include file="../main/footer.jsp"%>--%>

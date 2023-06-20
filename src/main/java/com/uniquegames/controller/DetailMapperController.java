@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 /**
@@ -27,7 +28,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  * CRUD 메소드 구현
  */
 @Controller
-@SessionAttributes({"intro","status","game"})
+@SessionAttributes({"intro","status","game","gameName"})
 @RequestMapping(value = "/detail")
 public class DetailMapperController {
 
@@ -122,5 +123,18 @@ public class DetailMapperController {
     public String getIntroList(Model model){
         model.addAttribute("companyList", companyServiceMapper.getIntroList());
         return "detail/company_list";
+    }
+
+    @RequestMapping(value="/popUp.do", method = RequestMethod.POST)
+    public String postPopUp(@RequestParam("gameName") String gameName, Model model){
+        System.out.println("gameName : " + gameName);
+        model.addAttribute("gameName", gameName);
+        return "detail/popup";
+    }
+
+    @RequestMapping(value="/popUp.do", method = RequestMethod.GET)
+    public String getPopUp(@ModelAttribute("gameName") String gameName){
+
+        return "detail/popup";
     }
 }

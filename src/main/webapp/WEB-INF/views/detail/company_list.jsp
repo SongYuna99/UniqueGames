@@ -5,7 +5,7 @@
     <title>회사 소개페이지 리스트</title>
     <meta charset="UTF-8">
     <title>Unique Games</title>
-    <link rel="stylesheet" href="http://localhost:9000/uniquegames/css/mainunigames.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mainunigames.css">
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
     <style>
       .btn-style{
@@ -48,11 +48,11 @@
             <c:forEach items="${companyList}" var="intro">
                 <div id="gList">
 
-                    <img src="http://localhost:9000/uniquegames/upload/${intro.upload}" width="260px" height="180px">
+                    <img src="${pageContext.request.contextPath}/upload/${intro.upload}" width="260px" height="180px">
                     <ul>
                         <li><a href="getIntro.do?id=${intro.id}" style="cursor: pointer">${intro.name}</a></li>
                         <li>${intro.id}</li>
-                        <li><img src="http://localhost:9000/uniquegames/images/img_icon_rPc.png"></li>
+                        <li><img src="${pageContext.request.contextPath}/images/img_icon_rPc.png"></li>
                     </ul>
                 </div>
             </c:forEach>

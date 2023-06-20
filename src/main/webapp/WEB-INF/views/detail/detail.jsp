@@ -1,25 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%--<%@include file="../main/header.jsp"%>--%>
 <!DOCTYPE html>
 <html lang="ko" dir="ltr" class='com_virtuemart view-productdetails itemid-167 mm-hover'>
 <head>
   <title>개발사 후원페이지</title>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" type="text/css" href="http://localhost:9000/uniquegames/css/detail.css">
-  <link rel="stylesheet" href="http://localhost:9000/uniquegames/css/mainunigames.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/detail.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mainunigames.css">
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script> <!-- 마이크로소프트 jQuery-->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <meta name="apple-mobile-web-app-capable" content="YES"/>
-
 </head>
 
 <body>
 
 <jsp:include page="../main/header.jsp"></jsp:include>
 <div id="image-top-bg" ></div>
-<form action="detail/searchGameList" method="get">
+
+<form action="../cart.do" method="post">
 <div class="parent-container" style="display: grid">
   <div class="main-container">
   <div class="row equal-height">
@@ -29,12 +27,12 @@
         <div class="productdetails-view productdetails">
           <div class="page-header">
             <div style="clear:both;position:absolute;margin-top:18px;z-index:10;text-align:center;">
-              <div style="display:block;border: 1px solid rgba(255,255,255,0.1);padding-left:10px;padding-right:10px;"><img src="http://localhost:9000/uniquegames/images/img_team_profile_big.png" width="80"/></div>
+              <div style="display:block;border: 1px solid rgba(255,255,255,0.1);padding-left:10px;padding-right:10px;"><img src="${pageContext.request.contextPath}/images/img_team_profile_big.png" width="80"/></div>
             </div>
             <h1 style="font-size:20px;padding-left:110px;display:inline-block;text-transform:initial" >
 							<span>
-																												${game.name}							</span><br/>
-              <span style="text-transform:none">DE-EXIT - Eternal Matters</span>
+																												디 엑시트 이터널 매터스							</span><br/>
+              <span style="text-transform:none" id="game_name">${game.name}</span>
             </h1>
           </div>
 
@@ -52,16 +50,16 @@
                       <img src="https://img.youtube.com/vi/fo_fkE1qQ8Y/1.jpg" data-type="media" data-url="<div class='embed-responsive embed-responsive-16by9'><iframe class='embed-responsive-item' src='https://www.youtube.com/embed/fo_fkE1qQ8Y'></iframe></div>" itemprop="thumbnailUrl">
                     </div>
                     <div class="item screenshot_thumbnail" style='cursor:pointer'>
-                      <img src="http://localhost:9000/uniquegames/images/img-game-deexit1.jpg" data-type="image/jpeg" data-url="<img src='http://localhost:9000/uniquegames/images/img-game-deexit1.jpg'>" itemprop="thumbnailUrl">
+                      <img src="${pageContext.request.contextPath}/images/img-game-deexit1.jpg" data-type="image/jpeg" data-url="<img src='${pageContext.request.contextPath}/images/img-game-deexit1.jpg'>" itemprop="thumbnailUrl">
                     </div>
                     <div class="item screenshot_thumbnail" style='cursor:pointer'>
-                      <img src="http://localhost:9000/uniquegames/images/img-game-deexit2.jpg" data-type="image/jpeg" data-url="<img src='http://localhost:9000/uniquegames/images/img-game-deexit2.jpg'>" itemprop="thumbnailUrl">
+                      <img src="${pageContext.request.contextPath}/images/img-game-deexit2.jpg" data-type="image/jpeg" data-url="<img src='${pageContext.request.contextPath}/images/img-game-deexit2.jpg'>" itemprop="thumbnailUrl">
                     </div>
                     <div class="item screenshot_thumbnail" style='cursor:pointer'>
-                      <img src="http://localhost:9000/uniquegames/images/img-game-deexit3.jpg" data-type="image/jpeg" data-url="<img src='http://localhost:9000/uniquegames/images/img-game-deexit3.jpg'>" itemprop="thumbnailUrl">
+                      <img src="${pageContext.request.contextPath}/images/img-game-deexit3.jpg" data-type="image/jpeg" data-url="<img src='${pageContext.request.contextPath}/images/img-game-deexit3.jpg'>" itemprop="thumbnailUrl">
                     </div>
                     <div class="item screenshot_thumbnail" style='cursor:pointer'>
-                      <img src="http://localhost:9000/uniquegames/images/img-game-deexit4.jpg" data-type="image/jpeg" data-url="<img src='http://localhost:9000/uniquegames/images/img-game-deexit4.jpg'>" itemprop="thumbnailUrl">
+                      <img src="${pageContext.request.contextPath}/images/img-game-deexit4.jpg" data-type="image/jpeg" data-url="<img src='${pageContext.request.contextPath}/images/img-game-deexit4.jpg'>" itemprop="thumbnailUrl">
                     </div>
 
                   </div>
@@ -82,10 +80,10 @@
                     <div class="product-description">
                       <p><b><span style="color: rgb(40, 180, 243);">죽음을 넘어선 생명을 느끼다</span></b><br>사후 세계로의 초현실적인 여정에서 은신 플레이가 가미된 영화 같은 모험을 하며, 신비하고 부서진 기억의 차원에 감춰진 비밀을 밝혀 내세요. 강렬한 분위기가 돋보이는 경이로운 3D 픽셀의 세계로 뛰어들어, 세상을 구원하세요!&nbsp;<br><br>
                         <img src="https://cdn.akamai.steamstatic.com/steam/apps/1396190/extras/Fondo.gif?t=1681490399"><br><br><b>영화 같은 복셀 그래픽 세계 체험</b><br>DE-EXIT는 심플하면서도 매끄럽게 구성된 복셀 그래픽뿐만 아니라 현실적인 움직임과 자연스러운 특수 효과, 자세한 배경을 구현해 마치 영화 같은 분위기가 느껴지는 게임입니다.<br><br><b>새로운 세계로 떠나는 신비로운 여행</b><br>호기심을 자아내는 초현실적인 세상에서 깨어난 당신. 과연 여기는 어디일까요? 여기서 무얼 하는 걸까요? 온 세상이 왜 이렇게 달라 보일까요? 무너진 경계 속의 세상에서 혼란은 점점 커져가지만, 희망을 잃지 않는 주민과 함께 떠난다면 걱정할 필요가 없어요. 낯설고 예측할 수 없으면서도 웅장한 풍경 속에서 비밀로 가득한 &#39;기억의 저편&#39;을 재건해보세요.<br><br><b>이야기 중심의 게임</b><br>손에 땀을 쥐게 하는 흥미진진한 이야기를 중심으로 여러 게임 요소를 즐겨보세요. 퍼즐, 잠행, 플랫폼, 액션 요소 모두 다 한 번에 즐길 수 있습니다.<br><br><b>게임으로 조망하는 죽음과 사후세계</b><br>죽음은 터부시되는 소재이지만 DE-EXIT에서는 이 민감한 소재로 새로운 이야기를 시작합니다. 두렵지만 신비로운 죽음이라는 소재를 긍정적인 관점으로 마주해 보세요. 죽음을 기억하며 아름다운 인생을 즐기는 뜻깊은 시간이 될 겁니다.
-                        <br type="_moz"><br><img src="http://localhost:9000/uniquegames/images/img-game-deexit1.jpg">
-                        <br><img src="http://localhost:9000/uniquegames/images/img-game-deexit2.jpg">
-                        <br><img src="http://localhost:9000/uniquegames/images/img-game-deexit3.jpg">
-                        <br><img src="http://localhost:9000/uniquegames/images/img-game-deexit4.jpg">
+                        <br type="_moz"><br><img src="${pageContext.request.contextPath}/images/img-game-deexit1.jpg">
+                        <br><img src="${pageContext.request.contextPath}/images/img-game-deexit2.jpg">
+                        <br><img src="${pageContext.request.contextPath}/${game.image_path}">
+                        <br><img src="${pageContext.request.contextPath}/images/img-game-deexit4.jpg">
                         <br><br></p>
                     </div>
                   </div>
@@ -113,7 +111,7 @@
             <div class="right">
               <div class="vm-product-details-container" >
                 <div class="module normal-module" >
-                  <div id="goods_img" ><img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_2_500240.png" width="320" height="150"  title="유니크 게임즈" onerror="this.src='/images/404.jpg'"></div>
+                  <div id="goods_img" ><img src="${pageContext.request.contextPath}/images/img_game_thumbnail_2_500240.png" width="320" height="150"  title="유니크 게임즈" onerror="this.src='/images/404.jpg'"></div>
                   <div class="module-inner">
                     <div class="module-ct">
                       <div class="vmgroup single-product  normal-module" >
@@ -131,11 +129,7 @@
                                   </span>
                               </div>
                               <span class="price-crossed" ></span>
-                              <!--                              <div class="PricesalesPrice vm-display vm-price-value" style="text-align: center">-->
-                              <!--                                <a class="PricebasePrice" href="#" style="color: deepskyblue">-->
-                              <!--                                  <IMG src="http://localhost:9000/uniquegames/images/btn_boardSearch_normal.png">제작팀 소개 바로가기-->
-                              <!--                                </a>-->
-                              <!--                              </div>-->
+
                             </div>
 
                             <div class="product-info">
@@ -174,10 +168,6 @@
                               </div>
 
 
-                              <!--                              <div id="etc" style="width:100%;max-width:300px;">-->
-                              <!--                                <img src="http://localhost:9000/uniquegames/images/btn_boardSearch_normal.png">-->
-                              <!--                                <img src='http://localhost:9000/uniquegames/images/btn_check_normal.png'/><img src='http://localhost:9000/uniquegames/images/btn_eye_select.png'/>																	</div>-->
-
                             </div>
 
                             <div class="vmproduct-link" style="text-align:center">
@@ -190,9 +180,9 @@
                                 <span class="don-amount">1,000,000원</span>
                               </div>
                               <button type="button" class="btn btn-default btn-lg" id="btn_wishlist" data="50004122" style="width: 90px;">
-                                <img src="http://localhost:9000/uniquegames/images/btn_like_select.png">
+                                <img src="${pageContext.request.contextPath}/images/btn_like_select.png">
                                 Like</button>
-                              <button type="button" class="btn btn-warning btn-lg" id="btn_donate" name="btn_donate" data="50004122" data-assetid="3402" data-prodtp="1" style="width: 150px">후원하기</button>
+                              <button type="button" class="btn btn-warning btn-lg" id="btn_donate" name="btn_donate" style="width: 150px" >후원하기</button>
 
                             </div>
                           </div>
@@ -230,54 +220,52 @@
 </div>
 </form>
 <script type="text/javascript">
-  var title = "디 엑시트 이터널 매터스";
-  var img = "https://directg.net/upload/product/goods_1681697853_opengraph.jpg";
-  var summary = "죽음을 넘어선 생명을 느끼다사후 세계로의 초현실적인 여정에서 은신 플레이가 가미된 영화 같은 모험을 하며, 신비하고 부서진 기억의 차원에 감춰진 비밀을 밝혀 내세요. 강렬한 분위기가 돋보이는 경이로운 3D 픽셀의 세계로 뛰어들어, 세상을 구원하세요!&nbsp;영화 같은 복셀 그래픽 세계 체험DE-EXIT는 심플하면서도 매끄럽게 구성된 복셀 그래픽뿐만 아니라 현실적인 움직임과 자연스러운 특수 효과, 자세한 배경을 구현해 마치 영화 같은 분위기가 느껴지는 게임입니다.새로운 세계로 떠나는 신비로운 여행호기심을 자아내는 초현실적인 세상에서 깨어난 당신. 과연 여기는 어디일까요? 여기서 무얼 하는 걸까요? 온 세상이 왜 이렇게 달라 보일까요? 무너진 경계 속의 세상에서 혼란은 점점 커져가지만, 희망을 잃지 않는 주민과 함께 떠난다면 걱정할 필요가 없어요. 낯설고 예측할 수 없으면서도 웅장한 풍경 속에서 비밀로 가득한 &#39;기억의 저편&#39;을 재건해보세요.이야기 중심의 게임손에 땀을 쥐게 하는 흥미진진한 이야기를 중심으로 여러 게임 요소를 즐겨보세요. 퍼즐, 잠행, 플랫폼, 액션 요소 모두 다 한 번에 즐길 수 있습니다.게임으로 조망하는 죽음과 사후세계죽음은 터부시되는 소재이지만 DE-EXIT에서는 이 민감한 소재로 새로운 이야기를 시작합니다. 두렵지만 신비로운 죽음이라는 소재를 긍정적인 관점으로 마주해 보세요. 죽음을 기억하며 아름다운 인생을 즐기는 뜻깊은 시간이 될 겁니다.";
-  var url = "https://directg.net/game/game_page.html?product_code=50004122";
-  //트위터 공유
-  $('#btn_twitter').bind("click",function(){
-    goTwitter();
-  });
-  //페이스북 공유
-  $('#btn_facebook').bind("click",function(){
-    goFacebook();
-  });
-  //구글플러스 공유
-  $('#btn_google').bind("click",function(){
-    goGooglePlus();
-  });
-  var goFacebook =function(){
-    var popup_width = 600;
-    var popup_height = 450;
-    $.sns_lib.initialize(title,img,summary,popup_width,popup_height,url);
-    $.sns_lib.go_Facebook();
-    $.sns_lib.destroy();
-  }
-  var goTwitter = function(){
-    var popup_width = 450;
-    var popup_height = 450 ;
-    var txt = summary.substr(0, 100)
-    $.sns_lib.initialize(title,'',txt,popup_width,popup_height,url);
-    $.sns_lib.go_Twitter();
-    $.sns_lib.destroy();
-  }
-  var goGooglePlus = function(){
-    var link_url = "https://directg.net/game/game_page.html?product_code=50004122";
-    var url = "https://plus.google.com/share?url="+link_url;
-    window.open(url,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
-    //return false;
-  }
+  // var title = "디 엑시트 이터널 매터스";
+  // var img = "https://directg.net/upload/product/goods_1681697853_opengraph.jpg";
+  // var summary = "죽음을 넘어선 생명을 느끼다사후 세계로의 초현실적인 여정에서 은신 플레이가 가미된 영화 같은 모험을 하며, 신비하고 부서진 기억의 차원에 감춰진 비밀을 밝혀 내세요. 강렬한 분위기가 돋보이는 경이로운 3D 픽셀의 세계로 뛰어들어, 세상을 구원하세요!&nbsp;영화 같은 복셀 그래픽 세계 체험DE-EXIT는 심플하면서도 매끄럽게 구성된 복셀 그래픽뿐만 아니라 현실적인 움직임과 자연스러운 특수 효과, 자세한 배경을 구현해 마치 영화 같은 분위기가 느껴지는 게임입니다.새로운 세계로 떠나는 신비로운 여행호기심을 자아내는 초현실적인 세상에서 깨어난 당신. 과연 여기는 어디일까요? 여기서 무얼 하는 걸까요? 온 세상이 왜 이렇게 달라 보일까요? 무너진 경계 속의 세상에서 혼란은 점점 커져가지만, 희망을 잃지 않는 주민과 함께 떠난다면 걱정할 필요가 없어요. 낯설고 예측할 수 없으면서도 웅장한 풍경 속에서 비밀로 가득한 &#39;기억의 저편&#39;을 재건해보세요.이야기 중심의 게임손에 땀을 쥐게 하는 흥미진진한 이야기를 중심으로 여러 게임 요소를 즐겨보세요. 퍼즐, 잠행, 플랫폼, 액션 요소 모두 다 한 번에 즐길 수 있습니다.게임으로 조망하는 죽음과 사후세계죽음은 터부시되는 소재이지만 DE-EXIT에서는 이 민감한 소재로 새로운 이야기를 시작합니다. 두렵지만 신비로운 죽음이라는 소재를 긍정적인 관점으로 마주해 보세요. 죽음을 기억하며 아름다운 인생을 즐기는 뜻깊은 시간이 될 겁니다.";
+  // var url = "https://directg.net/game/game_page.html?product_code=50004122";
+  // //트위터 공유
+  // $('#btn_twitter').bind("click",function(){
+  //   goTwitter();
+  // });
+  // //페이스북 공유
+  // $('#btn_facebook').bind("click",function(){
+  //   goFacebook();
+  // });
+  // //구글플러스 공유
+  // $('#btn_google').bind("click",function(){
+  //   goGooglePlus();
+  // });
+  // var goFacebook =function(){
+  //   var popup_width = 600;
+  //   var popup_height = 450;
+  //   $.sns_lib.initialize(title,img,summary,popup_width,popup_height,url);
+  //   $.sns_lib.go_Facebook();
+  //   $.sns_lib.destroy();
+  // }
+  // var goTwitter = function(){
+  //   var popup_width = 450;
+  //   var popup_height = 450 ;
+  //   var txt = summary.substr(0, 100)
+  //   $.sns_lib.initialize(title,'',txt,popup_width,popup_height,url);
+  //   $.sns_lib.go_Twitter();
+  //   $.sns_lib.destroy();
+  // }
+  // var goGooglePlus = function(){
+  //   var link_url = "https://directg.net/game/game_page.html?product_code=50004122";
+  //   var url = "https://plus.google.com/share?url="+link_url;
+  //   window.open(url,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600,left=500,top=250');
+  // }
 
-  $('button[name="btn_donate"]').on("click", function() {
+  // $('button[name="btn_donate"]').on("click", function() {
+  //
+  //   location.href = "../cart.do";
+  // });
 
-    location.href = "../cart.do";
-  });
+
 
 </script>
 <jsp:include page="../main/footer.jsp"></jsp:include>
-
 </body>
-
 </html>
-<script src="http://localhost:9000/uniquegames/js/detail.js"></script>
-<%--<%@include file="../main/footer.jsp"%>--%>
+<script src="${pageContext.request.contextPath}/js/detail.js"></script>

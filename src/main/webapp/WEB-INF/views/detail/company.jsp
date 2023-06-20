@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-  <link rel="stylesheet" href="http://localhost:9000/uniquegames/css/mainunigames.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mainunigames.css">
   <title>제작사(팀) 소개</title>
   <!--css 초기화-->
 <%--  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">--%>
@@ -111,13 +111,13 @@
   <!--  제작팀 소개 -->
   <div  style="margin: 70px 20px 0 150px ">
     <div style="display: flex; align-items: center;">
-<%--      <img src="http://localhost:9000/uniquegames/images/img_team_profile_big.png" alt="${intro.name} 팀 로고" style="margin-right: 20px">--%>
+<%--      <img src="${pageContext.request.contextPath}/images/img_team_profile_big.png" alt="${intro.name} 팀 로고" style="margin-right: 20px">--%>
 <%--  <c:if test="${fn:contains(sessionScope.loginMember, 'CompanyVo')}">--%>
 <%--      <form action="updateIntro.do" method="post">--%>
 <%--  </c:if>--%>
         <input name="id" type="hidden" value="${intro.id}">
         <c:if test="${intro.upload != null}">
-          <img src="http://localhost:9000/uniquegames/upload/${intro.upload}" alt="${intro.name} 팀 로고" style="margin-right: 20px; width: 225px; height: 225px;" >
+          <img src="${pageContext.request.contextPath}/upload/${intro.upload}" alt="${intro.name} 팀 로고" style="margin-right: 20px; width: 225px; height: 225px;" >
         </c:if>
 <%--        <input type="file" name ="uploadFile" style="height: 30px;"/>--%>
         <div id="introduce">
@@ -146,13 +146,13 @@
 
   <!--  slider 시작 -->
   <div class="swiper">
-    <p style=" text-align: center;"><img style="display: block;padding: 50px; margin: 0 auto" src="http://localhost:9000/uniquegames/images/img_title_gameList.png"></p>
+    <p style=" text-align: center;"><img style="display: block;padding: 50px; margin: 0 auto" src="${pageContext.request.contextPath}/images/img_title_gameList.png"></p>
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <div class="card">
-          <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_3_500240.png" class="card-img-top" style="height: 150px; width: 234px">
+          <img src="${pageContext.request.contextPath}/images/img_game_thumbnail_3_500240.png" class="card-img-top" style="height: 150px; width: 234px">
           <div class="card-body">
-            <img src="http://localhost:9000/uniquegames/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
+            <img src="${pageContext.request.contextPath}/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
             <h6 class="card-title">New Game of Music</h6>
             <p class="card-text">Action RPG</p>
           </div>
@@ -165,9 +165,9 @@
       </div>
       <div class="swiper-slide">
         <div class="card">
-          <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_2_500240.png" class="card-img-top" style="height: 150px; width: 234px">
+          <img src="${pageContext.request.contextPath}/images/img_game_thumbnail_2_500240.png" class="card-img-top" style="height: 150px; width: 234px">
           <div class="card-body">
-            <img src="http://localhost:9000/uniquegames/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
+            <img src="${pageContext.request.contextPath}/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
             <h6 class="card-title">New Game of Music</h6>
             <p class="card-text">Action RPG</p>
           </div>
@@ -178,9 +178,9 @@
       </div>
       <div class="swiper-slide">
         <div class="card">
-          <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" class="card-img-top" style="height: 150px; width: 234px">
+          <img src="${pageContext.request.contextPath}/images/img_game_thumbnail_1_260180.png" class="card-img-top" style="height: 150px; width: 234px">
           <div class="card-body">
-            <img src="http://localhost:9000/uniquegames/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
+            <img src="${pageContext.request.contextPath}/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
             <h6 class="card-title">New Game of Music</h6>
             <p class="card-text">Action RPG</p>
           </div>
@@ -191,9 +191,9 @@
       </div>
       <div class="swiper-slide">
         <div class="card">
-          <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_3_260180.png" class="card-img-top" style="height: 150px; width: 234px">
+          <img src="${pageContext.request.contextPath}/images/img_game_thumbnail_3_260180.png" class="card-img-top" style="height: 150px; width: 234px">
           <div class="card-body">
-            <img src="http://localhost:9000/uniquegames/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
+            <img src="${pageContext.request.contextPath}/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
             <h6 class="card-title">New Game of Music</h6>
             <p class="card-text">Action RPG</p>
           </div>
@@ -204,9 +204,9 @@
       </div>
       <div class="swiper-slide">
         <div class="card">
-          <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_4_260180.png" class="card-img-top" style="height: 150px; width: 234px">
+          <img src="${pageContext.request.contextPath}/images/img_game_thumbnail_4_260180.png" class="card-img-top" style="height: 150px; width: 234px">
           <div class="card-body">
-            <img src="http://localhost:9000/uniquegames/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
+            <img src="${pageContext.request.contextPath}/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
             <h6 class="card-title">New Game of Music</h6>
             <p class="card-text">Action RPG</p>
           </div>
@@ -217,9 +217,9 @@
       </div>
       <div class="swiper-slide">
         <div class="card">
-          <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_2_260180.png" class="card-img-top" style="height: 150px; width: 234px">
+          <img src="${pageContext.request.contextPath}/images/img_game_thumbnail_2_260180.png" class="card-img-top" style="height: 150px; width: 234px">
           <div class="card-body">
-            <img src="http://localhost:9000/uniquegames/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
+            <img src="${pageContext.request.contextPath}/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
             <h6 class="card-title">New Game of Music</h6>
             <p class="card-text">Action RPG</p>
           </div>
@@ -242,7 +242,7 @@
   <!--  slider 끝-->
 
   <!--  공지사항-->
-  <p style=" text-align: center;"><img style="display: block; margin: 0 auto;padding-top: 50px" src="http://localhost:9000/uniquegames/images/img_title_notice.png"></p>
+  <p style=" text-align: center;"><img style="display: block; margin: 0 auto;padding-top: 50px" src="${pageContext.request.contextPath}/images/img_title_notice.png"></p>
   <div id="content" style="margin-top: 60px; margin-bottom: -80px">
     <div id="board-list">
       <div id="board-top-menu">
@@ -250,7 +250,7 @@
         <div id="bsearch-box">
           <label for="">
             <input type="text" name="search" placeholder="검색어를 입력해주세요.">
-            <button type="button" id="btn-search"><img src="http://localhost:9000/uniquegames/images/btn_boardSearch_press.png" alt=""></button>
+            <button type="button" id="btn-search"><img src="${pageContext.request.contextPath}/images/btn_boardSearch_press.png" alt=""></button>
           </label>
         </div>
         <div id="clearFix"></div>
@@ -264,7 +264,7 @@
         </tr>
         <tr>
           <td>1</td>
-          <td><a href="http://localhost:9000/uniquegames/notice/notice_content.html">아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</a></td>
+          <td><a href="${pageContext.request.contextPath}/notice/notice_content.html">아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</a></td>
           <td>관리자</td>
           <td>2023.04.25</td>
         </tr>
@@ -349,13 +349,13 @@
 
   <!--  추천-->
   <div class="swiper">
-    <p style=" text-align: center;"><img style="display: block;padding: 50px; margin: 0 auto" src="http://localhost:9000/uniquegames/images/img_title_recommendations.png"></p>
+    <p style=" text-align: center;"><img style="display: block;padding: 50px; margin: 0 auto" src="${pageContext.request.contextPath}/images/img_title_recommendations.png"></p>
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <div class="card">
-          <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_3_500240.png" class="card-img-top" style="height: 150px; width: 234px">
+          <img src="${pageContext.request.contextPath}/images/img_game_thumbnail_3_500240.png" class="card-img-top" style="height: 150px; width: 234px">
           <div class="card-body">
-            <img src="http://localhost:9000/uniquegames/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
+            <img src="${pageContext.request.contextPath}/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
             <h6 class="card-title">New Game of Music</h6>
             <p class="card-text">Action RPG</p>
           </div>
@@ -368,9 +368,9 @@
       </div>
       <div class="swiper-slide">
         <div class="card">
-          <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_2_500240.png" class="card-img-top" style="height: 150px; width: 234px">
+          <img src="${pageContext.request.contextPath}/images/img_game_thumbnail_2_500240.png" class="card-img-top" style="height: 150px; width: 234px">
           <div class="card-body">
-            <img src="http://localhost:9000/uniquegames/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
+            <img src="${pageContext.request.contextPath}/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
             <h6 class="card-title">New Game of Music</h6>
             <p class="card-text">Action RPG</p>
           </div>
@@ -381,9 +381,9 @@
       </div>
       <div class="swiper-slide">
         <div class="card">
-          <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_1_260180.png" class="card-img-top" style="height: 150px; width: 234px">
+          <img src="${pageContext.request.contextPath}/images/img_game_thumbnail_1_260180.png" class="card-img-top" style="height: 150px; width: 234px">
           <div class="card-body">
-            <img src="http://localhost:9000/uniquegames/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
+            <img src="${pageContext.request.contextPath}/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
             <h6 class="card-title">New Game of Music</h6>
             <p class="card-text">Action RPG</p>
           </div>
@@ -394,9 +394,9 @@
       </div>
       <div class="swiper-slide">
         <div class="card">
-          <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_3_260180.png" class="card-img-top" style="height: 150px; width: 234px">
+          <img src="${pageContext.request.contextPath}/images/img_game_thumbnail_3_260180.png" class="card-img-top" style="height: 150px; width: 234px">
           <div class="card-body">
-            <img src="http://localhost:9000/uniquegames/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
+            <img src="${pageContext.request.contextPath}/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
             <h6 class="card-title">New Game of Music</h6>
             <p class="card-text">Action RPG</p>
           </div>
@@ -407,9 +407,9 @@
       </div>
       <div class="swiper-slide">
         <div class="card">
-          <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_4_260180.png" class="card-img-top" style="height: 150px; width: 234px">
+          <img src="${pageContext.request.contextPath}/images/img_game_thumbnail_4_260180.png" class="card-img-top" style="height: 150px; width: 234px">
           <div class="card-body">
-            <img src="http://localhost:9000/uniquegames/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
+            <img src="${pageContext.request.contextPath}/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
             <h6 class="card-title">New Game of Music</h6>
             <p class="card-text">Action RPG</p>
           </div>
@@ -420,9 +420,9 @@
       </div>
       <div class="swiper-slide">
         <div class="card">
-          <img src="http://localhost:9000/uniquegames/images/img_game_thumbnail_2_260180.png" class="card-img-top" style="height: 150px; width: 234px">
+          <img src="${pageContext.request.contextPath}/images/img_game_thumbnail_2_260180.png" class="card-img-top" style="height: 150px; width: 234px">
           <div class="card-body">
-            <img src="http://localhost:9000/uniquegames/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
+            <img src="${pageContext.request.contextPath}/images/imt_title_top.png" style="height: 15px; margin-bottom: 5px">
             <h6 class="card-title">New Game of Music</h6>
             <p class="card-text">Action RPG</p>
           </div>
