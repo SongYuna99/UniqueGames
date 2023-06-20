@@ -1,7 +1,7 @@
 /* common */
 * {
-	padding: 0;
-	margin: 0;
+	padding: 0px;
+	margin: 0px;
 	font-family: "YouandiModern", "Apex New", "Noto Sans KR", sans-serif;
 }
 
@@ -13,13 +13,6 @@ ol, ul, li {
 	list-style: none;
 	padding: 0px;
 	margin: 0px;
-}
-
-/* base */
-#content, #board-list, table, #section_cart, #section_member,
-	#section_payment, #section_price {
-	width: 1100px;
-	margin: auto;
 }
 
 /* Menu title(under the header) */
@@ -72,73 +65,6 @@ a:visited {
 	color: #DDDDDD;
 }
 
-/* public button style */
-#btn-style, #order-btn-search, #order-btn-delete, #btn-deleteAll,
-	#btn-deleteSelected {
-	background: #393939;
-	border-radius: 5px;
-	width: 80px;
-	height: 30px;
-	color: #FFFFFF;
-	font-size: 14px;
-	vertical-align: top;
-	cursor: pointer;
-}
-
-#button-gradient {
-	border: none;
-	width: 394px;
-	height: 60px;
-	cursor: pointer;
-	color: white;
-	background: linear-gradient(to right, #682CAD, #2FC0CC);
-	border-radius: 3px;
-	font-family: "YouandiModern", sans-serif; /***/
-	margin-top: 20px;
-	font-size: 20px; /***/
-}
-
-#button-gradient-findPwd,
-#button-gradient-company-login,
-#button-gradient-findPwd {
-	border: none;
-	width: 394px;
-	height: 60px;
-	cursor: pointer;
-	color: white;
-	background: linear-gradient(to right, #682CAD, #2FC0CC);
-	border-radius: 3px;
-	font-family: "YouandiModern", sans-serif; /***/
-	margin: 10px 0;
-	font-size: 20px; /***/
-}
-
-/* public input style */
-#input-common, #section_member input, #section_member select {
-	width: 394px;
-	padding: 20px 0;
-	margin: 5px 0;
-	text-indent: 10px;
-	border-radius: 3px;
-	border: 1px solid lightgray;
-	outline: none;
-	font-size: 16px;
-}
-
-#input-common:focus, #section_member input:focus, #section_member select:focus
-	{
-	border: 1px solid gray;
-}
-
-/* checkbox style */
-#chk-circle {
-	width: 1rem;
-	height: 1rem;
-	border: 2px solid #2C2C2C;
-	border-radius: 50%;
-	appearance: none;
-	cursor: pointer;
-}
 
 /* Main style */
 #content-main {
@@ -713,572 +639,51 @@ header div img {
 	color: #497EBF;
 	font-weight: bold;
 }
-
-/****** Order.html ******/
-
-/* Order/Payment */
-#order-title {
-	padding: 80px 0 10px 0;
-	width: 1100px;
-	margin: auto;
-	margin-bottom: 10px;
-	border-bottom: 2px solid #393939;
-	font-family: "YouandiModern", sans-serif;
-	font-size: 23px;
-	letter-spacing: 0px;
-	color: #2B2B2B;
+/************************************************************/
+#button-gradient,
+#button-gradient-findPwd,
+#button-gradient-company-login,
+#button-gradient-delete,
+#button-gradient-gotoLogin, #button-gradient-gotoPwd,
+#button-gradient-gotoFind, #button-gradient-gotoJoin,
+#button-gradient-home, #button-gradient-company {
+	border: none;
+	width: 394px;
+	height: 60px;
+	cursor: pointer;
+	color: white;
+	background: linear-gradient(to right, #682CAD, #2FC0CC);
+	border-radius: 3px;
+	font-family: "YouandiModern", sans-serif; /***/
+	margin: 10px 0;
+	font-size: 20px; 
 }
 
-/* subtitle, th */
-#order-subtitle, order-table th, chk-circle-span {
-	padding: 0 0 5px 0;
-	font-family: "YouandiModern";
-	font-size: 16px;
-	letter-spacing: 0px;
-	color: #000000;
-	opacity: 1;
+#button-gradient-gotoLogin,
+#button-gradient-gotoPwd,
+#button-gradient-gotoFind,
+#button-gradient-gotoJoin,
+#button-gradient-home {
+	width: 180px;
+	height: 50px;
+	margin-top: 20px;
 }
 
-/* order.html commons */
-#order-table, #price-table {
-	background: #FFFFFF 0% 0% no-repeat padding-box;
-	border: 1px solid #DDDDDD;
-	opacity: 1;
-	border-collapse: collapse;
-	margin: auto;
-	margin-bottom: 50px;
-	width: 100%;
-	text-align: center;
+/* deletePwd; button-style */
+#button-gradient-delete {
+	background: black;
 }
 
-#order-table th {
-	border-bottom: 1px solid #DDDDDD;
-	padding: 8px 0;
-	font-size: 16px;
-	color: #000000;
-	text-align: center;
-}
 
-#order-table td, #order-table select {
-	border-bottom: 1px solid #DDDDDD;
-	font-size: 14px;
-	color: #A9A9A9;
-	text-align: left;
-}
-
-/* chk-circle */
-#section_member #chk-circle, #section_payment #chk-circle {
+/* checkbox style */
+#chk-circle {
 	width: 1rem;
 	height: 1rem;
-	border-radius: 50%;
 	border: 2px solid #2C2C2C;
-	appearance: none;
-	cursor: pointer;
-	transition: background 0.2s;
-}
-
-#chk-circle:checked, #section_payment #chk-circle:checked {
-	background: #2C2C2C;
-}
-
-/* subtitle & checkbox */
-#member-chk {
-	overflow: hidden;
-}
-
-#member-chk h2, #chk-circle, #chk-circle-span {
-	display: inline-block;
-	vertical-align: middle;
-}
-
-#chk-circle-span {
-	margin-left: 5px;
-}
-
-#member-chk h2 {
-	width: 200px;
-	padding-top: 10px;
-	float: left;
-}
-
-#member-chk div {
-	float: right;
-	text-align: center;
-}
-
-/** #section_cart **/
-#section_cart td {
-	width: 15%;
-	height: 100px;
-	text-align: center;
-}
-
-#cart-info, #th-cart-info {
-	width: 40%;
-	text-align: left;
-}
-
-/* #section_cart product img */
-#img_product {
-	width: 80px;
-	height: 80px;
-	outline: none;
-	background: #E6E6E6 0% 0% no-repeat padding-box;
-}
-
-/* checkbox-box */
-#chk-box {
-	width: 20px;
-	height: 20px;
-	appearance: none;
-	border: 2px solid #959595;
-	border-radius: 0px;
-	cursor: pointer;
-}
-
-#chk-box:checked {
-	appearance: auto;
-}
-
-/* pdName, price font */
-td#cart-info {
-	text-align: left;
-}
-
-#cart-pdName, td#cart-price {
-	font-size: 15px;
-	letter-spacing: 0px;
-	color: #000000;
-	text-decoration: none;
-}
-
-/* delete button size */
-#order-btn-delete {
-	width: 60px;
-}
-
-/** #section_member **/
-/* table */
-#section_member th {
-	width: 10%;
-	vertical-align: center;
-}
-
-#section_member td {
-	width: 80%;
-	text-align: left;
-}
-
-#section_member input, #section_member select#email-select {
-	margin: 7px 0;
-	padding: 11px 10px;
-}
-
-/* input size */
-#section_member #name {
-	width: 300px;
-}
-
-#section_member #email-id, #section_member #email-addr, #section_member select
-	{
-	width: 150px;
-}
-
-#section_member #phone1, #section_member #phone2, #section_member #phone3
-	{
-	width: 70px;
-}
-
-/* search button size */
-#order-btn-search {
-	margin: 10px 0;
-	width: 80px;
-	height: 36px;
-}
-
-/** #section_payment **/
-#section_payment #order-table {
-	height: 300px;
-}
-
-#section_payment #order-table th {
-	width: 25%;
-	text-align: left;
-	padding-left: 30px;
-}
-
-#section_payment #order-table td {
-	padding: 5px 8px;
-	text-align: left;
-}
-
-#section_payment #d1 {
-	width: 1100px;
-	height: 400px;
-}
-
-#section_payment #d2 {
-	width: 1100px;
-	height: 200px;
-	text-align: center;
-}
-
-#section_payment #payment1 {
-	float: left;
-	width: 70%;
-	height: 300px;
-}
-
-#section_payment #payment2 {
-	float: right;
-	width: 28%;
-	height: 300px;
-}
-
-/* method button */
-#section_payment #order-table #button-gradient {
-	width: 100px;
-	height: 40px;
-	margin-right: 10px;
-}
-
-/* #payment1 */
-#payment-method, #payment-info {
-	margin: 10px 0;
-}
-
-/* font */
-#section_payment a {
-	padding-left: 5px;
-	text-align: left;
-	text-decoration: underline;
-	font-family: "YouandiModern";
-	font-size: 14px;
-	letter-spacing: 0px;
-	color: #6E6E6E;
-}
-
-#section_payment span {
-	padding-left: 7px;
-	text-align: left;
-	font-family: "YouandiModern";
-	font-size: 14px;
-	letter-spacing: 0px;
-	color: #6E6E6E;
-	opacity: 1;
-}
-
-/* chkbox - agreement */
-#section_payment #span_agreementAll {
-	width: 150px;
-	padding-left: 10px;
-	text-align: left;
-	font-family: "YouandiModern";
-	font-size: 16px;
-	letter-spacing: 0px;
-	color: #000000;
-	opacity: 1;
-}
-
-#section_payment input#agreement {
-	width: 18px;
-	height: 12px;
-	background-image: url("../images/btn_check_normal.png");
-	background-repeat: no-repeat;
+	border-radius: 50%;
 	appearance: none;
 	cursor: pointer;
 }
-
-#section_payment input#agreement:checked {
-	background-image: url("../images/btn_check_select.png");
-	background-repeat: no-repeat;
-}
-
-/* #payment2 */
-#payment2 #order-table th {
-	width: 35%;
-	border: none;
-}
-
-#payment2 #order-table td {
-	text-align: right;
-	border: none;
-	padding-right: 10px;
-}
-
-#payment-price, #payment-totalPrice, #th-payment-price,
-	#th-payment-totalPrice {
-	height: 20%;
-	padding-top: 25px;
-}
-
-#payment-sale {
-	vertical-align: top;
-	margin-top: 10px;
-}
-
-td#payment-price, td#payment-sale, td#payment-totalPrice {
-	font-family: "YouandiModern";
-	font-size: 20px;
-	letter-spacing: 0px;
-	color: #000000;
-	opacity: 1;
-}
-
-td#payment-totalPrice {
-	font-size: 24px;
-}
-
-/** cart.html **/
-#price-table {
-	text-align: center;
-	overflow: hidden;
-}
-
-#price-table th {
-	height: 40px;
-	border-bottom: 1px solid #DDDDDD;
-	font-family: "YouandiModern";
-	font-size: 14px;
-	letter-spacing: 0px;
-	color: #000000;
-	opacity: 1;
-}
-
-#price-table td {
-	height: 50px;
-	font-family: "YouandiModern";
-	font-size: 17px;
-	letter-spacing: 0px;
-	color: #000000;
-	opacity: 1;
-}
-
-#price-table td#totalPrice {
-	font-size: 24px;
-	font-weight: bold
-}
-
-#price-table td#price {
-	text-decoration: line-through;
-}
-
-#price-table th:nth-child(2), #price-table td:nth-child(2), #price-table th:nth-child(4),
-	#price-table td:nth-child(4) {
-	width: 10%;
-}
-
-#price-table th:nth-child(1), #price-table th:nth-child(3), #price-table td:nth-child(1),
-	#price-table td:nth-child(3) {
-	width: 24%;
-}
-
-#price-table #price, #price-table #sale {
-	color: #6E6E6E;
-}
-
-#section_price div:nth-child(2) {
-	margin-top: 100px;
-	width: 1100px;
-	height: 200px;
-	text-align: center;
-}
-
-/** board style **/
-#content {
-	margin: 100px auto;
-}
-
-#board-content>table, #user-btable, #admin-btable, #board-write>table {
-	border-collapse: collapse;
-	border-top: 2px solid #393939;
-	border-bottom: 2px solid #393939;
-}
-
-/* board top menu */
-#board-top-menu {
-	padding-bottom: 10px;
-	font-size: 0px;
-}
-
-#board-write>table {
-	border-collapse: collapse;
-	border: 1px solid #DDDDDD;
-	border-top: 2px solid #393939;
-	border-bottom: 2px solid #393939;
-}
-
-#board-top-menu>p {
-	font-size: 24px;
-	float: left;
-}
-
-#board-top-menu>div>label>input {
-	width: 215px;
-	height: 14px;
-	border: 1px solid #DDDDDD;
-	padding: 7px 30px 7px 16px;
-	font-size: 14px;
-}
-
-#board-top-menu>div>label {
-	position: relative;
-	margin-left: 410px;
-}
-
-#bsearch-box {
-	float: right;
-}
-
-#board-top-menu>div>ul>li:last-child>button {
-	margin-right: 0;
-}
-
-#board-top-menu>div>ul>li:last-child>a>button {
-	margin-right: 0;
-}
-
-#board-top-menu>div>ul {
-	float: right;
-}
-
-#board-top-menu>div>ul>li {
-	float: left;
-	margin-left: 10px;
-}
-
-#btn-search {
-	background: none;
-	border: none;
-	position: absolute;
-	top: -15px;
-	right: 10px;
-	cursor: pointer;
-}
-
-/* #btn-search:hover  */
-
-/* board */
-#admin-btable th {
-	border-bottom: 1px solid #DDDDDD;
-}
-
-#admin-btable th, #admin-btable td {
-	padding: 18px;
-	text-align: center;
-}
-
-#admin-btable tr>th:first-child, #admin-btable tr>td:first-child,
-	#admin-btable tr>th:nth-child(2), #admin-btable tr>td:nth-child(2) {
-	padding: 8px;
-}
-
-#admin-btable tr>td:nth-child(3) {
-	text-align: left;
-}
-
-#paging {
-	font-size: 18px;
-	list-style-type: none;
-	clear: both;
-	margin: 0 380px;
-}
-
-#paging>li {
-	float: left;
-	padding: 5px;
-}
-
-#user-btable, #admin-btable {
-	border-bottom: none;
-}
-
-#user-btable tr:last-child, #admin-btable tr:last-child {
-	border-top: 2px solid #393939;
-}
-
-/* board - user */
-#user-table th {
-	border-bottom: 1px solid #DDDDDD;
-}
-
-#user-table th, td {
-	padding: 18px;
-	text-align: center;
-}
-
-#user-btable tr>th:first-child, #user-btable tr>td:first-child {
-	padding: 8px;
-}
-
-#user-btable tr>td:nth-child(2) {
-	text-align: left;
-}
-
-#user-btable tr>td:nth-child(3) {
-	text-align: center;
-}
-
-/* board - write */
-#board-write>table th {
-	padding: 19px 24px;
-	font-size: 16px;
-	border-bottom: 1px solid #DDDDDD;
-}
-
-#board-write>table td {
-	font-size: 14px;
-	border-bottom: 1px solid #DDDDDD;
-	padding: 8px;
-}
-
-#default-write {
-	font-size: 14px;
-	border: 1px solid #DDDDDD;
-	padding: 12px 16px;
-	width: 766px;
-}
-
-#board-write>table td>input {
-	height: 14px;
-}
-
-#board-write>table td>textarea {
-	height: 153px;
-	resize: none;
-}
-
-/* board - content */
-#board-content>table th {
-	padding: 19px 8px;
-	font-size: 16px;
-	background: #DDDDDD;
-	border-bottom: 1px solid #DDDDDD;
-}
-
-#board-content>table td {
-	font-size: 17px;
-	border-bottom: 1px solid #DDDDDD;
-	padding: 8px;
-}
-
-#board-content>table th:first-child {
-	text-align: left;
-}
-
-#board-content>table td:nth-child(2) {
-	width: 50%;
-}
-
-#details {
-	padding: 10px 30px;
-	text-align: left;
-}
-
-#clearFix {
-	clear: both;
-}
-/****************************************************************/
 
 /* AllPage; introduce p tag */
 #intro {
@@ -1287,36 +692,32 @@ td#payment-totalPrice {
 	padding-bottom: 60px;
 }
 
+/* intro style */
+#intro-1, #intro-2, #intro-3 {
+	font-family: "YouandiModern", sans-serif; 
+	width: 394px;
+	margin: auto;
+	text-align: left;
+	font-size: 16px;
+	padding: 20px 0 14px 0;
+}
+
+/*findId; findPwd intro*/
+#intro-2 {
+	padding-bottom: 14px;
+}
+
+/*deletePwd; intro*/
+#intro-3 {
+	padding: 40px 0;
+}
+
 /* AllPage; section */
 #content-1 {
 	width: 1100px;
 	margin: auto;
 	text-align: center;
 	padding: 60px 0 100px 0;
-}
-
-/* deletePwd; button-style */
-#button-gradient-delete {
-	border: none;
-	width: 394px;
-	height: 60px;
-	cursor: pointer;
-	color: white;
-	background: black;
-	border-radius: 3px;
-	font-family: "YouandiModern", sans-serif;
-	font-size: 20px;
-	margin: 10px 0;
-}
-
-/* deletePwd; page intro style */
-#intro-1 {
-	font-family: "YouandiModern", sans-serif; /***/
-	width: 394px;
-	margin: auto;
-	text-align: left;
-	font-size: 16px;
-	padding: 20px 0 14px 0;
 }
 
 /* deletePwd; delete-reason selectbox style*/
@@ -1333,13 +734,6 @@ td#payment-totalPrice {
 	border: 1px solid gray;
 }
 
-/*deletePwd; intro*/
-#goodbye {
-	width: 394px;
-	margin: auto;
-	text-align: left;
-	padding: 40px 0;
-}
 /*deletePwd; delete-id p tag*/
 #delete-id {
 	font-size: 18px;
@@ -1362,7 +756,7 @@ td#payment-totalPrice {
 }
 
 /* SignUp; email input style */
-#input-email,#company-email1, #company-email2, #join-email2 {
+#input-email, #company-email1, #company-email2, #join-email2 {
 	width: 122px;
 	padding: 20px 0;
 	text-indent: 10px;
@@ -1396,18 +790,8 @@ td#payment-totalPrice {
 	text-indent: 10px;
 }
 
-#input-phone-company {
-	width: 118px;
-	height: 43px;
-	border-radius: 3px;
-	border: 1px solid lightgray;
-	font-size: 16px;
-	text-indent: 10px;
-}
-
-
-/*SignUp,myPage; individual form style*/
-#content-2,
+/*SignUp,myPage, newPassword; individual form style*/
+#content-2, #content-3,
 #content-myPage,
 #newPasswordForm {
 	width: 40%;
@@ -1416,12 +800,6 @@ td#payment-totalPrice {
 	padding-left: 45px;
 }
 
-/* SignUp,myPage; password eye img style
-#pwd-check-img {
-	width: 21px;
-	height: 14px;
-}
-*/
 /* SignUp, Company-SignUp, myPage; telecom selectbox style */
 #selectbox-mobile,
 #company-selectbox-mobile {
@@ -1446,7 +824,6 @@ td#payment-totalPrice {
 	top: -1px;
 }
 
-
 /* SignUp,Company-SignUp; margin between cellphone and agreement radiobox  */
 #agreement-box {
 	margin: 30px 0 10px 0;
@@ -1468,16 +845,11 @@ td#payment-totalPrice {
 	color: #6E6E6E;
 }
 
-
 /* SignUp,myPage zip-code find button
 SignUp IdCheck button style*/
-#address-btn-style,
-#company-address-btn-style,
-#check-btn-style,
-#c-check-btn-style,
-#email-btn-style,
-#c-email-btn-style,
-#company-address-btn-style {
+#address-btn-style, #company-address-btn-style,
+#check-btn-style, #c-check-btn-style,
+#email-btn-style, #c-email-btn-style {
 	background: #393939;
 	border-radius: 5px;
 	width: 80px;
@@ -1538,12 +910,12 @@ SignUp IdCheck button style*/
 	color: red;
 }
 /*SignUp, Company-SignUp; must insert li style*/
-#must-insert {
+#must-insert,
+#must-insert-1 {
 	position: relative;
 }
 
 #must-insert-1 {
-	position: relative;
 	margin-top: -28px;
 }
 
@@ -1554,6 +926,13 @@ SignUp IdCheck button style*/
 	top: -1.5px;
 	left: 5px;
 	margin-right: 5px;
+}
+
+/*login,findId; input validation check span*/
+#msgId, #msgPwd, #msgName, #msgPhone, #msgName1, #msgPhone1 {
+	width: 394px;
+	margin: auto;
+	text-align: left;
 }
 
 /*SignUp; agreement not must check style*/
@@ -1599,23 +978,16 @@ SignUp IdCheck button style*/
 
 /* login; find-ID link style*/
 #link-findAccount {
-	display: inline-block;
-	background: white;
 	color: #2B2B2B;
 	font-size: 14px;
 	padding: 0 8px;
-	text-decoration: none;
 	font-family: "YouandiModern", sans-serif;
-	margin-top: 30px;
 }
 
 /* login; SignUp link style */
 #link-signUp {
 	display: inline-block;
-	font-family: "Apex New";
-	font-weight: 500;
 	color: #2E7AF6;
-	text-decoration: none;
 	font-size: 14px;
 	margin: 25px 10px 0 8px;
 }
@@ -1624,12 +996,8 @@ SignUp IdCheck button style*/
 	text-decoration: underline;
 }
 
-/*login; line, space between linkAccount and link-SignUp style */
-
-
 /* myPage; deletePwd link style*/
-#link-deleteAccount,
-#link-changePassword,
+#link-deleteAccount, #link-changePassword, 
 #link-donation {
 	margin-left: 330px;
 	text-decoration: none;
@@ -1637,7 +1005,7 @@ SignUp IdCheck button style*/
 	font-weight: bold;
 	font-size: 10pt;
 }
-
+/* myPage; changepassword link style*/
 #link-changePassword {
 	margin-left: 300px;
 }
@@ -1646,34 +1014,9 @@ SignUp IdCheck button style*/
 	margin-left: 285px;
 }
 
-/*findId; findPwd intro*/
-#intro-2 {
-	width: 394px;
-	margin: auto;
-	text-align: left;
-	font-size: 16px;
-	padding-bottom: 14px;
-	font-family: "YouandiModern", sans-serif;
-}
-
-/*login,findId; input validation check span*/
-#msgId,
-#msgPwd,
-#msgName,
-#msgPhone,
-#msgName1,
-#msgPhone1 {
-	width: 394px;
-	margin: auto;
-	text-align: left;
-}
-
-/*****************************cmj**************************************/
-/*******************************���â************************************/
 /*SignUp; modal style
 deletePwd, findId; modal2 style */
-#modal,
-#modal2 {
+#modal, #modal2 {
 	position: fixed;
 	top:50%; 			
 	left:50%;
@@ -1685,8 +1028,7 @@ deletePwd, findId; modal2 style */
 }
 /*SignUp; agreement style
 deletePwd, findId; agreement2 style */
-div.agreement,
-div.agreement2 {
+div.agreement, div.agreement2 {
 	position: fixed;
 	top:50%; 			
 	left:50%;
@@ -1727,19 +1069,19 @@ div.agreement button#button-gradient {
 	width: 250px;
 	font-size: 20px;
 }
-/*SignUp; modal detail style*/
-div.detail1, div.detail2, div.detail3, div.detail4 {
+/*modal style, form id*/
+div.detail1, div.detail2, div.detail3, div.detail4,
+div.deleteComplete,
+div.find-id-none,
+#content-2, #content-3,
+#individual-loginForm, #company-loginForm,
+#individual, #company,
+#findId, #findPwd,
+#individual-login, #company-login,
+#findIdForm, #findPwdForm  {
 	display: none;
 }
 
-/**********************************************************/
-/*deletePwd, findId(id), findId(password); modal style*/
-div.deleteComplete,
-div.deleteComplete1,
-div.find-id-none,
-div.find-pwd-none {
-	display: none;
-}
 /*deletePwd,findId(id,password); modal style*/
 #delete-span {
 	display: inline-block;
@@ -1748,38 +1090,6 @@ div.find-pwd-none {
 /*deletePwd, findId; modal style*/
 div.agreement2 {
 	height: 300px;
-}
-/*findId; modal button style*/
-#button-gradient-gotoLogin,
-#button-gradient-gotoPwd,
-#button-gradient-gotoFind,
-#button-gradient-gotoJoin,
-#button-gradient-home {
-	border: none;
-	width: 180px;
-	height: 50px;
-	cursor: pointer;
-	color: white;
-	background: linear-gradient(to right, #682CAD, #2FC0CC);
-	border-radius: 3px;
-	font-family: "YouandiModern", sans-serif; /***/
-	margin-top: 20px;
-	font-size: 20px; /***/
-}
-/*Company-SignUp form id style*/
-#content-3 {
-	width: 40%;
-	margin: auto;
-	text-align: left;
-	padding-left: 45px;
-}
-
-/*SignUp, Company-SignUp, login; form id*/
-#content-2,
-#content-3,
-#individual-loginForm,
-#company-loginForm {
-	display: none;
 }
 
 /*SignUp, Company-SignUp, login 
@@ -1791,17 +1101,6 @@ findId input radiobox style*/
 #individual-login:checked ~ #individual-loginForm,
 #company-login:checked ~ #company-loginForm {
 	display: block;
-}
-
-/*SignUp, Company-SignUp input-radiobox
-findId input-radiobox style*/
-#individual,
-#company,
-#findId,
-#findPwd,
-#individual-login,
-#company-login {
-	display: none;
 }
 
 #individual-tab,
@@ -1831,7 +1130,8 @@ findId input-radiobox style*/
 #individual-login-tab:hover,
 #company-login-tab:hover {
     color: #2e9cdf;
-    cursor: pointer;}
+    cursor: pointer;
+}
 
 /*SignUp, Company-SignUp, findId; input radio click style*/
 #individual:checked + #individual-tab,
@@ -1845,46 +1145,18 @@ findId input-radiobox style*/
     border-top: 2px solid #2e9cdf;
     border-bottom: 1px solid #ffffff;
 }
-/*findId; form id */
-#findIdForm,
-#findPwdForm {
-	display: none;
-}
 
-/****************************5.31 css update***********************************/
-
-/* join; Company Sign Up button style */
-#button-gradient-company {
-	border: none;
-	width: 394px;
-	height: 60px;
-	cursor: pointer;
-	color: white;
-	background: linear-gradient(to right, #682CAD, #2FC0CC);
-	border-radius: 3px;
-	font-family: "YouandiModern", sans-serif; 
-	margin-top: 20px;
-	font-size: 20px; 
-} 
-/*input-id~ : join.jsp,
-input-common-password (because isn't applied password-button)
-input-common-phone : findId.jsp
-c-input-common : login.jsp (link to company findPwd)
+/*SignUp input-style
 */
-#input-id,
-#input-common-password,
-#input-common-password-check,
+#input-common,
+#input-common-password, #input-common-password-check,
 #company-password, #company-password-check,
 #company-name,
-#input-addr1,
-#company-addr1,
-#company-addr2,
+#input-addr1, #company-addr1, #company-addr2,
 #company-selectbox-phone1,
-#input-common-phone,
-#input-common-name,
+#input-common-phone, #input-common-name,
 #c-input-common,
-#email-auth-check,
-#c-email-auth-check {
+#email-auth-check, #c-email-auth-check {
 	width: 394px;
 	padding: 20px 0;
 	margin: 5px 0;
@@ -1893,6 +1165,10 @@ c-input-common : login.jsp (link to company findPwd)
 	border: 1px solid lightgray;
 	outline: none;
 	font-size: 16px;
+}
+
+#input-common:focus {
+	border: 1px solid gray;
 }
 
 #email-auth-check,
@@ -1917,10 +1193,4 @@ c-input-common : login.jsp (link to company findPwd)
 /*myPage change password link*/
 #changePassword {
 	border: 1px solid red;
-}
-
-#c-idMsg {
-	position: relative;
-	top: -1.5px;
-	left: 5px;
 }

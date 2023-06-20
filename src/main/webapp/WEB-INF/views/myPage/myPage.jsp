@@ -135,7 +135,46 @@
 			        }
 			    }).open();
 		});
+		
+		 let code = "";
+		  $("#email-btn-style").click(function(){
+		  	const email = $("input[name='email1']").val() + "@" + $("input[name='email2']").val();
+		  	
+		  	$.ajax({
+		  		url : "mailCheck.do",
+		  		type: "POST",
+		  		data: { email : email },
+		  		
+		  		success : function(data){
+		  			alert("인증번호가 전송되었습니다");
+		  			code = data;
+		  		}
+		  	});
+		});
+
+		    	
+		  	$('#email-auth-check').on("change", function () {
+					const inputCode = $(this).val();
+				    const resultMsg = $('#emailAuth');
+					
+					if(inputCode === code){
+						resultMsg.text('인증번호가 일치합니다.');
+						resultMsg.css("font-size","11px").css('color','blue').css("display","inline");
+						$('#email-auth-check').attr('disabled',true);
+						$('input[name="email1"]').attr('readonly',true);
+						$('input[name="email2"]').attr('readonly',true);
+						$('#selectbox-email').attr('disabled',true);
+						$('#selectbox-email').attr('onFocus', 'this.initialSelect = this.selectedIndex');
+				        $('#selectbox-email').attr('onChange', 'this.selectedIndex = this.initialSelect');
+					}else{
+						resultMsg.text('인증번호가 불일치 합니다. 다시 확인해주세요!.');
+						resultMsg.css("font-size","11px").css('color','rgb(255, 0, 0)').css("display","inline");
+					}
+			  
+		  });
 	});
+	
+	
 	</script>
 </head>
 <body>
@@ -199,6 +238,8 @@
 							<option value="daum.net" ${memberVo.email3  == 'daum.net' ? 'selected' : ''}>daum.net</option>
 							<option value="direct">직접입력</option>
 						</select>
+						<button type="button" id="email-btn-style">인증 번호</button>
+						<input type="text" name="email-auth-check" id="email-auth-check" placeholder="인증번호 6자리">
 						<span id="emailMsg"></span>
 					</li>
 					<li>
@@ -243,18 +284,18 @@
 					</li>
 					<li>
 						<a href="payment_detail.do" id="link-deleteAccount">
-							<span name="withdraw" id="span-deleteAccount">결제내역 ></span>
+							<span>결제내역 ></span>
 						</a>
 						<a href="deletePwd.do?member_id=${memberVo.member_id }" id="link-deleteAccount">
-							<span name="withdraw" id="span-deleteAccount">회원탈퇴 ></span>
+							<span>회원탈퇴 ></span>
 						</a>
 					</li>
 				</ul>
 			</div>
 		</form>
 	</section>
-	<footer>
-		<jsp:include page="../main/footer.jsp"></jsp:include>
-	</footer>
+
+	<jsp:include page="../main/footer.jsp"></jsp:include>
+
 </body>
 </html>

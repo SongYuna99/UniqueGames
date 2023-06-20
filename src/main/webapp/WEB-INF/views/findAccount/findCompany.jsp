@@ -207,31 +207,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		</ul>
 	</div>
 	
-	<div class="deleteComplete1">
-		<p id="agreement-title">비밀번호 찾기</p>
-		<span id="delete-span">비밀번호 : 
-		<span id="find-pwd-result"></span>
-		</span>
-		<ul>
-			<li>
-			<button type="button" id="button-gradient-gotoFind" name="btn-agreement">다시입력</button>
-				<button type="button" id="button-gradient-gotoLogin" name="btn-agreement">로그인 하러가기</button>
-			</li>
-		</ul>
-	</div>
-	<div class="find-pwd-none">
-		<p id="agreement-title">비밀번호 찾기</p>
-		<span id="delete-span">등록된 회원정보가 없습니다</span>
-		<ul>
-			<li>
-				<button type="button" id="button-gradient-gotoFind" name="btn-agreement">다시입력</button>
-				<button type="button" id="button-gradient-gotoJoin" name="btn-agreement">회원가입</button>
-			</li>
-		</ul>
-	</div>
-	
-	<footer>
-		<jsp:include page="../main/footer.jsp"></jsp:include>
-	</footer>
+	<jsp:include page="../main/footer.jsp"></jsp:include>
 </body>
 </html>
