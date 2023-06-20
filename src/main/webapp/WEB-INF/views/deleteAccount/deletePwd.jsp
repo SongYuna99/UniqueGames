@@ -88,7 +88,7 @@
 	<section id="content-1">
 		<p id="intro">회원탈퇴</p>
 		<form action="delete_check.do" name="loginForm" method="post">
-			<div>
+			<div id="div-delete">
 				<p id="intro-1">탈퇴 사유</p>
 				<ul>
 					<li>
