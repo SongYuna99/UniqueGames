@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.uniquegames.dao.CompanyDao;
 import com.uniquegames.dao.MemberDao;
 import com.uniquegames.service.CompanyMemberService;
+import com.uniquegames.service.MailSendService;
 import com.uniquegames.service.MemberService;
 import com.uniquegames.vo.CompanyVo;
 import com.uniquegames.vo.MemberVo;
@@ -22,17 +23,14 @@ public class JoinController {
 	
 	@Autowired
 	private CompanyMemberService companyMemberService;
+	
+	@Autowired
+	private MailSendService mailService;
 
 	@RequestMapping(value="/join.do", method=RequestMethod.GET)
 	public String join() {
 		return "/join/join";
 	}
-	
-	@RequestMapping(value="/joinChoice.do", method=RequestMethod.GET)
-	public String joinChoice() {
-		return "/join/joinChoice";
-	}
-	
 	
 	@RequestMapping(value="/join_individual_proc.do", method=RequestMethod.POST)
 	public ModelAndView join_proc(MemberVo memberVo) {
@@ -41,9 +39,9 @@ public class JoinController {
 		
 		if(result==1) {
 			mav.addObject("join_individual_result", "success");
-			mav.setViewName("/login/login");
+			mav.setViewName("/login/login2");
 		}else {
-			System.out.println("½ÇÆĞ");
+			System.out.println("íšŒì›ê°€ì… ì‹¤íŒ¨");
 		}
 		
 		return mav;
@@ -55,31 +53,33 @@ public class JoinController {
 		return memberService.memberIdCheckResult(member_id);
 	}
 	
-	/**ÀÌ¸ŞÀÏ Áßº¹Ã¼Å©*/
+	/**ì´ë©”ì¼ ì¤‘ë³µ í™•ì¸*/
 	@RequestMapping(value="/email_check.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String email_check(String email1, String email2) {
 		String email = email1 + "@" + email2;
 		
 		int result = memberService.memberEmailCheckResult(email);
-		System.out.println("result="+result);
 		return String.valueOf(result);
 	}
 	
-	/**ÈŞ´ëÀüÈ­ Áßº¹Ã¼Å©*/
+	/**íœ´ëŒ€ì „í™” ì¤‘ë³µí™•ì¸*/
 	@RequestMapping(value="/phone_check.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String phone_check(String phone1, String phone2, String phone3) {
 		String phone_num = phone1+"-"+phone2+"-"+phone3;
 		
-		System.out.println("phone_num="+ phone_num);
-		
 		int result = memberService.memberPhoneCheckResult(phone_num);
-		System.out.println("result="+result);
 		return String.valueOf(result);
 	}
 	
-	/******************************************************************¹ıÀÎ**********************************************************************/
+	@RequestMapping(value="/mailCheck.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String mailCheck(String email) {
+		return mailService.joinEmail(email);
+	}
+	
+	/******************************************************************ë²•ì¸ íšŒì›ê°€ì…**********************************************************************/
 	@RequestMapping(value="/join_company_proc.do", method=RequestMethod.POST)
 	public ModelAndView companyJoin(CompanyVo companyVo) {
 		ModelAndView mav = new ModelAndView();
@@ -87,9 +87,9 @@ public class JoinController {
 		
 		if(result==1) {
 			mav.addObject("join_company_result", "success");
-			mav.setViewName("/login/login");
+			mav.setViewName("/login/login2");
 		}else {
-			System.out.println("½ÇÆĞ");
+			System.out.println("íšŒì›ê°€ì… ì‹¤íŒ¨");
 		}
 		
 		return mav;
@@ -103,12 +103,11 @@ public class JoinController {
 		return String.valueOf(result);
 	}
 	
-	/**ÀÌ¸ŞÀÏ Áßº¹Ã¼Å©*/
+	/**ë²•ì¸ ì´ë©”ì¼ ì¤‘ë³µí™•ì¸*/
 	@RequestMapping(value="/c_email_check.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String c_email_check(String email1, String email2) {
 		String email = email1 + "@" + email2;
-		
 		int result = companyMemberService.companyEmailCheckResult(email);
 		
 		return String.valueOf(result);
@@ -116,16 +115,13 @@ public class JoinController {
 	
 	
 	
-	/**ÈŞ´ëÀüÈ­ Áßº¹Ã¼Å©*/
+	/**ë²•ì¸ íœ´ëŒ€ì „í™” ì¤‘ë³µí™•ì¸*/
 	@RequestMapping(value="/c_phone_check.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String c_phone_check(String phone1, String phone2, String phone3) {
 		String phone_num = phone1+"-"+phone2+"-"+phone3;
 		
-		System.out.println("phone_num="+ phone_num);
-		
 		int result = companyMemberService.companyPhoneCheckResult(phone_num);
-		System.out.println("result="+result);
 		return String.valueOf(result);
 	}
 	

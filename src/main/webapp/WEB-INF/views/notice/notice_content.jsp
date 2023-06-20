@@ -81,9 +81,6 @@
 				<form id="comment-write" name="commentWriteForm" action="comment_write_proc.do" method="post">
 					<input type="hidden" name="post_id" value="${noticeVo.post_id}">
 					<c:choose>
-						<c:when test='${fn:contains(loginMember, "CompanyVo")}'>
-							<input type="hidden" id="member_id" name="member_id" value="${loginMember.company_id}">
-						</c:when>
 						<c:when test='${fn:contains(loginMember, "MemberVo")}'>
 							<input type="hidden" id="member_id" name="member_id" value="${loginMember.member_id}">
 						</c:when>
@@ -100,35 +97,12 @@
 					<div id="comment${status.count}" class="comment1">
 						<input type="hidden" name="no" value="${c.comment_id}">
 						<div id="user-name">${c.member_id}</div>
-						<div><span id="msg-date">${c.comment_date}</span><span id="cmtDelete" class="cmtDelete" onclick="javascript:commentDelete(${c.comment_id})">삭제</span></div>
+						<div><span id="msg-date">${c.comment_date}</span><c:if test='${c.member_id eq loginMember.member_id}'><span id="cmtDelete" class="cmtDelete" onclick="javascript:commentDelete(${c.comment_id})">삭제</span></c:if></div>
 						${c.comment_content}
 					</div>
 					</c:forEach>
 			</div>
 		</section>
-<!-- 		<div id="modal-background" class="test">
-			<div id="modal-container">
-				<div id="modal-title">
-					<h2>신고</h2>
-				</div>
-				<div id="modal-content">
-					<p><input type="checkbox" name="pokryuk" id="chk-circle"> 괴롭힘 및 사이버 폭력</p>
-					<p><input type="checkbox" name="chimhae" id="chk-circle"> 개인정보 침해</p>
-					<p><input type="checkbox" name="doyong" id="chk-circle"> 명의 도용</p>
-					<p><input type="checkbox" name="wehyub" id="chk-circle"> 폭력적 위협</p>
-					<p><input type="checkbox" name="hakdae" id="chk-circle"> 아동 학대</p>
-					<p><input type="checkbox" name="pyohyun" id="chk-circle"> 보호 대상 집단에 대한 증오심 표현</p>
-					<p><input type="checkbox" name="sagi" id="chk-circle"> 스팸 및 사기</p>
-					<p><input type="checkbox" name="none" id="chk-circle"> 나에게 해당하는 문제 없음</p>
-					<div>컨텐츠가 신고되면 UniGames 담당자가 검토하여 커뮤니티 가이드의 위반 여부를 판단합니다. 
-						커뮤니티 가이드를 위반한 계정은 불이익을 받게 되며 반복적이거나 심각한 위반이 발생한 경우에는 계정이 해지될 수 있습니다.</div>
-				</div>
-				<div id="modal-selectarea">
-					<div id="modal-close">취소</div>
-					<div id="modal-report">신고</div>
-				</div>
-			</div>
-		</div> -->
 		<form name="noticeDelete" action="notice_delete.do" method="post"><input type="hidden" name="no" value="${noticeVo.post_id}"><c:if test="${noticeVo.image_id !=null}"><input type="hidden" name="imgdel" value="${noticeVo.image_id}"></c:if></form>
 	</div>
 	<jsp:include page="../main/footer.jsp"></jsp:include>
