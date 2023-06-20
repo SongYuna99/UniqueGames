@@ -60,6 +60,14 @@ $("#button-gradient").click(function(){
 		alert("이메일을 확인해주세요");
 		$("input[name='email1']").focus();
 		return false;
+	}else if($("#email-auth-check").val()=="") {
+		alert("이메일 인증번호를 입력해주세요");
+		$("#email-auth-check").focus();
+		return false;
+	}else if($("#emailAuth").css("color") === "rgb(255, 0, 0)") {
+		alert("이메일 인증번호를 확인해주세요");
+		$("#email-auth-check").focus();
+		return false;
 	}else if($("#selectbox-mobile").val()=="default") {
 		alert("통신사를 선택해주세요");
 		$("#selectbox-mobile").focus();
@@ -140,7 +148,7 @@ $("#button-gradient-company").click(function(){
 		alert("이메일은 필수 입력 항목입니다");
 		$("#company-email1").focus();
 		return false;
-	}else if(!emailCheck($("#company-email1").val())){ //
+	}else if(!emailCheck($("#company-email1").val())){
 		alert("이메일은 영문 또는 숫자로 4자리 이상 입력해주세요");
 		$("#company-email1").focus();
 		return false;
@@ -151,6 +159,14 @@ $("#button-gradient-company").click(function(){
 	}else if($("#c-emailMsg").text() != ""){
 		alert("이메일을 확인해주세요");
 		$("#company-email1").focus();
+		return false;
+	}else if($("#c-email-auth-check").val()=="") {
+		alert("이메일 인증번호를 입력해주세요");
+		$("#c-email-auth-check").focus();
+		return false;
+	}else if($("#c-emailAuth").css("color") === "rgb(255, 0, 0)") {
+		alert("이메일 인증번호를 확인해주세요");
+		$("#c-email-auth-check").focus();
 		return false;
 	}else if($("#company-selectbox-mobile").val()=="default") {
 		alert("통신사를 선택해주세요");
@@ -260,10 +276,10 @@ $("input[name='member_id']").blur(function(){
 
 $("input[name='password']").blur(function(){
 	if($("input[name='password']").val()=="") {
-		$("#pwdMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		$("#pwdMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
 	}else {
 		if(!pwdCheck($("input[name='password']").val())) {
-			$("#pwdMsg").text("올바른 비밀번호 형식이 아닙니다").css("color","red").css("font-size","11px").css("display","block");
+			$("#pwdMsg").text("올바른 비밀번호 형식이 아닙니다").css("color","red").css("font-size","11px").css("display","inline");
 		}else {
 			$("#pwdMsg").css("display","none");
 		}
@@ -275,14 +291,14 @@ $("input[name='password-check']").blur(function(){
 	
 	if($("input[name='password-check']").val()=="") {
 		
-		$("#pwdMsg-check").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		$("#pwdMsg-check").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
 		
 	}else if($("input[name='password']").val()!="" && $("input[name='password-check']").val()!="") {
 		
 		if($("input[name='password']").val() == $("input[name='password-check']").val()){
-			$("#pwdMsg-check").text("비밀번호가 서로 동일합니다").css("color","blue").css("font-size","11px").css("display","block");
+			$("#pwdMsg-check").text("비밀번호가 서로 동일합니다").css("color","blue").css("font-size","11px").css("display","inline");
 		}else {
-			$("#pwdMsg-check").text("비밀번호가 서로 동일하지 않습니다").css("color","red").css("font-size","11px").css("display","block");
+			$("#pwdMsg-check").text("비밀번호가 서로 동일하지 않습니다").css("color","red").css("font-size","11px").css("display","inline");
 		}
 	} 
 	
@@ -290,10 +306,10 @@ $("input[name='password-check']").blur(function(){
 
 $("input[name='name']").blur(function(){
 	if($("input[name='name']").val()=="") {
-		$("#nameMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		$("#nameMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
 	}else {
 		if(!nameCheck($("input[name='name']").val())) {
-			$("#nameMsg").text("올바른 이름 형식이 아닙니다").css("color","red").css("font-size","11px").css("display","block");
+			$("#nameMsg").text("올바른 이름 형식이 아닙니다").css("color","red").css("font-size","11px").css("display","inline");
 		}else {
 			$("#nameMsg").css("display","none");
 		}
@@ -302,11 +318,11 @@ $("input[name='name']").blur(function(){
 
 $("input[name='email1']").blur(function(){
 	if($("input[name='email1']").val()=="" && $("#join-email2").val()==""){
-		$("#emailMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		$("#emailMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
 	}else{
 		
 		if(!emailCheck($("input[name='email1']").val())){
-			$("#emailMsg").text("이메일은 영문 또는 숫자로 4자리 이상 입력해주세요").css("color","red").css("font-size","11px").css("display","block");
+			$("#emailMsg").text("이메일은 영문 또는 숫자로 4자리 이상 입력해주세요").css("color","red").css("font-size","11px").css("display","inline");
 		}else{
 			$("#emailMsg").css("display","none");
 		}
@@ -316,7 +332,7 @@ $("input[name='email1']").blur(function(){
 
 $("#selectbox-mobile, #selectbox-phone, input[name='phone2'], input[name='phone3']").blur(function() {
     if ($("#selectbox-mobile").val() == "default" || $("#selectbox-phone").val() == "default" || $("input[name='phone2']").val() == "" || $("input[name='phone3']").val() == "") {
-		$("#phoneMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		$("#phoneMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
 	}else {
 		$.ajax({
 			url : "phone_check.do",
@@ -329,7 +345,7 @@ $("#selectbox-mobile, #selectbox-phone, input[name='phone2'], input[name='phone3
 			
 			success : function(result) {
 				if(result==1) {
-					$("#phoneMsg").text("이미 등록된 휴대전화입니다").css("color","red").css("font-size","11px").css("display","block");
+					$("#phoneMsg").text("이미 등록된 휴대전화입니다").css("color","red").css("font-size","11px").css("display","inline");
 					return false;
 				}else {
 					$("#phoneMsg").text("").css("display","none");
@@ -343,7 +359,7 @@ $("#selectbox-mobile, #selectbox-phone, input[name='phone2'], input[name='phone3
 
 $("#company-selectbox-mobile, #company-selectbox-phone, #company-phone2, #company-phone3").blur(function() {
     if ($("#company-selectbox-mobile").val() == "default" || $("#company-selectbox-phone").val() == "default" || $("#company-phone2").val() == "" || $("#company-phone3").val() == "") {
-		$("#c-phoneMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		$("#c-phoneMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
 	}else {
 		$.ajax({
 			url : "c_phone_check.do",
@@ -356,7 +372,7 @@ $("#company-selectbox-mobile, #company-selectbox-phone, #company-phone2, #compan
 			
 			success : function(result) {
 				if(result==1) {
-					$("#c-phoneMsg").text("이미 등록된 휴대전화입니다").css("color","red").css("font-size","11px").css("display","block");
+					$("#c-phoneMsg").text("이미 등록된 휴대전화입니다").css("color","red").css("font-size","11px").css("display","inline");
 					return false;
 				}else {
 					$("#c-phoneMsg").text("").css("display","none");
@@ -370,12 +386,12 @@ $("#company-selectbox-mobile, #company-selectbox-phone, #company-phone2, #compan
 /*
 $("input[name='company_id']").blur(function(){
 	if($("input[name='company_id']").val()==""){
-		$("#c-idMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		$("#c-idMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
 	}else {
 		if(!idCheck2($("input[name='company_id']").val())){
-			$("#c-idMsg").text("영문 또는 숫자로 작성해주세요").css("color","red").css("font-size","11px").css("display","block");
+			$("#c-idMsg").text("영문 또는 숫자로 작성해주세요").css("color","red").css("font-size","11px").css("display","inline");
 		}else if(!idCheck3($("input[name='company_id']").val())) {
-			$("#c-idMsg").text("5~10자리로 작성해주세요").css("color","red").css("font-size","11px").css("display","block");
+			$("#c-idMsg").text("5~10자리로 작성해주세요").css("color","red").css("font-size","11px").css("display","inline");
 		}else {
 			$("#c-idMsg").css("display","none");
 		}
@@ -386,10 +402,10 @@ $("input[name='company_id']").blur(function(){
 
 $("#company-password").blur(function(){
 	if($("#company-password").val()=="") {
-		$("#c-pwdMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		$("#c-pwdMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
 	}else {
 		if(!pwdCheck($("#company-password").val())) {
-			$("#c-pwdMsg").text("올바른 비밀번호 형식이 아닙니다").css("color","red").css("font-size","11px").css("display","block");
+			$("#c-pwdMsg").text("올바른 비밀번호 형식이 아닙니다").css("color","red").css("font-size","11px").css("display","inline");
 		}else {
 			$("#c-pwdMsg").css("display","none");
 		}
@@ -401,14 +417,14 @@ $("#company-password-check").blur(function(){
 	
 	if($("#company-password-check").val()=="") {
 		
-		$("#c-pwdMsg-check").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		$("#c-pwdMsg-check").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
 		
 	}else if($("#company-password").val()!="" && $("#company-password-check").val()!="") {
 		
 		if($("#company-password").val() == $("#company-password-check").val()){
-			$("#c-pwdMsg-check").text("비밀번호가 서로 동일합니다").css("color","blue").css("font-size","11px").css("display","block");
+			$("#c-pwdMsg-check").text("비밀번호가 서로 동일합니다").css("color","blue").css("font-size","11px").css("display","inline");
 		}else {
-			$("#c-pwdMsg-check").text("비밀번호가 서로 동일하지 않습니다").css("color","red").css("font-size","11px").css("display","block");
+			$("#c-pwdMsg-check").text("비밀번호가 서로 동일하지 않습니다").css("color","red").css("font-size","11px").css("display","inline");
 		}
 	} 
 	
@@ -416,10 +432,10 @@ $("#company-password-check").blur(function(){
 
 $("#company-name").blur(function(){
 	if($("#company-name").val()=="") {
-		$("#c-nameMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		$("#c-nameMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
 	}else {
 		if(!nameCheck($("#company-name").val())) {
-			$("#c-nameMsg").text("올바른 이름 형식이 아닙니다").css("color","red").css("font-size","11px").css("display","block");
+			$("#c-nameMsg").text("올바른 이름 형식이 아닙니다").css("color","red").css("font-size","11px").css("display","inline");
 		}else {
 			$("#c-nameMsg").css("display","none");
 		}
@@ -428,11 +444,11 @@ $("#company-name").blur(function(){
 
 $("#company-email1").blur(function(){
 	if($("#company-email1").val()==""){
-		$("#c-emailMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		$("#c-emailMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
 	}else{
 		
 		if(!emailCheck($("#company-email1").val())){
-			$("#c-emailMsg").text("이메일은 영문 또는 숫자로 4자리 이상 입력해주세요").css("color","red").css("font-size","11px").css("display","block");
+			$("#c-emailMsg").text("이메일은 영문 또는 숫자로 4자리 이상 입력해주세요").css("color","red").css("font-size","11px").css("display","inline");
 		}else{
 			$("#c-emailMsg").css("display","none");
 		}
@@ -449,7 +465,7 @@ $("#selectbox-email").change(function(){
 	
 	if($("#selectbox-email").val()=="default") {
 		$("#join-email2").val("");
-		$("#emailMsg").text("이메일을 선택해주세요").css("color","red").css("font-size","11px").css("display","block");
+		$("#emailMsg").text("이메일을 선택해주세요").css("color","red").css("font-size","11px").css("display","inline");
 		$("#selectbox-email").focus();
 		return false;
 	}else if($("#selectbox-email").val()=="direct") {
@@ -464,7 +480,7 @@ $("#company-selectbox-email").change(function(){
 	
 	if($("#company-selectbox-email").val()=="default") {
 		$("#company-email2").val("");
-		$("#emailMsg").text("이메일을 선택해주세요").css("color","red").css("font-size","11px").css("display","block");
+		$("#emailMsg").text("이메일을 선택해주세요").css("color","red").css("font-size","11px").css("display","inline");
 		$("#company-selectbox-email").focus();
 		return false;
 	}else if($("#company-selectbox-email").val()=="direct") {
@@ -576,7 +592,7 @@ $("#c-chk-circle").click(function(){
 });
 	
 /*************************************************************************
-					법인 회원가입; 동의 하나라도 체크 해제 시 전체동의 해제
+					법인 회원가입; 체크 해제 시 전체동의 해제
 *************************************************************************/
 $("input[name='c-chk-agree']").click(function(){
 	
@@ -619,22 +635,22 @@ $(document).on("click", "button[name='btn-agreement']", function(){
 $("#check-btn-style").click(function(){
 		
 	if($("#input-id").val()=="") {
-		$("#idMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		$("#idMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
 	}else if(!idCheck2($("input[name='member_id']").val())){
-			$("#idMsg").text("영문 또는 숫자로 작성해주세요").css("color","red").css("font-size","11px").css("display","block");
+			$("#idMsg").text("영문 또는 숫자로 작성해주세요").css("color","red").css("font-size","11px").css("display","inline");
 	}else if(!idCheck3($("input[name='member_id']").val())) {
-			$("#idMsg").text("5~10자리로 작성해주세요").css("color","red").css("font-size","11px").css("display","block");
+			$("#idMsg").text("5~10자리로 작성해주세요").css("color","red").css("font-size","11px").css("display","inline");
 	}else {
 		$.ajax({
 			url : "id_check.do?member_id="+$("#input-id").val(),
 			success : function(result) {
 				if(result == 1){
 						$("#idMsg").text("이미 사용중인 아이디 입니다. 다시 입력해주세요")
-						.css("color","red").css("font-size","11px").css("display","block");
+						.css("color","red").css("font-size","11px").css("display","inline");
 						$("input[name='member_id']").val("").focus();
 					}else if(result == 0){
 						$("#idMsg").text("사용 가능한 아이디 입니다")
-						.css("color","blue").css("font-size","11px").css("display","block");
+						.css("color","blue").css("font-size","11px").css("display","inline");
 						$("#input-common-password").focus();
 						
 					}
@@ -649,23 +665,23 @@ $("#check-btn-style").click(function(){
 $("#c-check-btn-style").click(function(){
 		
 	if($("input[name='company_id']").val()=="") {
-		$("#c-idMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		$("#c-idMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
 	}else if(!idCheck2($("input[name='company_id']").val())) {
-			$("#c-idMsg").text("영문 또는 숫자로 작성해주세요").css("color","red").css("font-size","11px").css("display","block");
+			$("#c-idMsg").text("영문 또는 숫자로 작성해주세요").css("color","red").css("font-size","11px").css("display","inline");
 	}else if(!idCheck3($("input[name='company_id']").val())) {
-			$("#c-idMsg").text("5~10자리로 작성해주세요").css("color","red").css("font-size","11px").css("display","block");
+			$("#c-idMsg").text("5~10자리로 작성해주세요").css("color","red").css("font-size","11px").css("display","inline");
 	}else {
 		$.ajax({
 			url : "c_id_check.do?company_id="+$("input[name='company_id']").val(),
 			success : function(result) {
 				if(result == 1){
 						$("#c-idMsg").text("이미 사용중인 아이디 입니다. 다시 입력해주세요")
-						.css("color","red").css("font-size","11px").css("display","block");
+						.css("color","red").css("font-size","11px").css("display","inline");
 						
 						$("input[name='company_id']").val("").focus();
 					}else if(result == 0){
 						$("#c-idMsg").text("사용 가능한 아이디 입니다")
-						.css("color","blue").css("font-size","11px").css("display","block");
+						.css("color","blue").css("font-size","11px").css("display","inline");
 						$("#company-password").focus();
 					}
 				}
@@ -680,7 +696,7 @@ $("#c-check-btn-style").click(function(){
 $("input[name='email1'], input[name='email2'], #selectbox-email").blur(function(){
     		
 	if($("input[name='email2']").val() == "") {
-		$("#emailMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		$("#emailMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
 		return false;
 	}else {
 		$.ajax({
@@ -693,7 +709,7 @@ $("input[name='email1'], input[name='email2'], #selectbox-email").blur(function(
 			
 			success : function(result) {
 				if(result==1) {
-					$("#emailMsg").text("중복된 이메일입니다").css("color","red").css("font-size","11px").css("display","block");
+					$("#emailMsg").text("중복된 이메일입니다").css("color","red").css("font-size","11px").css("display","inline");
 					return false;
 				}else {
 					$("#emailMsg").text("").css("display","none");
@@ -709,7 +725,7 @@ $("input[name='email1'], input[name='email2'], #selectbox-email").blur(function(
 $("#company-email1, #company-email2, #company-selectbox-email").blur(function(){
     		
 	if($("#company-email2").val() == "") {
-		$("#c-emailMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
+		$("#c-emailMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
 		return false;
 	}else {
 		$.ajax({
@@ -722,7 +738,7 @@ $("#company-email1, #company-email2, #company-selectbox-email").blur(function(){
 			
 			success : function(result) {
 				if(result==1) {
-					$("#c-emailMsg").text("중복된 이메일입니다").css("color","red").css("font-size","11px").css("display","block");
+					$("#c-emailMsg").text("중복된 이메일입니다").css("color","red").css("font-size","11px").css("display","inline");
 					return false;
 				}else {
 					$("#c-emailMsg").text("").css("display","none");
@@ -736,11 +752,95 @@ $("#company-email1, #company-email2, #company-selectbox-email").blur(function(){
 $("input[name='member_id']").keydown(function() {
 
     if (event.getModifierState("CapsLock")) {
-      $("#capsLockMsg").text("Caps Lock이 켜져 있습니다").css("color", "red").css("font-size", "11px").css("display", "block");
+      $("#capsLockMsg").text("Caps Lock이 켜져 있습니다").css("color", "red").css("font-size", "11px").css("display", "inline");
     } else {
       $("#capsLockMsg").css("display", "none");
     }
-  });	
+  });
 
+
+  let code = "";
+  $("#email-btn-style").click(function(){
+  	const email = $("input[name='email1']").val() + "@" + $("input[name='email2']").val();
+  	
+  	$.ajax({
+  		url : "mailCheck.do",
+  		type: "POST",
+  		data: { email : email },
+  		
+  		success : function(data){
+  			alert("인증번호가 전송되었습니다");
+  			code = data;
+  		}
+  	});
+});
+
+    	
+  	$('#email-auth-check').on("change", function () {
+			const inputCode = $(this).val();
+		    const resultMsg = $('#emailAuth');
+			
+			if(inputCode === code){
+				resultMsg.text('인증번호가 일치합니다.');
+				resultMsg.css("font-size","11px").css('color','blue').css("display","inline");
+				$('#email-auth-check').attr('disabled',true);
+				$('input[name="email1"]').attr('readonly',true);
+				$('input[name="email2"]').attr('readonly',true);
+				$('#selectbox-email').attr('disabled',true);
+				$('#selectbox-email').attr('onFocus', 'this.initialSelect = this.selectedIndex');
+		        $('#selectbox-email').attr('onChange', 'this.selectedIndex = this.initialSelect');
+			}else{
+				resultMsg.text('인증번호가 불일치 합니다. 다시 확인해주세요!.');
+				resultMsg.css("font-size","11px").css('color','rgb(255, 0, 0)').css("display","inline");
+			}
+	  
+  });
+  
+  $("#company").click(function(){
+  		$('input[name="email1"], input[name="email2"]').attr('readonly',false);
+  });
+  
+  /********************************************법인*************************************************************/
+  
+  let code1 = "";
+  $("#c-email-btn-style").click(function(){
+  	const email = $("#company-email1").val() + "@" + $("#company-email2").val();
+  	//alert(email);
+  	
+  	$.ajax({
+  		url : "mailCheck.do",
+  		type: "POST",
+  		data: { email : email },
+  		
+  		success : function(data){
+  			alert("인증번호가 전송되었습니다");
+  			code1 = data;
+  		}
+  	});
+});
+
+    	
+  	$('#c-email-auth-check').on("change",function () {
+
+			const inputCode1 = $(this).val();
+			const resultMsg1 = $('#c-emailAuth');
+			
+			if(inputCode1 === code1){
+				resultMsg1.text('인증번호가 일치합니다.');
+				resultMsg1.css("font-size","11px").css('color','blue').css("display","inline");
+				$('#c-email-auth-check').attr('disabled',true);
+				$('#company-email1').attr('readonly',true);
+				$('#company-email2').attr('readonly',true);
+				$('#company-selectbox-email').attr('disabled',true);
+				$('#company-selectbox-email').attr('onFocus', 'this.initialSelect = this.selectedIndex');
+		        $('#company-selectbox-email').attr('onChange', 'this.selectedIndex = this.initialSelect');
+			}else{
+				resultMsg1.text('인증번호가 불일치 합니다. 다시 확인해주세요!.');
+				resultMsg1.css("font-size","11px").css('color','rgb(255, 0, 0)').css("display","inline");
+			}
+	  
+  });
+  
+  		
 	
 });

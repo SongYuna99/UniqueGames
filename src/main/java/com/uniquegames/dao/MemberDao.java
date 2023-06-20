@@ -18,19 +18,6 @@ public class MemberDao{
 		return sqlSession.selectOne("mapper.member.login", memberVo);
 	}
 
-	/*
-	public int login(Object vo) {
-		int result=0;
-		if(vo instanceof MemberVo) {
-			MemberVo memberVo = (MemberVo)vo;
-			result=sqlSession.selectOne("mapper.member.login", memberVo);
-		}else if(vo instanceof CompanyVo) {
-			CompanyVo companyVo = (CompanyVo)vo;
-			result=sqlSession.selectOne("mapper.member.login", companyVo);
-		}
-		return result;
-	}
-	*/
 	/**sign up member*/
 	public int insert(MemberVo memberVo) {
 		return sqlSession.insert("mapper.member.insert", memberVo);
@@ -46,7 +33,7 @@ public class MemberDao{
 		return sqlSession.selectOne("mapper.member.findId", memberVo);
 	}
 	
-	/*********************ºñ¹Ð¹øÈ£ Àç¼³Á¤****************************************/
+	/*********************ï¿½ï¿½Ð¹ï¿½È£ ï¿½ç¼³ï¿½ï¿½****************************************/
 	public int select(MemberVo memberVo) {
 		return sqlSession.selectOne("mapper.member.select", memberVo);
 	}
@@ -129,7 +116,7 @@ public class MemberDao{
 	
 	
 	
-	/*********************³Ñ¾î¿À´Â name°ªÀ» ¹Þ¾Æ¼­ ¿©±â ÀÖÀ¸¸é member·Î ¾Æ´Ï¸é company·Î(µµÀü)
+	/*********************ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ nameï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ memberï¿½ï¿½ ï¿½Æ´Ï¸ï¿½ companyï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
 	public int selectMode(String name, String phone_num) {
 		int result=0;
 		String sql = "select count(*) from member where name=? and phone_num=?";

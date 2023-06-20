@@ -1,5 +1,7 @@
 package com.uniquegames.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.uniquegames.dao.MemberDao;
+import com.uniquegames.model.SessionConstants;
 import com.uniquegames.service.CompanyMemberService;
 import com.uniquegames.service.MemberService;
 import com.uniquegames.vo.CompanyVo;
@@ -26,23 +26,36 @@ public class DeleteAccountController {
 
 	
 	@RequestMapping(value="/deletePwd.do", method=RequestMethod.GET)
-	public ModelAndView deletePwd(String member_id) {
+	public ModelAndView deletePwd(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		MemberVo memberVo = memberSerivce.memberMyPageResult(member_id);
-		mav.addObject("memberVo", memberVo);
-		mav.setViewName("/deleteAccount/deletePwd");
+		
+		String mode = session.getAttribute(SessionConstants.LOGIN_MEMBER).toString();
+		
+		if(mode.contains("MemberVo")) {
+			MemberVo memberVo = (MemberVo)session.getAttribute(SessionConstants.LOGIN_MEMBER);
+			mav.addObject("memberVo", memberVo);
+			mav.setViewName("/deleteAccount/deletePwd");
+		}else if(mode.contains("CompanyVo")) {
+			CompanyVo companyVo = (CompanyVo)session.getAttribute(SessionConstants.LOGIN_MEMBER);
+			mav.addObject("companyVo", companyVo);
+			mav.setViewName("/deleteAccount/deleteCompany");
+		}
 		
 		return mav;
 	}
 	
 	@RequestMapping(value="/delete_check.do", method=RequestMethod.POST)
 	@ResponseBody
-	public String delete_check(MemberVo memberVo) {
+	public String delete_check(MemberVo memberVo, HttpSession session) {
 		int result = memberSerivce.memberDeleteResult(memberVo);
+		
+		if(result==1) {
+			session.invalidate();
+		}
 		return String.valueOf(result);
 	}
 	
-	/**************************π˝¿Œ****************************************/
+	/**************************ÌöåÏõê ÌÉàÌá¥***************************************
 	@RequestMapping(value="/deleteCompany.do", method=RequestMethod.GET)
 	public ModelAndView deleteCompany(String company_id) {
 		ModelAndView mav = new ModelAndView();
@@ -53,11 +66,16 @@ public class DeleteAccountController {
 		
 		return mav;
 	}
-	
+	*/
 	@RequestMapping(value="/company_delete_check.do", method=RequestMethod.POST)
 	@ResponseBody
-	public String company_delete_check(CompanyVo companyVo) {
+	public String company_delete_check(CompanyVo companyVo, HttpSession session) {
 		int result = companyMemberService.companyDeleteResult(companyVo);
+		
+		if(result==1) {
+			session.invalidate();
+		}
+		
 		return String.valueOf(result);
 	}
 	

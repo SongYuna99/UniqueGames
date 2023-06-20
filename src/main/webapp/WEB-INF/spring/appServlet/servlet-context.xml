@@ -35,6 +35,4 @@
 			<beans:bean id="loginCheckInterceptor" class="com.uniquegames.interceptor.LoginCheckInterceptor"/>
 		</interceptor>
 	</interceptors>
-
-
 </beans:beans>
