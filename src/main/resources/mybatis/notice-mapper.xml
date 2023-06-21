@@ -38,9 +38,9 @@
 			FROM NOTICE
 			INNER JOIN COMPANY
 			ON NOTICE.COMPANY_ID = COMPANY.COMPANY_ID
+			WHERE TITLE LIKE CONCAT('%',#{keyword},'%')
 		) T1
-		WHERE TITLE LIKE CONCAT('%',#{keyword},'%')
-		AND RNO between #{start} AND #{end}
+		WHERE RNO between #{start} AND #{end}
 	</select>
 
 	<!-- 공지사항 작성 -->
