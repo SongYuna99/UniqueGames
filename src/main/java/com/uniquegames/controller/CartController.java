@@ -1,5 +1,6 @@
 package com.uniquegames.controller;
 
+import com.uniquegames.vo.CompanyVo;
 import com.uniquegames.vo.GameVo;
 import com.uniquegames.vo.MemberVo;
 import java.util.ArrayList;
@@ -19,15 +20,15 @@ import com.uniquegames.service.OrderServiceImpl;
 import com.uniquegames.vo.OrderVo;
 
 @Controller
-@SessionAttributes({SessionConstants.LOGIN_MEMBER,"game"})
+@SessionAttributes({SessionConstants.LOGIN_MEMBER,"game","companyVo"})
 public class CartController {
 	@Autowired
 	OrderServiceImpl orderService;
 
 	@RequestMapping(value = "/cart.do", method = RequestMethod.POST)
-	public String getValue(@RequestParam("selectedValue") String selectedValue, @ModelAttribute("game")
-			GameVo gameVo){
-		System.out.println("테스트 값은? : " + gameVo.getName());
+	public String getValue(@RequestParam("selectedValue") String selectedValue, @ModelAttribute("companyVo")
+	CompanyVo companyVo){
+		System.out.println("테스트 값은? : " + companyVo.getName());
 		/*
 		* orderService의 데이터 insert 기능 추가
 		* */

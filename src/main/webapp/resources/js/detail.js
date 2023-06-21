@@ -118,6 +118,7 @@ $('#btn_wishlist').bind("click",function (){
 
 $('#btn_donate').bind("click", function() {
   var gameName = $('#game_name').text();
+  var companyId = $('#company_id').text();
   if (gameName) {
     $.ajax({
       url: '../detail/popUp.do',
@@ -135,6 +136,22 @@ $('#btn_donate').bind("click", function() {
     });
   } else {
     console.log('라디오 버튼을 선택해주세요.');
+  }
+});
+
+const companyId = $("#company_id").text(); // HTML 태그의 텍스트 값을 가져옴
+let currentURL = window.location.href;
+let id = currentURL.substring(currentURL.lastIndexOf('/') + 1, currentURL.lastIndexOf('.do'));
+$.ajax({
+  url: "../detail/"+id+".do",
+  method: "POST",
+  data: { companyId: companyId }, // companyId 값을 서버로 전송
+  success: function(response) {
+    alert("전송 성공")
+    // 서버 응답 처리 로직
+  },
+  error: function(xhr, status, error) {
+    // 에러 처리 로직
   }
 });
 

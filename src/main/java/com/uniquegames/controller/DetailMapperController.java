@@ -2,6 +2,8 @@ package com.uniquegames.controller;
 
 import com.uniquegames.fileutil.FileUtil;
 import com.uniquegames.model.SessionConstants;
+import com.uniquegames.repository.CompanyRepositoryMapper;
+import com.uniquegames.service.CompanyService;
 import com.uniquegames.service.CompanyServiceMapper;
 import com.uniquegames.service.CompanyServiceMapper2;
 import com.uniquegames.service.IndexServiceMapper;
@@ -28,7 +30,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  * CRUD 메소드 구현
  */
 @Controller
-@SessionAttributes({"intro","status","game","gameName"})
+@SessionAttributes({"intro","status","game","gameName","companyVo"})
 @RequestMapping(value = "/detail")
 public class DetailMapperController {
 
@@ -36,13 +38,15 @@ public class DetailMapperController {
     private final CompanyServiceMapper companyServiceMapper;
     private final CompanyServiceMapper2 companyServiceMapper2;
     private final IndexServiceMapper indexServiceMapper;
+    CompanyRepositoryMapper companyRepositoryMapper;
 
     @Autowired
     public DetailMapperController(CompanyServiceMapper companyServiceMapper,
-            CompanyServiceMapper2 companyServiceMapper2, IndexServiceMapper indexServiceMapper) {
+            CompanyServiceMapper2 companyServiceMapper2, IndexServiceMapper indexServiceMapper, CompanyRepositoryMapper companyRepositoryMapper) {
         this.companyServiceMapper = companyServiceMapper; // 매퍼 방식
         this.companyServiceMapper2 = companyServiceMapper2; // 인터페이스 only
         this.indexServiceMapper = indexServiceMapper;
+        this.companyRepositoryMapper = companyRepositoryMapper;
     }
 
     /** goDetail()
@@ -66,6 +70,11 @@ public class DetailMapperController {
             default:
                 return "redirect:/";
         }
+    }
+    @RequestMapping(value = "/{detailId}.do", method = RequestMethod.POST)
+    public void getCompanyId(@PathVariable("detailId") int detailId,@RequestParam("companyId") String companyId, Model model){
+        CompanyVo companyVo = companyRepositoryMapper.findById(companyId);
+        model.addAttribute("companyVo", companyVo);
     }
 
     /**
@@ -123,7 +132,7 @@ public class DetailMapperController {
     }
 
     @RequestMapping(value="/popUp.do", method = RequestMethod.POST)
-    public String postPopUp(@RequestParam("gameName") String gameName, Model model){
+    public String postPopUp(@RequestParam(value = "gameName",defaultValue = "default") String gameName, Model model){
         model.addAttribute("gameName", gameName);
         return "detail/popup";
     }
