@@ -44,6 +44,9 @@ public class OrderDao{
 		return sqlSession.delete("mapper.orderMapper.getCartDeleteOne", id);
 	} // getCartDeleteOne
 
+	public void insertCart(OrderVo orderVo){
+		sqlSession.insert("mapper.orderMapper.insertCart", orderVo);
+	}
 	/** Order **/
 	// getOrderList
 	public ArrayList<OrderVo> getOrderList(List<Integer> checkedList) {

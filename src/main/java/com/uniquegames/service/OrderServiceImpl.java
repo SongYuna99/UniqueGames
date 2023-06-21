@@ -1,5 +1,8 @@
 package com.uniquegames.service;
 
+import com.uniquegames.vo.CompanyVo;
+import com.uniquegames.vo.GameVo;
+import com.uniquegames.vo.MemberVo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +35,14 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public int getCartDeleteOne(int id) {
 		return orderDao.getCartDeleteOne(id);
+	}
+
+	@Override
+	public void insertCart(OrderVo orderVo) {
+		orderDao.insertCart(orderVo);
+	}
+	public OrderVo addToOrderVo(String m_id, String c_id, int g_id, int amount,  String gametitle, String game_img){
+		return new OrderVo(m_id,c_id,g_id,amount,gametitle,game_img);
 	}
 
 	@Override

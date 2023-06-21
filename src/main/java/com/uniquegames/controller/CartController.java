@@ -27,12 +27,20 @@ public class CartController {
 
 	@RequestMapping(value = "/cart.do", method = RequestMethod.POST)
 	public String getValue(@RequestParam("selectedValue") String selectedValue, @ModelAttribute("companyVo")
-	CompanyVo companyVo){
-		System.out.println("테스트 값은? : " + companyVo.getName());
+	CompanyVo companyVo, @ModelAttribute(SessionConstants.LOGIN_MEMBER)MemberVo memberVo, @ModelAttribute("game")GameVo gameVo){
+
 		/*
 		* orderService의 데이터 insert 기능 추가
 		* */
-//		orderService.insert
+		OrderVo orderVo = orderService.addToOrderVo(
+				memberVo.getMember_id(),
+				companyVo.getCompany_id(),
+				gameVo.getId(),
+				Integer.parseInt(selectedValue),
+				gameVo.getName(),
+				gameVo.getImage_path()
+				);
+		orderService.insertCart(orderVo);
 		return "/order/cart";
 	}
 	@RequestMapping(value = "/cart.do", method = RequestMethod.GET)

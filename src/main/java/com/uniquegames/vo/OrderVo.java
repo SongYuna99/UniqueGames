@@ -4,6 +4,17 @@ public class OrderVo {
 	// Field
 	String order_date, method, payment_status, gametitle, game_img, userId, m_id, c_id;
 	int id, g_id, amount, rno;
+	public OrderVo(){
+	}
+	public OrderVo( String m_id, String c_id, int g_id,int amount, String gametitle, String game_img) {
+
+		this.gametitle = gametitle;
+		this.game_img = game_img;
+		this.m_id = m_id;
+		this.c_id = c_id;
+		this.g_id = g_id;
+		this.amount = amount;
+	}
 
 	// Method
 	public String getOrder_date() {

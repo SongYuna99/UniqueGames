@@ -14,6 +14,8 @@ public interface OrderService {
 
 	int getCartDeleteOne(int id);
 
+	void insertCart(OrderVo orderVo);
+
 	ArrayList<OrderVo> getOrderList(List<Integer> checkedList);
 
 	int getOrderAmount(List<Integer> checkedList);
