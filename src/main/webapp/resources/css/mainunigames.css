@@ -486,10 +486,6 @@ a:visited {
 	padding: 8px;
 }
 
-#menu-solution>table tr>td:nth-child(3) {
-	text-align: left;
-}
-
 #menu-solution a {
 	text-decoration: none;
 	color: #000;
@@ -684,7 +680,7 @@ header div img {
 }
 
 #nav1>ul>li:first-child {
-	padding-right: 5px;
+	padding-right: 20px;
 	border-right: 1px solid #999999;
 }
 
@@ -922,9 +918,6 @@ header div img {
 	clear: both;
 }
 
-<<<<<<< Updated upstream
-
-
 #intro-allList {
 	font-family: "YouandiModern",sans-serif;
 	font-size: 24px;
@@ -932,9 +925,6 @@ header div img {
 	text-align: center;
 }
 
-
-=======
->>>>>>> Stashed changes
 .swiper {
 	width: 100%;
 	height: 660px;
@@ -948,7 +938,6 @@ header div img {
 	justify-content: center;
 }
 
-<<<<<<< Updated upstream
 .swiper-button-prev::after,
 .swiper-button-next::after{
     content: "";
@@ -1005,7 +994,6 @@ header div img {
   }
 
 
-=======
 .swiper-button-prev::after, .swiper-button-next::after {
 	content: "";
 	display: none;
@@ -1070,4 +1058,11 @@ header div img {
 .swiper-pagination-bullet {
 	background-color: #ffffff;
 }
->>>>>>> Stashed changes
+#menu-solution>table tr>td:nth-child(2) {
+	text-align: left;
+	padding-left: 40px;
+}
+#menu-solution>table tr>th:nth-child(2) {
+	width: 600px;
+}
+

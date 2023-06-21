@@ -159,7 +159,6 @@
     <div id="menu-solution">
         <table>
             <tr>
-                <th>선택</th>
                 <th>번호</th>
                 <th>제목</th>
                 <th>작성자</th>
@@ -167,7 +166,6 @@
             </tr>
             <c:forEach var="noticeVo" items="${noticeList}">
                 <tr>
-                    <td><input type="checkbox" name="list" value="${noticeVo.post_id}"></td>
                     <td>${noticeVo.rno}</td>
                     <td><a href="notice_content.do?no=${noticeVo.post_id}">${noticeVo.title}</a></td>
                     <td>${noticeVo.company_id}</td>

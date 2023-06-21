@@ -35,7 +35,19 @@
 	        top: 60px;
 	        right: 170px;
    		}
-
+        #member_id_header {
+            font-family: "YouandiModern", sans-serif;
+            font-size: 14px;
+            color: #ffffff;
+            width: 200px;
+            text-align: right;
+            padding: 5px;
+            padding-right: 10px;
+        }
+        #logout_header {
+            padding-left:10px ;
+            width: 80px;
+        }
 	</style>
 </head>
 
@@ -57,9 +69,9 @@
                 <c:otherwise>
                     <nav id="nav1">
                         <ul>
-                            <li>${sessionScope.loginMember.name}님 반갑습니다.</li>
-                            <li><a href="/uniquegames/logout.do" target="_parent">Logout</a></li>
-                            <li><a href="/uniquegames/join.do">Join</a></li>
+                            <li id="member_id_header">${sessionScope.loginMember.name}님 반갑습니다.</li>
+                            <li id="logout_header"><a href="/uniquegames/logout.do" target="_parent">Logout</a></li>
+<%--                            <li><a href="/uniquegames/join.do">Join</a></li>--%>
                             <li><a href="/uniquegames/myPage.do"><img src="/uniquegames/images/img_icon_mypage.png"></a></li>
                             <li><a href="/uniquegames/cart.do"><img src="/uniquegames/images/img_icon_cart.png"></a></li>
                             <li><button type="button" id="btn-hearder-search" onclick="toggleSearch()"><img src="/uniquegames/images/img_icon_search.png"></button></li>
