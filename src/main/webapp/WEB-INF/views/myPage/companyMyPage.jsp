@@ -319,14 +319,14 @@
 					</li>
 					<li id="must-insert">
 						<p id="label-dot">*</p>
-						<label>이름</label>
+						<label>회사명</label>
 					</li>
 					<li>
 						<input type="text" id="company-name" name="name" value="${companyVo.name }">
 					</li>
 					<li id="must-insert">
 						<p id="label-dot">*</p>
-						<label>이메일</label>
+						<label>회사 이메일</label>
 						<span id="c-emailMsg"></span>
 						<span id="c-emailAuth"></span>
 					</li>
@@ -359,7 +359,7 @@
 					</li>
 					<li id="must-insert">
 						<p id="label-dot">*</p>
-						<label>휴대전화</label><span id="c-phoneMsg"></span>
+						<label>대표전화</label><span id="c-phoneMsg"></span>
 					</li>
 					<li>
 						<select name="tel" id="company-selectbox-mobile">
