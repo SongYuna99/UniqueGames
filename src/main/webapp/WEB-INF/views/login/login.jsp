@@ -8,6 +8,8 @@
 	<title>로그인</title>
 	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">
 	<script src="http://localhost:9000/uniquegames/js/jquery-3.6.4.min.js"></script>
+	<!-- <script src="http://localhost:9000/uniquegames/js/join_jquery.js"></script> -->
+	<script src="http://localhost:9000/uniquegames/js/login_script.js"></script>
 	<script src="https://t1.kakaocdn.net/kakao_js_sdk/v1/kakao.min.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script>

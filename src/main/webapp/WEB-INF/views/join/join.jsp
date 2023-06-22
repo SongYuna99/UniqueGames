@@ -8,7 +8,8 @@
 	<title>Join</title>
 	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">
 	<script src="http://localhost:9000/uniquegames/js/jquery-3.6.4.min.js"></script>
-	<script src="http://localhost:9000/uniquegames/js/join_jquery.js"></script>
+	<!-- <script src="http://localhost:9000/uniquegames/js/join_jquery.js"></script> -->
+	<script src="http://localhost:9000/uniquegames/js/login_script.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
@@ -143,7 +144,7 @@
 						</li>
 						
 						<li>
-							<button type="button" id="button-gradient" tabindex="16">가입하기</button>
+							<button type="button" id="button-gradient" tabindex="16" onclick="memberValidation()">가입하기</button>
 						</li>
 					</ul>
 				</div>
@@ -258,7 +259,7 @@
 							<span id="choice-span">[선택]</span> <span>마케팅 정보 메일, SMS 수신동의</span>
 						</li>
 						<li>
-							<button type="button" id="button-gradient-company" tabindex="16">가입하기</button>
+							<button type="button" id="button-gradient-company" tabindex="16" onclick="memberValidation()">가입하기</button>
 						</li>
 					</ul>
 				</div>
