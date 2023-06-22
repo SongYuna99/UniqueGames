@@ -14,6 +14,24 @@
 	
 	$(document).ready(function(){
 		var password = "${companyVo.password}";
+		var password = "${companyVo.password}";
+		var phone1 = "${companyVo.phone1}";
+		var phone2 = "${companyVo.phone2}";
+		var phone3 = "${companyVo.phone3}";
+		var email1 = "${companyVo.email1}";
+		var email2 = "${companyVo.email2}";
+		
+		function emailCheck(asValue){
+			var regex = /[A-za-z0-9]{4,20}$/;
+			
+			return regex.test(asValue);
+		}
+		
+		function phoneCheck(asValue) {
+			var regex = /^\d{3,4}$/;
+			
+			return regex.test(asValue);
+		}
 		
 		$("#button-gradient-company").click(function(){
 			
@@ -45,6 +63,10 @@
 				alert("이메일 주소를 전부 작성해주세요");
 				$("#company-email2").focus();
 				return false;
+			}else if($("#c-emailAuth").css("color") === "rgb(255, 0, 0)") {
+				alert("이메일 인증번호를 확인해주세요");
+				$("#email-auth-check").focus();
+				return false;
 			}else if($("#company-selectbox-mobile").val()=="choose") {
 				alert("통신사를 선택해주세요");
 				$("#selectbox-mobile").focus();
@@ -69,6 +91,10 @@
 				alert("대표 전화는 숫자 3,4자리로 입력해주세요");
 				$("#company-phone3").focus();
 				return false;
+			}else if($("#c-phoneMsg").text() != ""){
+				alert("휴대전화를 확인해주세요");
+				$("#selectbox-phone").focus();
+				return false;
 			}else {
 				companyMyPageForm.submit();
 			}
@@ -78,7 +104,7 @@
 			
 			if($("#company-selectbox-email").val()=="choose") {
 				$("#company-email2").val("");
-				$("#emailMsg").text("이메일을 선택해주세요").css("color","red").css("font-size","11px").css("display","block");
+				$("#emailMsg").text("이메일을 선택해주세요").css("color","red").css("font-size","11px").css("display","inline");
 				$("#company-selectbox-email").focus();
 				return false;
 			}else if($("#company-selectbox-email").val()=="direct") {
@@ -109,16 +135,6 @@
 			
 		});
 		
-		
-		$("#company-address-btn-style").click(function(){
-			 new daum.Postcode({
-			        oncomplete: function(data) {
-			        	$("#company-addr1").val("("+data.zonecode+") "+data.address);
-			        	$("#company-addr2").focus();
-			        }
-			    }).open();
-		});
-		
 		$("#link-changePassword").click(function(){
 			
 			if($("input[name='password']").val()==""){
@@ -132,21 +148,21 @@
 			}
 		});
 		
-		function emailCheck(asValue){
-			var regex = /[A-za-z0-9]{4,20}$/;
-			
-			return regex.test(asValue);
-		}
 		
-		function phoneCheck(asValue) {
-			var regex = /^\d{3,4}$/;
-			
-			return regex.test(asValue);
-		}
+		$("#company-address-btn-style").click(function(){
+			 new daum.Postcode({
+			        oncomplete: function(data) {
+			        	$("#company-addr1").val("("+data.zonecode+") "+data.address);
+			        	$("#company-addr2").focus();
+			        }
+			    }).open();
+		});
 		
-		let code = "";
-		  $("#email-btn-style").click(function(){
-		  	const email = $("input[name='email1']").val() + "@" + $("input[name='email2']").val();
+		
+		let code1 = "";
+		  $("#c-email-btn-style").click(function(){
+		  	const email = $("#company-email1").val() + "@" + $("#company-email2").val();
+		  	//alert(email);
 		  	
 		  	$.ajax({
 		  		url : "mailCheck.do",
@@ -155,31 +171,103 @@
 		  		
 		  		success : function(data){
 		  			alert("인증번호가 전송되었습니다");
-		  			code = data;
+		  			code1 = data;
+		  			$('#c-email-auth-check').attr('disabled',false);
 		  		}
 		  	});
 		});
 
 		    	
-		  	$('#email-auth-check').on("change", function () {
-					const inputCode = $(this).val();
-				    const resultMsg = $('#emailAuth');
-					
-					if(inputCode === code){
-						resultMsg.text('인증번호가 일치합니다.');
-						resultMsg.css("font-size","11px").css('color','blue').css("display","inline");
-						$('#email-auth-check').attr('disabled',true);
-						$('input[name="email1"]').attr('readonly',true);
-						$('input[name="email2"]').attr('readonly',true);
-						$('#selectbox-email').attr('disabled',true);
-						$('#selectbox-email').attr('onFocus', 'this.initialSelect = this.selectedIndex');
-				        $('#selectbox-email').attr('onChange', 'this.selectedIndex = this.initialSelect');
-					}else{
-						resultMsg.text('인증번호가 불일치 합니다. 다시 확인해주세요!.');
-						resultMsg.css("font-size","11px").css('color','rgb(255, 0, 0)').css("display","inline");
-					}
+	  	$('#c-email-auth-check').on("change",function () {
+
+				const inputCode1 = $(this).val();
+				const resultMsg1 = $('#c-emailAuth');
+				
+				if(inputCode1 === code1){
+					resultMsg1.text('인증번호가 일치합니다.');
+					resultMsg1.css("font-size","11px").css('color','blue').css("display","inline");
+					$('#c-email-auth-check').attr('disabled',true);
+					$('#company-email1').attr('readonly',true);
+					$('#company-email2').attr('readonly',true);
+					$('#company-selectbox-email').attr('disabled',true);
+					$('#company-selectbox-email').attr('onFocus', 'this.initialSelect = this.selectedIndex');
+			        $('#company-selectbox-email').attr('onChange', 'this.selectedIndex = this.initialSelect');
+				}else{
+					resultMsg1.text('인증번호가 불일치 합니다. 다시 확인해주세요!.');
+					resultMsg1.css("font-size","11px").css('color','rgb(255, 0, 0)').css("display","inline");
+				}
 			  
 		  });
+		  	
+	  	$("#company-email1, #company-email2, #company-selectbox-email").change(function() {
+	  		if($("#c-email-auth-check").val() == ""){
+	  			$("#c-emailAuth").css("font-size","11px").css('color','rgb(255, 0, 0)').css("display","inline").text('이메일 인증을 완료해주세요');
+	  		}else {
+	  			$("#c-emailAuth").css('color','rgb(0, 0, 255)').css("display","none");
+	  		}
+	  	});
+	  	
+		$("#company-email1, #company-email2, #company-selectbox-email").blur(function(){
+		   		
+		  		if($("#company-email1").val() == "" || $("#company-email2").val() == "") {
+		  			$("#c-emailMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
+		  			return false;
+		  		}else {
+		  			$.ajax({
+		  				url : "c_email_check.do",
+		  				type: "POST",
+		  				data: {
+		  					email1 : $("#company-email1").val(),
+		  					email2 : $("#company-email2").val()
+		  				},
+		  				
+		  				success : function(result) {
+		  					if(result==1) {
+		  						if($("#company-email1").val()==email1 && $("#company-email2").val()==email2) {
+		  							$("#c-emailMsg").css("display","none");
+		  							$("#c-emailAuth").css('color','rgb(0, 0, 255)').css("display","none");
+		  							return false;
+		  						}
+		  						$("#c-emailMsg").text("중복된 이메일입니다").css("color","red").css("font-size","11px").css("display","inline");
+		  						return false;
+		  					}else {
+		  						$("#c-emailMsg").text("").css("display","none");
+		  					}
+		  				}
+		  			});
+		  		}
+		
+		  	});
+	  	
+	  	$("#company-selectbox-mobile, #company-selectbox-phone, input[name='phone2'], input[name='phone3']").blur(function() {
+	  	    if ($("#company-selectbox-mobile").val() == "default" || $("#company-selectbox-phone").val() == "default" || $("input[name='phone2']").val() == "" || $("input[name='phone3']").val() == "") {
+	  			$("#phoneMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
+	  		}else {
+	  			$.ajax({
+	  				url : "c_phone_check.do",
+	  				type: "POST",
+	  				data: {
+	  					phone1 : $("#company-selectbox-phone").val(),
+	  					phone2 : $("input[name='phone2']").val(),
+	  					phone3 : $("input[name='phone3']").val()
+	  				},
+	  				
+	  				success : function(result) {
+	  					if(result==1) {
+	  						if($("#company-selectbox-phone").val()==phone1 && $("input[name='phone2']").val()==phone2 && $("input[name='phone3']").val()==phone3){
+	  							$("#c-phoneMsg").text("").css("display","none");
+	  							return false;
+	  						}
+	  						$("#c-phoneMsg").text("이미 등록된 휴대전화입니다").css("color","red").css("font-size","11px").css("display","inline");
+	  						return false;
+	  					}else {
+	  						$("#c-phoneMsg").text("").css("display","none");
+	  					}
+	  				}
+	  			});
+	  		}
+	  	});
+	  	
 
 	});
 	
@@ -218,12 +306,11 @@
 					</li>
 					<li id="must-insert">
 						<p id="label-dot">*</p>
-						<label>비밀번호</label>
+						<label>비밀번호</label><span id="c-pwdMsg"></span>
 					</li>
 					<li>
 						<input type="password" id="company-password" name="password">
 						<input type="checkbox" id="pwd-check-img">
-						<span id="c-pwdMsg"></span>
 					</li>
 					<li>
 						<a href="CompanyPageChangePassword.do?company_id=${companyVo.company_id }" id="link-changePassword">
@@ -240,6 +327,8 @@
 					<li id="must-insert">
 						<p id="label-dot">*</p>
 						<label>이메일</label>
+						<span id="c-emailMsg"></span>
+						<span id="c-emailAuth"></span>
 					</li>
 					<li>
 						<input type="text" id="company-email1" name="email1" value="${companyVo.email1 }">
@@ -252,9 +341,8 @@
 							<option value="daum.net" ${companyVo.email3  == 'daum.net' ? 'selected' : ''}>daum.net</option>
 							<option value="direct">직접입력</option>
 						</select>
-						<button type="button" id="email-btn-style">인증 번호</button>
-						<input type="text" name="email-auth-check" id="email-auth-check" placeholder="인증번호 6자리">
-						<span id="c-emailMsg"></span>
+						<button type="button" id="c-email-btn-style">인증 번호</button>
+						<input type="text" name="email-auth-check" id="c-email-auth-check" placeholder="인증번호 6자리" disabled="disabled">
 					</li>
 					<li>
 						<label>주소</label>
@@ -271,7 +359,7 @@
 					</li>
 					<li id="must-insert">
 						<p id="label-dot">*</p>
-						<label>휴대전화</label>
+						<label>휴대전화</label><span id="c-phoneMsg"></span>
 					</li>
 					<li>
 						<select name="tel" id="company-selectbox-mobile">
@@ -291,7 +379,6 @@
 						<input type="text" id="company-phone2" name="phone2" value="${companyVo.phone2 }">
 						-
 						<input type="text" id="company-phone3" name="phone3" value="${companyVo.phone3 }">
-						<span id="c-phoneMsg"></span>
 					</li>
 					<li>
 						<button type="button" id="button-gradient-company">수정하기</button>

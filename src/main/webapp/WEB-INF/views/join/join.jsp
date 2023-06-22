@@ -10,25 +10,6 @@
 	<script src="http://localhost:9000/uniquegames/js/jquery-3.6.4.min.js"></script>
 	<script src="http://localhost:9000/uniquegames/js/join_jquery.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script>
-        // JavaScript 코드
-        document.addEventListener('DOMContentLoaded', function() {
-            // URL에서 selectedTab 파라미터 값을 가져옴
-            var urlParams = new URLSearchParams(window.location.search);
-            var selectedTab = urlParams.get('selectedTab');
-            
-            // 선택한 탭을 표시
-            if (selectedTab) {
-                document.getElementById(selectedTab).checked = true;
-            }
-        });
-        
-    	let c = "${message }";
-    	if(c == "fail")
-    		alert("회원가입 실패");
-    	
-    </script>
-
 </head>
 <body>
 	<header>
@@ -100,48 +81,48 @@
 								<option value="direct">직접입력</option>
 							</select>
 							<button type="button" id="email-btn-style">인증 번호</button>
-							<input type="text" name="email-auth-check" id="email-auth-check" placeholder="인증번호 6자리" tabindex="8">
+							<input type="text" name="email-auth-check" id="email-auth-check" placeholder="인증번호 6자리" disabled="disabled">
 						</li>
 						<li>
 							<label>주소</label>
 						</li>
 						<li>
-							<input type="text" id="input-addr1" name="addr1" tabindex="9">
-							<button type="button" id="address-btn-style" tabindex="10">주소 검색</button>
+							<input type="text" id="input-addr1" name="addr1" tabindex="8">
+							<button type="button" id="address-btn-style" tabindex="9">주소 검색</button>
 						</li>
 						<li class="address-input">
 							<label>상세 주소</label>
 						</li>
 						<li>
-							<input type="text" id="input-common" name="addr2" tabindex="11">
+							<input type="text" id="input-common" name="addr2" tabindex="10">
 						</li>
 						<li id="must-insert">
 							<p id="label-dot">*</p>
 							<label>휴대전화</label><span id="phoneMsg"></span>
 						</li>
 						<li>
-							<select id="selectbox-mobile" name="tel" tabindex="12">
+							<select id="selectbox-mobile" name="tel" tabindex="11">
 								<option value="default">선택</option>
 								<option value="SKT">SKT</option>
 								<option value="KT">KT</option>
 								<option value="LGU+">LGU+</option>
 								<option value="MVNO">알뜰폰</option>
 							</select>
-							<select id="selectbox-phone" name="phone1" tabindex="13">
+							<select id="selectbox-phone" name="phone1" tabindex="12">
 								<option value="default">선택</option>
 								<option value="010">010</option>
 								<option value="011">011</option>
 								<option value="012">012</option>
 							</select>
 							-
-							<input type="text" id="input-phone" name="phone2" tabindex="14">
+							<input type="text" id="input-phone" name="phone2" tabindex="13">
 							-
-							<input type="text" id="input-phone" name="phone3" tabindex="15">
+							<input type="text" id="input-phone" name="phone3" tabindex="14">
 						</li>
 					</ul>
 					<ul id="ul-agreement">
 						<li id="agreement-box">
-							<input type="checkbox" name="agreementAll" id="chk-circle" tabindex="16">
+							<input type="checkbox" name="agreementAll" id="chk-circle" tabindex="15">
 							<span id="span_agreementAll">전체 동의하기</span>
 						</li>
 						<li>
@@ -162,7 +143,7 @@
 						</li>
 						
 						<li>
-							<button type="button" id="button-gradient" tabindex="17">가입하기</button>
+							<button type="button" id="button-gradient" tabindex="16">가입하기</button>
 						</li>
 					</ul>
 				</div>
@@ -220,64 +201,64 @@
 								<option value="direct">직접입력</option>
 							</select>
 							<button type="button" id="c-email-btn-style">인증 번호</button>
-							<input type="text" name="email-auth-check" id="c-email-auth-check" placeholder="인증번호 6자리" maxlength="6" tabindex="6">
+							<input type="text" name="email-auth-check" id="c-email-auth-check" placeholder="인증번호 6자리" maxlength="6" disabled="disabled">
 						</li>
 						<li>
 							<label>주소</label>
 						</li>
 						<li>
-							<input type="text" id="company-addr1" name="addr1" tabindex="9">
-							<button type="button" id="company-address-btn-style" tabindex="10">주소 검색</button>
+							<input type="text" id="company-addr1" name="addr1" tabindex="8">
+							<button type="button" id="company-address-btn-style" tabindex="9">주소 검색</button>
 						</li>
 						<li class="address-input">
 							<label>상세 주소</label>
 						</li>
 						<li>
-							<input type="text" id="company-addr2" name="addr2" tabindex="11">
+							<input type="text" id="company-addr2" name="addr2" tabindex="10">
 						</li>
 						<li id="must-insert">
 							<p id="label-dot">*</p>
 							<label>대표번호</label><span id="c-phoneMsg"></span>
 						</li>
 						<li>
-							<select id="company-selectbox-mobile" name="tel" tabindex="12">
+							<select id="company-selectbox-mobile" name="tel" tabindex="11">
 								<option value="default">선택</option>
 								<option value="SKT">SKT</option>
 								<option value="KT">KT</option>
 								<option value="LGU+">LGU+</option>
 								<option value="MVNO">알뜰폰</option>
 							</select>
-							<select id="company-selectbox-phone" name="phone1" tabindex="13">
+							<select id="company-selectbox-phone" name="phone1" tabindex="12">
 								<option value="default">선택</option>
 								<option value="010">010</option>
 								<option value="011">011</option>
 								<option value="012">012</option>
 							</select>
 							-
-							<input type="text" id="company-phone2" name="phone2" tabindex="14">
+							<input type="text" id="company-phone2" name="phone2" tabindex="13">
 							-
-							<input type="text" id="company-phone3" name="phone3" tabindex="15">
+							<input type="text" id="company-phone3" name="phone3" tabindex="14">
 						</li>						
 					</ul>
 					<ul id="ul-agreement">
 						<li id="agreement-box">
-							<input type="checkbox" name="agreementAll" id="c-chk-circle" tabindex="16">
+							<input type="checkbox" name="agreementAll" id="c-chk-circle" tabindex="15">
 							<span id="span_agreementAll">전체 동의하기</span>
 						</li>
 						<li>
-							<input type="checkbox" id="c-checkbox-agreement" name="chk-agree">
+							<input type="checkbox" id="c-checkbox-agreement" name="c-chk-agree">
 							<span id="agreement-color">[필수]</span> <span>이용 약관</span><a id="detail1">자세히</a>
 						</li>
 						<li>
-							<input type="checkbox" id="c-checkbox-agreement" name="chk-agree">
+							<input type="checkbox" id="c-checkbox-agreement" name="c-chk-agree">
 							<span id="agreement-color">[필수]</span> <span>개인정보 수집 및 이용 동의</span><a id="detail2">자세히</a>
 						</li>
 						<li>
-							<input type="checkbox" id="c-agreement-choice" name="chk-agree">
+							<input type="checkbox" id="c-agreement-choice" name="c-chk-agree">
 							<span id="choice-span">[선택]</span> <span>마케팅 정보 메일, SMS 수신동의</span>
 						</li>
 						<li>
-							<button type="button" id="button-gradient-company" tabindex="17">가입하기</button>
+							<button type="button" id="button-gradient-company" tabindex="16">가입하기</button>
 						</li>
 					</ul>
 				</div>
