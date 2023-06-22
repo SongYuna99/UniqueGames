@@ -206,6 +206,7 @@
             <div id="clearFix"></div>
         </div>
         <form  action="insertIntro.do" method="post" enctype="multipart/form-data">
+                <input style="visibility: hidden" type="text" name="c_id" class="default-write"  value="${company.company_id}">
             <table>
                 <tr>
                     <th>회사 명</th>
@@ -213,12 +214,14 @@
                 </tr>
                 <tr>
                     <th>제목</th>
-                    <td><input type="text" name="title" class="default-write"></td>
+                    <td>
+                        <input type="text" name="title" class="default-write" value="${intro.title}">
+                    </td>
                 </tr>
                 <tr>
                     <th>소개 글</th>
                     <td><textarea type="text" name="content" cols="30" rows="5"
-                                  class="default-write"></textarea></td>
+                                  class="default-write">${intro.content}</textarea></td>
                 </tr>
                 <tr>
                     <th>업로드</th>>
@@ -230,7 +233,6 @@
             </table>
         </form>
     </div>
-<%--    <a href="getGameList">게임 목록 가기</a>--%>
 </div>
 <%--footer--%>
 <jsp:include page="../main/footer.jsp"></jsp:include>

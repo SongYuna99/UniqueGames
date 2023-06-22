@@ -14,14 +14,24 @@ public class IntroVo {
      * content 회사(팀) 소개글 내용
      * uploadFile 대표 이미지 파일
      * upload 이미지 파일 경로
+     * c_id 회사 아이디
      */
     private int id;
     private String name;
     private String title;
     private String content;
     private MultipartFile uploadFile;
-
     private String upload;
+    private String c_id;
+
+    public String getC_id() {
+        return c_id;
+    }
+
+    public void setC_id(String c_id) {
+        this.c_id = c_id;
+    }
+
 
     public String getUpload() {
         return upload;

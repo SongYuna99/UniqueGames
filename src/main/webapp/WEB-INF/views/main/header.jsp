@@ -39,7 +39,7 @@
             font-family: "YouandiModern", sans-serif;
             font-size: 14px;
             color: #ffffff;
-            width: 200px;
+            width: 400px;
             text-align: right;
             padding: 5px;
             padding-right: 10px;

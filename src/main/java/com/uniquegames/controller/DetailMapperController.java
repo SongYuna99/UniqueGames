@@ -3,7 +3,6 @@ package com.uniquegames.controller;
 import com.uniquegames.fileutil.FileUtil;
 import com.uniquegames.model.SessionConstants;
 import com.uniquegames.repository.CompanyRepositoryMapper;
-import com.uniquegames.service.CompanyService;
 import com.uniquegames.service.CompanyServiceMapper;
 import com.uniquegames.service.CompanyServiceMapper2;
 import com.uniquegames.service.IndexServiceMapper;
@@ -11,7 +10,9 @@ import com.uniquegames.vo.CompanyVo;
 import com.uniquegames.vo.GameVo;
 import com.uniquegames.vo.IntroVo;
 import com.uniquegames.vo.MemberVo;
+import com.uniquegames.vo.NoticeVo;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  * CRUD 메소드 구현
  */
 @Controller
-@SessionAttributes({"intro","status","game","gameName","companyVo"})
+@SessionAttributes({"intro","status","game","gameName","companyVo","list","noticeVo","company"})
 @RequestMapping(value = "/detail")
 public class DetailMapperController {
 
@@ -90,39 +91,37 @@ public class DetailMapperController {
         FileUtil fileUtil = new FileUtil(vo, request);
         IntroVo introVo = fileUtil.getUpload();
         HttpSession session = request.getSession();
-        Object loginMemberObj = session.getAttribute(SessionConstants.LOGIN_MEMBER);
-        boolean isMemberVo = loginMemberObj instanceof MemberVo;
-        if(!isMemberVo){
-            if(introVo.getTitle() == null || introVo.getName() == null){
-
+        if(introVo.getTitle() == null || introVo.getName() == null){
                 CompanyVo company = (CompanyVo) session.getAttribute(SessionConstants.LOGIN_MEMBER);
                 model.addAttribute("company",company);
                 return "detail/company_regi";
-            }
-            else{
-
+         }
+        else{
                 companyServiceMapper2.insertIntro(introVo);
                 model.addAttribute("status", "writeOnce");
                 return "redirect:getIntroList.do";
-
             }
-        }
-        return "redirect:/";
     }
-    @RequestMapping(value = "/updateIntro.do")
-    public String updateIntro(@ModelAttribute("intro") IntroVo vo){
+//    @RequestMapping(value = "/updateIntro.do")
+//    public String updateIntro(@ModelAttribute("intro") IntroVo vo, @ModelAttribute("company") CompanyVo companyVo){
+//        companyServiceMapper.updateIntro(vo);
+//        return "redirect:getIntroList.do";
+//    }
+    @RequestMapping(value = "/updateIntro.do", method = RequestMethod.POST)
+    public String updateIntro(@ModelAttribute("intro") IntroVo vo, @ModelAttribute("company") CompanyVo companyVo){
         companyServiceMapper.updateIntro(vo);
-        return "redirect:getIntroList.do";
+        return "detail/company_regi";
     }
 
     @RequestMapping(value = "/deleteIntro.do")
-    public String deleteIntro(IntroVo vo){
+    public String deleteIntro(@ModelAttribute("intro")IntroVo vo,Model model){
         companyServiceMapper.deleteIntro(vo.getId());
+        model.addAttribute("status", "");
         return "redirect:getIntroList.do";
     }
 
     @RequestMapping(value = "/getIntro.do")
-    public String getIntro(Model model, IntroVo vo){
+    public String getIntro(Model model, IntroVo vo, @ModelAttribute("noticeVo") NoticeVo noticeVo, @ModelAttribute("list") ArrayList<NoticeVo> list){
         model.addAttribute("intro",companyServiceMapper.getIntro(vo.getId()));
         return "detail/company";
     }

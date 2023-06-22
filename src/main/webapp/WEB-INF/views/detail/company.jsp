@@ -8,7 +8,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-<%--  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mainunigames.css">--%>
   <title>제작사(팀) 소개</title>
   <!--css 초기화-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
@@ -21,7 +20,8 @@
   <!--  bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board.css">
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
   <style>
     .container {
       margin-right: auto;
@@ -101,38 +101,46 @@
       color: #000000;
       text-align: left;
     }
+    .btn-style{
+      background: #393939;
+      border-radius: 5px;
+      width: 80px;
+      height: 30px;
+      color: #FFFFFF;
+      font-size: 14px;
+      vertical-align: top;
+      cursor: pointer;
+    }
 
   </style>
 </head>
 
 <body style="padding: 0">
 <jsp:include page="../main/header.jsp"></jsp:include>
+<div id="board-top-menu">
+  <div>
+    <ul>
+      <li><button type="button" class="btn-style" name="listUpdate">수정</button></li>
+      <li><button type="button" class="btn-style" name="listDelete">삭제</button></li>
+    </ul>
+  </div>
+</div>
 <div class="container">
+
   <!--  제작팀 소개 -->
   <div  style="margin: 70px 20px 0 150px ">
     <div style="display: flex; align-items: center;">
-<%--      <img src="${pageContext.request.contextPath}/images/img_team_profile_big.png" alt="${intro.name} 팀 로고" style="margin-right: 20px">--%>
-<%--  <c:if test="${fn:contains(sessionScope.loginMember, 'CompanyVo')}">--%>
-<%--      <form action="updateIntro.do" method="post">--%>
-<%--  </c:if>--%>
+
         <input name="id" type="hidden" value="${intro.id}">
         <c:if test="${intro.upload != null}">
           <img src="${pageContext.request.contextPath}/upload/${intro.upload}" alt="${intro.name} 팀 로고" style="margin-right: 20px; width: 225px; height: 225px;" >
         </c:if>
-<%--        <input type="file" name ="uploadFile" style="height: 30px;"/>--%>
         <div id="introduce">
           <div  style="font: italic normal 900 28px Apex New;">${intro.name}</div>
           <p> Game Delover Team</p>
           <p>${intro.title}</p>
           <p>${intro.content}</p>
         </div>
-<%--        <div align="right"><input type="submit" value="글 수정"/></div>--%>
-<%--  <c:if test="${fn:contains(sessionScope.loginMember, 'CompanyVo')}">--%>
-<%--      </form>--%>
-<%--  </c:if>--%>
-<%--        <a href="insertIntro.do">글등록</a>&nbsp;&nbsp;&nbsp;--%>
-<%--        <a href="deleteIntro.do?id=${intro.id}">글삭제</a>&nbsp;&nbsp;&nbsp;--%>
-<%--        <a href="getIntroList.do">글목록</a>&nbsp;&nbsp;&nbsp;--%>
     </div>
 
 
@@ -416,6 +424,21 @@
       nextEl: '.swiper-button-next'
     }
   })
+  /* 수정, 삭제 버튼 스크립트*/
+  const element = document.getElementById('board-top-menu');
+  const loginMember = '<%=session.getAttribute("loginMember")%>';
+  if(loginMember.includes('MemberVo') || loginMember === 'null'){
+    element.style.visibility = 'hidden';
+  }
+  else if(loginMember.includes('CompanyVo')){
+    $('button[name="listUpdate"]').on("click", function() {
+      location.href = "../detail/updateIntro.do";
+    });
+    $('button[name="listDelete"]').on("click", function() {
+      location.href = "../detail/deleteIntro.do";
+    });
+  }
+
 </script>
 
 <jsp:include page="../main/footer.jsp"></jsp:include>

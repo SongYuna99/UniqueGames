@@ -19,7 +19,6 @@
 
 <jsp:include page="../main/header.jsp"></jsp:include>
 <div id="image-top-bg" ></div>
-<form action="detail/searchGameList" method="get">
 <div class="parent-container" style="display: grid">
   <div class="main-container">
   <div class="row equal-height">
@@ -35,7 +34,7 @@
 
 							<span>
 																												뱀파이어: 마스커레이드 - 스완송							</span><br/>
-              <span style="text-transform:none">Vampire: The Masquerade – Swansong</span>
+              <span style="text-transform:none" id="game_name">${game.name}</span>
             </h1>
           </div>
 
@@ -126,6 +125,7 @@
                                 <span class="vm-price-desc" >제작 </span>
                                 <span class="PricebasePrice" ><a href="../detail/getIntro.do?id=3" style="font: italic normal 900 18px Apex New; letter-spacing: 0px;color: #1c2025">베스트게이밍</a>
                                   </span>
+                                <span id="company_id" style="display: none">${companyVo.company_id}</span>
                               </div>
                               <span class="price-crossed" ></span>
                             </div>
@@ -165,11 +165,6 @@
                                 <span class="vm-value">지원함</span>
                               </div>
 
-
-                              <!--                              <div id="etc" style="width:100%;max-width:300px;">-->
-                              <!--                                <img src="${pageContext.request.contextPath}/images/btn_boardSearch_normal.png">-->
-                              <!--                                <img src='${pageContext.request.contextPath}/images/btn_check_normal.png'/><img src='${pageContext.request.contextPath}/images/btn_eye_select.png'/>																	</div>-->
-
                             </div>
 
                             <div class="vmproduct-link" style="text-align:center">
@@ -178,8 +173,8 @@
                                 <span class="amount">300,000,000원</span>
                               </div>
                               <div class="donation-amount" style="margin-bottom: 30px">
-                                <span class="label">후원금액</span>
-                                <span class="don-amount">3,000,000원</span>
+<%--                                <span class="label">후원금액</span>--%>
+<%--                                <span class="don-amount">3,000,000원</span>--%>
                               </div>
                               <button type="button" class="btn btn-default btn-lg" id="btn_wishlist" data="50004122" style="width: 90px;">
                                 <img src="${pageContext.request.contextPath}/images/btn_like_select.png">
@@ -220,54 +215,9 @@
     </div>
   </div>
 </div>
-</form>
-<script type="text/javascript">
-  var title = "디 엑시트 이터널 매터스";
-  var img = "https://directg.net/upload/product/goods_1681697853_opengraph.jpg";
-  var summary = "죽음을 넘어선 생명을 느끼다사후 세계로의 초현실적인 여정에서 은신 플레이가 가미된 영화 같은 모험을 하며, 신비하고 부서진 기억의 차원에 감춰진 비밀을 밝혀 내세요. 강렬한 분위기가 돋보이는 경이로운 3D 픽셀의 세계로 뛰어들어, 세상을 구원하세요!&nbsp;영화 같은 복셀 그래픽 세계 체험DE-EXIT는 심플하면서도 매끄럽게 구성된 복셀 그래픽뿐만 아니라 현실적인 움직임과 자연스러운 특수 효과, 자세한 배경을 구현해 마치 영화 같은 분위기가 느껴지는 게임입니다.새로운 세계로 떠나는 신비로운 여행호기심을 자아내는 초현실적인 세상에서 깨어난 당신. 과연 여기는 어디일까요? 여기서 무얼 하는 걸까요? 온 세상이 왜 이렇게 달라 보일까요? 무너진 경계 속의 세상에서 혼란은 점점 커져가지만, 희망을 잃지 않는 주민과 함께 떠난다면 걱정할 필요가 없어요. 낯설고 예측할 수 없으면서도 웅장한 풍경 속에서 비밀로 가득한 &#39;기억의 저편&#39;을 재건해보세요.이야기 중심의 게임손에 땀을 쥐게 하는 흥미진진한 이야기를 중심으로 여러 게임 요소를 즐겨보세요. 퍼즐, 잠행, 플랫폼, 액션 요소 모두 다 한 번에 즐길 수 있습니다.게임으로 조망하는 죽음과 사후세계죽음은 터부시되는 소재이지만 DE-EXIT에서는 이 민감한 소재로 새로운 이야기를 시작합니다. 두렵지만 신비로운 죽음이라는 소재를 긍정적인 관점으로 마주해 보세요. 죽음을 기억하며 아름다운 인생을 즐기는 뜻깊은 시간이 될 겁니다.";
-  var url = "https://directg.net/game/game_page.html?product_code=50004122";
-  //트위터 공유
-  $('#btn_twitter').bind("click",function(){
-    goTwitter();
-  });
-  //페이스북 공유
-  $('#btn_facebook').bind("click",function(){
-    goFacebook();
-  });
-  //구글플러스 공유
-  $('#btn_google').bind("click",function(){
-    goGooglePlus();
-  });
-  var goFacebook =function(){
-    var popup_width = 600;
-    var popup_height = 450;
-    $.sns_lib.initialize(title,img,summary,popup_width,popup_height,url);
-    $.sns_lib.go_Facebook();
-    $.sns_lib.destroy();
-  }
-  var goTwitter = function(){
-    var popup_width = 450;
-    var popup_height = 450 ;
-    var txt = summary.substr(0, 100)
-    $.sns_lib.initialize(title,'',txt,popup_width,popup_height,url);
-    $.sns_lib.go_Twitter();
-    $.sns_lib.destroy();
-  }
-  var goGooglePlus = function(){
-    var link_url = "https://directg.net/game/game_page.html?product_code=50004122";
-    var url = "https://plus.google.com/share?url="+link_url;
-    window.open(url,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
-    //return false;
-  }
 
-  $('button[id="btn_donate"]').on("click", function() {
-
-    location.href = "../cart.do";
-  });
-</script>
 <jsp:include page="../main/footer.jsp"></jsp:include>
 </body>
 
 </html>
 <script src="${pageContext.request.contextPath}/js/detail.js"></script>
-<%--<%@include file="../main/footer.jsp"%>--%>

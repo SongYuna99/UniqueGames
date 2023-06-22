@@ -4,7 +4,6 @@
 <head>
     <title>회사 소개페이지 리스트</title>
     <meta charset="UTF-8">
-    <title>Unique Games</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mainunigames.css">
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
     <style>

@@ -19,7 +19,6 @@
 
 <jsp:include page="../main/header.jsp"></jsp:include>
 <div id="image-top-bg" ></div>
-<form action="detail/searchGameList" method="get">
 <div class="parent-container" style="display: grid">
     <div class="main-container">
       <div class="row equal-height">
@@ -35,7 +34,7 @@
 
 							<span>
 																												[특전제공] 스트리트 파이터 6 디럭스 에디션							</span><br/>
-                <span style="text-transform:none">Street Fighter 6 Deluxe Edition</span>
+                <span style="text-transform:none" id="game_name">${game.name}</span>
               </h1>
             </div>
 
@@ -57,21 +56,6 @@
                       <div class="item screenshot_thumbnail" style='cursor:pointer'>
                         <img src="${pageContext.request.contextPath}/images/img-game-thumnail_2.jpg" data-type="image/jpeg" data-url="<img src='${pageContext.request.contextPath}/images/img-game-thumnail_2.jpg'>" itemprop="thumnailUrl">
                       </div>
-<%--                      <div class="item screenshot_thumbnail" style='cursor:pointer'>--%>
-<%--                        <img src="/plugins/fileUpload/server/php/files/50004062/thumbnail/ss_ed46aaa9ed94dd6f35a703070f8df16cee5aef61.1920x1080.jpg" data-type="image/jpeg" data-url="<img src='/plugins/fileUpload/server/php/files/50004062/medium/ss_ed46aaa9ed94dd6f35a703070f8df16cee5aef61.1920x1080.jpg'>" itemprop="thumbnailUrl">--%>
-<%--                      </div>--%>
-<%--                      <div class="item screenshot_thumbnail" style='cursor:pointer'>--%>
-<%--                        <img src="/plugins/fileUpload/server/php/files/50004062/thumbnail/ss_10191fb5ab48cee99d7a43e636db9202938f143e.1920x1080.jpg" data-type="image/jpeg" data-url="<img src='/plugins/fileUpload/server/php/files/50004062/medium/ss_10191fb5ab48cee99d7a43e636db9202938f143e.1920x1080.jpg'>" itemprop="thumbnailUrl">--%>
-<%--                      </div>--%>
-<%--                      <div class="item screenshot_thumbnail" style='cursor:pointer'>--%>
-<%--                        <img src="/plugins/fileUpload/server/php/files/50004062/thumbnail/ss_d186566a92ada8cdb08b04769a8c95cd1e380006.1920x1080.jpg" data-type="image/jpeg" data-url="<img src='/plugins/fileUpload/server/php/files/50004062/medium/ss_d186566a92ada8cdb08b04769a8c95cd1e380006.1920x1080.jpg'>" itemprop="thumbnailUrl">--%>
-<%--                      </div>--%>
-<%--                      <div class="item screenshot_thumbnail" style='cursor:pointer'>--%>
-<%--                        <img src="/plugins/fileUpload/server/php/files/50004062/thumbnail/ss_a381f1b3b450c18900d47b991ce8e7456e9cdba5.1920x1080.jpg" data-type="image/jpeg" data-url="<img src='/plugins/fileUpload/server/php/files/50004062/medium/ss_a381f1b3b450c18900d47b991ce8e7456e9cdba5.1920x1080.jpg'>" itemprop="thumbnailUrl">--%>
-<%--                      </div>--%>
-<%--                      <div class="item screenshot_thumbnail" style='cursor:pointer'>--%>
-<%--                        <img src="/plugins/fileUpload/server/php/files/50004062/thumbnail/ss_201488fc9f1aa5e29e2fc6d96ef2b66e41ddf32e.1920x1080.jpg" data-type="image/jpeg" data-url="<img src='/plugins/fileUpload/server/php/files/50004062/medium/ss_201488fc9f1aa5e29e2fc6d96ef2b66e41ddf32e.1920x1080.jpg'>" itemprop="thumbnailUrl">--%>
-<%--                      </div>--%>
                     </div>
                   </div>
                 </div>
@@ -94,10 +78,6 @@
                       <div class="product-description">
                         <div id="package_info">
                           <h5><span class="fa fa-square"></span> &nbsp;[특전제공] 스트리트 파이터 6 디럭스 에디션 구성정보</h5>
-                          <ul class="list-group" id="package_list">
-                            <li class="list-group-item">스트리트 파이터 6 기본 게임</li>
-                            <li class="list-group-item">스트리트 파이터 6 - Year 1 캐릭터 패스</li>
-                          </ul>
                         </div>
                       </div>
                       <div class="product-description">
@@ -143,13 +123,9 @@
                                   <span class="vm-price-desc" >제작 </span>
                                   <span class="PricebasePrice" ><a href="../detail/getIntro.do?id=2" style="font: italic normal 900 18px Apex New; letter-spacing: 0px;color: #1c2025">에픽콘솔게임 Team</a>
                                   </span>
+                                  <span id="company_id" style="display: none">${companyVo.company_id}</span>
                                 </div>
                                 <span class="price-crossed" ></span>
-                                <!--                              <div class="PricesalesPrice vm-display vm-price-value" style="text-align: center">-->
-                                <!--                                <a class="PricebasePrice" href="#" style="color: deepskyblue">-->
-                                <!--                                  <IMG src="${pageContext.request.contextPath}/images/btn_boardSearch_normal.png">제작팀 소개 바로가기-->
-                                <!--                                </a>-->
-                                <!--                              </div>-->
                               </div>
 
                               <div class="product-info">
@@ -195,13 +171,13 @@
                                   <span class="amount">200,000,000원</span>
                                 </div>
                                 <div class="donation-amount" style="margin-bottom: 30px">
-                                  <span class="label">후원금액</span>
-                                  <span class="don-amount">2,000,000원</span>
+<%--                                  <span class="label">후원금액</span>--%>
+<%--                                  <span class="don-amount">2,000,000원</span>--%>
                                 </div>
                                 <button type="button" class="btn btn-default btn-lg" id="btn_wishlist" data="50004122" style="width: 90px;">
                                   <img src="${pageContext.request.contextPath}/images/btn_like_select.png">
                                   Like</button>
-                                <button type="button" class="btn btn-warning btn-lg" id="btn_donate" data="50004122" data-assetid="3402" data-prodtp="1" style="width: 150px">후원하기</button>
+                                <button type="button" class="btn btn-warning btn-lg" id="btn_donate" style="width: 150px">후원하기</button>
 
                               </div>
                             </div>
@@ -237,54 +213,7 @@
       </div>
     </div>
 </div>
-</form>
-<script type="text/javascript">
-  var title = "[특전제공] 스트리트 파이터 6 디럭스 에디션";
-  var img = "https://directgames.co.kr/upload/product/goods_1679472730_opengraph.jpg";
-  var summary = "※ 예약 특전은 한정 수량으로 조기 품절될 수 있습니다.※&nbsp;제품 코드(키)는 발송은 추가 공지를 통해 안내해 드릴 예정입니다.&nbsp;■ 예약 구매 특전&nbsp;Outfit 1 색상 10(춘리, 제이미, 마농, 디제이, 주리, 켄)&nbsp;&nbsp;■&nbsp;스트리트 파이터 6 디럭스 에디션스트리트 파이터 6 디럭스 에디션• 기본 게임• Year 1 캐릭터 패스　┗추가 캐릭터 4명　┗추가 캐릭터 4명의 색상: Outfit 1 색상 3~10　┗구입 특전: 드라이브 티켓 4,200장※추가 콘텐츠는 발매일 이후에 순차적으로 배포됩니다.※상품의 자세한 정보, 발매 스케줄은 공식 사이트에서 확인해 주시기 바랍니다.&nbsp;시리즈 최신작 『Street Fighter 6(스트리트 파이터 6)』, 2023년 6월 2일 발매 결정!RE ENGINE으로 개발된 본 작품은 지금까지의 시리즈에는 없었던 대형 모드: World Tour, Fighting Ground, Battle Hub로 구성되어 있다.■개성 넘치는 18명의 파이터류, 춘리, 루크, 제이미, 킴벌리 등, 레전드부터 뉴 제너레이션까지의 파이터가 인상적인 비주얼과 다채로운 기술을 앞세워 지금 이곳에 모였다.■전투의 무대를 지배하라「Fighting Ground(파이팅 그라운드)」에서는 시리즈를 계승한 격투 모드는 물론, 커맨드 입력의 벽을 허무는 「모던」 타입 조작, 상황에 따라 AI가 서포트해 주는 「다이내믹」 타입 조작 등을 제공. 게임 대회의 현장감을 집에서 맛볼 수 있는 배틀 자동 중계방송 기능도 탑재.공수 일체의 핵심이 되는 「드라이브 시스템」. 효과적으로 기술을 발동하여 화려한 연출과 통쾌한 배틀을 체감하라.■강함을 추구하는 모험을 떠나자싱글 플레이어의 몰입형 스토리 모드 「World Tour(월드 투어)」에서는 플레이어의 분신이 되는 주인공을 풍부한 아바타 크리에이션 기능으로 만들어 스트리트 파이터의 세계 주민들과 만나면서 류, 춘리와 같은 스승의 제자가 되어 기술을 배우고 다양한 적과 싸우며 「강함이란 무엇인가?」의 해답을 찾아 여행한다.■세계의 파이터와 주먹을 맞대자월드 투어에서 단련한 아바타가 모여 전 세계의 플레이어와 소통을 즐길 수 있는 「Battle Hub(배틀 허브)」. 대전 오락기에 앉으면 바로 뜨거운 전투를 즐길 수 있는 「배틀 허브 매치」와 「익스트림 배틀」 외에도 「게임 센터」의 오락기에서 캡콤의 명작 아케이드 게임을 플레이할 수도 있다!월드 워리어를 향한 길은 이곳에서 시작된다.【온라인 플레이에 관하여】캡콤은 이 게임에 관해, 온라인 전용 콘텐츠를 포함한 각종 온라인 서비스를 제공합니다.※인터넷 접속 환경이 없는 경우 일부 이용이 불가능한 요소가 있으므로 주의해 주시기 바랍니다.※온라인 전용 콘텐츠를 이용하려면 CAPCOM ID가 필요합니다.※CAPCOM ID의 서비스 내용, 이용 방법 등은 CAPCOM ID의 웹사이트 https://cid.capcom.com/ 를 참고해 주시기 바랍니다. 또한, CAPCOM ID 이용에 있어 연령 제한이 설정되어 있는 경우가 있습니다.※피치 못할 사정이 있는 경우, 캡콤으로 인해 온라인 서비스가 일시 정지 또는 중단되는 경우가 있습니다.";
-  var url = "https://directg.net/game/game_page.html?product_code=50004062";
-  //트위터 공유
-  $('#btn_twitter').bind("click",function(){
-    goTwitter();
-  });
-  //페이스북 공유
-  $('#btn_facebook').bind("click",function(){
-    goFacebook();
-  });
-  //구글플러스 공유
-  $('#btn_google').bind("click",function(){
-    goGooglePlus();
-  });
-  var goFacebook =function(){
-    var popup_width = 600;
-    var popup_height = 450;
-    $.sns_lib.initialize(title,img,summary,popup_width,popup_height,url);
-    $.sns_lib.go_Facebook();
-    $.sns_lib.destroy();
-  }
-  var goTwitter = function(){
-    var popup_width = 450;
-    var popup_height = 450 ;
-    var txt = summary.substr(0, 100)
-    $.sns_lib.initialize(title,'',txt,popup_width,popup_height,url);
-    $.sns_lib.go_Twitter();
-    $.sns_lib.destroy();
-  }
-  var goGooglePlus = function(){
-    var link_url = "https://directg.net/game/game_page.html?product_code=50004122";
-    var url = "https://plus.google.com/share?url="+link_url;
-    window.open(url,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
-    //return false;
-  }
-
-  $('button[id="btn_donate"]').on("click", function() {
-
-    location.href = "../cart.do";
-  });
-</script>
 <jsp:include page="../main/footer.jsp"></jsp:include>
 </body>
-
 </html>
 <script src="${pageContext.request.contextPath}/js/detail.js"></script>
-<%--<%@include file="../main/footer.jsp"%>--%>

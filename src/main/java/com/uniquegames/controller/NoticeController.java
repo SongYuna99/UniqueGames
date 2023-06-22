@@ -26,7 +26,7 @@ import com.uniquegames.vo.CompanyVo;
 import com.uniquegames.vo.NoticeVo;
 
 @Controller
-@SessionAttributes(SessionConstants.LOGIN_MEMBER)
+@SessionAttributes({SessionConstants.LOGIN_MEMBER,"list","noticeVo"})
 public class NoticeController {
 
 	NoticeService noticeService;

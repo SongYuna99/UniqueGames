@@ -176,8 +176,8 @@
                                 <span class="amount">100,000,000원</span>
                               </div>
                               <div class="donation-amount" style="margin-bottom: 30px">
-                                <span class="label">후원금액</span>
-                                <span class="don-amount">1,000,000원</span>
+<%--                                <span class="label">후원금액</span>--%>
+<%--                                <span class="don-amount">1,000,000원</span>--%>
                               </div>
                               <button type="button" class="btn btn-default btn-lg" id="btn_wishlist" data="50004122" style="width: 90px;">
                                 <img src="${pageContext.request.contextPath}/images/btn_like_select.png">
