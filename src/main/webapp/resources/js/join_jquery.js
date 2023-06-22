@@ -44,11 +44,11 @@ $("#button-gradient").click(function(){
 		alert("이름은 한글로만 작성해주세요");
 		$("input[name='name']").focus();
 		return false;
-	}else if($("#input-email").val()==""){
+	}else if($("input[name='email1']").val()==""){
 		alert("이메일은 필수 입력 항목입니다");
 		$("input[name='email1']").focus();
 		return false;
-	}else if(!emailCheck($("#input-email1").val())){
+	}else if(!emailCheck($("input[name='email1']").val())){
 		alert("이메일은 영문 또는 숫자로 4자리 이상 입력해주세요");
 		$("input[name='email1']").focus();
 		return false;
@@ -142,6 +142,10 @@ $("#button-gradient-company").click(function(){
 		return false;
 	}else if($("#company-name").val()==""){
 		alert("회사명은 필수 입력 항목입니다");
+		$("#company-name").focus();
+		return false;
+	}else if(!nameCheck1($("#company-name").val())) {
+		alert("회사명은 한글, 영어로 1~10글자 이내로 작성해주세요");
 		$("#company-name").focus();
 		return false;
 	}else if($("#company-email1").val()==""){
@@ -241,6 +245,12 @@ function pwdCheck(asValue) {
 
 function nameCheck(asValue) {
 	var regex =  /^[가-힣]{2,4}$/;
+	
+	return regex.test(asValue);
+}
+
+function nameCheck1(asValue) {
+	var regex =  /^[A-Za-z가-힣]{1,7}$/;
 	
 	return regex.test(asValue);
 }
@@ -434,7 +444,7 @@ $("#company-name").blur(function(){
 	if($("#company-name").val()=="") {
 		$("#c-nameMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
 	}else {
-		if(!nameCheck($("#company-name").val())) {
+		if(!nameCheck1($("#company-name").val())) {
 			$("#c-nameMsg").text("올바른 이름 형식이 아닙니다").css("color","red").css("font-size","11px").css("display","inline");
 		}else {
 			$("#c-nameMsg").css("display","none");
@@ -771,6 +781,7 @@ $("input[name='member_id']").keydown(function() {
   		success : function(data){
   			alert("인증번호가 전송되었습니다");
   			code = data;
+  			$('#email-auth-check').attr('disabled',false);
   		}
   	});
 });
@@ -815,6 +826,7 @@ $("input[name='member_id']").keydown(function() {
   		success : function(data){
   			alert("인증번호가 전송되었습니다");
   			code1 = data;
+  			$('#c-email-auth-check').attr('disabled',false);
   		}
   	});
 });
@@ -843,4 +855,15 @@ $("input[name='member_id']").keydown(function() {
   
   		
 	
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // URL에서 selectedTab 파라미터 값을 가져옴
+    var urlParams = new URLSearchParams(window.location.search);
+    var selectedTab = urlParams.get('selectedTab');
+    
+    // 선택한 탭을 표시
+    if (selectedTab) {
+        document.getElementById(selectedTab).checked = true;
+    }
 });

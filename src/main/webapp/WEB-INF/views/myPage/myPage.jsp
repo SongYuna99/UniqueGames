@@ -9,12 +9,16 @@
 	<title>myPage</title>
 	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">
 	<script src="http://localhost:9000/uniquegames/js/jquery-3.6.4.min.js"></script>
-	<!-- <script src="http://localhost:9000/uniquegames/js/join_jquery.js"></script> -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 	
 	$(document).ready(function(){
 		var password = "${memberVo.password}";
+		var phone1 = "${memberVo.phone1}";
+		var phone2 = "${memberVo.phone2}";
+		var phone3 = "${memberVo.phone3}";
+		var email1 = "${memberVo.email1}";
+		var email2 = "${memberVo.email2}";
 		
 		function emailCheck(asValue){
 			var regex = /[A-za-z0-9]{4,20}$/;
@@ -38,17 +42,21 @@
 				alert("비밀번호가 일치하지 않습니다");
 				$("input[name='password']").focus();
 				return false;
-			}else if($("#input-email1").val()==""){
+			}else if($("input[name='email1']").val()==""){
 				alert("이메일은 필수 입력 항목입니다");
 				$("input[name='email1']").focus();
 				return false;
-			}else if(!emailCheck($("#input-email1").val())){
+			}else if(!emailCheck($("input[name='email1']").val())){
 				alert("이메일은 영문 또는 숫자로 4자리 이상 입력해주세요");
 				$("input[name='email1']").focus();
 				return false;
 			}else if($("input[name='email2']").val()=="" && $("#selectbox-email").val()=="choose" || $("input[name='email2']").val()=="" && $("#selectbox-email").val()=="direct"){
 				alert("이메일 주소를 전부 작성해주세요");
 				$("input[name='email2']").focus();
+				return false;
+			}else if($("#emailAuth").css("color") === "rgb(255, 0, 0)") {
+				alert("이메일 인증번호를 확인해주세요");
+				$("#email-auth-check").focus();
 				return false;
 			}else if($("#selectbox-mobile").val()=="choose") {
 				alert("통신사를 선택해주세요");
@@ -74,6 +82,10 @@
 				alert("휴대전화는 숫자 3,4자리로 입력해주세요");
 				$("input[name='phone3']").focus();
 				return false;
+			}else if($("#phoneMsg").text() != ""){
+				alert("휴대전화를 확인해주세요");
+				$("#selectbox-phone").focus();
+				return false;
 			}else {
 				myPageForm.submit();
 			}
@@ -83,7 +95,7 @@
 			
 			if($("#selectbox-email").val()=="choose") {
 				$("input[name='email2']").val("");
-				$("#emailMsg").text("이메일을 선택해주세요").css("color","red").css("font-size","11px").css("display","block");
+				$("#emailMsg").text("이메일을 선택해주세요").css("color","red").css("font-size","11px").css("display","inline");
 				$("#selectbox-email").focus();
 				return false;
 			}else if($("#selectbox-email").val()=="direct") {
@@ -148,30 +160,104 @@
 		  		success : function(data){
 		  			alert("인증번호가 전송되었습니다");
 		  			code = data;
+		  			$('#email-auth-check').attr('disabled',false);
 		  		}
 		  	});
 		});
 
 		    	
-		  	$('#email-auth-check').on("change", function () {
-					const inputCode = $(this).val();
-				    const resultMsg = $('#emailAuth');
-					
-					if(inputCode === code){
-						resultMsg.text('인증번호가 일치합니다.');
-						resultMsg.css("font-size","11px").css('color','blue').css("display","inline");
-						$('#email-auth-check').attr('disabled',true);
-						$('input[name="email1"]').attr('readonly',true);
-						$('input[name="email2"]').attr('readonly',true);
-						$('#selectbox-email').attr('disabled',true);
-						$('#selectbox-email').attr('onFocus', 'this.initialSelect = this.selectedIndex');
-				        $('#selectbox-email').attr('onChange', 'this.selectedIndex = this.initialSelect');
-					}else{
-						resultMsg.text('인증번호가 불일치 합니다. 다시 확인해주세요!.');
-						resultMsg.css("font-size","11px").css('color','rgb(255, 0, 0)').css("display","inline");
-					}
-			  
-		  });
+	  	$('#email-auth-check').on("change", function () {
+				const inputCode = $(this).val();
+			    const resultMsg = $('#emailAuth');
+				
+				if(inputCode === code){
+					resultMsg.text('인증번호가 일치합니다.');
+					resultMsg.css("font-size","11px").css('color','blue').css("display","inline");
+					$('#email-auth-check').attr('disabled',true);
+					$('input[name="email1"]').attr('readonly',true);
+					$('input[name="email2"]').attr('readonly',true);
+					$('#selectbox-email').attr('disabled',true);
+					$('#selectbox-email').attr('onFocus', 'this.initialSelect = this.selectedIndex');
+			        $('#selectbox-email').attr('onChange', 'this.selectedIndex = this.initialSelect');
+				}else{
+					resultMsg.text('인증번호가 불일치 합니다. 다시 확인해주세요!.');
+					resultMsg.css("font-size","11px").css('color','rgb(255, 0, 0)').css("display","inline");
+				}
+		  
+	  });
+	  	
+	  	$("input[name='email1'], input[name='email2'], #selectbox-email").change(function() {
+	  		if($("#email-auth-check").val() == ""){
+	  			$("#emailAuth").css("font-size","11px").css('color','rgb(255, 0, 0)').css("display","inline").text('이메일 인증을 완료해주세요');
+	  		}else {
+	  			$("#emailAuth").css('color','rgb(0, 0, 255)').css("display","none");
+	  		}
+	  	});
+	  	
+	  	
+	  	
+	  	$("input[name='email1'], input[name='email2'], #selectbox-email").blur(function(){
+    		
+	  		if($("input[name='email1']").val() == "" || $("input[name='email2']").val() == "") {
+	  			$("#emailMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
+	  			return false;
+	  		}else {
+	  			$.ajax({
+	  				url : "email_check.do",
+	  				type: "POST",
+	  				data: {
+	  					email1 : $("input[name='email1']").val(),
+	  					email2 : $("input[name='email2']").val()
+	  				},
+	  				
+	  				success : function(result) {
+	  					if(result==1) {
+	  						if($("input[name='email1']").val()==email1 && $("input[name='email2']").val()==email2) {
+	  							$("#emailMsg").css("display","none");
+	  							$("#emailAuth").css('color','rgb(0, 0, 255)').css("display","none");
+	  							return false;
+	  						}
+	  						$("#emailMsg").text("중복된 이메일입니다").css("color","red").css("font-size","11px").css("display","inline");
+	  						return false;
+	  					}else {
+	  						$("#emailMsg").text("").css("display","none");
+	  					}
+	  				}
+	  			});
+	  		}
+
+	  	});
+	  	
+	  	$("#selectbox-mobile, #selectbox-phone, input[name='phone2'], input[name='phone3']").blur(function() {
+	  	    if ($("#selectbox-mobile").val() == "default" || $("#selectbox-phone").val() == "default" || $("input[name='phone2']").val() == "" || $("input[name='phone3']").val() == "") {
+	  			$("#phoneMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
+	  		}else {
+	  			$.ajax({
+	  				url : "phone_check.do",
+	  				type: "POST",
+	  				data: {
+	  					tel : $("#selectbox-mobile").val(),
+	  					phone1 : $("#selectbox-phone").val(),
+	  					phone2 : $("input[name='phone2']").val(),
+	  					phone3 : $("input[name='phone3']").val()
+	  				},
+	  				
+	  				success : function(result) {
+	  					if(result==1) {
+	  						if($("#selectbox-phone").val()==phone1 && $("input[name='phone2']").val()==phone2 && $("input[name='phone3']").val()==phone3){
+	  							$("#phoneMsg").text("").css("display","none");
+	  							return false;
+	  						}
+	  						$("#phoneMsg").text("이미 등록된 휴대전화입니다").css("color","red").css("font-size","11px").css("display","inline");
+	  						return false;
+	  					}else {
+	  						$("#phoneMsg").text("").css("display","none");
+	  					}
+	  				}
+	  			});
+	  		}
+	  	});
+	  	
 	});
 	
 	
@@ -196,7 +282,7 @@
 				<ul>
 					<li id="must-insert">
 						<p id="label-dot">*</p>
-						<label>아이디</label>
+						<label>아이디</label><span id="idMsg"></span>
 					</li>
 					<li>
 						<input type="text" id="input-common" name="member_id" value="${memberVo.member_id }" disabled>
@@ -204,7 +290,7 @@
 					</li>
 					<li id="must-insert">
 						<p id="label-dot">*</p>
-						<label>비밀번호</label>
+						<label>비밀번호</label><span id="pwdMsg"></span>
 					</li>
 					<li>
 						<input type="password" id="input-common" name="password">
@@ -217,7 +303,7 @@
 					</li>
 					<li id="must-insert">
 						<p id="label-dot">*</p>
-						<label>이름</label>
+						<label>이름</label><span id="nameMsg"></span>
 					</li>
 					<li>
 						<input type="text" id="input-common" name="name" value="${memberVo.name }" disabled>
@@ -226,6 +312,8 @@
 					<li id="must-insert">
 						<p id="label-dot">*</p>
 						<label>이메일</label>
+						<span id="emailMsg"></span>
+						<span id="emailAuth"></span>
 					</li>
 					<li>
 						<input type="text" id="input-email" name="email1" value="${memberVo.email1 }">
@@ -239,7 +327,7 @@
 							<option value="direct">직접입력</option>
 						</select>
 						<button type="button" id="email-btn-style">인증 번호</button>
-						<input type="text" name="email-auth-check" id="email-auth-check" placeholder="인증번호 6자리">
+						<input type="text" name="email-auth-check" id="email-auth-check" placeholder="인증번호 6자리" disabled="disabled">
 						<span id="emailMsg"></span>
 					</li>
 					<li>
@@ -257,7 +345,7 @@
 					</li>
 					<li id="must-insert">
 						<p id="label-dot">*</p>
-						<label>휴대전화</label>
+						<label>휴대전화</label><span id="phoneMsg"></span>
 					</li>
 					<li>
 						<select name="tel" id="selectbox-mobile">
@@ -277,7 +365,6 @@
 						<input type="text" id="input-phone" name="phone2" value="${memberVo.phone2 }">
 						-
 						<input type="text" id="input-phone" name="phone3" value="${memberVo.phone3 }">
-						<span id="phoneMsg"></span>
 					</li>
 					<li>
 						<button type="button" id="button-gradient">수정하기</button>

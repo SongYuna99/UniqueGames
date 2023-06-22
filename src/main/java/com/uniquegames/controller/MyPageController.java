@@ -72,6 +72,7 @@ public class MyPageController {
 			memberVo.setPhone1(phone1);
 			memberVo.setPhone2(phone2);
 			memberVo.setPhone3(phone3);
+			
 			mav.addObject("memberVo", memberVo);
 			mav.setViewName("/myPage/myPage");
 		

@@ -208,7 +208,7 @@ input[name="agreementAll"]:checked {
 	background: #2C2C2C;
 }
 
-input[name="chk-agree"] {
+input[name="chk-agree"], input[name="c-chk-agree"] {
 	width: 20px;	height: 20px;
 	background-image: url("../images/btn_check_normal.png");
 	background-repeat: no-repeat;
@@ -219,7 +219,7 @@ input[name="chk-agree"] {
 	cursor: pointer;
 }
 
-input[name="chk-agree"]:checked {
+input[name="chk-agree"]:checked, input[name="c-chk-agree"]:checked {
 	background-image: url("../images/btn_check_select.png");
 	background-repeat: no-repeat;
 }
