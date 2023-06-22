@@ -17,7 +17,6 @@
 <jsp:include page="../main/header.jsp"></jsp:include>
 <div id="image-top-bg" ></div>
 
-<form action="../cart.do" method="post">
 <div class="parent-container" style="display: grid">
   <div class="main-container">
   <div class="row equal-height">
@@ -127,7 +126,7 @@
                                 <span class="vm-price-desc" >제작 </span>
                                 <span class="PricebasePrice" ><a href="../detail/getIntro.do?id=1" style="font: italic normal 900 18px Apex New; letter-spacing: 0px;color: #1c2025">CGD(Crazy Game Dog) Team</a>
                                   </span>
-                                <span id="company_id" style="display: none">AA</span>
+                                <span id="company_id" style="display: none">${companyVo.company_id}</span>
                               </div>
                               <span class="price-crossed" ></span>
 
@@ -219,7 +218,6 @@
     </div>
   </div>
 </div>
-</form>
 <script type="text/javascript">
   // var title = "디 엑시트 이터널 매터스";
   // var img = "https://directg.net/upload/product/goods_1681697853_opengraph.jpg";

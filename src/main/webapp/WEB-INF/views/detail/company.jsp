@@ -8,10 +8,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mainunigames.css">
+<%--  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mainunigames.css">--%>
   <title>제작사(팀) 소개</title>
   <!--css 초기화-->
-<%--  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">--%>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
   <!-- SWIPER 외부 라이브러리 연결-->
   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
 
   <!--  bootstrap -->
-<%--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">--%>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
   <style>
@@ -41,15 +41,14 @@
     .swiper {
       margin-top: 50px;
       margin-bottom: 50px;
-      width: 1000px;
-      height: 500px;
-      position: relative;
+      width: 1000px!important;
+      height: 500px!important;
+      overflow: hidden!important;
     }
 
     .swiper .swiper-slide {
-      height: 300px;
-      width: 100%;
-      display: flex;
+      height: 300px!important;
+      display: flex!important;
       justify-content: center;
     }
 
@@ -65,27 +64,28 @@
     }
     .swiper-button-prev,
     .swiper-button-next {
-      width: 30px;
-      height: 30px;
-      border: 2px solid rgba(136, 20, 20, 0.03);
-      border-radius: 50%;
-      position: absolute;
-      top: 300px;
-      z-index: 1;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      width: 30px!important;
+      height: 30px!important;
+      border: 2px solid rgba(136, 20, 20, 0.03)!important;
+      border-radius: 50%!important;
+      position: absolute!important;
+      top: 300px!important;
+      z-index: 1!important;
+      cursor: pointer!important;
+      display: flex!important;
+      justify-content: center!important;
+      align-items: center!important;
     }
     .swiper-button-prev {
-      left: 10px;
+      margin-left: -70px;
+      left: 50px!important;
     }
     .swiper-button-next {
       right: 10px;
     }
-    a{
+    .card-footer a{
       text-decoration: none;
-      /*color: white !important;*/
+      color: white !important;
       font: normal normal normal 16px YouandiModern;
     }
     p{
@@ -135,18 +135,17 @@
 <%--        <a href="getIntroList.do">글목록</a>&nbsp;&nbsp;&nbsp;--%>
     </div>
 
-<%--
-재미있는 마법 이야기에 푹 빠져 사는 사람들이 모여서 미친 상상력에 개처럼 달려드는 사람들이 모인 팀<br>
-          우리가 상상하는 모든것들을 게임으로 출시하는게 팀의 목적입니다.<br>
-          쉽고 재밌게 게임을 즐기며 살자!!
---%>
 
   </div>
 
 
   <!--  slider 시작 -->
   <div class="swiper">
-    <p style=" text-align: center;"><img style="display: block;padding: 50px; margin: 0 auto" src="${pageContext.request.contextPath}/images/img_title_gameList.png"></p>
+    <p style=" text-align: center;">
+      <a href="../alllist.do">
+      <img style="display: block;padding: 50px; margin: 0 auto" src="${pageContext.request.contextPath}/images/img_title_gameList.png">
+      </a>
+    </p>
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <div class="card">
@@ -231,118 +230,71 @@
     </div>
 
     <div class="swiper-pagination"></div>
+<%--      <div class="swiper-button-prev" style="overflow: visible">--%>
+<%--        <div class="material-icons">arrow_back</div>--%>
+<%--      </div>--%>
+<%--      <div class="swiper-button-next">--%>
+<%--        <div class="material-icons">arrow_forward</div>--%>
+<%--      </div>--%>
 
-    <!--    <div class="swiper-button-prev">-->
-    <!--      <div class="material-icons">arrow_back</div>-->
-    <!--    </div>-->
-    <!--    <div class="swiper-button-next">-->
-    <!--      <div class="material-icons">arrow_forward</div>-->
-    <!--    </div>-->
   </div>
   <!--  slider 끝-->
 
   <!--  공지사항-->
-  <p style=" text-align: center;"><img style="display: block; margin: 0 auto;padding-top: 50px" src="${pageContext.request.contextPath}/images/img_title_notice.png"></p>
-  <div id="content" style="margin-top: 60px; margin-bottom: -80px">
+  <p style=" text-align: center;">
+    <a href="../notice_list.do">
+
+    <img style="display: block; margin: 0 auto;padding-top: 50px" src="${pageContext.request.contextPath}/images/img_title_notice.png">
+    </a>
+  </p>
+  <div id="content">
     <div id="board-list">
       <div id="board-top-menu">
-        <p>Notice</p>
-        <div id="bsearch-box">
-          <label for="">
-            <input type="text" name="search" placeholder="검색어를 입력해주세요.">
-            <button type="button" id="btn-search"><img src="${pageContext.request.contextPath}/images/btn_boardSearch_press.png" alt=""></button>
-          </label>
-        </div>
-        <div id="clearFix"></div>
+
+            <p>Notice</p>
+            <div id='bsearch-box'>
+              <form name='boardSearch' action='notice_Search.do' method='get'>
+                <label>
+                  <input type='text' name='keyword' placeholder='검색어를 입력해주세요.'>
+                  <button type='button' id='btn-search'>
+                    <img src='http://localhost:9000/uniquegames/images/btn_boardSearch_press.png'>
+                  </button>
+                </label>
+              </form>
+              <ul>
+                <li><button type='button' id='btn-style' name='getList'>목록</button></li>
+              </ul>
+            </div>
+            <div id='clearFix'></div>
       </div>
-      <table id="user-btable">
-        <tr>
-          <th>번호</th>
-          <th>제목</th>
-          <th>작성자</th>
-          <th>작성일</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td><a href="${pageContext.request.contextPath}/notice/notice_content.html">아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</a></td>
-          <td>관리자</td>
-          <td>2023.04.25</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
-          <td>관리자</td>
-          <td>2023.04.25</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
-          <td>관리자</td>
-          <td>2023.04.25</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
-          <td>관리자</td>
-          <td>2023.04.25</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
-          <td>관리자</td>
-          <td>2023.04.25</td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
-          <td>관리자</td>
-          <td>2023.04.25</td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
-          <td>관리자</td>
-          <td>2023.04.25</td>
-        </tr>
-        <tr>
-          <td>8</td>
-          <td>아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
-          <td>관리자</td>
-          <td>2023.04.25</td>
-        </tr>
-        <tr>
-          <td>9</td>
-          <td>아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
-          <td>관리자</td>
-          <td>2023.04.25</td>
-        </tr>
-        <tr>
-          <td>10</td>
-          <td>아 제목인데 너무 길게 쓰지않고 적당한 길이로 대충 때울려고합니다~예~ 그럼요</td>
-          <td>관리자</td>
-          <td>2023.04.25</td>
-        </tr>
-        <tr>
-          <td colspan="5">
-            <ul id="paging">
-              <li><a href="#"><<</a></li>
-              <li><a href="#"><</a></li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">6</a></li>
-              <li><a href="#">7</a></li>
-              <li><a href="#">8</a></li>
-              <li><a href="#">9</a></li>
-              <li><a href="#">10</a></li>
-              <li><a href="#">></a></li>
-              <li><a href="#">>></a></li>
-            </ul>
-          </td>
-        </tr>
-      </table>
+          <table id="user-btable">
+            <tr>
+              <th>번호</th>
+              <th>제목</th>
+              <th>작성자</th>
+              <th>작성일</th>
+            </tr>
+            <c:choose>
+              <c:when test="${not empty list}">
+                <c:forEach var="noticeVo" items="${list}">
+                  <tr>
+                    <td><c:out value="${noticeVo.rno}"/></td>
+                    <td><a href="notice_content.do?no=${noticeVo.post_id}"><c:out value="${noticeVo.title}" /><c:if test="${noticeVo.cmtCount > 0}"><c:out value=" [${noticeVo.cmtCount}]" /></c:if></a></td>
+                    <td><c:out value="${noticeVo.name}" /></td>
+                    <td><c:out value="${noticeVo.date_output}" /></td>
+                  </tr>
+                </c:forEach>
+              </c:when>
+              <c:when test="${empty list}">
+                <tr>
+                  <td colspan="4" style="padding: 50px 0">등록된 게시글이 없습니다.</td>
+                </tr>
+              </c:when>
+            </c:choose>
+            <tr>
+              <td colspan="5"><div id="ampaginationsm"></div></td>
+            </tr>
+          </table>
     </div>
   </div>
   <!--  공지사항 끝-->

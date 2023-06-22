@@ -107,12 +107,17 @@
       background: linear-gradient(to right,#682CAD,#2FC0CC);
       box-shadow: 0 0 1px rgba(255,255,255,0.2) inset
     }
+
+    #dnt_company{
+      margin: 20px;
+      font-family: "YouandiModern", "Apex New", "Noto Sans KR", sans-serif;
+    }
   </style>
 </head>
 <body>
     <div class="list-group list-group-radio d-grid gap-2 border-0 w-auto">
     <img src="${pageContext.request.contextPath}/images/img_title_logo.png" />
-    <div> 테스트 : ${gameName}</div>
+    <div id="dnt_company">${companyVo.name}</div>
       <div class="position-relative">
         <input class="form-check-input position-absolute top-50 end-0 me-3 fs-5" type="radio" name="listGroupRadioGrid" id="listGroupRadioGrid1" value="10000" checked>
         <label class="list-group-item py-3 pe-5" for="listGroupRadioGrid1">

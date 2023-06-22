@@ -56,7 +56,8 @@ public class DetailMapperController {
     public String goDetail(@PathVariable("detailId") int detailId, Model model) {
         GameVo gameVo = indexServiceMapper.getGameForIndex(detailId);
         model.addAttribute("game", gameVo);
-
+        CompanyVo companyVo = companyRepositoryMapper.findByIndex(detailId);
+        model.addAttribute("companyVo", companyVo);
         // 요청된 detailId에 따라 해당 페이지로 이동
         switch (detailId) {
             case 1:
@@ -71,11 +72,11 @@ public class DetailMapperController {
                 return "redirect:/";
         }
     }
-    @RequestMapping(value = "/{detailId}.do", method = RequestMethod.POST)
-    public void getCompanyId(@PathVariable("detailId") int detailId,@RequestParam("companyId") String companyId, Model model){
-        CompanyVo companyVo = companyRepositoryMapper.findById(companyId);
-        model.addAttribute("companyVo", companyVo);
-    }
+//    @RequestMapping(value = "/{detailId}.do", method = RequestMethod.POST)
+//    public void getCompanyId(@PathVariable("detailId") int detailId,@RequestParam("companyId") String companyId, Model model){
+//        CompanyVo companyVo = companyRepositoryMapper.findById(companyId);
+//        model.addAttribute("companyVo", companyVo);
+//    }
 
     /**
      * @param vo 회사 소개 저장객체
@@ -138,7 +139,7 @@ public class DetailMapperController {
     }
 
     @RequestMapping(value="/popUp.do", method = RequestMethod.GET)
-    public String getPopUp(@ModelAttribute("gameName") String gameName){
+    public String getPopUp(@ModelAttribute("companyVo") CompanyVo companyVo){
         return "detail/popup";
     }
 }
