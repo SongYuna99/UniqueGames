@@ -40,7 +40,7 @@
 						</li>
 						<li>
 							<input type="text" id="input-common" name="member_id" placeholder="영문,숫자 5~10자리" tabindex="1">
-							<button type="button" id="check-btn-style">중복 체크</button>
+							<button type="button" id="check-btn-style" onclick="memberIdDuplicate()">중복 체크</button>
 						</li>
 						<li id="must-insert-1">
 							<p id="label-dot-1">*</p>
@@ -48,14 +48,14 @@
 						</li>
 						<li>
 							<input type="password" id="input-common-password" name="password" placeholder="숫자,영문,특수문자 조합 최소 8자" tabindex="2">
-							<input type="checkbox" id="pwd-check-img">
+							<input type="checkbox" id="pwd-check-img" onclick="passwordVisibility()">
 						</li>
 						<li>
 							<label>비밀번호 확인</label><span id="pwdMsg-check"></span>
 						</li>
 						<li>
-							<input type="password" id="input-common-password-check" name="password-check" placeholder="비밀번호 재입력" tabindex="3">
-							<input type="checkbox" id="pwd-check-img-1">
+							<input type="password" id="input-common-password" name="password-check" placeholder="비밀번호 재입력" tabindex="3">
+							<input type="checkbox" id="pwd-check-img-1" onclick="passwordCheckVisibility()">
 						</li>
 						<li id="must-insert">
 							<p id="label-dot">*</p>
@@ -81,7 +81,7 @@
 								<option value="daum.net">daum.net</option>
 								<option value="direct">직접입력</option>
 							</select>
-							<button type="button" id="email-btn-style">인증 번호</button>
+							<button type="button" id="email-btn-style" onclick="sendEmail()">인증 번호</button>
 							<input type="text" name="email-auth-check" id="email-auth-check" placeholder="인증번호 6자리" disabled="disabled">
 						</li>
 						<li>
@@ -168,7 +168,7 @@
 						</li>
 						<li>
 							<input type="password" id="company-password" name="password" placeholder="숫자,영문,특수문자 조합 최소 8자" tabindex="2">
-							<input type="checkbox" id="c-pwd-check-img">
+							<input type="checkbox" id="c-pwd-check-img" onclick="passwordVisibility()">
 						</li>
 						<li>
 							<label>비밀번호 확인</label><span id="c-pwdMsg-check"></span>
