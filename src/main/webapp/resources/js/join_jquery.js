@@ -785,29 +785,7 @@ $("input[name='member_id']").keydown(function() {
   		}
   	});
 });
-document.querySelector('#email-auth-check').addEventListener('change', checkEmailAuth);
-    	function checkEmailAuth() {
-  var inputCode = document.querySelector('#email-auth-check').value;
-  var resultMsg = document.querySelector('#emailAuth');
 
-  if (inputCode === code) {
-    resultMsg.textContent = '인증번호가 일치합니다.';
-    resultMsg.style.fontSize = '11px';
-    resultMsg.style.color = 'blue';
-    resultMsg.style.display = 'inline';
-    document.querySelector('#email-auth-check').disabled = true;
-    document.querySelector('input[name="email1"]').readOnly = true;
-    document.querySelector('input[name="email2"]').readOnly = true;
-    document.querySelector('#selectbox-email').disabled = true;
-    document.querySelector('#selectbox-email').setAttribute('onFocus', 'this.initialSelect = this.selectedIndex');
-    document.querySelector('#selectbox-email').setAttribute('onChange', 'this.selectedIndex = this.initialSelect');
-  } else {
-    resultMsg.textContent = '인증번호가 불일치합니다. 다시 확인해주세요!';
-    resultMsg.style.fontSize = '11px';
-    resultMsg.style.color = 'rgb(255, 0, 0)';
-    resultMsg.style.display = 'inline';
-  }
-}
   	$('#email-auth-check').on("change", function () {
 			const inputCode = $(this).val();
 		    const resultMsg = $('#emailAuth');
