@@ -1,5 +1,8 @@
 package com.uniquegames.dao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,11 +21,28 @@ public class MemberDao{
 		return sqlSession.selectOne("mapper.member.login", memberVo);
 	}
 
-	/**sign up member*/
+	/**sign up member
 	public int insert(MemberVo memberVo) {
 		return sqlSession.insert("mapper.member.insert", memberVo);
 
 	}
+	*/
+	
+	public int insert(String type) {
+		int result=0;
+		
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("type", type);
+		
+	    if (type.equals("member")) {
+	    	result = sqlSession.insert("mapper.member.insert", param);
+	    } else if (type.equals("company")) {
+	    	result = sqlSession.insert("mapper.member.insert", param);
+	    }
+	    System.out.println("result="+result);
+		return result;
+	}
+	
 	/**ID checking*/
 	public int idCheck(String member_id) {
 		return sqlSession.selectOne("mapper.member.idCheck", member_id);

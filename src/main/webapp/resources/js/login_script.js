@@ -1,10 +1,18 @@
-function memberIdCheck() {
+function memberIdPassCheck() {
 	var memberId = document.querySelector("input[name='member_id']");
-	
+	var password = document.querySelector("input[name='password']");
+	var loginForm = document.getElementById("individual-loginForm");
 	if(memberId.value === "") {
 		alert("아이디는 필수입니다");
 		memberId.focus();
 		return false;
+	}else if(password.value=="") {
+		alert("비밀번호는 필수입니다");
+		password.focus();
+		return false;
+	}
+	if(loginForm != null) {
+		loginForm.submit();
 	}
 	return true;
 }
@@ -64,14 +72,10 @@ function memberIdDuplicate() {
   }
 }
 
-function memberPass(){
+function memberPassValid(){
 	var password = document.querySelector("input[name='password']");
 	
-	if(password.value === "") {
-		alert("비밀번호는 필수입니다");
-		password.focus();
-		return false;
-	}else if(!pwdCheck(password.value)){
+	if(!pwdCheck(password.value)){
 		alert("비밀번호는 영문,숫자,특수문자 1글자 이상 조합하여 작성해주세요");
 		password.focus();
 		return false;
@@ -111,8 +115,6 @@ function passwordCheckVisibility() {
 		passwordCheck.type = "text";
 	}
 }
-
-
 
 function memberNameCheck(){
 	var name = document.querySelector("input[name='name']");
@@ -214,6 +216,7 @@ function sendEmail() {
   };
 
   request.send("email=" + email);
+  
 }
     	
 function checkEmailAuth() {
@@ -273,6 +276,17 @@ function memberPhoneCheck() {
 	return true;
 }
 
+function memberPhoneCheck1() {
+	var phone_num = document.querySelector("input[name='phone_num']");
+	
+	if(phone_num.value=="") {
+		alert("휴대전화는 필수입니다");
+		phone_num.focus();
+		return false;
+	}
+}
+
+
 function handlePhoneBlur() {
 	var phone1 = document.querySelector("#selectbox-phone");
 	var phone2 = document.querySelector("input[name='phone2']");
@@ -305,6 +319,7 @@ function handlePhoneBlur() {
 					return false;
 				} else {
 					phoneMsg.textContent = "";
+					phoneMsg.style.color = "blue";
 					phoneMsg.style.display = "none";
 				}
 			}
@@ -372,7 +387,35 @@ function handleEmailSelection() {
   } else {
     email2.value = selectbox.value;
   }
-}
+}
+
+/*************************************************************************
+							개인 회원가입; 전체 동의
+*************************************************************************/
+
+function agreeAll() {
+	var chkCircle = document.getElementById("chk-circle");
+	var chkAgree = document.querySelectorAll("input[name='chk-agree']");
+
+	if(chkCircle.checked) {
+		chkAgree.forEach(function(element) { element.checked = true; });
+	} else {
+		chkAgree.forEach(function(element) { element.checked = false; });
+	}
+}
+
+function updateCheckbox() {
+  var checkboxes = document.querySelectorAll("input[name='chk-agree']");
+  var total = checkboxes.length;
+  var checked = document.querySelectorAll("input[name='chk-agree']:checked").length;
+
+  if (total !== checked) {
+    document.getElementById("chk-circle").checked = false;
+  } else if (total === checked) {
+    document.getElementById("chk-circle").checked = true;
+  }
+}
+
 function memberValidation() {
 	var memberId = document.querySelector("input[name='member_id']");
 	var password = document.querySelector("input[name='password']");
@@ -386,13 +429,13 @@ function memberValidation() {
 	var phoneMsg = document.getElementById("phoneMsg");
 	var emailAuth = document.querySelector('#emailAuth');
 	
-	if (!memberIdCheck()) {
+	var checkboxes = document.querySelectorAll("#checkbox-agreement:checked");
+  	var total = checkboxes.length;
+  	var checked = document.querySelector("input[name='agreementAll']:checked");
+	
+	if (!memberIdPassCheck()) {
         return false;
-    }else if(idMsg.textContent === "" || idMsg.style.color === "red"){
-    	alert("아이디 중복체크를 진행해주세요");
-    	memberId.focus();
-    	return false;
-    }else if(!memberPass()){
+    }else if(!memberPassValid()){
     	return false;
     }else if(!memberPassCheck()){
     	return false;
@@ -405,6 +448,7 @@ function memberValidation() {
     	passwordCheck.focus();
     	return false;
     }else if(!memberNameCheck()){
+    	pwdMsg.style.display = "none";
     	return false;
     }else if(!memberEmailCheck()){
     	return false;
@@ -422,6 +466,15 @@ function memberValidation() {
     	alert("휴대전화를 확인하세요");
     	phone1.focus();
     	return false;
+    }else if(total != 3 && !checked){
+    	alert("약관에 동의해주세요");
+    	return false;
+    }else if(idMsg.textContent === "" || idMsg.style.color === "red"){
+    	alert("아이디 중복체크를 진행해주세요");
+    	memberId.focus();
+    	return false;
+    }else {
+    	joinIndividual.submit();
     }
 	
 }
@@ -442,4 +495,9 @@ document.addEventListener('DOMContentLoaded', function() {
   		element.addEventListener("blur", handlePhoneBlur);
 	});
 	document.querySelector('#email-auth-check').addEventListener('change', checkEmailAuth);
+	
+	document.querySelectorAll("input[name='chk-agree']").forEach(function(checkbox) {
+  		checkbox.addEventListener("click", updateCheckbox);
+	});
+	
 });

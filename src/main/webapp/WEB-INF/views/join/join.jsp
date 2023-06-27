@@ -8,8 +8,8 @@
 	<title>Join</title>
 	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">
 	<script src="http://localhost:9000/uniquegames/js/jquery-3.6.4.min.js"></script>
-	<!-- <script src="http://localhost:9000/uniquegames/js/join_jquery.js"></script> -->
-	<script src="http://localhost:9000/uniquegames/js/login_script.js"></script>
+	<script src="http://localhost:9000/uniquegames/js/join_jquery.js"></script>
+	<!-- <script src="http://localhost:9000/uniquegames/js/login_script.js"></script> -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
@@ -31,7 +31,8 @@
 			<input id="company" type="radio" name="joinSelect">
 			<label for="company" id="company-tab">법인 회원</label>
 			
-			<form action="join_individual_proc.do" name="joinIndividual" method="post" id="content-2">
+			<form action="join_proc.do" name="joinIndividual" method="post" id="content-2">
+				<input type="hidden" name="type" value="member">
 				<div>
 					<ul>
 						<li id="must-insert">
@@ -40,7 +41,7 @@
 						</li>
 						<li>
 							<input type="text" id="input-common" name="member_id" placeholder="영문,숫자 5~10자리" tabindex="1">
-							<button type="button" id="check-btn-style" onclick="memberIdDuplicate()">중복 체크</button>
+							<button type="button" id="check-btn-style">중복 체크</button>
 						</li>
 						<li id="must-insert-1">
 							<p id="label-dot-1">*</p>
@@ -123,7 +124,7 @@
 					</ul>
 					<ul id="ul-agreement">
 						<li id="agreement-box">
-							<input type="checkbox" name="agreementAll" id="chk-circle" tabindex="15">
+							<input type="checkbox" name="agreementAll" id="chk-circle" tabindex="15" onclick="agreeAll()">
 							<span id="span_agreementAll">전체 동의하기</span>
 						</li>
 						<li>
@@ -152,6 +153,7 @@
 			
 			<!-- 법인 등록 -->
 			<form action="join_company_proc.do" name="joinCompany" method="post" id="content-3">
+				<input type="hidden" name="type" value="company">
 				<div>
 					<ul>
 						<li id="must-insert">

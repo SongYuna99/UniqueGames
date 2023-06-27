@@ -19,10 +19,15 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.login(memberVo);
 	}
 
+//	@Override
+//	public int memberJoinResult(MemberVo memberVo) {
+//		
+//		return memberDao.insert(memberVo);
+//	}
+	
 	@Override
-	public int memberJoinResult(MemberVo memberVo) {
-		
-		return memberDao.insert(memberVo);
+	public int joinResult(Object vo, String type) {
+	    return memberDao.insert(type);
 	}
 
 	@Override

@@ -8,7 +8,8 @@ public interface MemberService {
 	
 	int memberLoginResult(MemberVo memberVo);
 	//int getLoginResult(Object vo);
-	int memberJoinResult(MemberVo memberVo);
+	//int memberJoinResult(MemberVo memberVo);
+	int joinResult(Object vo, String type);
 	String memberIdCheckResult(String member_id);
 	String memberFindIdResult(MemberVo memberVo);
 	int memberFindPwdResult(MemberVo memberVo);

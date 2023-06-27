@@ -644,7 +644,7 @@ $(document).on("click", "button[name='btn-agreement']", function(){
 *************************************************************************/
 $("#check-btn-style").click(function(){
 		
-	if($("#input-id").val()=="") {
+	if($("input[name='member_id']").val()=="") {
 		$("#idMsg").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","inline");
 	}else if(!idCheck2($("input[name='member_id']").val())){
 			$("#idMsg").text("영문 또는 숫자로 작성해주세요").css("color","red").css("font-size","11px").css("display","inline");
@@ -652,7 +652,7 @@ $("#check-btn-style").click(function(){
 			$("#idMsg").text("5~10자리로 작성해주세요").css("color","red").css("font-size","11px").css("display","inline");
 	}else {
 		$.ajax({
-			url : "id_check.do?member_id="+$("#input-id").val(),
+			url : "id_check.do?member_id="+$("input[name='member_id']").val(),
 			success : function(result) {
 				if(result == 1){
 						$("#idMsg").text("이미 사용중인 아이디 입니다. 다시 입력해주세요")

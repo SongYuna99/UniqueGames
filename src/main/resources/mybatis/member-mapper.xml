@@ -12,9 +12,22 @@
 		select count(*) from member where member_id=#{member_id} and password=#{password}
 	</select> -->
 	
-	<insert id="insert" parameterType="com.uniquegames.vo.MemberVo">
+	<!-- <insert id="insert" parameterType="com.uniquegames.vo.MemberVo">
 		insert into member (member_id, password, name, email, phone_num, addr, tel)
 		values (#{member_id},#{password},#{name},#{email},#{phone_num},#{addr},#{tel})
+	</insert> -->
+	
+	<insert id="insert" parameterType="map">
+    
+    <if test='type == "member"'>
+        insert into member (member_id, password, name, email, phone_num, addr, tel)
+        values (#{member_id}, #{password}, #{name}, #{email}, #{phone_num}, #{addr}, #{tel})
+    </if>
+    <if test='type == "company"'>
+        insert into company (company_id, password, name, email, tel, phone_num, addr)
+        values (#{company_id}, #{password}, #{name}, #{email}, #{tel}, #{phone_num}, #{addr})
+    </if>
+    
 	</insert>
 	
 	<select id="idCheck" parameterType="String" resultType="int">

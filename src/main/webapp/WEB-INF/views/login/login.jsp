@@ -12,9 +12,9 @@
 	<script src="http://localhost:9000/uniquegames/js/login_script.js"></script>
 	<script src="https://t1.kakaocdn.net/kakao_js_sdk/v1/kakao.min.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-	<script>
+	
+	<!-- <script>
 		$(document).ready(function(){
-			
 			
 			$("#individual-loginForm").keypress(function(e){
 				if(e.keyCode == 13){
@@ -28,7 +28,6 @@
 				}
 			});
 			
-
 			$("#button-gradient").click(function(){
 				
 				if($("input[name='member_id']").val()=="") {
@@ -117,7 +116,7 @@
             }
         });
 		
-	</script>
+	</script> -->
 </head>
 <body>
 	<header>
@@ -150,7 +149,7 @@
 						<span id="msgPwd"></span>
 					</li>
 					<li>
-						<button type="button" id="button-gradient">LOGIN</button>
+						<button type="button" id="button-gradient" onclick="memberIdPassCheck()">LOGIN</button>
 					</li>
 					<li>
 						<a href="findId.do" id="link-findAccount">아이디 찾기</a>

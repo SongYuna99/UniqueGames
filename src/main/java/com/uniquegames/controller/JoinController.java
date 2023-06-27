@@ -1,5 +1,7 @@
 package com.uniquegames.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +23,8 @@ public class JoinController {
 	@Autowired
 	private MemberService memberService;
 	
-	@Autowired
-	private CompanyMemberService companyMemberService;
+//	@Autowired
+//	private CompanyMemberService companyMemberService;
 	
 	@Autowired
 	private MailSendService mailService;
@@ -32,19 +34,51 @@ public class JoinController {
 		return "/join/join";
 	}
 	
-	@RequestMapping(value="/join_individual_proc.do", method=RequestMethod.POST)
-	public ModelAndView join_proc(MemberVo memberVo) {
-		ModelAndView mav = new ModelAndView();
-		int result = memberService.memberJoinResult(memberVo);
-		
-		if(result==1) {
-			mav.addObject("join_individual_result", "success");
-			mav.setViewName("/login/login");
-		}else {
-			System.out.println("회원가입 실패");
-		}
-		
-		return mav;
+//	@RequestMapping(value="/join_individual_proc.do", method=RequestMethod.POST)
+//	public ModelAndView join_proc(MemberVo memberVo) {
+//		ModelAndView mav = new ModelAndView();
+//		int result = memberService.memberJoinResult(memberVo);
+//		
+//		if(result==1) {
+//			mav.addObject("join_individual_result", "success");
+//			mav.setViewName("/login/login");
+//		}else {
+//			System.out.println("회원가입 실패");
+//		}
+//		
+//		return mav;
+//	}
+	
+	@RequestMapping(value="/join_proc.do", method=RequestMethod.POST)
+	public ModelAndView joinProc(HttpServletRequest request) {
+	    ModelAndView mav = new ModelAndView();
+	    String type = request.getParameter("type");
+	    
+	    if(type.equals("member")) {
+	    	MemberVo memberVo = new MemberVo();
+	    	int result = memberService.joinResult(memberVo, type);
+	    	
+	    	if(result == 1) {
+	            mav.addObject("join_result", "success");
+	        } else {
+	            mav.addObject("join_result", "fail");
+	        }
+	    }else if(type.equals("company")) {
+	    	CompanyVo companyVo = new CompanyVo();
+	    	int result = memberService.joinResult(companyVo, type);
+	    	
+	    	if(result == 1) {
+	            mav.addObject("join_result", "success");
+	        } else {
+	            mav.addObject("join_result", "fail");
+	        }
+	    } else {
+	        mav.addObject("join_result", "fail");
+	    }
+	    
+	    mav.setViewName("/login/login");
+	    
+	    return mav;
 	}
 	
 	@RequestMapping(value="/id_check.do", method=RequestMethod.GET)
@@ -80,50 +114,50 @@ public class JoinController {
 	}
 	
 	/******************************************************************법인 회원가입**********************************************************************/
-	@RequestMapping(value="/join_company_proc.do", method=RequestMethod.POST)
-	public ModelAndView companyJoin(CompanyVo companyVo) {
-		ModelAndView mav = new ModelAndView();
-		int result = companyMemberService.companyJoinResult(companyVo);
-		
-		if(result==1) {
-			mav.addObject("join_company_result", "success");
-			mav.setViewName("/login/login");
-		}else {
-			System.out.println("회원가입 실패");
-		}
-		
-		return mav;
-	}
-	
-	@RequestMapping(value="/c_id_check.do", method=RequestMethod.GET)
-	@ResponseBody
-	public String c_id_check(String company_id) {
-		int result = companyMemberService.companyIdCheckResult(company_id);
-		
-		return String.valueOf(result);
-	}
-	
-	/**법인 이메일 중복확인*/
-	@RequestMapping(value="/c_email_check.do", method=RequestMethod.POST)
-	@ResponseBody
-	public String c_email_check(String email1, String email2) {
-		String email = email1 + "@" + email2;
-		int result = companyMemberService.companyEmailCheckResult(email);
-		
-		return String.valueOf(result);
-	}
-	
-	
-	
-	/**법인 휴대전화 중복확인*/
-	@RequestMapping(value="/c_phone_check.do", method=RequestMethod.POST)
-	@ResponseBody
-	public String c_phone_check(String phone1, String phone2, String phone3) {
-		String phone_num = phone1+"-"+phone2+"-"+phone3;
-		
-		int result = companyMemberService.companyPhoneCheckResult(phone_num);
-		return String.valueOf(result);
-	}
+//	@RequestMapping(value="/join_company_proc.do", method=RequestMethod.POST)
+//	public ModelAndView companyJoin(CompanyVo companyVo) {
+//		ModelAndView mav = new ModelAndView();
+//		int result = companyMemberService.companyJoinResult(companyVo);
+//		
+//		if(result==1) {
+//			mav.addObject("join_company_result", "success");
+//			mav.setViewName("/login/login");
+//		}else {
+//			System.out.println("회원가입 실패");
+//		}
+//		
+//		return mav;
+//	}
+//	
+//	@RequestMapping(value="/c_id_check.do", method=RequestMethod.GET)
+//	@ResponseBody
+//	public String c_id_check(String company_id) {
+//		int result = companyMemberService.companyIdCheckResult(company_id);
+//		
+//		return String.valueOf(result);
+//	}
+//	
+//	/**법인 이메일 중복확인*/
+//	@RequestMapping(value="/c_email_check.do", method=RequestMethod.POST)
+//	@ResponseBody
+//	public String c_email_check(String email1, String email2) {
+//		String email = email1 + "@" + email2;
+//		int result = companyMemberService.companyEmailCheckResult(email);
+//		
+//		return String.valueOf(result);
+//	}
+//	
+//	
+//	
+//	/**법인 휴대전화 중복확인*/
+//	@RequestMapping(value="/c_phone_check.do", method=RequestMethod.POST)
+//	@ResponseBody
+//	public String c_phone_check(String phone1, String phone2, String phone3) {
+//		String phone_num = phone1+"-"+phone2+"-"+phone3;
+//		
+//		int result = companyMemberService.companyPhoneCheckResult(phone_num);
+//		return String.valueOf(result);
+//	}
 	
 	
 }
