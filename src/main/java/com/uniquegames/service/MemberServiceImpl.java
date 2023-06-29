@@ -42,7 +42,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	 
 	@Override
-	public int memberFindPwdResult(MemberVo memberVo) {
+	public String memberFindPwdResult(MemberVo memberVo) {
 		return memberDao.select(memberVo);
 	}
 

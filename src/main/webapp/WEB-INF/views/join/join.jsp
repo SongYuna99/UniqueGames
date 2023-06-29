@@ -8,8 +8,8 @@
 	<title>Join</title>
 	<link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">
 	<script src="http://localhost:9000/uniquegames/js/jquery-3.6.4.min.js"></script>
-	<script src="http://localhost:9000/uniquegames/js/join_jquery.js"></script>
-	<!-- <script src="http://localhost:9000/uniquegames/js/login_script.js"></script> -->
+	<!-- <script src="http://localhost:9000/uniquegames/js/join_jquery.js"></script> -->
+	<script src="http://localhost:9000/uniquegames/js/login_script.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
@@ -41,7 +41,7 @@
 						</li>
 						<li>
 							<input type="text" id="input-common" name="member_id" placeholder="영문,숫자 5~10자리" tabindex="1">
-							<button type="button" id="check-btn-style">중복 체크</button>
+							<button type="button" id="check-btn-style" onclick="memberIdDuplicate()">중복 체크</button>
 						</li>
 						<li id="must-insert-1">
 							<p id="label-dot-1">*</p>
@@ -49,14 +49,14 @@
 						</li>
 						<li>
 							<input type="password" id="input-common-password" name="password" placeholder="숫자,영문,특수문자 조합 최소 8자" tabindex="2">
-							<input type="checkbox" id="pwd-check-img" onclick="passwordVisibility()">
+							<input type="checkbox" id="pwd-check-img" onclick="memberPassVisible()">
 						</li>
 						<li>
 							<label>비밀번호 확인</label><span id="pwdMsg-check"></span>
 						</li>
 						<li>
 							<input type="password" id="input-common-password" name="password-check" placeholder="비밀번호 재입력" tabindex="3">
-							<input type="checkbox" id="pwd-check-img-1" onclick="passwordCheckVisibility()">
+							<input type="checkbox" id="pwd-check-img-1" onclick="memberPassCheckVisible()">
 						</li>
 						<li id="must-insert">
 							<p id="label-dot">*</p>
@@ -161,7 +161,7 @@
 							<label class="check1">회사_아이디</label><span id="c-idMsg"></span>
 						</li>
 						<li>
-							<input type="text" id="input-common" name="company_id" placeholder="영문,숫자 5~10자리" tabindex="1">
+							<input type="text" id="company-id" name="company_id" placeholder="영문,숫자 5~10자리" tabindex="1">
 							<button type="button" id="c-check-btn-style">중복 체크</button>
 						</li>
 						<li id="must-insert-1">
@@ -169,7 +169,7 @@
 							<label>비밀번호</label><span id="c-pwdMsg"></span>
 						</li>
 						<li>
-							<input type="password" id="company-password" name="password" placeholder="숫자,영문,특수문자 조합 최소 8자" tabindex="2">
+							<input type="password" id="company-pass" name="password" placeholder="숫자,영문,특수문자 조합 최소 8자" tabindex="2">
 							<input type="checkbox" id="c-pwd-check-img" onclick="passwordVisibility()">
 						</li>
 						<li>

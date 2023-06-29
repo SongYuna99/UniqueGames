@@ -38,15 +38,15 @@
 		select member_id from member where name=#{name} and phone_num=#{phone_num}
 	</select>
 	
-	<select id="select" parameterType="com.uniquegames.vo.MemberVo" resultType="int">
-		select count(*) from member where member_id=#{member_id} and name=#{name} and phone_num=#{phone_num}
+	<select id="select" parameterType="com.uniquegames.vo.MemberVo" resultType="java.lang.String">
+		select member_id from member where member_id=#{member_id} and name=#{name} and phone_num=#{phone_num}
 	</select>
 	
 	<update id="update" parameterType="com.uniquegames.vo.MemberVo">
 		update member set email=#{email}, addr=#{addr}, phone_num=#{phone_num}, tel=#{tel} where member_id=#{member_id} and password=#{password}
 	</update>
 	
-	<update id="changeMpassword" parameterType="java.lang.String">
+	<update id="changeMpassword" parameterType="com.uniquegames.vo.MemberVo">
 		update member set password=#{mnewpassword} where member_id=#{member_id}
 	</update>
 	

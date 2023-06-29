@@ -9,31 +9,17 @@
 <title>findAccount</title>
 <link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">
 <script src="http://localhost:9000/uniquegames/js/jquery-3.6.4.min.js"></script>
+<script src="http://localhost:9000/uniquegames/js/login_script.js"></script>
 <script>
-//JavaScript 코드
-document.addEventListener('DOMContentLoaded', function() {
-    // URL에서 selectedTab 파라미터 값을 가져옴
-    var urlParams = new URLSearchParams(window.location.search);
-    var selectedTab = urlParams.get('selectedTab');
-    
-    
-    // 선택한 탭을 표시
-    if (selectedTab) {
-        document.getElementById(selectedTab).checked = true;
-    }
-});
-
 	let c = "${find_result }";
-	if(c == "fail"){
+	if(c == "fail") {
 		alert("등록된 회원정보가 없습니다");
 		location.href="findCompany.do";
 	}
-</script>
-<script>
+	
 	$(document).ready(function(){
 		 
 	$("#button-gradient").click(function(){
-			
 			if($("input[name='name']").val()==""){
 				alert("이름을 입력해주세요");
 				$("input[name='name']").focus();
@@ -65,60 +51,26 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		});
 		
-	$("#button-gradient-findPwd").click(function(){
-			
-			if($("input[name='company_id']").val()==""){
-				alert("아이디를 입력해주세요");
-				$("input[name='company_id']").focus();
-				return false;
-			}else if($("#input-common-name").val()==""){
-				alert("이름을 입력해주세요");
-				$("#input-common-name").focus();
-				return false;
-			}else if($("#input-common-phone").val()==""){
-				alert("휴대전화를 입력해주세요");
-				$("#input-common-phone").focus();
-				return false;
-			}else {
-				cfindPwdForm.submit();
-			}
-		});
-		
-		
 		$(document).on("click", "#button-gradient-gotoFind", function(event){
-
 			$("#modal2").hide();
 			$("input[name='name']").val("").focus();
 			$("input[name='member_id']").val("").focus();
 			$("input[name='phone_num']").val("");
-			
-			
-			});
-		
+		});
 		$(document).on("click", "#button-gradient-gotoPwd", function(event){
-
 			$("#modal2").hide();
 			location.href="http://localhost:9000/uniquegames/findCompany.do?selectedTab=findPwd";
-			
-			});
+		});
 		$(document).on("click", "#button-gradient-gotoLogin", function(event){
-
 			$("#modal2").hide();
 			location.href="http://localhost:9000/uniquegames/login.do?selectedTab=company-login";
-			
-			});
-		
+		});
 		$(document).on("click", "#button-gradient-gotoJoin", function(event){
-
 			$("#modal2").hide();
 			location.href="http://localhost:9000/uniquegames/join.do?selectedTab=company";
-			
-			});
-		
-	})
-
+		});
+})
 </script>
-
 </head>
 <body>
 	<header>
@@ -139,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			<input id="findPwd" type="radio" name="findAccount">
 			<label for="findPwd" id="findPwd-tab">비밀번호 찾기</label>
 			
-			<form action="cfindId_check.do" name="cfindIdForm" method="post" id="findIdForm">
+			<form action="cfindId_check.do" name="findIdForm" method="post" id="findIdForm">
 				<ul>
 					<li>
 						<input type="text" id="input-common" name="name" placeholder="이름">
@@ -155,11 +107,11 @@ document.addEventListener('DOMContentLoaded', function() {
 				</ul>
 			</form>
 			
-			<form action="cfindPwd_check.do" name="cfindPwdForm" method="post" id="findPwdForm">
+			<form action="cfindPwd_check.do" name="findPwdForm" method="post" id="findPwdForm">
 				<p id="intro-2">비밀번호를 찾으려는 아이디</p>
 				<ul>
 					<li>
-						<input type="text" id="input-common" name="company_id" placeholder="아이디">
+						<input type="text" id="input-common-id" name="company_id" placeholder="아이디">
 						<span id="msgId"></span>
 					</li>
 					<li>
@@ -171,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
 						<span id="msgPhone1"></span>
 					</li>
 					<li>
-						<button type="button" id="button-gradient-findPwd">비밀번호 찾기</button>
+						<button type="button" id="button-gradient-findPwd" onclick="findPwd()">비밀번호 찾기</button>
 					</li>
 				</ul>
 			</form>

@@ -9,31 +9,17 @@
 <title>findAccount</title>
 <link rel="stylesheet" href="http://localhost:9000/uniquegames/css/login.css">
 <script src="http://localhost:9000/uniquegames/js/jquery-3.6.4.min.js"></script>
+<script src="http://localhost:9000/uniquegames/js/login_script.js"></script>
 <script>
-//JavaScript 코드
-document.addEventListener('DOMContentLoaded', function() {
-    // URL에서 selectedTab 파라미터 값을 가져옴
-    var urlParams = new URLSearchParams(window.location.search);
-    var selectedTab = urlParams.get('selectedTab');
-    
-    
-    // 선택한 탭을 표시
-    if (selectedTab) {
-        document.getElementById(selectedTab).checked = true;
-    }
-});
-
 	let c = "${find_result }";
 	if(c == "fail"){
 		alert("등록된 회원정보가 없습니다");
 		location.href="findId.do";
 	}
-</script>
-<script>
+	
 	$(document).ready(function(){
 		 
 	$("#button-gradient").click(function(){
-			
 			if($("input[name='name']").val()==""){
 				alert("이름을 입력해주세요");
 				$("input[name='name']").focus();
@@ -66,58 +52,66 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	
 	$("#button-gradient-findPwd").click(function(){
-			
-			if($("input[name='member_id']").val()==""){
-				alert("아이디를 입력해주세요");
-				$("input[name='member_id']").focus();
-				return false;
-			}else if($("#input-common-name").val()==""){
-				alert("이름을 입력해주세요");
-				$("#input-common-name").focus();
-				return false;
-			}else if($("#input-common-phone").val()==""){
-				alert("휴대전화를 입력해주세요");
-				$("#input-common-phone").focus();
-				return false;
-			}else {
-				findPwdForm.submit();
-			}
-		});
+		var id = $("#input-common-id").val();
 		
-		$(document).on("click", "#button-gradient-gotoFind", function(event){
-
-			$("#modal2").hide();
-			$("input[name='name']").val("").focus();
-			$("input[name='member_id']").val("").focus();
-			$("input[name='phone_num']").val("");
-			
-			
+		if($("#input-common-id").val()==""){
+			alert("아이디를 입력해주세요");
+			$("#input-common-id").focus();
+			return false;
+		}else if($("#input-common-name").val()==""){
+			alert("이름을 입력해주세요");
+			$("#input-common-name").focus();
+			return false;
+		}else if($("#input-common-phone").val()==""){
+			alert("휴대전화를 입력해주세요");
+			$("#input-common-phone").focus();
+			return false;
+		}else {
+			$.ajax({
+				url : "findPwd_check.do",
+				type : "POST",
+				data : {
+					member_id : $("#input-common-id").val(),
+					name : $("#input-common-name").val(),
+					phone_num : $("#input-common-phone").val()
+				},
+				
+				success : function(result) {
+					if(result=="") {
+						$("#modal2").show();
+						$("#agreement-content1").html($(".find-id-none").html());
+					}else {
+						$("#modal2").show();
+						$("#member_id").attr("value",result);
+						$("#agreement-content1").html($(".change-pass").html());
+						/* $("#find-id-result").html(result); */
+						/* $("#agreement-content1").html($(".deleteComplete").html()); */
+					}
+				}
 			});
+		}
+	});
 		
-		$(document).on("click", "#button-gradient-gotoPwd", function(event){
-
-			$("#modal2").hide();
-			location.href="http://localhost:9000/uniquegames/findId.do?selectedTab=findPwd";
-			
-			});
-		$(document).on("click", "#button-gradient-gotoLogin", function(event){
-
-			$("#modal2").hide();
-			location.href="http://localhost:9000/uniquegames/login.do";
-			
-			});
-		
-		$(document).on("click", "#button-gradient-gotoJoin", function(event){
-
-			$("#modal2").hide();
-			location.href="http://localhost:9000/uniquegames/join.do";
-			
-			});
-		
-	})
-
-</script>
-
+	$(document).on("click", "#button-gradient-gotoFind", function(event){
+		$("#modal2").hide();
+		$("input[name='name']").val("").focus();
+		$("input[name='member_id']").val("").focus();
+		$("input[name='phone_num']").val("");
+	});
+	$(document).on("click", "#button-gradient-gotoPwd", function(event){
+		$("#modal2").hide();
+		location.href="http://localhost:9000/uniquegames/findId.do?selectedTab=findPwd";
+	});
+	$(document).on("click", "#button-gradient-gotoLogin", function(event){
+		$("#modal2").hide();
+		location.href="http://localhost:9000/uniquegames/login.do";
+	});
+	$(document).on("click", "#button-gradient-gotoJoin", function(event){
+		$("#modal2").hide();
+		location.href="http://localhost:9000/uniquegames/join.do";
+	});
+})
+</script> 
 </head>
 <body>
 	<header>
@@ -158,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				<p id="intro-2">비밀번호를 찾으려는 아이디</p>
 				<ul>
 					<li>
-						<input type="text" id="input-common" name="member_id" placeholder="아이디">
+						<input type="text" id="input-common-id" name="member_id" placeholder="아이디">
 						<span id="msgId"></span>
 					</li>
 					<li>
@@ -204,6 +198,28 @@ document.addEventListener('DOMContentLoaded', function() {
 				<button type="button" id="button-gradient-gotoJoin" name="btn-agreement">회원가입</button>
 			</li>
 		</ul>
+	</div>
+	
+	<div class="change-pass">
+		<p id="agreement-title">비밀번호 변경</p>
+		<form action="mChangePassword.do" name="changePassForm" method="post">
+			<div>
+				<ul>
+					<li>
+						<input type="hidden" name="member_id" id="member_id">
+					</li>
+					<li>
+						<input type="password" name="mnewpassword" placeholder="새로운 비밀번호">
+					</li>
+					<li>
+						<input type="password" name="mnewpassword-check" placeholder="새로운 비밀번호 확인">
+					</li>
+					<li>
+						<button type="submit" id="button-gradient-changePass">비밀번호 변경</button>
+					</li>
+				</ul>
+			</div>
+		</form>
 	</div>
 	
 

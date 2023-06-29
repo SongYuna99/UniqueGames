@@ -58,25 +58,6 @@
 				}
 				
 			});
-			
-			$("input[name='member_id']").blur(function(){
-				
-				if($("input[name='member_id']").val()=="") {
-					$("#msgId").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
-				}else {
-					$("#msgId").css("display","none");
-				}
-				
-			});
-			
-			$("input[name='password']").blur(function(){
-				
-				if($("input[name='password']").val()==""){
-					$("#msgPwd").text("필수항목입니다").css("color","red").css("font-size","11px").css("display","block");
-				}else {
-					$("#msgPwd").css("display","none");
-				}
-			});
 				
 		});
 		
@@ -104,17 +85,7 @@
 			alert("비밀번호 변경 성공");
 			location.href="login.do";
 		}
-		
-		document.addEventListener('DOMContentLoaded', function() {
-            // URL에서 selectedTab 파라미터 값을 가져옴
-            var urlParams = new URLSearchParams(window.location.search);
-            var selectedTab = urlParams.get('selectedTab');
-            
-            // 선택한 탭을 표시
-            if (selectedTab) {
-                document.getElementById(selectedTab).checked = true;
-            }
-        });
+
 		
 	</script> -->
 </head>
@@ -130,7 +101,7 @@
 			</div>
 		</div>
 	</section>
-	<section id="content-1"><!-- login-content -->
+	<section id="content-1">
 		<p id="intro">로그인</p>
 		<input id="individual-login" type="radio" name="loginSelect" checked>
 		<label for="individual-login" id="individual-login-tab">개인 회원</label>
@@ -141,11 +112,11 @@
 			<div>
 				<ul>
 					<li>
-						<input type="text" id="input-common" name="member_id" placeholder="아이디" value="${member.member_id}">
+						<input type="text" id="member-id" name="member_id" placeholder="아이디" value="${member.member_id}">
 						<span id="msgId"></span>
 					</li>
 					<li>
-						<input type="password" id="input-common" name="password" placeholder="비밀번호" size="15" value="${member.password}">
+						<input type="password" id="member-pass" name="password" placeholder="비밀번호" size="15" value="${member.password}">
 						<span id="msgPwd"></span>
 					</li>
 					<li>
@@ -165,15 +136,15 @@
 			<div>
 				<ul>
 					<li>
-						<input type="text" id="input-common" name="company_id" placeholder="법인 아이디" value="${company.company_id}">
+						<input type="text" id="company-id" name="company_id" placeholder="법인 아이디" value="${company.company_id}">
 						<span id="msgId"></span>
 					</li>
 					<li>
-						<input type="password" id="c-input-common" name="password" placeholder="비밀번호" size="15" value="${company.password}">
+						<input type="password" id="company-pass" name="password" placeholder="비밀번호" size="15" value="${company.password}">
 						<span id="msgPwd"></span>
 					</li>
 					<li>
-						<button type="button" id="button-gradient-company-login">LOGIN</button>
+						<button type="button" id="button-gradient-company-login" onclick="companyIdPassCheck()">LOGIN</button>
 					</li>
 					<li>
 						<a href="findCompany.do" id="link-findAccount">아이디 찾기</a>

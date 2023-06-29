@@ -64,10 +64,8 @@ function memberIdDuplicate() {
           idMsg.style.display = "inline";
           document.getElementById("input-common-password").focus();
         }
-        
       }
     };
-
     request.send();
   }
 }
@@ -94,7 +92,7 @@ function memberPassCheck(){
 	return true;
 }
 
-function passwordVisibility() {
+function memberPassVisible() {
 	var isChecked = document.querySelector("#pwd-check-img").checked;
 	var password = document.querySelector("input[name='password']");
 	  
@@ -105,7 +103,7 @@ function passwordVisibility() {
 	}
 }
 
-function passwordCheckVisibility() {
+function memberPassCheckVisible() {
 	var isChecked = document.querySelector("#pwd-check-img-1").checked;
 	var passwordCheck = document.querySelector("input[name='password-check']");
 	  
@@ -130,6 +128,29 @@ function memberNameCheck(){
 	}
 	return true;
 }
+
+function findPwd() {
+	var id = document.getElementById("input-common-id");
+	var name = document.getElementById("input-common-name");
+	var phone_num = document.getElementById("input-common-phone");
+	
+	if(id.value === "") {
+		alert("아이디는 필수입니다");
+		id.focus();
+		return false;
+	}else if(name.value === "") {
+		alert("이름은 필수입니다");
+		name.focus();
+		return false;
+	}else if(phone_num.value === "") {
+		alert("휴대전화는 필수입니다");
+		phone_num.focus();
+		return false;
+	}
+	
+	findPwdForm.submit();
+}
+
 
 function memberEmailCheck(){
 	var email1 = document.querySelector("input[name='email1']");
@@ -327,45 +348,31 @@ function handlePhoneBlur() {
 		request.send(params);
 	}
 }
-
-
 /*******************************정규식******************************************/
 function idCheck1(asValue) {
 	var regex1 = /^[a-zA-Z0-9]*$/;
-	
 	return regex1.test(asValue);
 }
-
 function idCheck2(asValue) {
 	var regex2 = /^[a-zA-Z0-9]{5,10}$/;
-	
 	return regex2.test(asValue);
 }
-
 function pwdCheck(asValue) {
 	var regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/g;
-	
 	return regex.test(asValue);
 }
-
 function nameCheck(asValue) {
 	var regex =  /^[가-힣]{2,4}$/;
-	
 	return regex.test(asValue);
 }
-
 function emailCheck(asValue){
 	var regex = /[A-za-z0-9]{4,20}$/;
-	
 	return regex.test(asValue);
 }
-
 function phoneCheck(asValue) {
 	var regex = /^\d{3,4}$/;
-	
 	return regex.test(asValue);
 }
-
 /********************이메일 선택 시 input창 자동 입력**************************/
 						
 function handleEmailSelection() {
@@ -388,11 +395,7 @@ function handleEmailSelection() {
     email2.value = selectbox.value;
   }
 }
-
-/*************************************************************************
-							개인 회원가입; 전체 동의
-*************************************************************************/
-
+/*********************************개인 회원가입; 전체 동의****************************************/
 function agreeAll() {
 	var chkCircle = document.getElementById("chk-circle");
 	var chkAgree = document.querySelectorAll("input[name='chk-agree']");
@@ -476,26 +479,95 @@ function memberValidation() {
     }else {
     	joinIndividual.submit();
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function companyIdPassCheck() {
+	var companyId = document.getElementById("company-id");
+	var password = document.getElementById("company-pass");
+	var loginForm = document.getElementById("company-loginForm");
 	
+	if(companyId.value === "") {
+		alert("아이디는 필수입니다");
+		companyId.focus();
+		return false;
+	}else if(password.value=="") {
+		alert("비밀번호는 필수입니다");
+		password.focus();
+		return false;
+	}
+	if(loginForm != null) {
+		loginForm.submit();
+	}
+	return true;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
 
-	document.getElementById("selectbox-email").addEventListener("change", handleEmailSelection);
-	
+	var urlParams = new URLSearchParams(window.location.search);
+    var selectedTab = urlParams.get('selectedTab');
+    
+    if (selectedTab) {
+        document.getElementById(selectedTab).checked = true;
+    }
+    
+    document.getElementById("selectbox-email").addEventListener("change", handleEmailSelection);
 	document.querySelector("input[name='email2']").addEventListener("change", function(){
 		document.getElementById("selectbox-email").value = "default"
 	});
-	
 	document.querySelectorAll("input[name='email1'], input[name='email2'], #selectbox-email").forEach(function(element) {
   		element.addEventListener("blur", handleEmailBlur);
 	});
-	
 	document.querySelectorAll("#selectbox-phone, input[name='phone2'], input[name='phone3']").forEach(function(element) {
   		element.addEventListener("blur", handlePhoneBlur);
 	});
 	document.querySelector('#email-auth-check').addEventListener('change', checkEmailAuth);
-	
 	document.querySelectorAll("input[name='chk-agree']").forEach(function(checkbox) {
   		checkbox.addEventListener("click", updateCheckbox);
 	});

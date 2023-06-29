@@ -102,7 +102,8 @@ input[name="email-auth-check"] {
 	#button-gradient-company-login, #button-gradient-delete,
 	#button-gradient-company, #button-gradient-gotoLogin,
 	#button-gradient-gotoPwd, #button-gradient-gotoFind,
-	#button-gradient-gotoJoin, #button-gradient-home {
+	#button-gradient-gotoJoin, #button-gradient-home,
+	#button-gradient-changePass {
 	border: none;
 	width: 394px;
 	height: 60px;
@@ -121,6 +122,10 @@ input[name="email-auth-check"] {
 	width: 180px;
 	height: 50px;
 	margin-top: 20px;
+}
+
+#button-gradient-changePass {
+	height: 50px;	
 }
 
 #button-gradient-delete {
@@ -315,8 +320,7 @@ div.agreement button#button-gradient {
 	font-size: 20px;
 }
 
-div.detail1, div.detail2, div.deleteComplete, div.deleteComplete1, div.find-id-none,
-	div.find-pwd-none {
+div.detail1, div.detail2, div.deleteComplete, div.deleteComplete1, div.find-id-none, div.change-pass, div.find-pwd-none {
 	display: none;
 }
 

@@ -46,11 +46,12 @@ public class FindAccountController {
 		return result;
 	}
 	
-	/**Member password change; href to newpassword.jsp*/
+	/**Member password change; href to newpassword.jsp
 	@RequestMapping(value="/findPwd_check.do", method=RequestMethod.POST)
 	public ModelAndView findPwd_check(MemberVo memberVo) {
 		ModelAndView mav = new ModelAndView();
 		int result = memberService.memberFindPwdResult(memberVo);
+		System.out.println("controller result="+result);
 		
 		if(result == 1) {
 			mav.addObject("member_id", memberVo.getMember_id());
@@ -62,6 +63,15 @@ public class FindAccountController {
 		
 		return mav;
 	}
+	*/
+	@RequestMapping(value="/findPwd_check.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String findPwd_check(MemberVo memberVo) {
+		String result = memberService.memberFindPwdResult(memberVo);
+		System.out.println("비밀번호 찾기 result="+result);
+		return result;
+	}
+	
 	
 	/** myPage -> changing Password*/
 	@RequestMapping(value="/myPageChangePassword.do", method=RequestMethod.GET)
@@ -76,7 +86,7 @@ public class FindAccountController {
 		return mav;
 	}
 	
-	/**findPwd -> newpassword.jsp -> actual change password logic*/
+	/**findPwd -> newpassword.jsp -> actual change password logic
 	@RequestMapping(value="/mChangePassword.do", method=RequestMethod.POST)
 	public ModelAndView Mnewpassword(String member_id, String mnewpassword, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -84,6 +94,23 @@ public class FindAccountController {
 		
 		if(result==1) {
 			session.invalidate();
+			mav.addObject("changePassword_result", "success");
+			mav.setViewName("/login/login");
+		}else {
+			System.out.println("비밀번호 변경 실패");
+		}
+		return mav;
+	}
+	*/
+	/**findPwd -> newpassword.jsp -> actual change password logic*/
+	@RequestMapping(value="/mChangePassword.do", method=RequestMethod.POST)
+	public ModelAndView Mnewpassword(String member_id, String mnewpassword, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		int result = memberService.memberChangeMPassword(member_id, mnewpassword);
+		System.out.println("1mnewpassword="+mnewpassword);
+		if(result==1) {
+			session.invalidate();
+			System.out.println("아니 왜 중복되게 바뀌냐고");
 			mav.addObject("changePassword_result", "success");
 			mav.setViewName("/login/login");
 		}else {

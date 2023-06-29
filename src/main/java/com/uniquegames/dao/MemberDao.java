@@ -54,7 +54,7 @@ public class MemberDao{
 	}
 	
 	/*********************��й�ȣ �缳��****************************************/
-	public int select(MemberVo memberVo) {
+	public String select(MemberVo memberVo) {
 		return sqlSession.selectOne("mapper.member.select", memberVo);
 	}
 	
@@ -67,6 +67,7 @@ public class MemberDao{
 		MemberVo memberVo = new MemberVo();
 		memberVo.setMember_id(member_id);
 		memberVo.setMnewpassword(mnewpassword);
+		System.out.println("mnewpassword="+mnewpassword);
 		return sqlSession.update("mapper.member.changeMpassword", memberVo);
 	}
 	

@@ -12,7 +12,7 @@ public interface MemberService {
 	int joinResult(Object vo, String type);
 	String memberIdCheckResult(String member_id);
 	String memberFindIdResult(MemberVo memberVo);
-	int memberFindPwdResult(MemberVo memberVo);
+	String memberFindPwdResult(MemberVo memberVo);
 	int memberUpdateResult(MemberVo memberVo);
 	int memberChangePwdResult(String member_id, String name, String phone_num);
 	int memberChangeMPassword(String member_id, String mnewpassword);
