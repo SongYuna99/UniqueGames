@@ -45,7 +45,7 @@
   [이메일 인증]()
 
 
-## 4. 산출물
+## 5. 산출물
 - WBS : [WBS.pdf](https://drive.google.com/file/d/1CZID4Nn8eTeDLU1TfCGUA9ujdoxoptzV/view?usp=drive_link)
 - 스토리보드 : [스토리보드.pdf](https://drive.google.com/file/d/1Z0Iwofv6wRXfloiKwMg8gFqkro6q4_5M/view?usp=drive_link)
 - 기능 명세서 : [기능명세서.pdf](https://drive.google.com/file/d/1_HaP738pKn89FJogmP2fSUB4EHCVIkD2/view?usp=drive_link)
