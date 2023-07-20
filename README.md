@@ -4,7 +4,7 @@
 <br>
 
 ## 2. 구성원
-- 송유나 [SongYuna99]([https://github.com/JeonB](https://github.com/SongYuna99))
+- 송유나 [SongYuna99](https://github.com/SongYuna99)
 - 김병수 [kimbs5899](https://github.com/kimbs5899)
 - 김재현 [jaehyeonkim0](https://github.com/jaehyeonkim0)
 - 민영기 [Corendo6](https://github.com/Corendo6)
